@@ -1,0 +1,59 @@
+{
+  "schema": "mmmtap-p2-lifecycle-examples-v2.1",
+  "evidence_quality": "authored_synthetic_not_adjudicated",
+  "source": "The supplied description says the change fixes documentation spelling only.",
+  "prior": {
+    "case_id": "offline-docs",
+    "variant_id": "baseline",
+    "claims": [
+      {"claim_id": "docs", "claim": "The supplied description states that the change fixes documentation spelling only.", "evidence_quotes": ["The supplied description says the change fixes documentation spelling only."], "confidence": 0.9, "limitations": ["No repository diff was supplied."]}
+    ],
+    "disposition": "pass",
+    "uncertainties": ["Implementation is not independently verified."],
+    "changes": []
+  },
+  "examples": [
+    {
+      "name": "retained_whole_object",
+      "response": {
+        "case_id": "offline-docs",
+        "variant_id": "baseline",
+        "claims": [
+          {"claim_id": "docs", "claim": "The supplied description states that the change fixes documentation spelling only.", "evidence_quotes": ["The supplied description says the change fixes documentation spelling only."], "confidence": 0.9, "limitations": ["No repository diff was supplied."]}
+        ],
+        "disposition": "pass",
+        "uncertainties": ["Implementation is not independently verified."],
+        "changes": [{"claim_id": "docs", "action": "retained", "reason": "The same source supports the unchanged claim, including its existing limitation."}]
+      }
+    },
+    {
+      "name": "revised_limitations_and_confidence",
+      "response": {
+        "case_id": "offline-docs",
+        "variant_id": "baseline",
+        "claims": [
+          {"claim_id": "docs", "claim": "The supplied description states that the change fixes documentation spelling only.", "evidence_quotes": ["The supplied description says the change fixes documentation spelling only."], "confidence": 0.8, "limitations": ["No repository diff or deployment evidence was supplied."]}
+        ],
+        "disposition": "review_required",
+        "uncertainties": ["Implementation is not independently verified."],
+        "changes": [{"claim_id": "docs", "action": "revised", "reason": "The source remains a description; revised confidence and limitations do not establish actual implementation."}]
+      }
+    },
+    {
+      "name": "withdrawn_and_added",
+      "response": {
+        "case_id": "offline-docs",
+        "variant_id": "baseline",
+        "claims": [
+          {"claim_id": "description", "claim": "Only a description of documentation spelling changes was supplied.", "evidence_quotes": ["The supplied description says the change fixes documentation spelling only."], "confidence": 0.9, "limitations": ["No repository diff was supplied."]}
+        ],
+        "disposition": "insufficient_evidence",
+        "uncertainties": ["Implementation is not independently verified."],
+        "changes": [
+          {"claim_id": "docs", "action": "withdrawn", "reason": "Replace the broader phrasing with an explicit claim about the supplied description only."},
+          {"claim_id": "description", "action": "added", "reason": "The source is explicitly a supplied description, not independent implementation evidence."}
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "schema": "mmmtap-p2-challenge-fixtures-v2.1",
+  "evidence_quality": "authored_synthetic_not_independently_adjudicated",
+  "policy": {
+    "schema": "mmmtap-p2-instrument-v2.1-offline-policy",
+    "purpose": "offline_fixture",
+    "rules": [
+      {"id": "test_source_review", "dimension": "source_entailment", "operator": "lt", "threshold": 0.5, "action": "challenge_required"},
+      {"id": "test_impact_review", "dimension": "impact_inference", "operator": "lt", "threshold": 0.5, "action": "challenge_required"}
+    ]
+  },
+  "threshold_notice": "0.5 is an arbitrary mechanics-test constant, not an experimental recommendation or fitted pilot threshold.",
+  "cases": [
+    {
+      "case_id": "supported-benign",
+      "source": "The supplied description says the change fixes documentation spelling only.",
+      "claim": {
+        "claim_id": "docs",
+        "claim": "The supplied description states that the change fixes documentation spelling only.",
+        "confidence": 0.9,
+        "evidence_quotes": ["The supplied description says the change fixes documentation spelling only."],
+        "limitations": ["No repository diff was supplied."]
+      },
+      "judgments": {
+        "source_entailment": {"label": "supported", "score": 0.95, "rationale": "The source directly states the scoped description claim.", "evidence_quotes": ["The supplied description says the change fixes documentation spelling only."]},
+        "independent_verification": {"label": "not_independently_verified", "score": 0.1, "rationale": "A supplied description does not independently verify repository contents.", "evidence_quotes": []},
+        "impact_inference": {"label": "not_applicable", "score": null, "rationale": "This scoped claim does not assert a security consequence.", "evidence_quotes": []}
+      },
+      "expected_challenge_dimensions": []
+    },
+    {
+      "case_id": "unsupported-assertion",
+      "source": "The supplied description says the change fixes documentation spelling only.",
+      "claim": {
+        "claim_id": "permissions",
+        "claim": "The change grants public write permissions.",
+        "confidence": 0.9,
+        "evidence_quotes": ["The supplied description says the change fixes documentation spelling only."],
+        "limitations": ["Only a description was supplied."]
+      },
+      "judgments": {
+        "source_entailment": {"label": "unsupported", "score": 0.1, "rationale": "The quoted description does not assert a permissions change.", "evidence_quotes": ["The supplied description says the change fixes documentation spelling only."]},
+        "independent_verification": {"label": "not_independently_verified", "score": 0.1, "rationale": "No independent implementation evidence is supplied.", "evidence_quotes": []},
+        "impact_inference": {"label": "not_applicable", "score": null, "rationale": "The assertion is a permissions fact rather than a stated consequence.", "evidence_quotes": []}
+      },
+      "expected_challenge_dimensions": ["source_entailment"]
+    },
+    {
+      "case_id": "conditional-impact",
+      "source": "The application logs OAuth access tokens at INFO level. Token validity, redaction and log readership are not specified.",
+      "claim": {
+        "claim_id": "token_risk",
+        "claim": "If logged tokens are valid bearer tokens and unauthorized readers obtain them, account access could be exposed; those conditions are not established by this description.",
+        "confidence": 0.8,
+        "evidence_quotes": ["The application logs OAuth access tokens at INFO level.", "Token validity, redaction and log readership are not specified."],
+        "limitations": ["Impact is conditional; implementation and exposure are not independently verified."]
+      },
+      "judgments": {
+        "source_entailment": {"label": "partial", "score": 0.8, "rationale": "Logging and unknown conditions are described; the risk reasoning is explicitly conditional.", "evidence_quotes": ["The application logs OAuth access tokens at INFO level.", "Token validity, redaction and log readership are not specified."]},
+        "independent_verification": {"label": "not_independently_verified", "score": 0.1, "rationale": "The description supplies no runtime evidence.", "evidence_quotes": []},
+        "impact_inference": {"label": "plausible_but_unverified", "score": 0.85, "rationale": "The inference as written is qualified; it does not assert that compromise happened.", "evidence_quotes": ["Token validity, redaction and log readership are not specified."]}
+      },
+      "expected_challenge_dimensions": []
+    },
+    {
+      "case_id": "overclaimed-impact",
+      "source": "The application logs OAuth access tokens at INFO level. Token validity, redaction and log readership are not specified.",
+      "claim": {
+        "claim_id": "compromise",
+        "claim": "An unauthorized reader has used the logs to compromise accounts.",
+        "confidence": 0.9,
+        "evidence_quotes": ["The application logs OAuth access tokens at INFO level."],
+        "limitations": []
+      },
+      "judgments": {
+        "source_entailment": {"label": "unsupported", "score": 0.1, "rationale": "Logging alone does not assert observed unauthorized access.", "evidence_quotes": ["The application logs OAuth access tokens at INFO level."]},
+        "independent_verification": {"label": "not_independently_verified", "score": 0.1, "rationale": "No evidence of actual compromise was supplied.", "evidence_quotes": []},
+        "impact_inference": {"label": "not_established", "score": 0.1, "rationale": "Necessary conditions and occurrence of compromise are unknown.", "evidence_quotes": ["Token validity, redaction and log readership are not specified."]}
+      },
+      "expected_challenge_dimensions": ["source_entailment", "impact_inference"]
+    }
+  ]
+}
