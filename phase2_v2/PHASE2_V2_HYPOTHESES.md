@@ -1,6 +1,6 @@
 # Phase 2 v2 hypotheses and outcome definitions
 
-**RD01-amended draft preregistration scaffold; not frozen or approved.** The pilot did not
+**RD01/RD02-amended draft preregistration scaffold; not frozen or approved.** The pilot did not
 establish the original hypotheses. This document makes proposed hypotheses
 measurable, but no v2 observation may begin until the human decisions listed
 below are resolved and the final version is frozen and hashed.
@@ -41,54 +41,86 @@ direction, why, and whether those changes are evidence-justified.
 See `RESEARCH_DIRECTION_AMENDMENT.v2.1-RD01.md`. Unsupported-assertion adoption
 is deferred to a potential future study. RD01-H1 to RD01-H4 below replace
 the earlier draft H1-H4; IDs must not be interpreted as unchanged hypotheses.
-No outcome definition or statistical test below has human approval.
+RD02 supplements RD01: **DECIDED BY PI**, any baseline-to-final disposition
+change is an outcome change even with identical security claims; material
+finding movement is measured independently. See
+`OUTCOME_MOVEMENT_AMENDMENT.v2.1-RD02.md`. This expressly amends RD01-H1/H2
+as drafted at `0fafdc5c`; their IDs identify lineage, not unchanged definitions.
+Operational scoring, inferential primacy and statistical tests remain pending.
 
-### RD01-H1 — Assessment change beyond matched control prompts
+### RD01-H1 — Separately reported outcome movement beyond matched controls (RD02)
 
-**Candidate primary hypothesis:** the probability of a substantive assessment
-change from B0 differs between JEV-challenge paths and their matched control
-paths. The alternative is nondirectional; JEV may increase, reduce, or
-redirect change. The null is no paired difference in this probability.
+**Candidate questions:** do disposition movement and material finding
+movement differ between JEV-challenge paths and prespecified matched control
+paths? Report two outcome families separately. Neither is declared
+inferentially primary or statistically co-primary. Hypotheses/tests for
+each family and their multiplicity require a methods decision.
 
-Candidate indicator `S`: at least one independently adjudicated substantive
-change in a final assessment relative to its sealed B0. Candidate contrast:
-mean of `S(treatment) - S(control)` over evaluable matched units. Report
-unchanged assessments explicitly. Changing wording or lifecycle metadata
-alone need not count as substantive; D04/D05 must decide material confidence,
-limitations and disposition-change rules before collection. Report those
-dimensions separately regardless of the binary definition.
+**A. Disposition movement (principle DECIDED BY PI).** Record exact baseline
+and final disposition values and their ordered transition pair, including
+unchanged. For observed admissible dispositions, define `D = 1` when the
+final value differs from B0, otherwise `D = 0`. Every difference counts,
+irrespective of finding movement or evidence justification. Preserve exact
+labels; do not invent an ordinal severity scale. A proposed nondirectional
+contrast is the paired difference in disposition-change indicators between
+treatment and control; its estimand, admissibility and inferential status
+are pending. Do not combine `D` with a finding-change indicator.
+
+**B. Material finding movement (separate family).** Independently align
+atomic security findings from B0 through follow-ups and record substantive
+additions, withdrawals, qualifications, strengthening, weakening and changes
+in evidential scope, regardless of disposition. Record unchanged findings.
+Separate wording-only, formatting-only, confidence-only and administrative
+lifecycle changes from substantive findings. If an edited limitation alters
+evidential scope, adjudicate that content separately from the metadata edit.
+The generator's `revised` action does not establish substantive movement.
+Materiality rules and any unit-level summary/indicator remain pending.
+Confidence changes are auxiliary observations, not automatic finding movement.
 
 Compare E1 and E2 each with C1 and C2; each E3 order with C3 final turn.
 Select the primary contrast family and multiplicity prospectively. These
 are proposed comparisons, not redesign or new independent judge arms.
 Contract-invalid or blocked outputs are missing scientific outcomes, not
-`S=0`; retain scheduled, attempted, eligible and complete-pair denominators.
-D07 must fix primary admissibility and sensitivity analysis.
+`D=0` or unchanged findings; preserve original scheduled, attempted, eligible
+and complete-pair denominators. D07 must fix primary admissibility and
+sensitivity analysis without repairing rejected outputs. Maintain matching
+by source, generator, repetition and shared sealed B0; B0/C1/C2/C3/E1/E2/
+E3_NC/E3_CN remain unchanged design references.
 
-### RD01-H2 — What changes, direction, and evidence justification
+For C3 and both E3 orders preserve exact B0-to-turn-1, turn-1-to-final and
+B0-to-final disposition pairs, and intermediate/final finding alignments.
+A disposition can move and return to baseline: final `D=0` does not erase
+intermediate movement. Native/cARL paths share SystemOne; they are not
+independent judge replications.
 
-**Candidate companion primary question:** does the distribution of
-evidence-justified, unjustified, mixed and unresolved assessment changes
-differ between challenge and control paths? It does not presume improvement.
-Whether this is co-primary or secondary, and any directional hypothesis,
-remain D04 decisions.
+### RD01-H2 — Evidence justification independent of movement (RD02)
 
-Align atomic assertions and reference findings across B0 and every follow-up.
-Record additions, withdrawals, qualifications, strengthening, evidence
-replacement, confidence/limitations and disposition transitions. One
-generator `revised` action may be wording-only or several atomic changes.
-For each substantive transition, independently adjudicate source support,
-independent verification and impact justification before/after. Use a
-proposed transition rubric: justified correction/qualification; unjustified
-addition/removal/strengthening; evidence-equivalent change; mixed; unresolved.
-Neither a higher score nor a move toward `pass` or `review_required` determines
-the category. Cross-dimension trade-offs must remain mixed, not averaged
-into an invented ordering.
+**Candidate questions:** for disposition movement and, separately, material
+finding movement, how do evidence-justification profiles differ across
+challenge/control paths? Preserve any disagreement between the two families.
+Assess these independently, not as a post-hoc definition of whether movement
+occurred. Proposed categories for each family are `justified`, `unjustified`,
+`mixed`, `unresolved`; detailed decision rules and inferential status remain
+pending. No automatic category follows from a judge score or contract validity.
 
-Report unit-level change profiles including no change and counts of each
-transition category. Report per-change justification proportions separately,
-with zero-change denominators undefined; conditioning on changed units can
-select different populations. Preserve supported-finding recall/retention,
+For A, evaluate whether available evidence and the assessment's reasoning
+justify the exact disposition transition, even with unchanged findings.
+For B, evaluate each aligned finding's content/evidential-scope transition
+using source entailment, independent verification and impact inference
+before/after. Evidence-equivalent content may be described as such, but is
+not a fifth justification category in this RD02 proposal. Disposition and
+finding justification can disagree; preserve both and reviewer disagreement.
+No ordinal direction or evidence verdict is inferred from `fail`, `warn`,
+`review_required` or `pass`. These labels are examples, not additions to the
+instrument's disposition vocabulary.
+
+An unchanged disposition or finding is a recorded outcome, not automatically
+failure to respond to a challenge. Any evaluation of justified retention
+must be distinct from movement and use the approved future rubric.
+Report exact transition profiles, findings and auxiliary edits, including
+no movement. Report per-movement justification proportions separately for
+each family, with zero-movement denominators undefined; conditioning on
+movers may select different populations. Preserve supported-finding recall/retention,
 unsupported-new assertions and impact-overclaiming as distinct evidence
 diagnostics, not the primary objective. Keep partial/unverifiable labels.
 
@@ -148,8 +180,9 @@ success.
 
 ## Decisions to freeze before preregistration
 
-The objective is decided; all operational definitions remain pending. The
-PI/methods lead and statistician must specify: the primary hypothesis or
+RD01's objective and RD02's disposition-movement measurement principle are
+decided, not blanket approval of D04. Remaining operational definitions are
+pending. The PI/methods lead and statistician must specify: the primary hypothesis or
 co-primary family; the natural-source population and reference set;
 atomic-claim segmentation and materiality; reviewer number, qualifications,
 blinding, change-direction/justification/rationale rubric and disagreement

@@ -10,6 +10,12 @@ are evidence-justified. Unsupported-assertion adoption is deferred to a
 potential future study. `RESEARCH_DIRECTION_AMENDMENT.v2.1-RD01.md` records
 the human decision; the workflow and rubrics below remain proposals.
 
+**RD02 disposition-movement principle: DECIDED BY PI.** Every exact
+baseline-to-final disposition change is an outcome change even with identical
+claims. Material finding movement and evidence justification are independent
+observations. See `OUTCOME_MOVEMENT_AMENDMENT.v2.1-RD02.md`; detailed scoring,
+materiality and justification rules remain pending, not blanket D04 approval.
+
 ## Roles and evidence custody
 
 Propose a custodian, a fixture author, two independent security/source-review
@@ -71,15 +77,25 @@ policies; neither may contain credentials or personal account information.
 7. **Pair after content-label freeze, before arm unblinding.** Custodian
    supplies chronological B0/follow-up content with arm/model/challenge
    metadata still hidden. Two reviewers independently align atomic assertions
-   and reference findings, including ID changes/splits/merges. Record unchanged,
-   wording-only, substantive addition/removal, qualification/strengthening,
-   confidence/limitations/evidence and disposition transitions. Disposition
-   becomes visible here as a change dimension, not a correctness label.
-   Judge before/after evidence justification using frozen content labels;
-   record justified, unjustified, equivalent, mixed or unresolved transitions.
-   Do not force ordinal impact-label differences into improvement. Resolve
-   disagreements and freeze paired sheets before revealing challenges/arms.
-   This alignment/category rubric requires D04/D05 approval.
+   and reference findings, including ID changes/splits/merges. First freeze
+   family B alignment: substantive additions/withdrawals, qualification,
+   strengthening/weakening and evidential scope, plus unchanged findings.
+   Keep wording-only, formatting-only, confidence-only and administrative
+   lifecycle edits separate. `revised` is not a substantive-movement verdict.
+   Then reveal exact dispositions to record family A baseline/final values,
+   ordered pair and `D=1` iff different, otherwise `D=0`, independent of B.
+   For sequential arms retain B0-to-turn-1, turn-1-to-final and B0-to-final
+   pairs plus intermediate/final finding alignments. Never rank disposition
+   labels, invent an ordinal severity scale, or use a movement materiality
+   filter for family A.
+   In separate fields evaluate justification of A and B using available
+   evidence: proposed justified/unjustified/mixed/unresolved categories, with
+   independent reasons and disagreements. An evidence-equivalent description
+   is not a fifth justification label. Freeze movement before justification;
+   unresolved justification cannot erase observed movement.
+   Resolve reviewer disagreements and freeze paired sheets before revealing
+   challenges/arms. Finding materiality and justification rules require
+   D04/D05 approval; the disposition-movement principle does not.
 8. **Rationale linkage after paired-label freeze.** Custodian joins
    arm/model/order, lineage, exact challenge and generator-stated reasons.
    Reviewers cite source/challenge/rationale spans explaining reported changes,
@@ -101,11 +117,23 @@ conditional/actual scope; three dimension labels/applicability; source and
 independent-evidence anchors; rationale; aligned reference finding ID;
 segmentation or evidence ambiguity; reviewer/version/date; unresolved flag.
 The join key to generator arm is kept outside the sheet. Separate paired
-sheets include alignment provenance, substantive/wording-only classification,
-direction per dimension, before/after justification, unchanged findings,
-reviewer disagreement and unresolved transitions. Rationale-link sheets
+sheets include family A exact baseline/final/intermediate disposition values,
+ordered pairs and disposition-change indicator; family B alignment provenance,
+substantive movements, unchanged findings and auxiliary edits; separate
+`disposition_justification` and per-finding `finding_justification` proposals,
+evidence spans, reviewer disagreement and unresolved judgments. Missing/
+invalid observations have explicit availability/contract/parent-status fields,
+not no-movement defaults. These are planning fields, not a schema change.
+Rationale-link sheets
 are produced only after paired-label freeze and reference raw challenge/
 source/output spans, never a guessed internal cause.
+
+An unchanged disposition or finding is recorded, not automatically failure
+to respond. Retention justification may be assessed separately under a future
+rubric; movement toward fail/warn/review_required is not automatically better,
+nor toward pass worse. Family A and B justification need not agree. Blinding
+is staged, not guaranteed: rationale text may reveal challenge exposure;
+record suspected unblinding without editing raw evidence.
 
 ## Label rubric for human approval
 

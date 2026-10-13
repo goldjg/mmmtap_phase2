@@ -1,12 +1,17 @@
 # Scientific decision brief v2.1
 
-**RD01-amended planning proposal for human review.**
+**RD01/RD02-amended planning proposal for human review.**
 The human-approved direction is to determine whether JEV challenges change AI
 security assessments, what changes, in which direction, why, and whether
 those changes are evidence-justified. Unsupported-assertion adoption is
 deferred to a potential future study. See
 `RESEARCH_DIRECTION_AMENDMENT.v2.1-RD01.md`.
-Draft hypotheses are updated; methods are not approved or frozen. No changes
+RD02's disposition-movement principle is **DECIDED BY PI**: every exact
+baseline-to-final disposition difference counts as outcome change even with
+unchanged claims. Material finding movement is independent, and justification
+is a separate assessment for each family. See
+`OUTCOME_MOVEMENT_AMENDMENT.v2.1-RD02.md`.
+Draft hypotheses are traceably updated; remaining methods are not approved or frozen. No changes
 to v1, the v2.1 instrument, validation or arm schedule are made.
 No stage or provider invocation is authorized.
 
@@ -26,7 +31,7 @@ scientific instrument.
 | D01: lifecycle | Keep strict whole-object retention and complete ID accounting; approve clarified instructions/examples only after independent methods review | Narrow retention to substantive claim text: simpler for models, but changes metadata lifecycle and admissibility. Free-text follow-ups: less formatting burden, but loses deterministic lineage. Both require separately versioned contracts, not this increment | Apply identical accounting to C1/C2/C3 and all E follow-ups. C2 rewording is `revised` even without substantive correction. Classify metadata-only versus substantive change during adjudication; do not equate `revised` with improved correctness |
 | D02: constructs | Approve three separate rubrics for source entailment, independent verification, and impact justification as written. Preserve labels, scores, rationale, provenance and applicability independently | A single support signal is cheaper but recreates conflation. Labels-only avoids uncalibrated numeric interpretation but changes current question contract. Separate impact-occurrence and inference-validity questions could resolve ambiguity but need a future instrument amendment | E1/E2 compare presentation/policy paths over the same constructs, not independent judges. E3 orders remain separate. No low verification score may silently become an entailment failure; controls do not receive judge output |
 | D03: policy | Defer all numeric thresholds. First approve the dimension-specific review meaning, missing-score handling, and an independent development/held-out evaluation plan | Label-based review still needs policy approval and versioned implementation. Always presenting all judgments tests exposure, not threshold policy, and changes treatments. Using the fixture's 0.5 or fitting pilot examples is unjustified | No experimental mapping currently exists: mapper accepts `offline_fixture` only. A research policy requires a later approved implementation. Challenge-only diagnostics can precede it; E1/E2/E3 qualification cannot launch under test constants |
-| D04: outcomes | Under RD01, nominate paired substantive-change incidence and a companion evidence-justification profile, with dimension/direction and reported-rationale analysis; keep operational validity separate | Dimension-specific primary outcomes are more interpretable but multiply contrasts. A binary any-change endpoint is compact but loses direction. A single improvement composite hides trade-offs. Unsupported-adoption study is deferred, not an alternative primary objective for this increment | E1/E2 each compared to C1 and C2; each E3 order versus C3 final. B0 anchors all changes. Choose primary family, substantive rubric and co-primary versus secondary status before collection |
+| D04: outcomes | RD02 disposition-movement principle DECIDED BY PI; report disposition and material finding movement separately, with independent evidence justification and reported-rationale analysis | Full transition profiles preserve direction without ranking labels; a disposition indicator summarizes movement but not correctness. Finding materiality requires adjudication. A merged endpoint would hide disposition-only/finding-only cases and is not adopted. Adoption study deferred | Existing arms unchanged. E1/E2 versus proposed C1/C2 contrasts and E3 orders versus C3 final remain pending primary selection; no statistically co-primary declaration or blanket D04 approval |
 | D05: adjudication | Two independent qualified human reviewers plus a third resolver; separate source/reference preparation, blinded output labeling, and post-label paired analysis | One reviewer is cheaper but cannot establish agreement. Model-only adjudication is correlated/fallible and not an independent reference standard. Third-review all cases is stronger but costly | Assess all arm outputs under one blinded rubric, including false positives in benign controls. Freeze labels before revealing arm/order/model/challenge. Preserve missingness; invalid responses never become valid parent checkpoints |
 
 **Suggested order of approval:** D02/D05 definitions and provenance first;
@@ -55,8 +60,9 @@ weights. Keep all numerators, denominators and unavailable outcomes visible.
 | Candidate | Unit/definition | What it does not establish |
 |---|---|---|
 | Contract validity | Valid attempted generator responses / attempted generator responses, by arm and turn; separately report valid terminal responses / all scheduled generator positions, blocked descendants and complete chains | Scientific correctness or security |
-| Substantive-change incidence (primary candidate) | Units with at least one adjudicated substantive B0-to-final change / evaluable units; paired difference in indicators between treatment/control | Any change is not improvement; wording-only `revised` actions need separate classification; invalid/missing outputs are not no-change |
-| Change direction and evidence justification (companion primary candidate) | Unit-level profile of additions, removals, qualification/strengthening, confidence/limitations/evidence and disposition changes; classify transitions as justified, unjustified, equivalent, mixed or unresolved | Labels need approved rubrics; source support, verification and impact cannot be collapsed into an ordinal score |
+| A: Disposition movement (principle DECIDED BY PI) | Exact B0/final values and ordered pair including unchanged; observed `D=1` iff values differ, otherwise `D=0`; separately preserve intermediate pairs | Counts even with identical findings. No ordinal severity scale, correctness interpretation, or primary status implied; invalid/missing is not `D=0` |
+| B: Material finding movement (separate family) | Independently aligned additions, withdrawals, substantive qualification/strengthening/weakening and evidential-scope changes; record unchanged findings | Materiality rubric pending. Wording/formatting/confidence-only and administrative edits recorded separately; `revised` is not substantive-change evidence |
+| Evidence justification (separate for A and B) | Proposed justified/unjustified/mixed/unresolved judgments, evidence pointers and disagreement for each observed transition | Not a post-hoc definition of movement; no automatic improvement toward fail/warn/review_required or automatic harm toward pass; categories/rules pending |
 | Unsupported assertion burden (secondary diagnostic) | Count of material atomic assertions labeled `unsupported` in a final assessment; report `partial` and `unverifiable` separately | Not the primary objective; deletion alone is not improvement |
 | Source-grounded correctness profile | Counts/proportions of supported, partial, unsupported, unverifiable output assertions, plus reference-finding recall. Output assertion denominators and reference denominators remain distinct | Literal support is not independent verification; unsupported does not always mean contradicted |
 | Supported-finding preservation (guardrail) | B0-correct supported reference findings still correctly represented at final / supported reference findings correctly represented at B0. Report partially represented and dropped findings separately | Finding a new true claim is not retention. No B0-supported finding means undefined, not perfect preservation |
@@ -64,14 +70,23 @@ weights. Keep all numerators, denominators and unavailable outcomes visible.
 | Impact overclaiming (guardrail) | Count and rate of assertions claiming actual consequences not established by admissible evidence; distinguish justified conditionals and unsupported conditionals | `not_established` does not itself prove absence of risk |
 | Recorded reasons (explanatory) | Exact generator rationale/source/challenge links for change, retention or rejection; absent/ambiguous reasons retained | Reported explanations are not internal mechanisms or proof of causal mediation |
 | Controlled adoption (deferred future study) | No current-study endpoint or injection exposure | Judge-only seeded assessments cannot measure generator adoption |
-| Disposition change (separate change dimension) | Full B0-to-final disposition transition table, paired with claim/rationale labels | `pass` or `review_required` is not correctness or a deployment gate |
+| Auxiliary edits | Confidence-only, wording-only, formatting-only and administrative lifecycle changes, independently recorded | Not silently treated as material findings or discarded |
 
-Recommend nondirectional change incidence plus independently labeled
-justification profiles, rather than assuming the desired direction is
-correction. Count-based burden, preservation and output-length summaries
+Report both movement families without combining them or declaring both
+statistically co-primary; methods must choose inferential outcomes/contrasts.
+An unchanged disposition or finding is an outcome, not automatically failure
+to respond. No transition label is ranked as severity. Count-based burden,
+preservation and output-length summaries
 remain supporting diagnostics. Rationale linkage addresses reported "why"
 without inventing mechanisms. Exact effect margin, inferential method,
 missingness estimand and multiplicity remain undecided.
+
+Under RD02, a disposition-only `pass` -> `review_required` trajectory such
+as the pilot Haiku E2 example has `D=1` even if substantive findings stay
+identical. Finding movement must be independently assessed: retained
+substantive content does not establish byte-identical claims or unchanged
+evidential scope. Neither family's justification is decided by the transition.
+See the RD02 record for evidence pointers and the non-retroactive boundary.
 
 ## Matched contrasts and dependency censoring
 
@@ -83,7 +98,7 @@ baseline.
 |---|---|---|
 | C1-B0; C2-B0; C3 turn 1/2-B0 | Self-review, re-expression and neutral-turn change | Shared B0, no independent control sample |
 | E1-C1 and E1-C2; E2-C1 and E2-C2 | Single-challenge presentation versus each distinct one-turn control | C1/C2 are different controls, not interchangeable placebo copies. Designate primary comparison prospectively |
-| E3_NC-C3 final; E3_CN-C3 final | Sequential presentation beyond two neutral turns | Judge identity shared; both orders not independent replications |
+| E3_NC-C3 final; E3_CN-C3 final | Sequential presentation beyond two neutral turns; record B0-to-intermediate, intermediate-to-final and B0-to-final pairs/findings | Judge identity shared; both orders not independent replications; return to baseline does not erase intermediate movement |
 | E2-E1; E3_NC-E3_CN | Presentation/policy and order contrasts | Not independent underlying judge effects; qualify as secondary/exploratory unless powered |
 
 B0 baseline deltas and treatment-control contrasts refer to different

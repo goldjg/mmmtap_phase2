@@ -10,6 +10,14 @@ why, and whether those changes are evidence-justified. Unsupported-assertion
 adoption is deferred to a potential future study. See
 `RESEARCH_DIRECTION_AMENDMENT.v2.1-RD01.md`; all scope below remains proposed.
 
+**RD02 disposition-movement principle: DECIDED BY PI.** Every exact baseline-
+to-final disposition difference is an outcome change regardless of findings.
+Finding movement and evidence justification for each family are separately
+recorded; no movement is an outcome, not automatic failure. No ordinal scale,
+automatic improvement, merged endpoint or co-primary designation.
+See `OUTCOME_MOVEMENT_AMENDMENT.v2.1-RD02.md`. The proposed Q0/Q1 scope,
+matrix, repetitions and cost counts below are unchanged; no execution approval.
+
 ## Proposed smallest useful qualification scope
 
 Separate two modules. They answer different questions and may not be pooled.
@@ -100,10 +108,14 @@ stops qualification for review rather than changing the source or retrying.
 Record by arm/turn: syntax/shape/lifecycle validity, quote-membership failures,
 complete matched chains, parent censoring, judge null/applicability rates,
 dimension-specific false reviews against independently prepared labels,
-reviewer agreement, and prompt/export leakage. Also record unchanged versus
-wording-only versus substantive trajectories, change direction by dimension,
-justification/resolution availability, preservation and stated-rationale
-linkage/absence. Do not require every source to elicit a challenge or change:
+reviewer agreement, and prompt/export leakage. Independently record family A
+exact disposition pairs/indicator, including unchanged and intermediate E3
+transitions; family B material additions/withdrawals/revisions/evidential
+scope and unchanged findings, with wording/formatting/confidence-only and
+administrative edits separate. Record separate A/B evidence justification
+(proposed justified/unjustified/mixed/unresolved), availability/disagreement,
+preservation and stated-rationale linkage/absence. Movement is recorded
+before justification; invalid/missing is not unchanged. Do not require every source to elicit a challenge or change:
 no-change and reason-free outputs are outcomes, not failed coverage to rerun.
 Approval must specify any quantitative minimum
 completion/agreement/false-review criterion before Q1;
@@ -158,14 +170,14 @@ If a truly new campaign is proposed, budget/version it separately and retain
 the failed campaign. A contingency for rate or token uncertainty must be
 explicitly costed and approved; do not invent a blanket percentage.
 
-## Human sign-off record: all pending
+## Human sign-off record: remaining approvals pending
 
 | Sign-off area | Evidence required | Proposed accountable role | Status |
 |---|---|---|---|
 | D01 contract/prompt | Whole-object equality, complete accounting, control clarity and examples accepted; no validity relaxation | Methods lead | Pending |
 | D02 constructs | Scoped labels, applicability, conditional/actual impact ambiguity, score meaning and provenance rubric approved | Methods lead + adjudication lead | Pending |
 | D03 policy | Intended review actions, missing-score behavior, held-out development process, thresholds/operators and research implementation approved separately | PI + methods lead | Pending; no thresholds selected |
-| D04 outcomes | Research direction fixed by RD01, not effect direction; change/justification estimands, substantive rubric, primary family, comparisons, margins if applicable, multiplicity and reporting still needed | PI + statistician | Objective decided; methods pending |
+| D04 outcomes | RD01 direction and RD02 disposition principle decided, not effect direction; separately reported A/B families and independent justification; operational scoring, materiality, estimands, primary comparisons/outcomes, margins if applicable, multiplicity still needed | PI + statistician | Disposition principle DECIDED BY PI; no blanket D04 approval |
 | D05 adjudication | Two-reviewer staffing, independence, staged content/pair/rationale blinding, transition guide, resolver, custody and unresolved-label policy accepted | Adjudication lead | Pending |
 | D06/D07 | Qualification R/scope versus study power; invalid-output treatment, censoring and sensitivity plan fixed | Statistician + methods lead | Pending |
 | D08/D09 | No accidental injection/arm change; presentation paths, identity and shared judge dependence disclosed | PI + instrument lead | Pending |
