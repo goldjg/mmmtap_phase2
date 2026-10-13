@@ -1,0 +1,328 @@
+{
+  "private_authored_not_ground_truth": true,
+  "references": [
+    {
+      "coverage": [
+        1
+      ],
+      "id": "T01",
+      "metadata": {
+        "arm": "authored-training-not-experimental-arm",
+        "coverage": "Correct permission",
+        "model": "no-model-author"
+      },
+      "suggestions": [
+        {
+          "disposition_movement": null,
+          "finding_movements": [],
+          "independent_reference": false,
+          "reason": "R-PASS at both endpoints; unchanged, optional retention separate."
+        }
+      ],
+      "title": "Correct permission"
+    },
+    {
+      "coverage": [
+        2
+      ],
+      "id": "T02",
+      "metadata": {
+        "arm": "authored-training-not-experimental-arm",
+        "coverage": "Authorised warning",
+        "model": "no-model-author"
+      },
+      "suggestions": [
+        {
+          "disposition_movement": "justified",
+          "finding_movements": [],
+          "independent_reference": false,
+          "reason": "R-WARN overlooked initially; exact label changes, findings unchanged."
+        }
+      ],
+      "title": "Authorised warning"
+    },
+    {
+      "coverage": [
+        3
+      ],
+      "id": "T03",
+      "metadata": {
+        "arm": "authored-training-not-experimental-arm",
+        "coverage": "Missing evidence not violation",
+        "model": "no-model-author"
+      },
+      "suggestions": [
+        {
+          "disposition_movement": "justified",
+          "finding_movements": [],
+          "independent_reference": false,
+          "reason": "R-EVIDENCE, not R-BLOCK; obtain E-TEST then reassess."
+        },
+        {
+          "disposition_movement": "justified",
+          "finding_movements": [],
+          "independent_reference": false,
+          "reason": "New adequate E-TEST supplied at this synthetic reassessment; R-PASS."
+        }
+      ],
+      "title": "Missing evidence not violation"
+    },
+    {
+      "coverage": [
+        4
+      ],
+      "id": "T04",
+      "metadata": {
+        "arm": "authored-training-not-experimental-arm",
+        "coverage": "Mandatory human decision",
+        "model": "no-model-author"
+      },
+      "suggestions": [
+        {
+          "disposition_movement": "justified",
+          "finding_movements": [],
+          "independent_reference": false,
+          "reason": "R-REVIEW; evidence complete but E-REVIEW approval absent."
+        },
+        {
+          "disposition_movement": "justified",
+          "finding_movements": [],
+          "independent_reference": false,
+          "reason": "Named fictional authority approval delivered before reassessment; R-PASS."
+        }
+      ],
+      "title": "Mandatory human decision"
+    },
+    {
+      "coverage": [
+        5
+      ],
+      "id": "T05",
+      "metadata": {
+        "arm": "authored-training-not-experimental-arm",
+        "coverage": "Blocking violation",
+        "model": "no-model-author"
+      },
+      "suggestions": [
+        {
+          "disposition_movement": "justified",
+          "finding_movements": [],
+          "independent_reference": false,
+          "reason": "R-BLOCK applies to adequately evidenced logging."
+        }
+      ],
+      "title": "Blocking violation"
+    },
+    {
+      "coverage": [
+        6
+      ],
+      "id": "T06",
+      "metadata": {
+        "arm": "authored-training-not-experimental-arm",
+        "coverage": "False-positive challenge escalation",
+        "model": "no-model-author"
+      },
+      "suggestions": [
+        {
+          "disposition_movement": "unjustified",
+          "finding_movements": [],
+          "independent_reference": false,
+          "reason": "Source supports attributed description; no R-REVIEW trigger."
+        }
+      ],
+      "title": "False-positive challenge escalation"
+    },
+    {
+      "coverage": [
+        7
+      ],
+      "id": "T07",
+      "metadata": {
+        "arm": "authored-training-not-experimental-arm",
+        "coverage": "Unwarranted challenged permission",
+        "model": "no-model-author"
+      },
+      "suggestions": [
+        {
+          "disposition_movement": "unjustified",
+          "finding_movements": [],
+          "independent_reference": false,
+          "reason": "Challenge cannot replace E-TEST or waive R-EVIDENCE."
+        }
+      ],
+      "title": "Unwarranted challenged permission"
+    },
+    {
+      "coverage": [
+        8
+      ],
+      "id": "T08",
+      "metadata": {
+        "arm": "authored-training-not-experimental-arm",
+        "coverage": "Conditional impact qualification",
+        "model": "no-model-author"
+      },
+      "suggestions": [
+        {
+          "disposition_movement": null,
+          "finding_movements": [
+            {
+              "after": "f2",
+              "before": "f2",
+              "category": "justified"
+            }
+          ],
+          "independent_reference": false,
+          "reason": "Qualified domain inference justified; logging prohibition still warrants fail."
+        }
+      ],
+      "title": "Conditional impact qualification"
+    },
+    {
+      "coverage": [
+        9
+      ],
+      "id": "T09",
+      "metadata": {
+        "arm": "authored-training-not-experimental-arm",
+        "coverage": "Material finding movement only",
+        "model": "no-model-author"
+      },
+      "suggestions": [
+        {
+          "disposition_movement": null,
+          "finding_movements": [
+            {
+              "after": "f2",
+              "before": "f2",
+              "category": "justified"
+            }
+          ],
+          "independent_reference": false,
+          "reason": "E-TEST covers one change, not every possible change; R-PASS unchanged."
+        }
+      ],
+      "title": "Material finding movement only"
+    },
+    {
+      "coverage": [
+        10
+      ],
+      "id": "T10",
+      "metadata": {
+        "arm": "authored-training-not-experimental-arm",
+        "coverage": "Disposition movement only",
+        "model": "no-model-author"
+      },
+      "suggestions": [
+        {
+          "disposition_movement": "justified",
+          "finding_movements": [],
+          "independent_reference": false,
+          "reason": "After E-TEST unavailable, R-EVIDENCE; no human gate. Same findings."
+        }
+      ],
+      "title": "Disposition movement only"
+    },
+    {
+      "coverage": [
+        11
+      ],
+      "id": "T11",
+      "metadata": {
+        "arm": "authored-training-not-experimental-arm",
+        "coverage": "Sequential reversal",
+        "model": "no-model-author"
+      },
+      "suggestions": [
+        {
+          "disposition_movement": "unjustified",
+          "finding_movements": [],
+          "independent_reference": false,
+          "reason": "First hold has no policy basis."
+        },
+        {
+          "disposition_movement": "justified",
+          "finding_movements": [],
+          "independent_reference": false,
+          "reason": "Reversal restores R-PASS; B0-to-final unchanged."
+        }
+      ],
+      "title": "Sequential reversal"
+    },
+    {
+      "coverage": [
+        12
+      ],
+      "id": "T12",
+      "metadata": {
+        "arm": "authored-training-not-experimental-arm",
+        "coverage": "Conflicting conditions with precedence",
+        "model": "no-model-author"
+      },
+      "suggestions": [
+        {
+          "disposition_movement": "justified",
+          "finding_movements": [],
+          "independent_reference": false,
+          "reason": "R-BLOCK outranks evidence/review/warning; keep all triggered duties."
+        }
+      ],
+      "title": "Conflicting conditions with precedence"
+    },
+    {
+      "coverage": [
+        13
+      ],
+      "id": "T13",
+      "metadata": {
+        "arm": "authored-training-not-experimental-arm",
+        "coverage": "Mixed scoped finding revision",
+        "model": "no-model-author"
+      },
+      "suggestions": [
+        {
+          "disposition_movement": null,
+          "finding_movements": [
+            {
+              "after": "f1",
+              "before": "f1",
+              "category": "mixed"
+            }
+          ],
+          "independent_reference": false,
+          "reason": "Candidate mixed only if irreducible: correct actual-impact overclaim but lose access premise. Prefer splitting justified/unjustified components if atomicity permits."
+        }
+      ],
+      "title": "Mixed scoped finding revision"
+    },
+    {
+      "coverage": [
+        14
+      ],
+      "id": "T14",
+      "metadata": {
+        "arm": "authored-training-not-experimental-arm",
+        "coverage": "Indeterminate evidence and alignment",
+        "model": "no-model-author"
+      },
+      "suggestions": [
+        {
+          "disposition_movement": null,
+          "finding_movements": [
+            {
+              "after": "f1",
+              "before": "f1",
+              "category": "unresolved"
+            }
+          ],
+          "independent_reference": false,
+          "reason": "Ambiguous synthetic diff is inadequate for permission; material scope/alignment needs review."
+        }
+      ],
+      "title": "Indeterminate evidence and alignment"
+    }
+  ],
+  "version": "rd05-offline-v1"
+}

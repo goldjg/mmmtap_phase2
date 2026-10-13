@@ -1,0 +1,87 @@
+{
+  "digest_encoding": "SHA-256 of exact file bytes",
+  "files": [
+    {
+      "bytes": 12456,
+      "path": "README.md",
+      "sha256": "4e612a4baad6125e9357ee7002d53ed331b8a9b19fe753a6bddcf2609d15301a"
+    },
+    {
+      "bytes": 13287,
+      "path": "REPORT.md",
+      "sha256": "b60f71e071246b2c08f1ee67be03747239c6d76a945b2f27526ba8a36da74bf1"
+    },
+    {
+      "bytes": 82,
+      "path": "__init__.py",
+      "sha256": "7bdef6a5bc8e62c4b48f54026ea7cbe8f8dba787d3cddd3cb3fce0ac2aab7470"
+    },
+    {
+      "bytes": 7171,
+      "path": "authored.py",
+      "sha256": "00fcabeb7d1c87807930720f8606194dcf0084638cf0c9d3bb2aa6be78c8cc8b"
+    },
+    {
+      "bytes": 61619,
+      "path": "exercise.v1/claims.json",
+      "sha256": "5aff8543c6f516fe838838366ea30a2296f6b84e4d6eee9c012fd4945970039e"
+    },
+    {
+      "bytes": 77317,
+      "path": "exercise.v1/custodian/fixtures.json",
+      "sha256": "7f31511d5480e2ef07868609415a2e4f76a554f4cd137ec491dcc8730d5ef732"
+    },
+    {
+      "bytes": 11130,
+      "path": "exercise.v1/custodian/identity_key.json",
+      "sha256": "992aad2fc01fa88fa80ecc38a35d46b6222ee97d5ee14f041664d7b913f72936"
+    },
+    {
+      "bytes": 6047,
+      "path": "exercise.v1/custodian/linkage.json",
+      "sha256": "5a742b237e43f42c4a38d60b9d5b94ce9dacd3546c659a2b018dc6d4d66cb129"
+    },
+    {
+      "bytes": 9120,
+      "path": "exercise.v1/custodian/references.json",
+      "sha256": "da40f6f8cf5742e40b5b37de70d4b5cf821b3ad9a52a4dde186a2e618467706b"
+    },
+    {
+      "bytes": 4612,
+      "path": "exercise.v1/pairs.json",
+      "sha256": "6c07377eb5751bf815bad90a39f3e2eb0f4d0ea34180dc521dd90f536ed8157f"
+    },
+    {
+      "bytes": 184,
+      "path": "exercise.v1/resolution.json",
+      "sha256": "2ab074a11a60bd212ef40d1b669555d1ce97890a838bd6426902729aee53f6bd"
+    },
+    {
+      "bytes": 42627,
+      "path": "exercise.v1/reviewer_A.json",
+      "sha256": "cbd136268226229c07115e433a7e0905024ce800832eea2640885fd400cec9e6"
+    },
+    {
+      "bytes": 42627,
+      "path": "exercise.v1/reviewer_B.json",
+      "sha256": "d37d4e064a9e1c5db01cd2170b28ddc3fa63df29371d558996efc268d0129c71"
+    },
+    {
+      "bytes": 3746,
+      "path": "policy.v1.json",
+      "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e"
+    },
+    {
+      "bytes": 16759,
+      "path": "test_tool.py",
+      "sha256": "5033df113c1ed01b2f37b399bfcad39d7983eed44819b22f0945513bddf69a75"
+    },
+    {
+      "bytes": 29474,
+      "path": "tool.py",
+      "sha256": "a0205d5b683789ecb7f41b26934658639acad9ba6fb571969ac036cccf54030c"
+    }
+  ],
+  "self_hash_boundary": "inventory.v1.json excluded from its own list; Git commit binds it",
+  "version": "rd05-offline-v1"
+}

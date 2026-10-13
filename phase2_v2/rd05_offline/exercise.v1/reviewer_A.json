@@ -1,0 +1,1457 @@
+{
+  "frozen_at": null,
+  "independent": true,
+  "records": [
+    {
+      "analysis_basis": "time_available",
+      "atomic_alignment": [],
+      "auxiliary_edits": [],
+      "blind_id": "b-13d9dacc015207b1164dbe45",
+      "disposition_justification": [
+        {
+          "after_step": 1,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        }
+      ],
+      "disposition_pairs": [
+        {
+          "after_step": 1,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        }
+      ],
+      "endpoint_labels": [
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 50,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The description is ambiguous about what is logged.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 0
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 29,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "Token logging may be present.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 1
+        }
+      ],
+      "evidence_anchors": [],
+      "finding_justifications": [],
+      "finding_movements": [],
+      "operational_action_pairs": [],
+      "policy_rule_ids": [],
+      "reported_reason_links": [],
+      "retention_justification": [],
+      "suspected_unblinding": [],
+      "unresolved_issues": []
+    },
+    {
+      "analysis_basis": "time_available",
+      "atomic_alignment": [],
+      "auxiliary_edits": [],
+      "blind_id": "b-83ee4ce200effbf5e699350f",
+      "disposition_justification": [
+        {
+          "after_step": 1,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        }
+      ],
+      "disposition_pairs": [
+        {
+          "after_step": 1,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        }
+      ],
+      "endpoint_labels": [
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 0
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 1
+        }
+      ],
+      "evidence_anchors": [],
+      "finding_justifications": [],
+      "finding_movements": [],
+      "operational_action_pairs": [],
+      "policy_rule_ids": [],
+      "reported_reason_links": [],
+      "retention_justification": [],
+      "suspected_unblinding": [],
+      "unresolved_issues": []
+    },
+    {
+      "analysis_basis": "time_available",
+      "atomic_alignment": [],
+      "auxiliary_edits": [],
+      "blind_id": "b-20dbc4607de9e2b208d2c824",
+      "disposition_justification": [
+        {
+          "after_step": 1,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        }
+      ],
+      "disposition_pairs": [
+        {
+          "after_step": 1,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        }
+      ],
+      "endpoint_labels": [
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 56,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "Logging proves compromise; exposure requires log access.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 0
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 68,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "Logging may expose credentials, but exposure requires no log access.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 1
+        }
+      ],
+      "evidence_anchors": [],
+      "finding_justifications": [],
+      "finding_movements": [],
+      "operational_action_pairs": [],
+      "policy_rule_ids": [],
+      "reported_reason_links": [],
+      "retention_justification": [],
+      "suspected_unblinding": [],
+      "unresolved_issues": []
+    },
+    {
+      "analysis_basis": "time_available",
+      "atomic_alignment": [],
+      "auxiliary_edits": [],
+      "blind_id": "b-79b869e4eae3d7a6405cf1c4",
+      "disposition_justification": [
+        {
+          "after_step": 1,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        }
+      ],
+      "disposition_pairs": [
+        {
+          "after_step": 1,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        }
+      ],
+      "endpoint_labels": [
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 0
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 1
+        }
+      ],
+      "evidence_anchors": [],
+      "finding_justifications": [],
+      "finding_movements": [],
+      "operational_action_pairs": [],
+      "policy_rule_ids": [],
+      "reported_reason_links": [],
+      "retention_justification": [],
+      "suspected_unblinding": [],
+      "unresolved_issues": []
+    },
+    {
+      "analysis_basis": "time_available",
+      "atomic_alignment": [],
+      "auxiliary_edits": [],
+      "blind_id": "b-0e862d9a78eeb9138efc684f",
+      "disposition_justification": [
+        {
+          "after_step": 1,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        },
+        {
+          "after_step": 2,
+          "before_step": 1,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        },
+        {
+          "after_step": 2,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        }
+      ],
+      "disposition_pairs": [
+        {
+          "after_step": 1,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        },
+        {
+          "after_step": 2,
+          "after_value": null,
+          "availability": null,
+          "before_step": 1,
+          "before_value": null,
+          "changed": null
+        },
+        {
+          "after_step": 2,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        }
+      ],
+      "endpoint_labels": [
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 0
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 1
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 2
+        }
+      ],
+      "evidence_anchors": [],
+      "finding_justifications": [],
+      "finding_movements": [],
+      "operational_action_pairs": [],
+      "policy_rule_ids": [],
+      "reported_reason_links": [],
+      "retention_justification": [],
+      "suspected_unblinding": [],
+      "unresolved_issues": []
+    },
+    {
+      "analysis_basis": "time_available",
+      "atomic_alignment": [],
+      "auxiliary_edits": [],
+      "blind_id": "b-d8c6eb2ca26a49e356b1374a",
+      "disposition_justification": [
+        {
+          "after_step": 1,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        },
+        {
+          "after_step": 2,
+          "before_step": 1,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        },
+        {
+          "after_step": 2,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        }
+      ],
+      "disposition_pairs": [
+        {
+          "after_step": 1,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        },
+        {
+          "after_step": 2,
+          "after_value": null,
+          "availability": null,
+          "before_step": 1,
+          "before_value": null,
+          "changed": null
+        },
+        {
+          "after_step": 2,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        }
+      ],
+      "endpoint_labels": [
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 57,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says an interface is restricted.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 0
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 57,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says an interface is restricted.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 1
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 57,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says an interface is restricted.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 2
+        }
+      ],
+      "evidence_anchors": [],
+      "finding_justifications": [],
+      "finding_movements": [],
+      "operational_action_pairs": [],
+      "policy_rule_ids": [],
+      "reported_reason_links": [],
+      "retention_justification": [],
+      "suspected_unblinding": [],
+      "unresolved_issues": []
+    },
+    {
+      "analysis_basis": "time_available",
+      "atomic_alignment": [],
+      "auxiliary_edits": [],
+      "blind_id": "b-c2ecd517a15c2af0ad865776",
+      "disposition_justification": [
+        {
+          "after_step": 1,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        }
+      ],
+      "disposition_pairs": [
+        {
+          "after_step": 1,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        }
+      ],
+      "endpoint_labels": [
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 53,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says credentials are logged.",
+              "unresolved_reason": null
+            },
+            {
+              "adequacy": null,
+              "assertion_id": "f2",
+              "dimension_rationales": {},
+              "end": 31,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f2",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "Accounts have been compromised.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 0
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 53,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says credentials are logged.",
+              "unresolved_reason": null
+            },
+            {
+              "adequacy": null,
+              "assertion_id": "f2",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f2",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "Credentials may be exposed if unauthorised parties can read the logs.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 1
+        }
+      ],
+      "evidence_anchors": [],
+      "finding_justifications": [],
+      "finding_movements": [],
+      "operational_action_pairs": [],
+      "policy_rule_ids": [],
+      "reported_reason_links": [],
+      "retention_justification": [],
+      "suspected_unblinding": [],
+      "unresolved_issues": []
+    },
+    {
+      "analysis_basis": "time_available",
+      "atomic_alignment": [],
+      "auxiliary_edits": [],
+      "blind_id": "b-522d4fdbbe8e2fe2efaa1783",
+      "disposition_justification": [
+        {
+          "after_step": 1,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        }
+      ],
+      "disposition_pairs": [
+        {
+          "after_step": 1,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        }
+      ],
+      "endpoint_labels": [
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 53,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says credentials are logged.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 0
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 53,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says credentials are logged.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 1
+        }
+      ],
+      "evidence_anchors": [],
+      "finding_justifications": [],
+      "finding_movements": [],
+      "operational_action_pairs": [],
+      "policy_rule_ids": [],
+      "reported_reason_links": [],
+      "retention_justification": [],
+      "suspected_unblinding": [],
+      "unresolved_issues": []
+    },
+    {
+      "analysis_basis": "time_available",
+      "atomic_alignment": [],
+      "auxiliary_edits": [],
+      "blind_id": "b-c9fc13b0eb264ab8ae17e846",
+      "disposition_justification": [
+        {
+          "after_step": 1,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        }
+      ],
+      "disposition_pairs": [
+        {
+          "after_step": 1,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        }
+      ],
+      "endpoint_labels": [
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            },
+            {
+              "adequacy": null,
+              "assertion_id": "f2",
+              "dimension_rationales": {},
+              "end": 38,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f2",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The tests cover every possible change.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 0
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            },
+            {
+              "adequacy": null,
+              "assertion_id": "f2",
+              "dimension_rationales": {},
+              "end": 45,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f2",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The synthetic test report covers this change.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 1
+        }
+      ],
+      "evidence_anchors": [],
+      "finding_justifications": [],
+      "finding_movements": [],
+      "operational_action_pairs": [],
+      "policy_rule_ids": [],
+      "reported_reason_links": [],
+      "retention_justification": [],
+      "suspected_unblinding": [],
+      "unresolved_issues": []
+    },
+    {
+      "analysis_basis": "time_available",
+      "atomic_alignment": [],
+      "auxiliary_edits": [],
+      "blind_id": "b-044f3cc34a723b77fef844eb",
+      "disposition_justification": [
+        {
+          "after_step": 1,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        }
+      ],
+      "disposition_pairs": [
+        {
+          "after_step": 1,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        }
+      ],
+      "endpoint_labels": [
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 0
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 1
+        }
+      ],
+      "evidence_anchors": [],
+      "finding_justifications": [],
+      "finding_movements": [],
+      "operational_action_pairs": [],
+      "policy_rule_ids": [],
+      "reported_reason_links": [],
+      "retention_justification": [],
+      "suspected_unblinding": [],
+      "unresolved_issues": []
+    },
+    {
+      "analysis_basis": "time_available",
+      "atomic_alignment": [],
+      "auxiliary_edits": [],
+      "blind_id": "b-f08b6d88213acf882f4d79c6",
+      "disposition_justification": [
+        {
+          "after_step": 1,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        }
+      ],
+      "disposition_pairs": [
+        {
+          "after_step": 1,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        }
+      ],
+      "endpoint_labels": [
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 0
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 1
+        }
+      ],
+      "evidence_anchors": [],
+      "finding_justifications": [],
+      "finding_movements": [],
+      "operational_action_pairs": [],
+      "policy_rule_ids": [],
+      "reported_reason_links": [],
+      "retention_justification": [],
+      "suspected_unblinding": [],
+      "unresolved_issues": []
+    },
+    {
+      "analysis_basis": "time_available",
+      "atomic_alignment": [],
+      "auxiliary_edits": [],
+      "blind_id": "b-76dc31475c94efc057c5bafb",
+      "disposition_justification": [
+        {
+          "after_step": 1,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        }
+      ],
+      "disposition_pairs": [
+        {
+          "after_step": 1,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        }
+      ],
+      "endpoint_labels": [
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 53,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says credentials are logged.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 0
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 53,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says credentials are logged.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 1
+        }
+      ],
+      "evidence_anchors": [],
+      "finding_justifications": [],
+      "finding_movements": [],
+      "operational_action_pairs": [],
+      "policy_rule_ids": [],
+      "reported_reason_links": [],
+      "retention_justification": [],
+      "suspected_unblinding": [],
+      "unresolved_issues": []
+    },
+    {
+      "analysis_basis": "time_available",
+      "atomic_alignment": [],
+      "auxiliary_edits": [],
+      "blind_id": "b-17d5774c84098826a66b8f9b",
+      "disposition_justification": [
+        {
+          "after_step": 1,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        }
+      ],
+      "disposition_pairs": [
+        {
+          "after_step": 1,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        }
+      ],
+      "endpoint_labels": [
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 0
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 1
+        }
+      ],
+      "evidence_anchors": [],
+      "finding_justifications": [],
+      "finding_movements": [],
+      "operational_action_pairs": [],
+      "policy_rule_ids": [],
+      "reported_reason_links": [],
+      "retention_justification": [],
+      "suspected_unblinding": [],
+      "unresolved_issues": []
+    },
+    {
+      "analysis_basis": "time_available",
+      "atomic_alignment": [],
+      "auxiliary_edits": [],
+      "blind_id": "b-32b4d0eb9bad64eb7981b301",
+      "disposition_justification": [
+        {
+          "after_step": 1,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        },
+        {
+          "after_step": 2,
+          "before_step": 1,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        },
+        {
+          "after_step": 2,
+          "before_step": 0,
+          "category": null,
+          "endpoint_defensibility": {
+            "after": null,
+            "before": null
+          },
+          "evidence_anchors": [],
+          "movement_status": null,
+          "policy_rule_ids": [],
+          "rationale": null,
+          "unresolved_reason": null
+        }
+      ],
+      "disposition_pairs": [
+        {
+          "after_step": 1,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        },
+        {
+          "after_step": 2,
+          "after_value": null,
+          "availability": null,
+          "before_step": 1,
+          "before_value": null,
+          "changed": null
+        },
+        {
+          "after_step": 2,
+          "after_value": null,
+          "availability": null,
+          "before_step": 0,
+          "before_value": null,
+          "changed": null
+        }
+      ],
+      "endpoint_labels": [
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 0
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 1
+        },
+        {
+          "assertions": [
+            {
+              "adequacy": null,
+              "assertion_id": "f1",
+              "dimension_rationales": {},
+              "end": 69,
+              "evidence_anchors": [],
+              "impact_inference": null,
+              "independent_verification": null,
+              "materiality": null,
+              "raw_finding_id": "f1",
+              "scope": null,
+              "source_entailment": null,
+              "start": 0,
+              "text": "The supplied description says only documentation spelling is changed.",
+              "unresolved_reason": null
+            }
+          ],
+          "step": 2
+        }
+      ],
+      "evidence_anchors": [],
+      "finding_justifications": [],
+      "finding_movements": [],
+      "operational_action_pairs": [],
+      "policy_rule_ids": [],
+      "reported_reason_links": [],
+      "retention_justification": [],
+      "suspected_unblinding": [],
+      "unresolved_issues": []
+    }
+  ],
+  "reviewer_id": "A",
+  "version": "rd05-offline-v1"
+}
