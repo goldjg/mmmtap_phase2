@@ -23,8 +23,14 @@ operational security decision on whether a change may proceed; model output
 is an evaluated recommendation, not enforcement. See
 `OPERATIONAL_DISPOSITION_AMENDMENT.v2.1-RD04.md` and proposed
 `OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md`. RD03 remains proposed. Exact
-policy obligations/action mappings (including the frozen
-`insufficient_evidence` value) and authorization are pending.
+policy obligations and authorization are pending. IE01 proposes the frozen
+`insufficient_evidence` value's distinct evidence-remediation hold: obtain
+required missing/inadequate evidence, then reassess, not `review_required`
+(authorised human decision) or `fail` (applicable violation).
+See `INSUFFICIENT_EVIDENCE_CLARIFICATION.v2.1-RD04-IE01.md`.
+PI/human-approved governing policy determines operational outcomes;
+JEV/cARL challenge-generation/mapping policy may inform reconsideration,
+not inherit governing authority. No added reassessment position is scheduled.
 
 ## Proposed smallest useful qualification scope
 
@@ -101,7 +107,7 @@ Held-out scientific evaluation requires a separate D06 design.
 The existing 153-position design can structurally exercise operational
 decisions without new arms, provided each source/shared B0 has an approved,
 immutable operational policy delivered identically to all arms. It cannot
-currently qualify policy warrant: actual policy packets, fifth-value mapping,
+currently qualify policy warrant: actual policy packets, evidence-hold adequacy/precedence rules,
 warning prerequisites, human authority, adequate source/verification evidence,
 independent reference guides and versioned policy-delivery wiring are missing.
 This task changes none of those executable surfaces.
@@ -155,6 +161,10 @@ recommendation action and immediate-eligibility pairs, condition/obligation
 movement and evidence-policy warrant separately. Unknown mappings remain
 unavailable; exact labels remain visible. Pilot labels are never real release
 authorizations. Adjudicators use frozen policy, not outcome-dependent rules.
+Distinguish evidence holds, human-review holds and violation blocks in rationale,
+resolution and reports; include missing evidence categories and reassessment
+requirements. Evidence delivery is not automatic permission or a repaired
+first attempt. Any future reassessment requires separate authorization.
 
 ## Cost estimation without an arbitrary budget
 
@@ -211,7 +221,7 @@ explicitly costed and approved; do not invent a blanket percentage.
 | D01 contract/prompt | Whole-object equality, complete accounting, control clarity and examples accepted; no validity relaxation | Methods lead | Pending |
 | D02 constructs | Scoped labels, applicability, conditional/actual impact ambiguity, score meaning and provenance rubric approved | Methods lead + adjudication lead | Pending |
 | D03 policy | Intended review actions, missing-score behavior, held-out development process, thresholds/operators and research implementation approved separately | PI + methods lead | Pending; no thresholds selected |
-| D04 outcomes | RD01 direction, RD02 movement and RD04 operational construct decided; exact/action/finding/warrant/reason records, policy text/obligations/all-five-value mappings, scoring, estimands/primary/statistical choices still needed | PI + statistician | Construct DECIDED BY PI; RD03 proposed; no blanket D04 approval |
+| D04 outcomes | RD01/RD02/RD04 principles retained; IE01 distinct evidence-hold meaning proposed; exact/action/finding/warrant/reason records, governing policy/evidence adequacy/precedence/authority, scoring, estimands/primary/statistical choices still needed | PI + statistician | Construct DECIDED BY PI; IE01 planning proposal; RD03 proposed; no blanket D04 approval |
 | D05 adjudication | Two-reviewer staffing, independence, staged content/pair/rationale blinding, transition guide, resolver, custody and unresolved-label policy accepted | Adjudication lead | Pending |
 | D06/D07 | Qualification R/scope versus study power; invalid-output treatment, censoring and sensitivity plan fixed | Statistician + methods lead | Pending |
 | D08/D09 | No accidental injection/arm change; presentation paths, identity and shared judge dependence disclosed | PI + instrument lead | Pending |

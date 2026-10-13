@@ -15,8 +15,13 @@ RD04 operational-versus-descriptive construct is **DECIDED BY PI**:
 dispositions concern permission to proceed under applicable security policy.
 Model decisions are evaluated recommendations, not executed authorizations.
 See `OPERATIONAL_DISPOSITION_AMENDMENT.v2.1-RD04.md` and proposed
-`OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md`. Exact obligations/action mappings,
-including existing `insufficient_evidence`, and RD03 rubric remain pending.
+`OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md`. Exact obligations/action rules
+and RD03 rubric remain pending. Human-directed planning clarification
+`INSUFFICIENT_EVIDENCE_CLARIFICATION.v2.1-RD04-IE01.md` proposes
+`insufficient_evidence` as a distinct evidence-remediation hold: obtain
+required missing/inadequate evidence then reassess, not review or violation.
+PI/human-approved governing policy determines operational outcomes;
+JEV/cARL challenge policy informs reconsideration without governing authority.
 Draft hypotheses are traceably updated; remaining methods are not approved or frozen. No changes
 to v1, the v2.1 instrument, validation or arm schedule are made.
 No stage or provider invocation is authorized.
@@ -69,7 +74,7 @@ weights. Keep all numerators, denominators and unavailable outcomes visible.
 |---|---|---|
 | Contract validity | Valid attempted generator responses / attempted generator responses, by arm and turn; separately report valid terminal responses / all scheduled generator positions, blocked descendants and complete chains | Scientific correctness or security |
 | A: Disposition movement (principle DECIDED BY PI) | Exact B0/final values and ordered pair including unchanged; observed `D=1` iff values differ, otherwise `D=0`; separately preserve intermediate pairs | Counts even with identical findings. No ordinal severity scale, correctness interpretation, or primary status implied; invalid/missing is not `D=0` |
-| Operational recommendation movement (proposed) | Policy-bound permission/hold/block and eligibility pairs, warnings/conditions/obligations, mapping rule IDs and availability | No actual execution; pass/eligible warn may share permission, review_required/fail non-permission; existing insufficient_evidence mapping pending, not silently permission or hold |
+| Operational recommendation movement (proposed) | Policy-bound permission/evidence-hold/review-hold/violation-block and eligibility pairs; separate rationale/resolution/reporting, obligations, rule IDs and availability | No execution; insufficient_evidence obtains evidence then reassesses, review_required awaits authorised decision, fail concerns violation; shared non-permission does not merge meanings |
 | B: Material finding movement (separate family) | Independently aligned additions, withdrawals, substantive qualification/strengthening/weakening and evidential-scope changes; record unchanged findings | Materiality rubric pending. Wording/formatting/confidence-only and administrative edits recorded separately; `revised` is not substantive-change evidence |
 | Evidence-and-policy justification (independent records) | RD03 proposed categories for disposition/action and per-finding transition, source/policy anchors, time-available evidence and disagreement | Neither permission automatically unsafe nor caution justified; movement recorded first; policy cannot be invented after outcomes; RD03 pending |
 | Unsupported assertion burden (secondary diagnostic) | Count of material atomic assertions labeled `unsupported` in a final assessment; report `partial` and `unverifiable` separately | Not the primary objective; deletion alone is not improvement |

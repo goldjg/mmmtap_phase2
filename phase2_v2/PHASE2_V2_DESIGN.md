@@ -24,9 +24,15 @@ See `OPERATIONAL_DISPOSITION_AMENDMENT.v2.1-RD04.md` and proposed
 `OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md`. RD01/RD02 stay unchanged; RD03
 remains proposed. Exact obligations/action mappings/authority and methodology
 remain pending. Models produce evaluated recommendations, not release
-execution. Frozen enum includes insufficient_evidence; its action mapping
-requires PI decision. Future approved policy packets must be separately
-versioned/delivered across matched arms; no current prompt/executor change.
+execution. Frozen enum includes `insufficient_evidence`: proposed distinct
+hold for specified missing/inadequate evidence, obtain it and reassess, not
+review_required or violation. See
+`INSUFFICIENT_EVIDENCE_CLARIFICATION.v2.1-RD04-IE01.md`; exact evidence/
+precedence/authority rules pending. Governing outcomes are PI/human-policy
+decisions; JEV/cARL challenge generation/mapping informs reconsideration
+without inheriting governing authority. Future approved policy packets must
+be separately versioned/delivered across matched arms; no current
+prompt/executor change.
 Historical pilot labels are not deployment authorizations. Exact label,
 operational action, finding movement, evidence-policy warrant and reported
 reason records remain distinct. The 153-position proposal and arms unchanged.

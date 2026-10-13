@@ -23,15 +23,21 @@ not merely descriptions of evidence. See
 `OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md`. Models supply evaluated
 recommendations, not release execution authority. Exact policy obligations/
 thresholds/authority remain pending. Frozen vocabulary also includes
-`insufficient_evidence`; its operational mapping requires an explicit PI
-decision. RD03 remains proposed, not approved by RD04.
+`insufficient_evidence`; its operational meaning was pending at the RD04
+baseline. This open meaning is now superseded in
+planning by `INSUFFICIENT_EVIDENCE_CLARIFICATION.v2.1-RD04-IE01.md`:
+distinct evidence-remediation hold, obtain specified missing/inadequate
+evidence then reassess; not review_required or violation. Exact policy
+adequacy/precedence/authority remains pending. RD03 remains proposed.
+PI/human-approved governing security policy determines operational outcomes;
+JEV/cARL challenge policy informs reconsideration, never inherits authority.
 
 | ID | Matter | Development implementation | Human decision still required |
 |---|---|---|---|
 | D01 | Lifecycle equality | Reuse the unchanged v1 validator, including equality of the entire retained claim object and complete ID accounting | Approve clarified prompts for research use; any narrower equality definition requires a new contract |
 | D02 | Judgment constructs | Separately typed source entailment, independent verification, and impact inference; each has a label, nullable score, rationale, and source quotes | Approve definitions, score interpretation, labels, and applicability rubric before research use |
-| D03 | Thresholds/actions | No default experimental policy; only explicitly supplied `offline_fixture` rules are executable here | Approve versioned thresholds, boundary operators, action meanings, target populations, and missing-score handling |
-| D04 | Outcome families / primary outcomes | RD01 direction, RD02 disposition movement and RD04 operational construct DECIDED BY PI; separate label/action/finding/warrant/reason records proposed, not implemented | Policy text/obligations, all-five-value action mapping, warnings, scoring/materiality, RD03 justification, estimands/primary contrasts/multiplicity/stops pending; no combined endpoint or co-primary declaration |
+| D03 | Challenge thresholds/actions | No default experimental challenge policy; only explicitly supplied `offline_fixture` rules are executable here; no governing security-policy authority | Approve versioned challenge thresholds, boundary operators, review meanings, target populations and missing-score handling separately from operational disposition rules |
+| D04 | Outcome families / primary outcomes | RD01/RD02/RD04 principles retained; IE01 human-directed evidence-hold meaning proposed, distinct from review/violation; separate label/action/finding/warrant/reason records not implemented | Exact policy text/obligations, evidence adequacy/remediation/precedence/authority, warnings, scoring/materiality, RD03 justification, estimands/primary contrasts/multiplicity/stops pending; no combined endpoint or co-primary declaration |
 | D05 | Adjudication | Authored fixtures are labeled synthetic, not independently adjudicated | Select independent reviewers, materiality/atomicity rubric, blinding, disagreement resolution, reference-set custody; approve RD03 with RD04 policy-bound warrant and separate policy anchors |
 | D06 | Repetitions/statistics | No new matrix, repetitions, or sample size | Approve repetition count, power rationale, clustering, and analysis plan |
 | D07 | Invalid outputs/missingness | Raw text retained; syntax/shape/lifecycle failure remains contract-invalid and cannot supply a child assessment | Decide descriptive adjudication versus primary admissibility and dependency-censoring analysis; no retroactive repairs |

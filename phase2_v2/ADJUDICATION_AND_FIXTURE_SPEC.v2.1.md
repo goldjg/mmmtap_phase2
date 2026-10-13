@@ -21,7 +21,13 @@ dispositions concern permission to proceed, not merely source description;
 model decisions are evaluated recommendations, never release execution here.
 See `OPERATIONAL_DISPOSITION_AMENDMENT.v2.1-RD04.md` and
 `OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md`. Policy text/obligations/all-five-
-value mappings and RD03 rubric remain pending. Historical examples keep
+value rules and RD03 rubric remain pending. IE01 supplies the current
+proposed `insufficient_evidence` meaning: specified evidence missing/
+inadequate, obtain it then reassess; not review_required or violation.
+See `INSUFFICIENT_EVIDENCE_CLARIFICATION.v2.1-RD04-IE01.md`.
+Governing outcomes are PI/human-approved security-policy decisions.
+JEV/cARL challenge generation/mapping may inform reconsideration, not
+inherit authority. Historical examples keep
 their original limited semantics; no pilot operational authority inferred.
 
 ## Roles and evidence custody
@@ -102,8 +108,12 @@ policies; neither may contain credentials or personal account information.
    filter for family A.
    In separate records derive policy-bound permission/hold/block recommendation,
    current eligibility and obligation changes. Keep exact labels even when
-   actions coincide; unresolved insufficient_evidence mapping is unavailable,
-   not auto-permission. Reveal frozen policy anchors, not judge authority;
+   actions coincide; insufficient_evidence is an evidence-remediation hold,
+   not review_required. Record missing evidence categories/requirement anchors,
+   remediation and reassessment obligations separately from human approval
+   and violation remediation. Missing governing policy remains unavailable,
+   not inferred permission or an inferred model disposition.
+   Reveal frozen policy anchors, not judge authority;
    missing historical policy remains missing.
    In separate fields evaluate justification of A and B using available
    evidence: proposed justified/unjustified/mixed/unresolved categories, with
@@ -145,6 +155,11 @@ RD04 adds policy-context digest/requirement anchors, action and eligibility
 pairs, warning conditions and obligation differences, and independent
 operational-action warrant fields proposed in the policy contract. Preserve
 time-available versus later-evidence/policy supplements, not hindsight labels.
+IE01 proposes evidence-gap/remediation/acceptance-authority/reassessment fields
+and distinct reporting for blocked-for-missing-evidence, awaiting-review and
+blocked-for-violation. Missing proof is not established violation unless an
+approved applicable rule makes that specific absence a violation; precedence
+requires human decision. Later reassessment cannot repair a first attempt.
 Rationale-link sheets
 are produced only after paired-label freeze and reference raw challenge/
 source/output spans, never a guessed internal cause.

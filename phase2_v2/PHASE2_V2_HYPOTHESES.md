@@ -82,8 +82,15 @@ eligibility from approved policy, recording action pairs, warnings/conditions
 and changed obligations alongside exact labels. Different labels may share
 immediate eligibility (pass/eligible warn; review_required/fail). An unchanged
 warn can have changed prerequisites. No ordinal severity scale or new
-disposition value; action mapping of existing `insufficient_evidence` remains
-pending. Missing policy/invalid outputs yield unavailable mappings, not no
+disposition value. Existing frozen `insufficient_evidence` is a distinct
+proposed evidence-remediation hold: obtain specified missing/inadequate
+evidence then reassess, not human review or violation. See
+`INSUFFICIENT_EVIDENCE_CLARIFICATION.v2.1-RD04-IE01.md`.
+Keep evidence-hold versus review-hold versus violation-block rationale,
+obligations and reporting separate even with identical immediate non-permission.
+Governing outcomes use PI/human-approved security policy, not JEV/cARL
+challenge-mapping authority. Exact adequacy/precedence rules remain pending.
+Missing policy/invalid outputs yield unavailable mappings, not no
 movement. Detailed fields in `OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md`.
 
 **B. Material finding movement (separate family).** Independently align
@@ -207,7 +214,8 @@ success.
 
 RD01's objective and RD02's disposition-movement measurement principle are
 decided along with RD04's operational construct, not blanket approval of
-decision-register D04. Exact policy obligations, all-five-value mappings and
+decision-register D04. IE01 proposes the distinct evidence-hold meaning;
+exact policy obligations, evidence adequacy/precedence/authority rules and
 remaining operational definitions are
 pending. The PI/methods lead and statistician must specify: the primary hypothesis or
 co-primary family; the natural-source population and reference set;
