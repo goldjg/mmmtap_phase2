@@ -4,6 +4,12 @@
 is frozen/authorized.** Full 6,885-position experiment remains unauthorized.
 This plan does not enable live mode in the offline v2.1 instrument.
 
+**RD01 amendment:** the human-decided objective is to determine whether JEV
+challenges change AI security assessments, what changes, in which direction,
+why, and whether those changes are evidence-justified. Unsupported-assertion
+adoption is deferred to a potential future study. See
+`RESEARCH_DIRECTION_AMENDMENT.v2.1-RD01.md`; all scope below remains proposed.
+
 ## Proposed smallest useful qualification scope
 
 Separate two modules. They answer different questions and may not be pooled.
@@ -19,9 +25,23 @@ not experimental repetitions. Until an experimental policy/adapter is
 approved, use explicitly labeled fixture policies only; they cannot qualify
 a research threshold.
 
+Add a proposed offline annotation dry run over six authored paired trajectories:
+unchanged, wording-only, justified correction/qualification, unjustified
+deletion/addition, confidence/disposition-only, and mixed/unresolved.
+Use blinded before/after content and subsequently revealed rationale/challenge
+spans. Two reviewers plus resolution test rubric feasibility and disagreement,
+not scientific reliability or effects. These pairs are not yet created;
+they add no provider positions and no empirical repetitions.
+
 **Module Q1: proposed later natural-B0 qualification, not runnable now.**
-Two source families with three source-only counterparts each: six inputs;
-three original generator identities; one proposed independent session per
+RD01 replaces the former two-family triplet proposal with three source cases:
+benign documentation, an evidence-supported security finding, and conditional
+impact with limited verification. No controlled assertions are injected;
+natural B0 need not produce any particular claim or change. This smaller
+scope covers different justification questions without an adoption stratum.
+Approve source/reference packets independently; these labels are sampling
+roles, never generator metadata. Three inputs, three original generator
+identities and one proposed independent session per
 input/generator (R=1) solely for engineering coverage. Every unit retains
 all existing arms and both E3 orders. This proposes R=1 only for bounded
 qualification, not D06's scientific repetition count or power.
@@ -38,29 +58,32 @@ qualification, not D06's scientific repetition count or power.
 | E3_CN, two follow-ups | 2 | 1 cARL-JEV + 1 native |
 | Total per unit | 11 | 6 |
 
-Conditional arithmetic: 6 inputs x 3 generators x R=1 = **18 matched units**;
-**198 generator positions + 108 specialist positions = 306 scheduled
-positions**, with 54 native and 54 cARL-JEV. Each generator has at most 66
-positions. This is a scheduling ceiling, not a guarantee of 306 calls,
+Conditional arithmetic: 3 inputs x 3 generators x R=1 = **9 matched units**;
+**99 generator positions + 54 specialist positions = 153 scheduled
+positions**, with 27 native and 27 cARL-JEV. Each generator has at most 33
+positions. This is a scheduling ceiling, not a guarantee of 153 calls,
 HTTP requests or successful outputs. Parent failures preserve blocking and
 reduce calls without shrinking the planned denominator. Q0's seeded records
 are not B0 outputs and do not add positions to Q1.
 
 Keep all arms because dropping controls/orders would not test the known
-control attrition and sequential dependency defects. A one-family triplet
-would be cheaper (153 positions) but less able to expose impact/provenance
-conflation; three unpaired examples would not provide matched counterparts.
-Those alternatives remain available to the human scope approver.
+control attrition and sequential dependency defects. Matching is within
+each source/generator/shared-B0 across arms, not between different source
+cases. The old 306-position counterpart design is superseded as a default,
+not executed. If more coverage is justified, add a second independently
+reviewed case per sampling role (306 positions); retaining just one generator
+would reduce this proposal to 51 positions but miss cross-generator contract
+coverage. Both alternatives require scope approval, not a credit guess.
 
 This matrix is a coverage proposal, not a generalizable population:
-family/counterpart correlations, one repeat, small case count and artificial
+source/claim correlations, one repeat, small case count and curated
 sources prohibit efficacy, calibration or significance conclusions.
 Held-out scientific evaluation requires a separate D06 design.
 
 ## Gates and qualification observations
 
 Before any Q1 execution: D01-D05 approval, D06 bounded scope versus primary
-study distinction, D07 admissibility/censoring plan, D08 exposure route,
+study distinction, D07 admissibility/censoring plan, D08 natural-B0 matching,
 D09 actual judge/transport identity and per-request contract, D10 evidence
 packet approval, and D11 independent executor/containment qualification.
 Current mapper accepts only `offline_fixture`; **research policy/transport
@@ -77,8 +100,13 @@ stops qualification for review rather than changing the source or retrying.
 Record by arm/turn: syntax/shape/lifecycle validity, quote-membership failures,
 complete matched chains, parent censoring, judge null/applicability rates,
 dimension-specific false reviews against independently prepared labels,
-reviewer agreement, and prompt/export leakage. Approval must specify any
-quantitative minimum completion/agreement/false-review criterion before Q1;
+reviewer agreement, and prompt/export leakage. Also record unchanged versus
+wording-only versus substantive trajectories, change direction by dimension,
+justification/resolution availability, preservation and stated-rationale
+linkage/absence. Do not require every source to elicit a challenge or change:
+no-change and reason-free outputs are outcomes, not failed coverage to rerun.
+Approval must specify any quantitative minimum
+completion/agreement/false-review criterion before Q1;
 none is chosen here. These observations do not authorize advancing to a full
 study even if engineering gates pass.
 
@@ -111,10 +139,13 @@ Use a versioned **offline planning worksheet**, not a provider call:
    no-attrition planning envelope; show dependency-linked lower-use scenarios
    without treating attrition as a cost-saving design goal.
 5. Separately estimate human work: source/reference preparation plus two
-   independent reviews for up to 198 generator outputs and resolution time.
-   If judging specialist judgments separately, add up to 108 records and
+   independent reviews for up to 99 generator outputs and resolution time.
+   If judging specialist judgments separately, add up to 54 records and
    per-claim/dimension annotation time. Claim-count and disagreement ranges
-   drive labor; not every output requires the same time. Keep Q0 development
+   drive labor; not every output requires the same time. Add two blinded
+   paired-transition reviews for up to 90 follow-ups (9 units x 10),
+   plus separate post-freeze rationale-link review/resolution time; avoid
+   billing the same content-label task twice. Keep Q0 development
    labor and storage outside provider costs.
 6. Report assumptions and currency/credit totals as ranges; operator chooses
    affordability and a separately authorized stage reservation ceiling only
@@ -134,8 +165,8 @@ explicitly costed and approved; do not invent a blanket percentage.
 | D01 contract/prompt | Whole-object equality, complete accounting, control clarity and examples accepted; no validity relaxation | Methods lead | Pending |
 | D02 constructs | Scoped labels, applicability, conditional/actual impact ambiguity, score meaning and provenance rubric approved | Methods lead + adjudication lead | Pending |
 | D03 policy | Intended review actions, missing-score behavior, held-out development process, thresholds/operators and research implementation approved separately | PI + methods lead | Pending; no thresholds selected |
-| D04 outcomes | Primary family, estimand, matched comparisons, guardrails, margins, multiplicity and reporting agreed | PI + statistician | Pending |
-| D05 adjudication | Two-reviewer staffing, independence, guide, resolver, blinding/custody, unresolved-label policy accepted | Adjudication lead | Pending |
+| D04 outcomes | Research direction fixed by RD01, not effect direction; change/justification estimands, substantive rubric, primary family, comparisons, margins if applicable, multiplicity and reporting still needed | PI + statistician | Objective decided; methods pending |
+| D05 adjudication | Two-reviewer staffing, independence, staged content/pair/rationale blinding, transition guide, resolver, custody and unresolved-label policy accepted | Adjudication lead | Pending |
 | D06/D07 | Qualification R/scope versus study power; invalid-output treatment, censoring and sensitivity plan fixed | Statistician + methods lead | Pending |
 | D08/D09 | No accidental injection/arm change; presentation paths, identity and shared judge dependence disclosed | PI + instrument lead | Pending |
 | D10 | Source/reference packets independently reviewed, provenance scope bound, leakage inspections passed | Custodian + adjudication lead | Pending |
@@ -157,17 +188,18 @@ yet implemented as a blinded export component.
 Outstanding: operational definition of unsupported versus unverifiable;
 human meaning of conditional-impact labels/scores; calibration/threshold
 selection method; primary contrasts; margins and scientific repetitions;
-invalid-output primary admissibility; controlled exposure placement;
+invalid-output primary admissibility; substantive-change and justification
+categories; reported-reason linkage without mechanistic inference;
 family/example overlap and held-out independence; authenticated evidence
 scope; transport billing/identity; and actual qualification authorization.
 
 Package acceptance requires D01-D05 options and consequences to be explicit,
 all D06-D11 dependencies surfaced, no approvals invented, matrix counts
 internally consistent, cost units uncombined without valid conversions,
-label leakage/custody risk addressed, and only new planning files changed.
+label leakage/custody risk addressed, and only planning Markdown files changed.
 It is **REQUIRES HUMAN DECISION**, not READY FOR EXECUTION.
 
-## Planning-only validation record
+## Historical planning-only validation record (pre-RD01)
 
 Baseline: Git commit `30ada9e6`. Validate additions with `git diff --check`,
 an exact changed-file allowlist, local Markdown-link existence and the
@@ -175,6 +207,11 @@ matrix arithmetic above. No code test rerun is needed for these documents;
 no code or instrument was changed. Original seal verification is a separate
 local offline preservation check, not validation of redacted public copies.
 Actual offline results:
+
+These results belong to the original package at `f0e4b02a`, including its
+then-proposed 306-position matrix; they do not validate the amended scope.
+RD01 commands, outcomes and inventory are recorded separately in
+`RESEARCH_DIRECTION_AMENDMENT.v2.1-RD01.md`.
 
 | Command/check | Outcome |
 |---|---|

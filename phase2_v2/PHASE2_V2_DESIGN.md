@@ -5,6 +5,17 @@ This proposal does not change the v1 manifest, instruments, source material,
 pilot records, or first attempts. No prompt, scoring, hypothesis, or arm
 change is being made to the v1 package.
 
+## Human research-direction amendment RD01
+
+The primary objective is now to determine whether JEV challenges change AI
+security assessments, what changes, in which direction, why, and whether
+those changes are evidence-justified. Unsupported-assertion adoption is
+deferred to a potential future study, not a prerequisite for this study.
+`RESEARCH_DIRECTION_AMENDMENT.v2.1-RD01.md` records the 2026-10-13 human
+decision and supersession map. It approves the direction only; hypotheses,
+estimands, rubrics, thresholds, sample size and execution remain unresolved.
+Candidate assessment-change hypotheses are in `PHASE2_V2_HYPOTHESES.md`.
+
 ## Design goals and boundaries
 
 1. Preserve v1 as immutable evidence, including invalid and blocked results.
@@ -120,12 +131,21 @@ before unblinding, record reviewer qualifications and model exposure, and
 predefine disagreement resolution. A reviewer must be able to label a claim
 unverifiable rather than infer truth from model agreement or confidence.
 
-Add controlled, independently authored and adjudicated unsupported-claim
-cases as a separately identified test stratum. Include source-supported
-counterparts and ambiguous/provenance-limited cases, so the test measures
-both correct rejection and false challenge/unsupported rejection. Do not
-retrofit these cases into v1 or treat the pilot's three strata as ground
-truth.
+Use natural B0 assessments of independently reviewed sources for the current
+study. Cover benign, supported security-finding and conditional/provenance-
+limited cases without injecting assertions into sources, B0 or challenges.
+Supported/unsupported/ambiguous authored records remain useful offline
+challenge diagnostics, not an adoption-study stratum or ground truth.
+Controlled unsupported-assertion exposure is deferred to a potential future
+study requiring its own decision. Do not retrofit cases into v1.
+
+Adjudicate substantive versus wording-only changes, confidence/limitations,
+evidence use, findings, impact assertions and disposition separately.
+Retain unchanged assessments as outcomes. Evidence justification may improve,
+worsen, remain equivalent, be mixed, or be unresolved; change itself is not
+improvement. Link recorded generator reasons to exact challenge/source spans
+only after blinded content labeling. Those explanations are reported
+rationales, not established internal mechanisms or proof of causation.
 
 **Comparability:** independently adjudicated v2 labels establish a new
 reference baseline. Cross-version claims require a blinded bridge review on
@@ -170,7 +190,7 @@ The PI/methods lead must approve lifecycle equality semantics, treatment of
 parseable lifecycle-invalid outputs, the three challenge construct
 definitions, policy action/threshold and intended source population, control
 arms and comparisons, adjudicator qualifications/disagreement resolution,
-controlled injection rubric, primary outcome family and multiplicity, power
+change/justification and rationale rubrics, primary outcome family and multiplicity, power
 and repetitions, and qualification authorization. Until those decisions are
 recorded, this remains a proposal. The full 6,885-position run remains
 unauthorized.

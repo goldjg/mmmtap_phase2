@@ -1,6 +1,6 @@
 # Phase 2 v2 hypotheses and outcome definitions
 
-**Draft preregistration scaffold; not frozen or approved.** The pilot did not
+**RD01-amended draft preregistration scaffold; not frozen or approved.** The pilot did not
 establish the original hypotheses. This document makes proposed hypotheses
 measurable, but no v2 observation may begin until the human decisions listed
 below are resolved and the final version is frozen and hashed.
@@ -33,75 +33,96 @@ These labels and the number/qualification of reviewers require human
 approval. No independent v1 ground-truth labels are available to use as a
 substitute.
 
-## Proposed hypotheses
+## Research direction and candidate hypotheses
 
-### H1 — Challenge effect on unsupported assertions
+Human decision RD01 establishes the primary objective: determine whether
+JEV challenges change AI security assessments, what changes, in which
+direction, why, and whether those changes are evidence-justified.
+See `RESEARCH_DIRECTION_AMENDMENT.v2.1-RD01.md`. Unsupported-assertion adoption
+is deferred to a potential future study. RD01-H1 to RD01-H4 below replace
+the earlier draft H1-H4; IDs must not be interpreted as unchanged hypotheses.
+No outcome definition or statistical test below has human approval.
 
-**Alternative:** for controlled, independently adjudicated unsupported
-assertions, a challenge arm reduces the rate at which the generator adopts
-those assertions compared with its matched neutral control.
+### RD01-H1 — Assessment change beyond matched control prompts
 
-**Measure:** `unsupported-adoption rate` =
-unsupported injected atomic assertions retained or newly asserted in the
-final response / unsupported injected assertions presented. Compare paired
-units: E1 versus C1, E2 versus C2, and each E3 order versus C3. Report each
-contrast separately and retain the generator, source stratum, and repetition
-breakdowns.
+**Candidate primary hypothesis:** the probability of a substantive assessment
+change from B0 differs between JEV-challenge paths and their matched control
+paths. The alternative is nondirectional; JEV may increase, reduce, or
+redirect change. The null is no paired difference in this probability.
 
-**Null:** no reduction in the paired rate. **Success direction:** a lower
-rate in the challenge arm. A go/no-go margin, interval/test, multiplicity
-adjustment, and sample size are not set; these must be approved and frozen
-before collection. This hypothesis is not testable from the current pilot,
-which has no controlled unsupported-claim injection stratum.
+Candidate indicator `S`: at least one independently adjudicated substantive
+change in a final assessment relative to its sealed B0. Candidate contrast:
+mean of `S(treatment) - S(control)` over evaluable matched units. Report
+unchanged assessments explicitly. Changing wording or lifecycle metadata
+alone need not count as substantive; D04/D05 must decide material confidence,
+limitations and disposition-change rules before collection. Report those
+dimensions separately regardless of the binary definition.
 
-### H2 — Challenge guardrails on supported facts and false positives
+Compare E1 and E2 each with C1 and C2; each E3 order with C3 final turn.
+Select the primary contrast family and multiplicity prospectively. These
+are proposed comparisons, not redesign or new independent judge arms.
+Contract-invalid or blocked outputs are missing scientific outcomes, not
+`S=0`; retain scheduled, attempted, eligible and complete-pair denominators.
+D07 must fix primary admissibility and sensitivity analysis.
 
-Challenge arms should not improve H1 by deleting supported findings,
-overstating security impact, or creating unsupported new findings.
+### RD01-H2 — What changes, direction, and evidence justification
 
-**Measures:**
+**Candidate companion primary question:** does the distribution of
+evidence-justified, unjustified, mixed and unresolved assessment changes
+differ between challenge and control paths? It does not presume improvement.
+Whether this is co-primary or secondary, and any directional hypothesis,
+remain D04 decisions.
 
-- `supported-finding recall` = adjudicated supported reference findings
-  correctly identified / all adjudicated supported reference findings;
-- `supported-finding omission rate` = supported reference findings omitted
-  / all adjudicated supported reference findings;
-- `unsupported-new-assertion rate` = newly introduced unsupported atomic
-  assertions / all evaluable newly introduced assertions;
-- `impact-overstatement rate` = final claims whose impact exceeds the
-  adjudicated impact label / all claims with an impact assertion.
+Align atomic assertions and reference findings across B0 and every follow-up.
+Record additions, withdrawals, qualifications, strengthening, evidence
+replacement, confidence/limitations and disposition transitions. One
+generator `revised` action may be wording-only or several atomic changes.
+For each substantive transition, independently adjudicate source support,
+independent verification and impact justification before/after. Use a
+proposed transition rubric: justified correction/qualification; unjustified
+addition/removal/strengthening; evidence-equivalent change; mixed; unresolved.
+Neither a higher score nor a move toward `pass` or `review_required` determines
+the category. Cross-dimension trade-offs must remain mixed, not averaged
+into an invented ordering.
 
-Report `partial` and `unverifiable` separately; do not force them into a
-binary label. The non-inferiority margins and acceptable guardrail
-degradation require approval. No unsupported “fewer claims means safer”
-success criterion is allowed.
+Report unit-level change profiles including no change and counts of each
+transition category. Report per-change justification proportions separately,
+with zero-change denominators undefined; conditioning on changed units can
+select different populations. Preserve supported-finding recall/retention,
+unsupported-new assertions and impact-overclaiming as distinct evidence
+diagnostics, not the primary objective. Keep partial/unverifiable labels.
 
-### H3 — Source-support signal validity
+### RD01-H3 — Recorded reasons and challenge linkage (explanatory)
 
-The JEV source-support signal should distinguish source-supported from
-unsupported claims under a single, explicitly source-text question,
-independently of source authenticity or inferred impact.
+**Question, not an established mechanistic hypothesis:** which supplied
+challenge dimensions and generator-stated reasons accompany each change,
+retention or rejection? After blinded labels freeze, map exact challenge,
+source and generator rationale spans to the aligned change record. Code
+reported source reconsideration, verification caution, impact qualification,
+deference to judge authority, task re-expression or absent/ambiguous reason
+using a proposed human guide. Distinguish source-cited reasons from
+challenge-cited reasons; permit multiple and unresolved links.
 
-**Measures:** compare continuous `claim_supported` signals against blinded
-source-support labels using a prespecified discrimination/calibration
-analysis; report distributions and error cases separately for supported,
-partial, unsupported, and unverifiable claims. Any binary action threshold
-must be frozen before observing v2 results; do not choose it from the v1
-scores. Analyze independent-verification and impact labels separately.
+Do not infer an internal reason when the output gives none. Stated reasons
+may be post-hoc; textual linkage, temporal order and shared scores do not
+prove mechanism or causation. No rationale-elicitation prompt is added to the
+instrument. Any such prompt would change the intervention and require
+separate approval. Compare linkage profiles descriptively by control,
+presentation and order; judge/request lineage is necessary evidence.
 
-The pilot's four low scores do not establish a low-score threshold's
-accuracy. As native JEV and cARL-JEV share SystemOne, they are paired
-presentations/policy paths, not independent replications.
+### RD01-H4 — Control drift and judge-signal diagnostics
 
-### H4 — Prompt-induced change in neutral controls
+Compare C1, C2 and each C3 turn with B0 using the same change/justification
+rubric; controls measure prompt-induced drift. Report E2-E1 and E3_NC-E3_CN
+as candidate secondary presentation/order contrasts, not judge independence.
+Separately compare each dimension's preserved scores/labels with blinded
+human labels and review decisions; discrimination or calibration methods
+need approval and an adequate held-out dataset. No binary threshold is
+selected from the pilot or fixture constants.
 
-Self-review, re-expression/placebo, and a matched extra neutral turn may
-change assessments even without adversarial evidence.
-
-**Measures:** compare C1 with B0 for self-review, C2 with B0 for
-re-expression/placebo, and C3's first and second turns with its sealed B0
-for neutral-turn effects. Measure the H1/H2 claim outcomes plus schema
-validity and completion. These are descriptive control contrasts unless
-their inferential status is explicitly preregistered.
+Native JEV and cARL-JEV share SystemOne: paths are not independent underlying
+judges. Judge error may explain a challenge's content but does not by itself
+establish why a generator changed or whether the change was justified.
 
 ### H5 — Confidence calibration (exploratory unless powered and preregistered)
 
@@ -127,10 +148,12 @@ success.
 
 ## Decisions to freeze before preregistration
 
-The PI/methods lead and statistician must specify: the primary hypothesis or
-co-primary family; the experimental population and controlled-case set;
+The objective is decided; all operational definitions remain pending. The
+PI/methods lead and statistician must specify: the primary hypothesis or
+co-primary family; the natural-source population and reference set;
 atomic-claim segmentation and materiality; reviewer number, qualifications,
-blinding and disagreement resolution; treatment of partial/unverifiable
+blinding, change-direction/justification/rationale rubric and disagreement
+resolution; treatment of partial/unverifiable
 labels; primary contrasts; direction, margins and success thresholds;
 repetition/sample-size and power rationale; analysis unit and clustering;
 multiplicity and missingness analysis; calibration method; challenge

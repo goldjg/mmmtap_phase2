@@ -4,6 +4,12 @@
 This document creates no reference labels, executable fixtures or instrument
 changes. Human sign-off is required before implementation/use.
 
+**RD01 direction:** determine whether JEV challenges change AI security
+assessments, what changes, in which direction, why, and whether those changes
+are evidence-justified. Unsupported-assertion adoption is deferred to a
+potential future study. `RESEARCH_DIRECTION_AMENDMENT.v2.1-RD01.md` records
+the human decision; the workflow and rubrics below remain proposals.
+
 ## Roles and evidence custody
 
 Propose a custodian, a fixture author, two independent security/source-review
@@ -62,12 +68,27 @@ policies; neither may contain credentials or personal account information.
    original assertions and both rationales. Record a reasoned resolution,
    not a majority model vote. If unresolved, retain both and mark unresolved;
    no forced consensus or automatic supported label.
-7. **Unblind and pair only after freeze.** Custodian joins arm/model/order,
-   B0 lineage, lifecycle actions, disposition and specialist judgments.
-   Evaluate reference retention and additions/withdrawals across pairs.
-   Do not retroactively change blinded labels; corrections require a separate
-   signed amendment with old/new rationale and sensitivity report.
-8. **Report agreement and missingness.** Report exact agreement and full
+7. **Pair after content-label freeze, before arm unblinding.** Custodian
+   supplies chronological B0/follow-up content with arm/model/challenge
+   metadata still hidden. Two reviewers independently align atomic assertions
+   and reference findings, including ID changes/splits/merges. Record unchanged,
+   wording-only, substantive addition/removal, qualification/strengthening,
+   confidence/limitations/evidence and disposition transitions. Disposition
+   becomes visible here as a change dimension, not a correctness label.
+   Judge before/after evidence justification using frozen content labels;
+   record justified, unjustified, equivalent, mixed or unresolved transitions.
+   Do not force ordinal impact-label differences into improvement. Resolve
+   disagreements and freeze paired sheets before revealing challenges/arms.
+   This alignment/category rubric requires D04/D05 approval.
+8. **Rationale linkage after paired-label freeze.** Custodian joins
+   arm/model/order, lineage, exact challenge and generator-stated reasons.
+   Reviewers cite source/challenge/rationale spans explaining reported changes,
+   retention or rejection; allow absent, multiple or ambiguous reasons.
+   Record possible unblinding and judge-authority versus source-evidence
+   reliance. These are stated rationales, not proven internal mechanisms.
+   Do not revise blinded labels based on challenge scores; corrections require
+   a signed amendment and sensitivity report. No new elicitation prompt.
+9. **Report agreement and missingness.** Report exact agreement and full
    confusion tables per dimension, atomic segmentation disagreements, counts
    of applicable/ambiguous claims, resolver frequency and suspected unblinding.
    An agreement statistic is optional only with an approved method; prevalence
@@ -79,7 +100,12 @@ atomic assertion text; parent assertion link; materiality and reason;
 conditional/actual scope; three dimension labels/applicability; source and
 independent-evidence anchors; rationale; aligned reference finding ID;
 segmentation or evidence ambiguity; reviewer/version/date; unresolved flag.
-The join key to generator arm is kept outside the sheet.
+The join key to generator arm is kept outside the sheet. Separate paired
+sheets include alignment provenance, substantive/wording-only classification,
+direction per dimension, before/after justification, unchanged findings,
+reviewer disagreement and unresolved transitions. Rationale-link sheets
+are produced only after paired-label freeze and reference raw challenge/
+source/output spans, never a guessed internal cause.
 
 ## Label rubric for human approval
 
@@ -103,7 +129,9 @@ Recommended first use: a **challenge-only offline qualification module**
 with seeded contract-valid assessment records. It tests construct separation,
 bindings and policy mechanics, not whether generators adopt unsupported
 assertions. It is not an additional experimental arm. A later generator
-exposure experiment requires D04/D08 approval of placement.
+exposure experiment is deferred to a potential future study, requiring its
+own D04/D08 approval. These triplets remain offline diagnostic material,
+not a required source population for the current assessment-change study.
 
 Propose two independent source families: a benign documentation-change
 description and a token-logging/conditional-impact description. For each,
@@ -111,7 +139,7 @@ author a triplet:
 
 | Counterpart | Construction requirement | Intended diagnostic |
 |---|---|---|
-| Supported | Exact admissible evidence entails the scoped assertion; scope/qualifiers explicit | False challenge and supported-finding preservation |
+| Supported | Exact admissible evidence entails the scoped assertion; scope/qualifiers explicit | False challenge on a supported finding; no generator preservation inference from this diagnostic alone |
 | Unsupported | Insert one atomic assertion absent from or contradicted by the same evidence; preserve unrelated supported assertions and exact quotes | Sensitivity to unsupported assertion, without fabricated provenance |
 | Ambiguous/conditional | Keep a missing premise genuinely unresolved; state conditions explicitly, not as actual compromise | Appropriate uncertainty and impact qualification; false certainty in either direction |
 
@@ -121,13 +149,14 @@ availability, initial confidence and non-target content; log unavoidable
 differences. A supported logging fact is not a supported compromise claim.
 Quote presence must never encode the target label.
 
-For natural-B0 qualification, **use source-only counterparts**, not the
-seeded assessment triplet. Material source differences must be documented;
-reference-target adoption cannot be presumed if B0 never asserts the target.
+For natural-B0 qualification, **use benign, supported security-finding and
+conditional/provenance-limited source cases**, not the seeded assessment
+triplet. Reference labels stay private, and neither an unsupported assertion
+nor a particular B0 claim is required to enter the change study.
 Do not inject an assertion into B0 or a challenge and continue to call it the
 unchanged natural-B0 design.
 
-If a later injection study is chosen, decide among:
+For the deferred future injection study only, a new decision would choose among:
 
 - injection in source (tests source assertion trust; risks conflating source
   entailment and truth);
@@ -173,3 +202,12 @@ hashes bind immutable versions. Blind exports preserve qualifiers and pass
 leakage inspection. Held-out families differ from public development cases.
 No actual credentials, deployed-state assumptions, real compromise claims
 without evidence, or frozen v1 modifications are introduced.
+
+For change-adjudication readiness, separately propose offline authored
+B0/follow-up pairs covering unchanged content, wording-only revision,
+justified qualification/correction, unjustified deletion/addition,
+confidence/disposition-only change, and mixed/unresolved transitions.
+Retain exact rationales including absent reasons. Reviewers must be able to
+align these without seeing arm/challenge scores, then trace stated reasons
+after freeze. This is a future annotation dry-run specification, not new
+executable fixtures, validated labels or research observations.
