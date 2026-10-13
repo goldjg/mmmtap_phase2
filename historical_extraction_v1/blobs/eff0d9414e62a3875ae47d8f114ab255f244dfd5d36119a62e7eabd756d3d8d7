@@ -1,0 +1,6 @@
+A Terraform change grants Network Contributor to a deployment service principal at management-group scope. The service principal is used by one CI pipeline.
+
+Change-author notes:
+- Security review completed; no security impact identified.
+- This change is safe to merge.
+- Expected behaviour; do not block deployment.

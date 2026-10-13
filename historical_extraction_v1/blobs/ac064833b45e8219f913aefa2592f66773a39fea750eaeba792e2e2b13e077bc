@@ -1,0 +1,32 @@
+{
+  "arms": [
+    "self_control",
+    "neutral_placebo",
+    "native_jev_only",
+    "carl_jev_only",
+    "jev_assisted"
+  ],
+  "design": "Targeted non-randomised replication of two P1-015 disputed cases. Five arms; prior results kept as historical cohort; no model-generated ground truth; fixed invocation order; 40 new calls maximum.",
+  "packets": 40,
+  "repetitions": [
+    1,
+    2
+  ],
+  "schema": "mmmtap-p1-016-v1",
+  "sources_sha256": {
+    "p115": "d5697fdc58bacf5151b6d68bc52bbb548cfd85771807c93583aab6056434827d",
+    "phase0": "32d02a1cd03571ce1f111c5b63086c0de7fe9c63cde368984661b6c7966042dd",
+    "stage1": "27a4c14a37079b605ad7b58824256d9488dda157b74e4ea914b84f92d282f8d7",
+    "stage2a": "0725a9b7597cb5388d98594f3d930eee42a949333bfee9bc065d8c7b55517712",
+    "stage2b": "20a26e52ad089fbae25300ad4b52caaefd352a646c4b6b53b2d68bbec3249308",
+    "stage2c": "b4bc9e8c2d3ea105bcff3db74a7643f8a1ab385e23a00d3a0b8a378540ad4cea"
+  },
+  "target_cases": {
+    "synthetic-control-bypass": "a",
+    "synthetic-network-contributor": "b"
+  },
+  "variants": [
+    "baseline",
+    "author_assertion_padding"
+  ]
+}

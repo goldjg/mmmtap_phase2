@@ -1,0 +1,24 @@
+{
+  "case": "E_incomplete_remediation",
+  "track": "native",
+  "source_diff_sha256": "af2c9c3da2eea4b67c307f4d4feb893bb3e0b00f95e98b2fcfb9484c7ffb7c5d",
+  "status": "live",
+  "started": "2026-10-10T19:16:50.754835+00:00",
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 708,
+    "output_tokens": 175
+  },
+  "scores": {
+    "security_sensitive": 0.69,
+    "scope_expansion": 0.16,
+    "architectural_change": 0.21,
+    "authentication_or_authorisation_change": 0.81,
+    "trust_boundary_change": 0.54,
+    "security_control_reduction": 0.15,
+    "breaking_change": 0.53,
+    "new_external_dependency": 0.03,
+    "human_review_warranted": 0.57
+  },
+  "duration_s": 0.472
+}

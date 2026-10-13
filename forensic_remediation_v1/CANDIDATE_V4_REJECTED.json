@@ -1,0 +1,27 @@
+{
+  "archive": "end_to_end_mock.tar.gz",
+  "archive_sha256": "cd16f625de56ee3a53b1e0f5c9768fa3817b17df4af15cd5c7c6105b504aad40",
+  "archived_entries": 4454,
+  "completed_mock_checkpoints": 1112,
+  "file_manifest_sha256": "bc48f3d2f7e55669a2dbda32468e589074fdd9f6696284005a969e7529f53390",
+  "incomplete_reserved_attempts": [
+    "13ecc887f36790c036d6c638131553f733193cc901b8f908036c0845a0f928ae"
+  ],
+  "interruption": {
+    "exit_status": 130,
+    "inner_process_pid": 666537,
+    "intentional": true,
+    "reason": "Stop superseded mock candidate; do not recycle its controls against changed code",
+    "signal": "SIGINT"
+  },
+  "live_provider_calls": 0,
+  "no_prior_checkpoints_overwritten": true,
+  "original_binary_sha256": "5191cb8328cfd77ae64ef2cbb59bfa7096883bfd1660bb6c39e3c32f41f048b3",
+  "original_instruments_sha256": "f9236485c0fa373f2f8ea9e9a5e316bf6813aff72a204baa3a8befaaf51e7a65",
+  "original_plan": "execution_plan_v4.json",
+  "original_plan_sha256": "08feaea19338eb1a8c322bc71662717745663b08e42ae2c5583baf5fe73699b2",
+  "reason": "Strict provider parser rejected legitimate type and choice confidence fields present in preserved historical response. Both languages reproduced this before correction.",
+  "replacement": "v5/execution_plan_v5.json; distinct software/instruments/job identities; fresh validation required",
+  "schema": "mmmtap-rejected-candidate-v1",
+  "status": "rejected_not_current_qualification_evidence"
+}

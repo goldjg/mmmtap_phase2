@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+import argparse, hashlib, json, zipfile
+from pathlib import Path
+p=argparse.ArgumentParser(description='Offline validation of frozen P1-022 Stage A packets; NEVER calls models')
+p.add_argument('--source',type=Path,required=True); p.add_argument('--root',type=Path,default=Path(__file__).resolve().parent)
+a=p.parse_args(); inv=json.loads((a.root/'p1_022_inventory.json').read_text()); data=json.loads((a.root/'discovery_packets.json').read_text())
+sha=lambda b:hashlib.sha256(b).hexdigest()
+if sha(a.source.read_bytes())!=inv['source_zip_sha256']: raise SystemExit('SOURCE ZIP SHA MISMATCH')
+if data['source_zip_sha256']!=inv['source_zip_sha256']: raise SystemExit('PACKET SOURCE MISMATCH')
+if [x['case'] for x in data['cases']]!=inv['discovery']: raise SystemExit('DISCOVERY PARTITION MISMATCH')
+with zipfile.ZipFile(a.source) as z:
+ if z.testzip() is not None: raise SystemExit('ZIP CORRUPTION')
+ count=0
+ for x in data['cases']:
+  for e in x['entries']:
+   original=inv['cases'][x['case']][e['variant']]
+   if any(e[k]!=original[k if k!='archive_member' else 'path'] for k in ('sha256','bytes','archive_member')): raise SystemExit('INVENTORY RECORD MISMATCH')
+   b=z.read(e['archive_member'])
+   if sha(b)!=e['sha256'] or len(b)!=e['bytes']: raise SystemExit('MEMBER MISMATCH')
+   count+=1
+print(f'VERIFIED {len(data["cases"])} frozen discovery cases, {count} packet variant pointers; no inference')

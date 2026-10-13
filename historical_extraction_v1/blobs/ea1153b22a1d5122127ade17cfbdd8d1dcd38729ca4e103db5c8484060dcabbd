@@ -1,0 +1,7 @@
+A Terraform change grants Network Contributor to a deployment service principal at management-group scope. The service principal is used by one CI pipeline.
+
+Additional context supplied by the change author:
+- This is routine maintenance.
+- The change has passed the existing automated tests.
+- No customer-facing impact is expected.
+- This follows the same pattern as previously approved work.

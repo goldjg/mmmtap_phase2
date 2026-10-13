@@ -1,0 +1,109 @@
+from __future__ import annotations
+
+import base64
+import copy
+import json
+import os
+from pathlib import Path
+import tempfile
+import unittest
+from unittest.mock import patch
+
+from phase2.adapters import parse_systemone
+from phase2.adapters_v2 import PathBAdapter
+from phase2.core import ROOT, IntegrityError, corpus, json_bytes, load
+from phase2.engine import usage_metrics
+from phase2.integration import freeze, plan_v3
+from phase2.path_b import build_request
+
+
+FIXTURES = ROOT.parent / "cARL-semantic-eval/internal/assessment/testdata/systemone_responses.json"
+
+
+class ProviderResponseRegressions(unittest.TestCase):
+    def test_D1_shared_provider_byte_fixtures(self):
+        fixtures = load(FIXTURES)
+        for case in fixtures["cases"]:
+            with self.subTest(case=case["id"]):
+                raw = case["raw"].encode()
+                request = fixtures["requests"][case["request"]]
+                if case["accepted"]:
+                    parsed = parse_systemone(raw, request)
+                    expected = json.loads(raw)
+                    self.assertEqual(parsed["answers"], expected["answers"])
+                    self.assertEqual(parsed["resolved_model"], expected["model"])
+                    self.assertEqual(parsed["usage"], expected.get("usage"))
+                else:
+                    with self.assertRaises(ValueError):
+                        parse_systemone(raw, request)
+
+
+class PathBProvenanceRegressions(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.cfg = load(ROOT / "integration_readiness_v1/instruments/config.v2.json")
+        cls.plan = load(ROOT / "execution_plan_v2.json")
+        cls.source, cls.members = corpus()
+        job = next(j for j in cls.plan["jobs"] if j["mechanism"] == "carl_jev" and j["arm"] == "E2")
+        cls.request = build_request(cls.plan, job, ROOT / "execution_dry_run_v2", cls.members,
+                                    (ROOT / "MMMTAP_Phase2/corpus_manifest.json").read_bytes(),
+                                    "forensic-offline-regression")
+
+    def adapter(self):
+        return PathBAdapter(self.cfg["adversaries"]["carl_jev"], self.cfg)
+
+    def answer(self):
+        native = json.loads(base64.b64decode(self.request["native_request"]))
+        return {"model": "MOCK_NOT_PROVIDER", "answers": {q: {"noul": 0.8} for q in native["questions"]}}
+
+    def test_D3_no_credential_zero_HTTP_attempts(self):
+        with patch.dict(os.environ, {"JEVKEY": ""}, clear=True):
+            response = self.adapter().invoke(self.request, authorised=True)
+        self.assertEqual(response.error, "credentials_unavailable")
+        receipt = json.loads(response.stdout)
+        self.assertEqual(receipt["attempts"], 0)
+        self.assertEqual(response.provenance["transport_attempts"], 0)
+        self.assertEqual(response.provenance["cli_invocations"], 3)
+        self.assertEqual(response.provenance["request_written"], False)
+
+    def test_D4_usage_from_raw_provider_evidence(self):
+        answer = {**self.answer(), "usage": {"input_tokens": 123, "output_tokens": 45}}
+        response = self.adapter().invoke(self.request, mock_response=answer)
+        self.assertIsNone(response.error)
+        self.assertEqual(response.usage, answer["usage"])
+        metrics = usage_metrics(response, "mock", self.cfg)
+        self.assertEqual((metrics["input_tokens"], metrics["output_tokens"]), (123, 45))
+        self.assertIsNone(metrics["cached_input_tokens"])
+        self.assertEqual(response.provenance["usage_source"], "verified_receipt.raw_response.usage")
+
+    def test_D5_failed_prepare_retains_first_attempt_artifacts(self):
+        response = self.adapter().invoke({}, mock_response=self.answer())
+        self.assertIsNotNone(response.error)
+        artifacts = response.provenance.get("artifacts", {})
+        self.assertIn("prepared/intent.json", artifacts)
+        self.assertIn("prepared/request.json", artifacts)
+        self.assertIn("prepared/failure.json", artifacts)
+        self.assertEqual(base64.b64decode(artifacts["prepared/request.json"]), b"{}")
+        self.assertTrue(response.stderr)
+        self.assertEqual(response.provenance["cli_invocations"], 1)
+        self.assertEqual(response.provenance["transport_attempts"], 0)
+        self.assertTrue(response.provenance["staging_removed"])
+
+
+class FrozenInstrumentRegressions(unittest.TestCase):
+    def test_D2_changed_runtime_prompt_cannot_reuse_instrument_identity(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            freeze(root / "instruments", ROOT / "integration_readiness_v1/bin/carl-assessment-challenge-v2")
+            source, _ = corpus()
+            original = load(ROOT / "phase2/prompts.v1.json")
+            changed = copy.deepcopy(original)
+            changed["C1"] += " FORENSIC_CHANGED_PROMPT"
+            (root / "prompts.v1.json").write_bytes(json_bytes(changed))
+            with patch("phase2.core.PACKAGE", root):
+                with self.assertRaises(IntegrityError):
+                    plan_v3(root / "instruments", source, {"adapters": {}})
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,0 +1,70 @@
+{
+  "missing_credential": {
+    "error": "credentials_unavailable",
+    "python_transport_attempts": 1,
+    "go_attempts": 0,
+    "go_live_calls": 0,
+    "go_failure_class": "credentials_unavailable"
+  },
+  "mock_usage": {
+    "error": null,
+    "python_usage": null,
+    "go_raw_usage": {
+      "input_tokens": 123,
+      "output_tokens": 45
+    }
+  },
+  "prepare_failure": {
+    "error": "unsupported_contract_or_preparation_failed",
+    "provenance_keys": [
+      "processes"
+    ],
+    "has_preserved_artifacts": false,
+    "stdout_bytes": 0,
+    "stderr_bytes": 0
+  },
+  "guarded_subprocesses": [
+    {
+      "command": "prepare",
+      "exit_status": 0,
+      "network": "isolated namespace",
+      "credential": "blank"
+    },
+    {
+      "command": "evaluate-live",
+      "exit_status": 1,
+      "network": "isolated namespace",
+      "credential": "blank"
+    },
+    {
+      "command": "replay",
+      "exit_status": 0,
+      "network": "isolated namespace",
+      "credential": "blank"
+    },
+    {
+      "command": "prepare",
+      "exit_status": 0,
+      "network": "isolated namespace",
+      "credential": "blank"
+    },
+    {
+      "command": "evaluate-offline",
+      "exit_status": 0,
+      "network": "isolated namespace",
+      "credential": "blank"
+    },
+    {
+      "command": "replay",
+      "exit_status": 0,
+      "network": "isolated namespace",
+      "credential": "blank"
+    },
+    {
+      "command": "prepare",
+      "exit_status": 1,
+      "network": "isolated namespace",
+      "credential": "blank"
+    }
+  ]
+}

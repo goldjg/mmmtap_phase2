@@ -1,0 +1,2 @@
+0000000000000000000000000000000000000000 c2d748792b58e8b9108f2b451c754ead8b681630 MMMTAP Fixture <fixture@mmmtap.invalid> 1791716379 +0100	commit (initial): Fixture baseline: semantic configuration
+c2d748792b58e8b9108f2b451c754ead8b681630 de40cfb7fb67e8999eef86d81972db00afc7c902 MMMTAP Fixture <fixture@mmmtap.invalid> 1791716379 +0100	commit: Fixture evaluation: introduce main.tf

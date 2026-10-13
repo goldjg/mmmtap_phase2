@@ -1,0 +1,6 @@
+{
+  "decision": "block_expedite",
+  "scanner_state": "violated",
+  "out": "/home/prometheus/git/mmmtap_p1_012_matrix_results/D_benign_camouflage",
+  "model_calls": 0
+}

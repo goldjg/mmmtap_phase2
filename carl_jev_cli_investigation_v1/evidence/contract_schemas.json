@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Investigator-derived structural descriptions of local Go JSON types. Not schemas shipped/enforced by carl-jev. Evaluate HTTP response decoding accepts missing/unknown fields and does not validate answer types/completeness. Definitions characterize serialization rather than all permissive decoder edge cases. No live response was obtained.",
+  "$defs": {
+    "ChangedFile": {
+      "type": "object",
+      "required": ["path"],
+      "properties": {
+        "path": {"type": "string"},
+        "additions": {"type": "integer"},
+        "deletions": {"type": "integer"},
+        "binary": {"type": "boolean"},
+        "redacted": {"type": "boolean"}
+      }
+    },
+    "ContextItem": {
+      "type": "object",
+      "required": ["path", "content"],
+      "properties": {
+        "path": {"type": "string"},
+        "content": {"type": "string"},
+        "truncated": {"type": "boolean"},
+        "redacted": {"type": "boolean"}
+      }
+    },
+    "DataCategory": {
+      "type": "object",
+      "required": ["name", "description", "included"],
+      "properties": {
+        "name": {"type": "string"},
+        "description": {"type": "string"},
+        "included": {"type": "boolean"},
+        "redacted": {"type": "boolean"},
+        "truncated": {"type": "boolean"}
+      }
+    },
+    "EvaluationState": {
+      "type": "object",
+      "required": ["repository", "review", "diff", "dataCategories"],
+      "properties": {
+        "repository": {
+          "type": "object",
+          "required": ["name"],
+          "properties": {
+            "name": {"type": "string"},
+            "root": {"type": "string"},
+            "currentBranch": {"type": "string"},
+            "remoteOrigin": {"type": "string"}
+          }
+        },
+        "review": {
+          "type": "object",
+          "required": ["base", "changedFiles"],
+          "properties": {
+            "base": {"type": "string"},
+            "head": {"type": "string"},
+            "baseSha": {"type": "string"},
+            "headSha": {"type": "string"},
+            "changedFiles": {"type": ["array", "null"], "items": {"$ref": "#/$defs/ChangedFile"}}
+          }
+        },
+        "diff": {
+          "type": "object",
+          "required": ["text", "limitBytes"],
+          "properties": {
+            "text": {"type": "string"},
+            "limitBytes": {"type": "integer"},
+            "truncated": {"type": "boolean"},
+            "redacted": {"type": "boolean"}
+          }
+        },
+        "context": {"type": "array", "items": {"$ref": "#/$defs/ContextItem"}},
+        "task": {"type": "string"},
+        "dataCategories": {"type": ["array", "null"], "items": {"$ref": "#/$defs/DataCategory"}}
+      }
+    },
+    "Question": {
+      "type": "object",
+      "required": ["id", "kind", "description"],
+      "properties": {
+        "id": {"type": "string"},
+        "kind": {"type": "string", "$comment": "Declared constants are boolean, choice and score; Go alias does not enforce enum at decoding."},
+        "description": {"type": "string"},
+        "choices": {"type": "array", "items": {"type": "string"}},
+        "threshold": {"type": "number"}
+      }
+    },
+    "JEVHTTPRequest": {
+      "type": "object",
+      "required": ["state", "questions"],
+      "properties": {
+        "model": {"type": "string"},
+        "state": {"$ref": "#/$defs/EvaluationState"},
+        "questions": {"type": ["array", "null"], "items": {"$ref": "#/$defs/Question"}}
+      }
+    },
+    "Signal": {
+      "type": "object",
+      "required": ["id", "value", "source"],
+      "properties": {
+        "id": {"type": "string"},
+        "value": {},
+        "confidence": {"type": "number"},
+        "source": {"type": "string"},
+        "metadata": {"type": "object"}
+      }
+    },
+    "JEVHTTPResponse": {
+      "type": "object",
+      "$comment": "No fields are required by the actual Go decoder. Unknown keys are ignored. Signals/answers may both be supplied. Missing signal fields decode to zero values.",
+      "properties": {
+        "signals": {
+          "type": ["array", "null"],
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {"type": ["string", "null"]},
+              "value": {},
+              "confidence": {"type": ["number", "null"]},
+              "source": {"type": ["string", "null"]},
+              "metadata": {"type": ["object", "null"]}
+            }
+          }
+        },
+        "answers": {
+          "type": ["object", "null"],
+          "additionalProperties": {
+            "type": ["object", "null"],
+            "properties": {
+              "value": {},
+              "confidence": {"type": ["number", "null"]},
+              "metadata": {"type": ["object", "null"]}
+            }
+          }
+        }
+      }
+    },
+    "Diagnostic": {
+      "type": "object",
+      "required": ["severity", "code", "message"],
+      "properties": {
+        "severity": {"type": "string"},
+        "code": {"type": "string"},
+        "message": {"type": "string"}
+      }
+    },
+    "Finding": {
+      "type": "object",
+      "required": ["id", "severity", "title", "description", "signalIds"],
+      "properties": {
+        "id": {"type": "string"},
+        "severity": {"enum": ["info", "warning", "review", "error"]},
+        "title": {"type": "string"},
+        "description": {"type": "string"},
+        "signalIds": {"type": ["array", "null"], "items": {"type": "string"}},
+        "files": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "Result": {
+      "type": "object",
+      "required": ["signals", "findings", "decision"],
+      "properties": {
+        "signals": {"type": ["array", "null"], "items": {"$ref": "#/$defs/Signal"}},
+        "findings": {"type": ["array", "null"], "items": {"$ref": "#/$defs/Finding"}},
+        "decision": {"enum": ["pass", "warn", "review_required", "fail"]},
+        "diagnostics": {"type": "array", "items": {"$ref": "#/$defs/Diagnostic"}}
+      }
+    },
+    "DryRun": {
+      "type": "object",
+      "required": ["provider", "questions", "state", "dataCategories"],
+      "properties": {
+        "provider": {"type": "string"},
+        "questions": {"type": ["array", "null"], "items": {"$ref": "#/$defs/Question"}},
+        "state": {"$ref": "#/$defs/EvaluationState"},
+        "dataCategories": {"type": ["array", "null"], "items": {"$ref": "#/$defs/DataCategory"}}
+      }
+    },
+    "CLIOutput": {
+      "type": "object",
+      "required": ["schemaVersion", "result"],
+      "properties": {
+        "schemaVersion": {"const": 1},
+        "result": {"$ref": "#/$defs/Result"},
+        "dryRun": {"$ref": "#/$defs/DryRun"}
+      }
+    }
+  }
+}

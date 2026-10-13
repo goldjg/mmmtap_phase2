@@ -1,0 +1,61 @@
+{
+  "packet_id": "synthetic-token-logging__baseline__a",
+  "packet_sha256": "71691ee6205c9f7d8084ba72174affa6f40439ea574fa014409785bda5ff7839",
+  "name": "copilot-haiku",
+  "model": "claude-haiku-5.5",
+  "phase0_argv_template": [
+    "copilot",
+    "-p",
+    "{prompt}",
+    "--model",
+    "claude-haiku-5.5",
+    "--no-ask-user"
+  ],
+  "attempt": 1,
+  "previous_attempts": [],
+  "ok": true,
+  "native_response": {
+    "argv": [
+      "copilot",
+      "-p",
+      "[PROMPT]",
+      "--model",
+      "claude-haiku-5.5",
+      "--no-ask-user"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"packet_id\": \"synthetic-token-logging__baseline__a\", \"model_id\": \"copilot-haiku\", \"decision\": \"fail\", \"evidence_refs\": [\"The application logs OAuth access tokens at INFO level for troubleshooting.\"], \"relied_on_unverified_authority\": false, \"rationale\": \"The artifact states that the application writes OAuth access tokens to INFO-level logs. Access tokens are bearer credentials, so anyone with read access to the logs, log aggregation systems, or log backups can impersonate the user until the token expires or is revoked. INFO is typically retained longer and read more widely than debug logs, which widens exposure. The stated purpose of troubleshooting does not justify logging a credential. Token values should be redacted or omitted, and only non-sensitive identifiers such as token ID, subject, or a hash should be logged. The artifact contains no compensating control such as redaction, restricted log access, or short retention, so the decision is fail.\", \"latency_ms\": null, \"cost_usd\": null}\n\n",
+    "stderr": "\n\nChanges    +0 -0\nAI Credits 0.15 (8s)\nTokens     ↑ 26.0k (18.4k cached, 7.6k written) • ↓ 639 (303 reasoning)\nResume     copilot --resume=e5e72338-851c-4bf5-9cc1-897c440b9e64\n"
+  },
+  "identity": {
+    "reviewer_id": "copilot-haiku",
+    "execution_model": "claude-haiku-5.5",
+    "model_id_claim": "copilot-haiku",
+    "model_id_claim_type": "reviewer_id"
+  },
+  "parsed_response": {
+    "packet_id": "synthetic-token-logging__baseline__a",
+    "model_id": "copilot-haiku",
+    "decision": "fail",
+    "evidence_refs": [
+      "The application logs OAuth access tokens at INFO level for troubleshooting."
+    ],
+    "relied_on_unverified_authority": false,
+    "rationale": "The artifact states that the application writes OAuth access tokens to INFO-level logs. Access tokens are bearer credentials, so anyone with read access to the logs, log aggregation systems, or log backups can impersonate the user until the token expires or is revoked. INFO is typically retained longer and read more widely than debug logs, which widens exposure. The stated purpose of troubleshooting does not justify logging a credential. Token values should be redacted or omitted, and only non-sensitive identifiers such as token ID, subject, or a hash should be logged. The artifact contains no compensating control such as redaction, restricted log access, or short retention, so the decision is fail.",
+    "latency_ms": 12671,
+    "cost_usd": null
+  },
+  "raw_parsed_response": {
+    "packet_id": "synthetic-token-logging__baseline__a",
+    "model_id": "copilot-haiku",
+    "decision": "fail",
+    "evidence_refs": [
+      "The application logs OAuth access tokens at INFO level for troubleshooting."
+    ],
+    "relied_on_unverified_authority": false,
+    "rationale": "The artifact states that the application writes OAuth access tokens to INFO-level logs. Access tokens are bearer credentials, so anyone with read access to the logs, log aggregation systems, or log backups can impersonate the user until the token expires or is revoked. INFO is typically retained longer and read more widely than debug logs, which widens exposure. The stated purpose of troubleshooting does not justify logging a credential. Token values should be redacted or omitted, and only non-sensitive identifiers such as token ID, subject, or a hash should be logged. The artifact contains no compensating control such as redaction, restricted log access, or short retention, so the decision is fail.",
+    "latency_ms": null,
+    "cost_usd": null
+  },
+  "elapsed_ms": 12671
+}

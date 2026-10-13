@@ -1,0 +1,274 @@
+{
+  "schema": "mmmtap-carl-jev-cli-investigation-v1",
+  "purpose": "read_only_interface_analysis_and_unimplemented_adapter_design",
+  "workspace": "/home/prometheus/git/mmmtap_phase2",
+  "scope": {
+    "live_systemone_calls": 0,
+    "review_dry_run_invocations": 7,
+    "expected_negative_probe_exits": 3,
+    "experimental_calls": 0,
+    "historical_admissions": 0,
+    "installed_binary_modifications": 0,
+    "production_source_modifications": 0,
+    "carl_repository_modifications": 0,
+    "tests_executed": false,
+    "tests_inspected": true,
+    "extension_implemented": false,
+    "extension_approval_required": true
+  },
+  "binary": {
+    "path": "/home/prometheus/bin/carl-jev",
+    "sha256": "b34696d54d0b9c910d48c9adbe0155f825617d8e4c8981e58a2f50b5d0868428",
+    "cli_version": "dev",
+    "bundled_runtime_version": "1.0.0",
+    "bundled_runtime_commit_label": "dev",
+    "go_version": "go1.26.5",
+    "platform": "linux/arm64",
+    "source_worktree": "/home/prometheus/git/cARL-semantic-eval",
+    "source_revision": "8a9d5ba6540fb52a7cfa6cbcf4c125e514805c04",
+    "source_binding": "debug_source_paths_symbols_clean_worktree_and_matching_offline_behavior",
+    "reproducible_build_verified": false,
+    "vcs_revision_in_build_metadata": false,
+    "evidence": [
+      "evidence/command_location.json",
+      "evidence/binary_identity.json",
+      "evidence/go_build_metadata.stdout.txt",
+      "evidence/binary_review_disassembly.stdout.txt",
+      "evidence/binary_provider_disassembly.stdout.txt",
+      "evidence/source_revision.stdout.txt",
+      "evidence/worktrees.stdout.txt"
+    ]
+  },
+  "help": {
+    "root": "evidence/root_help.stderr.txt",
+    "review": "evidence/review_help.stdout.txt",
+    "version": "evidence/version_help.stdout.txt",
+    "harness": "evidence/harness_help.stdout.txt",
+    "pack": "evidence/pack_help.stdout.txt",
+    "explain": "evidence/explain_help.stdout.txt",
+    "trace": "evidence/trace_help.stdout.txt",
+    "command_records": "evidence/<capture-name>.json contains exact argv, cwd, exit, hashes, allowlisted environment and latency",
+    "stderr_records": "evidence/<capture-name>.stderr.txt"
+  },
+  "source_reference_base": "/home/prometheus/git/cARL-semantic-eval",
+  "source_snapshot_index": "evidence/source_index.json",
+  "capabilities": [
+    {
+      "id": "git_review",
+      "classification": "supported_native",
+      "classification_scope": "installed_interface_not_live_qualification",
+      "input_transport": "cwd Git repository, --base, --head, optional --task or relative --task-file",
+      "provenance": "Git-derived refs, resolved object IDs, metadata and redacted diff; no signature, publisher or corpus authentication",
+      "source_and_claims": "diff plus optional assessment text in task; no structured assessment role",
+      "questions": "DefaultQuestions: eight boolean, one score",
+      "output": "normalized model signals and compiled cARL policy findings/decision",
+      "original_source_modified": false,
+      "history_support": "stateless requests; worktree context/config must be frozen externally",
+      "primary_135_classification": "unsupported_contract",
+      "references": [
+        "cmd/carl/main.go:72-105",
+        "internal/review/review.go:46-115",
+        "internal/review/state.go:29-106",
+        "internal/review/questions.go:6-56",
+        "internal/review/policy.go:103-153"
+      ]
+    },
+    {
+      "id": "dry_run",
+      "classification": "supported_native",
+      "classification_scope": "offline_inspection_only",
+      "output": "state and questions; null signals/findings and placeholder pass",
+      "evaluates_policy": false,
+      "calls_provider": false,
+      "evidence": "evidence/dry_run_baseline.stdout.txt",
+      "references": ["internal/review/review.go:73-81", "internal/review/output.go:20-46"]
+    },
+    {
+      "id": "task_text_or_json_string",
+      "classification": "supported_native",
+      "classification_scope": "transport_not_assessment_contract",
+      "input_transport": "--task string; --task-file repo-relative path",
+      "json_parsed_as_request": false,
+      "custom_questions_selected": false,
+      "git_repository_still_required": true,
+      "task_file_limit_bytes": 12000,
+      "inline_task_explicit_limit_bytes": null,
+      "redaction": "secret-bearing lines replaced before evaluation; one-line JSON can be entirely redacted",
+      "assessment_challenge_classification": "requires_explicit_extension",
+      "evidence": ["evidence/dry_run_inline_json_task.json", "evidence/dry_run_relative_task_file.json"],
+      "references": ["internal/review/state.go:224-251", "internal/review/review.go:64"]
+    },
+    {
+      "id": "stdin_absolute_path_custom_questions",
+      "classification": "unsupported_contract",
+      "stdin": "not read",
+      "absolute_task_file": "rejected",
+      "questions_flag": "rejected",
+      "evidence": [
+        "evidence/dry_run_stdin.json",
+        "evidence/dry_run_absolute_task_file.stderr.txt",
+        "evidence/dry_run_questions_flag.stderr.txt",
+        "evidence/dry_run_outside_git.stderr.txt"
+      ],
+      "references": ["internal/review/review.go:147-170", "internal/review/state.go:232-245"]
+    },
+    {
+      "id": "internal_typed_evaluator",
+      "classification": "requires_explicit_extension",
+      "classification_scope": "exposing_non_git_assessment_challenge_not_current_library_types",
+      "go_interface": "Evaluate(context.Context, EvaluationState, []Question) (*EvaluationResult, error)",
+      "kinds_defined": ["boolean", "choice", "score"],
+      "question_selection_exposed_by_cli": false,
+      "state_type": "Git-shaped EvaluationState with task/context string fields",
+      "underlying_model_restricted_to_git_by_this_evidence": false,
+      "references": ["internal/semantic/types.go:8-20", "internal/semantic/types.go:74-98", "internal/semantic/jev.go:57-94"]
+    },
+    {
+      "id": "pack_or_harness_diagnostics",
+      "classification": "unsupported_contract",
+      "classification_scope": "SystemOne_adversarial_evaluation",
+      "actual_purpose": "pack composition/explanation or agent-loader management",
+      "references": ["cmd/carl/main.go:72-105", "ARCHITECTURE.md:315-335"],
+      "evidence": ["evidence/harness_help.stdout.txt", "evidence/explain_help.stdout.txt", "evidence/trace_help.stdout.txt"]
+    }
+  ],
+  "schemas": {
+    "source_derived_json_schema_definitions": "evidence/contract_schemas.json",
+    "schema_status": "investigator_characterization_of_Go_wire_types_not_CLI_enforced_JSON_Schema",
+    "exact_go_types": [
+      "internal/semantic/types.go:13-115",
+      "internal/semantic/jev.go:40-54",
+      "internal/review/output.go:20-30",
+      "internal/review/policy.go:31-46"
+    ],
+    "actual_offline_request_state_and_questions": "evidence/dry_run_baseline.stdout.txt",
+    "actual_live_cli_response": null,
+    "native_systemone_contrast": {
+      "request": "model:string; state:string; questions:object keyed by IDs with type/instructions/criteria",
+      "response": "model:string; answers:object keyed by IDs with noul or choice/confidence/probabilities",
+      "reference": "/home/prometheus/git/mmmtap_phase2/phase2/adapters.py:352-377",
+      "current_cli_direct_hosted_compatibility_verified": false
+    }
+  },
+  "configuration": {
+    "paths_in_precedence_order": [".github/carl/config.yml", ".github/carl/config.yaml"],
+    "present_in_inspected_worktrees": false,
+    "presence_evidence": "evidence/config_presence.json",
+    "defaults": {"enabled": false, "fail_mode": "open", "api_key_env": "TYPESAFE_API_KEY", "timeout_seconds": 30, "endpoint": "", "model": ""},
+    "keys": ["semantic_evaluation.enabled", "semantic_evaluation.provider", "semantic_evaluation.fail_mode", "semantic_evaluation.jev.api_key_env", "semantic_evaluation.jev.endpoint", "semantic_evaluation.jev.model", "semantic_evaluation.jev.timeout_seconds"],
+    "supported_provider_on_enabled_path": "jev",
+    "timeout_range_seconds": [1, 300],
+    "policy_file_option": false,
+    "question_or_policy_threshold_configuration": false,
+    "parser": "limited line-oriented YAML-like parser, not a general YAML implementation",
+    "references": ["internal/semantic/config.go:12-150", "internal/review/review.go:65-101"]
+  },
+  "provider_transport": {
+    "method": "POST",
+    "authentication": "Bearer value read from configured environment-variable name",
+    "credentials_read_or_verified_by_investigation": false,
+    "endpoint": "operator_configured_no_builtin_hosted_endpoint",
+    "model_identity": "configured request model; returned model not retained by current decoder",
+    "reported_model": null,
+    "raw_http_response_retained_by_cli": false,
+    "usage_retained_by_cli": false,
+    "systemone_receipt_emitted_by_cli": false,
+    "explicit_application_retry_loop": false,
+    "no_on_wire_retry_guarantee_verified": false,
+    "redirects_explicitly_disabled": false,
+    "response_read_limit_bytes": 2097152,
+    "strict_answer_validation": false,
+    "source_label": "typesafe-jev assigned locally",
+    "references": ["internal/semantic/jev.go:29-113"]
+  },
+  "policy": {
+    "kind": "compiled_Git_review_signal_policy",
+    "explicit_version_emitted": false,
+    "policy_identity_for_investigation": "source hashes in evidence/source_index.json plus binary hash",
+    "default_question_set": "evidence/probe_observations.json#/default_questions",
+    "warning_signals": ["security_sensitive", "scope_expansion", "architectural_change", "breaking_change", "new_external_dependency"],
+    "review_signals": ["authentication_or_authorisation_change", "trust_boundary_change", "security_control_reduction", "human_review_warranted"],
+    "error_signals": [],
+    "trigger_rules": {
+      "boolean": "true",
+      "json_number": ">=0.7 for human_review_warranted, otherwise >=1",
+      "string": ["true", "yes", "high", "review", "review_required"],
+      "other_or_unknown_id": "no finding"
+    },
+    "decision": "maximum triggered severity; default pass",
+    "confidence_changes_decision": false,
+    "finding_files": "all changed-file paths sorted, not source-localized findings",
+    "canonical_array_order": false,
+    "exit_codes": {
+      "0": "pass, dry-run, disabled evaluation or fail-open unavailability",
+      "1": "CLI/config failure or fail-closed unavailability",
+      "2": "evaluated warn, review_required or fail"
+    },
+    "references": ["internal/review/policy.go:54-193", "internal/review/review.go:82-135", "internal/review/review.go:177-185"]
+  },
+  "phase2": {
+    "integrity_evidence": "evidence/primary_integrity.json",
+    "input_identities": 135,
+    "distinct_byte_hashes": 108,
+    "existing_plan_jobs": 6885,
+    "existing_carl_unsupported_jobs": 1215,
+    "existing_blocked_descendants": 2025,
+    "primary_existing_cli_classification": "unsupported_contract",
+    "no_current_end_to_end_supported_with_verified_adapter": true,
+    "adapter_gaps": [
+      {"issue": "dispatcher does not pass Git evidence", "reference": "/home/prometheus/git/mmmtap_phase2/phase2/engine.py:175-184"},
+      {"issue": "absolute temporary task-file path rejected", "reference": "/home/prometheus/git/mmmtap_phase2/phase2/adapters.py:492-498"},
+      {"issue": "required receipt absent from actual output schema", "reference": "/home/prometheus/git/mmmtap_phase2/phase2/adapters.py:459-464"},
+      {"issue": "caller policy_path is not necessarily active config or compiled policy", "reference": "/home/prometheus/git/mmmtap_phase2/phase2/adapters.py:473-482"},
+      {"issue": "native claim questions remain opaque task text, not CLI-selected questions", "reference": "/home/prometheus/git/mmmtap_phase2/phase2/core.py:284-297"}
+    ],
+    "historical_git_candidates": {
+      "status": "pending_separate_partition",
+      "prior_evidence": "../adapter_qualification_v1/offline/historical_git_candidate_check.json",
+      "candidates": 5,
+      "newly_admitted": 0,
+      "author_signatures_verified": false
+    }
+  },
+  "historical_bridge": {
+    "path": "/home/prometheus/git/mmmtap_phase0_v5/jev_bridge.py",
+    "references": ["jev_bridge.py:13-50", "jev_bridge.py:52-93"],
+    "executed": false,
+    "currently_qualified": false,
+    "request_mapping": "object state to serialized string; boolean/score to noul; choice to criteria",
+    "response_mapping": "noul >=0.5 to boolean, noul to score, choice retained; raw_noul metadata",
+    "limitations": ["no durable raw provider receipt", "limited in-memory model/usage stats", "raw noul conflated with confidence", "redirect and retry behavior not qualified"]
+  },
+  "test_evidence": {
+    "status": "source_inspected_not_executed",
+    "references": [
+      "internal/review/review_test.go:32-174",
+      "internal/review/policy_test.go:9-31",
+      "internal/semantic/jev_test.go:12-67",
+      "internal/semantic/config_test.go:9-50",
+      "internal/semantic/redact_test.go:8-27"
+    ],
+    "evidence_level": "mocked evaluators and local HTTP fixtures, not live provider evidence",
+    "offline_probe_results": "evidence/probe_observations.json"
+  },
+  "recommendation": {
+    "path_a": "preserve_existing_CLI_for_separately_admitted_Git_policy_feedback",
+    "path_b": "seek_explicit_approval_for_carl_assessment_challenge_v1_for_primary_text",
+    "path_b_classification": "requires_explicit_extension",
+    "implementation_approved": false,
+    "live_use_approved": false,
+    "pilot_approved": false,
+    "proposal": "INTEGRATION_OPTIONS.md"
+  },
+  "unresolved": [
+    "Exact source-to-binary reproducible build attestation",
+    "Actual hosted SystemOne bridge compatibility and credentials",
+    "Provider-confirmed model identity for this CLI",
+    "Strict answer validation and request-bound raw response receipts",
+    "No-hidden-retry and redirect guarantees",
+    "Hash-bound active config, governance and post-transformation evidence",
+    "Size limits, redaction/truncation, symlink and Git-driver containment",
+    "Approved non-Git question catalog and deterministic assessment policy",
+    "Separately approved historical admission and future qualification"
+  ]
+}

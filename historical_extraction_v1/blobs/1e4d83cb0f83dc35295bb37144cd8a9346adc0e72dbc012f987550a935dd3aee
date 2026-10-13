@@ -1,0 +1,121 @@
+File: sentinel-playbooks/copilot-observe/oauth-callback.bicep
+
+targetScope = 'resourceGroup'
+
+param callbackWorkflowName string = 'specrecon-copilot-oauth-callback'
+param copilotConnectionName string = 'specrecon-securitycopilot-observe'
+param location string = 'uksouth'
+param userObjectId string = '0e38aebd-2818-4a44-a8e6-2c4ee5aa0b4f'
+param tenantId string = '24b7f14d-802a-417e-aa6b-4e5d9be6700b'
+
+var contributorRoleId = subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')
+
+resource copilotConnection 'Microsoft.Web/connections@2016-06-01' existing = {
+  name: copilotConnectionName
+}
+
+resource callbackWorkflow 'Microsoft.Logic/workflows@2019-05-01' = {
+  name: callbackWorkflowName
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  tags: {
+    Purpose: 'Temporary OAuth consent-code callback'
+  }
+  properties: {
+    state: 'Enabled'
+    definition: {
+      '$schema': 'https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#'
+      contentVersion: '1.0.0.0'
+      parameters: {}
+      triggers: {
+        manual: {
+          type: 'Request'
+          kind: 'Http'
+          inputs: {
+            schema: {
+              type: 'object'
+            }
+          }
+        }
+      }
+      actions: {
+        Confirm_consent_code: {
+          type: 'Http'
+          inputs: {
+            method: 'POST'
+            uri: '${environment().resourceManager}${substring(copilotConnection.id, 1)}/confirmConsentCode?api-version=2016-06-01'
+            headers: {
+              'Content-Type': 'application/json'
+            }
+            authentication: {
+              type: 'ManagedServiceIdentity'
+              audience: environment().resourceManager
+            }
+            body: {
+              code: '@triggerOutputs()?[\'queries\']?[\'code\']'
+              objectId: userObjectId
+              tenantId: tenantId
+            }
+          }
+          runAfter: {}
+        }
+        Return_success_page: {
+          type: 'Response'
+          kind: 'Http'
+          inputs: {
+            statusCode: 200
+            headers: {
+              'Content-Type': 'text/html; charset=utf-8'
+            }
+            body: '<html><body style="font-family:sans-serif"><h2>Security Copilot connection authorized</h2><p>You can close this page and return to the experiment.</p></body></html>'
+          }
+          runAfter: {
+            Confirm_consent_code: [
+              'Succeeded'
+            ]
+          }
+        }
+        Return_failure_page: {
+          type: 'Response'
+          kind: 'Http'
+          inputs: {
+            statusCode: 500
+            headers: {
+              'Content-Type': 'text/html; charset=utf-8'
+            }
+            body: '<html><body style="font-family:sans-serif"><h2>Authorization callback failed</h2><p>Return to the experiment so the Logic App run can be inspected.</p></body></html>'
+          }
+          runAfter: {
+            Confirm_consent_code: [
+              'Failed'
+              'TimedOut'
+            ]
+          }
+        }
+      }
+      outputs: {}
+    }
+  }
+}
+
+resource callbackConnectionContributor 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  name: guid(copilotConnection.id, callbackWorkflow.id, contributorRoleId)
+  scope: copilotConnection
+  properties: {
+    roleDefinitionId: contributorRoleId
+    principalId: callbackWorkflow.identity.principalId
+    principalType: 'ServicePrincipal'
+  }
+}
+
+output callbackWorkflowResourceId string = callbackWorkflow.id
+output callbackPrincipalId string = callbackWorkflow.identity.principalId
+
+
+Additional metadata:
+- Change ticket: CHG-TEST-0001
+- Environment: test
+- Owner: application-team
+- Deployment window: scheduled

@@ -1,0 +1,6 @@
+{
+  "binding": "Go debug source paths, symbols, clean worktree, help and dry-run behavior; not a reproducible-build attestation",
+  "resolved_path": "/home/prometheus/bin/carl-jev",
+  "sha256": "b34696d54d0b9c910d48c9adbe0155f825617d8e4c8981e58a2f50b5d0868428",
+  "source_worktree": "/home/prometheus/git/cARL-semantic-eval"
+}

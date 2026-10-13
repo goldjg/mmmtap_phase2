@@ -1,0 +1,316 @@
+{
+  "cases": {
+    "public_access_regression": {
+      "actual_carl_decision": "review_required",
+      "diff_sha256": "4d4ba295de77a6ec62b64d3d4109a417fce45b59783bc6d5f63b9fa76e4ace97",
+      "signals": {
+        "architectural_change": {
+          "confidence": 0.42,
+          "raw_noul": 0.42,
+          "value": false
+        },
+        "authentication_or_authorisation_change": {
+          "confidence": 0.83,
+          "raw_noul": 0.83,
+          "value": true
+        },
+        "breaking_change": {
+          "confidence": 0.42,
+          "raw_noul": 0.42,
+          "value": false
+        },
+        "human_review_warranted": {
+          "confidence": 0.92,
+          "raw_noul": 0.92,
+          "value": 0.92
+        },
+        "new_external_dependency": {
+          "confidence": 0.02,
+          "raw_noul": 0.02,
+          "value": false
+        },
+        "scope_expansion": {
+          "confidence": 0.83,
+          "raw_noul": 0.83,
+          "value": true
+        },
+        "security_control_reduction": {
+          "confidence": 0.95,
+          "raw_noul": 0.95,
+          "value": true
+        },
+        "security_sensitive": {
+          "confidence": 0.95,
+          "raw_noul": 0.95,
+          "value": true
+        },
+        "trust_boundary_change": {
+          "confidence": 0.83,
+          "raw_noul": 0.83,
+          "value": true
+        }
+      },
+      "source_sha256": "998a895f3f44b807924c3531b8ed714f7276dfa2245757758407126430a6191d",
+      "variants": {
+        "direction_aware_triage": {
+          "decision": "review_required",
+          "triggers": [
+            "security_control_reduction",
+            "trust_boundary_change",
+            "authentication_or_authorisation_change",
+            "review_score>=0.70"
+          ]
+        },
+        "review_all_sensitive": {
+          "decision": "review_required",
+          "triggers": [
+            "security_sensitive",
+            "review_score>=0.70"
+          ]
+        },
+        "strict": {
+          "decision": "review_required",
+          "triggers": [
+            "security_control_reduction",
+            "trust_boundary_change",
+            "authentication_or_authorisation_change",
+            "review_score>=0.70"
+          ]
+        }
+      }
+    },
+    "public_access_remediation": {
+      "actual_carl_decision": "review_required",
+      "diff_sha256": "b9ca3ae6d5eca3c2f580e2c53dcdcc14a032782ce04182be8f86539971a9b7e8",
+      "signals": {
+        "architectural_change": {
+          "confidence": 0.34,
+          "raw_noul": 0.34,
+          "value": false
+        },
+        "authentication_or_authorisation_change": {
+          "confidence": 0.84,
+          "raw_noul": 0.84,
+          "value": true
+        },
+        "breaking_change": {
+          "confidence": 0.38,
+          "raw_noul": 0.38,
+          "value": false
+        },
+        "human_review_warranted": {
+          "confidence": 0.77,
+          "raw_noul": 0.77,
+          "value": 0.77
+        },
+        "new_external_dependency": {
+          "confidence": 0.02,
+          "raw_noul": 0.02,
+          "value": false
+        },
+        "scope_expansion": {
+          "confidence": 0.08,
+          "raw_noul": 0.08,
+          "value": false
+        },
+        "security_control_reduction": {
+          "confidence": 0.11,
+          "raw_noul": 0.11,
+          "value": false
+        },
+        "security_sensitive": {
+          "confidence": 0.92,
+          "raw_noul": 0.92,
+          "value": true
+        },
+        "trust_boundary_change": {
+          "confidence": 0.65,
+          "raw_noul": 0.65,
+          "value": true
+        }
+      },
+      "source_sha256": "bf25c5db603db785c42db68f55be4f9c64b1e1ca9e4ebc909f2b2d67ffffa4d2",
+      "variants": {
+        "direction_aware_triage": {
+          "decision": "expedited_human_review",
+          "triggers": [
+            "low_reduction_and_expansion_signals",
+            "human_still_required"
+          ]
+        },
+        "review_all_sensitive": {
+          "decision": "review_required",
+          "triggers": [
+            "security_sensitive",
+            "review_score>=0.70"
+          ]
+        },
+        "strict": {
+          "decision": "review_required",
+          "triggers": [
+            "trust_boundary_change",
+            "authentication_or_authorisation_change",
+            "review_score>=0.70"
+          ]
+        }
+      }
+    },
+    "ssh_scope_remediation": {
+      "actual_carl_decision": "review_required",
+      "diff_sha256": "534b0fb752d52bae82f2f82880144ea992095d4a3db574515a3a5ab32ea872f3",
+      "signals": {
+        "architectural_change": {
+          "confidence": 0.52,
+          "raw_noul": 0.52,
+          "value": true
+        },
+        "authentication_or_authorisation_change": {
+          "confidence": 0.81,
+          "raw_noul": 0.81,
+          "value": true
+        },
+        "breaking_change": {
+          "confidence": 0.33,
+          "raw_noul": 0.33,
+          "value": false
+        },
+        "human_review_warranted": {
+          "confidence": 0.72,
+          "raw_noul": 0.72,
+          "value": 0.72
+        },
+        "new_external_dependency": {
+          "confidence": 0.02,
+          "raw_noul": 0.02,
+          "value": false
+        },
+        "scope_expansion": {
+          "confidence": 0.07,
+          "raw_noul": 0.07,
+          "value": false
+        },
+        "security_control_reduction": {
+          "confidence": 0.12,
+          "raw_noul": 0.12,
+          "value": false
+        },
+        "security_sensitive": {
+          "confidence": 0.91,
+          "raw_noul": 0.91,
+          "value": true
+        },
+        "trust_boundary_change": {
+          "confidence": 0.88,
+          "raw_noul": 0.88,
+          "value": true
+        }
+      },
+      "source_sha256": "db7a6cf53985a9788046e906faccf20b67266d05a5a7b1aa2e6cdb013eb41a61",
+      "variants": {
+        "direction_aware_triage": {
+          "decision": "expedited_human_review",
+          "triggers": [
+            "low_reduction_and_expansion_signals",
+            "human_still_required"
+          ]
+        },
+        "review_all_sensitive": {
+          "decision": "review_required",
+          "triggers": [
+            "security_sensitive",
+            "review_score>=0.70"
+          ]
+        },
+        "strict": {
+          "decision": "review_required",
+          "triggers": [
+            "trust_boundary_change",
+            "authentication_or_authorisation_change",
+            "review_score>=0.70"
+          ]
+        }
+      }
+    },
+    "ssh_world_open": {
+      "actual_carl_decision": "review_required",
+      "diff_sha256": "6afffb4bc2dac0ab3f04d2a9c38a70855ae302ccb21530ad55ddfba3a08ca1dd",
+      "signals": {
+        "architectural_change": {
+          "confidence": 0.66,
+          "raw_noul": 0.66,
+          "value": true
+        },
+        "authentication_or_authorisation_change": {
+          "confidence": 0.62,
+          "raw_noul": 0.62,
+          "value": true
+        },
+        "breaking_change": {
+          "confidence": 0.36,
+          "raw_noul": 0.36,
+          "value": false
+        },
+        "human_review_warranted": {
+          "confidence": 0.93,
+          "raw_noul": 0.93,
+          "value": 0.93
+        },
+        "new_external_dependency": {
+          "confidence": 0.02,
+          "raw_noul": 0.02,
+          "value": false
+        },
+        "scope_expansion": {
+          "confidence": 0.88,
+          "raw_noul": 0.88,
+          "value": true
+        },
+        "security_control_reduction": {
+          "confidence": 0.94,
+          "raw_noul": 0.94,
+          "value": true
+        },
+        "security_sensitive": {
+          "confidence": 0.95,
+          "raw_noul": 0.95,
+          "value": true
+        },
+        "trust_boundary_change": {
+          "confidence": 0.9,
+          "raw_noul": 0.9,
+          "value": true
+        }
+      },
+      "source_sha256": "9c29530494dfce5ed63d72fb8bfdf4eec2675c800ef21859a600db0181d781df",
+      "variants": {
+        "direction_aware_triage": {
+          "decision": "review_required",
+          "triggers": [
+            "security_control_reduction",
+            "trust_boundary_change",
+            "authentication_or_authorisation_change",
+            "review_score>=0.70"
+          ]
+        },
+        "review_all_sensitive": {
+          "decision": "review_required",
+          "triggers": [
+            "security_sensitive",
+            "review_score>=0.70"
+          ]
+        },
+        "strict": {
+          "decision": "review_required",
+          "triggers": [
+            "security_control_reduction",
+            "trust_boundary_change",
+            "authentication_or_authorisation_change",
+            "review_score>=0.70"
+          ]
+        }
+      }
+    }
+  },
+  "interpretation": "Counterfactual policies applied to saved model signals; not new JEV evaluations or policy changes",
+  "protocol": "P1-007B"
+}

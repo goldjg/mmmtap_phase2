@@ -1,0 +1,19 @@
+test_complete_nonempty_chain_all_arms_and_replay (test_integration.IntegrationTests.test_complete_nonempty_chain_all_arms_and_replay) ... ok
+test_drift_and_live_gates (test_integration.IntegrationTests.test_drift_and_live_gates) ... ok
+test_failed_first_attempt_blocks_descendants (test_integration.IntegrationTests.test_failed_first_attempt_blocks_descendants) ... ok
+test_plan_determinism_and_matrix (test_integration.IntegrationTests.test_plan_determinism_and_matrix) ... ok
+test_qualification_guard_and_immutable_failure (test_integration.IntegrationTests.test_qualification_guard_and_immutable_failure) ... ok
+test_actual_loopback_parsers_and_injection (test_integration.IsolationTests.test_actual_loopback_parsers_and_injection) ... ok
+test_auth_copy_is_separate_and_redacted (test_integration.IsolationTests.test_auth_copy_is_separate_and_redacted) ... ok
+test_correct_cli_contracts (test_integration.IsolationTests.test_correct_cli_contracts) ... ok
+test_exposed_tools_in_usage_telemetry_rejected (test_integration.IsolationTests.test_exposed_tools_in_usage_telemetry_rejected) ... ok
+test_no_ambient_credentials_or_instructions (test_integration.IsolationTests.test_no_ambient_credentials_or_instructions) ... ok
+test_no_unauthorised_calls (test_integration.IsolationTests.test_no_unauthorised_calls) ... ok
+test_staging_fresh_and_clean (test_integration.IsolationTests.test_staging_fresh_and_clean) ... ok
+test_timeout_and_size_failure_no_retry (test_integration.IsolationTests.test_timeout_and_size_failure_no_retry) ... ok
+test_watchdogs_reject_tools_and_retries (test_integration.IsolationTests.test_watchdogs_reject_tools_and_retries) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 276.369s
+
+OK

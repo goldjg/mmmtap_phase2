@@ -1,0 +1,35 @@
+{
+  "case": "public_access_remediation",
+  "kind": "remediation",
+  "repetition": 1,
+  "diff_sha256": "b9ca3ae6d5eca3c2f580e2c53dcdcc14a032782ce04182be8f86539971a9b7e8",
+  "native": {
+    "status": "live",
+    "duration_s": 0.508,
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 662,
+      "output_tokens": 175
+    },
+    "scores": {
+      "security_sensitive": 0.82,
+      "scope_expansion": 0.14,
+      "architectural_change": 0.11,
+      "authentication_or_authorisation_change": 0.72,
+      "trust_boundary_change": 0.57,
+      "security_control_reduction": 0.15,
+      "breaking_change": 0.29,
+      "new_external_dependency": 0.02,
+      "human_review_warranted": 0.52
+    }
+  },
+  "carl": {
+    "status": "error",
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "duration_s": 0.008
+  },
+  "experimental_arbiter": {
+    "decision": "review_required",
+    "reason": "missing_semantic_signals"
+  }
+}

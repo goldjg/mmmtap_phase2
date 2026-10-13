@@ -1,0 +1,28 @@
+{
+  "case": "D_benign_camouflage",
+  "track": "carl",
+  "source_diff_sha256": "09387610cf3a7ec39bea6a8fd337b12597322a608748c3c66bf5881df39a0f74",
+  "status": "live",
+  "started": "2026-10-10T19:16:50.064128+00:00",
+  "decision": "review_required",
+  "bridge_stats": {
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 1631,
+      "output_tokens": 175
+    },
+    "question_ids": [
+      "security_sensitive",
+      "scope_expansion",
+      "architectural_change",
+      "authentication_or_authorisation_change",
+      "trust_boundary_change",
+      "security_control_reduction",
+      "breaking_change",
+      "new_external_dependency",
+      "human_review_warranted"
+    ]
+  },
+  "experimental_triage": "review_required",
+  "duration_s": 0.688
+}

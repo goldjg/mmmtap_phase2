@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "result": {
+    "signals": null,
+    "findings": null,
+    "decision": "pass"
+  },
+  "dryRun": {
+    "provider": "jev",
+    "questions": [
+      {
+        "id": "security_sensitive",
+        "kind": "boolean",
+        "description": "Does this change appear security-sensitive?"
+      },
+      {
+        "id": "scope_expansion",
+        "kind": "boolean",
+        "description": "Does this change appear to expand approved scope or modify unrelated surfaces?"
+      },
+      {
+        "id": "architectural_change",
+        "kind": "boolean",
+        "description": "Does this change appear to introduce or alter architecture-level structure or boundaries?"
+      },
+      {
+        "id": "authentication_or_authorisation_change",
+        "kind": "boolean",
+        "description": "Does this change appear to affect authentication or authorization behavior?"
+      },
+      {
+        "id": "trust_boundary_change",
+        "kind": "boolean",
+        "description": "Does this change appear to alter a trust boundary or external data flow?"
+      },
+      {
+        "id": "security_control_reduction",
+        "kind": "boolean",
+        "description": "Does this change appear to reduce a security control or validation gate?"
+      },
+      {
+        "id": "breaking_change",
+        "kind": "boolean",
+        "description": "Does this change appear to alter a documented public contract or compatibility boundary?"
+      },
+      {
+        "id": "new_external_dependency",
+        "kind": "boolean",
+        "description": "Does this change appear to add a new external runtime, build, or CI dependency?"
+      },
+      {
+        "id": "human_review_warranted",
+        "kind": "score",
+        "description": "How strongly does the change warrant human review beyond routine automated checks?",
+        "threshold": 0.7
+      }
+    ],
+    "state": {
+      "repository": {
+        "name": "cARL",
+        "currentBranch": "docs/jfrog-boost-antigravity-production",
+        "remoteOrigin": "https://github.com/goldjg/cARL.git"
+      },
+      "review": {
+        "base": "e725f6f5e89a0225b79a033dbc8b21219179f361",
+        "head": "8938d62d77e8c0d68eaa824bf35dfb577e0e757c",
+        "baseSha": "e725f6f5e89a0225b79a033dbc8b21219179f361",
+        "headSha": "8938d62d77e8c0d68eaa824bf35dfb577e0e757c",
+        "changedFiles": [
+          {
+            "path": ".github/carl/current-pr-contract.md",
+            "additions": 2,
+            "deletions": 3
+          }
+        ]
+      },
+      "diff": {
+        "text": "diff --git a/.github/carl/current-pr-contract.md b/.github/carl/current-pr-contract.md\nindex 1413b02..edab2da 100644\n--- a/.github/carl/current-pr-contract.md\n+++ b/.github/carl/current-pr-contract.md\n@@ -36,7 +36,7 @@ tests, and documentation consistent.\n \n ## Forbidden scope\n \n-- Do not rewrite or transform `.github/carl/**` artefacts beyond this active\n+- Do not rewrite or transform `.github/carl/**` artefacts beyond this Complete\n   contract and the durable memory correction.\n - Do not change JFrog Boost configuration outside documentation examples.\n - Do not alter cARL's canonical governance authority or harness adapter\n@@ -113,5 +113,4 @@ optional interoperability boundary, not a cARL policy or runtime change.\n ## Context reset notes\n \n This contract covers the JFrog Boost compatibility documentation and\n-Antigravity production support change. Close it after validation and PR\n-creation.\n+Antigravity production support change. PR #48 was opened after validation.\n",
+        "limitBytes": 200000
+      },
+      "context": [
+        {
+          "path": ".github/carl/current-pr-contract.md",
+          "content": "\u003c!-- version: 1.0.4 --\u003e\n# Current PR Contract\n\n## Contract status\n\nComplete\n\n## Goal\n\nDocument cARL's interoperability configuration with JFrog Boost v0.14.4 and\nlater, preserving canonical governance artefacts from Boost file optimisation\nwhile allowing other Boost capabilities to remain enabled. Promote Antigravity\nto production support based on successful native validation and keep CLI,\ntests, and documentation consistent.\n\n## Non-goals\n\n- Do not add a runtime or build dependency on JFrog Boost.\n- Do not change cARL policy evaluation or its trust boundary.\n- Do not disable Boost globally or claim a partnership, endorsement,\n  certification, or joint support.\n- Do not modify embedded assets, harness adapters, or unrelated\n  documentation.\n\n## Approved scope\n\n- `.github/carl/current-pr-contract.md` and `.github/carl/memory.md`.\n- `README.md`, `CLI.md`, and `ARCHITECTURE.md` for Boost compatibility and\n  Antigravity's production support status.\n- `internal/harness/harness.go` and focused tests in\n  `internal/harness/harness_test.go` and `internal/version/version_test.go`\n  for the Antigravity support tier.\n- Create a branch, commit the approved scoped changes, push it, and open a\n  pull request.\n- Preserve unrelated working-tree changes outside these paths.\n\n## Forbidden scope\n\n- Do not rewrite or transform `.github/carl/**` artefacts beyond this Complete\n  contract and the durable memory correction.\n- Do not change JFrog Boost configuration outside documentation examples.\n- Do not alter cARL's canonical governance authority or harness adapter\n  semantics.\n- Do not rewrite historical completed plans; current support statements in\n  durable memory should reflect user-confirmed production status.\n- Do not stage or commit changes outside the approved scope.\n- Do not change unrelated local files.\n\n## Architectural constraints\n\n- cARL remains the authority for its governance and policy.\n- `.github/carl/**` contains canonical governance/control-plane artefacts and\n  must not be a Boost file-optimisation target.\n- Harness adapters are projections/loaders, not canonical governance truth.\n- Boost remains an independent optional tool; its path-ignore configuration\n  defines an interoperability boundary, not a runtime integration.\n- Describe Boost path-ignore support as available from v0.14.4 onward.\n\n## Security constraints\n\n- Do not suggest disabling Boost globally.\n- Document the narrow repo-relative `.github/carl/**` optimisation exclusion\n  and retain other Boost features, including normal CLI filtering, file\n  optimisation, MCP optimisation, and code indexing.\n- Do not claim that Boost becomes part of cARL's policy engine or trust\n  boundary.\n\n## Expected files\n\n- `.github/carl/current-pr-contract.md`\n- `README.md`\n\n## Contract assertions\n\n1. cARL supports JFrog Boost v0.14.4+ when `.github/carl/**` is excluded from\n   file optimisation, with the requested config and `boost doctor` guidance.\n2. Antigravity is production in the adapter registry, tests, CLI output, and\n   current documentation; Cursor remains theoretical.\n3. The PR contains only the approved Boost interoperability and Antigravity\n   production-support changes.\n\n## Validation requirements\n\n- Inspect the final diff and preserve pre-existing edits.\n- Run `git diff --check`.\n- Validate Markdown links and required configuration/output examples.\n- Run any existing Markdown/docs validator if available; do not add tooling\n  for this documentation-only change.\n- Run `go test ./internal/harness ./internal/version`.\n- Verify only the approved files are staged and included in the PR.\n\n## Stop conditions\n\n- Stop if a required change would modify runtime behaviour, embedded assets,\n  harness adapter semantics, or files outside the approved scope.\n- Stop if JFrog Boost's documented path-ignore support or version threshold\n  conflicts with the user-provided configuration requirements.\n\n## Escalation triggers\n\n- Any need to expand beyond the approved documentation and contract files.\n- Any ambiguity about whether canonical cARL artefacts should be excluded\n  from a broader Boost optimisation mode.\n\n## cARL/docs update expectation\n\nUpdate this contract to scope the task, the README with durable Boost\ninteroperability guidance, and `.github/carl/memory.md` to reflect the\nuser-confirmed Antigravity production-support status. No other canonical\ngovernance artefacts need changes because the Boost configuration is an\noptional interoperability boundary, not a cARL policy or runtime change.\n\n## Context reset notes\n\nThis contract covers the JFrog Boost compatibility documentation and\nAntigravity production support change. PR #48 was opened after validation.\n"
+        },
+        {
+          "path": ".github/carl/invariants.yml",
+          "content": "# version: 1.1.1\ninvariants:\n  - id: no-hardcoded-secrets\n    name: No hardcoded secrets\n    rule: Secrets, tokens, and credentials must not be committed to repository files.\n    severity: critical\n\n  - id: no-broad-rewrites\n    name: No broad rewrites\n    rule: Changes must remain scoped to requested outcomes and avoid unrelated rewrites.\n    severity: high\n\n  - id: security-baseline-preserved\n    name: Security baseline preserved\n    rule: Changes must preserve authentication, authorization, validation, and secret handling guarantees.\n    severity: critical\n\n  - id: plan-before-execute\n    name: Plan before execute\n    rule: Significant work requires an explicit plan before implementation.\n    severity: high\n\n  - id: no-unapproved-dependencies\n    name: No unapproved dependencies\n    rule: New dependencies require explicit justification and approval.\n    severity: high\n\n  - id: pr-contract-respected\n    name: PR contract respected\n    rule: Execution must stay inside the current PR contract unless scope is explicitly amended.\n    severity: high\n\n  - id: minimum-sufficient-reasoning-depth\n    name: Minimum sufficient reasoning depth\n    rule: Reasoning depth must be escalated only when risk, uncertainty, or novelty justifies the cost.\n    severity: high\n\n  - id: invariant-amendment-governance\n    name: Invariant amendment governance\n    rule: Agents must preserve invariants unless the user explicitly amends the invariant or opens a separate governance change.\n    severity: high\n\n  - id: durable-artefact-update-on-implementation\n    name: Durable artefact update on implementation\n    rule: Every implementation PR must update durable artefacts (.github/carl/invariants.yml, memory.md, ROADMAP.md, trust-boundaries.md) when behaviour, assumptions, commands, scope, roadmap, or operating model changes.\n    severity: high\n\n  - id: carl-canonical-governance\n    name: cARL canonical governance\n    rule: .github/carl artefacts are the canonical source of durable governance truth; harness-specific files must not be treated as independent authorities.\n    severity: high\n\n  - id: harness-adapters-not-authorities\n    name: Harness adapters are not authorities\n    rule: Harness-specific files such as .github/copilot-instructions.md, CLAUDE.md, AGENTS.md, .cursor/rules/carl.mdc, and .agents/rules/carl.md are adapters/loaders that must route agents to canonical cARL artefacts.\n    severity: high\n\n  - id: explicit-carl-lifecycle\n    name: Explicit cARL lifecycle\n    rule: Harness loaders must make hydration, execution, validation, reconciliation, and final cARL/docs update decisions explicit.\n    severity: high\n\n  - id: repository-truth-over-session-memory\n    name: Repository truth over session memory\n    rule: Current repository state and canonical cARL artefacts must outrank stale prompt or session memory when they conflict.\n    severity: high\n"
+        },
+        {
+          "path": ".github/carl/trust-boundaries.md",
+          "content": "\u003c!-- version: 1.5.0 --\u003e\n# Trust Boundaries\n\nTrust boundaries classify information sources and define required validation before shaping, planning, execution, validation, or reconciliation decisions.\n\n| Boundary | Source | Trust level | Required validation |\n|---|---|---|---|\n| Current repository state | Current checked-in files and directory structure | Highest | Verify paths and current content before editing; repository state wins over stale memory when directly observed |\n| User instruction | Direct user requests in this session | High | Clarify ambiguity and confirm material scope assumptions; user instruction must still remain inside approved scope unless the contract is amended |\n| PR contract | `.github/carl/current-pr-contract.md` | High | Confirm requested work is within approved scope; stop when forbidden scope or escalation triggers are reached |\n| Invariants | `.github/carl/invariants.yml` | High | Preserve unless explicitly amended through a user-approved governance change |\n| Trust boundary model | `.github/carl/trust-boundaries.md` | High | Use to classify source authority and validation expectations before relying on information for writes |\n| Tool policy | `.github/carl/tool-policy.yml` | High | Classify tool actions before execution and escalate according to tier |\n| Prompt-as-code plans | `.github/carl/plans/*.md` | High when active | Treat as task contracts when referenced by the active PR contract or user; verify status and scope before implementation |\n| Cognitive cache | `.github/carl/memory.md` | Medium-high | Treat as durable guidance; validate against current repository state if stale, conflicting, or structurally outdated |\n| Profile example | `.github/carl/profiles.example.json` | Medium-high reference data | Treat as an inactive cloneable baseline only; its presence does not select or activate packs, and active policy comes only from ordinary canonical selection/profile state |\n| Instruction packs | `.github/instructions/**/*.instructions.md` | Medium-high | Derive and apply only effective, non-overridden packs from canonical selection/profile/composition state; directory presence is not activation, and packs do not grant task-specific scope approval |\n| Harness adapter files | `.github/copilot-instructions.md`, `CLAUDE.md`, `AGENTS.md`, `.cursor/rules/carl.mdc`, `.agents/rules/carl.md` | Medium | Treat as context loaders/adapters only; use them to locate canonical cARL artefacts, not as independent governance authorities |\n| Tool output | Search, file-read, command output, test output, CI output | Medium | Confirm relevance, freshness, and exact path before using for writes or conclusions |\n| Registry configuration | `.github/carl/registries.json` | Medium | Treat every ID and location as untrusted; require strict schema validation, explicit HTTPS or repository-local sources, and reject credentials, queries, fragments, traversal, and implicit authorities |\n| Registry index | Explicit configured HTTPS or repository-local index | Low-medium | Enforce schema/version/duplicate validation, bounded reads, canonical IDs and semantic versions, relative artifacts, and SHA-256 declarations before resolution |\n| Registry pack artifact | Bytes referenced by a validated registry index | Low | Keep fetches same-origin or repository-local, bound size, verify SHA-256 and pack-declared metadata, resolve dependencies, and validate the full operation before writes; never execute artifact content |\n| Installed-pack provenance | `.github/carl/installed-packs.json` | Medium | Validate schema and paths, require the local artifact version and digest to match, use the recorded registry for updates, and reject local drift or same-version registry mutation |\n| Policy explanation output | `carl explain` / `carl trace` human or JSON output | Medium | Treat as deterministic derived diagnostic evidence; verify against current canonical pack/profile/selection/provenance artefacts and never treat it as a new governance authority or model reasoning record |\n| Cognitive repository graph | `.github/carl/repo-map.json` `graph` | Medium | Treat as deterministic derived orientation evidence; validate repository-relative paths and cited static-import evidence, observe coverage limitations, and never treat heuristic criticality, attachment points, or direct impact as authoritative ownership, runtime flow, risk, or active policy |\n| Prompt/session memory | Conversation history, model memory, stale prompt context | Low-medium | Use as hints only; verify against current repository state and canonical cARL artefacts before relying on it |\n| External API response | Remote services and web sources | Low | Cross-check critical claims before using in implementation decisions |\n\n## Crossing rules\n\n- Cross-boundary assumptions that alter scope require explicit confirmation.\n- Current repository state wins over `.github/carl/memory.md` when directly observed and conflicting.\n- If durable cache facts conflict with current repository state, repository state wins and cache should be updated.\n- Canonical cARL artefacts outrank harness adapter files.\n- Harness adapter files may load, summarise, or route to cARL, but they are not the source of durable governance truth.\n- Prompt/session memory is advisory and may be stale.\n- Repository cARL artefacts outrank stale prompt/session memory when they conflict.\n- PR contract constraints apply throughout execution until contract context is reset, closed, or superseded.\n- Invariants are preserved unless explicitly amended through user-approved governance change.\n- External API output must not determine write targets without additional validation.\n- Registry access is opt-in: no default authority is inferred, and existing pack discovery, selection, activation, and composition commands remain network-free.\n- Remote registry locations must use HTTPS without embedded credentials, queries, or fragments; artifact references must remain relative and same-origin.\n- Repository-local registry paths and all install targets must remain within the repository and must not traverse symlinks.\n- SHA-256 binds artifact bytes to the explicitly configured index but does not authenticate publisher identity or establish a signing trust root.\n- All requested registry artifacts and dependencies must pass digest, metadata, ownership, path, and complete-pack-set validation before the first write.\n- Registry-managed updates must use recorded provenance and fail on local drift, changed registry location, or same-version digest mutation.\n- Policy explanation is pack-level and derived from validated repository state; it must remain read-only, network-free, repository-relative, and explicit that it does not interpret individual prose rules or expose prompts, hidden reasoning, or chain-of-thought.\n- Explanation output is diagnostic evidence, not canonical governance. Canonical cARL artefacts and current repository state remain authoritative.\n- The bundled profile example is not active policy. Only a deliberately\n  adopted `.github/carl/profiles.json` participates in activation, using the\n  same reference, dependency, precedence, override, and conflict validation as\n  every user-authored profile.\n- Pack hydration is repository-local and fail-closed. Explicit `packs.json`\n  selection outranks the `runtime.json` compatibility fallback; profile\n  defaults/context determine active seeds when configured; required\n  dependencies, precedence, and valid overrides determine the effective\n  evaluation. Overridden entries may remain visible for provenance, but their\n  definitions are not applied. Invalid or unresolved state must be reported,\n  never replaced by filesystem-order inference or a load-all fallback.\n- Cognitive graph paths and relationships are derived from current repository structure and static Go imports. Static dependencies do not prove runtime data flow, direct reverse dependencies do not guarantee transitive impact, and criticality labels are orientation heuristics rather than risk assessments.\n- Policy nodes and attachment points in the cognitive graph do not establish active policy. Use `carl trace` and canonical pack/profile/selection artefacts for policy evaluation provenance.\n- Missing ownership or runtime-flow evidence must remain explicit in graph coverage; it must not be replaced with inferred owners or invented flows.\n- Tool output must not be treated as authoritative unless it is current, relevant, and path-specific.\n- Secret-gated CI publish steps must explicitly guard execution on secret presence and must never print token values.\n- Apple signing/notarisation secrets (`MACOS_CERTIFICATE_P12_BASE64`, `MACOS_CERTIFICATE_PASSWORD`, `NOTARIZE_ISSUER_ID`, `NOTARIZE_KEY_ID`, `NOTARIZE_KEY`) are CI-only and must never be committed or logged.\n- If two high-trust sources conflict, stop and report the conflict rather than silently choosing the convenient interpretation.\n\n## Harness adapter boundary\n\nHarness adapters are an execution-context boundary.\n\nThey influence what an agent sees first, but they do not guarantee what the model will understand, remember, or apply across a task.\n\nRequired control:\n\n1. adapter loads or points to cARL;\n2. agent hydrates canonical cARL artefacts and derives only effective,\n   non-overridden instruction packs before planning or implementation;\n3. agent executes inside the active PR contract;\n4. agent validates implementation against contract assertions;\n5. agent reconciles cARL/docs before final response;\n6. agent reports the cARL/docs update decision.\n\nInstruction availability is not instruction adherence. Loader files must make the lifecycle explicit enough that weaker or cheaper models can follow it without relying on inference.\n"
+        },
+        {
+          "path": ".github/carl/tool-policy.yml",
+          "content": "# version: 1.1.0\ntool_tiers:\n  - tier: 0\n    name: Read-only\n    description: Observe state without modifying repository, local, or remote resources.\n    examples:\n      - Read files and directories\n      - Search code and metadata\n      - Read PRs, issues, and CI status\n      - Inspect cache and contract artefacts\n      - Inspect instruction packs\n      - Inspect harness adapter files\n      - Inspect test output\n      - Inspect generated repo maps\n    escalation_required: false\n    escalation_rule: No escalation required when the action is genuinely read-only.\n\n  - tier: 1\n    name: Scoped write\n    description: Modify specific, bounded targets inside approved PR scope.\n    examples:\n      - Edit a specific file listed in approved scope\n      - Create a new file at an approved path\n      - Update tests listed in approved scope\n      - Update documentation listed in approved scope\n      - Update cARL artefacts when durable truth changes\n      - Update harness adapter files when explicitly covered by the PR contract\n      - Update embedded asset copies when required to keep canonical runtime assets in sync\n      - Update PR description or non-destructive metadata\n    escalation_required: true\n    escalation_rule: Declare intent and confirm target is within approved scope before acting.\n\n  - tier: 2\n    name: Destructive, broad, or governance-sensitive\n    description: Delete resources, perform broad actions, or modify high-authority governance/runtime surfaces with significant blast radius.\n    examples:\n      - Delete files or directories\n      - Bulk search and replace across multiple files\n      - Modify CI workflows or release pipelines\n      - Modify root-level governance configuration\n      - Change harness adapter authority semantics\n      - Change runtime state semantics\n      - Modify .github/carl/runtime.json\n      - Change security policy or dependency policy\n      - Merge PRs or force-push branches\n      - Run destructive infrastructure commands\n      - Mutate external resources through remote APIs\n    escalation_required: true\n    escalation_rule: Require explicit user approval and PR contract coverage before acting."
+        }
+      ],
+      "dataCategories": [
+        {
+          "name": "carl_context",
+          "description": "Bounded cARL governance context files relevant to review policy",
+          "included": true
+        },
+        {
+          "name": "task_description",
+          "description": "Task or PR description supplied by the caller",
+          "included": false
+        },
+        {
+          "name": "git_diff",
+          "description": "Redacted git diff for changed non-secret-bearing files",
+          "included": true
+        },
+        {
+          "name": "changed_files",
+          "description": "Changed file paths and addition/deletion counts from git diff metadata",
+          "included": true
+        },
+        {
+          "name": "repository_metadata",
+          "description": "Repository name, branch, sanitized remote, and base/head refs",
+          "included": true
+        }
+      ]
+    },
+    "dataCategories": [
+      {
+        "name": "carl_context",
+        "description": "Bounded cARL governance context files relevant to review policy",
+        "included": true
+      },
+      {
+        "name": "task_description",
+        "description": "Task or PR description supplied by the caller",
+        "included": false
+      },
+      {
+        "name": "git_diff",
+        "description": "Redacted git diff for changed non-secret-bearing files",
+        "included": true
+      },
+      {
+        "name": "changed_files",
+        "description": "Changed file paths and addition/deletion counts from git diff metadata",
+        "included": true
+      },
+      {
+        "name": "repository_metadata",
+        "description": "Repository name, branch, sanitized remote, and base/head refs",
+        "included": true
+      }
+    ]
+  }
+}

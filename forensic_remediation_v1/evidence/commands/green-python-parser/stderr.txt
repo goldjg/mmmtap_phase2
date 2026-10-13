@@ -1,0 +1,6 @@
+test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.010s
+
+OK

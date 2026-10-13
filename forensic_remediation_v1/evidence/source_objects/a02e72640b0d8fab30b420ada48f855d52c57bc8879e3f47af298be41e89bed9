@@ -1,0 +1,335 @@
+from __future__ import annotations
+
+import base64
+import copy
+import json
+import os
+from pathlib import Path
+import shutil
+import tempfile
+import unittest
+from unittest.mock import patch
+
+from phase2.adapters import parse_systemone
+from phase2.adapters_v2 import PathBAdapter
+from phase2.core import ROOT, IntegrityError, corpus, digest, json_bytes, load, render_prompt
+from phase2.engine import execute, usage_metrics
+from phase2.isolation import RunResult, stream_run
+from phase2.integration import freeze, plan_v4, verify_instruments, validate_v4, ScriptedAdapters
+from phase2.software import build_path_b, tree_identity, verify_generator_closure, build_receipt_path
+from phase2.isolation import sha256_file
+from phase2.path_b import build_request
+
+
+FIXTURES = ROOT.parent / "cARL-semantic-eval/internal/assessment/testdata/systemone_responses.json"
+
+
+class ProviderResponseRegressions(unittest.TestCase):
+    def test_D1_shared_provider_byte_fixtures(self):
+        fixtures = load(FIXTURES)
+        for case in fixtures["cases"]:
+            with self.subTest(case=case["id"]):
+                raw = case["raw"].encode()
+                request = fixtures["requests"][case["request"]]
+                if case["accepted"]:
+                    parsed = parse_systemone(raw, request)
+                    expected = json.loads(raw)
+                    self.assertEqual(parsed["answers"], expected["answers"])
+                    self.assertEqual(parsed["resolved_model"], expected["model"])
+                    self.assertEqual(parsed["usage"], expected.get("usage"))
+                else:
+                    with self.assertRaises(ValueError):
+                        parse_systemone(raw, request)
+
+
+class PathBProvenanceRegressions(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.temp = tempfile.TemporaryDirectory()
+        binary = Path(cls.temp.name) / "bin/carl-assessment-challenge-v4"
+        build_path_b(binary)
+        cls.cfg = load(ROOT / "integration_readiness_v1/instruments/config.v2.json")
+        cls.cfg["adversaries"]["carl_jev"].update(binary=str(binary), binary_sha256=sha256_file(binary))
+        cls.plan = load(ROOT / "execution_plan_v2.json")
+        cls.source, cls.members = corpus()
+        job = next(j for j in cls.plan["jobs"] if j["mechanism"] == "carl_jev" and j["arm"] == "E2")
+        cls.request = build_request(cls.plan, job, ROOT / "execution_dry_run_v2", cls.members,
+                                    (ROOT / "MMMTAP_Phase2/corpus_manifest.json").read_bytes(),
+                                    "forensic-offline-regression")
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.temp.cleanup()
+
+    def adapter(self):
+        return PathBAdapter(self.cfg["adversaries"]["carl_jev"], self.cfg)
+
+    def answer(self):
+        native = json.loads(base64.b64decode(self.request["native_request"]))
+        return {"model": "MOCK_NOT_PROVIDER", "answers": {q: {"noul": 0.8} for q in native["questions"]}}
+
+    def test_D3_no_credential_zero_HTTP_attempts(self):
+        with patch.dict(os.environ, {"JEVKEY": ""}, clear=True):
+            response = self.adapter().invoke(self.request, authorised=True)
+        self.assertEqual(response.error, "credentials_unavailable")
+        receipt = json.loads(response.stdout)
+        self.assertEqual(receipt["attempts"], 0)
+        self.assertEqual(response.provenance["transport_attempts"], 0)
+        self.assertEqual(response.provenance["cli_invocations"], 3)
+        self.assertEqual(response.provenance["request_written"], False)
+
+    def test_D4_usage_from_raw_provider_evidence(self):
+        answer = {**self.answer(), "usage": {"input_tokens": 123, "output_tokens": 45}}
+        response = self.adapter().invoke(self.request, mock_response=answer)
+        self.assertIsNone(response.error)
+        self.assertEqual(response.usage, answer["usage"])
+        metrics = usage_metrics(response, "mock", self.cfg)
+        self.assertEqual((metrics["input_tokens"], metrics["output_tokens"]), (123, 45))
+        self.assertIsNone(metrics["cached_input_tokens"])
+        self.assertEqual(response.provenance["usage_source"], "verified_receipt.raw_response.usage")
+
+    def test_D5_failed_prepare_retains_first_attempt_artifacts(self):
+        response = self.adapter().invoke({}, mock_response=self.answer())
+        self.assertIsNotNone(response.error)
+        artifacts = response.provenance.get("artifacts", {})
+        self.assertIn("prepared/intent.json", artifacts)
+        self.assertIn("prepared/request.json", artifacts)
+        self.assertIn("prepared/failure.json", artifacts)
+        self.assertEqual(base64.b64decode(artifacts["prepared/request.json"]), b"{}")
+        self.assertTrue(response.stderr)
+        self.assertEqual(response.provenance["cli_invocations"], 1)
+        self.assertEqual(response.provenance["transport_attempts"], 0)
+        self.assertTrue(response.provenance["staging_removed"])
+
+    def test_D5_malformed_receipt_preserves_artifacts_without_raising(self):
+        def corrupt(argv, **kwargs):
+            result = stream_run(argv, **kwargs)
+            if argv[1] == "evaluate-offline":
+                (Path(argv[argv.index("--out") + 1]) / "receipt.json").write_bytes(b"{malformed")
+            return result
+
+        with patch("phase2.adapters_v2.stream_run", side_effect=corrupt):
+            response = self.adapter().invoke(self.request, mock_response=self.answer())
+        self.assertIsNotNone(response.error)
+        self.assertEqual(base64.b64decode(response.provenance["artifacts"]["result/receipt.json"]), b"{malformed")
+        self.assertTrue(response.provenance["staging_removed"])
+
+    def test_D5_missing_response_file_cannot_pass_replay_alone(self):
+        def remove_body(argv, **kwargs):
+            result = stream_run(argv, **kwargs)
+            if argv[1] == "evaluate-offline":
+                (Path(argv[argv.index("--out") + 1]) / "response.json").unlink()
+            return result
+
+        with patch("phase2.adapters_v2.stream_run", side_effect=remove_body):
+            response = self.adapter().invoke(self.request, mock_response=self.answer())
+        self.assertIsNotNone(response.error)
+        self.assertFalse(response.message)
+        self.assertIn("result/receipt.json", response.provenance["artifacts"])
+
+    def test_D3_partial_live_process_does_not_invent_HTTP_count(self):
+        def partial(argv, **kwargs):
+            if argv[1] != "evaluate-live":
+                return stream_run(argv, **kwargs)
+            out = Path(argv[argv.index("--out") + 1])
+            out.mkdir()
+            (out / "intent.json").write_bytes(b'{"evidence_mode":"authored_mock_partial_process"}')
+            return RunResult(stderr=b"authored offline partial-process fixture", error="mock_timeout", exit_status=-9)
+
+        with patch.dict(os.environ, {"JEVKEY": ""}, clear=True), patch(
+                "phase2.adapters_v2.stream_run", side_effect=partial):
+            response = self.adapter().invoke(self.request, authorised=True)
+        self.assertIsNotNone(response.error)
+        self.assertIsNone(response.provenance["transport_attempts"])
+        self.assertEqual(response.provenance["cli_invocations"], 2)
+        self.assertIn("result/intent.json", response.provenance["artifacts"])
+        self.assertEqual(response.provenance["transport_count_basis"], "unknown_incomplete_evaluation")
+
+    def test_E_known_credential_process_echo_is_withheld(self):
+        secret = "dummy-credential-NEVER-A-REAL-SECRET"
+
+        def echo(argv, **kwargs):
+            result = stream_run(argv, **kwargs)
+            result.stderr += secret.encode()
+            return result
+
+        with patch.dict(os.environ, {"JEVKEY": secret}, clear=True), patch(
+                "phase2.adapters_v2.stream_run", side_effect=echo):
+            response = self.adapter().invoke(self.request, mock_response=self.answer())
+        self.assertIsNotNone(response.error)
+        self.assertNotIn(secret.encode(), response.stderr)
+        for process in response.provenance["processes"]:
+            for field in ("stdout", "stderr"):
+                self.assertNotIn(secret.encode(), base64.b64decode(process[field]))
+        self.assertTrue(response.provenance["sensitive_evidence_withheld"])
+
+    def test_E_nested_request_credential_rejected_before_staging(self):
+        secret = "dummy-NESTED-credential"
+        request = {**self.request, "nested": base64.b64encode(json_bytes({"s": secret})).decode()}
+        with patch.dict(os.environ, {"JEVKEY": secret}, clear=True), patch(
+                "phase2.adapters_v2.stream_run") as run:
+            response = self.adapter().invoke(request, mock_response=self.answer())
+        run.assert_not_called()
+        self.assertIn("credential", response.error)
+        self.assertEqual(response.provenance["artifacts"], {})
+
+    def test_E_cleanup_failure_retains_receipt_and_requires_action(self):
+        cleanup = shutil.rmtree
+        with patch("shutil.rmtree", side_effect=PermissionError("mock_cleanup_denied")):
+            response = self.adapter().invoke(self.request, mock_response=self.answer())
+        try:
+            self.assertIn("cleanup_failed", response.error)
+            self.assertFalse(response.provenance["staging_removed"])
+            self.assertTrue(response.stdout)
+            self.assertIn("result/receipt.json", response.provenance["artifacts"])
+        finally:
+            if response.provenance.get("cleanup_required"):
+                cleanup(response.provenance["cleanup_required"])
+
+    def test_D5_engine_preparation_failure_is_a_sealed_first_attempt(self):
+        selection = {("synthetic-token-logging", "baseline")}
+        with tempfile.TemporaryDirectory() as tmp, patch(
+                "phase2.engine.render_prompt", side_effect=ValueError("authored_preparation_failure")):
+            out = Path(tmp) / "run"
+            first = execute(self.plan, self.members, out, mode="mock", selected_inputs=selection)
+            self.assertEqual(first["status_counts"], {"execution_failed": 3, "blocked_parent": 48})
+            records = [load(p) for p in (out / "checkpoints").glob("*/result.json")]
+            failed = [r for r in records if r["status"] == "execution_failed"]
+            self.assertTrue(all("preparation_failed" in r["reason"] for r in failed))
+            resumed = execute(self.plan, self.members, out, mode="mock", selected_inputs=selection)
+            self.assertEqual(resumed["new_checkpoints"], 0)
+
+
+class FrozenInstrumentRegressions(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.temp = tempfile.TemporaryDirectory()
+        cls.root = Path(cls.temp.name)
+        cls.binary = cls.root / "bin/carl-assessment-challenge-v4"
+        build_path_b(cls.binary)
+        freeze(cls.root / "instruments", cls.binary)
+        cls.source, cls.members = corpus()
+        cls.plan = plan_v4(cls.root / "instruments", cls.source, {"adapters": {}})
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.temp.cleanup()
+
+    def test_D2_changed_runtime_prompt_cannot_reuse_instrument_identity(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            original = load(ROOT / "phase2/prompts.v1.json")
+            changed = copy.deepcopy(original)
+            changed["C1"] += " FORENSIC_CHANGED_PROMPT"
+            (root / "prompts.v1.json").write_bytes(json_bytes(changed))
+            with patch("phase2.core.PACKAGE", root):
+                with self.assertRaises(IntegrityError):
+                    plan_v4(self.root / "instruments", self.source, {"adapters": {}})
+
+    def test_D6_stale_controls_cannot_reach_assembly_execution(self):
+        from phase2.readiness import assemble
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            (out / "bin").mkdir()
+            destination = out / "bin/carl-assessment-challenge-v4"
+            shutil.copyfile(self.binary, destination)
+            shutil.copyfile(build_receipt_path(self.binary), build_receipt_path(destination))
+            shutil.copytree(ROOT / "integration_readiness_v1/isolation_controls_final",
+                            out / "isolation_controls_final")
+            with patch("phase2.readiness.execute", side_effect=AssertionError("stale controls reached executor")):
+                with self.assertRaises(IntegrityError):
+                    assemble(out)
+
+    def test_R6_same_qualification_identity_cannot_move_to_fresh_directory(self):
+        from phase2.adapters import Response
+        from phase2.readiness import qualify
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            with patch("phase2.readiness.QUALIFICATION_REGISTRY", out / "registry", create=True), patch(
+                    "phase2.readiness.live_invoke_v4", return_value=Response(error="authored_mock_failure")):
+                qualify(self.plan, self.members, out / "first", "haiku", authorised=True)
+                with self.assertRaises(FileExistsError):
+                    qualify(self.plan, self.members, out / "second", "haiku", authorised=True)
+
+    def test_D2_all_semantic_snapshots_must_match_runtime(self):
+        from phase2 import integration
+        real_load = integration.load
+        for filename in ("questions.v1.json", "assessment_shape.v1.json", "evidence_schema.v1.json",
+                         "provider_response_schema.v1.json", "roles.v1.json"):
+            with self.subTest(snapshot=filename):
+                def mutated(path):
+                    value = real_load(path)
+                    return {**value, "changed_semantics": True} if Path(path).name == filename else value
+                with patch("phase2.integration.load", side_effect=mutated):
+                    with self.assertRaisesRegex(IntegrityError, "semantics differ"):
+                        verify_instruments(self.root / "instruments")
+
+    def test_R1_imported_helpers_and_test_sources_are_bound(self):
+        from phase2.software import source_hashes
+        actual = source_hashes()
+        self.assertIn("mmmtap_phase2/historical_extractor/archive.py", actual)
+        self.assertIn("cARL-semantic-eval/embedded/embedded.go", actual)
+        changed = {**actual, "mmmtap_phase2/historical_extractor/archive.py": "0" * 64}
+        with patch("phase2.integration.source_hashes", return_value=changed):
+            with self.assertRaisesRegex(IntegrityError, "runtime software"):
+                validate_v4(self.plan)
+
+    def test_D2_unbound_old_binary_cannot_be_frozen_as_current(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with self.assertRaisesRegex(IntegrityError, "build receipt"):
+                freeze(Path(tmp) / "instruments", ROOT / "integration_readiness_v1/bin/carl-assessment-challenge-v2")
+
+    def test_R1_extra_or_changed_CLI_helpers_are_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            binary = root / "binary"
+            binary.write_bytes(b"authored dummy executable identity; never executed")
+            spec = {"binary": str(binary), "binary_sha256": sha256_file(binary),
+                    "release_root": str(root), "release_sha256": digest(tree_identity(root))}
+            verify_generator_closure(spec)
+            helper = root / "extra-helper"
+            helper.write_bytes(b"changed closure")
+            with self.assertRaises(IntegrityError):
+                verify_generator_closure(spec)
+
+    def test_R6_failed_parent_preparation_stays_reserved(self):
+        from phase2.readiness import qualify
+        from phase2.adjudication import checked_records
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            with patch("phase2.readiness.QUALIFICATION_REGISTRY", out / "registry"), patch(
+                    "phase2.readiness.live_invoke_v4") as invoke:
+                record = qualify(self.plan, self.members, out / "failed-parent", "carl_jev", authorised=True)
+                self.assertIn("preparation_failed", record["reason"])
+                invoke.assert_not_called()
+                checked_records(out / "failed-parent")
+                with self.assertRaises(FileExistsError):
+                    qualify(self.plan, self.members, out / "new-directory", "carl_jev", authorised=True)
+
+
+class MockChainRegressions(unittest.TestCase):
+    def test_R5_mock_requires_correct_challenge_and_changes_claims(self):
+        plan = load(ROOT / "execution_plan_v2.json")
+        _, members = corpus()
+        b0 = next(j for j in plan["jobs"] if j["case_id"] == "synthetic-token-logging" and
+                  j["variant_id"] == "baseline" and j["generator"] == "haiku" and j["arm"] == "B0")
+        follow = next(j for j in plan["jobs"] if j["assessment_parent"] == b0["job_id"] and
+                      j["arm"] == "E1" and j["kind"] == "generator")
+        source = members[b0["input_member"]]
+        mock = ScriptedAdapters(plan)
+        previous = json.loads(mock.invoke(b0, render_prompt(plan, b0, source, None, [], None), None).message)
+        with self.assertRaises(IntegrityError):
+            mock.invoke(follow, render_prompt(plan, follow, source, previous, [], None), previous)
+        challenge = {"mechanism": "native_jev", "answers": {"claim_0000_supported": {"noul": 0.2}},
+                     "mock_fixture_binding": {"adversary_job_id": follow["challenge_parent"],
+                                              "assessment_sha256": digest(previous)}}
+        payload = render_prompt(plan, follow, source, previous, [], challenge)
+        revised = json.loads(mock.invoke(follow, payload, previous).message)
+        self.assertEqual({r["action"] for r in revised["changes"]}, {"revised", "added"})
+        challenge["mock_fixture_binding"]["adversary_job_id"] = "wrong-branch"
+        with self.assertRaises(IntegrityError):
+            mock.invoke(follow, render_prompt(plan, follow, source, previous, [], challenge), previous)
+
+
+if __name__ == "__main__":
+    unittest.main()

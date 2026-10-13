@@ -1,0 +1,1 @@
+{"error": null, "exit_status": -9, "killed": true, "latency_seconds": 5.861, "read_target_visible_in_sandbox": false, "requests": 1, "watchdog_reason": "transport_failure_observed_retry_not_permitted", "write_target_exists_in_sandbox": false}

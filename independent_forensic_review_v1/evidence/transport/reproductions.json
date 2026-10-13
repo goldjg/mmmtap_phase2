@@ -1,0 +1,68 @@
+[
+  {
+    "name": "forensic",
+    "args": [
+      "go",
+      "test",
+      "-overlay",
+      "/home/prometheus/.copilot/session-state/3374c7d5-61e9-41b6-bfc5-0f0f55533363/files/transport-forensics/overlay.json",
+      "-count=1",
+      "-json",
+      "-run",
+      "^TestForensic",
+      "./internal/assessment"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "v1_help",
+    "args": [
+      "/home/prometheus/git/mmmtap_phase2/path_b_validation_v1/bin/carl-assessment-challenge-v1",
+      "--help"
+    ],
+    "exit_code": 0,
+    "binary_sha256": "02f02bc36917220805ffd6ff6e82f46ebe290d95dd98cfd214949769f0807869"
+  },
+  {
+    "name": "draft_help",
+    "args": [
+      "/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/bin/carl-assessment-challenge-v1-live",
+      "--help"
+    ],
+    "exit_code": 0,
+    "binary_sha256": "60654ee70322f004f9636b141c68318c36941780b84969942f431a7aa7b4c83b"
+  },
+  {
+    "name": "v2_help",
+    "args": [
+      "/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/bin/carl-assessment-challenge-v2",
+      "--help"
+    ],
+    "exit_code": 0,
+    "binary_sha256": "be5a4b98d0acfd516839e9a5ab23071830f39ce0afa808d56a6acbbba1c92716"
+  },
+  {
+    "name": "v2_replay_historical",
+    "args": [
+      "/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/bin/carl-assessment-challenge-v2",
+      "replay",
+      "--receipt",
+      "/home/prometheus/git/mmmtap_phase2/path_b_validation_v1/cases/021-E2/evaluated/receipt.json",
+      "--receipt-sha256",
+      "3b7ee2039da775566ec38251ca098d1f2e587f2113430d76c0a992d5e720088e"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "v2_replay_missing_credential",
+    "args": [
+      "/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/bin/carl-assessment-challenge-v2",
+      "replay",
+      "--receipt",
+      "/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/binary_missing_credential/live_receipt.json",
+      "--receipt-sha256",
+      "0af4a4f65820d825b4c734030c0851c536841b8dbdd0b15e537a601a39358861"
+    ],
+    "exit_code": 0
+  }
+]

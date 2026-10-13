@@ -1,0 +1,2 @@
+can't start telemetry child process: open /dev/null: permission denied
+go: error obtaining buildID for go tool compile: open /dev/null: permission denied

@@ -1,0 +1,31 @@
+{
+  "protocol": "MMMTAP-P2-proposed-v1",
+  "generators": [
+    "claude-haiku-5.5",
+    "gemini-model-PIN-EXACT-ID",
+    "gpt-6.1-sol"
+  ],
+  "adversaries": [
+    "native-jev-systemone",
+    "carl-jev-systemone"
+  ],
+  "arms": [
+    "independent",
+    "self_review",
+    "placebo",
+    "native_jev_challenge",
+    "carl_jev_challenge",
+    "two_adversary_sequential"
+  ],
+  "baseline_input_count": 135,
+  "one_pass_generator_calls": 405,
+  "round_1_calls": 405,
+  "followup_arm_calls": 2430,
+  "planned_total_generator_calls": 2835,
+  "requires_adapter_validation": true,
+  "executed": false,
+  "notes": [
+    "For 135 inputs \u00d7 three generators: 405 initial calls, 4 single-turn follow-up arms (self/placebo/native JEV/cARL-JEV) \u00d7 405 = 1620, and one two-turn sequential arm \u00d7 405 = 810; total 2,835 generator calls. Specialist calls, extra controls, repetitions and unique legacy fixtures are additional.",
+    "Specialist calls, controls and distinct legacy cases are additional."
+  ]
+}

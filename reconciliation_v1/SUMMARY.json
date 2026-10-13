@@ -1,0 +1,18 @@
+{
+  "protocol": "MMMTAP-P2-RECONCILE-v1",
+  "execution": "read_only_no_model_calls",
+  "primary_archive_sha256": "a3fe94069009f328b0a46bb52a7ff52d2c2bedfcd0eb3babe360eea1c884cc21",
+  "primary_verified": true,
+  "primary_issues": [],
+  "primary_items": 135,
+  "cases": 15,
+  "variants": 9,
+  "inventory_records": 44,
+  "inventory_exact_sha_matches": 33,
+  "inventory_same_name_different_sha": 2,
+  "inventory_not_located": 9,
+  "discovered_zips": 131,
+  "archive_member_index_rows": 1776,
+  "historical_unique_cases": "NOT_YET_CLASSIFIED",
+  "no_historical_auto_admission": true
+}

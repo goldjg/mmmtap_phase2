@@ -1,0 +1,47 @@
+{
+  "schema": "mmmtap-publication-validation-v1",
+  "publication_kind": "sanitized_copy_not_original_sealed_evidence",
+  "provider_calls": 0,
+  "original_package_verification": {
+    "passed": true,
+    "operator_sealed_files": 1165,
+    "v5_sealed_files": 4699,
+    "preserved_entries": 40538,
+    "changed_or_missing": []
+  },
+  "continuation_tests": {
+    "original_bundle": "7 passed",
+    "sanitized_snapshot": "7 passed",
+    "pilot_replay": {
+      "ok": 114,
+      "schema_invalid": 28,
+      "blocked_parent": 11,
+      "attempt_reservations": 142,
+      "terminal_checkpoints": 153,
+      "provider_calls": 0,
+      "pilot_redactions": 0
+    }
+  },
+  "publication_checks": {
+    "known_credentials_absent_from_files_archives_and_decoded_json": true,
+    "unique_contents_inspected": 63956,
+    "included_original_files_byte_identical_or_hash_accounted": true,
+    "authentication_files_excluded": true,
+    "runtime_symlinks_excluded": true,
+    "gitleaks_workspace_and_deduplicated_archive_text_reviewed": true,
+    "remaining_reviewed_signatures": [
+      "idempotency and prompt-cache identifiers",
+      "build/source file SHA-256 metadata",
+      "API call identifiers"
+    ],
+    "scanner_limitations": "Automated scanning does not establish universal absence of sensitive content. Detected credential values were redacted, including encoded payloads; uncertain authentication/probe material was excluded or conservatively redacted."
+  },
+  "external_evidence": {
+    "copied_referenced_archives": 11,
+    "missing_referenced_paths": 71,
+    "inventory": "publication_external_evidence/manifest.json"
+  },
+  "large_artifact_storage": "Git LFS",
+  "full_experiment_authorized": false,
+  "strict_isolation_qualified": false
+}

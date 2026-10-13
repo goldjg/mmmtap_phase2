@@ -1,0 +1,781 @@
+TEXT github.com/goldjg/carl/internal/semantic.(*TypeSafeJevEvaluator).Evaluate(SB) /home/prometheus/git/cARL-semantic-eval/internal/semantic/jev.go
+  jev.go:57		0x2b3b10		f9400b90		MOVD 16(R28), R16									
+  jev.go:57		0x2b3b14		d10a83f1		SUB $672, RSP, R17									
+  jev.go:57		0x2b3b18		eb10023f		CMP R16, R17										
+  jev.go:57		0x2b3b1c		54005fa9		BLS 765(PC)										
+  jev.go:57		0x2b3b20		d10c83f4		SUB $800, RSP, R20									
+  jev.go:57		0x2b3b24		a93ffa9d		STP (R29, R30), -8(R20)									
+  jev.go:57		0x2b3b28		9100029f		MOVD R20, RSP										
+  jev.go:57		0x2b3b2c		d10023fd		SUB $8, RSP, R29									
+  jev.go:57		0x2b3b30		f90217e1		MOVD R1, 1064(RSP)									
+  jev.go:57		0x2b3b34		f9021be2		MOVD R2, 1072(RSP)									
+  jev.go:57		0x2b3b38		f9021fe3		MOVD R3, 1080(RSP)									
+  jev.go:57		0x2b3b3c		f9018bff		MOVD ZR, 784(RSP)									
+  jev.go:57		0x2b3b40		39017fff		MOVB ZR, 95(RSP)									
+  jev.go:57		0x2b3b44		f90057ff		MOVD ZR, 168(RSP)									
+  jev.go:57		0x2b3b48		a909ffff		STP (ZR, ZR), 152(RSP)									
+  jev.go:58		0x2b3b4c		f9400c06		MOVD 24(R0), R6										
+  jev.go:58		0x2b3b50		b40034a6		CBZ R6, 421(PC)										
+  jev.go:61		0x2b3b54		f9402006		MOVD 64(R0), R6										
+  jev.go:61		0x2b3b58		b4003186		CBZ R6, 396(PC)										
+  jev.go:58		0x2b3b5c		f90213e0		MOVD R0, 1056(RSP)									
+  jev.go:58		0x2b3b60		f9021be2		MOVD R2, 1072(RSP)									
+  jev.go:58		0x2b3b64		f90217e1		MOVD R1, 1064(RSP)									
+  jev.go:65		0x2b3b68		9105e3e1		ADD $376, RSP, R1									
+  jev.go:65		0x2b3b6c		b27e03e2		ORR $4, ZR, R2										
+  jev.go:65		0x2b3b70		a8817c3f		STP.P (ZR, ZR), 16(R1)									
+  jev.go:65		0x2b3b74		a8817c3f		STP.P (ZR, ZR), 16(R1)									
+  jev.go:65		0x2b3b78		a8817c3f		STP.P (ZR, ZR), 16(R1)									
+  jev.go:65		0x2b3b7c		a8817c3f		STP.P (ZR, ZR), 16(R1)									
+  jev.go:65		0x2b3b80		d1000442		SUB $1, R2, R2										
+  jev.go:65		0x2b3b84		b5ffff62		CBNZ R2, -5(PC)										
+  jev.go:65		0x2b3b88		a9007c3f		STP (ZR, ZR), (R1)									
+  jev.go:65		0x2b3b8c		a9017c3f		STP (ZR, ZR), 16(R1)									
+  jev.go:65		0x2b3b90		a9421802		LDP 32(R0), (R2, R6)									
+  jev.go:65		0x2b3b94		a9179be2		STP (R2, R6), 376(RSP)									
+  jev.go:65		0x2b3b98		910623e2		ADD $392, RSP, R2									
+  jev.go:65		0x2b3b9c		910ca3e6		ADD $808, RSP, R6									
+  jev.go:65		0x2b3ba0		b24007f8		ORR $3, ZR, R24										
+  jev.go:65		0x2b3ba4		acc144d0		FLDPQ.P 32(R6), (F16, F17)								
+  jev.go:65		0x2b3ba8		ac814450		FSTPQ.P (F16, F17), 32(R2)								
+  jev.go:65		0x2b3bac		acc144d0		FLDPQ.P 32(R6), (F16, F17)								
+  jev.go:65		0x2b3bb0		ac814450		FSTPQ.P (F16, F17), 32(R2)								
+  jev.go:65		0x2b3bb4		d1000718		SUB $1, R24, R24									
+  jev.go:65		0x2b3bb8		b5ffff78		CBNZ R24, -5(PC)									
+  jev.go:65		0x2b3bbc		ad4044d0		FLDPQ (R6), (F16, F17)									
+  jev.go:65		0x2b3bc0		ad004450		FSTPQ (F16, F17), (R2)									
+  jev.go:65		0x2b3bc4		3dc008d0		FMOVQ 32(R6), F16									
+  jev.go:65		0x2b3bc8		3d800850		FMOVQ F16, 32(R2)									
+  jev.go:65		0x2b3bcc		f94018d9		MOVD 48(R6), R25									
+  jev.go:65		0x2b3bd0		f9001859		MOVD R25, 48(R2)									
+  jev.go:65		0x2b3bd4		f90143e3		MOVD R3, 640(RSP)									
+  jev.go:65		0x2b3bd8		910a23fb		ADD $648, RSP, R27									
+  jev.go:65		0x2b3bdc		a9001764		STP (R4, R5), (R27)									
+  jev.go:65		0x2b3be0		d00006a0		ADRP 876544(PC), R0									
+  jev.go:65		0x2b3be4		91218000		ADD $2144, R0, R0									
+  jev.go:65		0x2b3be8		9105e3e1		ADD $376, RSP, R1									
+  jev.go:65		0x2b3bec		97f5df2d		CALL runtime.convT(SB)									
+  jev.go:65		0x2b3bf0		aa0003e1		MOVD R0, R1										
+  jev.go:65		0x2b3bf4		d00006a0		ADRP 876544(PC), R0									
+  jev.go:65		0x2b3bf8		91218000		ADD $2144, R0, R0									
+  jev.go:65		0x2b3bfc		97f9f4a9		CALL encoding/json.Marshal(SB)								
+  jev.go:66		0x2b3c00		b4000423		CBZ R3, 33(PC)										
+  jev.go:67		0x2b3c04		a910ffff		STP (ZR, ZR), 264(RSP)									
+  jev.go:67		0x2b3c08		b4000043		CBZ R3, 2(PC)										
+  jev.go:67		0x2b3c0c		f9400463		MOVD 8(R3), R3										
+  jev.go:67		0x2b3c10		a91093e3		STP (R3, R4), 264(RSP)									
+  errors.go:26		0x2b3c14		d00008c0		ADRP 1155072(PC), R0									
+  errors.go:26		0x2b3c18		91203800		ADD $2062, R0, R0									
+  errors.go:26		0x2b3c1c		d28002e1		MOVD $23, R1										
+  errors.go:26		0x2b3c20		910423e2		ADD $264, RSP, R2									
+  errors.go:26		0x2b3c24		b24003e3		ORR $1, ZR, R3										
+  errors.go:26		0x2b3c28		aa0303e4		MOVD R3, R4										
+  errors.go:26		0x2b3c2c		97f8e5a1		CALL fmt.errorf(SB)									
+  errors.go:26		0x2b3c30		b5000180		CBNZ R0, 12(PC)										
+  errors.go:31		0x2b3c34		d503201f		NOOP											
+  errors.go:65		0x2b3c38		d0000560		ADRP 712704(PC), R0									
+  errors.go:65		0x2b3c3c		913c8000		ADD $3872, R0, R0									
+  errors.go:65		0x2b3c40		97f5eeb4		CALL runtime.newobject(SB)								
+  errors.go:65		0x2b3c44		d00008c1		ADRP 1155072(PC), R1									
+  errors.go:65		0x2b3c48		91203821		ADD $2062, R1, R1									
+  errors.go:65		0x2b3c4c		d28002e2		MOVD $23, R2										
+  errors.go:65		0x2b3c50		a9000801		STP (R1, R2), (R0)									
+  jev.go:67		0x2b3c54		aa0003e1		MOVD R0, R1										
+  jev.go:67		0x2b3c58		b0000b60		ADRP 1495040(PC), R0									
+  jev.go:67		0x2b3c5c		9105a000		ADD $360, R0, R0									
+  jev.go:67		0x2b3c60		f90057ff		MOVD ZR, 168(RSP)									
+  jev.go:67		0x2b3c64		a90987e0		STP (R0, R1), 152(RSP)									
+  jev.go:67		0x2b3c68		f94057e3		MOVD 168(RSP), R3									
+  jev.go:67		0x2b3c6c		aa0103e2		MOVD R1, R2										
+  jev.go:67		0x2b3c70		aa0003e1		MOVD R0, R1										
+  jev.go:67		0x2b3c74		aa0303e0		MOVD R3, R0										
+  jev.go:67		0x2b3c78		a97ffbfd		LDP -8(RSP), (R29, R30)									
+  jev.go:67		0x2b3c7c		910c83ff		ADD $800, RSP, RSP									
+  jev.go:67		0x2b3c80		d65f03c0		RET											
+  jev.go:65		0x2b3c84		f9003fe1		MOVD R1, 120(RSP)									
+  jev.go:65		0x2b3c88		f90077e0		MOVD R0, 232(RSP)									
+  jev.go:65		0x2b3c8c		f90043e2		MOVD R2, 128(RSP)									
+  reader.go:159		0x2b3c90		b00006a0		ADRP 872448(PC), R0									
+  reader.go:159		0x2b3c94		911f8000		ADD $2016, R0, R0									
+  reader.go:159		0x2b3c98		97f5ee9e		CALL runtime.newobject(SB)								
+  reader.go:159		0x2b3c9c		f9403fe1		MOVD 120(RSP), R1									
+  reader.go:159		0x2b3ca0		f94043e2		MOVD 128(RSP), R2									
+  reader.go:159		0x2b3ca4		a9008801		STP (R1, R2), 8(R0)									
+  reader.go:159		0x2b3ca8		d000249b		ADRP 4792320(PC), R27									
+  reader.go:159		0x2b3cac		b947f361		MOVWU 2032(R27), R1									
+  reader.go:159		0x2b3cb0		35000061		CBNZW R1, 3(PC)										
+  reader.go:159		0x2b3cb4		f94077e8		MOVD 232(RSP), R8									
+  reader.go:159		0x2b3cb8		14000004		JMP 4(PC)										
+  reader.go:159		0x2b3cbc		97f78c81		CALL runtime.gcWriteBarrier1(SB)							
+  reader.go:159		0x2b3cc0		f94077e8		MOVD 232(RSP), R8									
+  reader.go:159		0x2b3cc4		f9000328		MOVD R8, (R25)										
+  reader.go:159		0x2b3cc8		f9000008		MOVD R8, (R0)										
+  reader.go:159		0x2b3ccc		92800008		MOVD $-1, R8										
+  reader.go:159		0x2b3cd0		a901a01f		STP (ZR, R8), 24(R0)									
+  jev.go:69		0x2b3cd4		f94213e8		MOVD 1056(RSP), R8									
+  jev.go:69		0x2b3cd8		a9411504		LDP 16(R8), (R4, R5)									
+  jev.go:69		0x2b3cdc		f9421be1		MOVD 1072(RSP), R1									
+  jev.go:69		0x2b3ce0		90000882		ADRP 1114112(PC), R2									
+  jev.go:69		0x2b3ce4		91344442		ADD $3345, R2, R2									
+  jev.go:69		0x2b3ce8		b27e03e3		ORR $4, ZR, R3										
+  jev.go:69		0x2b3cec		b0000b66		ADRP 1495040(PC), R6									
+  jev.go:69		0x2b3cf0		911380c6		ADD $1248, R6, R6									
+  jev.go:69		0x2b3cf4		aa0003e7		MOVD R0, R7										
+  jev.go:69		0x2b3cf8		f94217e0		MOVD 1064(RSP), R0									
+  jev.go:69		0x2b3cfc		97fe39f1		CALL net/http.NewRequestWithContext(SB)							
+  jev.go:70		0x2b3d00		b5002161		CBNZ R1, 267(PC)									
+  jev.go:69		0x2b3d04		f90063e0		MOVD R0, 192(RSP)									
+  jev.go:73		0x2b3d08		f9401c02		MOVD 56(R0), R2										
+  jev.go:73		0x2b3d0c		f90163e2		MOVD R2, 704(RSP)									
+  header.go:40		0x2b3d10		d503201f		NOOP											
+  header.go:22		0x2b3d14		f0000880		ADRP 1126400(PC), R0									
+  header.go:22		0x2b3d18		91363800		ADD $3470, R0, R0									
+  header.go:22		0x2b3d1c		b27e07e1		ORR $12, ZR, R1										
+  header.go:22		0x2b3d20		97fd4538		CALL net/textproto.CanonicalMIMEHeaderKey(SB)						
+  header.go:22		0x2b3d24		f9015fe0		MOVD R0, 696(RSP)									
+  header.go:22		0x2b3d28		f9004be1		MOVD R1, 144(RSP)									
+  header.go:22		0x2b3d2c		90000480		ADRP 589824(PC), R0									
+  header.go:22		0x2b3d30		912c8000		ADD $2848, R0, R0									
+  header.go:22		0x2b3d34		97f5ee77		CALL runtime.newobject(SB)								
+  header.go:22		0x2b3d38		f9015be0		MOVD R0, 688(RSP)									
+  header.go:22		0x2b3d3c		d00008a2		ADRP 1138688(PC), R2									
+  header.go:22		0x2b3d40		9101b842		ADD $110, R2, R2									
+  header.go:22		0x2b3d44		b27c03e3		ORR $16, ZR, R3										
+  header.go:22		0x2b3d48		a9000c02		STP (R2, R3), (R0)									
+  header.go:22		0x2b3d4c		d0000720		ADRP 942080(PC), R0									
+  header.go:22		0x2b3d50		91228000		ADD $2208, R0, R0									
+  header.go:22		0x2b3d54		f94163e1		MOVD 704(RSP), R1									
+  header.go:22		0x2b3d58		f9415fe2		MOVD 696(RSP), R2									
+  header.go:22		0x2b3d5c		f9404be3		MOVD 144(RSP), R3									
+  header.go:22		0x2b3d60		97f5b7b0		CALL runtime.mapassign_faststr(SB)							
+  header.go:22		0x2b3d64		b24003e2		ORR $1, ZR, R2										
+  header.go:22		0x2b3d68		a9008802		STP (R2, R2), 8(R0)									
+  header.go:22		0x2b3d6c		d000249b		ADRP 4792320(PC), R27									
+  header.go:22		0x2b3d70		b947f362		MOVWU 2032(R27), R2									
+  header.go:22		0x2b3d74		35000062		CBNZW R2, 3(PC)										
+  header.go:22		0x2b3d78		f9415be3		MOVD 688(RSP), R3									
+  header.go:22		0x2b3d7c		14000005		JMP 5(PC)										
+  header.go:22		0x2b3d80		f9400002		MOVD (R0), R2										
+  header.go:22		0x2b3d84		97f78c53		CALL runtime.gcWriteBarrier2(SB)							
+  header.go:22		0x2b3d88		f9415be3		MOVD 688(RSP), R3									
+  header.go:22		0x2b3d8c		a9000b23		STP (R3, R2), (R25)									
+  header.go:22		0x2b3d90		f9000003		MOVD R3, (R0)										
+  jev.go:74		0x2b3d94		f94063e2		MOVD 192(RSP), R2									
+  jev.go:74		0x2b3d98		f9401c42		MOVD 56(R2), R2										
+  jev.go:74		0x2b3d9c		f9006fe2		MOVD R2, 216(RSP)									
+  header.go:40		0x2b3da0		d503201f		NOOP											
+  header.go:22		0x2b3da4		b0000880		ADRP 1118208(PC), R0									
+  header.go:22		0x2b3da8		91114800		ADD $1106, R0, R0									
+  header.go:22		0x2b3dac		b27f07e1		ORR $6, ZR, R1										
+  header.go:22		0x2b3db0		97fd4514		CALL net/textproto.CanonicalMIMEHeaderKey(SB)						
+  header.go:22		0x2b3db4		f9015fe0		MOVD R0, 696(RSP)									
+  header.go:22		0x2b3db8		f9004be1		MOVD R1, 144(RSP)									
+  header.go:22		0x2b3dbc		90000480		ADRP 589824(PC), R0									
+  header.go:22		0x2b3dc0		912c8000		ADD $2848, R0, R0									
+  header.go:22		0x2b3dc4		97f5ee53		CALL runtime.newobject(SB)								
+  header.go:22		0x2b3dc8		f9015be0		MOVD R0, 688(RSP)									
+  header.go:22		0x2b3dcc		d00008a2		ADRP 1138688(PC), R2									
+  header.go:22		0x2b3dd0		9101b842		ADD $110, R2, R2									
+  header.go:22		0x2b3dd4		b27c03e3		ORR $16, ZR, R3										
+  header.go:22		0x2b3dd8		a9000c02		STP (R2, R3), (R0)									
+  header.go:22		0x2b3ddc		d0000720		ADRP 942080(PC), R0									
+  header.go:22		0x2b3de0		91228000		ADD $2208, R0, R0									
+  header.go:22		0x2b3de4		f9406fe1		MOVD 216(RSP), R1									
+  header.go:22		0x2b3de8		f9415fe2		MOVD 696(RSP), R2									
+  header.go:22		0x2b3dec		f9404be3		MOVD 144(RSP), R3									
+  header.go:22		0x2b3df0		97f5b78c		CALL runtime.mapassign_faststr(SB)							
+  header.go:22		0x2b3df4		b24003e2		ORR $1, ZR, R2										
+  header.go:22		0x2b3df8		a9008802		STP (R2, R2), 8(R0)									
+  header.go:22		0x2b3dfc		d000249b		ADRP 4792320(PC), R27									
+  header.go:22		0x2b3e00		b947f362		MOVWU 2032(R27), R2									
+  header.go:22		0x2b3e04		35000062		CBNZW R2, 3(PC)										
+  header.go:22		0x2b3e08		f9415be6		MOVD 688(RSP), R6									
+  header.go:22		0x2b3e0c		14000005		JMP 5(PC)										
+  header.go:22		0x2b3e10		f9400005		MOVD (R0), R5										
+  header.go:22		0x2b3e14		97f78c2f		CALL runtime.gcWriteBarrier2(SB)							
+  header.go:22		0x2b3e18		f9415be6		MOVD 688(RSP), R6									
+  header.go:22		0x2b3e1c		a9001726		STP (R6, R5), (R25)									
+  header.go:22		0x2b3e20		f9000006		MOVD R6, (R0)										
+  jev.go:75		0x2b3e24		f94213e5		MOVD 1056(RSP), R5									
+  jev.go:75		0x2b3e28		a94390a3		LDP 56(R5), (R3, R4)									
+  jev.go:75		0x2b3e2c		f94063e5		MOVD 192(RSP), R5									
+  jev.go:75		0x2b3e30		f9401ca5		MOVD 56(R5), R5										
+  jev.go:75		0x2b3e34		f9006be5		MOVD R5, 208(RSP)									
+  jev.go:75		0x2b3e38		aa1f03e0		MOVD ZR, R0										
+  jev.go:75		0x2b3e3c		b0000881		ADRP 1118208(PC), R1									
+  jev.go:75		0x2b3e40		9126a821		ADD $2474, R1, R1									
+  jev.go:75		0x2b3e44		b2400be2		ORR $7, ZR, R2										
+  jev.go:75		0x2b3e48		97f7104a		CALL runtime.concatstring2(SB)								
+  jev.go:75		0x2b3e4c		f90033e1		MOVD R1, 96(RSP)									
+  jev.go:75		0x2b3e50		f9005be0		MOVD R0, 176(RSP)									
+  header.go:40		0x2b3e54		d503201f		NOOP											
+  header.go:22		0x2b3e58		900008a0		ADRP 1130496(PC), R0									
+  header.go:22		0x2b3e5c		91156400		ADD $1369, R0, R0									
+  header.go:22		0x2b3e60		d28001a1		MOVD $13, R1										
+  header.go:22		0x2b3e64		97fd44e7		CALL net/textproto.CanonicalMIMEHeaderKey(SB)						
+  header.go:22		0x2b3e68		f9015fe0		MOVD R0, 696(RSP)									
+  header.go:22		0x2b3e6c		f9004be1		MOVD R1, 144(RSP)									
+  header.go:22		0x2b3e70		90000480		ADRP 589824(PC), R0									
+  header.go:22		0x2b3e74		912c8000		ADD $2848, R0, R0									
+  header.go:22		0x2b3e78		97f5ee26		CALL runtime.newobject(SB)								
+  header.go:22		0x2b3e7c		f94033e5		MOVD 96(RSP), R5									
+  header.go:22		0x2b3e80		f9000405		MOVD R5, 8(R0)										
+  header.go:22		0x2b3e84		d000249b		ADRP 4792320(PC), R27									
+  header.go:22		0x2b3e88		b947f365		MOVWU 2032(R27), R5									
+  header.go:22		0x2b3e8c		35000065		CBNZW R5, 3(PC)										
+  header.go:22		0x2b3e90		f9405be4		MOVD 176(RSP), R4									
+  header.go:22		0x2b3e94		14000004		JMP 4(PC)										
+  header.go:22		0x2b3e98		97f78c0a		CALL runtime.gcWriteBarrier1(SB)							
+  header.go:22		0x2b3e9c		f9405be4		MOVD 176(RSP), R4									
+  header.go:22		0x2b3ea0		f9000324		MOVD R4, (R25)										
+  header.go:22		0x2b3ea4		f9015be0		MOVD R0, 688(RSP)									
+  header.go:22		0x2b3ea8		f9000004		MOVD R4, (R0)										
+  header.go:22		0x2b3eac		d0000720		ADRP 942080(PC), R0									
+  header.go:22		0x2b3eb0		91228000		ADD $2208, R0, R0									
+  header.go:22		0x2b3eb4		f9406be1		MOVD 208(RSP), R1									
+  header.go:22		0x2b3eb8		f9415fe2		MOVD 696(RSP), R2									
+  header.go:22		0x2b3ebc		f9404be3		MOVD 144(RSP), R3									
+  header.go:22		0x2b3ec0		97f5b758		CALL runtime.mapassign_faststr(SB)							
+  header.go:22		0x2b3ec4		b24003e4		ORR $1, ZR, R4										
+  header.go:22		0x2b3ec8		a9009004		STP (R4, R4), 8(R0)									
+  header.go:22		0x2b3ecc		d000249b		ADRP 4792320(PC), R27									
+  header.go:22		0x2b3ed0		b947f364		MOVWU 2032(R27), R4									
+  header.go:22		0x2b3ed4		35000064		CBNZW R4, 3(PC)										
+  header.go:22		0x2b3ed8		f9415be3		MOVD 688(RSP), R3									
+  header.go:22		0x2b3edc		14000005		JMP 5(PC)										
+  header.go:22		0x2b3ee0		f9400002		MOVD (R0), R2										
+  header.go:22		0x2b3ee4		97f78bfb		CALL runtime.gcWriteBarrier2(SB)							
+  header.go:22		0x2b3ee8		f9415be3		MOVD 688(RSP), R3									
+  header.go:22		0x2b3eec		a9000b23		STP (R3, R2), (R25)									
+  header.go:22		0x2b3ef0		f9000003		MOVD R3, (R0)										
+  jev.go:77		0x2b3ef4		f94213e2		MOVD 1056(RSP), R2									
+  jev.go:77		0x2b3ef8		a9448042		LDP 72(R2), (R2, R0)									
+  jev.go:77		0x2b3efc		f9400c42		MOVD 24(R2), R2										
+  jev.go:77		0x2b3f00		f94063e1		MOVD 192(RSP), R1									
+  jev.go:77		0x2b3f04		d63f0040		CALL (R2)										
+  jev.go:78		0x2b3f08		b5000e41		CBNZ R1, 114(PC)									
+  jev.go:81		0x2b3f0c		a9440c02		LDP 64(R0), (R2, R3)									
+  jev.go:81		0x2b3f10		3980005b		MOVB (R2), R27										
+  jev.go:81		0x2b3f14		b0000004		ADRP 4096(PC), R4									
+  jev.go:81		0x2b3f18		911d0084		ADD $1856, R4, R4									
+  jev.go:81		0x2b3f1c		f9007be4		MOVD R4, 240(RSP)									
+  jev.go:81		0x2b3f20		f9007fe2		MOVD R2, 248(RSP)									
+  jev.go:81		0x2b3f24		f90083e3		MOVD R3, 256(RSP)									
+  jev.go:81		0x2b3f28		9103c3e2		ADD $240, RSP, R2									
+  jev.go:81		0x2b3f2c		f9018be2		MOVD R2, 784(RSP)									
+  jev.go:81		0x2b3f30		b24003e2		ORR $1, ZR, R2										
+  jev.go:81		0x2b3f34		39017fe2		MOVB R2, 95(RSP)									
+  jev.go:83		0x2b3f38		f9400802		MOVD 16(R0), R2										
+  jev.go:83		0x2b3f3c		d1032043		SUB $200, R2, R3									
+  jev.go:83		0x2b3f40		f1018c7f		CMP $99, R3										
+  jev.go:83		0x2b3f44		54000168		BHI 11(PC)										
+  jev.go:86		0x2b3f48		a9440c02		LDP 64(R0), (R2, R3)									
+  jev.go:86		0x2b3f4c		f90067e3		MOVD R3, 200(RSP)									
+  jev.go:86		0x2b3f50		b4001782		CBZ R2, 188(PC)										
+  jev.go:86		0x2b3f54		f9400441		MOVD 8(R2), R1										
+  jev.go:86		0x2b3f58		b00022c0		ADRP 4558848(PC), R0									
+  jev.go:86		0x2b3f5c		91378000		ADD $3552, R0, R0									
+  jev.go:86		0x2b3f60		c8dffc04		LDAR (R0), R4										
+  jev.go:86		0x2b3f64		b9401042		MOVWU 16(R2), R2									
+  jev.go:86		0x2b3f68		f9400085		MOVD (R4), R5										
+  jev.go:86		0x2b3f6c		140001d4		JMP 468(PC)										
+  jev.go:116		0x2b3f70		f1064c5f		CMP $403, R2										
+  jev.go:117		0x2b3f74		5400026c		BGT 19(PC)										
+  jev.go:121		0x2b3f78		f106405f		CMP $400, R2										
+  jev.go:121		0x2b3f7c		540002a0		BEQ 21(PC)										
+  jev.go:117		0x2b3f80		f106445f		CMP $401, R2										
+  jev.go:117		0x2b3f84		54000060		BEQ 3(PC)										
+  jev.go:116		0x2b3f88		f1064c5f		CMP $403, R2										
+  jev.go:117		0x2b3f8c		540003e1		BNE 31(PC)										
+  jev.go:118		0x2b3f90		90000640		ADRP 819200(PC), R0									
+  jev.go:118		0x2b3f94		91368000		ADD $3488, R0, R0									
+  jev.go:118		0x2b3f98		97f5edde		CALL runtime.newobject(SB)								
+  jev.go:118		0x2b3f9c		b00008a1		ADRP 1134592(PC), R1									
+  jev.go:118		0x2b3fa0		911b9021		ADD $1764, R1, R1									
+  jev.go:118		0x2b3fa4		b2400fe2		ORR $15, ZR, R2										
+  jev.go:118		0x2b3fa8		a9000801		STP (R1, R2), (R0)									
+  jev.go:118		0x2b3fac		d0000901		ADRP 1187840(PC), R1									
+  jev.go:118		0x2b3fb0		91316021		ADD $3160, R1, R1									
+  jev.go:118		0x2b3fb4		d2800462		MOVD $35, R2										
+  jev.go:118		0x2b3fb8		a9010801		STP (R1, R2), 16(R0)									
+  jev.go:84		0x2b3fbc		14000038		JMP 56(PC)										
+  jev.go:121		0x2b3fc0		f106505f		CMP $404, R2										
+  jev.go:121		0x2b3fc4		54000060		BEQ 3(PC)										
+  jev.go:121		0x2b3fc8		f106985f		CMP $422, R2										
+  jev.go:121		0x2b3fcc		540001a1		BNE 13(PC)										
+  jev.go:122		0x2b3fd0		90000640		ADRP 819200(PC), R0									
+  jev.go:122		0x2b3fd4		91368000		ADD $3488, R0, R0									
+  jev.go:122		0x2b3fd8		97f5edce		CALL runtime.newobject(SB)								
+  jev.go:122		0x2b3fdc		f00008a1		ADRP 1142784(PC), R1									
+  jev.go:122		0x2b3fe0		9136e821		ADD $3514, R1, R1									
+  jev.go:122		0x2b3fe4		d2800262		MOVD $19, R2										
+  jev.go:122		0x2b3fe8		a9000801		STP (R1, R2), (R0)									
+  jev.go:122		0x2b3fec		d0000901		ADRP 1187840(PC), R1									
+  jev.go:122		0x2b3ff0		9131ec21		ADD $3195, R1, R1									
+  jev.go:122		0x2b3ff4		d2800462		MOVD $35, R2										
+  jev.go:122		0x2b3ff8		a9010801		STP (R1, R2), 16(R0)									
+  jev.go:84		0x2b3ffc		14000028		JMP 40(PC)										
+  jev.go:119		0x2b4000		f106b45f		CMP $429, R2										
+  jev.go:119		0x2b4004		54000360		BEQ 27(PC)										
+  jev.go:124		0x2b4008		f107d05f		CMP $500, R2										
+  jev.go:124		0x2b400c		540001ab		BLT 13(PC)										
+  jev.go:125		0x2b4010		f0000620		ADRP 815104(PC), R0									
+  jev.go:125		0x2b4014		91368000		ADD $3488, R0, R0									
+  jev.go:125		0x2b4018		97f5edbe		CALL runtime.newobject(SB)								
+  jev.go:125		0x2b401c		900008a1		ADRP 1130496(PC), R1									
+  jev.go:125		0x2b4020		911bcc21		ADD $1779, R1, R1									
+  jev.go:125		0x2b4024		b2400fe2		ORR $15, ZR, R2										
+  jev.go:125		0x2b4028		a9000801		STP (R1, R2), (R0)									
+  jev.go:125		0x2b402c		f00008c1		ADRP 1159168(PC), R1									
+  jev.go:125		0x2b4030		91249021		ADD $2340, R1, R1									
+  jev.go:125		0x2b4034		d2800342		MOVD $26, R2										
+  jev.go:125		0x2b4038		a9010801		STP (R1, R2), 16(R0)									
+  jev.go:84		0x2b403c		14000018		JMP 24(PC)										
+  jev.go:127		0x2b4040		f0000620		ADRP 815104(PC), R0									
+  jev.go:127		0x2b4044		91368000		ADD $3488, R0, R0									
+  jev.go:127		0x2b4048		97f5edb2		CALL runtime.newobject(SB)								
+  jev.go:127		0x2b404c		f0000881		ADRP 1126400(PC), R1									
+  jev.go:127		0x2b4050		913aa821		ADD $3754, R1, R1									
+  jev.go:127		0x2b4054		b27f0be2		ORR $14, ZR, R2										
+  jev.go:127		0x2b4058		a9000801		STP (R1, R2), (R0)									
+  jev.go:127		0x2b405c		d00008a1		ADRP 1138688(PC), R1									
+  jev.go:127		0x2b4060		910f3421		ADD $973, R1, R1									
+  jev.go:127		0x2b4064		d2800242		MOVD $18, R2										
+  jev.go:127		0x2b4068		a9010801		STP (R1, R2), 16(R0)									
+  jev.go:84		0x2b406c		1400000c		JMP 12(PC)										
+  jev.go:120		0x2b4070		f0000620		ADRP 815104(PC), R0									
+  jev.go:120		0x2b4074		91368000		ADD $3488, R0, R0									
+  jev.go:120		0x2b4078		97f5eda6		CALL runtime.newobject(SB)								
+  jev.go:120		0x2b407c		d0000881		ADRP 1122304(PC), R1									
+  jev.go:120		0x2b4080		913c0821		ADD $3842, R1, R1									
+  jev.go:120		0x2b4084		b27e07e2		ORR $12, ZR, R2										
+  jev.go:120		0x2b4088		a9000801		STP (R1, R2), (R0)									
+  jev.go:120		0x2b408c		b00008c1		ADRP 1150976(PC), R1									
+  jev.go:120		0x2b4090		9120f021		ADD $2108, R1, R1									
+  jev.go:120		0x2b4094		d28002e2		MOVD $23, R2										
+  jev.go:120		0x2b4098		a9010801		STP (R1, R2), 16(R0)									
+  jev.go:84		0x2b409c		f90057ff		MOVD ZR, 168(RSP)									
+  jev.go:84		0x2b40a0		90000b61		ADRP 1490944(PC), R1									
+  jev.go:84		0x2b40a4		913c0021		ADD $3840, R1, R1									
+  jev.go:84		0x2b40a8		a90983e1		STP (R1, R0), 152(RSP)									
+  jev.go:84		0x2b40ac		39017fff		MOVB ZR, 95(RSP)									
+  jev.go:84		0x2b40b0		f9418bfa		MOVD 784(RSP), R26									
+  jev.go:84		0x2b40b4		f9400340		MOVD (R26), R0										
+  jev.go:84		0x2b40b8		d63f0000		CALL (R0)										
+  jev.go:84		0x2b40bc		a9498be1		LDP 152(RSP), (R1, R2)									
+  jev.go:84		0x2b40c0		f94057e0		MOVD 168(RSP), R0									
+  jev.go:84		0x2b40c4		a97ffbfd		LDP -8(RSP), (R29, R30)									
+  jev.go:84		0x2b40c8		910c83ff		ADD $800, RSP, RSP									
+  jev.go:84		0x2b40cc		d65f03c0		RET											
+  jev.go:79		0x2b40d0		f0000620		ADRP 815104(PC), R0									
+  jev.go:79		0x2b40d4		91368000		ADD $3488, R0, R0									
+  jev.go:79		0x2b40d8		97f5ed8e		CALL runtime.newobject(SB)								
+  jev.go:79		0x2b40dc		900008a1		ADRP 1130496(PC), R1									
+  jev.go:79		0x2b40e0		911b5421		ADD $1749, R1, R1									
+  jev.go:79		0x2b40e4		b2400fe2		ORR $15, ZR, R2										
+  jev.go:79		0x2b40e8		a9000801		STP (R1, R2), (R0)									
+  jev.go:79		0x2b40ec		d00008a1		ADRP 1138688(PC), R1									
+  jev.go:79		0x2b40f0		910f3421		ADD $973, R1, R1									
+  jev.go:79		0x2b40f4		d2800242		MOVD $18, R2										
+  jev.go:79		0x2b40f8		a9010801		STP (R1, R2), 16(R0)									
+  jev.go:79		0x2b40fc		f90057ff		MOVD ZR, 168(RSP)									
+  jev.go:79		0x2b4100		90000b61		ADRP 1490944(PC), R1									
+  jev.go:79		0x2b4104		913c0021		ADD $3840, R1, R1									
+  jev.go:79		0x2b4108		a90983e1		STP (R1, R0), 152(RSP)									
+  jev.go:79		0x2b410c		f9404fe1		MOVD 152(RSP), R1									
+  jev.go:79		0x2b4110		f94057e2		MOVD 168(RSP), R2									
+  jev.go:79		0x2b4114		aa0003e3		MOVD R0, R3										
+  jev.go:79		0x2b4118		aa0203e0		MOVD R2, R0										
+  jev.go:79		0x2b411c		aa0303e2		MOVD R3, R2										
+  jev.go:79		0x2b4120		a97ffbfd		LDP -8(RSP), (R29, R30)									
+  jev.go:79		0x2b4124		910c83ff		ADD $800, RSP, RSP									
+  jev.go:79		0x2b4128		d65f03c0		RET											
+  jev.go:71		0x2b412c		f0000620		ADRP 815104(PC), R0									
+  jev.go:71		0x2b4130		91368000		ADD $3488, R0, R0									
+  jev.go:71		0x2b4134		97f5ed77		CALL runtime.newobject(SB)								
+  jev.go:71		0x2b4138		b00008a1		ADRP 1134592(PC), R1									
+  jev.go:71		0x2b413c		91017821		ADD $94, R1, R1										
+  jev.go:71		0x2b4140		b27c03e2		ORR $16, ZR, R2										
+  jev.go:71		0x2b4144		a9000801		STP (R1, R2), (R0)									
+  jev.go:71		0x2b4148		b00008c1		ADRP 1150976(PC), R1									
+  jev.go:71		0x2b414c		91209421		ADD $2085, R1, R1									
+  jev.go:71		0x2b4150		d28002e2		MOVD $23, R2										
+  jev.go:71		0x2b4154		a9010801		STP (R1, R2), 16(R0)									
+  jev.go:71		0x2b4158		f90057ff		MOVD ZR, 168(RSP)									
+  jev.go:71		0x2b415c		90000b61		ADRP 1490944(PC), R1									
+  jev.go:71		0x2b4160		913c0021		ADD $3840, R1, R1									
+  jev.go:71		0x2b4164		a90983e1		STP (R1, R0), 152(RSP)									
+  jev.go:71		0x2b4168		f9404fe1		MOVD 152(RSP), R1									
+  jev.go:71		0x2b416c		f94057e2		MOVD 168(RSP), R2									
+  jev.go:71		0x2b4170		aa0003e3		MOVD R0, R3										
+  jev.go:71		0x2b4174		aa0203e0		MOVD R2, R0										
+  jev.go:71		0x2b4178		aa0303e2		MOVD R3, R2										
+  jev.go:71		0x2b417c		a97ffbfd		LDP -8(RSP), (R29, R30)									
+  jev.go:71		0x2b4180		910c83ff		ADD $800, RSP, RSP									
+  jev.go:71		0x2b4184		d65f03c0		RET											
+  jev.go:62		0x2b4188		f0000620		ADRP 815104(PC), R0									
+  jev.go:62		0x2b418c		91368000		ADD $3488, R0, R0									
+  jev.go:62		0x2b4190		97f5ed60		CALL runtime.newobject(SB)								
+  jev.go:62		0x2b4194		900008a1		ADRP 1130496(PC), R1									
+  jev.go:62		0x2b4198		910b6421		ADD $729, R1, R1									
+  jev.go:62		0x2b419c		b2400fe2		ORR $15, ZR, R2										
+  jev.go:62		0x2b41a0		a9000801		STP (R1, R2), (R0)									
+  jev.go:62		0x2b41a4		d0000921		ADRP 1204224(PC), R1									
+  jev.go:62		0x2b41a8		9116b021		ADD $1452, R1, R1									
+  jev.go:62		0x2b41ac		d2800562		MOVD $43, R2										
+  jev.go:62		0x2b41b0		a9010801		STP (R1, R2), 16(R0)									
+  jev.go:62		0x2b41b4		f90057ff		MOVD ZR, 168(RSP)									
+  jev.go:62		0x2b41b8		90000b61		ADRP 1490944(PC), R1									
+  jev.go:62		0x2b41bc		913c0021		ADD $3840, R1, R1									
+  jev.go:62		0x2b41c0		a90983e1		STP (R1, R0), 152(RSP)									
+  jev.go:62		0x2b41c4		f9404fe1		MOVD 152(RSP), R1									
+  jev.go:62		0x2b41c8		f94057e2		MOVD 168(RSP), R2									
+  jev.go:62		0x2b41cc		aa0003e3		MOVD R0, R3										
+  jev.go:62		0x2b41d0		aa0203e0		MOVD R2, R0										
+  jev.go:62		0x2b41d4		aa0303e2		MOVD R3, R2										
+  jev.go:62		0x2b41d8		a97ffbfd		LDP -8(RSP), (R29, R30)									
+  jev.go:62		0x2b41dc		910c83ff		ADD $800, RSP, RSP									
+  jev.go:62		0x2b41e0		d65f03c0		RET											
+  jev.go:59		0x2b41e4		f0000620		ADRP 815104(PC), R0									
+  jev.go:59		0x2b41e8		91368000		ADD $3488, R0, R0									
+  jev.go:59		0x2b41ec		97f5ed49		CALL runtime.newobject(SB)								
+  jev.go:59		0x2b41f0		b00008a1		ADRP 1134592(PC), R1									
+  jev.go:59		0x2b41f4		91013821		ADD $78, R1, R1										
+  jev.go:59		0x2b41f8		b27c03e2		ORR $16, ZR, R2										
+  jev.go:59		0x2b41fc		a9000801		STP (R1, R2), (R0)									
+  jev.go:59		0x2b4200		d00008e1		ADRP 1171456(PC), R1									
+  jev.go:59		0x2b4204		911a1821		ADD $1670, R1, R1									
+  jev.go:59		0x2b4208		b27f0fe2		ORR $30, ZR, R2										
+  jev.go:59		0x2b420c		a9010801		STP (R1, R2), 16(R0)									
+  jev.go:59		0x2b4210		f90057ff		MOVD ZR, 168(RSP)									
+  jev.go:59		0x2b4214		90000b61		ADRP 1490944(PC), R1									
+  jev.go:59		0x2b4218		913c0021		ADD $3840, R1, R1									
+  jev.go:59		0x2b421c		a90983e1		STP (R1, R0), 152(RSP)									
+  jev.go:59		0x2b4220		f9404fe1		MOVD 152(RSP), R1									
+  jev.go:59		0x2b4224		f94057e2		MOVD 168(RSP), R2									
+  jev.go:59		0x2b4228		aa0003e3		MOVD R0, R3										
+  jev.go:59		0x2b422c		aa0203e0		MOVD R2, R0										
+  jev.go:59		0x2b4230		aa0303e2		MOVD R3, R2										
+  jev.go:59		0x2b4234		a97ffbfd		LDP -8(RSP), (R29, R30)									
+  jev.go:59		0x2b4238		910c83ff		ADD $800, RSP, RSP									
+  jev.go:59		0x2b423c		d65f03c0		RET											
+  jev.go:86		0x2b4240		f9015fe2		MOVD R2, 696(RSP)									
+  io.go:461		0x2b4244		b0000620		ADRP 806912(PC), R0									
+  io.go:461		0x2b4248		91118000		ADD $1120, R0, R0									
+  io.go:461		0x2b424c		97f5ed31		CALL runtime.newobject(SB)								
+  io.go:461		0x2b4250		f9415fe1		MOVD 696(RSP), R1									
+  io.go:461		0x2b4254		f9000001		MOVD R1, (R0)										
+  io.go:461		0x2b4258		b000249b		ADRP 4788224(PC), R27									
+  io.go:461		0x2b425c		b947f361		MOVWU 2032(R27), R1									
+  io.go:461		0x2b4260		35000061		CBNZW R1, 3(PC)										
+  io.go:461		0x2b4264		f94067e2		MOVD 200(RSP), R2									
+  io.go:461		0x2b4268		14000004		JMP 4(PC)										
+  io.go:461		0x2b426c		97f78b15		CALL runtime.gcWriteBarrier1(SB)							
+  io.go:461		0x2b4270		f94067e2		MOVD 200(RSP), R2									
+  io.go:461		0x2b4274		f9000322		MOVD R2, (R25)										
+  io.go:461		0x2b4278		f9000402		MOVD R2, 8(R0)										
+  io.go:461		0x2b427c		b26b03e2		ORR $2097152, ZR, R2									
+  io.go:461		0x2b4280		f9000802		MOVD R2, 16(R0)										
+  jev.go:86		0x2b4284		aa0003e1		MOVD R0, R1										
+  jev.go:86		0x2b4288		90000b60		ADRP 1490944(PC), R0									
+  jev.go:86		0x2b428c		9109a000		ADD $616, R0, R0									
+  jev.go:86		0x2b4290		97f8989c		CALL io.ReadAll(SB)									
+  jev.go:87		0x2b4294		b50006c3		CBNZ R3, 54(PC)										
+  jev.go:86		0x2b4298		f9003be2		MOVD R2, 112(RSP)									
+  jev.go:86		0x2b429c		f90037e1		MOVD R1, 104(RSP)									
+  jev.go:86		0x2b42a0		f90073e0		MOVD R0, 224(RSP)									
+  jev.go:90		0x2b42a4		f0000620		ADRP 815104(PC), R0									
+  jev.go:90		0x2b42a8		91390000		ADD $3648, R0, R0									
+  jev.go:90		0x2b42ac		97f5ed19		CALL runtime.newobject(SB)								
+  jev.go:90		0x2b42b0		f90187e0		MOVD R0, 776(RSP)									
+  jev.go:91		0x2b42b4		f94037e1		MOVD 104(RSP), R1									
+  jev.go:91		0x2b42b8		f9403be2		MOVD 112(RSP), R2									
+  jev.go:91		0x2b42bc		f00003e3		ADRP 520192(PC), R3									
+  jev.go:91		0x2b42c0		913e0063		ADD $3968, R3, R3									
+  jev.go:91		0x2b42c4		aa0003e4		MOVD R0, R4										
+  jev.go:91		0x2b42c8		f94073e0		MOVD 224(RSP), R0									
+  jev.go:91		0x2b42cc		97f9dcb5		CALL encoding/json.Unmarshal(SB)							
+  jev.go:91		0x2b42d0		b50001e0		CBNZ R0, 15(PC)										
+  jev.go:94		0x2b42d4		f94187e1		MOVD 776(RSP), R1									
+  jev.go:94		0x2b42d8		a9400c22		LDP (R1), (R2, R3)									
+  jev.go:94		0x2b42dc		f90157e2		MOVD R2, 680(RSP)									
+  jev.go:94		0x2b42e0		f9004be3		MOVD R3, 144(RSP)									
+  jev.go:94		0x2b42e4		f9400c21		MOVD 24(R1), R1										
+  jev.go:94		0x2b42e8		f90153e1		MOVD R1, 672(RSP)									
+  jev.go:98		0x2b42ec		f0000620		ADRP 815104(PC), R0									
+  jev.go:98		0x2b42f0		913b8000		ADD $3808, R0, R0									
+  jev.go:98		0x2b42f4		97f5ed07		CALL runtime.newobject(SB)								
+  jev.go:98		0x2b42f8		f9005fe0		MOVD R0, 184(RSP)									
+  jev.go:99		0x2b42fc		f94157e1		MOVD 680(RSP), R1									
+  jev.go:99		0x2b4300		f9404be2		MOVD 144(RSP), R2									
+  jev.go:99		0x2b4304		aa1f03e3		MOVD ZR, R3										
+  jev.go:99		0x2b4308		1400003f		JMP 63(PC)										
+  jev.go:92		0x2b430c		f0000620		ADRP 815104(PC), R0									
+  jev.go:92		0x2b4310		91368000		ADD $3488, R0, R0									
+  jev.go:92		0x2b4314		97f5ecff		CALL runtime.newobject(SB)								
+  jev.go:92		0x2b4318		d00008a1		ADRP 1138688(PC), R1									
+  jev.go:92		0x2b431c		910f7c21		ADD $991, R1, R1									
+  jev.go:92		0x2b4320		d2800242		MOVD $18, R2										
+  jev.go:92		0x2b4324		a9000801		STP (R1, R2), (R0)									
+  jev.go:92		0x2b4328		f00008e1		ADRP 1175552(PC), R1									
+  jev.go:92		0x2b432c		91064421		ADD $401, R1, R1									
+  jev.go:92		0x2b4330		b24013e2		ORR $31, ZR, R2										
+  jev.go:92		0x2b4334		a9010801		STP (R1, R2), 16(R0)									
+  jev.go:92		0x2b4338		f90057ff		MOVD ZR, 168(RSP)									
+  jev.go:92		0x2b433c		90000b61		ADRP 1490944(PC), R1									
+  jev.go:92		0x2b4340		913c0021		ADD $3840, R1, R1									
+  jev.go:92		0x2b4344		a90983e1		STP (R1, R0), 152(RSP)									
+  jev.go:92		0x2b4348		39017fff		MOVB ZR, 95(RSP)									
+  jev.go:92		0x2b434c		f9418bfa		MOVD 784(RSP), R26									
+  jev.go:92		0x2b4350		f9400341		MOVD (R26), R1										
+  jev.go:92		0x2b4354		d63f0020		CALL (R1)										
+  jev.go:92		0x2b4358		a9498be1		LDP 152(RSP), (R1, R2)									
+  jev.go:92		0x2b435c		f94057e0		MOVD 168(RSP), R0									
+  jev.go:92		0x2b4360		a97ffbfd		LDP -8(RSP), (R29, R30)									
+  jev.go:92		0x2b4364		910c83ff		ADD $800, RSP, RSP									
+  jev.go:92		0x2b4368		d65f03c0		RET											
+  jev.go:88		0x2b436c		f0000620		ADRP 815104(PC), R0									
+  jev.go:88		0x2b4370		91368000		ADD $3488, R0, R0									
+  jev.go:88		0x2b4374		97f5ece7		CALL runtime.newobject(SB)								
+  jev.go:88		0x2b4378		b00008c1		ADRP 1150976(PC), R1									
+  jev.go:88		0x2b437c		91214c21		ADD $2131, R1, R1									
+  jev.go:88		0x2b4380		d28002e2		MOVD $23, R2										
+  jev.go:88		0x2b4384		a9000801		STP (R1, R2), (R0)									
+  jev.go:88		0x2b4388		d00008e1		ADRP 1171456(PC), R1									
+  jev.go:88		0x2b438c		911a9021		ADD $1700, R1, R1									
+  jev.go:88		0x2b4390		b27f0fe2		ORR $30, ZR, R2										
+  jev.go:88		0x2b4394		a9010801		STP (R1, R2), 16(R0)									
+  jev.go:88		0x2b4398		f90057ff		MOVD ZR, 168(RSP)									
+  jev.go:88		0x2b439c		90000b61		ADRP 1490944(PC), R1									
+  jev.go:88		0x2b43a0		913c0021		ADD $3840, R1, R1									
+  jev.go:88		0x2b43a4		a90983e1		STP (R1, R0), 152(RSP)									
+  jev.go:88		0x2b43a8		39017fff		MOVB ZR, 95(RSP)									
+  jev.go:88		0x2b43ac		f9418bfa		MOVD 784(RSP), R26									
+  jev.go:88		0x2b43b0		f9400341		MOVD (R26), R1										
+  jev.go:88		0x2b43b4		d63f0020		CALL (R1)										
+  jev.go:88		0x2b43b8		a9498be1		LDP 152(RSP), (R1, R2)									
+  jev.go:88		0x2b43bc		f94057e0		MOVD 168(RSP), R0									
+  jev.go:88		0x2b43c0		a97ffbfd		LDP -8(RSP), (R29, R30)									
+  jev.go:88		0x2b43c4		910c83ff		ADD $800, RSP, RSP									
+  jev.go:88		0x2b43c8		d65f03c0		RET											
+  jev.go:101		0x2b43cc		910b23fb		ADD $712, RSP, R27									
+  jev.go:101		0x2b43d0		a9402768		LDP (R27), (R8, R9)									
+  jev.go:101		0x2b43d4		910b63fb		ADD $728, RSP, R27									
+  jev.go:101		0x2b43d8		a9402f6a		LDP (R27), (R10, R11)									
+  jev.go:101		0x2b43dc		910ba3fb		ADD $744, RSP, R27									
+  jev.go:101		0x2b43e0		a940376c		LDP (R27), (R12, R13)									
+  jev.go:101		0x2b43e4		910be3fb		ADD $760, RSP, R27									
+  jev.go:101		0x2b43e8		a9403f6e		LDP (R27), (R14, R15)									
+  jev.go:101		0x2b43ec		a90024e8		STP (R8, R9), (R7)									
+  jev.go:101		0x2b43f0		a9012cea		STP (R10, R11), 16(R7)									
+  jev.go:101		0x2b43f4		a90234ec		STP (R12, R13), 32(R7)									
+  jev.go:101		0x2b43f8		a9033cee		STP (R14, R15), 48(R7)									
+  jev.go:99		0x2b43fc		91010021		ADD $64, R1, R1										
+  jev.go:99		0x2b4400		91000463		ADD $1, R3, R3										
+  jev.go:99		0x2b4404		eb02007f		CMP R2, R3										
+  jev.go:99		0x2b4408		540008ea		BGE 71(PC)										
+  jev.go:99		0x2b440c		f90047e3		MOVD R3, 136(RSP)									
+  jev.go:99		0x2b4410		f9014fe1		MOVD R1, 664(RSP)									
+  jev.go:99		0x2b4414		a9401825		LDP (R1), (R5, R6)									
+  jev.go:99		0x2b4418		a9412027		LDP 16(R1), (R7, R8)									
+  jev.go:99		0x2b441c		a9422829		LDP 32(R1), (R9, R10)									
+  jev.go:99		0x2b4420		a943302b		LDP 48(R1), (R11, R12)									
+  jev.go:99		0x2b4424		910b23fb		ADD $712, RSP, R27									
+  jev.go:99		0x2b4428		a9001b65		STP (R5, R6), (R27)									
+  jev.go:99		0x2b442c		910b63fb		ADD $728, RSP, R27									
+  jev.go:99		0x2b4430		a9002367		STP (R7, R8), (R27)									
+  jev.go:99		0x2b4434		910ba3fb		ADD $744, RSP, R27									
+  jev.go:99		0x2b4438		a9002b69		STP (R9, R10), (R27)									
+  jev.go:99		0x2b443c		910be3fb		ADD $760, RSP, R27									
+  jev.go:99		0x2b4440		a900336b		STP (R11, R12), (R27)									
+  jev.go:100		0x2b4444		d0000885		ADRP 1122304(PC), R5									
+  jev.go:100		0x2b4448		913c38a5		ADD $3854, R5, R5									
+  jev.go:100		0x2b444c		b27e07e6		ORR $12, ZR, R6										
+  jev.go:100		0x2b4450		910bc3fb		ADD $752, RSP, R27									
+  jev.go:100		0x2b4454		a9001b65		STP (R5, R6), (R27)									
+  jev.go:101		0x2b4458		f9400807		MOVD 16(R0), R7										
+  jev.go:101		0x2b445c		a9402408		LDP (R0), (R8, R9)									
+  jev.go:101		0x2b4460		91000529		ADD $1, R9, R9										
+  jev.go:101		0x2b4464		eb0900ff		CMP R9, R7										
+  jev.go:101		0x2b4468		54000342		BCS 26(PC)										
+  jev.go:101		0x2b446c		aa0803e0		MOVD R8, R0										
+  jev.go:101		0x2b4470		aa0903e1		MOVD R9, R1										
+  jev.go:101		0x2b4474		aa0703e2		MOVD R7, R2										
+  jev.go:101		0x2b4478		b24003e3		ORR $1, ZR, R3										
+  jev.go:101		0x2b447c		f0000724		ADRP 946176(PC), R4									
+  jev.go:101		0x2b4480		912b0084		ADD $2752, R4, R4									
+  jev.go:101		0x2b4484		97f7771b		CALL runtime.growslice(SB)								
+  jev.go:101		0x2b4488		f9405fe5		MOVD 184(RSP), R5									
+  jev.go:101		0x2b448c		f90008a2		MOVD R2, 16(R5)										
+  jev.go:101		0x2b4490		b000249b		ADRP 4788224(PC), R27									
+  jev.go:101		0x2b4494		b947f366		MOVWU 2032(R27), R6									
+  jev.go:101		0x2b4498		34000086		CBZW R6, 4(PC)										
+  jev.go:101		0x2b449c		f94000a6		MOVD (R5), R6										
+  jev.go:101		0x2b44a0		97f78a8c		CALL runtime.gcWriteBarrier2(SB)							
+  jev.go:101		0x2b44a4		a9001b20		STP (R0, R6), (R25)									
+  jev.go:101		0x2b44a8		f90000a0		MOVD R0, (R5)										
+  jev.go:99		0x2b44ac		f9404be2		MOVD 144(RSP), R2									
+  jev.go:99		0x2b44b0		f94047e3		MOVD 136(RSP), R3									
+  jev.go:99		0x2b44b4		d0000885		ADRP 1122304(PC), R5									
+  jev.go:99		0x2b44b8		913c38a5		ADD $3854, R5, R5									
+  jev.go:99		0x2b44bc		b27e07e6		ORR $12, ZR, R6										
+  jev.go:101		0x2b44c0		aa0103e9		MOVD R1, R9										
+  jev.go:101		0x2b44c4		aa0003e8		MOVD R0, R8										
+  jev.go:101		0x2b44c8		f9405fe0		MOVD 184(RSP), R0									
+  jev.go:99		0x2b44cc		f9414fe1		MOVD 664(RSP), R1									
+  jev.go:101		0x2b44d0		f9000409		MOVD R9, 8(R0)										
+  jev.go:101		0x2b44d4		d1000527		SUB $1, R9, R7										
+  jev.go:101		0x2b44d8		8b071907		ADD R7<<6, R8, R7									
+  jev.go:101		0x2b44dc		b000249b		ADRP 4788224(PC), R27									
+  jev.go:101		0x2b44e0		b947f368		MOVWU 2032(R27), R8									
+  jev.go:101		0x2b44e4		34fff748		CBZW R8, -70(PC)									
+  jev.go:101		0x2b44e8		f90157e7		MOVD R7, 680(RSP)									
+  jev.go:101		0x2b44ec		f0000720		ADRP 946176(PC), R0									
+  jev.go:101		0x2b44f0		912b0000		ADD $2752, R0, R0									
+  jev.go:101		0x2b44f4		aa0703e1		MOVD R7, R1										
+  jev.go:101		0x2b44f8		910b23e2		ADD $712, RSP, R2									
+  jev.go:101		0x2b44fc		97f5ee81		CALL runtime.wbMove(SB)									
+  jev.go:101		0x2b4500		f9405fe0		MOVD 184(RSP), R0									
+  jev.go:99		0x2b4504		f9414fe1		MOVD 664(RSP), R1									
+  jev.go:99		0x2b4508		f9404be2		MOVD 144(RSP), R2									
+  jev.go:99		0x2b450c		f94047e3		MOVD 136(RSP), R3									
+  jev.go:99		0x2b4510		d0000885		ADRP 1122304(PC), R5									
+  jev.go:99		0x2b4514		913c38a5		ADD $3854, R5, R5									
+  jev.go:99		0x2b4518		b27e07e6		ORR $12, ZR, R6										
+  jev.go:101		0x2b451c		f94157e7		MOVD 680(RSP), R7									
+  jev.go:101		0x2b4520		17ffffab		JMP -85(PC)										
+  jev.go:103		0x2b4524		910463e2		ADD $280, RSP, R2									
+  jev.go:103		0x2b4528		a9007c5f		STP (ZR, ZR), (R2)									
+  jev.go:103		0x2b452c		a9017c5f		STP (ZR, ZR), 16(R2)									
+  jev.go:103		0x2b4530		a9027c5f		STP (ZR, ZR), 32(R2)									
+  jev.go:103		0x2b4534		a9037c5f		STP (ZR, ZR), 48(R2)									
+  jev.go:103		0x2b4538		a9047c5f		STP (ZR, ZR), 64(R2)									
+  jev.go:103		0x2b453c		a9057c5f		STP (ZR, ZR), 80(R2)									
+  jev.go:103		0x2b4540		90000560		ADRP 704512(PC), R0									
+  jev.go:103		0x2b4544		912c0000		ADD $2816, R0, R0									
+  jev.go:103		0x2b4548		f94153e1		MOVD 672(RSP), R1									
+  jev.go:103		0x2b454c		97f5ee35		CALL runtime.mapIterStart(SB)								
+  jev.go:103		0x2b4550		1400000f		JMP 15(PC)										
+  jev.go:104		0x2b4554		910b23fb		ADD $712, RSP, R27									
+  jev.go:104		0x2b4558		a9400f62		LDP (R27), (R2, R3)									
+  jev.go:104		0x2b455c		910b63fb		ADD $728, RSP, R27									
+  jev.go:104		0x2b4560		a9401764		LDP (R27), (R4, R5)									
+  jev.go:104		0x2b4564		910ba3fb		ADD $744, RSP, R27									
+  jev.go:104		0x2b4568		a9401f66		LDP (R27), (R6, R7)									
+  jev.go:104		0x2b456c		910be3fb		ADD $760, RSP, R27									
+  jev.go:104		0x2b4570		a9402768		LDP (R27), (R8, R9)									
+  jev.go:104		0x2b4574		a9000c22		STP (R2, R3), (R1)									
+  jev.go:104		0x2b4578		a9011424		STP (R4, R5), 16(R1)									
+  jev.go:104		0x2b457c		a9021c26		STP (R6, R7), 32(R1)									
+  jev.go:104		0x2b4580		a9032428		STP (R8, R9), 48(R1)									
+  jev.go:103		0x2b4584		910463e0		ADD $280, RSP, R0									
+  jev.go:103		0x2b4588		97f5ee42		CALL runtime.mapIterNext(SB)								
+  jev.go:103		0x2b458c		f9408fe5		MOVD 280(RSP), R5									
+  jev.go:103		0x2b4590		b40007e5		CBZ R5, 63(PC)										
+  jev.go:103		0x2b4594		a94018a5		LDP (R5), (R5, R6)									
+  jev.go:103		0x2b4598		f94093e7		MOVD 288(RSP), R7									
+  jev.go:103		0x2b459c		a94024e8		LDP (R7), (R8, R9)									
+  jev.go:103		0x2b45a0		a94128e7		LDP 16(R7), (R7, R10)									
+  jev.go:109		0x2b45a4		b0000b9b		ADRP 1511424(PC), R27									
+  jev.go:109		0x2b45a8		9114037b		ADD $1280, R27, R27									
+  jev.go:109		0x2b45ac		a940336b		LDP (R27), (R11, R12)									
+  jev.go:109		0x2b45b0		b0000b9b		ADRP 1511424(PC), R27									
+  jev.go:109		0x2b45b4		9114437b		ADD $1296, R27, R27									
+  jev.go:109		0x2b45b8		a9403b6d		LDP (R27), (R13, R14)									
+  jev.go:109		0x2b45bc		b0000b9b		ADRP 1511424(PC), R27									
+  jev.go:109		0x2b45c0		9114837b		ADD $1312, R27, R27									
+  jev.go:109		0x2b45c4		a940436f		LDP (R27), (R15, R16)									
+  jev.go:109		0x2b45c8		b0000b9b		ADRP 1511424(PC), R27									
+  jev.go:109		0x2b45cc		9114c37b		ADD $1328, R27, R27									
+  jev.go:109		0x2b45d0		a9404f71		LDP (R27), (R17, R19)									
+  jev.go:109		0x2b45d4		910b23fb		ADD $712, RSP, R27									
+  jev.go:109		0x2b45d8		a900336b		STP (R11, R12), (R27)									
+  jev.go:109		0x2b45dc		910b63fb		ADD $728, RSP, R27									
+  jev.go:109		0x2b45e0		a9003b6d		STP (R13, R14), (R27)									
+  jev.go:109		0x2b45e4		910ba3fb		ADD $744, RSP, R27									
+  jev.go:109		0x2b45e8		a900436f		STP (R15, R16), (R27)									
+  jev.go:109		0x2b45ec		910be3fb		ADD $760, RSP, R27									
+  jev.go:109		0x2b45f0		a9004f71		STP (R17, R19), (R27)									
+  jev.go:105		0x2b45f4		f90167e5		MOVD R5, 712(RSP)									
+  jev.go:105		0x2b45f8		910b43fb		ADD $720, RSP, R27									
+  jev.go:105		0x2b45fc		a9002366		STP (R6, R8), (R27)									
+  jev.go:106		0x2b4600		910b83fb		ADD $736, RSP, R27									
+  jev.go:106		0x2b4604		a9001f69		STP (R9, R7), (R27)									
+  jev.go:109		0x2b4608		f90183ea		MOVD R10, 768(RSP)									
+  jev.go:104		0x2b460c		f9405fe5		MOVD 184(RSP), R5									
+  jev.go:104		0x2b4610		f94008a2		MOVD 16(R5), R2										
+  jev.go:104		0x2b4614		a94018a0		LDP (R5), (R0, R6)									
+  jev.go:104		0x2b4618		910004c1		ADD $1, R6, R1										
+  jev.go:104		0x2b461c		eb01005f		CMP R1, R2										
+  jev.go:104		0x2b4620		540001c2		BCS 14(PC)										
+  jev.go:104		0x2b4624		b24003e3		ORR $1, ZR, R3										
+  jev.go:104		0x2b4628		f0000724		ADRP 946176(PC), R4									
+  jev.go:104		0x2b462c		912b0084		ADD $2752, R4, R4									
+  jev.go:104		0x2b4630		97f776b0		CALL runtime.growslice(SB)								
+  jev.go:104		0x2b4634		f9405fe5		MOVD 184(RSP), R5									
+  jev.go:104		0x2b4638		f90008a2		MOVD R2, 16(R5)										
+  jev.go:104		0x2b463c		b000249b		ADRP 4788224(PC), R27									
+  jev.go:104		0x2b4640		b947f366		MOVWU 2032(R27), R6									
+  jev.go:104		0x2b4644		34000086		CBZW R6, 4(PC)										
+  jev.go:104		0x2b4648		f94000a3		MOVD (R5), R3										
+  jev.go:104		0x2b464c		97f78a21		CALL runtime.gcWriteBarrier2(SB)							
+  jev.go:104		0x2b4650		a9000f20		STP (R0, R3), (R25)									
+  jev.go:104		0x2b4654		f90000a0		MOVD R0, (R5)										
+  jev.go:104		0x2b4658		f90004a1		MOVD R1, 8(R5)										
+  jev.go:104		0x2b465c		d1000423		SUB $1, R1, R3										
+  jev.go:104		0x2b4660		8b031801		ADD R3<<6, R0, R1									
+  jev.go:104		0x2b4664		b000249b		ADRP 4788224(PC), R27									
+  jev.go:104		0x2b4668		b947f363		MOVWU 2032(R27), R3									
+  jev.go:104		0x2b466c		34fff743		CBZW R3, -70(PC)									
+  jev.go:104		0x2b4670		f90157e1		MOVD R1, 680(RSP)									
+  jev.go:104		0x2b4674		f0000720		ADRP 946176(PC), R0									
+  jev.go:104		0x2b4678		912b0000		ADD $2752, R0, R0									
+  jev.go:104		0x2b467c		910b23e2		ADD $712, RSP, R2									
+  jev.go:104		0x2b4680		97f5ee20		CALL runtime.wbMove(SB)									
+  jev.go:104		0x2b4684		f94157e1		MOVD 680(RSP), R1									
+  jev.go:104		0x2b4688		17ffffb3		JMP -77(PC)										
+  jev.go:94		0x2b468c		f9405fe0		MOVD 184(RSP), R0									
+  jev.go:94		0x2b4690		f90057e0		MOVD R0, 168(RSP)									
+  jev.go:94		0x2b4694		a909ffff		STP (ZR, ZR), 152(RSP)									
+  jev.go:94		0x2b4698		39017fff		MOVB ZR, 95(RSP)									
+  jev.go:94		0x2b469c		f9418bfa		MOVD 784(RSP), R26									
+  jev.go:94		0x2b46a0		f9400340		MOVD (R26), R0										
+  jev.go:94		0x2b46a4		d63f0000		CALL (R0)										
+  jev.go:94		0x2b46a8		a9498be1		LDP 152(RSP), (R1, R2)									
+  jev.go:94		0x2b46ac		f94057e0		MOVD 168(RSP), R0									
+  jev.go:94		0x2b46b0		a97ffbfd		LDP -8(RSP), (R29, R30)									
+  jev.go:94		0x2b46b4		910c83ff		ADD $800, RSP, RSP									
+  jev.go:94		0x2b46b8		d65f03c0		RET											
+  jev.go:86		0x2b46bc		8a050046		AND R5, R2, R6										
+  jev.go:86		0x2b46c0		d37cecc6		LSL $4, R6, R6										
+  jev.go:86		0x2b46c4		910020c6		ADD $8, R6, R6										
+  jev.go:86		0x2b46c8		f8666887		MOVD (R4)(R6), R7									
+  jev.go:86		0x2b46cc		8b060086		ADD R6, R4, R6										
+  jev.go:86		0x2b46d0		eb0100ff		CMP R1, R7										
+  jev.go:86		0x2b46d4		540000c0		BEQ 6(PC)										
+  jev.go:86		0x2b46d8		91000442		ADD $1, R2, R2										
+  jev.go:86		0x2b46dc		b5ffff07		CBNZ R7, -8(PC)										
+  jev.go:86		0x2b46e0		97f5dd00		CALL runtime.typeAssert(SB)								
+  jev.go:86		0x2b46e4		aa0003e2		MOVD R0, R2										
+  jev.go:86		0x2b46e8		17fffed6		JMP -298(PC)										
+  jev.go:86		0x2b46ec		f94004c2		MOVD 8(R6), R2										
+  jev.go:86		0x2b46f0		17fffed4		JMP -300(PC)										
+  jev.go:86		0x2b46f4		97f68de7		CALL runtime.deferreturn(SB)								
+  jev.go:86		0x2b46f8		f94057e0		MOVD 168(RSP), R0									
+  jev.go:86		0x2b46fc		f9404fe1		MOVD 152(RSP), R1									
+  jev.go:86		0x2b4700		f94053e2		MOVD 160(RSP), R2									
+  jev.go:86		0x2b4704		a97ffbfd		LDP -8(RSP), (R29, R30)									
+  jev.go:86		0x2b4708		910c83ff		ADD $800, RSP, RSP									
+  jev.go:86		0x2b470c		d65f03c0		RET											
+  jev.go:57		0x2b4710		a91007e0		STP (R0, R1), 256(RSP)									
+  jev.go:57		0x2b4714		a9110fe2		STP (R2, R3), 272(RSP)									
+  jev.go:57		0x2b4718		a91217e4		STP (R4, R5), 288(RSP)									
+  jev.go:57		0x2b471c		aa1e03e3		MOVD R30, R3										
+  jev.go:57		0x2b4720		97f781d4		CALL runtime.morestack_noctxt.abi0(SB)							
+  jev.go:57		0x2b4724		a95007e0		LDP 256(RSP), (R0, R1)									
+  jev.go:57		0x2b4728		a9510fe2		LDP 272(RSP), (R2, R3)									
+  jev.go:57		0x2b472c		a95217e4		LDP 288(RSP), (R4, R5)									
+  jev.go:57		0x2b4730		17fffcf8		JMP github.com/goldjg/carl/internal/semantic.(*TypeSafeJevEvaluator).Evaluate(SB)	
+  jev.go:57		0x2b4734		00000000		?											
+  jev.go:57		0x2b4738		00000000		?											
+  jev.go:57		0x2b473c		00000000		?											

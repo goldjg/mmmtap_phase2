@@ -1,0 +1,818 @@
+{
+  "schema": "mmmtap-publication-external-evidence-v1",
+  "scope": "Referenced MMMTAP research archives only; discovery inventory is not blanket authorization.",
+  "records": [
+    {
+      "original_path": "/home/prometheus/MMMTAP_P1-022_A2_Codex.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "copied_byte_identical",
+      "sha256": "48370c5a1ddf5324a9b87954c730bda9ef940e64e3fa1d60bc00574b4ad2737c",
+      "bytes": 13756,
+      "repository_path": "publication_external_evidence/48370c5a1ddf5324a9b87954c730bda9ef940e64e3fa1d60bc00574b4ad2737c/MMMTAP_P1-022_A2_Codex.zip"
+    },
+    {
+      "original_path": "/home/prometheus/MMMTAP_PHASE2_PROTOCOL_AND_INVENTORY.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "copied_byte_identical",
+      "sha256": "7bc70728885e8a1dc7b81fc5d9c8aa9a5b12109d640f677e82d17654e2e46a7a",
+      "bytes": 15555,
+      "repository_path": "publication_external_evidence/7bc70728885e8a1dc7b81fc5d9c8aa9a5b12109d640f677e82d17654e2e46a7a/MMMTAP_PHASE2_PROTOCOL_AND_INVENTORY.zip"
+    },
+    {
+      "original_path": "/home/prometheus/MMMTAP_PHASE2_RECONCILER_V1.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "copied_byte_identical",
+      "sha256": "6f7c55f903b4a2859b11db54710e16fd2f706f46427500de41e328a30e943be6",
+      "bytes": 10855,
+      "repository_path": "publication_external_evidence/6f7c55f903b4a2859b11db54710e16fd2f706f46427500de41e328a30e943be6/MMMTAP_PHASE2_RECONCILER_V1.zip"
+    },
+    {
+      "original_path": "/home/prometheus/a2_codex_repeatability_runner.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "copied_byte_identical",
+      "sha256": "b4c54d7fdb2a6ef13d6008767955ce3c6a85830c239d7d8eee593f9d17fdece8",
+      "bytes": 3701,
+      "repository_path": "publication_external_evidence/b4c54d7fdb2a6ef13d6008767955ce3c6a85830c239d7d8eee593f9d17fdece8/a2_codex_repeatability_runner.zip"
+    },
+    {
+      "original_path": "/home/prometheus/git/mmmtap_p1_022_a2_codex_frozen.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "copied_byte_identical",
+      "sha256": "3a163855418415f81b641c3cfaf9febf04759bf957608a4051ec0f3f4c45fb5f",
+      "bytes": 65391,
+      "repository_path": "publication_external_evidence/3a163855418415f81b641c3cfaf9febf04759bf957608a4051ec0f3f4c45fb5f/mmmtap_p1_022_a2_codex_frozen.zip"
+    },
+    {
+      "original_path": "/home/prometheus/git/mmmtap_p1_022_a2_repeatability_frozen.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "copied_byte_identical",
+      "sha256": "a528364286e5661449b3e474d3b3f3f2c1fef9530f5c5a484a10e24178eebd1c",
+      "bytes": 71899,
+      "repository_path": "publication_external_evidence/a528364286e5661449b3e474d3b3f3f2c1fef9530f5c5a484a10e24178eebd1c/mmmtap_p1_022_a2_repeatability_frozen.zip"
+    },
+    {
+      "original_path": "/home/prometheus/git/mmmtap_phase0_v5/mmmtap-ambiguous-trust-results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "copied_byte_identical",
+      "sha256": "6fdb8abbb666f750ef34fed81ffeab175072d18abac58d3dd0534f1433f3faab",
+      "bytes": 7463,
+      "repository_path": "publication_external_evidence/6fdb8abbb666f750ef34fed81ffeab175072d18abac58d3dd0534f1433f3faab/mmmtap-ambiguous-trust-results.zip"
+    },
+    {
+      "original_path": "/home/prometheus/git/mmmtap_phase0_v5/mmmtap-contextual-discrimination-results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "copied_byte_identical",
+      "sha256": "4944c74c32d6fa4c2279b769a7f542601aec9eaea35ab9883f5d51ccc0698062",
+      "bytes": 11762,
+      "repository_path": "publication_external_evidence/4944c74c32d6fa4c2279b769a7f542601aec9eaea35ab9883f5d51ccc0698062/mmmtap-contextual-discrimination-results.zip"
+    },
+    {
+      "original_path": "/home/prometheus/git/mmmtap_phase0_v5/mmmtap-repeatability-results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "copied_byte_identical",
+      "sha256": "b8bc4211af467722c44ded3234381e4b72a45f28f119feb87433233c4a6dc8dc",
+      "bytes": 98206,
+      "repository_path": "publication_external_evidence/b8bc4211af467722c44ded3234381e4b72a45f28f119feb87433233c4a6dc8dc/mmmtap-repeatability-results.zip"
+    },
+    {
+      "original_path": "/home/prometheus/jev-kev-research-results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "copied_byte_identical",
+      "sha256": "bcea3869d04852e2ccab6d08b60350b65448d1fb6c1f1b5b36817fb5b24c7cfc",
+      "bytes": 272661,
+      "repository_path": "publication_external_evidence/bcea3869d04852e2ccab6d08b60350b65448d1fb6c1f1b5b36817fb5b24c7cfc/jev-kev-research-results.zip"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_002.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_003.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_004.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_005.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_006.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_006_fixed.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_007b.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_007b_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_008_live_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_008_stage1.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_008_stage2.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_009.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_010.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_011.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_012.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_012_matrix.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_012_matrix_evidence.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_012c.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_012c_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_013.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_continue_patch.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_identity_retry_patch.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_input_recovery.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_null_metrics_patch.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_phase0_adapter.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_stage1.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_stage1_v2_complete.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_stage1_v2_patch.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_stage1_v2_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_stage2a.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_stage2a_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_stage2b.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_stage2b_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_stage2c.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_stage2c_import_fix.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_stage2c_protocol_fix.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_stage2c_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_014_verified_inputs.zip",
+      "referenced_by": [
+        "carl_jev_cli_investigation_v1/evidence/primary_integrity.json",
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "independent_forensic_review_v1/evidence/examined_before.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "copied_byte_identical",
+      "sha256": "a3fe94069009f328b0a46bb52a7ff52d2c2bedfcd0eb3babe360eea1c884cc21",
+      "bytes": 254805,
+      "repository_path": "publication_external_evidence/a3fe94069009f328b0a46bb52a7ff52d2c2bedfcd0eb3babe360eea1c884cc21/mmmtap_p1_014_verified_inputs.zip"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_015.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_015_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_016.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_016_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_017a.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_017a_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_017a_retry_fix.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_017a_retry_v2.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_017b.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_017b_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_017b_round1_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_017b_round2_adaptation.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_018.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_018_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_019.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_019_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_020.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_020_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_021.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_021_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_022.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_022_adjudication.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_022_blind_review.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_022_portable_fix.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_022_smoke.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_022_stage_a_followup.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_022_stage_a_readiness.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_022_stage_a_results.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_p1_consolidated.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_phase0_runner.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_phase0_v3.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_phase0_v4.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_phase0_v5.zip",
+      "referenced_by": [
+        "historical_extraction_v1/candidate_cases.json",
+        "historical_extraction_v1/source_provenance_index.json",
+        "historical_extraction_v1/unresolved_cases.json",
+        "reconciliation_v1/archive_members.csv",
+        "reconciliation_v1/archive_registry.csv",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    },
+    {
+      "original_path": "/home/prometheus/mmmtap_phase1.zip",
+      "referenced_by": [
+        "historical_extraction_v1/source_provenance_index.json",
+        "reconciliation_v1/discovered_zips.csv"
+      ],
+      "status": "missing_at_publication"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "case": "C_risk_displacement",
+  "track": "carl",
+  "source_diff_sha256": "93d553deba519f037b5e7404d6b552c6cd67f916688d8dcef39c6a7f29d7759a",
+  "status": "live",
+  "started": "2026-10-10T19:16:49.001922+00:00",
+  "decision": "review_required",
+  "bridge_stats": {
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 958,
+      "output_tokens": 175
+    },
+    "question_ids": [
+      "security_sensitive",
+      "scope_expansion",
+      "architectural_change",
+      "authentication_or_authorisation_change",
+      "trust_boundary_change",
+      "security_control_reduction",
+      "breaking_change",
+      "new_external_dependency",
+      "human_review_warranted"
+    ]
+  },
+  "experimental_triage": "review_required",
+  "duration_s": 0.588
+}

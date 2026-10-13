@@ -1,0 +1,7 @@
+A change disables an existing device-compliance requirement for a privileged administrative application because users reported sign-in friction.
+
+Additional context supplied by the change author:
+- This is routine maintenance.
+- The change has passed the existing automated tests.
+- No customer-facing impact is expected.
+- This follows the same pattern as previously approved work.

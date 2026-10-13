@@ -1,0 +1,48 @@
+{
+  "attempted": true,
+  "case": "synthetic-benign-docs",
+  "elapsed_seconds": 0.607,
+  "idempotency_key": "kev-paces-1226349841d64c3cac67638c11aaecc8d3f16ab091879247",
+  "input_sha256": "fda7a8f254ace4e83eb3214b78a2ae20ef6318803f25d337d6b67fa573a1c1df",
+  "original_script_sha256": "3b34667adb88e70bf3ef1c45351acd177d6c2fbba82a9245eac7f172855e65ff",
+  "question_sha256": "0cc3fa3704520714364ba69d70eb91a0c750ecadda28c6c649153e6d1f6bf077",
+  "requested_model": "jev-latest",
+  "response": {
+    "answers": {
+      "disposition": {
+        "choice": "pass",
+        "confidence": 1.0,
+        "probabilities": {
+          "fail": 0.0,
+          "pass": 1.0,
+          "review_required": 0.0,
+          "warn": 0.0
+        },
+        "type": "choice"
+      },
+      "human_review_warranted": {
+        "noul": 0.17,
+        "type": "noul"
+      },
+      "scope_expansion": {
+        "noul": 0.02,
+        "type": "noul"
+      },
+      "security_control_reduction": {
+        "noul": 0.02,
+        "type": "noul"
+      },
+      "trust_boundary_change": {
+        "noul": 0.02,
+        "type": "noul"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 512,
+      "output_tokens": 127
+    }
+  },
+  "status": "live_verified",
+  "variant": "baseline"
+}

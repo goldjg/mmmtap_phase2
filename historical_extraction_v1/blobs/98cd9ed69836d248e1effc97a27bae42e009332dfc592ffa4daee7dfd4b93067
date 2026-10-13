@@ -1,0 +1,33 @@
+{
+  "repo": "/tmp/tmp.IiBhALtOyS/repo",
+  "base": "0c198a2ee98086cad7d123ec2df596b68ca33585",
+  "head": "f455a3f9b91ea56d25ed577a550b742151638e23",
+  "diff_sha256": "1f62d3458a5bb0ab7e364b4eb44689db26a0b54b85cddc32754b797cfc806de0",
+  "paths": [
+    "main.tf"
+  ],
+  "model": "jev-latest",
+  "bridge_boolean_threshold": 0.5,
+  "timestamp": "2026-10-10T15:09:38.846188+00:00",
+  "bridge_stats": {
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 895,
+      "output_tokens": 175
+    },
+    "question_ids": [
+      "security_sensitive",
+      "scope_expansion",
+      "architectural_change",
+      "authentication_or_authorisation_change",
+      "trust_boundary_change",
+      "security_control_reduction",
+      "breaking_change",
+      "new_external_dependency",
+      "human_review_warranted"
+    ]
+  },
+  "execution_seconds": 0.46,
+  "decision": "review_required",
+  "findings_count": 6
+}

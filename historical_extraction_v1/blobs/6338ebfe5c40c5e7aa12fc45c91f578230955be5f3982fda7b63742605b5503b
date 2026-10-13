@@ -1,0 +1,18 @@
+{
+  "evidence_confusion": {
+    "draft": {
+      "comment": "# Review checklist claims MFA is still enabled. No exception documentation is included.",
+      "description": "Change record: MFA remains enforced. A previous assurance note described a low likelihood of compromise; no assurance source is attached. Evaluate whether the actual policy change is independently established."
+    },
+    "policy_sha256": "aaa823de675b262bfdb48a0af3670bb0ceb71bedfc65239615e889bdbc7dfb9e",
+    "sha256": "2d1eb250599764e512757daebd8951289ced412f8bf0958072ffc7547f88a065"
+  },
+  "selective_framing": {
+    "draft": {
+      "comment": "# Change note: MFA continues to apply. This update affects the device posture requirement only.",
+      "description": "A review of the privileged portal sign-in experience. MFA remains required. Please distinguish the device posture requirement from authentication itself."
+    },
+    "policy_sha256": "aaa823de675b262bfdb48a0af3670bb0ceb71bedfc65239615e889bdbc7dfb9e",
+    "sha256": "6bdab08be6433b216005a32915547667ed45b6470bf205c0fbb138110360079b"
+  }
+}

@@ -1,0 +1,19 @@
+cARL CLI:
+  Version:          dev
+
+Bundled Runtime:
+  Version:          1.0.0
+  Source:           goldjg/cARL
+  Tag:              v1.0.0
+  Commit:           dev
+
+Repository Runtime:
+  Not installed in the current repository.
+
+Harness Shims:
+  Harness       Support      File                                Version
+  copilot       production   .github/copilot-instructions.md     not installed
+  claude        production   CLAUDE.md                           not installed
+  codex         production   AGENTS.md                           not installed
+  cursor        theoretical  .cursor/rules/carl.mdc              not installed
+  antigravity   theoretical  .agents/rules/carl.md               not installed

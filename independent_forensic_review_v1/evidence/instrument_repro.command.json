@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/usr/bin/bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--unshare-net",
+    "--die-with-parent",
+    "--proc",
+    "/proc",
+    "--dev",
+    "/dev",
+    "--tmpfs",
+    "/tmp",
+    "--",
+    "/usr/bin/python",
+    "/home/prometheus/git/mmmtap_phase2/independent_forensic_review_v1/evidence/reproduce_instruments.py"
+  ],
+  "exit_status": 0
+}

@@ -1,0 +1,22 @@
+{
+  "arms": [
+    "unprotected",
+    "trust_boundary",
+    "native_jev"
+  ],
+  "bridge_sha256": "1012b1f747c02d31476e7260122948b8569bd6e442aba142e7cca522485d8831",
+  "budget": {
+    "arms": 3,
+    "candidates_per_round": 2,
+    "max_new_calls": 12,
+    "rounds": 2
+  },
+  "clean_jev_checkpoint_sha256": "0de612757354203e7b4c760c1e09c75d4117e3a238999ff4f9f92c2bfa052115",
+  "phase0_sha256": "32d02a1cd03571ce1f111c5b63086c0de7fe9c63cde368984661b6c7966042dd",
+  "schema": "p117b-v1",
+  "stage017a_archive_sha256": "07d51f7d2e2367b49bf92c78d86f7b6b063899828221661de47617b86062e321",
+  "strategies": [
+    "selective_framing",
+    "evidence_confusion"
+  ]
+}

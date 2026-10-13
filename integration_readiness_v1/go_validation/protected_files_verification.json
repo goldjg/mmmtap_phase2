@@ -1,0 +1,396 @@
+{
+  "all_unchanged": true,
+  "file_count": 65,
+  "files": [
+    {
+      "after_sha256": "b34696d54d0b9c910d48c9adbe0155f825617d8e4c8981e58a2f50b5d0868428",
+      "before_sha256": "b34696d54d0b9c910d48c9adbe0155f825617d8e4c8981e58a2f50b5d0868428",
+      "path": "/home/prometheus/bin/carl-jev",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "381f007ed20a898d3023b8f38d30fededb78f04a148d0c826158c538c66ec8cc",
+      "before_sha256": "381f007ed20a898d3023b8f38d30fededb78f04a148d0c826158c538c66ec8cc",
+      "path": "/home/prometheus/git/cARL-semantic-eval/.github/carl/invariants.yml",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "6b6d72100530568ea19fcd969948c5c38a21e7199a8005715f2e01d78a18fc3d",
+      "before_sha256": "6b6d72100530568ea19fcd969948c5c38a21e7199a8005715f2e01d78a18fc3d",
+      "path": "/home/prometheus/git/cARL-semantic-eval/.github/carl/memory.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "5daaf6bf3ebfe0d7b12c8d5db06671fcca602d0cf11d097834a9f295b01bfb53",
+      "before_sha256": "5daaf6bf3ebfe0d7b12c8d5db06671fcca602d0cf11d097834a9f295b01bfb53",
+      "path": "/home/prometheus/git/cARL-semantic-eval/.github/carl/runtime.json",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "03e416a249a6729963515c01367886ed2bbfb007757d690bfbe8ac024101f555",
+      "before_sha256": "03e416a249a6729963515c01367886ed2bbfb007757d690bfbe8ac024101f555",
+      "path": "/home/prometheus/git/cARL-semantic-eval/.github/carl/tool-policy.yml",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "7a5dea36efa3e004f4ffc61b0e3b21fa422d5542e44b291b74d93396bdc7bb7c",
+      "before_sha256": "7a5dea36efa3e004f4ffc61b0e3b21fa422d5542e44b291b74d93396bdc7bb7c",
+      "path": "/home/prometheus/git/cARL-semantic-eval/.github/carl/trust-boundaries.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "3d82022914977420c930c13265e49285bbcc66c6cfc1f03271672f2ad61df974",
+      "before_sha256": "3d82022914977420c930c13265e49285bbcc66c6cfc1f03271672f2ad61df974",
+      "path": "/home/prometheus/git/cARL-semantic-eval/carl",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "abea661e9b4b83194278a428318ffdd653007660db6d7b9714018f1aab4e65d4",
+      "before_sha256": "abea661e9b4b83194278a428318ffdd653007660db6d7b9714018f1aab4e65d4",
+      "path": "/home/prometheus/git/cARL-semantic-eval/cmd/carl/main.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "88a29d997aef78f5d1f96d67c56b4694c239b00d598f48ec57507e6dbe5265e4",
+      "before_sha256": "88a29d997aef78f5d1f96d67c56b4694c239b00d598f48ec57507e6dbe5265e4",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.agents/rules/carl.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "89fd15f10a04c17b23b55143961bd445a67ade63a5ecf6dffd0ef60f4a997c6c",
+      "before_sha256": "89fd15f10a04c17b23b55143961bd445a67ade63a5ecf6dffd0ef60f4a997c6c",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.cursor/rules/carl.mdc",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "fc9d3d8105b72dae022c84ba887c998cb3c554841ed830ff8a9b275718fdcbdd",
+      "before_sha256": "fc9d3d8105b72dae022c84ba887c998cb3c554841ed830ff8a9b275718fdcbdd",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/carl/current-pr-contract.template.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "381f007ed20a898d3023b8f38d30fededb78f04a148d0c826158c538c66ec8cc",
+      "before_sha256": "381f007ed20a898d3023b8f38d30fededb78f04a148d0c826158c538c66ec8cc",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/carl/invariants.yml",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "6b6d72100530568ea19fcd969948c5c38a21e7199a8005715f2e01d78a18fc3d",
+      "before_sha256": "6b6d72100530568ea19fcd969948c5c38a21e7199a8005715f2e01d78a18fc3d",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/carl/memory.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "5e748582fdc97a9613fe4c83738e3219a090953df09a399eb9f86af96b54489f",
+      "before_sha256": "5e748582fdc97a9613fe4c83738e3219a090953df09a399eb9f86af96b54489f",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/carl/plans/README.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "2a29d4c9f64ab05833ef26500fc285925f8bd8aad74a0948a2bbc880ac5538b3",
+      "before_sha256": "2a29d4c9f64ab05833ef26500fc285925f8bd8aad74a0948a2bbc880ac5538b3",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/carl/plans/plan-template.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "1c6e67591d2d28b4aab7a22e09756b9cc89f288cca99d81a3eb54b948d7d019b",
+      "before_sha256": "1c6e67591d2d28b4aab7a22e09756b9cc89f288cca99d81a3eb54b948d7d019b",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/carl/profiles.example.json",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "fa1def4e8727d02b06e8ad4ff002113d5846104f1065df2991afd8b48b3d1b33",
+      "before_sha256": "fa1def4e8727d02b06e8ad4ff002113d5846104f1065df2991afd8b48b3d1b33",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/carl/repo-map.example.json",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "03e416a249a6729963515c01367886ed2bbfb007757d690bfbe8ac024101f555",
+      "before_sha256": "03e416a249a6729963515c01367886ed2bbfb007757d690bfbe8ac024101f555",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/carl/tool-policy.yml",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "7a5dea36efa3e004f4ffc61b0e3b21fa422d5542e44b291b74d93396bdc7bb7c",
+      "before_sha256": "7a5dea36efa3e004f4ffc61b0e3b21fa422d5542e44b291b74d93396bdc7bb7c",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/carl/trust-boundaries.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "10c44c6257d0a67c9b60fd2efc645b2ffbd39c45f07cbf3522a5e0098b69b41e",
+      "before_sha256": "10c44c6257d0a67c9b60fd2efc645b2ffbd39c45f07cbf3522a5e0098b69b41e",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/copilot-instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "740220ab3e0de5d31a11c0afa261f67ee2e7a4ed91b77474aecde75df288e759",
+      "before_sha256": "740220ab3e0de5d31a11c0afa261f67ee2e7a4ed91b77474aecde75df288e759",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/cloud/azure.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "dcfe809178058dfeca757af2f6313784ba70dd4effb4621c0bac8417dd8ad1a9",
+      "before_sha256": "dcfe809178058dfeca757af2f6313784ba70dd4effb4621c0bac8417dd8ad1a9",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/cloud/entra.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "cb43d38be2daece84ff429afeb788dd7c87484192a40f96359043319a9ca4702",
+      "before_sha256": "cb43d38be2daece84ff429afeb788dd7c87484192a40f96359043319a9ca4702",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/cloud/gcp.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "0276a95cabcd8386235123c2880e1643456da166021589d28f21eb04f27ad971",
+      "before_sha256": "0276a95cabcd8386235123c2880e1643456da166021589d28f21eb04f27ad971",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/cloud/microsoft-graph.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "0ccd877772a9d903fb03cdc97520fc86860568ff13339b2c2584504434d1fb51",
+      "before_sha256": "0ccd877772a9d903fb03cdc97520fc86860568ff13339b2c2584504434d1fb51",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/cloud/netlify.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "88a9ce19ae0fbe856f9afde8348d8a0ef7d02028e64c38cbaf4fcb3edb263086",
+      "before_sha256": "88a9ce19ae0fbe856f9afde8348d8a0ef7d02028e64c38cbaf4fcb3edb263086",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/core/baseline.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "ef3ac9adca2c2a675da8c9e3274dae5aaabe25d5e81cf054a171e2a87bb9e011",
+      "before_sha256": "ef3ac9adca2c2a675da8c9e3274dae5aaabe25d5e81cf054a171e2a87bb9e011",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/core/carl.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "6bdcdeaf8ec54b15b04efda7402fdf1f68c4ce366851fffb24e4fe8e251e0e92",
+      "before_sha256": "6bdcdeaf8ec54b15b04efda7402fdf1f68c4ce366851fffb24e4fe8e251e0e92",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/core/cognition-governance.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "d025a42584e6ce62b5722a6bee8ccd93a8a5c2d35f5fa4e6ed7511049e883573",
+      "before_sha256": "d025a42584e6ce62b5722a6bee8ccd93a8a5c2d35f5fa4e6ed7511049e883573",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/core/dependency.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "9c70af35b0e2901a2ecb9cf6b205f60062483c8e844cad0b6ca060559d615a86",
+      "before_sha256": "9c70af35b0e2901a2ecb9cf6b205f60062483c8e844cad0b6ca060559d615a86",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/core/identity.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "1140b6228f11355cda12c9aaa40377b75381f27d24081a66498d1501aa9ccef3",
+      "before_sha256": "1140b6228f11355cda12c9aaa40377b75381f27d24081a66498d1501aa9ccef3",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/core/memory-cache.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "1edef14966a7631c55dd5c780492420b832fbddb774e5bfb0c8c1eb467d89380",
+      "before_sha256": "1edef14966a7631c55dd5c780492420b832fbddb774e5bfb0c8c1eb467d89380",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/core/pr-contract.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "9b4877f47b2e11b14b40af9312556a7f5e29fe0c061515c9ea212cc8b7c7c50e",
+      "before_sha256": "9b4877f47b2e11b14b40af9312556a7f5e29fe0c061515c9ea212cc8b7c7c50e",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/core/security.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "fd45352eb42ca01efb20f28b6b745b56a362f6a36a2bd0474998b8cbd5d697f9",
+      "before_sha256": "fd45352eb42ca01efb20f28b6b745b56a362f6a36a2bd0474998b8cbd5d697f9",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/core/tool-permission-tiers.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "7e6b33f580c7e382f0604571a2e5dfdd5f13de28c3da1590ca173c4082b595de",
+      "before_sha256": "7e6b33f580c7e382f0604571a2e5dfdd5f13de28c3da1590ca173c4082b595de",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/languages/go.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "6a05ed78429d2eeafcf5d938c4ad8c21edbbc54cc308f93db92c47bcfcbaec3c",
+      "before_sha256": "6a05ed78429d2eeafcf5d938c4ad8c21edbbc54cc308f93db92c47bcfcbaec3c",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/languages/html.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "818b416887d8a5e6c04d63ba0c53319a1aa324043db02d2af8464d3ee7790834",
+      "before_sha256": "818b416887d8a5e6c04d63ba0c53319a1aa324043db02d2af8464d3ee7790834",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/languages/javascript.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "ad9285a0c0152e6bd16077c3af61bf3afcb82344f7e02cf67f4f5e66a4bc877a",
+      "before_sha256": "ad9285a0c0152e6bd16077c3af61bf3afcb82344f7e02cf67f4f5e66a4bc877a",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/languages/powershell.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "fffb8620c5aa68e43604290e4ebba3c06af30f132b5cd9ec641f6f28dbe06353",
+      "before_sha256": "fffb8620c5aa68e43604290e4ebba3c06af30f132b5cd9ec641f6f28dbe06353",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/languages/python.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "c34ac121de0929b9b85c3d96543cb74afeb73a1069501e716288084f7870e6f9",
+      "before_sha256": "c34ac121de0929b9b85c3d96543cb74afeb73a1069501e716288084f7870e6f9",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/languages/terraform.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "c09eeea3dc9ce4bfce5d995843a394f2576c2fd811148e19affc2689f06c1cd7",
+      "before_sha256": "c09eeea3dc9ce4bfce5d995843a394f2576c2fd811148e19affc2689f06c1cd7",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/languages/typescript.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "969485488ac5fbbb5187c4c0a9716a1842cebf9f100eaf965cfcadef7ada3fa2",
+      "before_sha256": "969485488ac5fbbb5187c4c0a9716a1842cebf9f100eaf965cfcadef7ada3fa2",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/platform/cicd.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "4a0787476c6308dfe9545147fe050ece5d523e35190bc9730d977821a18328e3",
+      "before_sha256": "4a0787476c6308dfe9545147fe050ece5d523e35190bc9730d977821a18328e3",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/platform/docker.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "0c776c6b721fbb3ed8e270f2764c3fc4b0b22d766018869a494ab7f8c1f2e894",
+      "before_sha256": "0c776c6b721fbb3ed8e270f2764c3fc4b0b22d766018869a494ab7f8c1f2e894",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/.github/instructions/platform/kubernetes.instructions.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "70f37f85be4a064ef6d1104a0c7293a742402331a0abc381550079087e369ce6",
+      "before_sha256": "70f37f85be4a064ef6d1104a0c7293a742402331a0abc381550079087e369ce6",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/AGENTS.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "9767213f5a1aeacf01917904a011bd48b8ee02cc66533e08a7478060da0dd682",
+      "before_sha256": "9767213f5a1aeacf01917904a011bd48b8ee02cc66533e08a7478060da0dd682",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/assets/CLAUDE.md",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "959154a3bcc2b8a8f42f057206e4a1d40d3073e02d8ba1e5575b34a3d8651d27",
+      "before_sha256": "959154a3bcc2b8a8f42f057206e4a1d40d3073e02d8ba1e5575b34a3d8651d27",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/embedded.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "613057e91e91ee507302f5e8fc0be2436e49cda3a2c622aaca43e9137cad9f94",
+      "before_sha256": "613057e91e91ee507302f5e8fc0be2436e49cda3a2c622aaca43e9137cad9f94",
+      "path": "/home/prometheus/git/cARL-semantic-eval/embedded/embedded_test.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "c120d32d060d31baf7f15b231f4d8c092d8543ac49c96f50116d5be4e17f5be5",
+      "before_sha256": "c120d32d060d31baf7f15b231f4d8c092d8543ac49c96f50116d5be4e17f5be5",
+      "path": "/home/prometheus/git/cARL-semantic-eval/go.mod",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "24f9455873256c15c7881c9b0600ef9d6e686a2e6bb219797697a2859c12c3fb",
+      "before_sha256": "24f9455873256c15c7881c9b0600ef9d6e686a2e6bb219797697a2859c12c3fb",
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/review/output.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "8b7c9820a956889c079fa8fe516e224a90fed6373b8569aad214c3c6a0ab7483",
+      "before_sha256": "8b7c9820a956889c079fa8fe516e224a90fed6373b8569aad214c3c6a0ab7483",
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/review/policy.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "c809d5d6d303e96ffeb513285b69df686f7045c4d229f5fb5603408c5f4af60c",
+      "before_sha256": "c809d5d6d303e96ffeb513285b69df686f7045c4d229f5fb5603408c5f4af60c",
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/review/policy_test.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "d26b48a7fb79b545c7d5e093e7db63949b227998fbeea644b9f075ca21910652",
+      "before_sha256": "d26b48a7fb79b545c7d5e093e7db63949b227998fbeea644b9f075ca21910652",
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/review/questions.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "39ab1f8ccf237b8451c3d7b79fc500dbab79ad87595c9cad5d393c8dc8191422",
+      "before_sha256": "39ab1f8ccf237b8451c3d7b79fc500dbab79ad87595c9cad5d393c8dc8191422",
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/review/review.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "56d8260198d1d7e6aac2b074aed43f1e8fe91e2ed67b6abfd943578c87712958",
+      "before_sha256": "56d8260198d1d7e6aac2b074aed43f1e8fe91e2ed67b6abfd943578c87712958",
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/review/review_test.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "7ce2930fa6af055dfe4f581aa065dee4510a5e65e58269dba081c426164428f4",
+      "before_sha256": "7ce2930fa6af055dfe4f581aa065dee4510a5e65e58269dba081c426164428f4",
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/review/state.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "17431039240a762b49b6fba181f17a16acffdc3275459fa3551ef41dbec9f152",
+      "before_sha256": "17431039240a762b49b6fba181f17a16acffdc3275459fa3551ef41dbec9f152",
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/semantic/config.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "e18341a2bb6a7cfa8d79187bdcaec5d9e44e0ad36f874c8e753875d1268dc44d",
+      "before_sha256": "e18341a2bb6a7cfa8d79187bdcaec5d9e44e0ad36f874c8e753875d1268dc44d",
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/semantic/config_test.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "bfca74313bb0b59260ab616a660d6d13ef4ffcff3acf2b448656e7c45a18e6b4",
+      "before_sha256": "bfca74313bb0b59260ab616a660d6d13ef4ffcff3acf2b448656e7c45a18e6b4",
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/semantic/jev.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "a1f5ea36f55a12114f5610a150af652fd7534af7eb10932cab89c57cc39d957a",
+      "before_sha256": "a1f5ea36f55a12114f5610a150af652fd7534af7eb10932cab89c57cc39d957a",
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/semantic/jev_test.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "5212451c7cf3ffa68439e489d9e1033e5cbf6a3318be4f701e3a0bff1d33aeb5",
+      "before_sha256": "5212451c7cf3ffa68439e489d9e1033e5cbf6a3318be4f701e3a0bff1d33aeb5",
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/semantic/redact.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "b998a5c49c7152d4cf268658d07571abfb90d5fa6792b2206461d65f0ba184da",
+      "before_sha256": "b998a5c49c7152d4cf268658d07571abfb90d5fa6792b2206461d65f0ba184da",
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/semantic/redact_test.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "2b7de277ee6b32608169ccc860add2799cb364bd1e26986c5ee7f442fbf90c0d",
+      "before_sha256": "2b7de277ee6b32608169ccc860add2799cb364bd1e26986c5ee7f442fbf90c0d",
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/semantic/types.go",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "60654ee70322f004f9636b141c68318c36941780b84969942f431a7aa7b4c83b",
+      "before_sha256": "60654ee70322f004f9636b141c68318c36941780b84969942f431a7aa7b4c83b",
+      "path": "/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/bin/carl-assessment-challenge-v1-live",
+      "unchanged": true
+    },
+    {
+      "after_sha256": "02f02bc36917220805ffd6ff6e82f46ebe290d95dd98cfd214949769f0807869",
+      "before_sha256": "02f02bc36917220805ffd6ff6e82f46ebe290d95dd98cfd214949769f0807869",
+      "path": "/home/prometheus/git/mmmtap_phase2/path_b_validation_v1/bin/carl-assessment-challenge-v1",
+      "unchanged": true
+    }
+  ]
+}

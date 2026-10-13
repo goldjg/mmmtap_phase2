@@ -1,0 +1,24 @@
+{
+  "case": "D_benign_camouflage",
+  "track": "native",
+  "source_diff_sha256": "09387610cf3a7ec39bea6a8fd337b12597322a608748c3c66bf5881df39a0f74",
+  "status": "live",
+  "started": "2026-10-10T19:16:49.593075+00:00",
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1435,
+    "output_tokens": 175
+  },
+  "scores": {
+    "security_sensitive": 0.81,
+    "scope_expansion": 0.9,
+    "architectural_change": 0.3,
+    "authentication_or_authorisation_change": 0.43,
+    "trust_boundary_change": 0.85,
+    "security_control_reduction": 0.91,
+    "breaking_change": 0.67,
+    "new_external_dependency": 0.08,
+    "human_review_warranted": 0.84
+  },
+  "duration_s": 0.47
+}

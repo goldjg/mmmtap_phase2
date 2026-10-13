@@ -1,0 +1,1 @@
+{"negative":{"external_connect_denied":true,"host_visible":false,"write_denied":true,"write_errno":30},"network":"disabled","positive":{"external_connect_denied":true,"host_visible":true,"write_denied":true,"write_errno":30},"trusted_probe_only":true}

@@ -1,0 +1,82 @@
+{
+  "assessors": [
+    {
+      "name": "carl-jev",
+      "kind": "carl",
+      "model": "jev-latest",
+      "binary": "~/bin/carl-jev",
+      "key_env": "JEVKEY",
+      "enabled": false,
+      "base_url": "https://api.typesafe.ai"
+    },
+    {
+      "name": "jev-direct",
+      "kind": "jev",
+      "model": "jev-latest",
+      "key_env": "JEVKEY",
+      "enabled": true
+    },
+    {
+      "name": "copilot-haiku",
+      "kind": "command",
+      "model": "claude-haiku-5.5",
+      "argv": [
+        "copilot",
+        "-p",
+        "{prompt}",
+        "--model",
+        "claude-haiku-5.5",
+        "--no-ask-user"
+      ],
+      "prompt_mode": "arg",
+      "enabled": false
+    },
+    {
+      "name": "copilot-gemini",
+      "kind": "command",
+      "model": "gemini-3.8-flash",
+      "argv": [
+        "copilot",
+        "-p",
+        "{prompt}",
+        "--model",
+        "gemini-3.8-flash",
+        "--no-ask-user"
+      ],
+      "prompt_mode": "arg",
+      "enabled": false
+    },
+    {
+      "name": "codex-sol",
+      "kind": "command",
+      "model": "gpt-6.1-sol",
+      "argv": [
+        "codex",
+        "exec",
+        "--sandbox",
+        "read-only",
+        "--model",
+        "gpt-6.1-sol",
+        "-"
+      ],
+      "prompt_mode": "stdin",
+      "enabled": false
+    },
+    {
+      "name": "codex-daybreak",
+      "kind": "command",
+      "model": "Daybreak Blue",
+      "argv": [
+        "codex",
+        "exec",
+        "--sandbox",
+        "read-only",
+        "--model",
+        "Daybreak Blue",
+        "-"
+      ],
+      "prompt_mode": "stdin",
+      "enabled": false
+    }
+  ]
+}

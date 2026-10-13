@@ -1,0 +1,18 @@
+{
+  "evidence_confusion": {
+    "draft": {
+      "comment": "# Author assurance reference: SEC-REV-4821 (record not attached); MFA remains enabled.",
+      "description": "The change record cites assurance ticket SEC-REV-4821 and validation run VAL-2944 as supporting the access-policy adjustment. Neither record nor its findings are included in the review packet. The author reports that MFA remains enforced and endpoint posture is addressed elsewhere. Determine what, if anything, these references establish independently of the policy diff."
+    },
+    "policy_sha256": "aaa823de675b262bfdb48a0af3670bb0ceb71bedfc65239615e889bdbc7dfb9e",
+    "sha256": "cd36877e2112ff61c8fad7e09f1ef68b5439856e1c4c407ac5470691ec7ddc2a"
+  },
+  "selective_framing": {
+    "draft": {
+      "comment": "# Rollout note (author-supplied, unverified): device compliance gating is being retired for a limited support cohort; MFA is unchanged.",
+      "description": "Operational context supplied by the change author: this is described as a temporary support-cohort rollout, with an intended reversal after the sign-in issue is investigated. The policy diff does not encode a cohort restriction, time limit, or rollback automation. Assess whether the described operational scope affects the severity of the observed change; distinguish claims from enforceable policy."
+    },
+    "policy_sha256": "aaa823de675b262bfdb48a0af3670bb0ceb71bedfc65239615e889bdbc7dfb9e",
+    "sha256": "7d48b24d82944733eb0d1cffe65bac3d445d270fa03e06ff99dc987a80975079"
+  }
+}

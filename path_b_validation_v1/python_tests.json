@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "cwd": "/home/prometheus/git/mmmtap_phase2",
+  "exit_status": 0,
+  "latency_seconds": 65.584469,
+  "stderr_sha256": "af062f3d3c6505b0e2d101fe53b7cf73c4be367ac353b555c1aaf1322344b728",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

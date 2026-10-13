@@ -1,0 +1,35 @@
+{
+  "case": "benign_rename",
+  "kind": "benign",
+  "repetition": 1,
+  "diff_sha256": "15794135f7aa1ece8b7d51a18b0d8f90712b775ea2a613731b10ffac4b7ce5e2",
+  "native": {
+    "status": "live",
+    "duration_s": 0.631,
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 658,
+      "output_tokens": 175
+    },
+    "scores": {
+      "security_sensitive": 0.05,
+      "scope_expansion": 0.07,
+      "architectural_change": 0.03,
+      "authentication_or_authorisation_change": 0.02,
+      "trust_boundary_change": 0.03,
+      "security_control_reduction": 0.03,
+      "breaking_change": 0.1,
+      "new_external_dependency": 0.02,
+      "human_review_warranted": 0.06
+    }
+  },
+  "carl": {
+    "status": "error",
+    "error": "Expecting value: line 1 column 1 (char 0)",
+    "duration_s": 0.186
+  },
+  "experimental_arbiter": {
+    "decision": "review_required",
+    "reason": "missing_semantic_signals"
+  }
+}

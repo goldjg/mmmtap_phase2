@@ -1,0 +1,389 @@
+package doctor_test
+
+import (
+	"context"
+	"os"
+	"path/filepath"
+	"strings"
+	"testing"
+	"time"
+
+	"github.com/goldjg/carl/internal/doctor"
+	"github.com/goldjg/carl/internal/harness"
+	"github.com/goldjg/carl/internal/manifest"
+)
+
+// fakeArts is a minimal in-memory Artifacts implementation for testing.
+type fakeArts struct {
+	files map[string][]byte
+}
+
+func (f *fakeArts) Open(p string) ([]byte, error) {
+	data, ok := f.files[p]
+	if !ok {
+		return nil, os.ErrNotExist
+	}
+	return data, nil
+}
+
+func (f *fakeArts) List() ([]string, error) {
+	files := make([]string, 0, len(f.files))
+	for path := range f.files {
+		files = append(files, path)
+	}
+	return files, nil
+}
+
+// harnessContent is the standard content used for all harness adapter source
+// files in tests. All tests that create a fakeArts and pass it to doctor/status
+// commands must include these entries so harness.Inspect can compare each
+// adapter file against its expected embedded source.
+var harnessContent = map[string][]byte{
+	".github/copilot-instructions.md": []byte("# canonical harness content\n"),
+	"CLAUDE.md":                       []byte("# Claude Code cARL Adapter\nTest shim.\n"),
+	"AGENTS.md":                       []byte("# Codex cARL Adapter\nTest shim.\n"),
+	".cursor/rules/carl.mdc":          []byte("# Cursor cARL Adapter\nTest shim.\n"),
+	".agents/rules/carl.md":           []byte("# Antigravity cARL Adapter\nTest shim.\n"),
+}
+
+// newFakeArts returns a fakeArts pre-loaded with standard harness content
+// entries plus any additional entries provided.
+func newFakeArts(extra map[string][]byte) *fakeArts {
+	files := make(map[string][]byte, len(harnessContent)+len(extra))
+	for k, v := range harnessContent {
+		files[k] = v
+	}
+	for k, v := range extra {
+		files[k] = v
+	}
+	return &fakeArts{files: files}
+}
+
+// captureStdout redirects os.Stdout for the duration of fn and returns
+// everything written to it.
+func captureStdout(t *testing.T, fn func()) string {
+	t.Helper()
+	old := os.Stdout
+	r, w, err := os.Pipe()
+	if err != nil {
+		t.Fatal(err)
+	}
+	os.Stdout = w
+
+	fn()
+
+	_ = w.Close()
+	os.Stdout = old
+
+	buf := make([]byte, 8192)
+	n, _ := r.Read(buf)
+	return string(buf[:n])
+}
+
+// writeRuntime writes a manifest and, for each managed artefact, creates an
+// on-disk file whose content matches arts (so the runtime appears healthy by
+// default). Pass nil arts to skip file creation.
+func writeRuntime(t *testing.T, dir string, rt *manifest.Runtime, arts *fakeArts) {
+	t.Helper()
+	if err := manifest.Write(dir, rt); err != nil {
+		t.Fatalf("manifest.Write: %v", err)
+	}
+	if arts == nil {
+		return
+	}
+	for _, f := range rt.ManagedArtifacts {
+		target := filepath.Join(dir, filepath.FromSlash(f))
+		if err := os.MkdirAll(filepath.Dir(target), 0755); err != nil {
+			t.Fatal(err)
+		}
+		if _, err := os.Stat(target); os.IsNotExist(err) {
+			var content []byte
+			if data, err2 := arts.Open(f); err2 == nil {
+				content = data
+			}
+			if err := os.WriteFile(target, content, 0644); err != nil {
+				t.Fatal(err)
+			}
+		}
+	}
+}
+
+func writeHarnessAdapters(t *testing.T, dir string, arts *fakeArts) {
+	t.Helper()
+	for _, a := range harness.Adapters() {
+		for _, af := range a.Files {
+			target := filepath.Join(dir, filepath.FromSlash(af.Path))
+			if err := os.MkdirAll(filepath.Dir(target), 0755); err != nil {
+				t.Fatal(err)
+			}
+			var content []byte
+			if arts != nil {
+				if data, err := arts.Open(af.SourceFile); err == nil {
+					content = data
+				}
+			}
+			if err := os.WriteFile(target, content, 0644); err != nil {
+				t.Fatal(err)
+			}
+		}
+	}
+}
+
+// Contract assertion 1: no runtime installed → ERROR finding with `carl init` action,
+// return nil (success).
+func TestDoctor_NoRuntime(t *testing.T) {
+	dir := t.TempDir()
+	cmd := doctor.New(nil)
+
+	var runErr error
+	output := captureStdout(t, func() {
+		runErr = cmd.RunInDir(dir)
+	})
+
+	if runErr != nil {
+		t.Fatalf("RunInDir returned error; want nil; got: %v", runErr)
+	}
+	if !strings.Contains(output, "ERROR") {
+		t.Errorf("expected ERROR finding; got: %q", output)
+	}
+	if !strings.Contains(output, "carl init") {
+		t.Errorf("expected `carl init` action; got: %q", output)
+	}
+}
+
+// Contract assertion 2: healthy runtime → INFO finding, no errors or warnings,
+// return nil.
+func TestDoctor_Healthy(t *testing.T) {
+	dir := t.TempDir()
+	arts := newFakeArts(map[string][]byte{
+		".github/carl/invariants.yml":                    []byte("invariants: []"),
+		".github/instructions/core/carl.instructions.md": []byte("# carl pack"),
+	})
+	rt := &manifest.Runtime{
+		RuntimeVersion: "1.0.0",
+		Source:         "goldjg/cARL",
+		SourceTag:      "v1.0.0",
+		SourceCommit:   "abc123",
+		InstalledAt:    time.Now(),
+		ManagedArtifacts: []string{
+			".github/carl/invariants.yml",
+			".github/instructions/core/carl.instructions.md",
+		},
+	}
+	writeRuntime(t, dir, rt, arts)
+	writeHarnessAdapters(t, dir, arts)
+
+	cmd := doctor.New(arts)
+	var runErr error
+	output := captureStdout(t, func() {
+		runErr = cmd.RunInDir(dir)
+	})
+
+	if runErr != nil {
+		t.Fatalf("RunInDir returned error; want nil; got: %v", runErr)
+	}
+	if !strings.Contains(output, "INFO") {
+		t.Errorf("expected INFO finding for healthy runtime; got: %q", output)
+	}
+	if !strings.Contains(output, "production harnesses: copilot, claude, codex") {
+		t.Errorf("expected production harness summary; got: %q", output)
+	}
+	if strings.Contains(output, "ERROR") {
+		t.Errorf("unexpected ERROR in healthy output; got: %q", output)
+	}
+	if strings.Contains(output, "WARNING") {
+		t.Errorf("unexpected WARNING in healthy output; got: %q", output)
+	}
+}
+
+// Contract assertion 3: missing artefact → ERROR finding with `carl repair` action,
+// return nil.
+func TestDoctor_MissingArtefact(t *testing.T) {
+	dir := t.TempDir()
+	arts := newFakeArts(map[string][]byte{
+		".github/carl/invariants.yml": []byte("invariants: []"),
+	})
+	rt := &manifest.Runtime{
+		RuntimeVersion:   "1.0.0",
+		Source:           "goldjg/cARL",
+		SourceTag:        "v1.0.0",
+		SourceCommit:     "abc123",
+		InstalledAt:      time.Now(),
+		ManagedArtifacts: []string{".github/carl/invariants.yml"},
+	}
+	// Write manifest but do NOT create the artefact file on disk.
+	if err := manifest.Write(dir, rt); err != nil {
+		t.Fatal(err)
+	}
+
+	cmd := doctor.New(arts)
+	var runErr error
+	output := captureStdout(t, func() {
+		runErr = cmd.RunInDir(dir)
+	})
+
+	if runErr != nil {
+		t.Fatalf("RunInDir returned error; want nil; got: %v", runErr)
+	}
+	if !strings.Contains(output, "ERROR") {
+		t.Errorf("expected ERROR finding; got: %q", output)
+	}
+	if !strings.Contains(output, ".github/carl/invariants.yml") {
+		t.Errorf("expected artefact path in output; got: %q", output)
+	}
+	if !strings.Contains(output, "carl repair") {
+		t.Errorf("expected `carl repair` action; got: %q", output)
+	}
+}
+
+// Contract assertion 4: drifted artefact → WARNING finding with `carl repair` action,
+// return nil.
+func TestDoctor_DriftedArtefact(t *testing.T) {
+	dir := t.TempDir()
+	arts := newFakeArts(map[string][]byte{
+		".github/carl/invariants.yml": []byte("canonical content"),
+	})
+	rt := &manifest.Runtime{
+		RuntimeVersion:   "1.0.0",
+		Source:           "goldjg/cARL",
+		SourceTag:        "v1.0.0",
+		SourceCommit:     "abc123",
+		InstalledAt:      time.Now(),
+		ManagedArtifacts: []string{".github/carl/invariants.yml"},
+	}
+	// Write manifest and the file with WRONG content.
+	if err := manifest.Write(dir, rt); err != nil {
+		t.Fatal(err)
+	}
+	target := filepath.Join(dir, ".github", "carl", "invariants.yml")
+	if err := os.MkdirAll(filepath.Dir(target), 0755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(target, []byte("modified content"), 0644); err != nil {
+		t.Fatal(err)
+	}
+
+	cmd := doctor.New(arts)
+	var runErr error
+	output := captureStdout(t, func() {
+		runErr = cmd.RunInDir(dir)
+	})
+
+	if runErr != nil {
+		t.Fatalf("RunInDir returned error; want nil; got: %v", runErr)
+	}
+	if !strings.Contains(output, "WARNING") {
+		t.Errorf("expected WARNING finding; got: %q", output)
+	}
+	if !strings.Contains(output, ".github/carl/invariants.yml") {
+		t.Errorf("expected artefact path in output; got: %q", output)
+	}
+	if !strings.Contains(output, "carl repair") {
+		t.Errorf("expected `carl repair` action; got: %q", output)
+	}
+}
+
+// Contract assertion 5: doctor never returns a non-nil error when findings exist —
+// it always returns nil (diagnostics complete successfully even with issues).
+func TestDoctor_AlwaysReturnsSuccess(t *testing.T) {
+	dir := t.TempDir()
+	arts := newFakeArts(map[string][]byte{
+		".github/carl/invariants.yml": []byte("canonical content"),
+	})
+	rt := &manifest.Runtime{
+		RuntimeVersion:   "1.0.0",
+		Source:           "goldjg/cARL",
+		ManagedArtifacts: []string{".github/carl/invariants.yml"},
+	}
+	// Write manifest; leave artefact absent → doctor will find missing artefact.
+	if err := manifest.Write(dir, rt); err != nil {
+		t.Fatal(err)
+	}
+
+	cmd := doctor.New(arts)
+	_ = captureStdout(t, func() {
+		if err := cmd.RunInDir(dir); err != nil {
+			t.Errorf("RunInDir returned non-nil error; want nil; got: %v", err)
+		}
+	})
+}
+
+func TestDoctor_MissingRuntimeWithExistingArtifactsRecommendsAdoption(t *testing.T) {
+	dir := t.TempDir()
+	arts := newFakeArts(nil)
+	target := filepath.Join(dir, ".github", "copilot-instructions.md")
+	if err := os.MkdirAll(filepath.Dir(target), 0755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(target, []byte("repository content"), 0644); err != nil {
+		t.Fatal(err)
+	}
+
+	cmd := doctor.New(arts)
+	output := captureStdout(t, func() {
+		if err := cmd.RunInDir(dir); err != nil {
+			t.Fatalf("RunInDir: %v", err)
+		}
+	})
+	if !strings.Contains(output, "carl init --adopt") {
+		t.Errorf("expected adoption guidance; got: %q", output)
+	}
+}
+
+// Contract assertion H4: a drifted harness adapter produces a WARNING with
+// `carl harness sync` remediation guidance.
+func TestDoctor_DriftedHarnessAdapter(t *testing.T) {
+	dir := t.TempDir()
+	arts := newFakeArts(map[string][]byte{
+		".github/carl/invariants.yml": []byte("canonical content"),
+	})
+	rt := &manifest.Runtime{
+		RuntimeVersion:   "1.0.0",
+		Source:           "goldjg/cARL",
+		SourceTag:        "v1.0.0",
+		SourceCommit:     "abc123",
+		InstalledAt:      time.Now(),
+		ManagedArtifacts: []string{".github/carl/invariants.yml"},
+	}
+	writeRuntime(t, dir, rt, arts)
+	writeHarnessAdapters(t, dir, arts)
+	if err := os.WriteFile(filepath.Join(dir, "CLAUDE.md"), []byte("modified harness"), 0644); err != nil {
+		t.Fatal(err)
+	}
+
+	cmd := doctor.New(arts)
+	var runErr error
+	output := captureStdout(t, func() {
+		runErr = cmd.RunInDir(dir)
+	})
+
+	if runErr != nil {
+		t.Fatalf("RunInDir returned error; want nil; got: %v", runErr)
+	}
+	if !strings.Contains(output, "WARNING") || !strings.Contains(output, "claude (CLAUDE.md)") {
+		t.Errorf("expected drifted harness warning; got: %q", output)
+	}
+	if !strings.Contains(output, "carl harness sync") {
+		t.Errorf("expected `carl harness sync` action; got: %q", output)
+	}
+}
+
+// TestDoctor_Run exercises the Run method via the command interface.
+func TestDoctor_Run(t *testing.T) {
+	dir := t.TempDir()
+	orig, err := os.Getwd()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Chdir(dir); err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _ = os.Chdir(orig) })
+
+	cmd := doctor.New(nil)
+	_ = captureStdout(t, func() {
+		if err := cmd.Run(context.Background(), nil); err != nil {
+			t.Fatalf("Run: %v", err)
+		}
+	})
+}

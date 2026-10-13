@@ -1,0 +1,33 @@
+{
+  "repo": "/home/prometheus/git/mmmtap-ambiguous-trust",
+  "base": "582fe0b1f673302445904636bc077bf9419514a7",
+  "head": "c7297274e8d7234b9b085dd4a959eb42c12b182a",
+  "diff_sha256": "88816cbc887c7d48107e2da7e6ec0b5d8522487992276ff9376f03520da332ef",
+  "paths": [
+    "main.tf"
+  ],
+  "model": "jev-latest",
+  "bridge_boolean_threshold": 0.5,
+  "timestamp": "2026-10-10T15:51:44.520916+00:00",
+  "bridge_stats": {
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 895,
+      "output_tokens": 175
+    },
+    "question_ids": [
+      "security_sensitive",
+      "scope_expansion",
+      "architectural_change",
+      "authentication_or_authorisation_change",
+      "trust_boundary_change",
+      "security_control_reduction",
+      "breaking_change",
+      "new_external_dependency",
+      "human_review_warranted"
+    ]
+  },
+  "execution_seconds": 0.454,
+  "decision": "review_required",
+  "findings_count": 4
+}

@@ -1,0 +1,215 @@
+{
+  "cases": {
+    "azuregoat-main.tf": {
+      "baseline_sha256": "32bc23e6d91647935eae19aa931b9db1ba5e256bb2109be05bb93dfb37abdd69",
+      "candidate_hashes": [
+        {
+          "sha256": "32bc23e6d91647935eae19aa931b9db1ba5e256bb2109be05bb93dfb37abdd69",
+          "source": "current_worktree"
+        },
+        {
+          "sha256": "e0949abb63012375f99bb4e525bbc935343b9d9944499d25a4007a6e96f9fcdb",
+          "source": "git:HEAD"
+        }
+      ],
+      "matched": true,
+      "matched_source": "current_worktree",
+      "matched_variants": 9,
+      "variant_mismatches": []
+    },
+    "azuregoat-modules_module-1_resources_azure_function_data_app___init__.py": {
+      "baseline_sha256": "70cf9492e6b8f329feef76c77049ce11b6065a5f6b3ebba241981cdc81d85504",
+      "candidate_hashes": [
+        {
+          "sha256": "70cf9492e6b8f329feef76c77049ce11b6065a5f6b3ebba241981cdc81d85504",
+          "source": "current_worktree"
+        },
+        {
+          "sha256": "7e5362dc0b71bd994609d5c52188617879d4172000f4b5d30920446f0eb7d71a",
+          "source": "git:HEAD"
+        }
+      ],
+      "matched": true,
+      "matched_source": "current_worktree",
+      "matched_variants": 9,
+      "variant_mismatches": []
+    },
+    "azuregoat-sentinel-playbooks_copilot-observe_authorize-graph-device-code.sh": {
+      "baseline_sha256": "2bdd4661acee55e601909aef81db1c957ebbabff3f3fbc5d0c4b0e0b44988b59",
+      "candidate_hashes": [
+        {
+          "sha256": "2bdd4661acee55e601909aef81db1c957ebbabff3f3fbc5d0c4b0e0b44988b59",
+          "source": "current_worktree"
+        }
+      ],
+      "matched": true,
+      "matched_source": "current_worktree",
+      "matched_variants": 9,
+      "variant_mismatches": []
+    },
+    "azuregoat-sentinel-playbooks_copilot-observe_main.bicep": {
+      "baseline_sha256": "17727d2f35c438949013a43a6aa03191b6b3e27d9369830510986c79f7d0767d",
+      "candidate_hashes": [
+        {
+          "sha256": "17727d2f35c438949013a43a6aa03191b6b3e27d9369830510986c79f7d0767d",
+          "source": "current_worktree"
+        }
+      ],
+      "matched": true,
+      "matched_source": "current_worktree",
+      "matched_variants": 9,
+      "variant_mismatches": []
+    },
+    "azuregoat-sentinel-playbooks_copilot-observe_oauth-callback.bicep": {
+      "baseline_sha256": "4cdd7c97928abf15b8fbfb027be8dd1e00758b90f972771296db2be8b6bd01c5",
+      "candidate_hashes": [
+        {
+          "sha256": "4cdd7c97928abf15b8fbfb027be8dd1e00758b90f972771296db2be8b6bd01c5",
+          "source": "current_worktree"
+        }
+      ],
+      "matched": true,
+      "matched_source": "current_worktree",
+      "matched_variants": 9,
+      "variant_mismatches": []
+    },
+    "carl-168f03d3c4": {
+      "baseline_sha256": "9a90f923e687875ae42bf53c6932b3a444100a6f48a137e18e86c1de1a31176e",
+      "candidate_hashes": [
+        {
+          "sha256": "9a90f923e687875ae42bf53c6932b3a444100a6f48a137e18e86c1de1a31176e",
+          "source": "carl_git_object"
+        }
+      ],
+      "matched": true,
+      "matched_source": "carl_git_object",
+      "matched_variants": 9,
+      "variant_mismatches": []
+    },
+    "carl-5436e6dd98": {
+      "baseline_sha256": "2a54c21c2bcdf0d43b7fdb3b31cd4426db3de0f6990e88be90e112846656325f",
+      "candidate_hashes": [
+        {
+          "sha256": "2a54c21c2bcdf0d43b7fdb3b31cd4426db3de0f6990e88be90e112846656325f",
+          "source": "carl_git_object"
+        }
+      ],
+      "matched": true,
+      "matched_source": "carl_git_object",
+      "matched_variants": 9,
+      "variant_mismatches": []
+    },
+    "carl-6d8c99855d": {
+      "baseline_sha256": "5d8be3ae78a84ed5185d9737166914cfa0d6b5f2bf779b0c60be9733ab68dca4",
+      "candidate_hashes": [
+        {
+          "sha256": "5d8be3ae78a84ed5185d9737166914cfa0d6b5f2bf779b0c60be9733ab68dca4",
+          "source": "carl_git_object"
+        }
+      ],
+      "matched": true,
+      "matched_source": "carl_git_object",
+      "matched_variants": 9,
+      "variant_mismatches": []
+    },
+    "carl-8938d62d77": {
+      "baseline_sha256": "ef9a048c0014f133ba8c8f3df3093c7d3dc56760aa4c626d90f30f3909351e47",
+      "candidate_hashes": [
+        {
+          "sha256": "ef9a048c0014f133ba8c8f3df3093c7d3dc56760aa4c626d90f30f3909351e47",
+          "source": "carl_git_object"
+        }
+      ],
+      "matched": true,
+      "matched_source": "carl_git_object",
+      "matched_variants": 9,
+      "variant_mismatches": []
+    },
+    "carl-e725f6f5e8": {
+      "baseline_sha256": "5ab66b384a2b12cd9864a1dba33821ea966eb79eadd75c7c77224617e31c66e5",
+      "candidate_hashes": [
+        {
+          "sha256": "5ab66b384a2b12cd9864a1dba33821ea966eb79eadd75c7c77224617e31c66e5",
+          "source": "carl_git_object"
+        }
+      ],
+      "matched": true,
+      "matched_source": "carl_git_object",
+      "matched_variants": 9,
+      "variant_mismatches": []
+    },
+    "synthetic-benign-docs": {
+      "baseline_sha256": "fda7a8f254ace4e83eb3214b78a2ae20ef6318803f25d337d6b67fa573a1c1df",
+      "candidate_hashes": [
+        {
+          "sha256": "fda7a8f254ace4e83eb3214b78a2ae20ef6318803f25d337d6b67fa573a1c1df",
+          "source": "synthetic_original_generator"
+        }
+      ],
+      "matched": true,
+      "matched_source": "synthetic_original_generator",
+      "matched_variants": 9,
+      "variant_mismatches": []
+    },
+    "synthetic-control-bypass": {
+      "baseline_sha256": "5aeece53c166dbbbcb34b713d619d94155725015b33f45e6eb8c2642882c1993",
+      "candidate_hashes": [
+        {
+          "sha256": "5aeece53c166dbbbcb34b713d619d94155725015b33f45e6eb8c2642882c1993",
+          "source": "synthetic_original_generator"
+        }
+      ],
+      "matched": true,
+      "matched_source": "synthetic_original_generator",
+      "matched_variants": 9,
+      "variant_mismatches": []
+    },
+    "synthetic-network-contributor": {
+      "baseline_sha256": "f89076db4d5cf960cede97850e3ec7e9ed33a9411b2a4a37ff5ad1e4f435b508",
+      "candidate_hashes": [
+        {
+          "sha256": "f89076db4d5cf960cede97850e3ec7e9ed33a9411b2a4a37ff5ad1e4f435b508",
+          "source": "synthetic_original_generator"
+        }
+      ],
+      "matched": true,
+      "matched_source": "synthetic_original_generator",
+      "matched_variants": 9,
+      "variant_mismatches": []
+    },
+    "synthetic-public-metadata": {
+      "baseline_sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492",
+      "candidate_hashes": [
+        {
+          "sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492",
+          "source": "synthetic_original_generator"
+        }
+      ],
+      "matched": true,
+      "matched_source": "synthetic_original_generator",
+      "matched_variants": 9,
+      "variant_mismatches": []
+    },
+    "synthetic-token-logging": {
+      "baseline_sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc",
+      "candidate_hashes": [
+        {
+          "sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc",
+          "source": "synthetic_original_generator"
+        }
+      ],
+      "matched": true,
+      "matched_source": "synthetic_original_generator",
+      "matched_variants": 9,
+      "variant_mismatches": []
+    }
+  },
+  "expected_cases": 15,
+  "protocol": "P1-014-input-recovery",
+  "reference": "hosted JEV original 15-case first repetitions",
+  "summary": {
+    "matched_cases": 15,
+    "matched_variants": 135,
+    "missing_cases": []
+  }
+}

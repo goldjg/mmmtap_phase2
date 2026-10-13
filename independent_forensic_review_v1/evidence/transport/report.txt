@@ -1,0 +1,189 @@
+Independent Path B transport forensic report — 2026-10-12
+
+Scope and method
+---------------
+Read the current cARL assessment sources, sibling command, additive pack
+snapshot entry point, relevant governance, tracked diff, Go validation/build
+records, and only the Path B Python adapter/binding/metric handoff. No other
+review, Iris assessment, generator-isolation investigation, pilot, provider
+call, target edit, repair, dependency installation, or target binary build.
+Evidence lives only in this session's transport-forensics directory.
+
+Findings, ordered by impact
+--------------------------
+1. HIGH, confirmed: provider JSON can silently select different values than
+   native JEV's parser, including accepting a missing canonical API field.
+
+   cARL internal/assessment/policy.go:197-215 unmarshals provider/model/answer
+   fields into Go structs. encoding/json matches field names case
+   insensitively; CheckJSON only rejects exactly repeated keys
+   (internal/assessment/json.go:52-66). Thus it does not reject aliases.
+   MMMTAP phase2/adapters.py:352-366 instead reads exact "model", "answers",
+   and "noul" keys.
+
+   Reproduced against the current Go sources through a session-only overlay:
+     "claim_0000_supported":{"noul":1,"NOUL":0}
+   is accepted, with signal 0 and challenge_required. Native's exact-key
+   extraction uses 1. Likewise "model":"expected","MODEL":"different" reports
+   "different" in cARL; native reports "expected". A response containing only
+   MODEL/ANSWERS/NOUL is accepted as no_challenge, despite having none of the
+   canonical provider field names. ApplyPolicy is shared by live evaluation,
+   offline evaluation, and replay (live.go:338,447; receipt.go:103), so replay
+   repeats rather than detects this semantic drift.
+
+   Consequence: malformed/ambiguous provider output can become policy success
+   and undermine matched-mechanism comparability and reported-model evidence.
+   This is not a claim that the real provider emits such output. The concrete
+   remediation would be exact-key decoding and alias rejection at the API
+   boundary, with negative tests shared with the native parser.
+
+2. MEDIUM, confirmed: Python invents a transport-attempt count.
+
+   phase2/adapters_v2.py:270-274 derives transport_attempts from whether
+   mock_response was supplied, not the verified receipt. A guarded actual
+   sibling invocation with JEVKEY blank returned credentials_unavailable,
+   Go attempts=0/live_calls=0, but Python transport_attempts=1.
+   Go's intended semantics are explicit in live.go:258-266: missing/invalid
+   credentials cause zero transport attempts.
+
+   Consequence: wrapper provenance contradicts its own preserved receipt and
+   can overcount failed qualification attempts. Distinguish CLI invocation
+   count from HTTP attempts; derive the latter from verified receipt data or
+   retain an explicit unknown value when no receipt exists.
+
+3. MEDIUM, confirmed: Path B usage metadata is retained in raw evidence but
+   lost at the Python metrics handoff.
+
+   phase2/adapters_v2.py:270-291 never sets Response.usage. A guarded mock
+   evaluation with usage={input_tokens:123,output_tokens:45} preserved those
+   exact values inside receipt.raw_response, while response.usage was None.
+   phase2/engine.py:187-195 consequently reports all token counts and
+   usage_raw as null. Native explicitly populates usage (adapters.py:429-431).
+
+   Consequence: Path B's result metrics cannot support like-for-like usage
+   analysis even when the provider supplies it. This is an extraction gap,
+   not loss of the underlying bytes and not evidence of zero usage.
+
+4. MEDIUM, confirmed: preparation failures bypass artifact preservation.
+
+   phase2/adapters_v2.py:255-256 returns immediately with only processes.
+   Artifact collection is later at :275-277; the surrounding temporary
+   directory exits and removes the preparation's intent/request/failure files.
+   Guarded invocation with request={} produced:
+     error=unsupported_contract_or_preparation_failed
+     provenance_keys=["processes"], has_preserved_artifacts=false
+     stdout_bytes=0, stderr_bytes=0
+   The process log still retains the child's stderr and exit status, so this
+   is not total loss of failure information. It does lose the actual cARL
+   first-attempt files that command.go:111-141,220-222 deliberately persists.
+   Collect files before every return after staging starts, including failed
+   prepare, without retrying.
+
+Secondary replay limitations (confirmed behavior, lower impact)
+-------------------------------------------------------------
+* live.go:418-433 validates header names/TLS shape, not their full consistency
+  with body/endpoint. A complete 173-byte successful response with sanitized
+  Content-Length:["0"] and TLS.ServerName="not-the-recorded-endpoint.invalid"
+  replayed successfully after receipt/anchor recomputation.
+* receipt.go:125-142 reserializes the decoded v1 offline struct, rather than
+  comparing against the original object. Removing live_calls, or inserting
+  error:null into an otherwise successful receipt, still replays. The v2 live
+  path has stronger required-field checks at live.go:369-377.
+* Reusing exactly the same preparation in two explicit EvaluateLive calls
+  produces two requests, each reporting attempts=1/live_calls=1. The transport
+  promises one attempt per invocation, not global deduplication. CLI directory
+  reservation protects a reused output directory, not a reused attempt ID
+  across new directories (command.go:111). This is an operator responsibility
+  / exactly-once limitation, not an observed automatic retry.
+
+These mutation probes used newly computed anchors. They do NOT bypass an
+independently retained original digest, forge provider authentication, or
+establish that current live transport emits the contradictory receipts.
+
+Positive results and integration boundary
+----------------------------------------
+* Current live.go:89-107,268-342 fixes the endpoint, disables proxies,
+  redirects, reuse and decompression, removes GetBody, bounds timeout/body,
+  and uses TLS verification and environment-only bearer authentication.
+  Inspected and reran the tests for missing/invalid credentials, untrusted
+  TLS, exact noncanonical request bytes, 401/403/429/500/503, redirects
+  302/307/308, malformed JSON/answers, disconnect, timeouts, oversize, literal
+  and JSON-escaped credential echoes, and encoded responses. No automatic
+  retry or fallback was found. Failure/capture classifications remain explicit.
+* Receipts correctly disclaim provider signatures and served-model
+  attestation. Withheld/truncated evidence limitations and aggregate receipt
+  capacity failures are documented rather than passed as complete originals.
+* Actual API compatibility remains UNQUALIFIED, not disproven: the fixed
+  SystemOne request/answer assumptions agree with the local native adapter,
+  but this review performed no provider call or external documentation fetch.
+  No supported-model, current real response/usage schema, service capacity,
+  or served-model attestation is established by loopback fixtures.
+* Frozen instruments/config.v2.json binds the current v2 binary, not the
+  earlier live draft. Its actual SHA-256 is
+  be5a4b98d0acfd516839e9a5ab23071830f39ce0afa808d56a6acbbba1c92716.
+  73/73 source hashes match go_validation/build_metadata.json. This supports
+  the recorded build inputs; it is not a reproducible-build attestation.
+  The additive pack.PolicyTraceInDir delegates to existing evaluation with
+  nil artifacts and rejects composition conflicts; no existing evaluator was
+  edited. Source freeze currently captures assessment/*.go only; complete
+  provenance also depends on the externally bound command/pack/module sources
+  listed by build_metadata.json.
+* v3 live execution is intentionally blocked at phase2/engine.py:204-210.
+  This is an implemented, offline-tested transport component, not an authorized
+  live study integration. Parent owns the broader plan/end-to-end audit.
+
+Independent validation
+----------------------
+Go 1.26.5 linux/arm64. Before execution, inspected assessment TestMain and
+all transport tests, and inspected the other suite's network/subprocess paths:
+local httptest, fake evaluators/fetchers, local git fixtures only.
+
+Executed under bwrap with the entire host filesystem read-only, only this
+evidence directory writable, an isolated network namespace, isolated
+HOME/GOCACHE/GOMODCACHE/TMPDIR/GOTMPDIR, GOPROXY=off, GOSUMDB=off,
+GOTOOLCHAIN=local, GOFLAGS=-buildvcs=false, telemetry disabled and JEVKEY blank.
+No external network path existed; loopback httptest remained available.
+
+* go test -count=1 -json ./...: PASS, 242 top-level tests / 391 including
+  subtests / 16 tested packages; zero failure events or test skips.
+* go vet ./...: PASS.
+* gofmt -l on scoped Go files: clean; git diff --check: PASS.
+* Session-only Go overlay: four top-level forensic reproduction tests /
+  nine including subtests, all PASS (tests assert observed defects/limits,
+  not desired behavior); three loopback requests total.
+* Actual v1, live-draft and v2 --help: PASS. Actual v2 independently replayed
+  the historical v1 mock receipt and missing-credential v2 receipt: PASS.
+  No sibling was rebuilt or overwritten.
+* Three targeted PathBAdapter invocations: missing credential, successful
+  offline fixture with usage, invalid preparation. Seven guarded subprocesses
+  total, zero provider calls. The subprocess runner was instrumented solely
+  to enforce the readonly/network/cache boundary and blank credentials.
+* Initial isolation setup lacked usable /dev/null and stopped before running
+  tests. Preserved those failure logs; corrected the evidence runner to mount
+  an isolated /dev, then reran successfully. This was not a target repair.
+* Did not repeat race testing. Existing race evidence reports unsupported
+  39-bit VMA; current race safety is not independently established here.
+
+Path A preservation, independently checked against git
+-----------------------------------------------------
+HEAD=8a9d5ba6540fb52a7cfa6cbcf4c125e514805c04. Compared all 185 tracked
+working-tree files byte-for-byte to git HEAD. Only four existing documentation
+files differ: current-pr-contract.md, ARCHITECTURE.md, CLI.md, ROADMAP.md.
+Thus cmd/carl, internal/review, internal/semantic, existing pack code,
+embedded files, go.mod and shared governance defaults match the tracked
+baseline. New assessment/command/snapshot files are untracked additions, not
+part of ordinary git diff output.
+All 65 protected hashes independently match the supplied prechange baseline,
+including installed /home/prometheus/bin/carl-jev:
+b34696d54d0b9c910d48c9adbe0155f825617d8e4c8981e58a2f50b5d0868428.
+All cARL target file bytes also remained unchanged during this review.
+
+Evidence index
+--------------
+validation_v2.json; v2_full_test.stdout; v2_vet.{stdout,stderr};
+run_validation.py; forensic_test.go; overlay.json; forensic.stdout;
+run_repros.py; reproductions.json; adapter_repro.py; adapter_results.json;
+adapter_missing_credential.json; v2_replay_*.stdout.
+Initial failed runner logs remain under their unprefixed names.
+No cARL/docs changes made: read-only forensic task. Findings require a
+separately authorized change, not silent repair or freeze mutation.

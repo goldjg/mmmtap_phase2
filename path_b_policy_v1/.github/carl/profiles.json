@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "defaults": {"organization": [], "repository": []},
+  "profiles": [{
+    "id": "assessment",
+    "description": "OFFLINE FIXTURE ONLY; not an approved experimental policy.",
+    "packs": ["research/challenge"],
+    "roles": {"reviewer": [], "cautious": ["research/cautious"]},
+    "tasks": {"source-review": ["research/evidence"]}
+  }],
+  "active": {"profile": "assessment", "role": "reviewer", "task": "source-review"}
+}

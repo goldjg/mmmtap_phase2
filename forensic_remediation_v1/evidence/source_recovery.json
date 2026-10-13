@@ -1,0 +1,95 @@
+{
+  "classification": "derived recovery, not a new or retroactively executed test",
+  "commands": {
+    "expanded-cli-matrix-development": {
+      "all_exact_recorded_source_hashes_recovered": true,
+      "missing": {},
+      "runner_source_from_recorded_edit_timing": "688a5e4d1fa7b92b9d77e79b6963949e46b07ef74cddc8c3017ce2bb8fc58663",
+      "source_files": 105
+    },
+    "green-go-parser-receipts": {
+      "all_exact_recorded_source_hashes_recovered": true,
+      "missing": {},
+      "runner_source_from_recorded_edit_timing": "688a5e4d1fa7b92b9d77e79b6963949e46b07ef74cddc8c3017ce2bb8fc58663",
+      "source_files": 104
+    },
+    "green-new-controls-and-fixtures": {
+      "all_exact_recorded_source_hashes_recovered": true,
+      "missing": {},
+      "runner_source_from_recorded_edit_timing": "688a5e4d1fa7b92b9d77e79b6963949e46b07ef74cddc8c3017ce2bb8fc58663",
+      "source_files": 105
+    },
+    "green-python-neighboring-harness": {
+      "all_exact_recorded_source_hashes_recovered": true,
+      "missing": {},
+      "runner_source_from_recorded_edit_timing": "688a5e4d1fa7b92b9d77e79b6963949e46b07ef74cddc8c3017ce2bb8fc58663",
+      "source_files": 104
+    },
+    "green-python-parser": {
+      "all_exact_recorded_source_hashes_recovered": true,
+      "missing": {},
+      "runner_source_from_recorded_edit_timing": "688a5e4d1fa7b92b9d77e79b6963949e46b07ef74cddc8c3017ce2bb8fc58663",
+      "source_files": 104
+    },
+    "green-python-provenance": {
+      "all_exact_recorded_source_hashes_recovered": true,
+      "missing": {},
+      "runner_source_from_recorded_edit_timing": "688a5e4d1fa7b92b9d77e79b6963949e46b07ef74cddc8c3017ce2bb8fc58663",
+      "source_files": 104
+    },
+    "green-python-v4-integration": {
+      "all_exact_recorded_source_hashes_recovered": true,
+      "missing": {},
+      "runner_source_from_recorded_edit_timing": "688a5e4d1fa7b92b9d77e79b6963949e46b07ef74cddc8c3017ce2bb8fc58663",
+      "source_files": 105
+    },
+    "green-python-v4-regressions": {
+      "all_exact_recorded_source_hashes_recovered": true,
+      "missing": {},
+      "runner_source_from_recorded_edit_timing": "688a5e4d1fa7b92b9d77e79b6963949e46b07ef74cddc8c3017ce2bb8fc58663",
+      "source_files": 105
+    },
+    "probe-expanded-cli-controls": {
+      "all_exact_recorded_source_hashes_recovered": true,
+      "missing": {},
+      "runner_source_from_recorded_edit_timing": "688a5e4d1fa7b92b9d77e79b6963949e46b07ef74cddc8c3017ce2bb8fc58663",
+      "source_files": 105
+    },
+    "red-go-remediation": {
+      "all_exact_recorded_source_hashes_recovered": true,
+      "missing": {},
+      "runner_source_from_recorded_edit_timing": "688a5e4d1fa7b92b9d77e79b6963949e46b07ef74cddc8c3017ce2bb8fc58663",
+      "source_files": 103
+    },
+    "red-python-provenance-lifecycle": {
+      "all_exact_recorded_source_hashes_recovered": true,
+      "missing": {},
+      "runner_source_from_recorded_edit_timing": "688a5e4d1fa7b92b9d77e79b6963949e46b07ef74cddc8c3017ce2bb8fc58663",
+      "source_files": 104
+    },
+    "red-python-remediation": {
+      "all_exact_recorded_source_hashes_recovered": true,
+      "missing": {},
+      "runner_source_from_recorded_edit_timing": "688a5e4d1fa7b92b9d77e79b6963949e46b07ef74cddc8c3017ce2bb8fc58663",
+      "source_files": 103
+    },
+    "red-python-sealing-and-scope": {
+      "all_exact_recorded_source_hashes_recovered": true,
+      "missing": {},
+      "runner_source_from_recorded_edit_timing": "688a5e4d1fa7b92b9d77e79b6963949e46b07ef74cddc8c3017ce2bb8fc58663",
+      "source_files": 104
+    }
+  },
+  "method": "baseline bytes plus recorded own-session edits; gofmt candidates; SHA256 equality to original command records",
+  "schema": "mmmtap-source-byte-recovery-v1",
+  "unapplied_edit_events": [
+    {
+      "event_id": "f733b0d0-363c-4cb7-bde2-185683ffdf15",
+      "reason": "Recorded edit context not found"
+    },
+    {
+      "event_id": "656cc622-f8e8-426a-98c5-3c0c2fc8da91",
+      "reason": "Recorded edit context not found"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "gofmt",
+    "-w",
+    "internal/assessment",
+    "cmd/carl-assessment-challenge",
+    "internal/pack/snapshot.go"
+  ],
+  "cwd": "/home/prometheus/git/cARL-semantic-eval",
+  "exit_status": 0,
+  "latency_seconds": 0.061291,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

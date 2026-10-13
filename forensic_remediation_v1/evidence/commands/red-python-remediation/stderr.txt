@@ -1,0 +1,186 @@
+test_D2_changed_runtime_prompt_cannot_reuse_instrument_identity (test_remediation.FrozenInstrumentRegressions.test_D2_changed_runtime_prompt_cannot_reuse_instrument_identity) ... FAIL
+test_D3_no_credential_zero_HTTP_attempts (test_remediation.PathBProvenanceRegressions.test_D3_no_credential_zero_HTTP_attempts) ... FAIL
+test_D4_usage_from_raw_provider_evidence (test_remediation.PathBProvenanceRegressions.test_D4_usage_from_raw_provider_evidence) ... FAIL
+test_D5_failed_prepare_retains_first_attempt_artifacts (test_remediation.PathBProvenanceRegressions.test_D5_failed_prepare_retains_first_attempt_artifacts) ... FAIL
+test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) ... 
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='case_aliased_noul_D1') ... FAIL
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='case_aliased_model_D1') ... FAIL
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='case_aliased_answers') ... FAIL
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='blank_model') ... FAIL
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='padded_model') ... FAIL
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='unknown_top_level') ... FAIL
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='mixed_answer_types') ... FAIL
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='usage_array') ... FAIL
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='usage_boolean') ... FAIL
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='usage_negative') ... FAIL
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='usage_fraction') ... FAIL
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='usage_alias') ... FAIL
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='usage_counter_alias') ... FAIL
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='unpaired_surrogate') ... FAIL
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='choice_alias') ... FAIL
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='choice_vector_null') ... FAIL
+
+======================================================================
+FAIL: test_D2_changed_runtime_prompt_cannot_reuse_instrument_identity (test_remediation.FrozenInstrumentRegressions.test_D2_changed_runtime_prompt_cannot_reuse_instrument_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 104, in test_D2_changed_runtime_prompt_cannot_reuse_instrument_identity
+    with self.assertRaises(IntegrityError):
+AssertionError: IntegrityError not raised
+
+======================================================================
+FAIL: test_D3_no_credential_zero_HTTP_attempts (test_remediation.PathBProvenanceRegressions.test_D3_no_credential_zero_HTTP_attempts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 65, in test_D3_no_credential_zero_HTTP_attempts
+    self.assertEqual(response.provenance["transport_attempts"], 0)
+AssertionError: 1 != 0
+
+======================================================================
+FAIL: test_D4_usage_from_raw_provider_evidence (test_remediation.PathBProvenanceRegressions.test_D4_usage_from_raw_provider_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 73, in test_D4_usage_from_raw_provider_evidence
+    self.assertEqual(response.usage, answer["usage"])
+AssertionError: None != {'input_tokens': 123, 'output_tokens': 45}
+
+======================================================================
+FAIL: test_D5_failed_prepare_retains_first_attempt_artifacts (test_remediation.PathBProvenanceRegressions.test_D5_failed_prepare_retains_first_attempt_artifacts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 83, in test_D5_failed_prepare_retains_first_attempt_artifacts
+    self.assertIn("prepared/intent.json", artifacts)
+AssertionError: 'prepared/intent.json' not found in {}
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='case_aliased_noul_D1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='case_aliased_model_D1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='case_aliased_answers')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='blank_model')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='padded_model')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='unknown_top_level')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='mixed_answer_types')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='usage_array')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='usage_boolean')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='usage_negative')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='usage_fraction')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='usage_alias')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='usage_counter_alias')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='unpaired_surrogate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='choice_alias')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='choice_vector_null')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 37, in test_D1_shared_provider_byte_fixtures
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 21.652s
+
+FAILED (failures=20)

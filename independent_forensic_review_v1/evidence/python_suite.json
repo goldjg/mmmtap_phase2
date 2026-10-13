@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/usr/bin/bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--unshare-net",
+    "--die-with-parent",
+    "--proc",
+    "/proc",
+    "--dev",
+    "/dev",
+    "--tmpfs",
+    "/tmp",
+    "--chdir",
+    "/home/prometheus/git/mmmtap_phase2",
+    "--",
+    "/usr/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "exit_status": 0,
+  "elapsed_seconds": 164.35811752604786,
+  "network": "unshare-net",
+  "target": "read-only root mount; scratch only /tmp"
+}

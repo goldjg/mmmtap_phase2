@@ -1,0 +1,15 @@
+# MMMTAP Phase 0 v5 — benign control
+
+v5 adds `carl_existing.py` to v4. It reviews an **existing two-commit** benign repository without modifying it. It clones the repository into a temporary directory, installs the same cARL semantic JEV opt-in configuration there, runs a cARL JSON dry run, and (with `--execute`) calls JEV through the unchanged `jev_bridge.py`. It requires both populated cARL signals **and** bridge usage evidence; a fail-open `pass` cannot be counted.
+
+The nine original cARL semantic questions and policy remain unchanged. The bridge retains the documented experimental `noul` → boolean threshold of 0.5. No original repo commits are changed; `carl_existing.py` rejects changes to anything other than `main.tf` and rejects pre-existing cARL config in the cloned checkout. The original Phase 0 v4 `phase0.py` also remains unchanged.
+
+```sh
+cd ~/git/mmmtap_phase0_v5
+python3 carl_existing.py --repo ~/git/mmmtap-benign-control
+python3 carl_existing.py --repo ~/git/mmmtap-benign-control --execute
+```
+
+The first command makes **no JEV call** and writes `carl-benign-results/carl-benign-dry.json`. The second sends a JEV request and writes `carl-benign-results/carl-benign-live.json` and `carl-benign-results/carl-benign-meta.json`. The live result is validated for actual semantic invocation before being reported as success.
+
+The benign change is a *change-control negative control*, while AzureGoat's new-file assessment is a positive control: compare cautious change-governance judgements, not line-by-line vulnerability detection. Never treat a mere exit code 0 as proof JEV ran.

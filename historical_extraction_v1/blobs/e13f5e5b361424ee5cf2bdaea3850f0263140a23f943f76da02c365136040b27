@@ -1,0 +1,33 @@
+# P1-007B offline policy counterfactuals
+
+Read-only replay of four verified P1-006 cARL/JEV responses. No model inference was used.
+
+| Case | Actual cARL | Strict arbiter | Review all sensitive | Direction-aware triage |
+|---|---|---|---|---|
+| public_access_regression | review_required | review_required | review_required | review_required |
+| public_access_remediation | review_required | review_required | review_required | expedited_human_review |
+| ssh_world_open | review_required | review_required | review_required | review_required |
+| ssh_scope_remediation | review_required | review_required | review_required | expedited_human_review |
+
+**Policy meaning:** `direction_aware_triage` does NOT grant approval. It assigns an experimental `expedited_human_review` queue when low control-reduction and scope-expansion signals coexist with a security-sensitive change. It is intentionally not a deployable control.
+
+**Important limitation:** Low reduction/expansion scores do not prove a remediation is effective or safe. This variant uses only score patterns, not independent ground truth, and can misclassify other changes.
+
+## Paired signal score deltas (remediation minus regression)
+
+### public_access_regression / public_access_remediation
+- `security_control_reduction`: -0.84
+- `scope_expansion`: -0.75
+- `trust_boundary_change`: -0.18
+- `authentication_or_authorisation_change`: +0.01
+- `human_review_warranted`: -0.15
+- `security_sensitive`: -0.03
+
+### ssh_world_open / ssh_scope_remediation
+- `security_control_reduction`: -0.82
+- `scope_expansion`: -0.81
+- `trust_boundary_change`: -0.02
+- `authentication_or_authorisation_change`: +0.19
+- `human_review_warranted`: -0.21
+- `security_sensitive`: -0.04
+

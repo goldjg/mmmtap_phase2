@@ -1,0 +1,7 @@
+A pull request fixes spelling mistakes in documentation and changes no runtime code, permissions, deployment configuration, or security policy.
+
+Additional metadata:
+- Change ticket: CHG-TEST-0001
+- Environment: test
+- Owner: application-team
+- Deployment window: scheduled

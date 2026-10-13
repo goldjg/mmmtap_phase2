@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+"""Offline verification and forward-frozen partition of existing P1-014 corpus.
+
+No hosted inference; does not modify source archive.
+"""
+import argparse, hashlib, json, zipfile
+from collections import defaultdict
+from pathlib import Path
+
+VARIANTS = ('baseline', 'reversed_evidence', 'neutral_padding', 'benign_padding',
+            'author_assertion_padding', 'shuffled_evidence_1', 'shuffled_evidence_2',
+            'shuffled_evidence_3', 'shuffled_evidence_4')
+SEED = 'MMMTAP-P1-022-forward-partition-2026-10-11-v1'
+
+def sha(b): return hashlib.sha256(b).hexdigest()
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--source',required=True,help='Existing mmmtap_p1_014_verified_inputs.zip')
+    p.add_argument('--out',default='p1_022_inventory.json')
+    a=p.parse_args(); src=Path(a.source)
+    if not src.is_file(): p.error(f'archive not found: {src}')
+    obj=defaultdict(dict)
+    with zipfile.ZipFile(src) as z:
+        if z.testzip() is not None: raise SystemExit('Archive ZIP integrity failure')
+        report=json.loads(z.read('recovery_report.json'))
+        for name in z.namelist():
+            if not name.startswith('inputs/') or not name.endswith('.txt'): continue
+            _,case,fn=name.split('/')
+            variant=fn[:-4]
+            if variant not in VARIANTS: raise SystemExit(f'unexpected variant: {name}')
+            obj[case][variant]={'path':name,'sha256':sha(z.read(name)),'bytes':len(z.read(name))}
+    if len(obj)!=15: raise SystemExit(f'expected 15 cases, got {len(obj)}')
+    for case,variants in obj.items():
+        if set(variants)!=set(VARIANTS): raise SystemExit(f'variant mismatch {case}: {set(VARIANTS)-set(variants)}')
+        report_case=report.get('cases',{}).get(case,{})
+        if report_case.get('matched') is not True or report_case.get('matched_variants')!=9:
+            raise SystemExit(f'historical recovery unverified: {case}')
+    ordered=sorted(obj, key=lambda c:(sha((SEED+'|'+c).encode()),c))
+    discovery=ordered[:5]; forward=ordered[5:]
+    result={'protocol':'P1-022','version':'0.1','partition_seed':SEED,
+      'source_archive':str(src),'source_zip_sha256':sha(src.read_bytes()),
+      'note':'forward-frozen partition only; previously used corpus, NOT an untouched holdout',
+      'counts':{'cases':15,'variants':135,'discovery_cases':5,'forward_frozen_cases':10},
+      'discovery':discovery,'forward_frozen':forward,
+      'cases':{k:dict(sorted(v.items())) for k,v in sorted(obj.items())}}
+    out=Path(a.out)
+    if out.exists():
+        prior=json.loads(out.read_text())
+        # Local filesystem locations vary across hosts; the archive content hash
+        # and the entire frozen partition/case inventory must remain identical.
+        frozen={k:v for k,v in prior.items() if k!='source_archive'}
+        regenerated={k:v for k,v in result.items() if k!='source_archive'}
+        if frozen!=regenerated:
+            raise SystemExit('existing inventory differs in frozen content: refusing overwrite')
+        if prior.get('source_archive')!=result['source_archive']:
+            print(f'Local source path differs (frozen={prior.get("source_archive")!r}, current={result["source_archive"]!r}); content and partition verified')
+        print(f'Already verified {out} sha256={sha(out.read_bytes())}')
+    else:
+        out.write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')
+        print(f'Wrote {out}: 15 cases, 135 variants, discovery=5, forward-frozen=10')
+    print('discovery:',', '.join(discovery))
+    print('forward-frozen:',', '.join(forward))
+
+if __name__=='__main__': main()

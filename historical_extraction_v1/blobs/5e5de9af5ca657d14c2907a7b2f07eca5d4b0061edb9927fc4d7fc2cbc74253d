@@ -1,0 +1,46 @@
+{
+  "case": "public_access_regression",
+  "kind": "regression",
+  "repetition": 1,
+  "diff_sha256": "4d4ba295de77a6ec62b64d3d4109a417fce45b59783bc6d5f63b9fa76e4ace97",
+  "native": {
+    "status": "live",
+    "duration_s": 0.412,
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 661,
+      "output_tokens": 175
+    },
+    "scores": {
+      "security_sensitive": 0.87,
+      "scope_expansion": 0.77,
+      "architectural_change": 0.13,
+      "authentication_or_authorisation_change": 0.71,
+      "trust_boundary_change": 0.68,
+      "security_control_reduction": 0.9,
+      "breaking_change": 0.33,
+      "new_external_dependency": 0.02,
+      "human_review_warranted": 0.8
+    }
+  },
+  "carl": {
+    "verified_live_semantics": false,
+    "decision": "pass",
+    "finding_count": 0,
+    "diagnostics": [
+      "semantic_evaluation_disabled"
+    ],
+    "signals": null,
+    "signal_ids": [],
+    "status": "unverified",
+    "exit_code": 0,
+    "duration_s": 0.044
+  },
+  "experimental_arbiter": {
+    "decision": "review_required",
+    "reason": "missing_semantic_signals"
+  },
+  "prior_attempts": [
+    "attempt-01"
+  ]
+}

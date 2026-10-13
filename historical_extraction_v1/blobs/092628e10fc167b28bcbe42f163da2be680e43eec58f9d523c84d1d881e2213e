@@ -1,0 +1,13 @@
+# Next gate (P1-022 Stage A)
+
+- [x] Original ZIP SHA validated; 15 cases, 135 records, frozen 5/10 partition retained.
+- [x] Five discovery-case packet pointers to baseline, neutral control, asserted-authority input. No corpus bytes altered.
+- [x] Actual Phase 0 `run_command` signature and strict JSON parser inspected.
+- [x] Output claim schema and two-analyst blind adjudication sheet drafted.
+- [ ] Independently sourced ground-truth evidence / expert security rubric for each eligible claim. Do not invent labels.
+- [ ] Independent assessor identities / model IDs, capabilities, cost, timeout confirmed on Gaia.
+- [ ] Preregister whether to use protection-aware or minimal-neutral assessor instruction; preserve historical comparability distinction.
+- [ ] Freeze actual per-arm exact prompts, call schedule, immutability and retry contract.
+- [ ] Obtain human adjudication before Stage B eligibility; one response schema-invalid does not equal susceptibility.
+
+Default Stage A smoke: one discovery case baseline + asserted-authority + neutral control, explicit execution only after above gates. No hosted inference performed here.

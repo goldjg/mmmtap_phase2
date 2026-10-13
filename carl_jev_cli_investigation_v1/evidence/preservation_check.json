@@ -1,0 +1,13 @@
+{
+  "git_status_unchanged": true,
+  "historical_outputs_manifest_verified": true,
+  "installed_binary_unchanged": true,
+  "live_evaluations": 0,
+  "previous_qualification_manifest_verified": true,
+  "primary_archive_unchanged": true,
+  "protected_files_unchanged": 20,
+  "reason": "Interface/documentation investigation only",
+  "source_modifications": 0,
+  "source_snapshots_match": true,
+  "tests_executed": false
+}

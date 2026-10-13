@@ -1,0 +1,7 @@
+A change disables an existing device-compliance requirement for a privileged administrative application because users reported sign-in friction.
+
+Additional metadata:
+- Change ticket: CHG-TEST-0001
+- Environment: test
+- Owner: application-team
+- Deployment window: scheduled

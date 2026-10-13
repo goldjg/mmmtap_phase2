@@ -1,0 +1,130 @@
+{
+  "plan_validates": true,
+  "jobs": 6885,
+  "kinds": {
+    "generator": 4455,
+    "adversary": 2430
+  },
+  "plan_source_identities": 135,
+  "distinct_hashes": 108,
+  "feasibility_rows": 3240,
+  "all_matrix_live_blocked": true,
+  "checked_records": 153,
+  "record_statuses": {
+    "mock_ok": 153
+  },
+  "verified_blinded_pairs": 63,
+  "control_implementation_hash_drifts": [
+    {
+      "control": "codex_forced_tool_call",
+      "source": "adapters_v2.py",
+      "recorded": "8296fecf6767c63b2c2ef70ac5106ae3cc51b2d7a40ca9807d04312764aecc42",
+      "current": "888de370cc35fb8192b1951497d2fb6483d5f2b9d974311c93a04ed806860a4c"
+    },
+    {
+      "control": "codex_http_500",
+      "source": "adapters_v2.py",
+      "recorded": "8296fecf6767c63b2c2ef70ac5106ae3cc51b2d7a40ca9807d04312764aecc42",
+      "current": "888de370cc35fb8192b1951497d2fb6483d5f2b9d974311c93a04ed806860a4c"
+    },
+    {
+      "control": "codex_positive",
+      "source": "adapters_v2.py",
+      "recorded": "8296fecf6767c63b2c2ef70ac5106ae3cc51b2d7a40ca9807d04312764aecc42",
+      "current": "888de370cc35fb8192b1951497d2fb6483d5f2b9d974311c93a04ed806860a4c"
+    },
+    {
+      "control": "codex_text",
+      "source": "adapters_v2.py",
+      "recorded": "8296fecf6767c63b2c2ef70ac5106ae3cc51b2d7a40ca9807d04312764aecc42",
+      "current": "888de370cc35fb8192b1951497d2fb6483d5f2b9d974311c93a04ed806860a4c"
+    },
+    {
+      "control": "copilot_forced_tool_call",
+      "source": "adapters_v2.py",
+      "recorded": "8296fecf6767c63b2c2ef70ac5106ae3cc51b2d7a40ca9807d04312764aecc42",
+      "current": "888de370cc35fb8192b1951497d2fb6483d5f2b9d974311c93a04ed806860a4c"
+    },
+    {
+      "control": "copilot_http_500",
+      "source": "adapters_v2.py",
+      "recorded": "8296fecf6767c63b2c2ef70ac5106ae3cc51b2d7a40ca9807d04312764aecc42",
+      "current": "888de370cc35fb8192b1951497d2fb6483d5f2b9d974311c93a04ed806860a4c"
+    },
+    {
+      "control": "copilot_positive",
+      "source": "adapters_v2.py",
+      "recorded": "8296fecf6767c63b2c2ef70ac5106ae3cc51b2d7a40ca9807d04312764aecc42",
+      "current": "888de370cc35fb8192b1951497d2fb6483d5f2b9d974311c93a04ed806860a4c"
+    },
+    {
+      "control": "copilot_text",
+      "source": "adapters_v2.py",
+      "recorded": "8296fecf6767c63b2c2ef70ac5106ae3cc51b2d7a40ca9807d04312764aecc42",
+      "current": "888de370cc35fb8192b1951497d2fb6483d5f2b9d974311c93a04ed806860a4c"
+    },
+    {
+      "control": "gemini_text",
+      "source": "adapters_v2.py",
+      "recorded": "8296fecf6767c63b2c2ef70ac5106ae3cc51b2d7a40ca9807d04312764aecc42",
+      "current": "888de370cc35fb8192b1951497d2fb6483d5f2b9d974311c93a04ed806860a4c"
+    }
+  ],
+  "python_ast_files": 20,
+  "original_harness_mismatches": [
+    {
+      "file": "phase2/adapters.py",
+      "actual": "a63161a40e415146ac4c31f3b9bc549df81d76f03bd7d371deee6f48e8cc8cc4",
+      "expected": "92c2cb743a3d0d51a48872ffad4ab13c193c7245c917ed8c9675a22cf8c4fd14"
+    },
+    {
+      "file": "phase2/engine.py",
+      "actual": "332e6364e11d5713c6692d8e33f7a7605db0b851cf46268387d6bf789af9f188",
+      "expected": "dd2d43dd1b8230f4379869e86cab7de3e0c8758afc89efb2759f34cb9494acf9"
+    }
+  ],
+  "prior_manifest_sets": {
+    "MMMTAP_Phase2": {
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "",
+      "manifest_sha256": "d08747376687bf3d3db2f409f77fbb99e69f330c2852d075a0360d5a3c4845eb"
+    },
+    "MMMTAP_Phase2_Eligibility": {
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "",
+      "manifest_sha256": "7aae9f21478b80a7ae07e59d29ddea4a73ae29079b1fbe9e54f9cc655028bdc5"
+    },
+    "reconciliation_v1": {
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "",
+      "manifest_sha256": "d465a38d153f69dcf2fe16f3e64f92071b41aa69588665a59a3d7c3c372fdf02"
+    },
+    "historical_extraction_v1": {
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "",
+      "manifest_sha256": "59380a42e26662af368b5345fe936bd97c707e379a6abe6cfbced084b9e3fa51"
+    },
+    "adapter_qualification_v1": {
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "",
+      "manifest_sha256": "676295f21c9ef26f575c3bb44c0eee606405187e254bcda6b9e0928029446ca3"
+    },
+    "carl_jev_cli_investigation_v1": {
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "",
+      "manifest_sha256": "32f51f562398e9a92ebe3ef30b1719e5ae0c357f6a36836413a14c7979bf8219"
+    },
+    "path_b_validation_v1": {
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": "",
+      "manifest_sha256": "9a2d31dccba6741668c5a19a006c58c183e3d0faa6a492a979047ea7d2e887ba"
+    }
+  }
+}

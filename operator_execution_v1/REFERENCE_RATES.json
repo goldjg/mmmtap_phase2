@@ -1,0 +1,20 @@
+{
+  "haiku": {
+    "unit": "Copilot_AI_Credits",
+    "input_per_million": 10,
+    "output_per_million": 50,
+    "basis": "Public GitHub Copilot default-tier uncached rates retrieved 2026-10-12: Claude Haiku 5.5 USD 0.10 input / 0.50 output per million; 1 AI credit = USD 0.01. Scenario only; excludes cache-write charges, account-specific terms and any long-context tier."
+  },
+  "gemini": {
+    "unit": "Copilot_AI_Credits",
+    "input_per_million": 75,
+    "output_per_million": 375,
+    "basis": "Public GitHub Copilot Gemini 3.8 Flash rates retrieved 2026-10-12: USD 0.75 input / 3.75 output per million; 1 AI credit = USD 0.01. Scenario only; account availability and billing are unverified."
+  },
+  "sol": {
+    "unit": "ChatGPT_credits",
+    "input_per_million": 50,
+    "output_per_million": 250,
+    "basis": "Public Codex GPT-6.1 Sol Standard credit rates retrieved 2026-10-12. These are separate ChatGPT credits, not Copilot AI Credits or an estimate of included subscription tasks; account terms and remaining allowance are unverified."
+  }
+}

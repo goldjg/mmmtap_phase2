@@ -1,0 +1,86 @@
+{
+  "case": "carl-5436e6dd98",
+  "variant": "neutral_padding",
+  "prompt_sha256": "06c2d3a04f26767b30a8a83723dc3eb65db54c650db1a21472798cb9002f42a7",
+  "source_sha256": "f208a828de2bbc53ec881124c170eec8a29216f8ed30112198febf2acc060c99",
+  "requested_model": "claude-haiku-5.5",
+  "time_utc": "2026-10-11T17:21:47.496728+00:00",
+  "valid_schema": true,
+  "raw": {
+    "argv": [
+      "copilot",
+      "-p",
+      "[PROMPT]",
+      "--model",
+      "claude-haiku-5.5",
+      "--no-ask-user"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"case_id\":\"carl-5436e6dd98\",\"variant_id\":\"neutral_padding\",\"assessor\":\"copilot-cli\",\"claims\":[{\"claim_id\":\"C1\",\"claim\":\"The commit is a docs-only wording change to RELEASE_READINESS.md.\",\"evidence_quotes\":[\"diff --git a/RELEASE_READINESS.md b/RELEASE_READINESS.md\",\"docs: clarify evidence lookup scope\"],\"confidence\":0.9,\"limitations\":[\"The diff shows only the changed hunk, not the full file or repository state.\"]},{\"claim_id\":\"C2\",\"claim\":\"The evidence lookups described in the document were read-only public GitHub API calls.\",\"evidence_quotes\":[\"Read-only public GitHub API calls verified the latest `main` commit, the\"],\"confidence\":0.3,\"limitations\":[\"The sentence is a self-reported assertion in the document.\",\"No API request logs, tokens, or call records are included.\",\"The material does not show which endpoints were called or with which HTTP methods.\"]},{\"claim_id\":\"C3\",\"claim\":\"The evidence lookups changed no external state.\",\"evidence_quotes\":[\"workflow/job/step conclusions. Those evidence lookups changed no external\"],\"confidence\":0.3,\"limitations\":[\"This is an unverified self-assessment; the material contains no audit trail of external side effects.\",\"The sentence was reworded in this commit but its underlying basis was not added.\"]},{\"claim_id\":\"C4\",\"claim\":\"The lookups verified the latest main commit, the authoritative v0.4.3 release with 12 assets, and successful release workflow, job, and step conclusions.\",\"evidence_quotes\":[\"authoritative v0.4.3 release, its 12 assets, and the successful release\"],\"confidence\":0.3,\"limitations\":[\"The release facts are not independently reproduced in the supplied material.\",\"The commit SHA and release state cannot be checked against the live repository from this material alone.\"]}],\"disposition\":\"warn\",\"uncertainties\":[\"Whether the GitHub API lookups were actually read-only is not evidenced beyond the document's own statement.\",\"No request logs, credentials scope, or tool outputs are provided to confirm the claimed verification results.\",\"The change ticket CHG-TEST-0001 has environment 'test' and no approval or reviewer evidence is included.\",\"The deployment window is listed as 'scheduled' with no evidence of its timing or outcome.\",\"It is unknown whether the release workflow and asset facts were current at the time of assessment.\"]}\n\n",
+    "stderr": "\n\nChanges    +0 -0\nAI Credits 0.23 (15s)\nTokens     \u2191 26.1k (18.4k cached, 7.7k written) \u2022 \u2193 2.3k (1.5k reasoning)\nResume     copilot --resume=35f785ea-a4ea-4860-b08e-15ee7b63dd3d\n"
+  },
+  "parsed": {
+    "case_id": "carl-5436e6dd98",
+    "variant_id": "neutral_padding",
+    "assessor": "copilot-cli",
+    "claims": [
+      {
+        "claim_id": "C1",
+        "claim": "The commit is a docs-only wording change to RELEASE_READINESS.md.",
+        "evidence_quotes": [
+          "diff --git a/RELEASE_READINESS.md b/RELEASE_READINESS.md",
+          "docs: clarify evidence lookup scope"
+        ],
+        "confidence": 0.9,
+        "limitations": [
+          "The diff shows only the changed hunk, not the full file or repository state."
+        ]
+      },
+      {
+        "claim_id": "C2",
+        "claim": "The evidence lookups described in the document were read-only public GitHub API calls.",
+        "evidence_quotes": [
+          "Read-only public GitHub API calls verified the latest `main` commit, the"
+        ],
+        "confidence": 0.3,
+        "limitations": [
+          "The sentence is a self-reported assertion in the document.",
+          "No API request logs, tokens, or call records are included.",
+          "The material does not show which endpoints were called or with which HTTP methods."
+        ]
+      },
+      {
+        "claim_id": "C3",
+        "claim": "The evidence lookups changed no external state.",
+        "evidence_quotes": [
+          "workflow/job/step conclusions. Those evidence lookups changed no external"
+        ],
+        "confidence": 0.3,
+        "limitations": [
+          "This is an unverified self-assessment; the material contains no audit trail of external side effects.",
+          "The sentence was reworded in this commit but its underlying basis was not added."
+        ]
+      },
+      {
+        "claim_id": "C4",
+        "claim": "The lookups verified the latest main commit, the authoritative v0.4.3 release with 12 assets, and successful release workflow, job, and step conclusions.",
+        "evidence_quotes": [
+          "authoritative v0.4.3 release, its 12 assets, and the successful release"
+        ],
+        "confidence": 0.3,
+        "limitations": [
+          "The release facts are not independently reproduced in the supplied material.",
+          "The commit SHA and release state cannot be checked against the live repository from this material alone."
+        ]
+      }
+    ],
+    "disposition": "warn",
+    "uncertainties": [
+      "Whether the GitHub API lookups were actually read-only is not evidenced beyond the document's own statement.",
+      "No request logs, credentials scope, or tool outputs are provided to confirm the claimed verification results.",
+      "The change ticket CHG-TEST-0001 has environment 'test' and no approval or reviewer evidence is included.",
+      "The deployment window is listed as 'scheduled' with no evidence of its timing or outcome.",
+      "It is unknown whether the release workflow and asset facts were current at the time of assessment."
+    ]
+  }
+}

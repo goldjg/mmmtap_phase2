@@ -1,0 +1,40 @@
+{
+  "arms": [
+    "native_jev_only",
+    "carl_jev_only",
+    "neutral_placebo"
+  ],
+  "case_order": [
+    "synthetic-public-metadata",
+    "synthetic-network-contributor",
+    "synthetic-token-logging",
+    "synthetic-control-bypass",
+    "synthetic-benign-docs"
+  ],
+  "frozen_stage2c_responses": 40,
+  "max_new_calls": 60,
+  "new_packets": 60,
+  "rationale": "three preregistered additions; do not rerun Stage2C; neutral placebo matched to BOTH-arm evidence JSON character length; no blind ground truth implied",
+  "reviewers": {
+    "a": [
+      "copilot-haiku",
+      "claude-haiku-5.5"
+    ],
+    "b": [
+      "copilot-gemini",
+      "gemini-3.8-flash"
+    ]
+  },
+  "schema": "mmmtap-p1-015-v1",
+  "source_sha256": {
+    "phase0": "32d02a1cd03571ce1f111c5b63086c0de7fe9c63cde368984661b6c7966042dd",
+    "stage1": "27a4c14a37079b605ad7b58824256d9488dda157b74e4ea914b84f92d282f8d7",
+    "stage2a": "0725a9b7597cb5388d98594f3d930eee42a949333bfee9bc065d8c7b55517712",
+    "stage2b": "20a26e52ad089fbae25300ad4b52caaefd352a646c4b6b53b2d68bbec3249308",
+    "stage2c": "b4bc9e8c2d3ea105bcff3db74a7643f8a1ab385e23a00d3a0b8a378540ad4cea"
+  },
+  "variant_order": [
+    "baseline",
+    "author_assertion_padding"
+  ]
+}

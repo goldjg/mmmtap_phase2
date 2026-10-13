@@ -1,0 +1,424 @@
+"""Explicitly authorised v2 transports; offline import never invokes a provider."""
+from __future__ import annotations
+
+import base64
+import json
+import os
+from pathlib import Path
+import shutil
+import stat
+import subprocess
+import tempfile
+import time
+
+from .adapters import Response, NativeJEVAdapter, parse_systemone
+from .core import IntegrityError, json_bytes, load, digest
+from historical_extractor.archive import sha256
+from historical_extractor.extract import strict_json
+from .isolation import (Staging, bwrap_argv, sandbox_env, stream_run, verify_binary,
+                        CopilotWatchdog, CodexWatchdog, CODEX_TOOL_MARKERS,
+                        DATETIME_PREFIX, redact, stage_codex_auth, sensitive_bytes,
+                        IsolationError, sha256_file)
+
+EXCLUDED = ("bash,read_bash,stop_bash,list_bash,view,create,edit,web_fetch,"
+            "fetch_copilot_cli_documentation,search_code_subagent,skill,run_dynamic_workflow,"
+            "dynamic_workflows_manage,sql,session_store_sql,read_agent,list_agents,write_agent,"
+            "grep,glob,task,ask_user")
+DISABLED = (
+    "shell_tool", "unified_exec", "multi_agent", "multi_agent_v2", "hooks", "plugins", "remote_plugin",
+    "apps", "computer_use", "browser_use", "browser_use_external", "in_app_local_automation",
+    "image_generation", "code_mode_host", "skill_search", "skill_mcp_dependency_install",
+    "workspace_dependencies", "memories", "shell_snapshot", "daemon_auto_start",
+    "unbounded_connection_retries", "step_model_switching", "goals", "realtime_conversation",
+    "enable_request_compression", "sleep_tool", "tool_suggest", "view_image", "write_stdin_approval",
+    "unified_exec_tty", "guardian_approval", "worktrees", "plugin_sharing", "tool_call_mcp_elicitation",
+    "auth_elicitation", "mentions_v2", "content_item_kinds", "fast_mode", "ultrafast_mode",
+    "in_app_browser", "in_app_chat", "browser_annotation_api", "browser_use_full_cdp_access")
+CODEX_WARNING = ("Code Mode is unavailable because code-mode host is disabled. Code mode will fail closed; "
+                 "enable `features.code_mode_host` and install `codex-code-mode-host`.")
+
+
+def copilot_argv(model: str) -> list[str]:
+    return ["/opt/bin/copilot", "--model", model, "--reasoning-effort", "low", "--output-format", "json",
+            "--stream", "off", "--disable-builtin-mcps", "--no-auto-update", "--no-ask-user",
+            "--no-experimental", "--no-remote-export", "--no-bash-env", "--max-autopilot-continues", "0",
+            "--no-custom-instructions", "--available-tools=mmmtap_no_tool_placeholder",
+            "--excluded-tools=" + EXCLUDED]
+
+
+def codex_argv(*, mock: bool = False) -> list[str]:
+    provider = ('name="mmmtap-loopback",base_url="{BASE}/v1",env_key="MMMTAP_PROVIDER_KEY"' if mock else
+                'name="mmmtap-chatgpt",base_url="https://chatgpt.com/backend-api/codex",requires_openai_auth=true')
+    settings = [f"features.{n}=false" for n in DISABLED] + [
+        "project_doc_max_bytes=0", 'web_search="disabled"', 'model_provider="mmmtap_explicit"',
+        'model_providers.mmmtap_explicit={' + provider +
+        ',wire_api="responses",request_max_retries=0,stream_max_retries=0,'
+        'stream_idle_timeout_ms=60000,supports_websockets=false}']
+    return ["/opt/codex-release/bin/codex", "-a", "never", "exec", "--strict-config",
+            "--ignore-user-config", "--ignore-rules", "--ephemeral", "--skip-git-repo-check",
+            "--sandbox", "read-only", "--model", "gpt-6.1-sol", "-c", 'model_reasoning_effort="low"',
+            "--json", "--color", "never"] + [p for s in settings for p in ("-c", s)] + ["-"]
+
+
+def parse_events(raw: bytes, stderr: bytes, *, model: str, provider: str, prompt: str,
+                 mock: bool = False) -> tuple[bytes, dict | None, dict]:
+    events = [strict_json(line) for line in raw.splitlines() if line.strip()]
+    if not all(isinstance(e, dict) and isinstance(e.get("type"), str) for e in events):
+        raise ValueError("invalid_event_shape")
+    messages, usage = [], None
+    observed = []
+    if provider == "codex_cli":
+        if any(marker in stderr for marker in CODEX_TOOL_MARKERS):
+            raise ValueError("codex_tool_routing")
+        allowed = {"thread.started", "turn.started", "item.started", "item.completed", "turn.completed"}
+        for e in events:
+            if e["type"] not in allowed:
+                raise ValueError("codex_unknown_or_failure_event")
+            item = e.get("item", {})
+            if item:
+                if item.get("type") == "error":
+                    if item.get("message", item.get("text")) != CODEX_WARNING:
+                        raise ValueError("codex_warning_not_allowlisted")
+                elif item.get("type") not in ("reasoning", "agent_message"):
+                    raise ValueError("codex_non_assessment_item")
+                elif e["type"] == "item.completed" and item["type"] == "agent_message":
+                    messages.append(item["text"])
+            if e["type"] == "turn.completed":
+                usage = e.get("usage")
+        for kind in ("thread.started", "turn.started", "turn.completed"):
+            if sum(e["type"] == kind for e in events) != 1:
+                raise ValueError("codex_turn_count")
+        # These fields describe client configuration, never a provider identity.
+        for marker in (b"Configuring session: model=gpt-6.1-sol", b"request_max_retries: Some(0)",
+                       b"stream_max_retries: Some(0)", b"codex.turn.reasoning_effort=low",
+                       b'name: "mmmtap-loopback"' if mock else b'name: "mmmtap-chatgpt"'):
+            if marker not in stderr:
+                raise ValueError("codex_effective_config_unobserved")
+        basis = "requested_model_and_client_debug_configuration_not_provider_attestation"
+    else:
+        allowed = {"session.mcp_servers_loaded", "session.tools_updated", "session.info", "session.skills_loaded",
+                   "user.message", "assistant.turn_start", "model.call_start", "model.call_finished",
+                   "assistant.message", "assistant.reasoning", "model.call_final_result", "assistant.turn_end",
+                   "session.usage_checkpoint", "assistant.idle", "result"}
+        for e in events:
+            if e["type"] not in allowed:
+                raise ValueError("copilot_unknown_or_failure_event")
+            d, kind = e.get("data", {}), e["type"]
+            if not isinstance(d, dict):
+                raise ValueError("copilot_invalid_data")
+            if kind == "assistant.message":
+                if d.get("toolRequests"):
+                    raise ValueError("copilot_tool_request")
+                messages.append(d.get("content"))
+            if kind == "session.tools_updated" and d.get("tools"):
+                raise ValueError("copilot_tools_advertised")
+            if kind == "session.mcp_servers_loaded":
+                servers = d.get("servers")
+                if not isinstance(servers, list) or any(s.get("status") != "disabled" for s in servers):
+                    raise ValueError("copilot_mcp_server_not_disabled")
+            if kind == "model.call_start":
+                observed.append(d.get("model"))
+            if kind == "model.call_finished" and d.get("outcome") != "success":
+                raise ValueError("copilot_call_not_successful")
+            if kind == "model.call_final_result" and (d.get("result") != "success"
+                    or d.get("model") != model or d.get("isByok") is not mock):
+                raise ValueError("copilot_route_or_model_changed")
+            if kind == "session.usage_checkpoint":
+                counts = [details.get("tool_count") for conversation in d.get("promptCacheBreakState", [])
+                          for details in conversation.get("models", {}).values()]
+                if not counts or any(type(n) is not int or n != 0 for n in counts):
+                    raise ValueError("copilot_telemetry_tool_exposure_or_missing")
+                metrics = d.get("accountingSnapshot", {}).get("modelMetrics", {})
+                if set(metrics) != {model} or metrics[model].get("requests", {}).get("count") != 1:
+                    raise ValueError("copilot_accounted_request_or_model_mismatch")
+                tokens = metrics[model].get("usage", {})
+                usage = {"input_tokens": tokens.get("inputTokens"), "output_tokens": tokens.get("outputTokens"),
+                         "cached_input_tokens": tokens.get("cacheReadTokens"), "raw_telemetry": d}
+            if kind == "user.message":
+                if d.get("content") != prompt:
+                    raise ValueError("copilot_prompt_changed")
+                transformed = d.get("transformedContent", prompt)
+                if transformed != prompt and not (transformed.endswith(prompt) and
+                        DATETIME_PREFIX.fullmatch(transformed[:-len(prompt)])):
+                    raise ValueError("copilot_inherited_prompt")
+            if kind == "result" and e.get("exitCode", d.get("exitCode")) != 0:
+                raise ValueError("copilot_result_failed")
+        for kind in ("user.message", "model.call_start", "model.call_finished", "model.call_final_result", "result"):
+            if sum(e["type"] == kind for e in events) != 1:
+                raise ValueError("copilot_event_count:" + kind)
+        if observed != [model]:
+            raise ValueError("copilot_client_model_mismatch")
+        if not mock and usage is None:
+            raise ValueError("copilot_live_telemetry_missing")
+        basis = "CLI_model_event_not_provider_attestation"
+    if len(messages) != 1 or not isinstance(messages[0], str) or not messages[0].strip():
+        raise ValueError("one_complete_assessment_required")
+    return messages[0].encode(), usage, {
+        "observed_model": model if provider != "codex_cli" else None,
+        "requested_model": model, "provider_confirmed_model": None, "identity_basis": basis,
+        "event_types": [e["type"] for e in events], "observed_tool_use": 0,
+        "provider_internal_retries": "unobservable", "evidence_mode": "loopback_mock" if mock else "live_unqualified"}
+
+
+class GeneratorAdapter:
+    def __init__(self, spec: dict, cfg: dict):
+        self.spec, self.cfg = spec, cfg
+
+    def invoke(self, prompt: str, *, authorised: bool = False) -> Response:
+        if not authorised:
+            return Response(error="live_authorisation_required")
+        spec = self.spec
+        verify_binary(Path(self.cfg["isolation_runtime"]["binary"]), self.cfg["isolation_runtime"]["sha256"])
+        binary = Path(spec["binary"]).expanduser().resolve()
+        verify_binary(binary, spec["binary_sha256"])
+        secrets = []
+        with Staging() as stage:
+            if spec["provider"] == "codex_cli":
+                home = stage.path("home") / ".codex"
+                home.mkdir()
+                auth = Path.home() / ".codex/auth.json"
+                if not auth.is_file():
+                    return Response(error="credentials_unavailable")
+                auth_info = stage_codex_auth(auth, home)
+                secrets = auth_info["secrets"]
+                env = sandbox_env({"CODEX_HOME": "/home/assessor/.codex",
+                    "PATH": "/opt/codex-release/codex-path:/opt/codex-release/bin:/usr/bin:/bin",
+                    "RUST_LOG": "warn,codex_core=debug"})
+                binds = [(binary.parent.parent, "/opt/codex-release")]
+                command, watchdog = codex_argv(), CodexWatchdog()
+            else:
+                token = next((os.environ[k] for k in ("COPILOT_GITHUB_TOKEN", "GH_TOKEN", "GITHUB_TOKEN")
+                              if os.environ.get(k)), None)
+                if not token:
+                    return Response(error="credentials_unavailable")
+                secrets = [token]
+                env = sandbox_env({"COPILOT_HOME": "/home/assessor/.copilot", "COPILOT_GITHUB_TOKEN": token})
+                binds = [(binary, "/opt/bin/copilot")]
+                command, watchdog = copilot_argv(spec["model_id"]), CopilotWatchdog()
+            if command != spec["argv"]:
+                raise IntegrityError("Generator invocation differs from frozen instrument")
+            argv = bwrap_argv(command, ro_binds=binds + [(stage.path("work"), "/work")],
+                              rw_binds=[(stage.path("home"), "/home/assessor")], network="host")
+            run = stream_run(argv, stdin=prompt.encode(), env=env, timeout=self.cfg["timeout_seconds"],
+                             limit=self.cfg["max_response_bytes"], watchdog=watchdog)
+            out, red1 = redact(run.stdout, secrets)
+            err, red2 = redact(run.stderr, secrets)
+            response = Response(stdout=out, stderr=err, exit_status=run.exit_status,
+                                latency_seconds=run.latency_seconds,
+                                error=run.error or run.watchdog_reason,
+                                provenance={"transport_attempts": 1, "argv": command,
+                                            "binary_sha256": verify_binary(binary, spec["binary_sha256"]),
+                                            "isolation": "fresh_mount_pid_home_readonly_work_namespace",
+                                            "network": "host_for_authorised_provider_transport",
+                                            "credential_redacted": red1 or red2,
+                                            "home_file_names": stage.inventory("home"),
+                                            "auth_writeback": "never_writes_host_auth"})
+            if not response.error and run.exit_status == 0:
+                try:
+                    response.message, response.usage, evidence = parse_events(out, err, model=spec["model_id"],
+                        provider=spec["provider"], prompt=prompt)
+                    response.provenance.update(evidence)
+                except (ValueError, TypeError, KeyError) as exc:
+                    response.error = "strict_parser:" + str(exc)
+            elif not response.error:
+                response.error = "nonzero_exit"
+        response.provenance["staging_removed"] = stage.removed
+        return response
+
+
+class PathBAdapter:
+    def __init__(self, spec: dict, cfg: dict):
+        self.spec, self.cfg = spec, cfg
+
+    def invoke(self, request: dict, *, authorised: bool = False, mock_response: dict | None = None) -> Response:
+        if mock_response is None and not authorised:
+            return Response(error="live_authorisation_required")
+        spec, root = self.spec, None
+        start = time.monotonic()
+        secrets = [os.environ.get("JEVKEY", "")]
+        response = Response(provenance={
+            "schema": "mmmtap-path-b-process-provenance-v2",
+            "transport_attempts": 0, "transport_count_basis": "evaluation_not_started",
+            "request_written": False, "live_calls": 0, "provider_executions": None,
+            "cli_invocations": 0, "processes": [], "artifacts": {}, "artifact_capture": {},
+            "receipt_kind": "local_integrity_not_provider_signature",
+            "evidence_mode": "mock" if mock_response is not None else "live",
+            "sensitive_evidence_withheld": False, "staging_removed": True, "failures": [],
+        })
+        provenance = response.provenance
+
+        def fail(reason):
+            provenance["failures"].append(reason)
+            response.error = response.error or reason
+            response.message = b""
+
+        def safe(raw):
+            if sensitive_bytes(raw, secrets):
+                provenance["sensitive_evidence_withheld"] = True
+                fail("credential_evidence_withheld")
+                return b"", "withheld_sensitive_or_inspection_limit"
+            return raw, "exact"
+
+        def read(path):
+            fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+            with os.fdopen(fd, "rb") as stream:
+                if not stat.S_ISREG(os.fstat(stream.fileno()).st_mode):
+                    raise IntegrityError("artifact_not_regular")
+                raw = stream.read((32 << 20) + 1)
+            if len(raw) > 32 << 20:
+                raise IntegrityError("artifact_size_limit")
+            return raw
+
+        def call(args, *, live=False):
+            env = {"PATH": "/usr/bin:/bin", "LANG": "C.UTF-8"}
+            if live and secrets[0]:
+                env["JEVKEY"] = secrets[0]
+            provenance["cli_invocations"] += 1
+            if live:
+                provenance.update(transport_attempts=None, request_written=None, live_calls=None,
+                                  transport_count_basis="unknown_incomplete_evaluation")
+            r = stream_run([str(binary), *args], stdin=b"", env=env,
+                           timeout=self.cfg["timeout_seconds"] + 10, limit=32 << 20)
+            log = {"args": args, "exit_status": r.exit_status, "error": r.error,
+                   "latency_seconds": r.latency_seconds, "streams": {}}
+            for name in ("stdout", "stderr"):
+                original = getattr(r, name)
+                raw, state = safe(original)
+                log[name] = base64.b64encode(raw).decode()
+                log["streams"][name] = {"sha256": sha256(original), "bytes": len(original), "capture": state}
+                if name == "stderr":
+                    response.stderr += raw
+            provenance["processes"].append(log)
+            response.exit_status = r.exit_status
+            return r
+
+        def anchored(path, process):
+            raw = read(path)
+            checksum = (sha256(raw) + "  " + path.name + "\n").encode()
+            if process.stdout != checksum or read(path.parent / "SHA256SUMS.txt") != checksum:
+                raise IntegrityError("CLI_checksum_file_and_artifact_mismatch")
+            return raw
+
+        try:
+            request_raw = json_bytes(request)
+            provenance["request_sha256"] = sha256(request_raw)
+            if sensitive_bytes(request_raw, secrets):
+                fail("credential_in_request")
+                return response
+            binary = Path(spec["binary"]).resolve(strict=True)
+            verify_binary(binary, spec["binary_sha256"])
+            policy_root = Path(spec["policy_root"])
+            paths = list(policy_root.rglob("*"))
+            if any(p.is_symlink() for p in paths) or {
+                    str(p.relative_to(policy_root)): sha256_file(p) for p in paths if p.is_file()
+            } != spec["policy_files"]:
+                raise IntegrityError("Path_B_policy_changed_after_freeze")
+            root = Path(tempfile.mkdtemp(prefix="mmmtap-path-b-"))
+            root.chmod(0o700)
+            provenance["staging_removed"] = False
+            (root / "request.json").write_bytes(request_raw)
+            (root / "request.json").chmod(0o600)
+            first = call(["prepare", "--request", str(root / "request.json"), "--policy-root",
+                          str(policy_root), "--out", str(root / "prepared")])
+            if first.exit_status != 0 or first.error or response.error:
+                fail(first.error or "unsupported_contract_or_preparation_failed")
+                return response
+            prepared_path = root / "prepared/prepared.json"
+            prepared_raw = anchored(prepared_path, first)
+            prepared = strict_json(prepared_raw)
+            if (base64.b64decode(prepared["input"], validate=True) != request_raw
+                    or prepared["implementation_sha256"] != spec["binary_sha256"]):
+                raise IntegrityError("prepared_input_or_implementation_mismatch")
+            args = ["--prepared", str(prepared_path), "--prepared-sha256", sha256(prepared_raw),
+                    "--out", str(root / "result")]
+            if mock_response is None:
+                args = ["evaluate-live", *args, "--authorize-live", "--timeout-seconds", str(self.cfg["timeout_seconds"])]
+                name, body_name = "live_receipt.json", "response.bin"
+            else:
+                answer_raw = json_bytes(mock_response)
+                if sensitive_bytes(answer_raw, secrets):
+                    fail("credential_in_mock_response")
+                    return response
+                (root / "answer.json").write_bytes(answer_raw)
+                (root / "answer.json").chmod(0o600)
+                args = ["evaluate-offline", *args, "--response", str(root / "answer.json"), "--mode", "mock"]
+                name, body_name = "receipt.json", "response.json"
+            result = call(args, live=mock_response is None)
+            if result.error:
+                fail(result.error)
+            path = root / "result" / name
+            raw = read(path)
+            response.stdout, _ = safe(raw)
+            if response.error:
+                return response
+            raw = anchored(path, result)
+            receipt = strict_json(raw)
+            if (base64.b64decode(receipt["prepared"], validate=True) != prepared_raw
+                    or receipt["prepared_sha256"] != sha256(prepared_raw)
+                    or read(root / "result/prepared.json") != prepared_raw
+                    or receipt["implementation_sha256"] != spec["binary_sha256"]):
+                raise IntegrityError("receipt_prepared_or_implementation_mismatch")
+            body = base64.b64decode(receipt["raw_response"], validate=True)
+            if sha256(body) != receipt["response_sha256"] or read(root / "result" / body_name) != body:
+                raise IntegrityError("receipt_raw_response_mismatch")
+            if mock_response is None:
+                call_record = strict_json(read(root / "result/live_call.json"))
+                if call_record.get("schema") != receipt["schema"] + "-call" or any(
+                        value != receipt.get(key) for key, value in call_record.items() if key != "schema"):
+                    raise IntegrityError("partial_call_receipt_mismatch")
+            replay = call(["replay", "--receipt", str(path), "--receipt-sha256", sha256(raw)])
+            provenance.update(receipt_sha256=sha256(raw), replay_exit_status=replay.exit_status)
+            if replay.exit_status != 0 or replay.error or response.error:
+                fail(replay.error or "receipt_replay_failed")
+                return response
+            provenance.update(transport_attempts=receipt.get("attempts", 0),
+                              request_written=receipt.get("request_written", False),
+                              live_calls=receipt["live_calls"], transport_count_basis="verified_receipt",
+                              transport_latency_ms=receipt.get("latency_ms"))
+            if result.exit_status != 0 or receipt["status"] not in ("ok", "mock_ok"):
+                fail(receipt.get("failure_class") or receipt.get("error") or "evaluation_failed")
+                return response
+            native = strict_json(base64.b64decode(request["native_request"], validate=True))
+            evidence = parse_systemone(body, native)
+            signals = {key: value["noul"] for key, value in evidence["answers"].items()}
+            if receipt["result"]["signals"] != signals or receipt["result"]["reported_model"] != evidence["resolved_model"]:
+                raise IntegrityError("native_and_policy_underlying_evidence_mismatch")
+            response.usage = evidence["usage"]
+            provenance["usage_source"] = "verified_receipt.raw_response.usage"
+            provenance["observed_model"] = evidence["resolved_model"]
+            response.message = json_bytes({"mechanism": "carl_jev_path_b",
+                "evidence_mode": provenance["evidence_mode"], "provenance": "supplied_not_authenticated_git",
+                "receipt_sha256": sha256(raw), **receipt["result"]})
+            verify_binary(binary, spec["binary_sha256"])
+        except (OSError, ValueError, TypeError, KeyError, RecursionError, IsolationError) as exc:
+            fail("path_b_evidence_failure:" + type(exc).__name__)
+        finally:
+            if root is not None:
+                total = 0
+                try:
+                    for index, path in enumerate(sorted(root.rglob("*"))):
+                        name = str(path.relative_to(root))
+                        if path.is_symlink():
+                            raise IntegrityError("artifact_symlink")
+                        if path.is_dir():
+                            continue
+                        if index > 256:
+                            raise IntegrityError("artifact_count_limit")
+                        raw = read(path)
+                        total += len(raw)
+                        if total > 128 << 20:
+                            raise IntegrityError("artifact_total_size_limit")
+                        value, state = safe(raw)
+                        provenance["artifact_capture"][name] = {"sha256": sha256(raw), "bytes": len(raw), "capture": state}
+                        if state == "exact":
+                            provenance["artifacts"][name] = base64.b64encode(value).decode()
+                except (OSError, ValueError, RecursionError) as exc:
+                    fail("artifact_capture_failed:" + type(exc).__name__)
+                try:
+                    shutil.rmtree(root)
+                    provenance["staging_removed"] = not root.exists()
+                except OSError as exc:
+                    fail("cleanup_failed:" + type(exc).__name__)
+                    provenance["cleanup_required"] = str(root)
+            response.latency_seconds = round(time.monotonic() - start, 6)
+        return response

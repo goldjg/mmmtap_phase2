@@ -1,0 +1,46 @@
+{
+  "case": "ssh_world_open",
+  "kind": "regression",
+  "repetition": 1,
+  "diff_sha256": "6afffb4bc2dac0ab3f04d2a9c38a70855ae302ccb21530ad55ddfba3a08ca1dd",
+  "native": {
+    "status": "live",
+    "duration_s": 0.437,
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 670,
+      "output_tokens": 175
+    },
+    "scores": {
+      "security_sensitive": 0.89,
+      "scope_expansion": 0.86,
+      "architectural_change": 0.16,
+      "authentication_or_authorisation_change": 0.31,
+      "trust_boundary_change": 0.77,
+      "security_control_reduction": 0.91,
+      "breaking_change": 0.25,
+      "new_external_dependency": 0.02,
+      "human_review_warranted": 0.86
+    }
+  },
+  "carl": {
+    "verified_live_semantics": false,
+    "decision": "pass",
+    "finding_count": 0,
+    "diagnostics": [
+      "semantic_evaluation_disabled"
+    ],
+    "signals": null,
+    "signal_ids": [],
+    "status": "unverified",
+    "exit_code": 0,
+    "duration_s": 0.041
+  },
+  "experimental_arbiter": {
+    "decision": "review_required",
+    "reason": "missing_semantic_signals"
+  },
+  "prior_attempts": [
+    "attempt-01"
+  ]
+}

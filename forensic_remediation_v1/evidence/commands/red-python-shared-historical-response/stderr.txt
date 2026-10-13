@@ -1,0 +1,17 @@
+test_D1_preserved_actual_response_type_and_confidence_metadata (test_remediation.ProviderResponseRegressions.test_D1_preserved_actual_response_type_and_confidence_metadata) ... ERROR
+
+======================================================================
+ERROR: test_D1_preserved_actual_response_type_and_confidence_metadata (test_remediation.ProviderResponseRegressions.test_D1_preserved_actual_response_type_and_confidence_metadata)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 33, in test_D1_preserved_actual_response_type_and_confidence_metadata
+    parsed = parse_systemone(raw, fixture["request"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/prometheus/git/mmmtap_phase2/phase2/adapters.py", line 395, in parse_systemone
+    raise ValueError("SystemOne invalid noul")
+ValueError: SystemOne invalid noul
+
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+FAILED (errors=1)

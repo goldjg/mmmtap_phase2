@@ -1,0 +1,160 @@
+{
+  "schema": "mmmtap-independent-forensic-review-v1",
+  "verdict": "not_ready_under_strict_isolation_contract",
+  "live_experimental_calls": 0,
+  "source_repairs": 0,
+  "iris_assessment_consulted": false,
+  "findings": [
+    {
+      "id": "D1",
+      "classification": "confirmed_defect",
+      "severity": "HIGH",
+      "title": "Case-aliased provider JSON changes matched judgments",
+      "source": [
+        "cARL/internal/assessment/policy.go:197-215",
+        "phase2/adapters.py:352-366"
+      ],
+      "evidence": [
+        "evidence/transport/forensic_test.go",
+        "evidence/transport/forensic.stdout"
+      ]
+    },
+    {
+      "id": "D2",
+      "classification": "confirmed_defect",
+      "severity": "MEDIUM",
+      "title": "New plan accepts changed prompts under unchanged frozen instrument identity",
+      "source": [
+        "phase2/integration.py:57-58,111-114,147-153",
+        "phase2/core.py:103-104"
+      ],
+      "evidence": [
+        "evidence/reproduce_instruments.py",
+        "evidence/instrument_repro.stdout"
+      ]
+    },
+    {
+      "id": "D3",
+      "classification": "confirmed_defect",
+      "severity": "MEDIUM",
+      "title": "Python transport-attempt count contradicts zero-attempt credential failure",
+      "source": [
+        "phase2/adapters_v2.py:270-274"
+      ],
+      "evidence": [
+        "evidence/transport/adapter_results.json"
+      ]
+    },
+    {
+      "id": "D4",
+      "classification": "confirmed_defect",
+      "severity": "MEDIUM",
+      "title": "Available Path B usage omitted from structured metrics",
+      "source": [
+        "phase2/adapters_v2.py:270-291",
+        "phase2/engine.py:187-195"
+      ],
+      "evidence": [
+        "evidence/transport/adapter_results.json"
+      ]
+    },
+    {
+      "id": "D5",
+      "classification": "confirmed_defect",
+      "severity": "MEDIUM",
+      "title": "Failed preparation artifacts lost by Python early return",
+      "source": [
+        "phase2/adapters_v2.py:237-256,275-277"
+      ],
+      "evidence": [
+        "evidence/transport/adapter_results.json"
+      ]
+    },
+    {
+      "id": "D6",
+      "classification": "confirmed_provenance_defect",
+      "severity": "MEDIUM",
+      "title": "Nine final isolation captures bind older adapter source",
+      "source": [
+        "phase2/readiness.py:24-35",
+        "phase2/isolation_controls.py:69-73"
+      ],
+      "evidence": [
+        "evidence/artifact_audit.json",
+        "evidence/reproduced_isolation/summary.json"
+      ]
+    },
+    {
+      "id": "I1",
+      "classification": "incomplete_requirement",
+      "severity": "HIGH",
+      "title": "Strict prevention of unapproved Codex tools remains unresolved",
+      "source": [
+        "phase2/isolation.py:142-219,266-284",
+        "phase2/adapters_v2.py:44-55"
+      ],
+      "evidence": [
+        "evidence/reproduced_isolation/summary.json"
+      ]
+    },
+    {
+      "id": "I2",
+      "classification": "incomplete_deliverable",
+      "severity": "HIGH",
+      "title": "Readiness package lacks remediation report, transport contract and seal",
+      "source": [
+        "integration_readiness_v1/"
+      ],
+      "evidence": [
+        "evidence/deliverable_inventory.json"
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "id": "R1",
+      "severity": "MEDIUM",
+      "classification": "risk_or_untested_control",
+      "title": "Unpinned Codex helper, OS runtime and imported local source dependencies"
+    },
+    {
+      "id": "R2",
+      "severity": "MEDIUM",
+      "classification": "risk_or_untested_control",
+      "title": "Retry races and authenticated/live network equivalence unproven"
+    },
+    {
+      "id": "R3",
+      "severity": "MEDIUM",
+      "classification": "risk_or_untested_control",
+      "title": "Per-control outcomes collected without full regression assertions"
+    },
+    {
+      "id": "R4",
+      "severity": "LOW",
+      "classification": "risk_or_untested_control",
+      "title": "Anchored replay is not origin attestation; some consistency checks incomplete"
+    },
+    {
+      "id": "R5",
+      "severity": "MEDIUM",
+      "classification": "risk_or_untested_control",
+      "title": "Scripted reconsideration is not challenge-sensitive and covers only three baselines"
+    },
+    {
+      "id": "R6",
+      "severity": "MEDIUM",
+      "classification": "risk_or_untested_control",
+      "title": "Attempt identity and budgets not globally enforced across directories"
+    }
+  ],
+  "validation": {
+    "python_tests": 114,
+    "go_top_level_tests": 242,
+    "go_tests_including_subtests": 391,
+    "go_packages": 16,
+    "cli_loopback_controls": 9,
+    "fresh_mock_checkpoints": 153,
+    "blinded_mock_pairs": 63
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "cases": [
+    "synthetic-token-logging",
+    "azuregoat-sentinel-playbooks_copilot-observe_oauth-callback.bicep",
+    "synthetic-public-metadata",
+    "carl-5436e6dd98",
+    "azuregoat-main.tf"
+  ],
+  "comparison": "cross-model-and-harness",
+  "jobs": [
+    {
+      "case": "synthetic-token-logging",
+      "prompt_sha256": "f0c4f2ead0006b929136649a6dda46b48385802dad54577f80da28b32cd63fd8",
+      "source_member": "inputs/synthetic-token-logging/baseline.txt",
+      "source_sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc",
+      "variant": "baseline"
+    },
+    {
+      "case": "synthetic-token-logging",
+      "prompt_sha256": "21e4b24a729ea721e1c5691202e17180686c7c5e7bf6e565be82134b2f303b04",
+      "source_member": "inputs/synthetic-token-logging/neutral_padding.txt",
+      "source_sha256": "c3b245cd01bda8128a02243abde19adc3c4c0fe5febcf5003ee68ff9a0c9df0a",
+      "variant": "neutral_padding"
+    },
+    {
+      "case": "synthetic-token-logging",
+      "prompt_sha256": "a3172200b051635f39883e90bd6a3c0f6f40c8981c86fe21ae1ab0c6c1c7283b",
+      "source_member": "inputs/synthetic-token-logging/author_assertion_padding.txt",
+      "source_sha256": "7f9e8272aa62e82531bf58fe986fb937ede8894a2849a0b0d1e052e6173e4da0",
+      "variant": "author_assertion_padding"
+    },
+    {
+      "case": "azuregoat-sentinel-playbooks_copilot-observe_oauth-callback.bicep",
+      "prompt_sha256": "8b780a0a4c5c780b1ed143a61ff9c7051d1f566ad882b0e37aa11cc7f22240f7",
+      "source_member": "inputs/azuregoat-sentinel-playbooks_copilot-observe_oauth-callback.bicep/baseline.txt",
+      "source_sha256": "4cdd7c97928abf15b8fbfb027be8dd1e00758b90f972771296db2be8b6bd01c5",
+      "variant": "baseline"
+    },
+    {
+      "case": "azuregoat-sentinel-playbooks_copilot-observe_oauth-callback.bicep",
+      "prompt_sha256": "696abb10751ad2edd0f1c2b067713a9a4d5a48ef5f9bc7508d9cb8b126fd11c5",
+      "source_member": "inputs/azuregoat-sentinel-playbooks_copilot-observe_oauth-callback.bicep/neutral_padding.txt",
+      "source_sha256": "1e4d83cb0f83dc35295bb37144cd8a9346adc0e72dbc012f987550a935dd3aee",
+      "variant": "neutral_padding"
+    },
+    {
+      "case": "azuregoat-sentinel-playbooks_copilot-observe_oauth-callback.bicep",
+      "prompt_sha256": "ea423867eff000a94fa92b58d031ae77d0e0d05e43e452a33a77a419231b9f75",
+      "source_member": "inputs/azuregoat-sentinel-playbooks_copilot-observe_oauth-callback.bicep/author_assertion_padding.txt",
+      "source_sha256": "6ddd2461b019e2438a935b56cbc1428fe3cf3c900d996ca72bebc7783fdd1a3f",
+      "variant": "author_assertion_padding"
+    },
+    {
+      "case": "synthetic-public-metadata",
+      "prompt_sha256": "5db45f60627860dbbf7b98a5ccc9152323404997ede35dfc61f870be5ff41e38",
+      "source_member": "inputs/synthetic-public-metadata/baseline.txt",
+      "source_sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492",
+      "variant": "baseline"
+    },
+    {
+      "case": "synthetic-public-metadata",
+      "prompt_sha256": "20d227b9c6c82889b5ea3e66196e8efa965b5e6ebe279d767936b698c76a95ce",
+      "source_member": "inputs/synthetic-public-metadata/neutral_padding.txt",
+      "source_sha256": "a0b4909ff98b3e635f8ec7b77e7bc5f95da66328ffeab2b9d6b1d9f12145e9c9",
+      "variant": "neutral_padding"
+    },
+    {
+      "case": "synthetic-public-metadata",
+      "prompt_sha256": "582314d8eb6d01142de12abe196d3285d75bcef19f873d9d1589c219d3e1e515",
+      "source_member": "inputs/synthetic-public-metadata/author_assertion_padding.txt",
+      "source_sha256": "3c5caab9a3bcd3ce068b21ec6ed130c126f23f1a39d6d272c00e0a54e4a12b52",
+      "variant": "author_assertion_padding"
+    },
+    {
+      "case": "carl-5436e6dd98",
+      "prompt_sha256": "6260570c0cc04e6df293e4f491e240cf8488d738a962bc3c00f0cd1e3f98dc10",
+      "source_member": "inputs/carl-5436e6dd98/baseline.txt",
+      "source_sha256": "2a54c21c2bcdf0d43b7fdb3b31cd4426db3de0f6990e88be90e112846656325f",
+      "variant": "baseline"
+    },
+    {
+      "case": "carl-5436e6dd98",
+      "prompt_sha256": "06c2d3a04f26767b30a8a83723dc3eb65db54c650db1a21472798cb9002f42a7",
+      "source_member": "inputs/carl-5436e6dd98/neutral_padding.txt",
+      "source_sha256": "f208a828de2bbc53ec881124c170eec8a29216f8ed30112198febf2acc060c99",
+      "variant": "neutral_padding"
+    },
+    {
+      "case": "carl-5436e6dd98",
+      "prompt_sha256": "20465b39dcfa14b8a007eb5e2ac8bb3fe21d4a74eeb89cdd65e710399e58d0b3",
+      "source_member": "inputs/carl-5436e6dd98/author_assertion_padding.txt",
+      "source_sha256": "06b24daefa507deef5f02d8f971e380fcf4b6c1a8b98a9943d0a1243bfc5523e",
+      "variant": "author_assertion_padding"
+    },
+    {
+      "case": "azuregoat-main.tf",
+      "prompt_sha256": "790afdd1f9ce31724ed61ba007221a6fb1f90e1cdc937a7fbc7ee78928d65b41",
+      "source_member": "inputs/azuregoat-main.tf/baseline.txt",
+      "source_sha256": "32bc23e6d91647935eae19aa931b9db1ba5e256bb2109be05bb93dfb37abdd69",
+      "variant": "baseline"
+    },
+    {
+      "case": "azuregoat-main.tf",
+      "prompt_sha256": "4101774d44356c2296151f430330c0d045d798cef8d34d0033f617b771306927",
+      "source_member": "inputs/azuregoat-main.tf/neutral_padding.txt",
+      "source_sha256": "00bd1c7f86cd5bf0fad0eb4e33c45f64ac3875949a7d67edbb4be164c6bcbcd4",
+      "variant": "neutral_padding"
+    },
+    {
+      "case": "azuregoat-main.tf",
+      "prompt_sha256": "0fc8f8dd92f5d724178441b99dbedaee0b19e18c9e36414605bce0f154292e74",
+      "source_member": "inputs/azuregoat-main.tf/author_assertion_padding.txt",
+      "source_sha256": "06a27e6111f01812514a7eb3bb0f6396723518dca306a56b2aa4b07e9d0b7c8f",
+      "variant": "author_assertion_padding"
+    }
+  ],
+  "model_requested": "gpt-6.1-sol",
+  "prompt_head_sha256": "8f7792aa3ee806abf525f7e310efd2c73561b694f6fad43ca01b59e68d5a47fe",
+  "protocol": "P1-022-A2-Codex-v1",
+  "reasoning_requested": "low",
+  "source_zip_sha256": "a3fe94069009f328b0a46bb52a7ff52d2c2bedfcd0eb3babe360eea1c884cc21",
+  "stop_on_failure": true,
+  "strict_first_attempt": true,
+  "variants": [
+    "baseline",
+    "neutral_padding",
+    "author_assertion_padding"
+  ]
+}

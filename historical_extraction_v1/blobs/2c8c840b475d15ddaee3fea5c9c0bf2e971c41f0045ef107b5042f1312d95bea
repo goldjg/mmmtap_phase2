@@ -1,0 +1,65 @@
+{
+  "bridge_stats": {
+    "model": "jev-1.13.0",
+    "question_ids": [
+      "security_sensitive",
+      "scope_expansion",
+      "architectural_change",
+      "authentication_or_authorisation_change",
+      "trust_boundary_change",
+      "security_control_reduction",
+      "breaking_change",
+      "new_external_dependency",
+      "human_review_warranted"
+    ],
+    "usage": {
+      "input_tokens": 847,
+      "output_tokens": 175
+    }
+  },
+  "case": "public_access_regression",
+  "decision": "review_required",
+  "diff_sha256": "4d4ba295de77a6ec62b64d3d4109a417fce45b59783bc6d5f63b9fa76e4ace97",
+  "duration_s": 0.79,
+  "repeat_index": 2,
+  "signals": {
+    "architectural_change": {
+      "raw_noul": 0.4,
+      "value": false
+    },
+    "authentication_or_authorisation_change": {
+      "raw_noul": 0.85,
+      "value": true
+    },
+    "breaking_change": {
+      "raw_noul": 0.44,
+      "value": false
+    },
+    "human_review_warranted": {
+      "raw_noul": 0.93,
+      "value": 0.93
+    },
+    "new_external_dependency": {
+      "raw_noul": 0.02,
+      "value": false
+    },
+    "scope_expansion": {
+      "raw_noul": 0.84,
+      "value": true
+    },
+    "security_control_reduction": {
+      "raw_noul": 0.95,
+      "value": true
+    },
+    "security_sensitive": {
+      "raw_noul": 0.95,
+      "value": true
+    },
+    "trust_boundary_change": {
+      "raw_noul": 0.84,
+      "value": true
+    }
+  },
+  "started_utc": "2026-10-10T18:48:03.415266+00:00",
+  "status": "live"
+}

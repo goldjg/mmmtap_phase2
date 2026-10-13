@@ -1,0 +1,2 @@
+0000000000000000000000000000000000000000 3335a9911781a866a0562715367317b9a5ee2493 MMMTAP Stage2B <stage2b@mmmtap.invalid> 1791670505 +0100	commit (initial): Frozen scenario configuration
+3335a9911781a866a0562715367317b9a5ee2493 d63eaad6e4793c22f1eb64f8b117dde1add7d95d MMMTAP Stage2B <stage2b@mmmtap.invalid> 1791670505 +0100	commit: Synthetic scenario synthetic-token-logging author_assertion_padding

@@ -1,0 +1,196 @@
+package assessment
+
+import (
+	"encoding/json"
+	"net/http"
+	"os"
+	"testing"
+	"time"
+)
+
+type providerFixtures struct {
+	Requests map[string]struct {
+		Questions map[string]ProviderQuestion `json:"questions"`
+	} `json:"requests"`
+	Cases []struct {
+		ID       string `json:"id"`
+		Request  string `json:"request"`
+		Raw      string `json:"raw"`
+		Accepted bool   `json:"accepted"`
+	} `json:"cases"`
+}
+
+func readProviderFixtures(t *testing.T) providerFixtures {
+	t.Helper()
+	raw, err := os.ReadFile("testdata/systemone_responses.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var fixtures providerFixtures
+	if err := json.Unmarshal(raw, &fixtures); err != nil {
+		t.Fatal(err)
+	}
+	return fixtures
+}
+
+func TestForensicD1SharedNoulPolicyEvidence(t *testing.T) {
+	fixtures := readProviderFixtures(t)
+	policy := &Policy{Rules: []BoundRule{{Pack: "fixture", Rule: Rule{
+		ID: "support", Signal: "claim_supported", Operator: "lt", Threshold: 0.5, Action: "challenge_required",
+	}}}}
+	a := &Assessment{Claims: []Claim{{ID: "c1", Quotes: []string{}}}}
+	for _, tc := range fixtures.Cases {
+		if tc.Request != "noul" {
+			continue
+		}
+		t.Run(tc.ID, func(t *testing.T) {
+			native := &NativeRequest{Questions: map[string]Question{"claim_0000_supported": {Type: "noul"}}}
+			got, err := ApplyPolicy(policy, a, native, []byte(tc.Raw))
+			if (err == nil) != tc.Accepted {
+				t.Fatalf("accepted=%v, expected=%v; error=%v", err == nil, tc.Accepted, err)
+			}
+			if !tc.Accepted {
+				return
+			}
+			var expected struct {
+				Model   string `json:"model"`
+				Answers map[string]struct {
+					Noul float64 `json:"noul"`
+					Type string  `json:"type"`
+				} `json:"answers"`
+			}
+			if err := json.Unmarshal([]byte(tc.Raw), &expected); err != nil {
+				t.Fatal(err)
+			}
+			value := expected.Answers["claim_0000_supported"].Noul
+			if got.ReportedModel != expected.Model || got.Signals["claim_0000_supported"] != value {
+				t.Fatal("policy changed the underlying provider evidence")
+			}
+			want := "no_challenge"
+			if value < 0.5 {
+				want = "challenge_required"
+			}
+			if got.Disposition != want {
+				t.Fatalf("policy should remain distinct from numerical judgement: %s", got.Disposition)
+			}
+		})
+	}
+}
+
+func TestForensicD1SharedCanonicalInterpretation(t *testing.T) {
+	fixtures := readProviderFixtures(t)
+	for _, tc := range fixtures.Cases {
+		t.Run(tc.ID, func(t *testing.T) {
+			got, err := ParseProvider([]byte(tc.Raw), fixtures.Requests[tc.Request].Questions)
+			t.Logf("MMMTAP_EQUIVALENCE %s", mustJSON(t, map[string]any{
+				"id": tc.ID, "accepted": err == nil, "evidence": got,
+			}))
+			if (err == nil) != tc.Accepted {
+				t.Fatalf("accepted=%v, expected=%v; error=%v", err == nil, tc.Accepted, err)
+			}
+			if !tc.Accepted {
+				return
+			}
+			var expected map[string]any
+			if err := json.Unmarshal([]byte(tc.Raw), &expected); err != nil {
+				t.Fatal(err)
+			}
+			expected["resolved_model"] = expected["model"]
+			delete(expected, "model")
+			if _, exists := expected["usage"]; !exists {
+				expected["usage"] = nil
+			}
+			if !equalJSON(mustJSON(t, got), mustJSON(t, expected)) {
+				t.Fatal("provider interpretation differs from shared fixture")
+			}
+		})
+	}
+}
+
+func TestForensicHistoricalProviderMetadata(t *testing.T) {
+	raw, err := os.ReadFile("testdata/systemone_historical.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var fixture struct {
+		Request struct {
+			Questions map[string]ProviderQuestion `json:"questions"`
+		} `json:"request"`
+		Raw string `json:"raw"`
+	}
+	if err := json.Unmarshal(raw, &fixture); err != nil {
+		t.Fatal(err)
+	}
+	evidence, err := ParseProvider([]byte(fixture.Raw), fixture.Request.Questions)
+	t.Logf("MMMTAP_EQUIVALENCE %s", mustJSON(t, map[string]any{
+		"id": "historical_native_response", "accepted": err == nil, "evidence": evidence,
+	}))
+	if err != nil {
+		t.Fatalf("well-formed retained provider metadata rejected: %v", err)
+	}
+}
+
+func TestForensicR4OfflineRequiredFields(t *testing.T) {
+	raw, files := fixture(t)
+	code := Hash([]byte("offline-regression-not-provider"))
+	p, err := Prepare(raw, files, code)
+	if err != nil {
+		t.Fatal(err)
+	}
+	prepared := mustJSON(t, p)
+	receipt, err := EvaluateOffline(prepared, Hash(prepared), answer(t, 1, 0, 1), "mock", code)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, change := range []string{"missing_live_calls", "null_error", "aliased_status"} {
+		t.Run(change, func(t *testing.T) {
+			var obj map[string]any
+			if err := json.Unmarshal(mustJSON(t, receipt), &obj); err != nil {
+				t.Fatal(err)
+			}
+			switch change {
+			case "missing_live_calls":
+				delete(obj, "live_calls")
+			case "null_error":
+				obj["error"] = nil
+			case "aliased_status":
+				delete(obj, "status")
+				obj["STATUS"] = "mock_ok"
+			}
+			tampered := mustJSON(t, obj)
+			if _, err := Replay(tampered, Hash(tampered)); err == nil {
+				t.Fatal("recomputed anchor accepted inconsistent receipt fields")
+			}
+		})
+	}
+}
+
+func TestForensicR4LiveMetadataConsistency(t *testing.T) {
+	prepared, anchor, _ := preparedFixture(t)
+	server := liveServer(t, &captured{}, func(w http.ResponseWriter, _ *http.Request, _ []byte) {
+		if _, err := w.Write(answer(t, 1, 0, 1)); err != nil {
+			t.Error(err)
+		}
+	})
+	r, err := EvaluateLive(prepared, anchor, Hash([]byte("code")), testTransport(server, testKey, time.Second))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, change := range []string{"tls_server_name", "content_length"} {
+		t.Run(change, func(t *testing.T) {
+			var copy LiveReceipt
+			if err := json.Unmarshal(mustJSON(t, r), &copy); err != nil {
+				t.Fatal(err)
+			}
+			if change == "tls_server_name" {
+				copy.TLS.ServerName = "not-the-recorded-endpoint.invalid"
+			} else {
+				copy.ResponseHeaders["Content-Length"] = []string{"0"}
+			}
+			tampered := mustJSON(t, &copy)
+			if _, err := replayLive(tampered, Hash(tampered), r.Endpoint); err == nil {
+				t.Fatal("recomputed anchor accepted inconsistent TLS/body metadata")
+			}
+		})
+	}
+}

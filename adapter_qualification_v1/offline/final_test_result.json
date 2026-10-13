@@ -1,0 +1,1 @@
+{"command":["/usr/bin/python","-m","unittest","discover","-s","tests","-q"],"exit_status":0,"latency_seconds":57.334104,"live_inference":false,"tests":92}

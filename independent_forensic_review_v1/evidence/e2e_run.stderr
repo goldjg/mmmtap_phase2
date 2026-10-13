@@ -1,0 +1,4 @@
+  File "<string>", line 8
+    root=Path(/home/prometheus/git/mmmtap_phase2)
+              ^
+SyntaxError: invalid syntax

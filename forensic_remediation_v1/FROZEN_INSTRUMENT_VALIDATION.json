@@ -1,0 +1,35 @@
+{
+  "execution_plan_file": "v5/execution_plan_v5.json",
+  "execution_plan_manifest_sha256": "844703bcc5569894d140f0bf4a1e34d1db7a281b82d4e751cab39b6e77f013cf",
+  "execution_plan_sha256": "779afb5c40b89f610a2214f53df4f1ae2426eefaab6efaf6ad32c4b59e5f0b19",
+  "implementation_sha256": "c1d1c4d09715893e3c3ccd9deee77b787b189b3c511018f017842ee5ecb20ac3",
+  "instruments_sha256": "be99adbb65cf5dfb2cb9aa2accebf683306ff565ecf81a515676111856fdd06a",
+  "limits": [
+    "Hash-bound local provenance is not signed attestation.",
+    "Host OS/kernel/read-only /usr are not a hermetic runtime image.",
+    "Snapshots and example policy are proposed instruments, not PI approval."
+  ],
+  "manifest": "v5/instruments/manifest.json",
+  "path_b_binary_sha256": "b51cb4c86a1e5b54b5bb496e67890ee8efd18f58603616f4eb28da144d7a275d",
+  "policy_thresholds_changed": false,
+  "producer_sha256": "5a20196990e751337b1f1d2f3ba0236628cefcd00ad3e896c753185feec300ee",
+  "question_semantics_changed": false,
+  "regressions": [
+    "D2_changed_runtime_prompt_cannot_reuse_instrument_identity",
+    "D2_all_semantic_snapshots_must_match_runtime",
+    "D2_unbound_old_binary_cannot_be_frozen_as_current",
+    "R1_imported_helpers_and_test_sources_are_bound",
+    "R1_extra_or_changed_CLI_helpers_are_rejected",
+    "D6_stale_controls_cannot_reach_assembly_execution"
+  ],
+  "runtime_and_snapshots_match": true,
+  "schema": "mmmtap-frozen-instrument-validation-v1",
+  "scoring_contract_changed": false,
+  "software_manifest": "v5/instruments/software.v1.json",
+  "source_files_bound": 144,
+  "supersedes_without_modification": {
+    "file": "integration_readiness_v1/execution_plan_v3.json",
+    "sha256": "6d24e77593e59fb769d234f6b56294c79efef8924b7c1d3cc575029c63172984",
+    "status": "superseded_no_rewrite"
+  }
+}

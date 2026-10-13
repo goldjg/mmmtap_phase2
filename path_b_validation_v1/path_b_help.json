@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "/home/prometheus/git/mmmtap_phase2/path_b_validation_v1/bin/carl-assessment-challenge-v1",
+    "--help"
+  ],
+  "cwd": "/home/prometheus/git/mmmtap_phase2",
+  "exit_status": 0,
+  "latency_seconds": 0.120674,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "5127d3121eed5169b0d16293d10dfba4f802c4e8f83a80057b71cb8a508878ae"
+}

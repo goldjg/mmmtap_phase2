@@ -1,0 +1,5 @@
+{"Time":"2026-10-12T03:33:20.672861389+01:00","Action":"start","Package":"github.com/goldjg/carl/internal/assessment"}
+{"Time":"2026-10-12T03:33:20.696763593+01:00","Action":"output","Package":"github.com/goldjg/carl/internal/assessment","Output":"FATAL: ThreadSanitizer: unsupported VMA range\n"}
+{"Time":"2026-10-12T03:33:20.696961685+01:00","Action":"output","Package":"github.com/goldjg/carl/internal/assessment","Output":"FATAL: Found 39 - Supported 48\n"}
+{"Time":"2026-10-12T03:33:20.698761794+01:00","Action":"output","Package":"github.com/goldjg/carl/internal/assessment","Output":"FAIL\tgithub.com/goldjg/carl/internal/assessment\t0.025s\n"}
+{"Time":"2026-10-12T03:33:20.69887196+01:00","Action":"fail","Package":"github.com/goldjg/carl/internal/assessment","Elapsed":0.026}

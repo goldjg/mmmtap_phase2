@@ -1,0 +1,66 @@
+{
+  "HTTP_attempts_in_mock_run": 0,
+  "archive": "v5/end_to_end_mock.tar.gz",
+  "archive_entries_individually_verified": 27546,
+  "archive_sha256": "e57df1a4d38f064684aeb572eb98a93119209a953c017ad97f9c567a80d7ae9d",
+  "blinded_pairs": 2835,
+  "both_E3_orders_and_C3": {
+    "C3": {
+      "groups": 405,
+      "turns_each": [
+        1,
+        2
+      ]
+    },
+    "E3_CN": {
+      "groups": 405,
+      "turns_each": [
+        1,
+        2
+      ]
+    },
+    "E3_NC": {
+      "groups": 405,
+      "turns_each": [
+        1,
+        2
+      ]
+    }
+  },
+  "checkpoints": 6885,
+  "evidence_class": "complete_labelled_mock_chains_plus_offline_failure_regressions",
+  "failure_regressions": [
+    "no_credentials_zero_HTTP_attempts",
+    "launch_failure_not_CLI_invocation",
+    "incomplete_evaluation_unknown_count",
+    "failed_preparation_artifacts",
+    "staging_failure_exact_request",
+    "malformed_receipt",
+    "missing_response_file",
+    "checksum_anchor_mismatch",
+    "cleanup_failure_preserved",
+    "literal_and_nested_encoded_credential_withholding",
+    "preparation_checkpoint_before_payload",
+    "same_workspace_cross_directory_reservation",
+    "failed_parent_preparation_stays_reserved"
+  ],
+  "frozen_prompt_and_own_branch_history_verified_for_every_generator": true,
+  "generator_assessments": 4455,
+  "implementation_sha256": "c1d1c4d09715893e3c3ccd9deee77b787b189b3c511018f017842ee5ecb20ac3",
+  "instruments_sha256": "be99adbb65cf5dfb2cb9aa2accebf683306ff565ecf81a515676111856fdd06a",
+  "limits": [
+    "CLI invocation is not an HTTP attempt; a written request is not proven provider execution or billing.",
+    "Known-secret withholding is not a detector for every unknown secret or encoding.",
+    "Workspace reservations do not establish distributed/provider exactly-once execution.",
+    "All mock claims, token counts and challenge effects are authored fixtures, not research results."
+  ],
+  "live_provider_calls": 0,
+  "matched_independent_E1_E2_request_pairs": 405,
+  "native_mock_evaluations": 1215,
+  "path_b_offline_policy_replays": 1215,
+  "path_b_started_CLI_invocations": 3645,
+  "producer_sha256": "5a20196990e751337b1f1d2f3ba0236628cefcd00ad3e896c753185feec300ee",
+  "resume_new_checkpoints": 0,
+  "schema": "mmmtap-transport-provenance-validation-v1",
+  "structured_usage_verified_against_raw_receipt": true
+}

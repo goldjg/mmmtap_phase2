@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "/usr/bin/bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--bind",
+    "/home/prometheus/git/mmmtap_phase2/independent_forensic_review_v1/evidence",
+    "/home/prometheus/git/mmmtap_phase2/independent_forensic_review_v1/evidence",
+    "--unshare-net",
+    "--die-with-parent",
+    "--proc",
+    "/proc",
+    "--dev",
+    "/dev",
+    "--tmpfs",
+    "/tmp",
+    "--chdir",
+    "/home/prometheus/git/mmmtap_phase2",
+    "--",
+    "/usr/bin/python",
+    "-c",
+    "\nimport json,hashlib\nfrom pathlib import Path\nfrom phase2.core import load,corpus\nfrom phase2.integration import ScriptedAdapters,PILOT_CASES\nfrom phase2.engine import execute\nfrom phase2.adjudication import checked_records,blind_export\nroot=Path(/home/prometheus/git/mmmtap_phase2)\nout=root/independent_forensic_review_v1/evidence\nplan=load(root/integration_readiness_v1/execution_plan_v3.json);_,members=corpus()\nrun=out/reproduced_e2e;mock=ScriptedAdapters(plan)\nselection={(c,baseline) for c in PILOT_CASES}\nfirst=execute(plan,members,run,mode=mock,selected_inputs=selection,mock=mock)\nh=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()\nbefore={str(p):h(p) for p in (run/checkpoints).rglob(*) if p.is_file()}\nsecond=execute(plan,members,run,mode=mock,selected_inputs=selection,mock=mock)\nassert before=={str(p):h(p) for p in (run/checkpoints).rglob(*) if p.is_file()}\np,records=checked_records(run)\nexport=blind_export(run,members,out/reproduced_blinded,out/reproduced_private_key.json)\nprint(json.dumps({first:first,resume:second,checkpoint_bytes_unchanged:True,records_verified:len(records),export:export,actual_model_calls:0,native_systemone_calls:0},indent=2))\n"
+  ],
+  "elapsed_seconds": 0.11323203600477427,
+  "exit_status": 1
+}

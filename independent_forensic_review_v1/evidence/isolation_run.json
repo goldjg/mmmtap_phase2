@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "/usr/bin/bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--bind",
+    "/home/prometheus/git/mmmtap_phase2/independent_forensic_review_v1/evidence",
+    "/home/prometheus/git/mmmtap_phase2/independent_forensic_review_v1/evidence",
+    "--unshare-net",
+    "--die-with-parent",
+    "--proc",
+    "/proc",
+    "--dev",
+    "/dev",
+    "--tmpfs",
+    "/tmp",
+    "--chdir",
+    "/home/prometheus/git/mmmtap_phase2",
+    "--",
+    "/usr/bin/python",
+    "-c",
+    "from pathlib import Path;import json;from phase2.isolation_controls import run_controls;print(json.dumps(run_controls(Path('/home/prometheus/git/mmmtap_phase2/independent_forensic_review_v1/evidence/reproduced_isolation'))))"
+  ],
+  "elapsed_seconds": 60.5704722229857,
+  "exit_status": 0
+}

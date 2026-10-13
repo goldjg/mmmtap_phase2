@@ -1,0 +1,24 @@
+{
+  "case": "A_mixed_intent",
+  "track": "native",
+  "source_diff_sha256": "201b4d59a65d32b10be981b621c6d28db7575cdbe533de91c99a14e776cb28c5",
+  "status": "live",
+  "started": "2026-10-10T19:16:45.830579+00:00",
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 771,
+    "output_tokens": 175
+  },
+  "scores": {
+    "security_sensitive": 0.83,
+    "scope_expansion": 0.26,
+    "architectural_change": 0.27,
+    "authentication_or_authorisation_change": 0.62,
+    "trust_boundary_change": 0.62,
+    "security_control_reduction": 0.88,
+    "breaking_change": 0.62,
+    "new_external_dependency": 0.04,
+    "human_review_warranted": 0.82
+  },
+  "duration_s": 0.563
+}

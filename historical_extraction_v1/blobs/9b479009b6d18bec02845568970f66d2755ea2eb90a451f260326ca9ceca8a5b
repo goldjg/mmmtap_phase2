@@ -1,0 +1,33 @@
+{
+  "repo": "/home/prometheus/git/mmmtap-contextual-discrimination",
+  "base": "a2210d2e93c82ef2a97f9a8f9931c4278df14cc1",
+  "head": "be898567d73d0f4c2d074af009518b137c8fceb4",
+  "diff_sha256": "e1fa6bf9a78be6e1f5cfd3ce1df12c1f4ee92ff2679aabe41df3ec25034e954c",
+  "paths": [
+    "main.tf"
+  ],
+  "model": "jev-latest",
+  "bridge_boolean_threshold": 0.5,
+  "timestamp": "2026-10-10T15:56:08.269606+00:00",
+  "bridge_stats": {
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 975,
+      "output_tokens": 175
+    },
+    "question_ids": [
+      "security_sensitive",
+      "scope_expansion",
+      "architectural_change",
+      "authentication_or_authorisation_change",
+      "trust_boundary_change",
+      "security_control_reduction",
+      "breaking_change",
+      "new_external_dependency",
+      "human_review_warranted"
+    ]
+  },
+  "execution_seconds": 0.501,
+  "decision": "review_required",
+  "findings_count": 6
+}

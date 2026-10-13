@@ -1,0 +1,19 @@
+{
+  "stages": {
+    "smoke": {
+      "checkpoints": 5,
+      "matched_native_path_b_pairs": 1,
+      "contained_path_b_replays": 1,
+      "nonempty_source_and_claim_challenges": 2,
+      "first_attempt_bytes_preserved": true
+    },
+    "pilot": {
+      "checkpoints": 153,
+      "matched_native_path_b_pairs": 9,
+      "contained_path_b_replays": 27,
+      "nonempty_source_and_claim_challenges": 54,
+      "first_attempt_bytes_preserved": true
+    }
+  },
+  "real_provider_calls": 0
+}

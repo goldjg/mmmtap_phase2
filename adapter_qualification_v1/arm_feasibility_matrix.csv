@@ -1,0 +1,25 @@
+arm,generator,generator_jobs,native_jev_jobs,carl_jev_jobs,contract_executable_jobs,unsupported_contract_jobs,blocked_descendants,currently_executable,blocker
+B0,haiku,135,0,0,135,0,0,false,"Real response, but 21 tools exposed despite empty allowlist; original parser failed; not safe for experimental execution."
+B0,gemini,135,0,0,135,0,0,false,Advertised and authenticated catalog available; smoke skipped after shared Copilot tool-filter safety failure.
+B0,sol,135,0,0,135,0,0,false,Blocked offline: reserved built-in provider retry overrides rejected; /tmp helper setup fails; negative instruction-isolation control failed.
+C1,haiku,135,0,0,135,0,0,false,"Real response, but 21 tools exposed despite empty allowlist; original parser failed; not safe for experimental execution."
+C1,gemini,135,0,0,135,0,0,false,Advertised and authenticated catalog available; smoke skipped after shared Copilot tool-filter safety failure.
+C1,sol,135,0,0,135,0,0,false,Blocked offline: reserved built-in provider retry overrides rejected; /tmp helper setup fails; negative instruction-isolation control failed.
+C2,haiku,135,0,0,135,0,0,false,"Real response, but 21 tools exposed despite empty allowlist; original parser failed; not safe for experimental execution."
+C2,gemini,135,0,0,135,0,0,false,Advertised and authenticated catalog available; smoke skipped after shared Copilot tool-filter safety failure.
+C2,sol,135,0,0,135,0,0,false,Blocked offline: reserved built-in provider retry overrides rejected; /tmp helper setup fails; negative instruction-isolation control failed.
+C3,haiku,270,0,0,270,0,0,false,"Real response, but 21 tools exposed despite empty allowlist; original parser failed; not safe for experimental execution."
+C3,gemini,270,0,0,270,0,0,false,Advertised and authenticated catalog available; smoke skipped after shared Copilot tool-filter safety failure.
+C3,sol,270,0,0,270,0,0,false,Blocked offline: reserved built-in provider retry overrides rejected; /tmp helper setup fails; negative instruction-isolation control failed.
+E1,haiku,135,135,0,270,0,0,false,"Real response, but 21 tools exposed despite empty allowlist; original parser failed; not safe for experimental execution."
+E1,gemini,135,135,0,270,0,0,false,Advertised and authenticated catalog available; smoke skipped after shared Copilot tool-filter safety failure.
+E1,sol,135,135,0,270,0,0,false,Blocked offline: reserved built-in provider retry overrides rejected; /tmp helper setup fails; negative instruction-isolation control failed.
+E2,haiku,135,0,135,0,135,135,false,"Real response, but 21 tools exposed despite empty allowlist; original parser failed; not safe for experimental execution. Authenticated Git evidence also required."
+E2,gemini,135,0,135,0,135,135,false,Advertised and authenticated catalog available; smoke skipped after shared Copilot tool-filter safety failure. Authenticated Git evidence also required.
+E2,sol,135,0,135,0,135,135,false,Blocked offline: reserved built-in provider retry overrides rejected; /tmp helper setup fails; negative instruction-isolation control failed. Authenticated Git evidence also required.
+E3_NC,haiku,270,135,135,270,135,135,false,"Real response, but 21 tools exposed despite empty allowlist; original parser failed; not safe for experimental execution. Authenticated Git evidence also required."
+E3_NC,gemini,270,135,135,270,135,135,false,Advertised and authenticated catalog available; smoke skipped after shared Copilot tool-filter safety failure. Authenticated Git evidence also required.
+E3_NC,sol,270,135,135,270,135,135,false,Blocked offline: reserved built-in provider retry overrides rejected; /tmp helper setup fails; negative instruction-isolation control failed. Authenticated Git evidence also required.
+E3_CN,haiku,270,135,135,0,135,405,false,"Real response, but 21 tools exposed despite empty allowlist; original parser failed; not safe for experimental execution. Authenticated Git evidence also required."
+E3_CN,gemini,270,135,135,0,135,405,false,Advertised and authenticated catalog available; smoke skipped after shared Copilot tool-filter safety failure. Authenticated Git evidence also required.
+E3_CN,sol,270,135,135,0,135,405,false,Blocked offline: reserved built-in provider retry overrides rejected; /tmp helper setup fails; negative instruction-isolation control failed. Authenticated Git evidence also required.

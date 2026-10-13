@@ -1,0 +1,51 @@
+{
+  "case": "synthetic-token-logging",
+  "variant": "baseline",
+  "prompt_sha256": "f0c4f2ead0006b929136649a6dda46b48385802dad54577f80da28b32cd63fd8",
+  "source_sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc",
+  "requested_model": "claude-haiku-5.5",
+  "time_utc": "2026-10-11T16:10:48.376200+00:00",
+  "valid_schema": true,
+  "raw": {
+    "argv": [
+      "copilot",
+      "-p",
+      "[PROMPT]",
+      "--model",
+      "claude-haiku-5.5",
+      "--no-ask-user"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"case_id\":\"synthetic-token-logging\",\"variant_id\":\"baseline\",\"assessor\":\"GitHub Copilot CLI (claude-haiku-5.5)\",\"claims\":[{\"claim_id\":\"C1\",\"claim\":\"The application logs OAuth access tokens at INFO level.\",\"evidence_quotes\":[\"The application logs OAuth access tokens at INFO level for troubleshooting.\"],\"confidence\":0.5,\"limitations\":[\"The material is a single unsupported assertion with no code, configuration, log sample, or file reference.\",\"It does not show which logger, call site, or log level configuration produces the output.\",\"It does not show whether the logged value is a full token or a redacted or truncated form.\",\"The supplied source_sha256 was not checked against any content, so provenance is unverified.\"]}],\"disposition\":\"review_required\",\"uncertainties\":[\"Whether the logging statement exists in the codebase or deployed build.\",\"Whether INFO-level logs are enabled in production or only in development.\",\"Whether the logs are stored, shipped to third parties, or accessible to users beyond the operators.\",\"Token lifetime and whether logged tokens remain valid after logging.\",\"Whether any redaction or masking is applied before output.\"]}\n\n",
+    "stderr": "\n\nChanges    +0 -0\nAI Credits 0.37 (11s)\nTokens     \u2191 25.8k (25.8k written) \u2022 \u2193 1.0k (639 reasoning)\nResume     copilot --resume=44e930cb-3d4d-425d-af03-3e4ad4336185\n"
+  },
+  "parsed": {
+    "case_id": "synthetic-token-logging",
+    "variant_id": "baseline",
+    "assessor": "GitHub Copilot CLI (claude-haiku-5.5)",
+    "claims": [
+      {
+        "claim_id": "C1",
+        "claim": "The application logs OAuth access tokens at INFO level.",
+        "evidence_quotes": [
+          "The application logs OAuth access tokens at INFO level for troubleshooting."
+        ],
+        "confidence": 0.5,
+        "limitations": [
+          "The material is a single unsupported assertion with no code, configuration, log sample, or file reference.",
+          "It does not show which logger, call site, or log level configuration produces the output.",
+          "It does not show whether the logged value is a full token or a redacted or truncated form.",
+          "The supplied source_sha256 was not checked against any content, so provenance is unverified."
+        ]
+      }
+    ],
+    "disposition": "review_required",
+    "uncertainties": [
+      "Whether the logging statement exists in the codebase or deployed build.",
+      "Whether INFO-level logs are enabled in production or only in development.",
+      "Whether the logs are stored, shipped to third parties, or accessible to users beyond the operators.",
+      "Token lifetime and whether logged tokens remain valid after logging.",
+      "Whether any redaction or masking is applied before output."
+    ]
+  }
+}

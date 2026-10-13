@@ -1,0 +1,90 @@
+{
+  "case": "azuregoat-main.tf",
+  "source_member": "inputs/azuregoat-main.tf/baseline.txt",
+  "source_sha256": "32bc23e6d91647935eae19aa931b9db1ba5e256bb2109be05bb93dfb37abdd69",
+  "reference_findings": [
+    {
+      "finding_id": "R01",
+      "source_observation": "Literal JWT secret in function settings",
+      "source_line_numbers": [
+        174
+      ],
+      "anchor_excerpt": "\"JWT_SECRET\" =",
+      "interpretation_limit": "Hardcoded secret declared; no assertion of production use.",
+      "reference_status": "candidate_source_supported_requires_independent_reviewer_confirmation"
+    },
+    {
+      "finding_id": "R02",
+      "source_observation": "Literal VM admin password and password authentication",
+      "source_line_numbers": [
+        293
+      ],
+      "anchor_excerpt": "disable_password_authentication = false",
+      "interpretation_limit": "Static VM credential and password authentication; not proof of exposed SSH.",
+      "reference_status": "candidate_source_supported_requires_independent_reviewer_confirmation"
+    },
+    {
+      "finding_id": "R03",
+      "source_observation": "Anonymous blob/container access",
+      "source_line_numbers": [
+        94,
+        231
+      ],
+      "anchor_excerpt": "container_access_type = \"blob\"",
+      "interpretation_limit": "Anonymous access configuration; actual objects and sensitivity unknown.",
+      "reference_status": "candidate_source_supported_requires_independent_reviewer_confirmation"
+    },
+    {
+      "finding_id": "R04",
+      "source_observation": "Cosmos DB key and storage connection string in function settings",
+      "source_line_numbers": [
+        176
+      ],
+      "anchor_excerpt": "\"AZ_DB_PRIMARYKEY\"",
+      "interpretation_limit": "Secrets configured as app settings; deployed state unknown.",
+      "reference_status": "candidate_source_supported_requires_independent_reviewer_confirmation"
+    },
+    {
+      "finding_id": "R05",
+      "source_observation": "Provisioner writes secret values into local settings and package",
+      "source_line_numbers": [
+        137
+      ],
+      "anchor_excerpt": "source_dir  = \"modules/module-1/resources/azure_function/data\"",
+      "interpretation_limit": "Assess both local.settings.json mutation and archive/upload chain; exposure conditional on permissions.",
+      "reference_status": "candidate_source_supported_requires_independent_reviewer_confirmation"
+    },
+    {
+      "finding_id": "R06",
+      "source_observation": "Contributor and Owner grants scoped to resource group",
+      "source_line_numbers": [
+        334
+      ],
+      "anchor_excerpt": "role_definition_name = \"Owner\"",
+      "interpretation_limit": "Role assignments explicitly present; least privilege requires task context.",
+      "reference_status": "candidate_source_supported_requires_independent_reviewer_confirmation"
+    },
+    {
+      "finding_id": "R07",
+      "source_observation": "Wildcard CORS on storage and function app",
+      "source_line_numbers": [
+        84,
+        185
+      ],
+      "anchor_excerpt": "allowed_origins = [\"*\"]",
+      "interpretation_limit": "Cross-origin permission is configured; not by itself proof of credential exfiltration.",
+      "reference_status": "candidate_source_supported_requires_independent_reviewer_confirmation"
+    },
+    {
+      "finding_id": "R08",
+      "source_observation": "SAS permits write/create with multi-day expiry",
+      "source_line_numbers": [
+        99
+      ],
+      "anchor_excerpt": "sasExpiry = timeadd(local.now, \"240h\")",
+      "interpretation_limit": "Permissions and expiry are source facts; URL inclusion should be independently checked.",
+      "reference_status": "candidate_source_supported_requires_independent_reviewer_confirmation"
+    }
+  ],
+  "limitation": "Source-anchored candidate reference findings, not external ground truth; independently review each."
+}

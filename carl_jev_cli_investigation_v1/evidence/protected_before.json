@@ -1,0 +1,22 @@
+{
+  "/home/prometheus/git/mmmtap_phase2/adapter_qualification_v1/SHA256SUMS.txt": "676295f21c9ef26f575c3bb44c0eee606405187e254bcda6b9e0928029446ca3",
+  "/home/prometheus/git/mmmtap_phase2/execution_plan_v2.json": "6ac2b63b04f002e0a93d9bcb2cd86c8ffa8880fc99b02977e0416a453dfff62a",
+  "/home/prometheus/git/mmmtap_phase2/historical_extraction_v1/SHA256SUMS.txt": "59380a42e26662af368b5345fe936bd97c707e379a6abe6cfbced084b9e3fa51",
+  "/home/prometheus/git/mmmtap_phase2/historical_extractor/__init__.py": "cc48231fbebe9684d408ca23b7ce6b6a29c4d18aad68ac475a4fe16d307ec977",
+  "/home/prometheus/git/mmmtap_phase2/historical_extractor/__main__.py": "30edd598970217768d8b79dcceaa7507c069dd91bf8310fae387ee3ba362648d",
+  "/home/prometheus/git/mmmtap_phase2/historical_extractor/archive.py": "78b616ccab2b53c89a95801118f331ddcc0d16e912dd13b47bcf81045cb2ac16",
+  "/home/prometheus/git/mmmtap_phase2/historical_extractor/extract.py": "d108236230563e828f17a8a18df19cdd09f50199a1ae0e180abe84e3203dc85e",
+  "/home/prometheus/git/mmmtap_phase2/phase2/__init__.py": "83436a6013643e820eabf0291c252d791c86c9cd857bb708461d156eda3d1b0d",
+  "/home/prometheus/git/mmmtap_phase2/phase2/__main__.py": "629e8ddc85c51aa7d042a7dc696931e7c6279a1664099e1f0effe7661c35e935",
+  "/home/prometheus/git/mmmtap_phase2/phase2/adapters.py": "a63161a40e415146ac4c31f3b9bc549df81d76f03bd7d371deee6f48e8cc8cc4",
+  "/home/prometheus/git/mmmtap_phase2/phase2/adjudication.py": "d74082613d9bc0c446542d6149fd498fcb2c9ecf391ffe4aea00396c25cfb5a8",
+  "/home/prometheus/git/mmmtap_phase2/phase2/config.v1.json": "b6582fe55e9ec63440f7eb15ebb790bb68b4fd8789cf447e4df43916a5e59ca6",
+  "/home/prometheus/git/mmmtap_phase2/phase2/core.py": "e4ad4e47d97072e99c38ceed458a491553213fa8eda3a1a37adbb4037f598186",
+  "/home/prometheus/git/mmmtap_phase2/phase2/engine.py": "dd2d43dd1b8230f4379869e86cab7de3e0c8758afc89efb2759f34cb9494acf9",
+  "/home/prometheus/git/mmmtap_phase2/phase2/prompts.v1.json": "91544ecd28bfa990330154d72c929894cea9849a0272513cb291635d8edb0773",
+  "/home/prometheus/git/mmmtap_phase2/phase2/qualification.py": "0c2dea860c6d7ff9e65d65f119953713c9e57528aa055d851d4dda31acfc136a",
+  "/home/prometheus/git/mmmtap_phase2/phase2/qualification_report.py": "e98c116787cb75505dc080537eb2419fe4e1bc56a5667c12817dc335a9a21e39",
+  "/home/prometheus/git/mmmtap_phase2/tests/test_extractor.py": "d80796aa461e426bb05174cec6965039bf699344ed395b863988ac7573c60fb0",
+  "/home/prometheus/git/mmmtap_phase2/tests/test_harness.py": "dff024a864947e5fb609fa284c646817cce3ad2bb2284bd1d7dec35d74fd063b",
+  "/home/prometheus/git/mmmtap_phase2/tests/test_qualification.py": "417ddbfe18300e68835a701ebb48898263d9ffad5a54054d38ff1d73a9e303fa"
+}

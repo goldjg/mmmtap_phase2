@@ -1,0 +1,64 @@
+{
+  "absolute_task_file_rejected": true,
+  "caller_questions_did_not_replace_nine_default_questions": true,
+  "default_questions": [
+    {
+      "description": "Does this change appear security-sensitive?",
+      "id": "security_sensitive",
+      "kind": "boolean"
+    },
+    {
+      "description": "Does this change appear to expand approved scope or modify unrelated surfaces?",
+      "id": "scope_expansion",
+      "kind": "boolean"
+    },
+    {
+      "description": "Does this change appear to introduce or alter architecture-level structure or boundaries?",
+      "id": "architectural_change",
+      "kind": "boolean"
+    },
+    {
+      "description": "Does this change appear to affect authentication or authorization behavior?",
+      "id": "authentication_or_authorisation_change",
+      "kind": "boolean"
+    },
+    {
+      "description": "Does this change appear to alter a trust boundary or external data flow?",
+      "id": "trust_boundary_change",
+      "kind": "boolean"
+    },
+    {
+      "description": "Does this change appear to reduce a security control or validation gate?",
+      "id": "security_control_reduction",
+      "kind": "boolean"
+    },
+    {
+      "description": "Does this change appear to alter a documented public contract or compatibility boundary?",
+      "id": "breaking_change",
+      "kind": "boolean"
+    },
+    {
+      "description": "Does this change appear to add a new external runtime, build, or CI dependency?",
+      "id": "new_external_dependency",
+      "kind": "boolean"
+    },
+    {
+      "description": "How strongly does the change warrant human review beyond routine automated checks?",
+      "id": "human_review_warranted",
+      "kind": "score",
+      "threshold": 0.7
+    }
+  ],
+  "dry_run_decision_is_placeholder_not_policy_result": {
+    "decision": "pass",
+    "findings": null,
+    "signals": null
+  },
+  "git_repository_required_even_with_task": true,
+  "inline_json_is_opaque_task_string": true,
+  "live_evaluations": 0,
+  "questions_flag_rejected": true,
+  "relative_task_file_accepted": true,
+  "review_dry_run_invocations": 7,
+  "stdin_does_not_change_payload": true
+}

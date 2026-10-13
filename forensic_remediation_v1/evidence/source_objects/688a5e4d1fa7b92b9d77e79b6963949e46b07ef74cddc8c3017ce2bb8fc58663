@@ -1,0 +1,90 @@
+"""Capture an exclusive offline command result with source hashes and no external network."""
+import argparse
+import datetime
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+import time
+
+BASE = Path(__file__).parent
+WORKSPACE = Path("/home/prometheus/git/mmmtap_phase2")
+CARL = Path("/home/prometheus/git/cARL-semantic-eval")
+
+
+def sha(path):
+    with path.open("rb") as stream:
+        return hashlib.file_digest(stream, "sha256").hexdigest()
+
+
+def sources():
+    result = {}
+    for label, root, patterns in (
+        ("workspace", WORKSPACE, ("phase2/*.py", "phase2/*.json",
+                                 "historical_extractor/*.py", "tests/**/*.py", "tests/fixtures/*.json")),
+        ("carl", CARL, ("**/*.go", "go.mod", "go.sum", "internal/assessment/testdata/*.json")),
+    ):
+        for pattern in patterns:
+            for path in sorted(root.glob(pattern)):
+                if path.is_file():
+                    result[label + "/" + str(path.relative_to(root))] = sha(path)
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("label")
+    parser.add_argument("--cwd", type=Path, default=WORKSPACE)
+    parser.add_argument("command", nargs=argparse.REMAINDER)
+    args = parser.parse_args()
+    command = args.command[1:] if args.command[:1] == ["--"] else args.command
+    if not command:
+        parser.error("command required")
+    os.umask(0o077)
+    logs = BASE / "command_evidence"
+    logs.mkdir(mode=0o700, exist_ok=True)
+    out = logs / args.label
+    out.mkdir(mode=0o700)
+    cache = BASE / "offline_cache"
+    cache.mkdir(mode=0o700, exist_ok=True)
+    for name in ("go", "mod", "tmp"):
+        (cache / name).mkdir(mode=0o700, exist_ok=True)
+    env = {
+        "PATH": "/usr/local/bin:/usr/bin:/bin",
+        "HOME": "/home/prometheus", "LANG": "C.UTF-8",
+        "PYTHONDONTWRITEBYTECODE": "1", "PYTHONPATH": str(WORKSPACE),
+        "GOPROXY": "off", "GOSUMDB": "off", "GOTOOLCHAIN": "local",
+        "GOFLAGS": "-buildvcs=false", "GOCACHE": str(cache / "go"),
+        "GOMODCACHE": str(cache / "mod"), "GOTMPDIR": str(cache / "tmp"),
+        "GOTELEMETRY": "off", "JEVKEY": "",
+        "GIT_CONFIG_NOSYSTEM": "1", "GIT_CONFIG_GLOBAL": "/dev/null",
+    }
+    argv = ["/usr/bin/bwrap", "--ro-bind", "/", "/", "--bind", str(BASE), str(BASE),
+            "--dev", "/dev", "--proc", "/proc", "--tmpfs", "/tmp",
+            "--unshare-net", "--die-with-parent", "--", *command]
+    before = sources()
+    started = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    begin = time.monotonic()
+    with (out / "stdout.txt").open("xb") as stdout, (out / "stderr.txt").open("xb") as stderr:
+        proc = subprocess.run(argv, cwd=args.cwd, env=env, stdout=stdout, stderr=stderr, check=False)
+    record = {
+        "schema": "mmmtap-offline-command-evidence-v1", "argv": argv,
+        "cwd": str(args.cwd), "environment": env, "started_at_utc": started,
+        "exit_status": proc.returncode, "elapsed_seconds": round(time.monotonic() - begin, 6),
+        "network": "isolated_network_namespace_loopback_only",
+        "real_provider_calls": 0, "source_sha256": before,
+        "source_unchanged_during_command": before == sources(),
+        "stdout_sha256": sha(out / "stdout.txt"), "stderr_sha256": sha(out / "stderr.txt"),
+    }
+    with (out / "command.json").open("x") as stream:
+        json.dump(record, stream, indent=2, sort_keys=True)
+        stream.write("\n")
+    print(json.dumps({k: record[k] for k in ("exit_status", "elapsed_seconds",
+                                            "source_unchanged_during_command")}))
+    print(str(out))
+    raise SystemExit(proc.returncode)
+
+
+if __name__ == "__main__":
+    main()

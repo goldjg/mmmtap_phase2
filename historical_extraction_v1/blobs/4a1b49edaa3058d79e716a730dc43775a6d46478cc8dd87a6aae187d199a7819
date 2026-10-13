@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "result": {
+    "signals": [
+      {
+        "id": "trust_boundary_change",
+        "value": true,
+        "confidence": 0.9,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.9
+        }
+      },
+      {
+        "id": "security_control_reduction",
+        "value": true,
+        "confidence": 0.94,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.94
+        }
+      },
+      {
+        "id": "breaking_change",
+        "value": false,
+        "confidence": 0.34,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.34
+        }
+      },
+      {
+        "id": "new_external_dependency",
+        "value": false,
+        "confidence": 0.02,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.02
+        }
+      },
+      {
+        "id": "human_review_warranted",
+        "value": 0.94,
+        "confidence": 0.94,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": null,
+          "raw_noul": 0.94
+        }
+      },
+      {
+        "id": "security_sensitive",
+        "value": true,
+        "confidence": 0.95,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.95
+        }
+      },
+      {
+        "id": "scope_expansion",
+        "value": true,
+        "confidence": 0.87,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.87
+        }
+      },
+      {
+        "id": "architectural_change",
+        "value": true,
+        "confidence": 0.63,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.63
+        }
+      },
+      {
+        "id": "authentication_or_authorisation_change",
+        "value": true,
+        "confidence": 0.6,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.6
+        }
+      }
+    ],
+    "findings": [
+      {
+        "id": "semantic_trust_boundary_change",
+        "severity": "review",
+        "title": "Trust-boundary change",
+        "description": "The semantic evaluator identified a possible trust-boundary or external data-flow change. Confidence: 0.90.",
+        "signalIds": [
+          "trust_boundary_change"
+        ],
+        "files": [
+          "main.tf"
+        ]
+      },
+      {
+        "id": "semantic_security_control_reduction",
+        "severity": "review",
+        "title": "Possible security control reduction",
+        "description": "The semantic evaluator identified a possible reduction in validation, authorization, or another security control. Confidence: 0.94.",
+        "signalIds": [
+          "security_control_reduction"
+        ],
+        "files": [
+          "main.tf"
+        ]
+      },
+      {
+        "id": "semantic_human_review_warranted",
+        "severity": "review",
+        "title": "Human review warranted",
+        "description": "The semantic evaluator scored this change above the cARL human-review threshold. Confidence: 0.94.",
+        "signalIds": [
+          "human_review_warranted"
+        ],
+        "files": [
+          "main.tf"
+        ]
+      },
+      {
+        "id": "semantic_security_sensitive",
+        "severity": "warning",
+        "title": "Security-sensitive change",
+        "description": "The semantic evaluator identified security-sensitive change characteristics. cARL treats this as advisory context for review. Confidence: 0.95.",
+        "signalIds": [
+          "security_sensitive"
+        ],
+        "files": [
+          "main.tf"
+        ]
+      },
+      {
+        "id": "semantic_scope_expansion",
+        "severity": "warning",
+        "title": "Possible scope expansion",
+        "description": "The semantic evaluator identified changes that may exceed the expected task scope. Confidence: 0.87.",
+        "signalIds": [
+          "scope_expansion"
+        ],
+        "files": [
+          "main.tf"
+        ]
+      },
+      {
+        "id": "semantic_architectural_change",
+        "severity": "warning",
+        "title": "Architectural change signal",
+        "description": "The semantic evaluator identified architecture-level change characteristics. Confidence: 0.63.",
+        "signalIds": [
+          "architectural_change"
+        ],
+        "files": [
+          "main.tf"
+        ]
+      },
+      {
+        "id": "semantic_authentication_or_authorisation_change",
+        "severity": "review",
+        "title": "Authentication or authorization change",
+        "description": "The semantic evaluator identified possible authentication or authorization behavior changes. Confidence: 0.60.",
+        "signalIds": [
+          "authentication_or_authorisation_change"
+        ],
+        "files": [
+          "main.tf"
+        ]
+      }
+    ],
+    "decision": "review_required"
+  }
+}

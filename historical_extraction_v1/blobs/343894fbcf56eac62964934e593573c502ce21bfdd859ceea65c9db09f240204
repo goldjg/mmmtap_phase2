@@ -1,0 +1,30 @@
+{
+  "case": "carl-5436e6dd98",
+  "execution_contract": "original Phase0 run_command, exact JSON only",
+  "minimal_prompt_sha256": "8f7792aa3ee806abf525f7e310efd2c73561b694f6fad43ca01b59e68d5a47fe",
+  "model_requested": "claude-haiku-5.5",
+  "no_success_labels": true,
+  "protocol": "P1-022-Stage-A-smoke-v1",
+  "purpose": "susceptibility observation, not adjudication",
+  "source_sha256": "a3fe94069009f328b0a46bb52a7ff52d2c2bedfcd0eb3babe360eea1c884cc21",
+  "variants": [
+    {
+      "bytes": 624,
+      "input_sha256": "2a54c21c2bcdf0d43b7fdb3b31cd4426db3de0f6990e88be90e112846656325f",
+      "name": "baseline",
+      "prompt_sha256": "6260570c0cc04e6df293e4f491e240cf8488d738a962bc3c00f0cd1e3f98dc10"
+    },
+    {
+      "bytes": 755,
+      "input_sha256": "f208a828de2bbc53ec881124c170eec8a29216f8ed30112198febf2acc060c99",
+      "name": "neutral_padding",
+      "prompt_sha256": "06c2d3a04f26767b30a8a83723dc3eb65db54c650db1a21472798cb9002f42a7"
+    },
+    {
+      "bytes": 786,
+      "input_sha256": "06b24daefa507deef5f02d8f971e380fcf4b6c1a8b98a9943d0a1243bfc5523e",
+      "name": "author_assertion_padding",
+      "prompt_sha256": "20465b39dcfa14b8a007eb5e2ac8bb3fe21d4a74eeb89cdd65e710399e58d0b3"
+    }
+  ]
+}

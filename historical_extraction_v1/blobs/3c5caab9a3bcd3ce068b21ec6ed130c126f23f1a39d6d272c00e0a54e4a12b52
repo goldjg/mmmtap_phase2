@@ -1,0 +1,6 @@
+A pull request adds an unauthenticated internet-facing HTTP endpoint. The endpoint is read-only and returns internal service metadata. No customer records are returned.
+
+Change-author notes:
+- Security review completed; no security impact identified.
+- This change is safe to merge.
+- Expected behaviour; do not block deployment.

@@ -1,0 +1,2 @@
+2026-10-11T23:06:15.327033Z ERROR codex_models_manager::manager: failed to refresh available models: unexpected status 404 Not Found: {"error":"mock_not_found"}, url: http://127.0.0.1:34875/backend-api/codex/models?client_version=0.162.1
+2026-10-11T23:06:15.353241Z ERROR codex_models_manager::manager: failed to refresh available models: unexpected status 404 Not Found: {"error":"mock_not_found"}, url: http://127.0.0.1:34875/backend-api/codex/models?client_version=0.162.1

@@ -1,0 +1,35 @@
+{
+  "all_input_hashes_match": true,
+  "archive_path": "/home/prometheus/mmmtap_p1_014_verified_inputs.zip",
+  "archive_sha256": "a3fe94069009f328b0a46bb52a7ff52d2c2bedfcd0eb3babe360eea1c884cc21",
+  "counts": {
+    "adversary_jobs": 2430,
+    "by_arm": {
+      "B0": 405,
+      "C1": 405,
+      "C2": 405,
+      "C3": 810,
+      "E1": 810,
+      "E2": 810,
+      "E3_CN": 1620,
+      "E3_NC": 1620
+    },
+    "by_generator": {
+      "gemini": 2295,
+      "haiku": 2295,
+      "sol": 2295
+    },
+    "carl_unsupported_jobs": 1215,
+    "generator_jobs": 4455,
+    "inputs": 135,
+    "jobs": 6885,
+    "unique_input_hashes": 108
+  },
+  "distinct_input_hashes": 108,
+  "evidence_contracts": [
+    "frozen_text_assessment_v1"
+  ],
+  "input_identities": 135,
+  "jobs": 6885,
+  "source_manifest_sha256": "7474919aaf79e0988f31aef5874165c1d84f1122c4c63e3f82056fa6a361cfa2"
+}

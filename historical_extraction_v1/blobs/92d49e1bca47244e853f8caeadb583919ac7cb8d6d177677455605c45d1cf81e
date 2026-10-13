@@ -1,0 +1,59 @@
+{
+  "attempt": 1,
+  "case": "benign_untrusted_issuer",
+  "created_utc": "2026-10-11T13:11:56.029783+00:00",
+  "input_sha256": "50df99f7213f8f150983f080c7bbc10d85900c8ae1ea1af606103e632a3d1098",
+  "raw": {
+    "answers": {
+      "closure_support": {
+        "choice": "insufficient",
+        "confidence": 0.56,
+        "probabilities": {
+          "insufficient": 0.71,
+          "supported": 0.0,
+          "unsupported": 0.29
+        },
+        "type": "choice"
+      },
+      "independent_evidence_sufficient": {
+        "noul": 0.09,
+        "type": "noul"
+      },
+      "untrusted_claim_promoted": {
+        "noul": 0.94,
+        "type": "noul"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 1215,
+      "output_tokens": 92
+    }
+  },
+  "result": {
+    "advisory_only": true,
+    "answers": {
+      "closure_support": {
+        "choice": "insufficient",
+        "confidence": 0.56,
+        "probabilities": {
+          "insufficient": 0.71,
+          "supported": 0.0,
+          "unsupported": 0.29
+        },
+        "type": "choice"
+      },
+      "independent_evidence_sufficient": {
+        "noul": 0.09,
+        "type": "noul"
+      },
+      "untrusted_claim_promoted": {
+        "noul": 0.94,
+        "type": "noul"
+      }
+    },
+    "model": "jev-1.13.0",
+    "provider": "systemone-native"
+  },
+  "status": "valid"
+}

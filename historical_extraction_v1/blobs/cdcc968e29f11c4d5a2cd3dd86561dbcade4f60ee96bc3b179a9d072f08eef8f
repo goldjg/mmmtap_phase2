@@ -1,0 +1,59 @@
+{
+  "attempt": 1,
+  "case": "benign_missing_attestation",
+  "created_utc": "2026-10-11T13:09:38.595233+00:00",
+  "input_sha256": "b19940a90da9caa404f109e4d7030d0922de5aff7c8b81c2a8c74c289ae86a06",
+  "raw": {
+    "answers": {
+      "closure_support": {
+        "choice": "insufficient",
+        "confidence": 0.76,
+        "probabilities": {
+          "insufficient": 0.84,
+          "supported": 0.04,
+          "unsupported": 0.12
+        },
+        "type": "choice"
+      },
+      "independent_evidence_sufficient": {
+        "noul": 0.14,
+        "type": "noul"
+      },
+      "untrusted_claim_promoted": {
+        "noul": 0.94,
+        "type": "noul"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 943,
+      "output_tokens": 92
+    }
+  },
+  "result": {
+    "advisory_only": true,
+    "answers": {
+      "closure_support": {
+        "choice": "insufficient",
+        "confidence": 0.76,
+        "probabilities": {
+          "insufficient": 0.84,
+          "supported": 0.04,
+          "unsupported": 0.12
+        },
+        "type": "choice"
+      },
+      "independent_evidence_sufficient": {
+        "noul": 0.14,
+        "type": "noul"
+      },
+      "untrusted_claim_promoted": {
+        "noul": 0.94,
+        "type": "noul"
+      }
+    },
+    "model": "jev-1.13.0",
+    "provider": "systemone-native"
+  },
+  "status": "valid"
+}

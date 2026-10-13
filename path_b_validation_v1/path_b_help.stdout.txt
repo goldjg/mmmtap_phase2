@@ -1,0 +1,5 @@
+Usage: carl-assessment-challenge <prepare|evaluate-offline|replay> [options]
+  prepare --request FILE --policy-root DIR --out NEW_DIR
+  evaluate-offline --prepared FILE --prepared-sha256 HASH --response FILE --mode mock|imported_unverified --out NEW_DIR
+  replay --receipt FILE --receipt-sha256 HASH
+No live execution or credentials are supported. Digests must come from a trusted external record.

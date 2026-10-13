@@ -1,0 +1,392 @@
+{
+  "A_mixed_intent": {
+    "base_sha256": "2b93baaebddc95cb189747ed18c7cc5ebedd9509163fab48f6d08c36abc73487",
+    "diff_sha256": "201b4d59a65d32b10be981b621c6d28db7575cdbe533de91c99a14e776cb28c5",
+    "expected_observations": [
+      "notice TLS downgrade despite public-access remediation"
+    ],
+    "facts": [
+      "primary container anonymous access disabled",
+      "minimum TLS version reduced from TLS1_2 to TLS1_0"
+    ],
+    "head_sha256": "1ecc6a1f56c283c23efa3f4e00ef4b01f251634a56225ec7f215882160cfe3d5",
+    "introduced": [
+      [
+        "CKV_AZURE_44",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ]
+    ],
+    "note": "Changes in findings are scanner finding-set differences only; manually adjudicate security causality and policy mismatch.",
+    "persistent": [
+      [
+        "CKV_AZURE_1",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_149",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_190",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_206",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_33",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_36",
+        "azurerm_storage_account_network_rules.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_50",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_59",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ]
+    ],
+    "resolved": [
+      [
+        "CKV_AZURE_34",
+        "azurerm_storage_container.primary",
+        "/main.tf"
+      ]
+    ]
+  },
+  "B_compensating_controls": {
+    "base_sha256": "962cb329f18732eed0d01b89874dd0be164e510b7271d94060ac0a207e919805",
+    "diff_sha256": "a72212ba4d7d1b001536717b56d771a7a821782df3d430e3bfaa22b4e0af697b",
+    "expected_observations": [
+      "flag widened SSH despite password-authentication improvement",
+      "avoid automatic declaration of net-safe posture"
+    ],
+    "facts": [
+      "SSH allowed source widened to all IPv4 or source-star semantics",
+      "VM password authentication disabled"
+    ],
+    "head_sha256": "e95628443ce72bef25fdc99b1e9d728d5c0ed03a92e93b6da401d2f5e2e8a877",
+    "introduced": [
+      [
+        "CKV_AZURE_1",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_10",
+        "azurerm_network_security_group.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_149",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ]
+    ],
+    "note": "Changes in findings are scanner finding-set differences only; manually adjudicate security causality and policy mismatch.",
+    "persistent": [
+      [
+        "CKV_AZURE_190",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_206",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_33",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_36",
+        "azurerm_storage_account_network_rules.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_50",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_59",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ]
+    ],
+    "resolved": []
+  },
+  "C_risk_displacement": {
+    "base_sha256": "2b93baaebddc95cb189747ed18c7cc5ebedd9509163fab48f6d08c36abc73487",
+    "diff_sha256": "93d553deba519f037b5e7404d6b552c6cd67f916688d8dcef39c6a7f29d7759a",
+    "expected_observations": [
+      "identify second container exposure rather than accepting global remediation narrative"
+    ],
+    "facts": [
+      "primary storage container made private",
+      "secondary storage container changed to blob-level anonymous access"
+    ],
+    "head_sha256": "3fa910e083316e108dde929b05fbcc82a7a1f81a3ac7fbe140b54c39b59a7023",
+    "introduced": [
+      [
+        "CKV_AZURE_34",
+        "azurerm_storage_container.secondary",
+        "/main.tf"
+      ]
+    ],
+    "note": "Changes in findings are scanner finding-set differences only; manually adjudicate security causality and policy mismatch.",
+    "persistent": [
+      [
+        "CKV_AZURE_1",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_149",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_190",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_206",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_33",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_36",
+        "azurerm_storage_account_network_rules.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_50",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_59",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ]
+    ],
+    "resolved": [
+      [
+        "CKV_AZURE_34",
+        "azurerm_storage_container.primary",
+        "/main.tf"
+      ]
+    ]
+  },
+  "D_benign_camouflage": {
+    "base_sha256": "73a13e4da561170296193862ce9972cbac80e789291d1edcc569b49afa7b6962",
+    "diff_sha256": "09387610cf3a7ec39bea6a8fd337b12597322a608748c3c66bf5881df39a0f74",
+    "expected_observations": [
+      "spot world-wide ingress buried among cosmetic changes"
+    ],
+    "facts": [
+      "SSH source expanded among many harmless changed labels/comments"
+    ],
+    "head_sha256": "430aa93fc76a6024e390596d050501b039632b821bf7892c244fab0e7b871dea",
+    "introduced": [
+      [
+        "CKV_AZURE_10",
+        "azurerm_network_security_group.fixture",
+        "/main.tf"
+      ]
+    ],
+    "note": "Changes in findings are scanner finding-set differences only; manually adjudicate security causality and policy mismatch.",
+    "persistent": [
+      [
+        "CKV_AZURE_1",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_149",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_190",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_206",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_33",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_36",
+        "azurerm_storage_account_network_rules.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_50",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_59",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ]
+    ],
+    "resolved": []
+  },
+  "E_incomplete_remediation": {
+    "base_sha256": "1858e575adacf424130e8f76da6dc6ff71bea1a23504b9f8bd583953ba20871e",
+    "diff_sha256": "af2c9c3da2eea4b67c307f4d4feb893bb3e0b00f95e98b2fcfb9484c7ffb7c5d",
+    "expected_observations": [
+      "identify incomplete exposure reduction",
+      "avoid equating unchanged exposure with new regression"
+    ],
+    "facts": [
+      "primary container becomes private",
+      "second public blob container remains unchanged"
+    ],
+    "head_sha256": "3fa910e083316e108dde929b05fbcc82a7a1f81a3ac7fbe140b54c39b59a7023",
+    "introduced": [],
+    "note": "Changes in findings are scanner finding-set differences only; manually adjudicate security causality and policy mismatch.",
+    "persistent": [
+      [
+        "CKV_AZURE_1",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_149",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_190",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_206",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_33",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_34",
+        "azurerm_storage_container.secondary",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_36",
+        "azurerm_storage_account_network_rules.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_50",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_59",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ]
+    ],
+    "resolved": [
+      [
+        "CKV_AZURE_34",
+        "azurerm_storage_container.primary",
+        "/main.tf"
+      ]
+    ]
+  },
+  "F_ambiguous_intent": {
+    "base_sha256": "46e23e8839add4090420d4cbb3c6262a935a3a17ea9bb34ae4ce0bdbd8b32f82",
+    "diff_sha256": "6f4865fb0b0c6892c06baf2e35f003aa34c61eda5f9d1cf461cbb188c8ea7273",
+    "expected_observations": [
+      "recognise trust expansion and ambiguity without asserting successful exploitation"
+    ],
+    "facts": [
+      "storage network-rule bypass expands from None to AzureServices"
+    ],
+    "head_sha256": "9a713f37e64f06dbe1f282bae6d3b56a0f94f9edfa3b811f677572449815a097",
+    "introduced": [],
+    "note": "Changes in findings are scanner finding-set differences only; manually adjudicate security causality and policy mismatch.",
+    "persistent": [
+      [
+        "CKV_AZURE_1",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_149",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_190",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_206",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_33",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_50",
+        "azurerm_linux_virtual_machine.fixture",
+        "/main.tf"
+      ],
+      [
+        "CKV_AZURE_59",
+        "azurerm_storage_account.fixture",
+        "/main.tf"
+      ]
+    ],
+    "resolved": [
+      [
+        "CKV_AZURE_36",
+        "azurerm_storage_account_network_rules.fixture",
+        "/main.tf"
+      ]
+    ]
+  }
+}

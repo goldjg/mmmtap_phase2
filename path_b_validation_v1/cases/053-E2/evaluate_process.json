@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "evaluate-offline",
+    "--prepared",
+    "/home/prometheus/git/mmmtap_phase2/path_b_validation_v1/cases/053-E2/prepared/prepared.json",
+    "--prepared-sha256",
+    "74cb1bdd79b857fd28ff0748ef080a234aa64b1909ec8f2089b725ea40330b92",
+    "--response",
+    "/home/prometheus/git/mmmtap_phase2/path_b_validation_v1/cases/053-E2/mock-response.json",
+    "--mode",
+    "mock",
+    "--out",
+    "/home/prometheus/git/mmmtap_phase2/path_b_validation_v1/cases/053-E2/evaluated"
+  ],
+  "exit_status": 0,
+  "stderr": "",
+  "stdout": "a35a6fe212b8498473cae0e2764e224ea01368bb31b2fd46bef6f675f7e13ccb  receipt.json\n"
+}

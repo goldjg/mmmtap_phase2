@@ -1,0 +1,15 @@
+{
+  "protocol": "P1-008-Stage2",
+  "stage1_manifest_sha256": "cccd7d2d050c508c885cca360ce3517f3311bee3c8b4ddc826ac6a019cbea963",
+  "bridge_source_sha256": "1012b1f747c02d31476e7260122948b8569bd6e442aba142e7cca522485d8831",
+  "model": "jev-latest",
+  "attempt_policy": "once per track; no silent retries",
+  "cases": [
+    "A_mixed_intent",
+    "B_compensating_controls",
+    "C_risk_displacement",
+    "D_benign_camouflage",
+    "E_incomplete_remediation",
+    "F_ambiguous_intent"
+  ]
+}

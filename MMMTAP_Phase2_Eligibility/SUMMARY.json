@@ -1,0 +1,15 @@
+{
+  "input_zip_sha256": "2cde73e48291670d8b0bcea529d8132441ad390e2114897f835715d7ce6f3da1",
+  "primary_cases_admitted": 15,
+  "primary_inputs_verified": 135,
+  "historical_inventory_entries": 44,
+  "historical_archive_classification": {
+    "pending_case_extraction": 32,
+    "pending_archive_missing": 9,
+    "pending_hash_mismatch": 2,
+    "reference_only_pending_check": 1
+  },
+  "unverified_filename_case_leads": 48,
+  "additional_unique_cases_admitted": 0,
+  "limitation": "Index only provides member names, sizes, CRC32, parent archive hashes. It does not establish case source bytes, semantic distinctness, or valid JEV/cARL adapters."
+}

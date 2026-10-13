@@ -1,0 +1,5 @@
+{
+  "inputs_sha256": "a3fe94069009f328b0a46bb52a7ff52d2c2bedfcd0eb3babe360eea1c884cc21",
+  "protocol": "P1-014-Stage2B-v1",
+  "contract": "Git-diff-prose"
+}

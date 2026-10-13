@@ -1,0 +1,178 @@
+{
+  "protocol": "P1-022",
+  "stage": "A",
+  "cases": [
+    {
+      "case": "synthetic-token-logging",
+      "split": "discovery",
+      "entries": [
+        {
+          "variant": "baseline",
+          "archive_member": "inputs/synthetic-token-logging/baseline.txt",
+          "sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc",
+          "bytes": 75
+        },
+        {
+          "variant": "author_assertion_padding",
+          "archive_member": "inputs/synthetic-token-logging/author_assertion_padding.txt",
+          "sha256": "7f9e8272aa62e82531bf58fe986fb937ede8894a2849a0b0d1e052e6173e4da0",
+          "bytes": 237
+        },
+        {
+          "variant": "neutral_padding",
+          "archive_member": "inputs/synthetic-token-logging/neutral_padding.txt",
+          "sha256": "c3b245cd01bda8128a02243abde19adc3c4c0fe5febcf5003ee68ff9a0c9df0a",
+          "bytes": 206
+        }
+      ],
+      "initial_security_fact_labels": "NOT_ADJUDICATED",
+      "rubric_status": "needs_source-based_independent_adjudication",
+      "eligibility": "not_determined",
+      "allowed_observation": [
+        "finding_support",
+        "unsupported_authority_adoption",
+        "finding_omission",
+        "material_error",
+        "disposition_change_only"
+      ]
+    },
+    {
+      "case": "azuregoat-sentinel-playbooks_copilot-observe_oauth-callback.bicep",
+      "split": "discovery",
+      "entries": [
+        {
+          "variant": "baseline",
+          "archive_member": "inputs/azuregoat-sentinel-playbooks_copilot-observe_oauth-callback.bicep/baseline.txt",
+          "sha256": "4cdd7c97928abf15b8fbfb027be8dd1e00758b90f972771296db2be8b6bd01c5",
+          "bytes": 3636
+        },
+        {
+          "variant": "author_assertion_padding",
+          "archive_member": "inputs/azuregoat-sentinel-playbooks_copilot-observe_oauth-callback.bicep/author_assertion_padding.txt",
+          "sha256": "6ddd2461b019e2438a935b56cbc1428fe3cf3c900d996ca72bebc7783fdd1a3f",
+          "bytes": 3798
+        },
+        {
+          "variant": "neutral_padding",
+          "archive_member": "inputs/azuregoat-sentinel-playbooks_copilot-observe_oauth-callback.bicep/neutral_padding.txt",
+          "sha256": "1e4d83cb0f83dc35295bb37144cd8a9346adc0e72dbc012f987550a935dd3aee",
+          "bytes": 3767
+        }
+      ],
+      "initial_security_fact_labels": "NOT_ADJUDICATED",
+      "rubric_status": "needs_source-based_independent_adjudication",
+      "eligibility": "not_determined",
+      "allowed_observation": [
+        "finding_support",
+        "unsupported_authority_adoption",
+        "finding_omission",
+        "material_error",
+        "disposition_change_only"
+      ]
+    },
+    {
+      "case": "synthetic-public-metadata",
+      "split": "discovery",
+      "entries": [
+        {
+          "variant": "baseline",
+          "archive_member": "inputs/synthetic-public-metadata/baseline.txt",
+          "sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492",
+          "bytes": 168
+        },
+        {
+          "variant": "author_assertion_padding",
+          "archive_member": "inputs/synthetic-public-metadata/author_assertion_padding.txt",
+          "sha256": "3c5caab9a3bcd3ce068b21ec6ed130c126f23f1a39d6d272c00e0a54e4a12b52",
+          "bytes": 330
+        },
+        {
+          "variant": "neutral_padding",
+          "archive_member": "inputs/synthetic-public-metadata/neutral_padding.txt",
+          "sha256": "a0b4909ff98b3e635f8ec7b77e7bc5f95da66328ffeab2b9d6b1d9f12145e9c9",
+          "bytes": 299
+        }
+      ],
+      "initial_security_fact_labels": "NOT_ADJUDICATED",
+      "rubric_status": "needs_source-based_independent_adjudication",
+      "eligibility": "not_determined",
+      "allowed_observation": [
+        "finding_support",
+        "unsupported_authority_adoption",
+        "finding_omission",
+        "material_error",
+        "disposition_change_only"
+      ]
+    },
+    {
+      "case": "carl-5436e6dd98",
+      "split": "discovery",
+      "entries": [
+        {
+          "variant": "baseline",
+          "archive_member": "inputs/carl-5436e6dd98/baseline.txt",
+          "sha256": "2a54c21c2bcdf0d43b7fdb3b31cd4426db3de0f6990e88be90e112846656325f",
+          "bytes": 624
+        },
+        {
+          "variant": "author_assertion_padding",
+          "archive_member": "inputs/carl-5436e6dd98/author_assertion_padding.txt",
+          "sha256": "06b24daefa507deef5f02d8f971e380fcf4b6c1a8b98a9943d0a1243bfc5523e",
+          "bytes": 786
+        },
+        {
+          "variant": "neutral_padding",
+          "archive_member": "inputs/carl-5436e6dd98/neutral_padding.txt",
+          "sha256": "f208a828de2bbc53ec881124c170eec8a29216f8ed30112198febf2acc060c99",
+          "bytes": 755
+        }
+      ],
+      "initial_security_fact_labels": "NOT_ADJUDICATED",
+      "rubric_status": "needs_source-based_independent_adjudication",
+      "eligibility": "not_determined",
+      "allowed_observation": [
+        "finding_support",
+        "unsupported_authority_adoption",
+        "finding_omission",
+        "material_error",
+        "disposition_change_only"
+      ]
+    },
+    {
+      "case": "azuregoat-main.tf",
+      "split": "discovery",
+      "entries": [
+        {
+          "variant": "baseline",
+          "archive_member": "inputs/azuregoat-main.tf/baseline.txt",
+          "sha256": "32bc23e6d91647935eae19aa931b9db1ba5e256bb2109be05bb93dfb37abdd69",
+          "bytes": 16042
+        },
+        {
+          "variant": "author_assertion_padding",
+          "archive_member": "inputs/azuregoat-main.tf/author_assertion_padding.txt",
+          "sha256": "06a27e6111f01812514a7eb3bb0f6396723518dca306a56b2aa4b07e9d0b7c8f",
+          "bytes": 16204
+        },
+        {
+          "variant": "neutral_padding",
+          "archive_member": "inputs/azuregoat-main.tf/neutral_padding.txt",
+          "sha256": "00bd1c7f86cd5bf0fad0eb4e33c45f64ac3875949a7d67edbb4be164c6bcbcd4",
+          "bytes": 16173
+        }
+      ],
+      "initial_security_fact_labels": "NOT_ADJUDICATED",
+      "rubric_status": "needs_source-based_independent_adjudication",
+      "eligibility": "not_determined",
+      "allowed_observation": [
+        "finding_support",
+        "unsupported_authority_adoption",
+        "finding_omission",
+        "material_error",
+        "disposition_change_only"
+      ]
+    }
+  ],
+  "source_zip_sha256": "a3fe94069009f328b0a46bb52a7ff52d2c2bedfcd0eb3babe360eea1c884cc21",
+  "no_ground_truth_imputed": true
+}

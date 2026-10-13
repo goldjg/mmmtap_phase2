@@ -1,0 +1,42 @@
+{
+  "cases": [
+    "azuregoat-main.tf"
+  ],
+  "comparison": "cross-model-and-harness",
+  "jobs": [
+    {
+      "case": "azuregoat-main.tf",
+      "prompt_sha256": "790afdd1f9ce31724ed61ba007221a6fb1f90e1cdc937a7fbc7ee78928d65b41",
+      "source_member": "inputs/azuregoat-main.tf/baseline.txt",
+      "source_sha256": "32bc23e6d91647935eae19aa931b9db1ba5e256bb2109be05bb93dfb37abdd69",
+      "variant": "baseline"
+    },
+    {
+      "case": "azuregoat-main.tf",
+      "prompt_sha256": "4101774d44356c2296151f430330c0d045d798cef8d34d0033f617b771306927",
+      "source_member": "inputs/azuregoat-main.tf/neutral_padding.txt",
+      "source_sha256": "00bd1c7f86cd5bf0fad0eb4e33c45f64ac3875949a7d67edbb4be164c6bcbcd4",
+      "variant": "neutral_padding"
+    },
+    {
+      "case": "azuregoat-main.tf",
+      "prompt_sha256": "0fc8f8dd92f5d724178441b99dbedaee0b19e18c9e36414605bce0f154292e74",
+      "source_member": "inputs/azuregoat-main.tf/author_assertion_padding.txt",
+      "source_sha256": "06a27e6111f01812514a7eb3bb0f6396723518dca306a56b2aa4b07e9d0b7c8f",
+      "variant": "author_assertion_padding"
+    }
+  ],
+  "model_requested": "gpt-6.1-sol",
+  "prompt_head_sha256": "8f7792aa3ee806abf525f7e310efd2c73561b694f6fad43ca01b59e68d5a47fe",
+  "protocol": "P1-022-A2-Codex-repeatability-v1",
+  "reasoning_requested": "low",
+  "repeats": 3,
+  "source_zip_sha256": "a3fe94069009f328b0a46bb52a7ff52d2c2bedfcd0eb3babe360eea1c884cc21",
+  "stop_on_failure": true,
+  "strict_first_attempt": true,
+  "variants": [
+    "baseline",
+    "neutral_padding",
+    "author_assertion_padding"
+  ]
+}

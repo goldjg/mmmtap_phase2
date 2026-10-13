@@ -1,0 +1,1 @@
+{"controls": 48, "qualification": {"haiku": "blocked", "gemini": "blocked", "sol": "blocked"}, "strict_observed_failures": 36}

@@ -1,0 +1,482 @@
+"""Derive remediation evidence from retained commands and unchanged original inputs."""
+from __future__ import annotations
+
+import argparse
+import ast
+import base64
+import collections
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import shutil
+import subprocess
+import tarfile
+
+BASE = Path(__file__).parent
+ROOT = Path("/home/prometheus/git/mmmtap_phase2")
+CARL = ROOT.parent / "cARL-semantic-eval"
+OUT = ROOT / "forensic_remediation_v1"
+FINAL = OUT / "v5"
+BASELINE = BASE / "preservation_baseline"
+
+WORKSPACE_EDITS = {
+    "INTEGRATION.md", "phase2/adapters.py", "phase2/adapters_v2.py", "phase2/core.py",
+    "phase2/engine.py", "phase2/integration.py", "phase2/isolation.py",
+    "phase2/isolation_controls.py", "phase2/loopback_provider.py", "phase2/readiness.py",
+    "phase2/software.py", "tests/test_integration.py", "tests/test_remediation.py",
+}
+CARL_EDITS = {
+    ".github/carl/current-pr-contract.md", "ASSESSMENT.md", "ARCHITECTURE.md", "CLI.md", "ROADMAP.md",
+    "internal/assessment/json.go", "internal/assessment/policy.go", "internal/assessment/receipt.go",
+    "internal/assessment/live.go", "internal/assessment/provider.go", "internal/assessment/remediation_test.go",
+    "internal/assessment/testdata/systemone_responses.json",
+    "internal/assessment/testdata/systemone_historical.json",
+}
+
+
+def sha(path):
+    with Path(path).open("rb") as stream:
+        return hashlib.file_digest(stream, "sha256").hexdigest()
+
+
+def load(path):
+    return json.loads(Path(path).read_bytes())
+
+
+def write(path, obj):
+    with Path(path).open("x") as stream:
+        json.dump(obj, stream, indent=2, sort_keys=True, allow_nan=False)
+        stream.write("\n")
+
+
+def copy_new(source, target):
+    target.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+    with source.open("rb") as src, target.open("xb") as dst:
+        shutil.copyfileobj(src, dst)
+    target.chmod(0o600)
+    if sha(source) != sha(target):
+        raise RuntimeError("Evidence copy mismatch")
+
+
+def provider_shape():
+    path = ROOT / "adapter_qualification_v1/attempts/native_jev/raw.json"
+    raw = base64.b64decode(load(path)["stdout"], validate=True)
+    obj = json.loads(raw)
+    known = {"model", "answers", "usage"}
+    counters = {"input_tokens", "output_tokens", "cached_input_tokens", "cache_write_tokens", "total_tokens"}
+    fields = {"noul", "choice", "probabilities", "type", "confidence"}
+    report = {
+        "evidence_class": "read_only_historical_response_shape_not_new_provider_call",
+        "file": str(path.relative_to(ROOT)), "file_sha256": sha(path),
+        "response_sha256": hashlib.sha256(raw).hexdigest(),
+        "recognized_root_fields": sorted(set(obj) & known), "unrecognized_root_field_count": len(set(obj) - known),
+        "model_type": type(obj.get("model")).__name__, "usage_type": type(obj.get("usage")).__name__,
+        "recognized_usage_fields": sorted(set(obj.get("usage") or {}) & counters),
+        "unrecognized_usage_field_count": len(set(obj.get("usage") or {}) - counters),
+        "answer_field_sets": sorted({",".join(sorted(set(a) & fields)) for a in obj["answers"].values()}),
+        "unrecognized_answer_field_count": sum(len(set(a) - fields) for a in obj["answers"].values()),
+        "observed_optional_answer_metadata": ["type", "confidence"],
+        "candidate_v4_was_rejected_for_overrestricting_these_fields": True,
+    }
+    if any(report[key] for key in ("unrecognized_root_field_count", "unrecognized_usage_field_count",
+                                   "unrecognized_answer_field_count")):
+        raise RuntimeError("Observed provider fields need explicit schema review")
+    write(BASE / "observed_provider_shape.json", report)
+    print(json.dumps(report))
+
+
+def preservation():
+    from phase2.core import corpus
+    result = {"schema": "mmmtap-preservation-checks-v1", "producer_sha256": sha(__file__),
+              "baseline_sha256": sha(BASELINE / "baseline.json"), "roots": {}}
+    for label, root, allowed in (("workspace", ROOT, WORKSPACE_EDITS), ("carl", CARL, CARL_EDITS)):
+        inventory_path = BASELINE / (label + "_inventory.json")
+        inventory = load(inventory_path)
+        changed, removed, unexpected, unchanged = [], [], [], 0
+        for name, expected in inventory.items():
+            path = root / name
+            if not path.exists() and not path.is_symlink():
+                removed.append(name)
+                continue
+            if expected["type"] == "file":
+                same = not path.is_symlink() and path.is_file() and sha(path) == expected["sha256"]
+            else:
+                same = path.is_symlink() and str(path.readlink()) == expected["target"]
+            same = same and (path.lstat().st_mode & 0o777) == expected["mode"]
+            if same:
+                unchanged += 1
+            else:
+                changed.append(name)
+                if name not in allowed:
+                    unexpected.append(name)
+        additions = []
+        for path in root.rglob("*"):
+            name = str(path.relative_to(root))
+            if label == "workspace" and path.is_relative_to(OUT):
+                continue
+            if ".git" in path.relative_to(root).parts and name != ".git":
+                continue
+            if (path.is_file() or path.is_symlink()) and name not in inventory:
+                additions.append(name)
+                if name not in allowed:
+                    unexpected.append(name)
+        if removed or unexpected:
+            raise RuntimeError(json.dumps({"root": label, "removed": removed, "unexpected": unexpected}))
+        result["roots"][label] = {"baseline_inventory_sha256": sha(inventory_path),
+            "baseline_entries": len(inventory), "unchanged_entries": unchanged,
+            "approved_source_or_documentation_changes": sorted(changed), "approved_additions": sorted(additions),
+            "missing": removed, "unexpected_changes": unexpected}
+    source, members = corpus()
+    result["primary_inputs"] = {"identities": len(source["items"]),
+        "distinct_input_hashes": len({i["input_sha256"] for i in source["items"]}),
+        "archive_sha256": source["archive_sha256"], "actual_archive_reopened_and_verified": True,
+        "all_members_match": all(hashlib.sha256(members[i["input_member"]]).hexdigest() == i["input_sha256"]
+                                 for i in source["items"])}
+    if result["primary_inputs"]["identities"] != 135 or result["primary_inputs"]["distinct_input_hashes"] != 108:
+        raise RuntimeError("Primary identity set changed")
+    prior = (BASELINE / "source/workspace/phase2/adapters.py").read_text()
+    current = (ROOT / "phase2/adapters.py").read_text()
+    def segment(text):
+        node = next(n for n in ast.parse(text).body if isinstance(n, ast.ClassDef) and n.name == "CarlJEVAdapter")
+        return ast.get_source_segment(text, node).encode()
+    path_a = Path.home() / "bin/carl-jev"
+    expected_binary = load(BASELINE / "baseline.json")["installed_path_a"]["sha256"]
+    before, after = segment(prior), segment(current)
+    protected_go = {name: entry["sha256"] for name, entry in load(BASELINE / "carl_inventory.json").items()
+                    if name.endswith(".go") and not name.startswith("internal/assessment/")}
+    result["path_a"] = {"installed_binary": str(path_a), "before_sha256": expected_binary,
+        "after_sha256": sha(path_a), "python_CarlJEVAdapter_before_sha256": hashlib.sha256(before).hexdigest(),
+        "python_CarlJEVAdapter_after_sha256": hashlib.sha256(after).hexdigest(),
+        "protected_Go_sources": len(protected_go),
+        "all_protected_Go_sources_unchanged": all(sha(CARL / name) == ident for name, ident in protected_go.items())}
+    if sha(path_a) != expected_binary or before != after or not result["path_a"]["all_protected_Go_sources_unchanged"]:
+        raise RuntimeError("Path A changed")
+    result["historical_evidence"] = {
+        name: {"unchanged": True, "files": sum(p.startswith(name + "/") for p in load(BASELINE / "workspace_inventory.json"))}
+        for name in ("independent_forensic_review_v1", "integration_readiness_v1", "adapter_qualification_v1",
+                     "carl_jev_cli_investigation_v1", "path_b_validation_v1", "execution_dry_run_v2")}
+    result["historical_plans"] = {name: sha(ROOT / name) for name in
+        ("execution_plan_v2.json", "integration_readiness_v1/execution_plan_v3.json")}
+    command = ["git", "--no-pager", "status", "--short", "--branch"]
+    result["current_git"] = {"carl_status": subprocess.run(command, cwd=CARL, capture_output=True, text=True,
+                                                         check=True).stdout,
+                            "carl_head": subprocess.run(["git", "rev-parse", "HEAD"], cwd=CARL, capture_output=True,
+                                                       text=True, check=True).stdout.strip(),
+                            "workspace": "not_a_git_repository"}
+    if result["current_git"]["carl_head"] != load(BASELINE / "baseline.json")["git"]["carl"]["head"]["stdout"].strip():
+        raise RuntimeError("Git HEAD changed")
+    write(OUT / "PRESERVATION_CHECKS.json", result)
+    print(json.dumps({"roots": result["roots"], "primary_inputs": result["primary_inputs"], "path_a": result["path_a"]}))
+
+
+def copy_evidence():
+    target = OUT / "evidence"
+    target.mkdir(mode=0o700, exist_ok=False)
+    for path in sorted(BASELINE.rglob("*")):
+        if path.is_file():
+            copy_new(path, target / "baseline" / path.relative_to(BASELINE))
+    for directory in (BASE / "command_evidence").iterdir():
+        if not (directory / "command.json").is_file():
+            raise RuntimeError("Command still running or missing completion evidence: " + directory.name)
+        for path in directory.iterdir():
+            if path.is_file():
+                copy_new(path, target / "commands" / directory.name / path.name)
+    needed = set()
+    for path in (target / "commands").glob("*/command.json"):
+        record = load(path)
+        needed.update(record["source_sha256"].values())
+        if record.get("runner_source_sha256"):
+            needed.add(record["runner_source_sha256"])
+    recovery = load(BASE / "source_recovery.json")
+    needed.update(r["runner_source_from_recorded_edit_timing"] for r in recovery["commands"].values()
+                  if r.get("runner_source_from_recorded_edit_timing"))
+    for ident in sorted(needed):
+        if sha(BASE / "source_objects" / ident) != ident:
+            raise RuntimeError("Missing or incorrect original command source object")
+        copy_new(BASE / "source_objects" / ident, target / "source_objects" / ident)
+    for name in ("capture_baseline.py", "offline_run.py", "recover_command_sources.py", "publish_evidence.py"):
+        copy_new(BASE / name, target / "tools" / name)
+    for name in ("source_recovery.json", "observed_provider_shape.json"):
+        copy_new(BASE / name, target / name)
+    for name in ("expanded_control_probe", "expanded_controls_v2"):
+        for path in (BASE / name).rglob("*"):
+            if path.is_file():
+                copy_new(path, target / "development_controls" / name / path.relative_to(BASE / name))
+    print(json.dumps({"source_objects": len(needed), "copied_commands": len(list((target / "commands").iterdir()))}))
+
+
+def command(label):
+    folder = OUT / "evidence/commands" / label
+    record = load(folder / "command.json")
+    if sha(folder / "stdout.txt") != record["stdout_sha256"] or sha(folder / "stderr.txt") != record["stderr_sha256"]:
+        raise RuntimeError("Command evidence changed")
+    if not record["source_unchanged_during_command"]:
+        raise RuntimeError("Source changed during a validation command")
+    return folder, record
+
+
+def results():
+    from phase2.adapters import parse_systemone
+    from phase2.core import digest
+    from phase2.integration import verify_instruments, validate_v4
+    from phase2.isolation_controls import validate_controls
+    cfg = verify_instruments(FINAL / "instruments")
+    plan = load(FINAL / "execution_plan_v5.json")
+    validate_v4(plan)
+    controls = validate_controls(FINAL / "isolation_controls_final", FINAL / "instruments")
+    software = load(FINAL / "instruments/software.v1.json")
+    binding = {"implementation_sha256": plan["implementation_sha256"], "instruments_sha256": plan["instruments_sha256"],
+               "execution_plan_file": "v5/execution_plan_v5.json", "execution_plan_sha256": sha(FINAL / "execution_plan_v5.json"),
+               "execution_plan_manifest_sha256": plan["manifest_sha256"],
+               "path_b_binary_sha256": cfg["adversaries"]["carl_jev"]["binary_sha256"]}
+    final_labels = ("v5-final-python-suite", "v5-final-go-suite-and-vet", "v5-final-bound-build-and-freeze",
+                    "v5-final-bound-isolation-controls", "v5-final-full-mock-and-plan", "v5-final-reproducible-build",
+                    "v5-final-preservation-audit")
+    final_commands = {}
+    for label in final_labels:
+        folder, record = command(label)
+        normalized = {("mmmtap_phase2/" + name[10:] if name.startswith("workspace/") else
+                       "cARL-semantic-eval/" + name[5:]): ident for name, ident in record["source_sha256"].items()}
+        if record["exit_status"] != 0 or normalized != software["sources"]:
+            raise RuntimeError("Final command failed or does not match sealed implementation: " + label)
+        final_commands[label] = {"command_record": str((folder / "command.json").relative_to(OUT)),
+                                 "command_record_sha256": sha(folder / "command.json"), "exit_status": 0,
+                                 "elapsed_seconds": record["elapsed_seconds"]}
+    py_text = (OUT / "evidence/commands/v5-final-python-suite/stderr.txt").read_text()
+    count = re.search(r"Ran (\d+) tests", py_text)
+    if count is None or not py_text.rstrip().endswith("OK") or "skipped=" in py_text:
+        raise RuntimeError("Full Python result not complete")
+    go_lines = [json.loads(line) for line in (OUT / "evidence/commands/v5-final-go-suite-and-vet/stdout.txt").read_text().splitlines()
+                if line.startswith("{")]
+    passed = [r for r in go_lines if r.get("Action") == "pass" and r.get("Test")]
+    go_cases = {}
+    for row in go_lines:
+        if "MMMTAP_EQUIVALENCE " in row.get("Output", ""):
+            observed = json.loads(row["Output"].split("MMMTAP_EQUIVALENCE ", 1)[1])
+            go_cases[observed["id"]] = observed
+    fixtures_path = CARL / "internal/assessment/testdata/systemone_responses.json"
+    fixtures = load(fixtures_path)
+    historical = load(fixtures_path.with_name("systemone_historical.json"))
+    fixtures["requests"]["historical"] = historical["request"]
+    fixtures["cases"].append({"id": "historical_native_response", "request": "historical",
+                              "raw": historical["raw"], "accepted": True,
+                              "evidence_mode": historical["evidence_mode"]})
+    comparisons = []
+    for case in fixtures["cases"]:
+        raw = case["raw"].encode()
+        try:
+            evidence = parse_systemone(raw, fixtures["requests"][case["request"]])
+            python = {"accepted": True, "evidence": {key: evidence[key] for key in ("resolved_model", "answers", "usage")}}
+        except (ValueError, TypeError, KeyError, RecursionError):
+            python = {"accepted": False, "evidence": None}
+        go = go_cases[case["id"]]
+        if python != {k: go[k] for k in ("accepted", "evidence")} or python["accepted"] != case["accepted"]:
+            raise RuntimeError("Cross-language interpretation mismatch")
+        comparisons.append({"id": case["id"], "question_kind": case["request"],
+                            "evidence_mode": case.get("evidence_mode", fixtures["evidence_mode"]),
+                            "raw_response_sha256": hashlib.sha256(raw).hexdigest(), **python,
+                            "go_equals_native": True})
+    write(OUT / "JEV_PATH_B_EQUIVALENCE.json", {
+        "schema": "mmmtap-jev-path-b-equivalence-v1", **binding,
+        "fixture_sha256": sha(fixtures_path), "fixture_classification": fixtures["evidence_mode"],
+        "historical_fixture_sha256": sha(fixtures_path.with_name("systemone_historical.json")),
+        "historical_fixture_classification": historical["evidence_mode"],
+        "fixture_count": len(comparisons), "accepted": sum(c["accepted"] for c in comparisons),
+        "all_underlying_interpretations_equal": True, "cases": comparisons,
+        "policy": "Separate deterministic cARL policy preserved; threshold boundary tests and full frozen-policy mock receipts.",
+        "choice_scope": "Shared parser coverage only; Path B's frozen request catalog remains noul-only.",
+        "live_provider_calls": 0})
+    red_labels = ("red-python-remediation", "red-go-remediation", "red-python-provenance-lifecycle",
+                  "red-python-sealing-and-scope", "red-python-observed-provider-metadata",
+                  "red-go-observed-provider-metadata", "red-python-shared-historical-response",
+                  "red-go-shared-historical-response")
+    red = {}
+    for label in red_labels:
+        folder, record = command(label)
+        if record["exit_status"] == 0:
+            raise RuntimeError("Pre-fix regression did not fail")
+        red[label] = {"command_record": str((folder / "command.json").relative_to(OUT)),
+                      "exit_status": record["exit_status"], "source_objects": "evidence/source_objects",
+                      "hash_exact_original_sources_available": all((OUT / "evidence/source_objects" / value).is_file()
+                                                                  for value in record["source_sha256"].values())}
+    write(OUT / "REGRESSION_EVIDENCE.json", {
+        "schema": "mmmtap-forensic-regression-evidence-v1", **binding, "evidence_class": "recorded_offline_commands",
+        "red_before_fix": red, "final_commands": final_commands,
+        "python": {"passed": int(count[1]), "skipped": 0},
+        "go": {"top_level_passed": sum("/" not in r["Test"] for r in passed), "including_subtests_passed": len(passed),
+               "packages_with_tests": len({r["Package"] for r in passed}), "vet": "passed",
+               "formatting": "passed", "tracked_whitespace": "passed"},
+        "development_failures_retained": ["evidence/commands/probe-expanded-cli-controls",
+                                          "evidence/development_controls/expanded_control_probe",
+                                          "evidence/commands/green-go-provider-metadata",
+                                          "CANDIDATE_V4_REJECTED.json"],
+        "optional_race_check": "not_rerun; prior retained report documents unsupported 39-bit VMA; not claimed passed",
+        "live_provider_calls": 0, "independent_live_qualification": "not_performed"})
+    write(OUT / "ISOLATION_VALIDATION.json", {
+        "schema": "mmmtap-isolation-validation-v1", **binding,
+        "summary": "v5/isolation_controls_final/summary.json", "summary_sha256": sha(FINAL / "isolation_controls_final/summary.json"),
+        "controls": len(controls["controls"]), "collection_and_containment_assertions": "passed",
+        "qualification": controls["qualification"], "namespace": controls["namespace"],
+        "observed_contract_failures": [{"name": r["name"], "failed_checks": [key for key, ok in r["strict_observed_checks"].items() if not ok],
+                                       "HTTP_POSTs": r["post_count"], "positive_control": r["positive_control"]}
+                                      for r in controls["controls"] if not all(r["strict_observed_checks"].values())],
+        "limits": controls["limits"], "live_provider_calls": 0,
+        "not_equivalent_to_live_model_qualification": True})
+    write(OUT / "FROZEN_INSTRUMENT_VALIDATION.json", {
+        "schema": "mmmtap-frozen-instrument-validation-v1", **binding,
+        "manifest": "v5/instruments/manifest.json", "software_manifest": "v5/instruments/software.v1.json",
+        "source_files_bound": len(software["sources"]), "runtime_and_snapshots_match": True,
+        "question_semantics_changed": False, "policy_thresholds_changed": False, "scoring_contract_changed": False,
+        "supersedes_without_modification": plan["supersedes"],
+        "regressions": ["D2_changed_runtime_prompt_cannot_reuse_instrument_identity",
+                        "D2_all_semantic_snapshots_must_match_runtime", "D2_unbound_old_binary_cannot_be_frozen_as_current",
+                        "R1_imported_helpers_and_test_sources_are_bound", "R1_extra_or_changed_CLI_helpers_are_rejected",
+                        "D6_stale_controls_cannot_reach_assembly_execution"],
+        "limits": ["Hash-bound local provenance is not signed attestation.",
+                   "Host OS/kernel/read-only /usr are not a hermetic runtime image.",
+                   "Snapshots and example policy are proposed instruments, not PI approval."]})
+    self_hash = sha(__file__)
+    print(json.dumps({"binding": binding, "python_passed": int(count[1]), "go_passed_with_subtests": len(passed),
+                      "shared_fixture_count": len(comparisons), "producer_sha256": self_hash}))
+
+
+def transport():
+    from phase2.core import corpus, json_bytes, render_prompt
+    from phase2.integration import validate_v4
+    plan = load(FINAL / "execution_plan_v5.json")
+    validate_v4(plan)
+    _, members = corpus()
+    jobs = {j["job_id"]: j for j in plan["jobs"]}
+    inventory = load(FINAL / "end_to_end_mock_files.json")["files"]
+    validation = load(FINAL / "end_to_end_validation.json")
+    records, payloads, seen = {}, {}, set()
+    path_b_count = 0
+    with tarfile.open(FINAL / "end_to_end_mock.tar.gz", "r:gz") as archive:
+        for member in archive:
+            if not member.isfile() or member.name not in inventory or member.name in seen:
+                raise RuntimeError("Unexpected archived checkpoint")
+            seen.add(member.name)
+            with archive.extractfile(member) as stream:
+                raw = stream.read()
+            if hashlib.sha256(raw).hexdigest() != inventory[member.name]["sha256"] or len(raw) != inventory[member.name]["bytes"]:
+                raise RuntimeError("Archived evidence bytes changed")
+            parts = member.name.split("/")
+            if len(parts) != 4 or parts[1] != "checkpoints":
+                continue
+            ident, name = parts[2:]
+            job = jobs[ident]
+            data = json.loads(raw)
+            if name == "result.json":
+                records[ident] = data
+            elif name == "payload.json":
+                payloads[ident] = data["payload"]
+            elif name == "intent.json":
+                if data["job"] != job or data["manifest_sha256"] != plan["manifest_sha256"] or data["mode"] != "mock":
+                    raise RuntimeError("Archived intent/implementation mismatch")
+            elif name == "raw.json" and job["mechanism"] == "carl_jev":
+                p = data["provenance"]
+                if (data["error"] is not None or p["transport_attempts"] != 0 or p["live_calls"] != 0
+                        or p["cli_invocations"] != 3 or p["cli_launch_attempts"] != 3 or p["replay_exit_status"] != 0
+                        or p["usage_source"] != "verified_receipt.raw_response.usage"):
+                    raise RuntimeError("Mock Path B transport/provenance mismatch")
+                receipt_bytes = base64.b64decode(data["stdout"], validate=True)
+                if hashlib.sha256(receipt_bytes).hexdigest() != p["receipt_sha256"]:
+                    raise RuntimeError("Receipt anchor changed")
+                receipt = json.loads(receipt_bytes)
+                response_bytes = base64.b64decode(receipt["raw_response"], validate=True)
+                if hashlib.sha256(response_bytes).hexdigest() != receipt["response_sha256"]:
+                    raise RuntimeError("Receipt response changed")
+                body = json.loads(response_bytes)
+                if data["usage"] != body["usage"] or receipt["implementation_sha256"] != plan["config"]["adversaries"]["carl_jev"]["binary_sha256"]:
+                    raise RuntimeError("Raw token usage or binary provenance mismatch")
+                expected = {key: answer["noul"] for key, answer in body["answers"].items()}
+                if receipt["result"]["signals"] != expected or receipt["result"]["reported_model"] != body["model"]:
+                    raise RuntimeError("Policy altered underlying evidence")
+                path_b_count += 1
+    if seen != set(inventory) or len(records) != 6885 or len(payloads) != 6885 or path_b_count != 1215:
+        raise RuntimeError("Incomplete full-chain archive")
+    for ident, record in records.items():
+        job = jobs[ident]
+        if record["mode"] != "mock" or record["status"] != "mock_ok" or record["manifest_sha256"] != plan["manifest_sha256"]:
+            raise RuntimeError("Non-mock or unsuccessful record in mock validation")
+        parents = {p: inventory["end_to_end_mock/checkpoints/" + p + "/result.json"]["sha256"]
+                   for p in job["dependencies"]}
+        if record["parent_checkpoint_sha256"] != parents:
+            raise RuntimeError("Archived parent lineage mismatch")
+        for filename, expected in record["artifact_sha256"].items():
+            if inventory["end_to_end_mock/checkpoints/" + ident + "/" + filename]["sha256"] != expected:
+                raise RuntimeError("Archived result artifact binding mismatch")
+        if job["kind"] != "generator":
+            continue
+        if not record["parsed"]["claims"]:
+            raise RuntimeError("Empty mock assessment")
+        parent = job["assessment_parent"]
+        previous = records[parent]["parsed"] if parent else None
+        history = []
+        while parent:
+            ancestor = jobs[parent]
+            if ancestor["arm"] not in ("B0", job["arm"]):
+                raise RuntimeError("Cross-branch assessment history")
+            history.append({"assessment": records[parent]["parsed"], "challenge": records[parent].get("challenge_used"),
+                            "source_sha256": ancestor["input_sha256"]})
+            parent = ancestor["assessment_parent"]
+        history.reverse()
+        challenge = records[job["challenge_parent"]]["parsed"] if job["challenge_parent"] else None
+        if payloads[ident] != render_prompt(plan, job, members[job["input_member"]], previous, history, challenge):
+            raise RuntimeError("Generator prompt does not match frozen instruments and its own branch")
+    group_key = lambda job: (job["case_id"], job["variant_id"], job["generator"], job["repetition"])
+    paired = collections.defaultdict(dict)
+    turns = {arm: collections.defaultdict(list) for arm in ("C3", "E3_NC", "E3_CN")}
+    for job in plan["jobs"]:
+        key = group_key(job)
+        if job["kind"] == "generator" and job["arm"] in turns:
+            turns[job["arm"]][key].append(job["turn"])
+        if job["kind"] == "adversary" and job["arm"] in ("E1", "E2"):
+            payload = payloads[job["job_id"]]
+            paired[key][job["arm"]] = json_bytes(payload) if job["arm"] == "E1" else base64.b64decode(payload["native_request"], validate=True)
+    if len(paired) != 405 or any(set(pair) != {"E1", "E2"} or pair["E1"] != pair["E2"] for pair in paired.values()):
+        raise RuntimeError("Matched independent native/Path B request evidence differs")
+    if any(len(groups) != 405 or any(sorted(values) != [1, 2] for values in groups.values()) for groups in turns.values()):
+        raise RuntimeError("Both E3 orders and matched C3 turns not complete")
+    if validation["resume"]["new_checkpoints"] != 0 or validation["blinded"]["exported_pairs"] != 2835:
+        raise RuntimeError("Resume or blinded export incomplete")
+    report = {"schema": "mmmtap-transport-provenance-validation-v1",
+        "implementation_sha256": plan["implementation_sha256"], "instruments_sha256": plan["instruments_sha256"],
+        "evidence_class": "complete_labelled_mock_chains_plus_offline_failure_regressions",
+        "archive": "v5/end_to_end_mock.tar.gz", "archive_sha256": sha(FINAL / "end_to_end_mock.tar.gz"),
+        "archive_entries_individually_verified": len(seen), "checkpoints": len(records),
+        "generator_assessments": sum(j["kind"] == "generator" for j in jobs.values()),
+        "native_mock_evaluations": 1215, "path_b_offline_policy_replays": path_b_count,
+        "path_b_started_CLI_invocations": 3 * path_b_count, "HTTP_attempts_in_mock_run": 0, "live_provider_calls": 0,
+        "structured_usage_verified_against_raw_receipt": True,
+        "matched_independent_E1_E2_request_pairs": len(paired),
+        "both_E3_orders_and_C3": {arm: {"groups": len(groups), "turns_each": [1, 2]} for arm, groups in turns.items()},
+        "frozen_prompt_and_own_branch_history_verified_for_every_generator": True,
+        "resume_new_checkpoints": 0, "blinded_pairs": 2835,
+        "failure_regressions": ["no_credentials_zero_HTTP_attempts", "launch_failure_not_CLI_invocation",
+            "incomplete_evaluation_unknown_count", "failed_preparation_artifacts", "staging_failure_exact_request",
+            "malformed_receipt", "missing_response_file", "checksum_anchor_mismatch", "cleanup_failure_preserved",
+            "literal_and_nested_encoded_credential_withholding", "preparation_checkpoint_before_payload",
+            "same_workspace_cross_directory_reservation", "failed_parent_preparation_stays_reserved"],
+        "limits": ["CLI invocation is not an HTTP attempt; a written request is not proven provider execution or billing.",
+                   "Known-secret withholding is not a detector for every unknown secret or encoding.",
+                   "Workspace reservations do not establish distributed/provider exactly-once execution.",
+                   "All mock claims, token counts and challenge effects are authored fixtures, not research results."]}
+    write(OUT / "TRANSPORT_PROVENANCE_VALIDATION.json", report)
+    print(json.dumps({key: report[key] for key in ("checkpoints", "archive_entries_individually_verified",
+                                                 "path_b_offline_policy_replays", "blinded_pairs")}))
+
+
+def main():
+    os.umask(0o077)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("operation", choices=("provider-shape", "preservation", "copy", "results", "transport"))
+    args = parser.parse_args()
+    {"provider-shape": provider_shape, "preservation": preservation, "copy": copy_evidence,
+     "results": results, "transport": transport}[args.operation]()
+
+
+if __name__ == "__main__":
+    main()

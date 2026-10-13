@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "result": {
+    "signals": [
+      {
+        "id": "security_sensitive",
+        "value": true,
+        "confidence": 0.94,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.94
+        }
+      },
+      {
+        "id": "architectural_change",
+        "value": false,
+        "confidence": 0.15,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.15
+        }
+      },
+      {
+        "id": "authentication_or_authorisation_change",
+        "value": true,
+        "confidence": 0.71,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.71
+        }
+      },
+      {
+        "id": "security_control_reduction",
+        "value": false,
+        "confidence": 0.06,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.06
+        }
+      },
+      {
+        "id": "scope_expansion",
+        "value": false,
+        "confidence": 0.07,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.07
+        }
+      },
+      {
+        "id": "trust_boundary_change",
+        "value": true,
+        "confidence": 0.73,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.73
+        }
+      },
+      {
+        "id": "breaking_change",
+        "value": false,
+        "confidence": 0.23,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.23
+        }
+      },
+      {
+        "id": "new_external_dependency",
+        "value": false,
+        "confidence": 0.02,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.02
+        }
+      },
+      {
+        "id": "human_review_warranted",
+        "value": 0.58,
+        "confidence": 0.58,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": null,
+          "raw_noul": 0.58
+        }
+      }
+    ],
+    "findings": [
+      {
+        "id": "semantic_security_sensitive",
+        "severity": "warning",
+        "title": "Security-sensitive change",
+        "description": "The semantic evaluator identified security-sensitive change characteristics. cARL treats this as advisory context for review. Confidence: 0.94.",
+        "signalIds": [
+          "security_sensitive"
+        ],
+        "files": [
+          "main.tf"
+        ]
+      },
+      {
+        "id": "semantic_authentication_or_authorisation_change",
+        "severity": "review",
+        "title": "Authentication or authorization change",
+        "description": "The semantic evaluator identified possible authentication or authorization behavior changes. Confidence: 0.71.",
+        "signalIds": [
+          "authentication_or_authorisation_change"
+        ],
+        "files": [
+          "main.tf"
+        ]
+      },
+      {
+        "id": "semantic_trust_boundary_change",
+        "severity": "review",
+        "title": "Trust-boundary change",
+        "description": "The semantic evaluator identified a possible trust-boundary or external data-flow change. Confidence: 0.73.",
+        "signalIds": [
+          "trust_boundary_change"
+        ],
+        "files": [
+          "main.tf"
+        ]
+      }
+    ],
+    "decision": "review_required"
+  }
+}

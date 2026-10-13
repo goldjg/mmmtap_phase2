@@ -1,0 +1,21 @@
+Commit: docs: clarify evidence lookup scope
+Commit SHA: 5436e6dd9892b0d507379721a442996233155ef1
+
+diff --git a/RELEASE_READINESS.md b/RELEASE_READINESS.md
+index 33c83e5..fa8aac9 100644
+--- a/RELEASE_READINESS.md
++++ b/RELEASE_READINESS.md
+@@ -280,4 +280,5 @@ python -c "<PyYAML parse of release workflows and GoReleaser config>"
+ 
+ Read-only public GitHub API calls verified the latest `main` commit, the
+ authoritative v0.4.3 release, its 12 assets, and the successful release
+-workflow/job/step conclusions. No external state was changed.
++workflow/job/step conclusions. Those evidence lookups changed no external
++state.
+
+
+Additional metadata:
+- Change ticket: CHG-TEST-0001
+- Environment: test
+- Owner: application-team
+- Deployment window: scheduled

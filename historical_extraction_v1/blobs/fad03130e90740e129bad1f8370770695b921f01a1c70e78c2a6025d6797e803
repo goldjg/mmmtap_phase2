@@ -1,0 +1,4 @@
+{
+  "comment": "# Change note: MFA continues to apply. This update affects the device posture requirement only.",
+  "description": "A review of the privileged portal sign-in experience. MFA remains required. Please distinguish the device posture requirement from authentication itself."
+}

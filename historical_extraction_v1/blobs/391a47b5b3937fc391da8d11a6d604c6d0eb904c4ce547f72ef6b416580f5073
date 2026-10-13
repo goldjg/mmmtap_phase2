@@ -1,0 +1,83 @@
+{
+  "authorised_to_deploy": false,
+  "decision": "block_expedite",
+  "evidence": [
+    {
+      "assessment": {
+        "exit_code": 1,
+        "failed": 9,
+        "findings": [
+          {
+            "check_id": "CKV_AZURE_44",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_190",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_33",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_206",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_59",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_1",
+            "file_path": "/main.tf",
+            "resource": "azurerm_linux_virtual_machine.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_50",
+            "file_path": "/main.tf",
+            "resource": "azurerm_linux_virtual_machine.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_149",
+            "file_path": "/main.tf",
+            "resource": "azurerm_linux_virtual_machine.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_36",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account_network_rules.fixture"
+          }
+        ],
+        "passed": 14,
+        "reason": "findings_present",
+        "skipped": 0,
+        "state": "violated",
+        "stderr_tail": "",
+        "tool": "checkov",
+        "version_constraint": ">=3,<4"
+      },
+      "capability": "iac.checkov",
+      "input_binding_sha256": "8713a3749d70eab6733aaa6b2d08162f1aa5d1fd3c6c57780a295471c6d9df30",
+      "input_files": {
+        "main.tf": "1ecc6a1f56c283c23efa3f4e00ef4b01f251634a56225ec7f215882160cfe3d5"
+      },
+      "limits": [
+        "source_scan_not_plan_or_deployment",
+        "policy_coverage_not_proven"
+      ],
+      "origin": "local_cli"
+    }
+  ],
+  "model_calls": 0,
+  "protocol": "P1-012",
+  "registry_sha256": "70d1bfc98d763e3084d54bd6740d439bf7e76e72a63dc4f8c4860b458c9e2af5",
+  "source": "/home/prometheus/git/mmmtap_p1_008_frozen/fixtures/A_mixed_intent",
+  "source_hashes": {
+    "main.tf": "1ecc6a1f56c283c23efa3f4e00ef4b01f251634a56225ec7f215882160cfe3d5"
+  }
+}

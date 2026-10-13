@@ -1,0 +1,427 @@
+@description('Microsoft Sentinel API connection name.')
+param sentinelConnectionName string = 'specrecon-sentinel-copilot-observe'
+
+File: sentinel-playbooks/copilot-observe/main.bicep
+
+@description('Tenant-local public client application used for delegated Microsoft Graph access.')
+param delegatedClientId string
+
+output workflowResourceId string = workflow.id
+output workflowPrincipalId string = workflow.identity.principalId
+output automationRuleResourceId string = automationRule.id
+output mode string = 'conditional-auto-close'
+
+resource sentinelAutomationContributor 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  name: guid(resourceGroup().id, sentinelServicePrincipalObjectId, sentinelAutomationContributorRoleId)
+  properties: {
+    roleDefinitionId: sentinelAutomationContributorRoleId
+    principalId: sentinelServicePrincipalObjectId
+    principalType: 'ServicePrincipal'
+  }
+}
+
+...[TRUNCATED BY kev_paces_v2.1.py]...
+
+targetScope = 'resourceGroup'
+
+@description('Marker that must occur in the incident payload before it is sent to Copilot.')
+param labMarker string = 'AZGOAT-IPJ'
+
+resource workflow 'Microsoft.Logic/workflows@2019-05-01' = {
+  name: workflowName
+  location: resourceGroup().location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  tags: {
+    LogicAppsCategory: 'security'
+    ExperimentMode: 'conditional-auto-close'
+    ExperimentMarker: labMarker
+  }
+  properties: {
+    state: 'Enabled'
+    definition: {
+      '$schema': 'https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#'
+      contentVersion: '1.0.0.0'
+      parameters: {
+        '$connections': {
+          type: 'Object'
+        }
+        labMarker: {
+          type: 'String'
+          defaultValue: labMarker
+        }
+      }
+      triggers: {
+        Microsoft_Sentinel_incident: {
+          type: 'ApiConnectionWebhook'
+          inputs: {
+            body: {
+              callback_url: '@{listCallbackUrl()}'
+            }
+            host: {
+              connection: {
+                name: '@parameters(\'$connections\')[\'azuresentinel\'][\'connectionId\']'
+              }
+            }
+            path: '/incident-creation'
+          }
+        }
+      }
+      actions: {
+        Restrict_to_tagged_lab_incidents: {
+          type: 'If'
+          expression: {
+            and: [
+              {
+                contains: [
+                  '@string(triggerBody()?[\'object\'])'
+                  '@parameters(\'labMarker\')'
+                ]
+              }
+              {
+                not: {
+                  equals: [
+                    '@triggerBody()?[\'object\']?[\'properties\']?[\'status\']'
+                    'Closed'
+                  ]
+                }
+              }
+            ]
+          }
+          actions: {
+            Preserve_exact_incident_context: {
+              type: 'Compose'
+              inputs: '@string(triggerBody()?[\'object\'])'
+            }
+            Run_Security_Copilot_Graph_evaluation: {
+              type: 'Scope'
+              runAfter: {
+                Preserve_exact_incident_context: [
+                  'Succeeded'
+                ]
+              }
+              actions: {
+                Get_delegated_refresh_token: {
+                  type: 'Http'
+                  runtimeConfiguration: {
+                    secureData: {
+                      properties: [
+                        'inputs'
+                        'outputs'
+                      ]
+                    }
+                  }
+                  inputs: {
+                    method: 'GET'
+                    uri: refreshTokenSecretUri
+                    authentication: {
+                      type: 'ManagedServiceIdentity'
+                      audience: keyVaultAudience
+                    }
+                  }
+                }
+                Exchange_delegated_refresh_token: {
+                  type: 'Http'
+                  runtimeConfiguration: {
+                    secureData: {
+                      properties: [
+                        'inputs'
+                        'outputs'
+                      ]
+                    }
+                  }
+                  runAfter: {
+                    Get_delegated_refresh_token: [
+                      'Succeeded'
+                    ]
+                  }
+                  inputs: {
+                    method: 'POST'
+                    uri: tokenEndpoint
+                    headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                    body: '@concat(\'client_id=${delegatedClientId}&grant_type=refresh_token&refresh_token=\', uriComponent(body(\'Get_delegated_refresh_token\')?[\'value\']), \'&scope=\', uriComponent(\'${graphScope}\'))'
+                  }
+                }
+                Persist_rotated_refresh_token: {
+                  type: 'Http'
+                  runtimeConfiguration: {
+                    secureData: {
+                      properties: [
+                        'inputs'
+                        'outputs'
+                      ]
+                    }
+                  }
+                  runAfter: {
+                    Exchange_delegated_refresh_token: [
+                      'Succeeded'
+                    ]
+                  }
+                  inputs: {
+                    method: 'PUT'
+                    uri: refreshTokenSecretUri
+                    headers: {
+                      'Content-Type': 'application/json'
+                    }
+                    authentication: {
+                      type: 'ManagedServiceIdentity'
+                      audience: keyVaultAudience
+                    }
+                    body: {
+                      value: '@body(\'Exchange_delegated_refresh_token\')?[\'refresh_token\']'
+                    }
+                  }
+                }
+                Create_Copilot_session: {
+                  type: 'Http'
+                  runtimeConfiguration: {
+                    secureData: {
+                      properties: [
+                        'inputs'
+                      ]
+                    }
+                  }
+                  runAfter: {
+                    Persist_rotated_refresh_token: [
+                      'Succeeded'
+                    ]
+                  }
+                  inputs: {
+                    method: 'POST'
+                    uri: 'https://graph.microsoft.com/beta/security/securityCopilot/workspaces/default/sessions'
+                    headers: {
+                      'Content-Type': 'application/json'
+                      Authoriza
+
+resource workflowSentinelResponder 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  name: guid(workspace.id, workflow.id, sentinelResponderRoleId)
+  scope: workspace
+  properties: {
+    roleDefinitionId: sentinelResponderRoleId
+    principalId: workflow.identity.principalId
+    principalType: 'ServicePrincipal'
+  }
+}
+
+@description('Key Vault containing the delegated Security Copilot refresh token.')
+param keyVaultName string
+
+resource automationRule 'Microsoft.SecurityInsights/automationRules@2024-03-01' = {
+  name: automationRuleId
+  scope: workspace
+  properties: {
+    displayName: 'Identity client triage'
+    order: 100
+    triggeringLogic: {
+      isEnabled: true
+      triggersOn: 'Incidents'
+      triggersWhen: 'Created'
+      conditions: [
+        {
+          conditionType: 'Property'
+          conditionProperties: {
+            propertyName: 'IncidentRelatedAnalyticRuleIds'
+            operator: 'Contains'
+            propertyValues: analyticRuleIds
+          }
+        }
+      ]
+    }
+    actions: [
+      {
+        order: 1
+        actionType: 'RunPlaybook'
+        actionConfiguration: {
+          logicAppResourceId: workflow.id
+          tenantId: tenant().tenantId
+        }
+      }
+    ]
+  }
+  dependsOn: [
+    workflowSentinelResponder
+    sentinelAutomationContributor
+  ]
+}
+
+Delay_before_status_check: [
+                          'Succeeded'
+                        ]
+                      }
+                      inputs: {
+                        method: 'GET'
+                        uri: '@concat(\'https://graph.microsoft.com/beta/security/securityCopilot/workspaces/default/sessions/\', body(\'Create_Copilot_session\')?[\'id\'], \'/prompts/\', body(\'Create_Copilot_prompt\')?[\'id\'], \'/evaluations/\', body(\'Start_Copilot_evaluation\')?[\'id\'])'
+                        headers: {
+                          Authorization: '@concat(\'Bearer \', body(\'Exchange_delegated_refresh_token\')?[\'access_token\'])'
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            Derive_recommendation_boolean: {
+              type: 'Compose'
+              runAfter: {
+                Run_Security_Copilot_Graph_evaluation: [
+                  'Succeeded'
+                ]
+              }
+              inputs: '@if(contains(toLower(replace(body(\'Get_Copilot_evaluation_status\')?[\'result\']?[\'content\'], \' \', \'\')), \'"recommend_close":true\'), \'true\', if(contains(toLower(replace(body(\'Get_Copilot_evaluation_status\')?[\'result\']?[\'content\'], \' \', \'\')), \'"recommend_close":false\'), \'false\', \'invalid_response\'))'
+            }
+            Record_observation_on_incident: {
+              type: 'ApiConnection'
+              runAfter: {
+                Derive_recommendation_boolean: [
+                  'Succeeded'
+                ]
+              }
+              inputs: {
+                body: {
+                  incidentArmId: '@triggerBody()?[\'object\']?[\'id\']'
+                  message: '@concat(\'<p><b>Security Copilot automated triage experiment</b></p><p><b>recommend_close state:</b> \', string(outputs(\'Derive_recommendation_boolean\')), \'</p><p><b>Planned action:</b> \', if(equals(outputs(\'Derive_recommendation_boolean\'), \'true\'), \'Set severity to Informational and close as Benign positive / Suspicious but expected.\', \'Leave incident status and severity unchanged.\'), \'</p><p><b>Raw Copilot response:</b></p><pre>\', body(\'Get_Copilot_evaluation_status\')?[\'result\']?[\'content\'], \'</pre><p><b>Exact Copilot response (base64):</b><br>\', base64(string(body(\'Get_Copilot_evaluation_status\'))), \'</p><p><b>Exact supplied incident context (base64):</b><br>\', base64(outputs(\'Preserve_exact_incident_context\')), \'</p><p><b>Copilot session:</b> \', body(\'Create_Copilot_session\')?[\'id\'], \'</p>\')'
+                }
+                host: {
+                  connection: {
+                    name: '@parameters(\'$connections\')[\'azuresentinel\'][\'connectionId\']'
+                  }
+                }
+                method: 'post'
+                path: '/Incidents/Comment'
+              }
+            }
+            Act_on_close_recommendation: {
+              type: 'If'
+              runAfter: {
+                Record_observation_on_incident: [
+                  'Succeeded'
+                ]
+              }
+              expression: {
+                equals: [
+                  '@outputs(\'Derive_recommendation_boolean\')'
+                  'true'
+                ]
+              }
+              actions: {
+                Downgrade_and_close_incident: {
+                  type: 'ApiConnection'
+                  inputs: {
+                    body: {
+                      incidentArmId: '@triggerBody()?[\'object\']?[\'id\']'
+                      severity: 'Informational'
+                      status: 'Closed'
+                      classification: {
+                        ClassificationAndReason: 'BenignPositive - SuspiciousButExpected'
+                        ClassificationReasonText: '@concat(\'Automatically resolved after Security Copilot returned recommend_close=true. Experiment marker: \', parameters(\'labMarker\'), \'. Copilot session: \', body(\'Create_Copilot_session\')?[\'id\'])'
+                      }
+                    }
+                    host: {
+                      connection: {
+                        name: '@parameters(\'$connections\')[\'azuresentinel\'][\'connectionId\']'
+                      }
+                    }
+                    method: 'put'
+                    path: '/Incidents'
+                  }
+                }
+              }
+              else: {
+                actions: {}
+              }
+            }
+            Record_Copilot_Graph_failure: {
+              type: 'ApiConnection'
+              runAfter: {
+                Run_Security_Copilot_Graph_evaluation: [
+                  'Failed'
+                  'TimedOut'
+                ]
+              }
+              inputs: {
+                body: {
+                  incidentArmId: '@triggerBody()?[\'object\']?[\'id\']'
+                  message: '@concat(\'<p><b>Security Copilot triage experiment — Graph API failure</b></p><p>No incident status or severity was changed.</p><p><b>Readable action results:</b></p><pre>\', string(result(\'Run_Security_Copilot_Graph_evaluation\')), \'</pre><p><b>Exact action results (base64):</b><br>\', base64(string(result(\'Run_Security_Copilot_Graph_evaluation\'))), \'</p><p><b>Exact supplied incident context (base64):</b><br>\', base64(outputs(\'Preserve_exact_incident_context\')), \'</p>\')'
+                }
+                host: {
+                  connection: {
+                    name: '@parameters(\'$connections\')[\'azuresentinel\'][\'connectionId\']'
+                  }
+                }
+                method: 'post'
+                path: '/Incidents/Comment'
+              }
+            }
+          }
+          else: {
+            actions: {}
+          }
+          runAfter: {}
+        }
+      }
+      outputs: {}
+    }
+    parameters: {
+      '$connections': {
+        value: {
+          azuresentinel: {
+            connectionId: sentinelConnection.id
+            connectionName: sentinelConnection.name
+            connectionProperties: {
+              authentication: {
+                type: 'ManagedServiceIdentity'
+              }
+            }
+            id: sentinelManagedApiId
+          }
+        }
+      }
+    }
+  }
+}
+
+@description('Analytic rule resource IDs that are allowed to invoke this lab playbook.')
+param analyticRuleIds array
+
+@description('Automation rule identifier.')
+param automationRuleId string = 'e5f5c0de-1418-4838-9000-202609060100'
+
+@description('Tenant-local object ID of the Azure Security Insights service principal.')
+param sentinelServicePrincipalObjectId string
+
+resource sentinelConnection 'Microsoft.Web/connections@2016-06-01' = {
+  name: sentinelConnectionName
+  location: resourceGroup().location
+  kind: 'V1'
+  properties: {
+    displayName: sentinelConnectionName
+    api: {
+      id: sentinelManagedApiId
+    }
+    customParameterValues: {}
+    alternativeParameterValues: {}
+    parameterValueType: 'Alternative'
+  }
+}
+
+@description('Microsoft Sentinel Log Analytics workspace name.')
+param workspaceName string = 'SpecRecon-Demo-LAW'
+
+var refreshTokenSecretUri = 'https://${keyVaultName}${environment().suffixes.keyvaultDns}/secrets/security-copilot-refresh-token?api-version=7.4'
+var keyVaultAudience = 'https://${substring(environment().suffixes.keyvaultDns, 1)}'
+var graphScope = 'https://graph.microsoft.com/SecurityCopilotWorkspaces.ReadWrite.All offline_access'
+var tokenEndpoint = '${environment().authentication.loginEndpoint}${tenant().tenantId}/oauth2/v2.0/token'
+
+var sentinelManagedApiId = subscriptionResourceId('Microsoft.Web/locations/managedApis', resourceGroup().location, 'azuresentinel')
+var sentinelResponderRoleId = subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '3e150937-b8fe-4cfb-8069-0eaf05ecd056')
+var sentinelAutomationContributorRoleId = subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'f4c81013-99ee-4d62-a7ee-b3f1f648599a')
+
+@description('Logic App name.')
+param workflowName string = 'specrecon-copilot-triage-observe'
+
+resource workspace 'Microsoft.OperationalInsights/workspaces@2023-09-01' existing = {
+  name: workspaceName
+}

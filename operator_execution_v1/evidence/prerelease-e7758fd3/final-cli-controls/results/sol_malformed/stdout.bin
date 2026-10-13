@@ -1,0 +1,5 @@
+{"type":"thread.started","thread_id":"01a13042-0752-7920-9ee3-af31c5fea85b"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"Code Mode is unavailable because code-mode host is disabled. Code mode will fail closed; enable `features.code_mode_host` and install `codex-code-mode-host`."}}
+{"type":"turn.started"}
+{"type":"error","message":"stream disconnected before completion: stream closed before response.completed"}
+{"type":"turn.failed","error":{"message":"stream disconnected before completion: stream closed before response.completed"}}

@@ -1,0 +1,24 @@
+[
+  {
+    "pair": "public_access_regression / public_access_remediation",
+    "signal_deltas_remediation_minus_regression": {
+      "authentication_or_authorisation_change": 0.01,
+      "human_review_warranted": -0.15,
+      "scope_expansion": -0.75,
+      "security_control_reduction": -0.84,
+      "security_sensitive": -0.03,
+      "trust_boundary_change": -0.18
+    }
+  },
+  {
+    "pair": "ssh_world_open / ssh_scope_remediation",
+    "signal_deltas_remediation_minus_regression": {
+      "authentication_or_authorisation_change": 0.19,
+      "human_review_warranted": -0.21,
+      "scope_expansion": -0.81,
+      "security_control_reduction": -0.82,
+      "security_sensitive": -0.04,
+      "trust_boundary_change": -0.02
+    }
+  }
+]

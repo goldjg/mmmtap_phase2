@@ -1,0 +1,24 @@
+experiment=contextual-discrimination-01
+description=same network boundary evaluated under scoped and broad access semantics
+
+base=a2210d2e93c82ef2a97f9a8f9931c4278df14cc1
+scoped=be898567d73d0f4c2d074af009518b137c8fceb4
+broad=c20373e90d78d41b0f73c8cd16fd14fa6ddc8e09
+remediation=3caa25c2fdcf9192bcb5d75614ed867663084158
+
+transitions:
+1. baseline -> scoped
+   default_action: Deny -> Deny
+   permitted subnet: none -> workload
+
+2. scoped -> broad
+   default_action: Deny -> Allow
+   permitted subnet: workload -> workload
+
+3. broad -> remediation
+   default_action: Allow -> Deny
+   permitted subnet: workload -> workload
+
+questions=frozen-carl-nine
+bridge_boolean_threshold=0.5
+human_review_threshold=0.7

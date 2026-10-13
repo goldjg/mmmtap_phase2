@@ -1,0 +1,29 @@
+{
+  "answer_field_sets": [
+    "choice,confidence,probabilities,type",
+    "noul,type"
+  ],
+  "candidate_v4_was_rejected_for_overrestricting_these_fields": true,
+  "evidence_class": "read_only_historical_response_shape_not_new_provider_call",
+  "file": "adapter_qualification_v1/attempts/native_jev/raw.json",
+  "file_sha256": "c1c0e27543d32406415d615824b67bbcb67592846a3fd882d50c7bf212ec6263",
+  "model_type": "str",
+  "observed_optional_answer_metadata": [
+    "type",
+    "confidence"
+  ],
+  "recognized_root_fields": [
+    "answers",
+    "model",
+    "usage"
+  ],
+  "recognized_usage_fields": [
+    "input_tokens",
+    "output_tokens"
+  ],
+  "response_sha256": "1c22046848af88847d48723e2019de35dd33b85055563b9c869a0b9818cd0bb8",
+  "unrecognized_answer_field_count": 0,
+  "unrecognized_root_field_count": 0,
+  "unrecognized_usage_field_count": 0,
+  "usage_type": "dict"
+}

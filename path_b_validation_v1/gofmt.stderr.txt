@@ -1,0 +1,4 @@
+internal/assessment/assessment_test.go:386:7: expected '(', found TestNullClaimFieldsAreRejected
+internal/assessment/assessment_test.go:400:7: expected '(', found TestInactiveAndOverriddenRulesCannotTakeControl
+internal/assessment/assessment_test.go:414:7: expected '(', found TestBoundSourceInstructionsAreOnlyEvidence
+internal/assessment/assessment_test.go:444:7: expected '(', found TestPreparationFailureIsImmutable

@@ -1,0 +1,55 @@
+{
+  "schema": "mmmtap-path-b-transport-contract-v1",
+  "status": "offline_validated_not_live_qualified",
+  "implementation_sha256": "c1d1c4d09715893e3c3ccd9deee77b787b189b3c511018f017842ee5ecb20ac3",
+  "instruments_sha256": "be99adbb65cf5dfb2cb9aa2accebf683306ff565ecf81a515676111856fdd06a",
+  "binary": "v5/bin/carl-assessment-challenge-v5",
+  "binary_sha256": "b51cb4c86a1e5b54b5bb496e67890ee8efd18f58603616f4eb28da144d7a275d",
+  "evidence_contract": "supplied_frozen_text_assessment_challenge_v1",
+  "authenticated_git": false,
+  "deployment_state": "not_asserted",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "credential_environment_variable": "JEVKEY",
+  "provider_response_schema": "mmmtap-systemone-typed-response-v2",
+  "request": "Exact native request bytes; matched question/source/assessment bindings; no policy prose added to provider request",
+  "http_attempt_limit": 1,
+  "automatic_retries": false,
+  "redirects": false,
+  "proxies": false,
+  "connection_reuse": false,
+  "automatic_response_decompression": false,
+  "timeout_seconds_range": [1, 600],
+  "maximum_response_bytes": 4194304,
+  "maximum_artifact_bytes": 8388608,
+  "counts": {
+    "cli_launch_attempts": "Wrapper requests to start an executable",
+    "cli_invocations": "Processes actually started; preparation/evaluation/replay are distinct",
+    "transport_attempts": "HTTP client invocations from a verified receipt; unknown if evaluation started and evidence is incomplete",
+    "request_written": "Local full-request-written observation",
+    "live_calls": "Local fully written requests, not provider execution or billing attestation"
+  },
+  "integrity": [
+    "Pinned executable and exact policy-file closure",
+    "Independent retained CLI checksum line and checksum file",
+    "Exact request/preparation and implementation binding",
+    "Response file equals receipt raw response and its hash",
+    "Live partial-call record equals all required receipt call fields",
+    "Deterministic policy replay under retained receipt anchor",
+    "Canonical receipt field presence and TLS/body metadata consistency"
+  ],
+  "capture": [
+    "Intent precedes execution; failures and incomplete attempts remain reserved",
+    "Safe original process streams and preparation/failure/response artifacts retained before cleanup",
+    "Complete/partial/truncated/withheld/not-received states remain distinguishable",
+    "Known credential echoes withheld rather than relabelled as original raw bytes",
+    "Cleanup errors remain explicit and do not erase captured evidence",
+    "Available validated usage extracted from verified raw response; absent usage stays null"
+  ],
+  "authority": {
+    "provider_evidence": "Untrusted model judgements and reported identity",
+    "policy": "Distinct deterministic arbitration under frozen cARL packs and role",
+    "receipt": "Local integrity evidence, not a signed provider receipt"
+  },
+  "path_a": "Existing Git-evidence interface, source, policy defaults and installed binary preserved",
+  "live_authorization": "Not granted by this package"
+}

@@ -1,0 +1,11 @@
+{
+  "REMEDIATION_REPORT.md": false,
+  "generator_isolation_evidence.json": true,
+  "path_b_transport_contract.json": false,
+  "frozen_instruments_manifest.json": true,
+  "end_to_end_validation.json": true,
+  "arm_feasibility_matrix.csv": true,
+  "execution_plan_v3.json": true,
+  "LIVE_QUALIFICATION_PROCEDURE.md": true,
+  "SHA256SUMS.txt": false
+}

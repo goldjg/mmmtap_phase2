@@ -1,0 +1,68 @@
+{
+  "authorised_to_deploy": false,
+  "decision": "block_expedite",
+  "evidence": [
+    {
+      "assessment": {
+        "exit_code": 1,
+        "failed": 6,
+        "findings": [
+          {
+            "check_id": "CKV_AZURE_190",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_33",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_206",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_59",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_50",
+            "file_path": "/main.tf",
+            "resource": "azurerm_linux_virtual_machine.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_36",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account_network_rules.fixture"
+          }
+        ],
+        "passed": 17,
+        "reason": "findings_present",
+        "skipped": 0,
+        "state": "violated",
+        "stderr_tail": "",
+        "tool": "checkov",
+        "version_constraint": ">=3,<4"
+      },
+      "capability": "iac.checkov",
+      "input_binding_sha256": "30cc5124bd708f7a24212226210f164965fa6cf0e0f2f00a39005474b85028de",
+      "input_files": {
+        "main.tf": "962cb329f18732eed0d01b89874dd0be164e510b7271d94060ac0a207e919805"
+      },
+      "limits": [
+        "source_scan_not_plan_or_deployment",
+        "policy_coverage_not_proven"
+      ],
+      "origin": "local_cli"
+    }
+  ],
+  "model_calls": 0,
+  "protocol": "P1-012",
+  "registry_sha256": "70d1bfc98d763e3084d54bd6740d439bf7e76e72a63dc4f8c4860b458c9e2af5",
+  "source": "/tmp/mmmtap-p1-012c-_6q6eqfp",
+  "source_hashes": {
+    "main.tf": "962cb329f18732eed0d01b89874dd0be164e510b7271d94060ac0a207e919805"
+  }
+}

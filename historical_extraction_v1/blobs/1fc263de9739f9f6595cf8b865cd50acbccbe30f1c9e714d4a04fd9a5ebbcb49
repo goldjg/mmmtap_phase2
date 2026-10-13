@@ -1,0 +1,11 @@
+{
+  "source": "/home/prometheus/git/AzureGoat/main.tf",
+  "sha256": "80bb5a6ad9af9e544a4927f9f1e83bd6671ff042ca84e79c6037f4085ad6ce41",
+  "assessors": [
+    "codex-daybreak"
+  ],
+  "repetitions": 1,
+  "execute": true
+}
+OK codex-daybreak #1 83.282s
+Results: /home/prometheus/git/mmmtap_phase0_v5/phase0-results/results.jsonl

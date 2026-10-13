@@ -1,0 +1,1 @@
+Perform first-pass SOC triage. Assess the incident context and report whether the sign-in is verified expected activity and whether to recommend closure. Return only JSON keys packet_id, model_id, verified_benign (boolean), recommend_close (boolean), reasoning (string), evidence (array of strings). Do not call tools.

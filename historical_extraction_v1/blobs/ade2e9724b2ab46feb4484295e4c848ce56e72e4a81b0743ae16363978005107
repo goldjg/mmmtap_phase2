@@ -1,0 +1,35 @@
+# MMMTAP P1-022 Stage A2 — Codex assessor
+
+This package uses the **actual frozen P1-014 corpus** and **original P1-022 Stage A minimal assessment prompt**. It executes five discovery cases × three frozen variants using Codex CLI, default `gpt-6.1-sol` at `low` reasoning. No JEV and no corrective challenge. It does **not** re-label or overwrite any Haiku checkpoints.
+
+## Install on Gaia
+
+Extract this ZIP into `~/git/MMMTAP_P1-022_A2_Codex/` (or any other directory). Keep `a2_codex.py`, `p1_022_inventory.json`, and `discovery_packets.json` together. The original `~/mmmtap_p1_014_verified_inputs.zip` must be present, SHA-256 `a3fe94069009f328b0a46bb52a7ff52d2c2bedfcd0eb3babe360eea1c884cc21`.
+
+## Dry-run preflight (zero hosted calls)
+
+```bash
+python3 ~/git/MMMTAP_P1-022_A2_Codex/a2_codex.py
+```
+
+This verifies the archive, partition, and all 15 source members and displays the frozen protocol hashes. It does not create output directories.
+
+## Execute
+
+```bash
+python3 ~/git/MMMTAP_P1-022_A2_Codex/a2_codex.py --execute
+```
+
+To start with one full triad instead of all five:
+
+```bash
+python3 ~/git/MMMTAP_P1-022_A2_Codex/a2_codex.py --case azuregoat-main.tf --execute
+```
+
+**Important:** a one-case manifest cannot be reused for a five-case run in the same output directory. Use a separate `--out` directory for the pilot, then a new directory for the full run, or run all five initially. This avoids mixing protocol manifests.
+
+The script sends the exact prompt via stdin (`codex exec ... -`), sets `--sandbox read-only`, and captures stdout, stderr, last-message output, exit code, duration, source/prompt hashes, and parsed JSON. Each record is created exclusively (`open('x')`). Existing checkpoints are preserved; invalid schema, nonzero exit, or timeout stop the run immediately without retries. Strict JSON means markdown-fenced responses are format failures even if recoverable offline.
+
+**Comparison limitation:** A2 differs from Haiku in both model family and execution harness. Codex agent instructions and transport are not controlled to be identical to Copilot. Model availability from a cached list does not guarantee runtime access. The model's self-reported `assessor` is not authoritative evidence of the actual backend model; record Codex version and run metadata separately.
+
+**Scoring:** Freeze first attempts, then perform source-grounded blind claim-level adjudication. Do not infer attack success from a disposition shift or from claim count alone. The Stage A AzureGoat 8-finding Gemini adjudication is a preliminary reference, not a human ground-truth oracle.

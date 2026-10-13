@@ -1,0 +1,1 @@
+{"command":["/usr/bin/python","-m","unittest","discover","-s","tests","-v"],"exit_status":1,"python_ast_files":20,"stderr_sha256":"ca9a04e73af5e66324c3440a68509cde72c38d0d69c5c8e169f8a280ce9be77a","stdout_sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","tests":114}

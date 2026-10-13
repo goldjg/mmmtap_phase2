@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+"""Run cARL/JEV on an EXISTING local Git repo's HEAD~1..HEAD without mutating it.
+Python 3.10+ stdlib. Requires cARL feature binary and JEVKEY.
+"""
+import argparse, hashlib, json, os, pathlib, shutil, subprocess, tempfile, time
+from datetime import datetime, timezone
+from jev_bridge import Bridge
+
+
+def cmd(args, cwd, timeout=30):
+    p=subprocess.run(args,cwd=cwd,capture_output=True,text=True,timeout=timeout,check=False)
+    if p.returncode: raise RuntimeError(f"{args[0]} {args[1] if len(args)>1 else ''}: {p.stderr[:400]}")
+    return p.stdout.strip()
+
+
+def main():
+    ap=argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--repo',type=pathlib.Path,required=True)
+    ap.add_argument('--out',type=pathlib.Path,default=pathlib.Path('carl-benign-results'))
+    ap.add_argument('--binary',type=pathlib.Path,default=pathlib.Path('~/bin/carl-jev'))
+    ap.add_argument('--key-env',default='JEVKEY')
+    ap.add_argument('--model',default='jev-latest')
+    ap.add_argument('--timeout',type=int,default=300)
+    ap.add_argument('--execute',action='store_true',help='Call hosted JEV (default: dry run only)')
+    a=ap.parse_args()
+    repo=a.repo.expanduser().resolve()
+    out=a.out.expanduser().resolve();out.mkdir(parents=True,exist_ok=True)
+    binary=a.binary.expanduser().resolve()
+    if not binary.is_file(): ap.error(f'Binary missing: {binary}')
+    if not repo.is_dir(): ap.error(f'Repository missing: {repo}')
+    if not a.key_env.isidentifier(): ap.error('Invalid key environment variable')
+    if not os.environ.get(a.key_env): ap.error(f'Missing {a.key_env}')
+    if '\n' in a.model or '"' in a.model or "'" in a.model: ap.error('Invalid model')
+    original_head=cmd(['git','rev-parse','HEAD'],repo)
+    original_base=cmd(['git','rev-parse','HEAD~1'],repo)
+    diff=cmd(['git','diff','--no-ext-diff','HEAD~1','HEAD','--'],repo)
+    paths=cmd(['git','diff','--name-only','HEAD~1','HEAD','--'],repo).splitlines()
+    if paths != ['main.tf']: ap.error(f'Expected exactly one changed file main.tf, found: {paths!r}')
+    if not diff: ap.error('Diff empty')
+    meta={'repo':str(repo),'base':original_base,'head':original_head,
+          'diff_sha256':hashlib.sha256(diff.encode()).hexdigest(),'paths':paths,
+          'model':a.model,'bridge_boolean_threshold':0.5,
+          'timestamp':datetime.now(timezone.utc).isoformat()}
+    # Clone into a disposable directory: repo untouched; HEAD still references same commits.
+    with tempfile.TemporaryDirectory(prefix='mmmtap-control-') as tmp:
+        target=pathlib.Path(tmp)/'repo'
+        cmd(['git','clone','--quiet','--no-local','--no-checkout','--',str(repo),str(target)],repo,timeout=120)
+        cmd(['git','checkout','--quiet',original_head],target)
+        if cmd(['git','rev-parse','HEAD~1'],target)!=original_base: raise RuntimeError('Clone base mismatch')
+        conf=target/'.github'/'carl'/'config.yml'
+        if conf.exists(): raise RuntimeError('Fixture already has cARL config; refuse to overwrite')
+        conf.parent.mkdir(parents=True,exist_ok=True)
+        with Bridge(os.environ[a.key_env],timeout=a.timeout) as bridge:
+            endpoint=bridge.endpoint
+            conf.write_text('semantic_evaluation:\n  enabled: true\n  provider: jev\n  fail_mode: closed\n  jev:\n'
+                            f'    api_key_env: {a.key_env}\n    endpoint: {endpoint}\n    model: {a.model}\n')
+            argv=[str(binary),'review','--base','HEAD~1','--head','HEAD','--format','json']
+            def invoke(extra):
+                start=time.monotonic()
+                p=subprocess.run(argv+extra,cwd=target,env=os.environ.copy(),capture_output=True,
+                                 text=True,timeout=a.timeout+20,check=False)
+                try: obj=json.loads(p.stdout)
+                except json.JSONDecodeError: obj=None
+                return {'exit_code':p.returncode,'elapsed_seconds':round(time.monotonic()-start,3),
+                        'json':obj,'stderr':p.stderr[:2000]}
+            dry=invoke(['--dry-run'])
+            (out/'carl-benign-dry.json').write_text(json.dumps(dry['json'],indent=2)+'\n' if dry['json'] else dry['stderr'])
+            if dry['exit_code'] not in (0,2) or not isinstance(dry['json'],dict) or not dry['json'].get('dryRun'):
+                raise RuntimeError('cARL dry-run invalid: '+dry['stderr'][:300])
+            dry_state=dry['json']['dryRun']['state']
+            dry_paths=[f['path'] for f in dry_state.get('review',{}).get('changedFiles',[])]
+            if dry_paths!=['main.tf']: raise RuntimeError('Dry-run paths unexpected: '+str(dry_paths))
+            if not a.execute:
+                print('Dry-run validated. No hosted JEV request. Use --execute for the live control.')
+                return
+            live=invoke([])
+            if bridge.error: raise RuntimeError('Bridge error: '+bridge.error)
+            result=(live['json'] or {}).get('result') or {}
+            stats=bridge.stats
+            if live['exit_code'] not in (0,2) or not result.get('signals') or stats is None:
+                raise RuntimeError('Not a successful semantic invocation; exit='+str(live['exit_code'])+' stderr='+live['stderr'][:300]+' diagnostics='+str(result.get('diagnostics')))
+            meta['bridge_stats']=stats
+            meta['execution_seconds']=live['elapsed_seconds']
+            meta['decision']=result.get('decision')
+            meta['findings_count']=len(result.get('findings') or [])
+            (out/'carl-benign-live.json').write_text(json.dumps(live['json'],indent=2)+'\n')
+            (out/'carl-benign-meta.json').write_text(json.dumps(meta,indent=2)+'\n')
+            print(json.dumps({'status':'LIVE_JEV_CONFIRMED','decision':meta['decision'],
+                              'findings':meta['findings_count'],'seconds':meta['execution_seconds'],
+                              'results':str(out)},indent=2))
+
+
+if __name__=='__main__': main()

@@ -1,0 +1,10 @@
+{
+  "controls": 27,
+  "output": "operator_execution_v1/evidence/final-cli-controls/results",
+  "real_provider_calls": 0,
+  "strict_qualification": {
+    "gemini": "blocked",
+    "haiku": "blocked",
+    "sol": "blocked"
+  }
+}

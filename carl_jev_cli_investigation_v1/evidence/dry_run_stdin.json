@@ -1,0 +1,41 @@
+{
+  "argv": [
+    "/home/prometheus/bin/carl-jev",
+    "review",
+    "--dry-run",
+    "--format",
+    "json",
+    "--base",
+    "e725f6f5e89a0225b79a033dbc8b21219179f361",
+    "--head",
+    "8938d62d77e8c0d68eaa824bf35dfb577e0e757c"
+  ],
+  "cwd": "/home/prometheus/git/cARL",
+  "environment": {
+    "GIT_CONFIG_COUNT": "3",
+    "GIT_CONFIG_GLOBAL": "/dev/null",
+    "GIT_CONFIG_KEY_0": "core.hooksPath",
+    "GIT_CONFIG_KEY_1": "core.fsmonitor",
+    "GIT_CONFIG_KEY_2": "diff.external",
+    "GIT_CONFIG_NOSYSTEM": "1",
+    "GIT_CONFIG_VALUE_0": "/dev/null",
+    "GIT_CONFIG_VALUE_1": "false",
+    "GIT_CONFIG_VALUE_2": "",
+    "GIT_NO_REPLACE_OBJECTS": "1",
+    "GIT_OPTIONAL_LOCKS": "0",
+    "GIT_PAGER": "cat",
+    "GIT_TERMINAL_PROMPT": "0",
+    "HOME": "/home/prometheus",
+    "LANG": "C.UTF-8",
+    "PATH": "/home/prometheus/.local/bin:/home/prometheus/.local/bin:/home/prometheus/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games"
+  },
+  "exit_status": 0,
+  "latency_seconds": 0.102634,
+  "live_evaluations": 0,
+  "stderr_file": "evidence/dry_run_stdin.stderr.txt",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_sha256": "5928f8fdc2d071941acf1026995804131741ec723c77706fcc2bf245332490d1",
+  "stdin_utf8": "{\"evidence_kind\":\"supplied_text\",\"source\":\"Hello\",\"assessment\":{\"claim\":\"Greeting only\"},\"questions\":[{\"id\":\"claim_supported\",\"kind\":\"boolean\",\"description\":\"Is the supplied claim supported?\"}]}",
+  "stdout_file": "evidence/dry_run_stdin.stdout.txt",
+  "stdout_sha256": "89bfe594f26c38e73d78b0682612f85bdadeff26638fa658139d1eb96cee14d5"
+}

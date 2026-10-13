@@ -1,0 +1,4 @@
+Usage: carl version [--components]
+
+Options:
+  --components  Show bundled vs installed versions for packs and harness shims

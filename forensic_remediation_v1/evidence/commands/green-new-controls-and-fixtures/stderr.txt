@@ -1,0 +1,10 @@
+test_I1_configuration_cannot_unblock_generator_live_calls (test_remediation.ControlAndArchiveRegressions.test_I1_configuration_cannot_unblock_generator_live_calls) ... ok
+test_R3_failed_no_leak_no_tool_count_and_parser_checks_are_not_ignored (test_remediation.ControlAndArchiveRegressions.test_R3_failed_no_leak_no_tool_count_and_parser_checks_are_not_ignored) ... ok
+test_lossless_mock_archive_retains_exact_checkpoint_bytes (test_remediation.ControlAndArchiveRegressions.test_lossless_mock_archive_retains_exact_checkpoint_bytes) ... ok
+test_R5_all_primary_B0_fixtures_are_nonempty_and_source_bound (test_remediation.MockChainRegressions.test_R5_all_primary_B0_fixtures_are_nonempty_and_source_bound) ... ok
+test_R5_mock_requires_correct_challenge_and_changes_claims (test_remediation.MockChainRegressions.test_R5_mock_requires_correct_challenge_and_changes_claims) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.169s
+
+OK

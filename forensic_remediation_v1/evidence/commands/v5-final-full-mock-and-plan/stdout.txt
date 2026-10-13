@@ -1,0 +1,67 @@
+{
+  "schema": "mmmtap-end-to-end-offline-v2",
+  "mode": "mock_not_research",
+  "chain": "frozen_source_to_scripted_claims_to_mock_SystemOne_to_reconsideration_to_blinded_export",
+  "first_run": {
+    "mode": "mock",
+    "selected_jobs": 6885,
+    "completed_or_preserved_jobs": 6885,
+    "new_checkpoints": 6885,
+    "preserved_checkpoints": 0,
+    "live_call_reservations": 0,
+    "status_counts": {
+      "mock_ok": 6885
+    },
+    "complete": true,
+    "research_conclusions": "none",
+    "independent_adjudication": "not_performed"
+  },
+  "resume": {
+    "mode": "mock",
+    "selected_jobs": 6885,
+    "completed_or_preserved_jobs": 6885,
+    "new_checkpoints": 0,
+    "preserved_checkpoints": 6885,
+    "live_call_reservations": 0,
+    "status_counts": {
+      "mock_ok": 6885
+    },
+    "complete": true,
+    "research_conclusions": "none",
+    "independent_adjudication": "not_performed"
+  },
+  "blinded": {
+    "exported_pairs": 2835,
+    "omitted_pairs": 0,
+    "public_directory": "/home/prometheus/git/mmmtap_phase2/forensic_remediation_v1/v5/blinded_mock",
+    "private_key_file": "/home/prometheus/git/mmmtap_phase2/forensic_remediation_v1/v5/private_unblinding_mock.json",
+    "correctness": "not_scored"
+  },
+  "archive": {
+    "file": "end_to_end_mock.tar.gz",
+    "sha256": "e57df1a4d38f064684aeb572eb98a93119209a953c017ad97f9c567a80d7ae9d",
+    "entries": 27546,
+    "compression": "gzip_level_1_lossless",
+    "uncompressed_bytes": 1646425725,
+    "file_manifest": "end_to_end_mock_files.json",
+    "verified_byte_identical": true,
+    "storage": "lossless_archive_of_mock_first_attempts_after_immutable_resume; no_prior_evidence_removed"
+  },
+  "inputs": 135,
+  "generators": 3,
+  "nonempty_assessments": 4455,
+  "claims_per_assessment": [
+    1,
+    2
+  ],
+  "change_actions": [
+    "added",
+    "retained",
+    "revised",
+    "withdrawn"
+  ],
+  "path_b_policy_replays": 1215,
+  "live_calls": 0,
+  "adjudicated_improvement": null,
+  "frozen_inputs_preserved": true
+}

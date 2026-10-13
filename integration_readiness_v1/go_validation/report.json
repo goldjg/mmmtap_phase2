@@ -1,0 +1,317 @@
+{
+  "all_protected_files_unchanged": true,
+  "binary": {
+    "binary_path": "/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/bin/carl-assessment-challenge-v2",
+    "binary_sha256": "be5a4b98d0acfd516839e9a5ab23071830f39ce0afa808d56a6acbbba1c92716",
+    "binary_size_bytes": 9329121,
+    "build_only_sibling": true,
+    "environment": {
+      "GOFLAGS": "-buildvcs=false",
+      "GOPROXY": "off",
+      "GOSUMDB": "off",
+      "GOTMPDIR": "/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work",
+      "GOTOOLCHAIN": "local",
+      "JEVKEY": "",
+      "TMPDIR": "/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work"
+    },
+    "git_head": "8a9d5ba6540fb52a7cfa6cbcf4c125e514805c04",
+    "go_version": "go version go1.26.5 linux/arm64",
+    "overwrote_existing_binary": false,
+    "repository": "/home/prometheus/git/cARL-semantic-eval"
+  },
+  "binary_smoke": {
+    "checks": [
+      {
+        "command": [
+          "/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/bin/carl-assessment-challenge-v2",
+          "replay",
+          "--receipt",
+          "/home/prometheus/git/mmmtap_phase2/path_b_validation_v1/cases/021-E2/evaluated/receipt.json",
+          "--receipt-sha256",
+          "3b7ee2039da775566ec38251ca098d1f2e587f2113430d76c0a992d5e720088e"
+        ],
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "name": "binary_replay_offline_v1"
+      },
+      {
+        "command": [
+          "/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/bin/carl-assessment-challenge-v2",
+          "evaluate-live",
+          "--prepared",
+          "/home/prometheus/git/mmmtap_phase2/path_b_validation_v1/cases/021-E2/prepared/prepared.json",
+          "--prepared-sha256",
+          "dba45c16e26403bb0d08630558c368e7535bb59558198c089e845fd4eec4faaa",
+          "--authorize-live",
+          "--timeout-seconds",
+          "1",
+          "--out",
+          "/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/binary_missing_credential"
+        ],
+        "exit_code": 1,
+        "expected_exit_code": 1,
+        "name": "binary_missing_credential"
+      },
+      {
+        "command": [
+          "/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/bin/carl-assessment-challenge-v2",
+          "replay",
+          "--receipt",
+          "/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/binary_missing_credential/live_receipt.json",
+          "--receipt-sha256",
+          "0af4a4f65820d825b4c734030c0851c536841b8dbdd0b15e537a601a39358861"
+        ],
+        "exit_code": 0,
+        "expected_exit_code": 0,
+        "name": "binary_replay_live_v2_no_call"
+      }
+    ],
+    "credential_environment": "JEVKEY empty",
+    "external_calls": 0
+  },
+  "changed_go_files": [
+    "internal/assessment/command.go",
+    "internal/assessment/json.go",
+    "internal/assessment/live.go",
+    "internal/assessment/live_test.go"
+  ],
+  "commands": [
+    {
+      "command": "env GOPROXY=off GOSUMDB=off GOFLAGS=-buildvcs=false GOTOOLCHAIN=local JEVKEY= TMPDIR=/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work GOTMPDIR=/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work go test -count=1 -json ./internal/assessment",
+      "exit_code": 0,
+      "stderr": "targeted_01.stderr.log",
+      "stdout": "targeted_01.jsonl"
+    },
+    {
+      "command": "env GOPROXY=off GOSUMDB=off GOFLAGS=-buildvcs=false GOTOOLCHAIN=local JEVKEY= TMPDIR=/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work GOTMPDIR=/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work go test -count=1 -json ./internal/assessment",
+      "exit_code": 1,
+      "stderr": "targeted_02.stderr.log",
+      "stdout": "targeted_02.jsonl"
+    },
+    {
+      "command": "env GOPROXY=off GOSUMDB=off GOFLAGS=-buildvcs=false GOTOOLCHAIN=local JEVKEY= TMPDIR=/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work GOTMPDIR=/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work go test -count=1 -json ./internal/assessment",
+      "exit_code": 0,
+      "stderr": "targeted_03.stderr.log",
+      "stdout": "targeted_03.jsonl"
+    },
+    {
+      "command": "env GOPROXY=off GOSUMDB=off GOFLAGS=-buildvcs=false GOTOOLCHAIN=local JEVKEY= TMPDIR=/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work GOTMPDIR=/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work go test -count=1 -json ./...",
+      "exit_code": 0,
+      "stderr": "full_test.stderr.log",
+      "stdout": "full_test.jsonl"
+    },
+    {
+      "command": "env GOPROXY=off GOSUMDB=off GOFLAGS=-buildvcs=false GOTOOLCHAIN=local JEVKEY= TMPDIR=/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work GOTMPDIR=/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work go vet ./...",
+      "exit_code": 0,
+      "stderr": "vet.stderr.log",
+      "stdout": "vet.stdout.log"
+    },
+    {
+      "command": "gofmt -w internal/assessment/live.go internal/assessment/live_test.go internal/assessment/command.go internal/assessment/json.go",
+      "exit_code": 0
+    },
+    {
+      "command": "gofmt -l cmd/carl-assessment-challenge internal/assessment",
+      "exit_code": 0,
+      "stdout": "gofmt_final.log"
+    },
+    {
+      "command": "git --no-pager diff --check",
+      "exit_code": 0,
+      "stdout": "diff_check.log"
+    },
+    {
+      "command": "env GOPROXY=off GOSUMDB=off GOFLAGS=-buildvcs=false GOTOOLCHAIN=local JEVKEY= TMPDIR=/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work GOTMPDIR=/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work go build -o ../mmmtap_phase2/integration_readiness_v1/bin/carl-assessment-challenge-v2 ./cmd/carl-assessment-challenge",
+      "exit_code": 0,
+      "precondition": "test ! -e ../mmmtap_phase2/integration_readiness_v1/bin/carl-assessment-challenge-v2",
+      "stderr": "build.stderr.log",
+      "stdout": "build.stdout.log"
+    },
+    {
+      "classification": "host_unavailable: ThreadSanitizer unsupported VMA range; found 39, supported 48; no tests executed",
+      "command": "env GOPROXY=off GOSUMDB=off GOFLAGS=-buildvcs=false GOTOOLCHAIN=local JEVKEY= TMPDIR=/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work GOTMPDIR=/home/prometheus/git/mmmtap_phase2/integration_readiness_v1/go_validation/work go test -race -count=1 -json ./internal/assessment",
+      "exit_code": 1,
+      "stderr": "race_test.stderr.log",
+      "stdout": "race_test.jsonl"
+    }
+  ],
+  "completed_at_utc": "2026-10-12T02:41:26.588421+00:00",
+  "documentation_files": [
+    "ASSESSMENT.md",
+    ".github/carl/current-pr-contract.md"
+  ],
+  "documentation_sha256": {
+    ".github/carl/current-pr-contract.md": "161ac7c7f0cf09174462c1ccdd936063efa5c227a06bf033070665980f7ba1b4",
+    "ASSESSMENT.md": "ac9055ffad62e8ae88322b1949b3b6aef83acea40b5cc03c2b10452bdf241015"
+  },
+  "fixes_verified": [
+    "Exact noncanonical native request bytes, one attempt, bearer/content-type/identity-encoding headers",
+    "No proxy, retry, redirect, keepalive, automatic decoding or fallback model; production TLS verification enabled",
+    "Missing/blank/invalid credentials make zero attempts; key-bearing prepared input not copied or sent",
+    "Plain and JSON-escaped credential echoes withheld, never silently redacted into claimed original bytes",
+    "Sanitized header values/names; raw complete/partial/truncated body metadata and hashes distinguished",
+    "HTTP 401/403/429/500/503, redirects 302/307/308, timeout, partial-body disconnect, TLS trust failure, oversized and malformed answers",
+    "Replay rejects negative/missing/null counts, status/capture/provenance/timing/schema/hash contradictions",
+    "Call summary survives response write collision and oversized aggregate receipt; earlier attempt files never overwritten",
+    "Compiled binary verifies historical v1 offline replay and v2 missing-credential/no-call replay"
+  ],
+  "full_test": {
+    "failure_events": 0,
+    "including_subtests_passed": 391,
+    "log": "full_test.jsonl",
+    "package_results": [
+      {
+        "Action": "skip",
+        "Elapsed": 0.001,
+        "Package": "github.com/goldjg/carl/cmd/carl"
+      },
+      {
+        "Action": "skip",
+        "Elapsed": 0,
+        "Package": "github.com/goldjg/carl/cmd/carl-assessment-challenge"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 0.083,
+        "Package": "github.com/goldjg/carl/embedded"
+      },
+      {
+        "Action": "skip",
+        "Elapsed": 0,
+        "Package": "github.com/goldjg/carl/internal/cmdutil"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 0.179,
+        "Package": "github.com/goldjg/carl/internal/doctor"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 0.296,
+        "Package": "github.com/goldjg/carl/internal/convert"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 0.226,
+        "Package": "github.com/goldjg/carl/internal/install"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 0.1,
+        "Package": "github.com/goldjg/carl/internal/manifest"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 0.405,
+        "Package": "github.com/goldjg/carl/internal/harness"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 0.156,
+        "Package": "github.com/goldjg/carl/internal/plan"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 0.322,
+        "Package": "github.com/goldjg/carl/internal/reconcile"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 0.152,
+        "Package": "github.com/goldjg/carl/internal/repair"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 0.344,
+        "Package": "github.com/goldjg/carl/internal/repomap"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 1.012,
+        "Package": "github.com/goldjg/carl/internal/pack"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 0.065,
+        "Package": "github.com/goldjg/carl/internal/semantic"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 0.086,
+        "Package": "github.com/goldjg/carl/internal/status"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 1.855,
+        "Package": "github.com/goldjg/carl/internal/review"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 0.066,
+        "Package": "github.com/goldjg/carl/internal/version"
+      },
+      {
+        "Action": "pass",
+        "Elapsed": 22.354,
+        "Package": "github.com/goldjg/carl/internal/assessment"
+      }
+    ],
+    "packages_passed": 16,
+    "test_skip_events": 0,
+    "top_level_passed": 242
+  },
+  "http_test_scope": "localhost fixtures only; production credential unavailable in package TestMain and compiled smoke environment",
+  "interface": {
+    "added_fields": [
+      "response_capture",
+      "response_bytes_observed",
+      "response_observed_sha256"
+    ],
+    "cli_args_changed": false,
+    "existing_receipt_keys_removed": [],
+    "live_receipt_schema": "carl-assessment-challenge-v2-live-receipt",
+    "live_transport_id": "carl-assessment-challenge-live-transport-v2",
+    "receipt_integrity_is_provider_signature": false,
+    "unchanged_offline_receipt_schema": "carl-assessment-challenge-v1-receipt"
+  },
+  "path_a_sha256": "b34696d54d0b9c910d48c9adbe0155f825617d8e4c8981e58a2f50b5d0868428",
+  "preserved_development_failures": [
+    {
+      "cause": "New oversized-receipt test fixture omitted required pack version metadata; corrected fixture; production policy unchanged",
+      "log": "targeted_02.jsonl"
+    },
+    {
+      "cause": "ThreadSanitizer host VMA unsupported (39 versus supported 48); optional race suite unavailable before test execution",
+      "log": "race_test.jsonl"
+    }
+  ],
+  "protected_file_count": 65,
+  "provider_model_calls": 0,
+  "remaining_limitations": [
+    "No live provider/model qualification, smoke inference, served-model attestation, experimental policy approval, data-release approval or signed provider receipt",
+    "Local write/call counts cannot establish remote execution or billing; no automatic retry after uncertain outcome",
+    "Withheld/encoded bodies and unread oversized suffixes are not recoverable or independently policy-replayable; observed hashes cover only bytes read",
+    "Known-key literal/JSON-escape suppression is not arbitrary secret detection or decoding of every possible secret representation",
+    "Aggregate receipts over 8 MiB preserve call summary/bounded body/failure record but are not replayable aggregate receipts; disk failure or process crash can still prevent final persistence",
+    "Optional race test unavailable on this host; full normal suite passed",
+    "Go-only readiness; Python integration and overall readiness are owned by the parent; Codex internal-tool and Copilot retry-race blockers are not certified or resolved here"
+  ],
+  "schema": "carl-path-b-go-validation-v2",
+  "status": "required_validation_passed_optional_race_unavailable",
+  "targeted_final": {
+    "failure_events": 0,
+    "including_subtests_passed": 127,
+    "log": "targeted_03.jsonl",
+    "package_results": [
+      {
+        "Action": "pass",
+        "Elapsed": 19.365,
+        "Package": "github.com/goldjg/carl/internal/assessment"
+      }
+    ],
+    "packages_passed": 1,
+    "test_skip_events": 0,
+    "top_level_passed": 26
+  },
+  "working_directory_for_go_commands": "/home/prometheus/git/cARL-semantic-eval"
+}

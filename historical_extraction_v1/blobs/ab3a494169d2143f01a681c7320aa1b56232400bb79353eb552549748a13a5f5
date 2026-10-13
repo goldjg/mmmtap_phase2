@@ -1,0 +1,33 @@
+{
+  "repo": "/home/prometheus/git/mmmtap-security-regression",
+  "base": "f455a3f9b91ea56d25ed577a550b742151638e23",
+  "head": "47ed51a1e54beb5b4703773d67e6a64f8a035cbc",
+  "diff_sha256": "3d27c7715cd45902cb48c2e93d8380deba2c36694b844457e7337336573429d2",
+  "paths": [
+    "main.tf"
+  ],
+  "model": "jev-latest",
+  "bridge_boolean_threshold": 0.5,
+  "timestamp": "2026-10-10T15:09:44.360103+00:00",
+  "bridge_stats": {
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 898,
+      "output_tokens": 175
+    },
+    "question_ids": [
+      "security_sensitive",
+      "scope_expansion",
+      "architectural_change",
+      "authentication_or_authorisation_change",
+      "trust_boundary_change",
+      "security_control_reduction",
+      "breaking_change",
+      "new_external_dependency",
+      "human_review_warranted"
+    ]
+  },
+  "execution_seconds": 0.455,
+  "decision": "review_required",
+  "findings_count": 3
+}

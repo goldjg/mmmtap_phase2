@@ -1,0 +1,28 @@
+{
+  "case": "E_incomplete_remediation",
+  "track": "carl",
+  "source_diff_sha256": "af2c9c3da2eea4b67c307f4d4feb893bb3e0b00f95e98b2fcfb9484c7ffb7c5d",
+  "status": "live",
+  "started": "2026-10-10T19:16:51.227778+00:00",
+  "decision": "review_required",
+  "bridge_stats": {
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 901,
+      "output_tokens": 175
+    },
+    "question_ids": [
+      "security_sensitive",
+      "scope_expansion",
+      "architectural_change",
+      "authentication_or_authorisation_change",
+      "trust_boundary_change",
+      "security_control_reduction",
+      "breaking_change",
+      "new_external_dependency",
+      "human_review_warranted"
+    ]
+  },
+  "experimental_triage": "expedited_human_review",
+  "duration_s": 0.6
+}

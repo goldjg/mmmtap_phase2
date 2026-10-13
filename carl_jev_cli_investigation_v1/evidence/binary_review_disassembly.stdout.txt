@@ -1,0 +1,701 @@
+TEXT github.com/goldjg/carl/internal/review.BuildState(SB) /home/prometheus/git/cARL-semantic-eval/internal/review/state.go
+  state.go:29		0x2be990		f9400b90		MOVD 16(R28), R16							
+  state.go:29		0x2be994		d10843f1		SUB $528, RSP, R17							
+  state.go:29		0x2be998		eb10023f		CMP R16, R17								
+  state.go:29		0x2be99c		54005529		BLS 681(PC)								
+  state.go:29		0x2be9a0		d10a43f4		SUB $656, RSP, R20							
+  state.go:29		0x2be9a4		a93ffa9d		STP (R29, R30), -8(R20)							
+  state.go:29		0x2be9a8		9100029f		MOVD R20, RSP								
+  state.go:29		0x2be9ac		d10023fd		SUB $8, RSP, R29							
+  state.go:29		0x2be9b0		f901d3e2		MOVD R2, 928(RSP)							
+  state.go:31		0x2be9b4		f901cfe1		MOVD R1, 920(RSP)							
+  state.go:31		0x2be9b8		f901cbe0		MOVD R0, 912(RSP)							
+  state.go:29		0x2be9bc		910ec3fb		ADD $944, RSP, R27							
+  state.go:29		0x2be9c0		a9001764		STP (R4, R5), (R27)							
+  state.go:29		0x2be9c4		910f03fb		ADD $960, RSP, R27							
+  state.go:29		0x2be9c8		a9001f66		STP (R6, R7), (R27)							
+  state.go:29		0x2be9cc		910f43fb		ADD $976, RSP, R27							
+  state.go:29		0x2be9d0		a9002768		STP (R8, R9), (R27)							
+  state.go:29		0x2be9d4		910f83fb		ADD $992, RSP, R27							
+  state.go:29		0x2be9d8		a9002f6a		STP (R10, R11), (R27)							
+  state.go:29		0x2be9dc		910a63e7		ADD $664, RSP, R7							
+  state.go:29		0x2be9e0		b24007e8		ORR $3, ZR, R8								
+  state.go:29		0x2be9e4		a8817cff		STP.P (ZR, ZR), 16(R7)							
+  state.go:29		0x2be9e8		a8817cff		STP.P (ZR, ZR), 16(R7)							
+  state.go:29		0x2be9ec		a8817cff		STP.P (ZR, ZR), 16(R7)							
+  state.go:29		0x2be9f0		a8817cff		STP.P (ZR, ZR), 16(R7)							
+  state.go:29		0x2be9f4		d1000508		SUB $1, R8, R8								
+  state.go:29		0x2be9f8		b5ffff68		CBNZ R8, -5(PC)								
+  state.go:29		0x2be9fc		a9007cff		STP (ZR, ZR), (R7)							
+  state.go:29		0x2bea00		a9017cff		STP (ZR, ZR), 16(R7)							
+  state.go:29		0x2bea04		a9027cff		STP (ZR, ZR), 32(R7)							
+  state.go:29		0x2bea08		f90018ff		MOVD ZR, 48(R7)								
+  state.go:30		0x2bea0c		f0000827		ADRP 1077248(PC), R7							
+  state.go:30		0x2bea10		910b7ce7		ADD $735, R7, R7							
+  state.go:30		0x2bea14		d2800128		MOVD $9, R8								
+  state.go:30		0x2bea18		9108a3fb		ADD $552, RSP, R27							
+  state.go:30		0x2bea1c		a9002367		STP (R7, R8), (R27)							
+  state.go:30		0x2bea20		d0000847		ADRP 1089536(PC), R7							
+  state.go:30		0x2bea24		910ba0e7		ADD $744, R7, R7							
+  state.go:30		0x2bea28		b2400fe8		ORR $15, ZR, R8								
+  state.go:30		0x2bea2c		9108e3fb		ADD $568, RSP, R27							
+  state.go:30		0x2bea30		a9002367		STP (R7, R8), (R27)							
+  state.go:30		0x2bea34		9108a3e4		ADD $552, RSP, R4							
+  state.go:30		0x2bea38		b27f03e5		ORR $2, ZR, R5								
+  state.go:30		0x2bea3c		aa0503e6		MOVD R5, R6								
+  state.go:30		0x2bea40		94000740		CALL github.com/goldjg/carl/internal/review.gitOutput(SB)		
+  state.go:31		0x2bea44		b40004e2		CBZ R2, 39(PC)								
+  state.go:32		0x2bea48		a91effff		STP (ZR, ZR), 488(RSP)							
+  state.go:32		0x2bea4c		b4000042		CBZ R2, 2(PC)								
+  state.go:32		0x2bea50		f9400442		MOVD 8(R2), R2								
+  state.go:32		0x2bea54		a91e8fe2		STP (R2, R3), 488(RSP)							
+  errors.go:26		0x2bea58		90000880		ADRP 1114112(PC), R0							
+  errors.go:26		0x2bea5c		9125f400		ADD $2429, R0, R0							
+  errors.go:26		0x2bea60		d2800321		MOVD $25, R1								
+  errors.go:26		0x2bea64		9107a3e2		ADD $488, RSP, R2							
+  errors.go:26		0x2bea68		b24003e3		ORR $1, ZR, R3								
+  errors.go:26		0x2bea6c		aa0303e4		MOVD R3, R4								
+  errors.go:26		0x2bea70		97f8ba10		CALL fmt.errorf(SB)							
+  errors.go:26		0x2bea74		b5000180		CBNZ R0, 12(PC)								
+  errors.go:31		0x2bea78		d503201f		NOOP									
+  errors.go:65		0x2bea7c		f0000500		ADRP 667648(PC), R0							
+  errors.go:65		0x2bea80		913c8000		ADD $3872, R0, R0							
+  errors.go:65		0x2bea84		97f5c323		CALL runtime.newobject(SB)						
+  errors.go:65		0x2bea88		90000881		ADRP 1114112(PC), R1							
+  errors.go:65		0x2bea8c		9125f421		ADD $2429, R1, R1							
+  errors.go:65		0x2bea90		d2800322		MOVD $25, R2								
+  errors.go:65		0x2bea94		a9000801		STP (R1, R2), (R0)							
+  state.go:32		0x2bea98		aa0003e1		MOVD R0, R1								
+  state.go:32		0x2bea9c		d0000b00		ADRP 1449984(PC), R0							
+  state.go:32		0x2beaa0		9105a000		ADD $360, R0, R0							
+  state.go:32		0x2beaa4		910a63e2		ADD $664, RSP, R2							
+  state.go:32		0x2beaa8		b24007e3		ORR $3, ZR, R3								
+  state.go:32		0x2beaac		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:32		0x2beab0		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:32		0x2beab4		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:32		0x2beab8		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:32		0x2beabc		d1000463		SUB $1, R3, R3								
+  state.go:32		0x2beac0		b5ffff63		CBNZ R3, -5(PC)								
+  state.go:32		0x2beac4		a9007c5f		STP (ZR, ZR), (R2)							
+  state.go:32		0x2beac8		a9017c5f		STP (ZR, ZR), 16(R2)							
+  state.go:32		0x2beacc		a9027c5f		STP (ZR, ZR), 32(R2)							
+  state.go:32		0x2bead0		f900185f		MOVD ZR, 48(R2)								
+  state.go:32		0x2bead4		a97ffbfd		LDP -8(RSP), (R29, R30)							
+  state.go:32		0x2bead8		910a43ff		ADD $656, RSP, RSP							
+  state.go:32		0x2beadc		d65f03c0		RET									
+  state.go:34		0x2beae0		97f91398		CALL strings.TrimSpace(SB)						
+  state.go:34		0x2beae4		f900abe0		MOVD R0, 336(RSP)							
+  state.go:34		0x2beae8		f90043e1		MOVD R1, 128(RSP)							
+  state.go:35		0x2beaec		910ec3fb		ADD $944, RSP, R27							
+  state.go:35		0x2beaf0		a9400f62		LDP (R27), (R2, R3)							
+  state.go:36		0x2beaf4		b5000143		CBNZ R3, 10(PC)								
+  state.go:37		0x2beaf8		aa0003e2		MOVD R0, R2								
+  state.go:37		0x2beafc		aa0103e3		MOVD R1, R3								
+  state.go:37		0x2beb00		f941cbe0		MOVD 912(RSP), R0							
+  state.go:37		0x2beb04		f941cfe1		MOVD 920(RSP), R1							
+  state.go:37		0x2beb08		9400025e		CALL github.com/goldjg/carl/internal/review.defaultBase(SB)		
+  state.go:39		0x2beb0c		aa0103e3		MOVD R1, R3								
+  state.go:39		0x2beb10		aa0003e2		MOVD R0, R2								
+  state.go:41		0x2beb14		f940abe0		MOVD 336(RSP), R0							
+  state.go:41		0x2beb18		f94043e1		MOVD 128(RSP), R1							
+  state.go:39		0x2beb1c		f900cbe2		MOVD R2, 400(RSP)							
+  state.go:39		0x2beb20		f9006fe3		MOVD R3, 216(RSP)							
+  state.go:39		0x2beb24		910f03fb		ADD $960, RSP, R27							
+  state.go:39		0x2beb28		a9401f66		LDP (R27), (R6, R7)							
+  state.go:39		0x2beb2c		f9004be7		MOVD R7, 144(RSP)							
+  state.go:39		0x2beb30		f900b3e6		MOVD R6, 352(RSP)							
+  state.go:41		0x2beb34		aa0203e4		MOVD R2, R4								
+  state.go:41		0x2beb38		aa0303e5		MOVD R3, R5								
+  state.go:41		0x2beb3c		aa0003e2		MOVD R0, R2								
+  state.go:41		0x2beb40		aa0103e3		MOVD R1, R3								
+  state.go:41		0x2beb44		f941cbe0		MOVD 912(RSP), R0							
+  state.go:41		0x2beb48		f941cfe1		MOVD 920(RSP), R1							
+  state.go:41		0x2beb4c		94000299		CALL github.com/goldjg/carl/internal/review.changedFiles(SB)		
+  state.go:42		0x2beb50		b5004563		CBNZ R3, 555(PC)							
+  state.go:41		0x2beb54		f9005be2		MOVD R2, 176(RSP)							
+  state.go:41		0x2beb58		f90057e1		MOVD R1, 168(RSP)							
+  state.go:41		0x2beb5c		f900bbe0		MOVD R0, 368(RSP)							
+  state.go:45		0x2beb60		f94043e3		MOVD 128(RSP), R3							
+  state.go:45		0x2beb64		f940cbe4		MOVD 400(RSP), R4							
+  state.go:45		0x2beb68		f9406fe5		MOVD 216(RSP), R5							
+  state.go:45		0x2beb6c		f940b3e6		MOVD 352(RSP), R6							
+  state.go:45		0x2beb70		f9404be7		MOVD 144(RSP), R7							
+  state.go:45		0x2beb74		aa0003e8		MOVD R0, R8								
+  state.go:45		0x2beb78		aa0103e9		MOVD R1, R9								
+  state.go:45		0x2beb7c		aa0203ea		MOVD R2, R10								
+  state.go:45		0x2beb80		f941cbe0		MOVD 912(RSP), R0							
+  state.go:45		0x2beb84		f941cfe1		MOVD 920(RSP), R1							
+  state.go:45		0x2beb88		f940abe2		MOVD 336(RSP), R2							
+  state.go:45		0x2beb8c		94000389		CALL github.com/goldjg/carl/internal/review.collectDiff(SB)		
+  state.go:46		0x2beb90		b5004145		CBNZ R5, 522(PC)							
+  state.go:45		0x2beb94		39019fe3		MOVB R3, 103(RSP)							
+  state.go:45		0x2beb98		f90087e4		MOVD R4, 264(RSP)							
+  state.go:45		0x2beb9c		39019be2		MOVB R2, 102(RSP)							
+  state.go:45		0x2beba0		f90083e1		MOVD R1, 256(RSP)							
+  state.go:45		0x2beba4		f90143e0		MOVD R0, 640(RSP)							
+  state.go:49		0x2beba8		f940abe0		MOVD 336(RSP), R0							
+  state.go:49		0x2bebac		f94043e1		MOVD 128(RSP), R1							
+  state.go:49		0x2bebb0		940004a8		CALL github.com/goldjg/carl/internal/review.collectCarlContext(SB)	
+  state.go:50		0x2bebb4		b5003e06		CBNZ R6, 496(PC)							
+  state.go:49		0x2bebb8		f90063e5		MOVD R5, 192(RSP)							
+  state.go:49		0x2bebbc		f9005fe4		MOVD R4, 184(RSP)							
+  state.go:49		0x2bebc0		f900bfe3		MOVD R3, 376(RSP)							
+  state.go:49		0x2bebc4		f90053e2		MOVD R2, 160(RSP)							
+  state.go:49		0x2bebc8		f9004fe1		MOVD R1, 152(RSP)							
+  state.go:49		0x2bebcc		f900b7e0		MOVD R0, 360(RSP)							
+  state.go:53		0x2bebd0		910ec3fb		ADD $944, RSP, R27							
+  state.go:53		0x2bebd4		a9400f62		LDP (R27), (R2, R3)							
+  state.go:53		0x2bebd8		910f03fb		ADD $960, RSP, R27							
+  state.go:53		0x2bebdc		a9401764		LDP (R27), (R4, R5)							
+  state.go:53		0x2bebe0		910f43fb		ADD $976, RSP, R27							
+  state.go:53		0x2bebe4		a9401f66		LDP (R27), (R6, R7)							
+  state.go:53		0x2bebe8		910f83fb		ADD $992, RSP, R27							
+  state.go:53		0x2bebec		a9402768		LDP (R27), (R8, R9)							
+  state.go:53		0x2bebf0		f940abe0		MOVD 336(RSP), R0							
+  state.go:53		0x2bebf4		f94043e1		MOVD 128(RSP), R1							
+  state.go:53		0x2bebf8		940005ba		CALL github.com/goldjg/carl/internal/review.collectTask(SB)		
+  state.go:53		0x2bebfc		a91c0fe2		STP (R2, R3), 448(RSP)							
+  state.go:53		0x2bec00		a91d17e4		STP (R4, R5), 464(RSP)							
+  state.go:53		0x2bec04		390783e6		MOVB R6, 480(RSP)							
+  state.go:53		0x2bec08		390787e7		MOVB R7, 481(RSP)							
+  state.go:53		0x2bec0c		39078be8		MOVB R8, 482(RSP)							
+  state.go:53		0x2bec10		a95c33eb		LDP 448(RSP), (R11, R12)						
+  state.go:53		0x2bec14		a95d3bed		LDP 464(RSP), (R13, R14)						
+  state.go:53		0x2bec18		f940f3ef		MOVD 480(RSP), R15							
+  state.go:53		0x2bec1c		a911b3eb		STP (R11, R12), 280(RSP)						
+  state.go:53		0x2bec20		a912bbed		STP (R13, R14), 296(RSP)						
+  state.go:53		0x2bec24		f9009fef		MOVD R15, 312(RSP)							
+  state.go:54		0x2bec28		b5003849		CBNZ R9, 450(PC)							
+  state.go:53		0x2bec2c		f9003be1		MOVD R1, 112(RSP)							
+  state.go:53		0x2bec30		f900a3e0		MOVD R0, 320(RSP)							
+  state.go:57		0x2bec34		f94093e7		MOVD 288(RSP), R7							
+  state.go:57		0x2bec38		b40005e7		CBZ R7, 47(PC)								
+  state.go:58		0x2bec3c		f9405fe7		MOVD 184(RSP), R7							
+  state.go:58		0x2bec40		910004e7		ADD $1, R7, R7								
+  state.go:58		0x2bec44		f94063e2		MOVD 192(RSP), R2							
+  state.go:58		0x2bec48		eb07005f		CMP R7, R2								
+  state.go:58		0x2bec4c		54000063		BCC 3(PC)								
+  state.go:58		0x2bec50		f940bfe3		MOVD 376(RSP), R3							
+  state.go:58		0x2bec54		1400000b		JMP 11(PC)								
+  state.go:58		0x2bec58		f940bfe0		MOVD 376(RSP), R0							
+  state.go:58		0x2bec5c		aa0703e1		MOVD R7, R1								
+  state.go:58		0x2bec60		b24003e3		ORR $1, ZR, R3								
+  state.go:58		0x2bec64		b00006e4		ADRP 905216(PC), R4							
+  state.go:58		0x2bec68		91358084		ADD $3424, R4, R4							
+  state.go:58		0x2bec6c		97f74d21		CALL runtime.growslice(SB)						
+  state.go:58		0x2bec70		aa0103e7		MOVD R1, R7								
+  state.go:58		0x2bec74		aa0003e3		MOVD R0, R3								
+  state.go:103		0x2bec78		f940a3e0		MOVD 320(RSP), R0							
+  state.go:104		0x2bec7c		f9403be1		MOVD 112(RSP), R1							
+  state.go:58		0x2bec80		d37df0e8		LSL $3, R7, R8								
+  state.go:58		0x2bec84		8b080908		ADD R8<<2, R8, R8							
+  state.go:58		0x2bec88		d100a108		SUB $40, R8, R8								
+  state.go:58		0x2bec8c		8b080068		ADD R8, R3, R8								
+  state.go:58		0x2bec90		f000243b		ADRP 4747264(PC), R27							
+  state.go:58		0x2bec94		b947f369		MOVWU 2032(R27), R9							
+  state.go:58		0x2bec98		34000209		CBZW R9, 16(PC)								
+  state.go:58		0x2bec9c		f9013fe3		MOVD R3, 632(RSP)							
+  state.go:58		0x2beca0		f9007fe7		MOVD R7, 248(RSP)							
+  state.go:58		0x2beca4		f9007be2		MOVD R2, 240(RSP)							
+  state.go:58		0x2beca8		f9013be8		MOVD R8, 624(RSP)							
+  state.go:58		0x2becac		b00006e0		ADRP 905216(PC), R0							
+  state.go:58		0x2becb0		91358000		ADD $3424, R0, R0							
+  state.go:58		0x2becb4		aa0803e1		MOVD R8, R1								
+  state.go:58		0x2becb8		910463e2		ADD $280, RSP, R2							
+  state.go:58		0x2becbc		97f5c491		CALL runtime.wbMove(SB)							
+  state.go:103		0x2becc0		f940a3e0		MOVD 320(RSP), R0							
+  state.go:104		0x2becc4		f9403be1		MOVD 112(RSP), R1							
+  state.go:60		0x2becc8		f9407be2		MOVD 240(RSP), R2							
+  state.go:60		0x2beccc		f9413fe3		MOVD 632(RSP), R3							
+  state.go:60		0x2becd0		f9407fe7		MOVD 248(RSP), R7							
+  state.go:58		0x2becd4		f9413be8		MOVD 624(RSP), R8							
+  state.go:58		0x2becd8		a951abe9		LDP 280(RSP), (R9, R10)							
+  state.go:58		0x2becdc		a952b3eb		LDP 296(RSP), (R11, R12)						
+  state.go:58		0x2bece0		f9409fed		MOVD 312(RSP), R13							
+  state.go:58		0x2bece4		a9002909		STP (R9, R10), (R8)							
+  state.go:58		0x2bece8		a901310b		STP (R11, R12), 16(R8)							
+  state.go:58		0x2becec		f900110d		MOVD R13, 32(R8)							
+  state.go:58		0x2becf0		14000004		JMP 4(PC)								
+  state.go:60		0x2becf4		f94063e2		MOVD 192(RSP), R2							
+  state.go:60		0x2becf8		f9405fe7		MOVD 184(RSP), R7							
+  state.go:60		0x2becfc		f940bfe3		MOVD 376(RSP), R3							
+  state.go:60		0x2bed00		910004e7		ADD $1, R7, R7								
+  state.go:65		0x2bed04		f0000b1b		ADRP 1454080(PC), R27							
+  state.go:65		0x2bed08		9135637b		ADD $3416, R27, R27							
+  state.go:65		0x2bed0c		a9402768		LDP (R27), (R8, R9)							
+  state.go:65		0x2bed10		f0000b1b		ADRP 1454080(PC), R27							
+  state.go:65		0x2bed14		9135a37b		ADD $3432, R27, R27							
+  state.go:65		0x2bed18		a9402f6a		LDP (R27), (R10, R11)							
+  state.go:65		0x2bed1c		f0000b1b		ADRP 1454080(PC), R27							
+  state.go:65		0x2bed20		f946bf6c		MOVD 3448(R27), R12							
+  state.go:65		0x2bed24		a91c27e8		STP (R8, R9), 448(RSP)							
+  state.go:65		0x2bed28		a91d2fea		STP (R10, R11), 464(RSP)						
+  state.go:65		0x2bed2c		f900f3ec		MOVD R12, 480(RSP)							
+  state.go:63		0x2bed30		f94083e8		MOVD 256(RSP), R8							
+  state.go:63		0x2bed34		f100011f		CMP $0, R8								
+  state.go:63		0x2bed38		9a9f07e9		CSET NE, R9								
+  state.go:63		0x2bed3c		390783e9		MOVB R9, 480(RSP)							
+  state.go:64		0x2bed40		39419fe9		MOVBU 103(RSP), R9							
+  state.go:64		0x2bed44		390787e9		MOVB R9, 481(RSP)							
+  state.go:65		0x2bed48		39419bea		MOVBU 102(RSP), R10							
+  state.go:65		0x2bed4c		39078bea		MOVB R10, 482(RSP)							
+  state.go:60		0x2bed50		eb07005f		CMP R7, R2								
+  state.go:60		0x2bed54		540001c2		BCS 14(PC)								
+  state.go:60		0x2bed58		aa0303e0		MOVD R3, R0								
+  state.go:60		0x2bed5c		aa0703e1		MOVD R7, R1								
+  state.go:60		0x2bed60		b24003e3		ORR $1, ZR, R3								
+  state.go:60		0x2bed64		b00006e4		ADRP 905216(PC), R4							
+  state.go:60		0x2bed68		91358084		ADD $3424, R4, R4							
+  state.go:60		0x2bed6c		97f74ce1		CALL runtime.growslice(SB)						
+  state.go:102		0x2bed70		f94083e8		MOVD 256(RSP), R8							
+  state.go:102		0x2bed74		39419fe9		MOVBU 103(RSP), R9							
+  state.go:102		0x2bed78		39419bea		MOVBU 102(RSP), R10							
+  state.go:70		0x2bed7c		aa0103e7		MOVD R1, R7								
+  state.go:70		0x2bed80		aa0003e3		MOVD R0, R3								
+  state.go:103		0x2bed84		f940a3e0		MOVD 320(RSP), R0							
+  state.go:104		0x2bed88		f9403be1		MOVD 112(RSP), R1							
+  state.go:60		0x2bed8c		d37df0eb		LSL $3, R7, R11								
+  state.go:60		0x2bed90		8b0b096b		ADD R11<<2, R11, R11							
+  state.go:60		0x2bed94		d100a16b		SUB $40, R11, R11							
+  state.go:60		0x2bed98		8b0b006b		ADD R11, R3, R11							
+  state.go:60		0x2bed9c		f000243b		ADRP 4747264(PC), R27							
+  state.go:60		0x2beda0		b947f36c		MOVWU 2032(R27), R12							
+  state.go:60		0x2beda4		3400026c		CBZW R12, 19(PC)							
+  state.go:70		0x2beda8		f90137e3		MOVD R3, 616(RSP)							
+  state.go:70		0x2bedac		f9005fe7		MOVD R7, 184(RSP)							
+  state.go:70		0x2bedb0		f90077e2		MOVD R2, 232(RSP)							
+  state.go:60		0x2bedb4		f9013feb		MOVD R11, 632(RSP)							
+  state.go:60		0x2bedb8		b00006e0		ADRP 905216(PC), R0							
+  state.go:60		0x2bedbc		91358000		ADD $3424, R0, R0							
+  state.go:60		0x2bedc0		aa0b03e1		MOVD R11, R1								
+  state.go:60		0x2bedc4		910703e2		ADD $448, RSP, R2							
+  state.go:60		0x2bedc8		97f5c44e		CALL runtime.wbMove(SB)							
+  state.go:103		0x2bedcc		f940a3e0		MOVD 320(RSP), R0							
+  state.go:104		0x2bedd0		f9403be1		MOVD 112(RSP), R1							
+  state.go:67		0x2bedd4		f94077e2		MOVD 232(RSP), R2							
+  state.go:72		0x2bedd8		f94137e3		MOVD 616(RSP), R3							
+  state.go:67		0x2beddc		f9405fe7		MOVD 184(RSP), R7							
+  state.go:102		0x2bede0		f94083e8		MOVD 256(RSP), R8							
+  state.go:102		0x2bede4		39419fe9		MOVBU 103(RSP), R9							
+  state.go:102		0x2bede8		39419bea		MOVBU 102(RSP), R10							
+  state.go:60		0x2bedec		f9413feb		MOVD 632(RSP), R11							
+  state.go:60		0x2bedf0		a95c37ec		LDP 448(RSP), (R12, R13)						
+  state.go:60		0x2bedf4		a95d3fee		LDP 464(RSP), (R14, R15)						
+  state.go:60		0x2bedf8		f940f3f0		MOVD 480(RSP), R16							
+  state.go:60		0x2bedfc		a900356c		STP (R12, R13), (R11)							
+  state.go:60		0x2bee00		a9013d6e		STP (R14, R15), 16(R11)							
+  state.go:60		0x2bee04		f9001170		MOVD R16, 32(R11)							
+  state.go:67		0x2bee08		910663eb		ADD $408, RSP, R11							
+  state.go:67		0x2bee0c		a9007d7f		STP (ZR, ZR), (R11)							
+  state.go:67		0x2bee10		a9017d7f		STP (ZR, ZR), 16(R11)							
+  state.go:67		0x2bee14		f900117f		MOVD ZR, 32(R11)							
+  state.go:68		0x2bee18		b000084c		ADRP 1085440(PC), R12							
+  state.go:68		0x2bee1c		9108cd8c		ADD $563, R12, R12							
+  state.go:68		0x2bee20		d28001ad		MOVD $13, R13								
+  state.go:68		0x2bee24		a919b7ec		STP (R12, R13), 408(RSP)						
+  state.go:69		0x2bee28		9000092c		ADRP 1196032(PC), R12							
+  state.go:69		0x2bee2c		9129f18c		ADD $2684, R12, R12							
+  state.go:69		0x2bee30		d28008cd		MOVD $70, R13								
+  state.go:69		0x2bee34		a91ab7ec		STP (R12, R13), 424(RSP)						
+  state.go:67		0x2bee38		910004e7		ADD $1, R7, R7								
+  state.go:70		0x2bee3c		f94057ec		MOVD 168(RSP), R12							
+  state.go:70		0x2bee40		f100019f		CMP $0, R12								
+  state.go:70		0x2bee44		9a9f07ed		CSET NE, R13								
+  state.go:70		0x2bee48		3906e3ed		MOVB R13, 440(RSP)							
+  state.go:67		0x2bee4c		eb07005f		CMP R7, R2								
+  state.go:67		0x2bee50		54000202		BCS 16(PC)								
+  state.go:67		0x2bee54		aa0303e0		MOVD R3, R0								
+  state.go:67		0x2bee58		aa0703e1		MOVD R7, R1								
+  state.go:67		0x2bee5c		b24003e3		ORR $1, ZR, R3								
+  state.go:67		0x2bee60		b00006e4		ADRP 905216(PC), R4							
+  state.go:67		0x2bee64		91358084		ADD $3424, R4, R4							
+  state.go:67		0x2bee68		97f74ca2		CALL runtime.growslice(SB)						
+  state.go:102		0x2bee6c		f94083e8		MOVD 256(RSP), R8							
+  state.go:102		0x2bee70		39419fe9		MOVBU 103(RSP), R9							
+  state.go:102		0x2bee74		39419bea		MOVBU 102(RSP), R10							
+  state.go:67		0x2bee78		910663eb		ADD $408, RSP, R11							
+  state.go:100		0x2bee7c		f94057ec		MOVD 168(RSP), R12							
+  state.go:72		0x2bee80		aa0103e7		MOVD R1, R7								
+  state.go:72		0x2bee84		aa0003e3		MOVD R0, R3								
+  state.go:103		0x2bee88		f940a3e0		MOVD 320(RSP), R0							
+  state.go:104		0x2bee8c		f9403be1		MOVD 112(RSP), R1							
+  state.go:67		0x2bee90		d37df0ed		LSL $3, R7, R13								
+  state.go:67		0x2bee94		8b0d09ad		ADD R13<<2, R13, R13							
+  state.go:67		0x2bee98		d100a1ad		SUB $40, R13, R13							
+  state.go:67		0x2bee9c		8b0d006d		ADD R13, R3, R13							
+  state.go:67		0x2beea0		f000243b		ADRP 4747264(PC), R27							
+  state.go:67		0x2beea4		b947f36e		MOVWU 2032(R27), R14							
+  state.go:67		0x2beea8		3400028e		CBZW R14, 20(PC)							
+  state.go:72		0x2beeac		f90133e3		MOVD R3, 608(RSP)							
+  state.go:72		0x2beeb0		f9005fe7		MOVD R7, 184(RSP)							
+  state.go:72		0x2beeb4		f90073e2		MOVD R2, 224(RSP)							
+  state.go:67		0x2beeb8		f9013fed		MOVD R13, 632(RSP)							
+  state.go:67		0x2beebc		b00006e0		ADRP 905216(PC), R0							
+  state.go:67		0x2beec0		91358000		ADD $3424, R0, R0							
+  state.go:67		0x2beec4		aa0d03e1		MOVD R13, R1								
+  state.go:67		0x2beec8		aa0b03e2		MOVD R11, R2								
+  state.go:67		0x2beecc		97f5c40d		CALL runtime.wbMove(SB)							
+  state.go:103		0x2beed0		f940a3e0		MOVD 320(RSP), R0							
+  state.go:104		0x2beed4		f9403be1		MOVD 112(RSP), R1							
+  state.go:72		0x2beed8		f94073e2		MOVD 224(RSP), R2							
+  state.go:78		0x2beedc		f94133e3		MOVD 608(RSP), R3							
+  state.go:72		0x2beee0		f9405fe7		MOVD 184(RSP), R7							
+  state.go:102		0x2beee4		f94083e8		MOVD 256(RSP), R8							
+  state.go:102		0x2beee8		39419fe9		MOVBU 103(RSP), R9							
+  state.go:102		0x2beeec		39419bea		MOVBU 102(RSP), R10							
+  state.go:100		0x2beef0		f94057ec		MOVD 168(RSP), R12							
+  state.go:67		0x2beef4		f9413fed		MOVD 632(RSP), R13							
+  state.go:67		0x2beef8		a959bbeb		LDP 408(RSP), (R11, R14)						
+  state.go:67		0x2beefc		a95ac3ef		LDP 424(RSP), (R15, R16)						
+  state.go:67		0x2bef00		f940dff1		MOVD 440(RSP), R17							
+  state.go:67		0x2bef04		a90039ab		STP (R11, R14), (R13)							
+  state.go:67		0x2bef08		a90141af		STP (R15, R16), 16(R13)							
+  state.go:67		0x2bef0c		f90011b1		MOVD R17, 32(R13)							
+  state.go:72		0x2bef10		910004e7		ADD $1, R7, R7								
+  state.go:72		0x2bef14		eb07005f		CMP R7, R2								
+  state.go:72		0x2bef18		540001e2		BCS 15(PC)								
+  state.go:72		0x2bef1c		aa0303e0		MOVD R3, R0								
+  state.go:72		0x2bef20		aa0703e1		MOVD R7, R1								
+  state.go:72		0x2bef24		b24003e3		ORR $1, ZR, R3								
+  state.go:72		0x2bef28		b00006e4		ADRP 905216(PC), R4							
+  state.go:72		0x2bef2c		91358084		ADD $3424, R4, R4							
+  state.go:72		0x2bef30		97f74c70		CALL runtime.growslice(SB)						
+  state.go:102		0x2bef34		f94083e8		MOVD 256(RSP), R8							
+  state.go:102		0x2bef38		39419fe9		MOVBU 103(RSP), R9							
+  state.go:102		0x2bef3c		39419bea		MOVBU 102(RSP), R10							
+  state.go:100		0x2bef40		f94057ec		MOVD 168(RSP), R12							
+  state.go:78		0x2bef44		aa0103e7		MOVD R1, R7								
+  state.go:78		0x2bef48		aa0003e3		MOVD R0, R3								
+  state.go:103		0x2bef4c		f940a3e0		MOVD 320(RSP), R0							
+  state.go:104		0x2bef50		f9403be1		MOVD 112(RSP), R1							
+  state.go:78		0x2bef54		f900bfe3		MOVD R3, 376(RSP)							
+  state.go:78		0x2bef58		f9005fe7		MOVD R7, 184(RSP)							
+  state.go:78		0x2bef5c		f90063e2		MOVD R2, 192(RSP)							
+  state.go:72		0x2bef60		d37df0eb		LSL $3, R7, R11								
+  state.go:72		0x2bef64		8b0b096b		ADD R11<<2, R11, R11							
+  state.go:72		0x2bef68		d100a16b		SUB $40, R11, R11							
+  state.go:72		0x2bef6c		8b0b006b		ADD R11, R3, R11							
+  state.go:72		0x2bef70		f000243b		ADRP 4747264(PC), R27							
+  state.go:72		0x2bef74		b947f36d		MOVWU 2032(R27), R13							
+  state.go:72		0x2bef78		3400012d		CBZW R13, 9(PC)								
+  state.go:72		0x2bef7c		f9013feb		MOVD R11, 632(RSP)							
+  state.go:72		0x2bef80		b00006e0		ADRP 905216(PC), R0							
+  state.go:72		0x2bef84		91358000		ADD $3424, R0, R0							
+  state.go:72		0x2bef88		aa0b03e1		MOVD R11, R1								
+  state.go:72		0x2bef8c		f0000b02		ADRP 1454080(PC), R2							
+  state.go:72		0x2bef90		91360042		ADD $3456, R2, R2							
+  state.go:72		0x2bef94		97f5c3db		CALL runtime.wbMove(SB)							
+  state.go:72		0x2bef98		f9413feb		MOVD 632(RSP), R11							
+  state.go:72		0x2bef9c		f0000b1b		ADRP 1454080(PC), R27							
+  state.go:72		0x2befa0		9136037b		ADD $3456, R27, R27							
+  state.go:72		0x2befa4		a9402367		LDP (R27), (R7, R8)							
+  state.go:72		0x2befa8		f0000b1b		ADRP 1454080(PC), R27							
+  state.go:72		0x2befac		9136437b		ADD $3472, R27, R27							
+  state.go:72		0x2befb0		a9402b69		LDP (R27), (R9, R10)							
+  state.go:72		0x2befb4		f0000b1b		ADRP 1454080(PC), R27							
+  state.go:72		0x2befb8		f946d36c		MOVD 3488(R27), R12							
+  state.go:72		0x2befbc		a9002167		STP (R7, R8), (R11)							
+  state.go:72		0x2befc0		a9012969		STP (R9, R10), 16(R11)							
+  state.go:72		0x2befc4		f900116c		MOVD R12, 32(R11)							
+  state.go:78		0x2befc8		f0000827		ADRP 1077248(PC), R7							
+  state.go:78		0x2befcc		910b7ce7		ADD $735, R7, R7							
+  state.go:78		0x2befd0		d2800128		MOVD $9, R8								
+  state.go:78		0x2befd4		a91fa3e7		STP (R7, R8), 504(RSP)							
+  state.go:78		0x2befd8		d0000827		ADRP 1073152(PC), R7							
+  state.go:78		0x2befdc		913054e7		ADD $3093, R7, R7							
+  state.go:78		0x2befe0		b27d03e8		ORR $8, ZR, R8								
+  state.go:78		0x2befe4		910823fb		ADD $520, RSP, R27							
+  state.go:78		0x2befe8		a9002367		STP (R7, R8), (R27)							
+  state.go:78		0x2befec		f940cbe7		MOVD 400(RSP), R7							
+  state.go:78		0x2beff0		f9406fe8		MOVD 216(RSP), R8							
+  state.go:78		0x2beff4		910863fb		ADD $536, RSP, R27							
+  state.go:78		0x2beff8		a9002367		STP (R7, R8), (R27)							
+  state.go:78		0x2beffc		f941cbe0		MOVD 912(RSP), R0							
+  state.go:78		0x2bf000		f941cfe1		MOVD 920(RSP), R1							
+  state.go:78		0x2bf004		f940abe2		MOVD 336(RSP), R2							
+  state.go:78		0x2bf008		f94043e3		MOVD 128(RSP), R3							
+  state.go:78		0x2bf00c		9107e3e4		ADD $504, RSP, R4							
+  state.go:78		0x2bf010		b24007e5		ORR $3, ZR, R5								
+  state.go:78		0x2bf014		aa0503e6		MOVD R5, R6								
+  state.go:78		0x2bf018		940005ca		CALL github.com/goldjg/carl/internal/review.gitOutput(SB)		
+  state.go:78		0x2bf01c		f900c7e0		MOVD R0, 392(RSP)							
+  state.go:78		0x2bf020		f9006be1		MOVD R1, 208(RSP)							
+  state.go:80		0x2bf024		f9404be2		MOVD 144(RSP), R2							
+  state.go:80		0x2bf028		b40002c2		CBZ R2, 22(PC)								
+  state.go:81		0x2bf02c		d0000827		ADRP 1073152(PC), R7							
+  state.go:81		0x2bf030		910b7ce7		ADD $735, R7, R7							
+  state.go:81		0x2bf034		d2800128		MOVD $9, R8								
+  state.go:81		0x2bf038		a91fa3e7		STP (R7, R8), 504(RSP)							
+  state.go:81		0x2bf03c		b0000827		ADRP 1069056(PC), R7							
+  state.go:81		0x2bf040		913054e7		ADD $3093, R7, R7							
+  state.go:81		0x2bf044		b27d03e8		ORR $8, ZR, R8								
+  state.go:81		0x2bf048		910823fb		ADD $520, RSP, R27							
+  state.go:81		0x2bf04c		a9002367		STP (R7, R8), (R27)							
+  state.go:81		0x2bf050		f940b3e7		MOVD 352(RSP), R7							
+  state.go:81		0x2bf054		910863fb		ADD $536, RSP, R27							
+  state.go:81		0x2bf058		a9000b67		STP (R7, R2), (R27)							
+  state.go:81		0x2bf05c		f941cbe0		MOVD 912(RSP), R0							
+  state.go:81		0x2bf060		f941cfe1		MOVD 920(RSP), R1							
+  state.go:81		0x2bf064		f940abe2		MOVD 336(RSP), R2							
+  state.go:81		0x2bf068		f94043e3		MOVD 128(RSP), R3							
+  state.go:81		0x2bf06c		9107e3e4		ADD $504, RSP, R4							
+  state.go:81		0x2bf070		b24007e5		ORR $3, ZR, R5								
+  state.go:81		0x2bf074		aa0503e6		MOVD R5, R6								
+  state.go:81		0x2bf078		940005b2		CALL github.com/goldjg/carl/internal/review.gitOutput(SB)		
+  <autogenerated>:1	0x2bf07c		14000017		JMP 23(PC)								
+  state.go:83		0x2bf080		d0000827		ADRP 1073152(PC), R7							
+  state.go:83		0x2bf084		910b7ce7		ADD $735, R7, R7							
+  state.go:83		0x2bf088		d2800128		MOVD $9, R8								
+  state.go:83		0x2bf08c		a91fa3e7		STP (R7, R8), 504(RSP)							
+  state.go:83		0x2bf090		b0000827		ADRP 1069056(PC), R7							
+  state.go:83		0x2bf094		913054e7		ADD $3093, R7, R7							
+  state.go:83		0x2bf098		b27d03e8		ORR $8, ZR, R8								
+  state.go:83		0x2bf09c		910823fb		ADD $520, RSP, R27							
+  state.go:83		0x2bf0a0		a9002367		STP (R7, R8), (R27)							
+  state.go:83		0x2bf0a4		90000827		ADRP 1064960(PC), R7							
+  state.go:83		0x2bf0a8		913014e7		ADD $3077, R7, R7							
+  state.go:83		0x2bf0ac		b27e03e8		ORR $4, ZR, R8								
+  state.go:83		0x2bf0b0		910863fb		ADD $536, RSP, R27							
+  state.go:83		0x2bf0b4		a9002367		STP (R7, R8), (R27)							
+  state.go:83		0x2bf0b8		f941cbe0		MOVD 912(RSP), R0							
+  state.go:83		0x2bf0bc		f941cfe1		MOVD 920(RSP), R1							
+  state.go:83		0x2bf0c0		f940abe2		MOVD 336(RSP), R2							
+  state.go:83		0x2bf0c4		f94043e3		MOVD 128(RSP), R3							
+  state.go:83		0x2bf0c8		9107e3e4		ADD $504, RSP, R4							
+  state.go:83		0x2bf0cc		b24007e5		ORR $3, ZR, R5								
+  state.go:83		0x2bf0d0		aa0503e6		MOVD R5, R6								
+  state.go:83		0x2bf0d4		9400059b		CALL github.com/goldjg/carl/internal/review.gitOutput(SB)		
+  state.go:85		0x2bf0d8		f90047e1		MOVD R1, 136(RSP)							
+  state.go:85		0x2bf0dc		f900afe0		MOVD R0, 344(RSP)							
+  state.go:85		0x2bf0e0		d0000827		ADRP 1073152(PC), R7							
+  state.go:85		0x2bf0e4		910b7ce7		ADD $735, R7, R7							
+  state.go:85		0x2bf0e8		d2800128		MOVD $9, R8								
+  state.go:85		0x2bf0ec		a91fa3e7		STP (R7, R8), 504(RSP)							
+  state.go:85		0x2bf0f0		f0000827		ADRP 1077248(PC), R7							
+  state.go:85		0x2bf0f4		9128e8e7		ADD $2618, R7, R7							
+  state.go:85		0x2bf0f8		b27e07e8		ORR $12, ZR, R8								
+  state.go:85		0x2bf0fc		910823fb		ADD $520, RSP, R27							
+  state.go:85		0x2bf100		a9002367		STP (R7, R8), (R27)							
+  state.go:85		0x2bf104		90000827		ADRP 1064960(PC), R7							
+  state.go:85		0x2bf108		913014e7		ADD $3077, R7, R7							
+  state.go:85		0x2bf10c		b27e03e8		ORR $4, ZR, R8								
+  state.go:85		0x2bf110		910863fb		ADD $536, RSP, R27							
+  state.go:85		0x2bf114		a9002367		STP (R7, R8), (R27)							
+  state.go:85		0x2bf118		f941cbe0		MOVD 912(RSP), R0							
+  state.go:85		0x2bf11c		f941cfe1		MOVD 920(RSP), R1							
+  state.go:85		0x2bf120		f940abe2		MOVD 336(RSP), R2							
+  state.go:85		0x2bf124		f94043e3		MOVD 128(RSP), R3							
+  state.go:85		0x2bf128		9107e3e4		ADD $504, RSP, R4							
+  state.go:85		0x2bf12c		b24007e5		ORR $3, ZR, R5								
+  state.go:85		0x2bf130		aa0503e6		MOVD R5, R6								
+  state.go:85		0x2bf134		94000583		CALL github.com/goldjg/carl/internal/review.gitOutput(SB)		
+  state.go:85		0x2bf138		f900c3e0		MOVD R0, 384(RSP)							
+  state.go:85		0x2bf13c		f90067e1		MOVD R1, 200(RSP)							
+  state.go:86		0x2bf140		b0000827		ADRP 1069056(PC), R7							
+  state.go:86		0x2bf144		910800e7		ADD $512, R7, R7							
+  state.go:86		0x2bf148		b27f07e8		ORR $6, ZR, R8								
+  state.go:86		0x2bf14c		a91fa3e7		STP (R7, R8), 504(RSP)							
+  state.go:86		0x2bf150		90000827		ADRP 1064960(PC), R7							
+  state.go:86		0x2bf154		913ac4e7		ADD $3761, R7, R7							
+  state.go:86		0x2bf158		d28000a8		MOVD $5, R8								
+  state.go:86		0x2bf15c		910823fb		ADD $520, RSP, R27							
+  state.go:86		0x2bf160		a9002367		STP (R7, R8), (R27)							
+  state.go:86		0x2bf164		d0000847		ADRP 1089536(PC), R7							
+  state.go:86		0x2bf168		91127ce7		ADD $1183, R7, R7							
+  state.go:86		0x2bf16c		d2800228		MOVD $17, R8								
+  state.go:86		0x2bf170		910863fb		ADD $536, RSP, R27							
+  state.go:86		0x2bf174		a9002367		STP (R7, R8), (R27)							
+  state.go:86		0x2bf178		f941cbe0		MOVD 912(RSP), R0							
+  state.go:86		0x2bf17c		f941cfe1		MOVD 920(RSP), R1							
+  state.go:86		0x2bf180		f940abe2		MOVD 336(RSP), R2							
+  state.go:86		0x2bf184		f94043e3		MOVD 128(RSP), R3							
+  state.go:86		0x2bf188		9107e3e4		ADD $504, RSP, R4							
+  state.go:86		0x2bf18c		b24007e5		ORR $3, ZR, R5								
+  state.go:86		0x2bf190		aa0503e6		MOVD R5, R6								
+  state.go:86		0x2bf194		9400056b		CALL github.com/goldjg/carl/internal/review.gitOutput(SB)		
+  state.go:87		0x2bf198		97f911ea		CALL strings.TrimSpace(SB)						
+  state.go:87		0x2bf19c		97ffd579		CALL github.com/goldjg/carl/internal/semantic.RedactText(SB)		
+  state.go:87		0x2bf1a0		f900a7e0		MOVD R0, 328(RSP)							
+  state.go:87		0x2bf1a4		f9003fe1		MOVD R1, 120(RSP)							
+  path.go:457		0x2bf1a8		f940abe0		MOVD 336(RSP), R0							
+  path.go:457		0x2bf1ac		f94043e1		MOVD 128(RSP), R1							
+  path.go:457		0x2bf1b0		97f88164		CALL internal/filepathlite.Base(SB)					
+  path.go:457		0x2bf1b4		f9008be0		MOVD R0, 272(RSP)							
+  path.go:457		0x2bf1b8		f90037e1		MOVD R1, 104(RSP)							
+  state.go:92		0x2bf1bc		f940c3e0		MOVD 384(RSP), R0							
+  state.go:92		0x2bf1c0		f94067e1		MOVD 200(RSP), R1							
+  state.go:92		0x2bf1c4		97f911df		CALL strings.TrimSpace(SB)						
+  state.go:92		0x2bf1c8		f9012fe0		MOVD R0, 600(RSP)							
+  state.go:92		0x2bf1cc		f9007fe1		MOVD R1, 248(RSP)							
+  state.go:93		0x2bf1d0		f940a7e0		MOVD 328(RSP), R0							
+  state.go:93		0x2bf1d4		f9403fe1		MOVD 120(RSP), R1							
+  state.go:93		0x2bf1d8		97f911da		CALL strings.TrimSpace(SB)						
+  state.go:93		0x2bf1dc		f9012be0		MOVD R0, 592(RSP)							
+  state.go:93		0x2bf1e0		f9007be1		MOVD R1, 240(RSP)							
+  state.go:98		0x2bf1e4		f940c7e0		MOVD 392(RSP), R0							
+  state.go:98		0x2bf1e8		f9406be1		MOVD 208(RSP), R1							
+  state.go:98		0x2bf1ec		97f911d5		CALL strings.TrimSpace(SB)						
+  state.go:98		0x2bf1f0		f90127e0		MOVD R0, 584(RSP)							
+  state.go:98		0x2bf1f4		f90077e1		MOVD R1, 232(RSP)							
+  state.go:99		0x2bf1f8		f940afe0		MOVD 344(RSP), R0							
+  state.go:99		0x2bf1fc		f94047e1		MOVD 136(RSP), R1							
+  state.go:99		0x2bf200		97f911d0		CALL strings.TrimSpace(SB)						
+  state.go:105		0x2bf204		910a63e7		ADD $664, RSP, R7							
+  state.go:105		0x2bf208		b24007e8		ORR $3, ZR, R8								
+  state.go:105		0x2bf20c		a8817cff		STP.P (ZR, ZR), 16(R7)							
+  state.go:105		0x2bf210		a8817cff		STP.P (ZR, ZR), 16(R7)							
+  state.go:105		0x2bf214		a8817cff		STP.P (ZR, ZR), 16(R7)							
+  state.go:105		0x2bf218		a8817cff		STP.P (ZR, ZR), 16(R7)							
+  state.go:105		0x2bf21c		d1000508		SUB $1, R8, R8								
+  state.go:105		0x2bf220		b5ffff68		CBNZ R8, -5(PC)								
+  state.go:105		0x2bf224		a9007cff		STP (ZR, ZR), (R7)							
+  state.go:105		0x2bf228		a9017cff		STP (ZR, ZR), 16(R7)							
+  state.go:105		0x2bf22c		a9027cff		STP (ZR, ZR), 32(R7)							
+  state.go:105		0x2bf230		f90018ff		MOVD ZR, 48(R7)								
+  state.go:91		0x2bf234		f9408be7		MOVD 272(RSP), R7							
+  state.go:91		0x2bf238		f94037e8		MOVD 104(RSP), R8							
+  state.go:91		0x2bf23c		910a63fb		ADD $664, RSP, R27							
+  state.go:91		0x2bf240		a9002367		STP (R7, R8), (R27)							
+  state.go:92		0x2bf244		f9412fe7		MOVD 600(RSP), R7							
+  state.go:92		0x2bf248		f9015fe7		MOVD R7, 696(RSP)							
+  state.go:92		0x2bf24c		f9407fe7		MOVD 248(RSP), R7							
+  state.go:92		0x2bf250		f9412be8		MOVD 592(RSP), R8							
+  state.go:92		0x2bf254		910b03fb		ADD $704, RSP, R27							
+  state.go:92		0x2bf258		a9002367		STP (R7, R8), (R27)							
+  state.go:93		0x2bf25c		f9407be7		MOVD 240(RSP), R7							
+  state.go:93		0x2bf260		f940cbe8		MOVD 400(RSP), R8							
+  state.go:93		0x2bf264		910b43fb		ADD $720, RSP, R27							
+  state.go:93		0x2bf268		a9002367		STP (R7, R8), (R27)							
+  state.go:96		0x2bf26c		f9406fe7		MOVD 216(RSP), R7							
+  state.go:96		0x2bf270		f940b3e8		MOVD 352(RSP), R8							
+  state.go:96		0x2bf274		910b83fb		ADD $736, RSP, R27							
+  state.go:96		0x2bf278		a9002367		STP (R7, R8), (R27)							
+  state.go:97		0x2bf27c		f9404be7		MOVD 144(RSP), R7							
+  state.go:97		0x2bf280		f94127e8		MOVD 584(RSP), R8							
+  state.go:97		0x2bf284		910bc3fb		ADD $752, RSP, R27							
+  state.go:97		0x2bf288		a9002367		STP (R7, R8), (R27)							
+  state.go:98		0x2bf28c		f94077e7		MOVD 232(RSP), R7							
+  state.go:98		0x2bf290		910c03fb		ADD $768, RSP, R27							
+  state.go:98		0x2bf294		a9000367		STP (R7, R0), (R27)							
+  state.go:99		0x2bf298		f940bbe7		MOVD 368(RSP), R7							
+  state.go:99		0x2bf29c		910c43fb		ADD $784, RSP, R27							
+  state.go:99		0x2bf2a0		a9001f61		STP (R1, R7), (R27)							
+  state.go:100		0x2bf2a4		f94057e7		MOVD 168(RSP), R7							
+  state.go:100		0x2bf2a8		f9405be8		MOVD 176(RSP), R8							
+  state.go:100		0x2bf2ac		910c83fb		ADD $800, RSP, R27							
+  state.go:100		0x2bf2b0		a9002367		STP (R7, R8), (R27)							
+  state.go:102		0x2bf2b4		f94143e7		MOVD 640(RSP), R7							
+  state.go:102		0x2bf2b8		f94083e8		MOVD 256(RSP), R8							
+  state.go:102		0x2bf2bc		910cc3fb		ADD $816, RSP, R27							
+  state.go:102		0x2bf2c0		a9002367		STP (R7, R8), (R27)							
+  state.go:102		0x2bf2c4		39419be7		MOVBU 102(RSP), R7							
+  state.go:102		0x2bf2c8		390d03e7		MOVB R7, 832(RSP)							
+  state.go:102		0x2bf2cc		39419fe7		MOVBU 103(RSP), R7							
+  state.go:102		0x2bf2d0		390d07e7		MOVB R7, 833(RSP)							
+  state.go:102		0x2bf2d4		f94087e7		MOVD 264(RSP), R7							
+  state.go:102		0x2bf2d8		f901a7e7		MOVD R7, 840(RSP)							
+  state.go:103		0x2bf2dc		f940b7e7		MOVD 360(RSP), R7							
+  state.go:103		0x2bf2e0		f9404fe8		MOVD 152(RSP), R8							
+  state.go:103		0x2bf2e4		910d43fb		ADD $848, RSP, R27							
+  state.go:103		0x2bf2e8		a9002367		STP (R7, R8), (R27)							
+  state.go:103		0x2bf2ec		f94053e7		MOVD 160(RSP), R7							
+  state.go:103		0x2bf2f0		f940a3e8		MOVD 320(RSP), R8							
+  state.go:103		0x2bf2f4		910d83fb		ADD $864, RSP, R27							
+  state.go:103		0x2bf2f8		a9002367		STP (R7, R8), (R27)							
+  state.go:104		0x2bf2fc		f9403be7		MOVD 112(RSP), R7							
+  state.go:104		0x2bf300		f940bfe8		MOVD 376(RSP), R8							
+  state.go:104		0x2bf304		910dc3fb		ADD $880, RSP, R27							
+  state.go:104		0x2bf308		a9002367		STP (R7, R8), (R27)							
+  state.go:105		0x2bf30c		f9405fe7		MOVD 184(RSP), R7							
+  state.go:105		0x2bf310		f94063e8		MOVD 192(RSP), R8							
+  state.go:105		0x2bf314		910e03fb		ADD $896, RSP, R27							
+  state.go:105		0x2bf318		a9002367		STP (R7, R8), (R27)							
+  state.go:89		0x2bf31c		aa1f03e0		MOVD ZR, R0								
+  state.go:89		0x2bf320		aa1f03e1		MOVD ZR, R1								
+  state.go:106		0x2bf324		a97ffbfd		LDP -8(RSP), (R29, R30)							
+  state.go:106		0x2bf328		910a43ff		ADD $656, RSP, RSP							
+  state.go:106		0x2bf32c		d65f03c0		RET									
+  state.go:55		0x2bf330		910a63e2		ADD $664, RSP, R2							
+  state.go:55		0x2bf334		b24007e3		ORR $3, ZR, R3								
+  state.go:55		0x2bf338		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:55		0x2bf33c		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:55		0x2bf340		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:55		0x2bf344		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:55		0x2bf348		d1000463		SUB $1, R3, R3								
+  state.go:55		0x2bf34c		b5ffff63		CBNZ R3, -5(PC)								
+  state.go:55		0x2bf350		a9007c5f		STP (ZR, ZR), (R2)							
+  state.go:55		0x2bf354		a9017c5f		STP (ZR, ZR), 16(R2)							
+  state.go:55		0x2bf358		a9027c5f		STP (ZR, ZR), 32(R2)							
+  state.go:55		0x2bf35c		f900185f		MOVD ZR, 48(R2)								
+  state.go:55		0x2bf360		aa0903e0		MOVD R9, R0								
+  state.go:55		0x2bf364		aa0a03e1		MOVD R10, R1								
+  state.go:55		0x2bf368		a97ffbfd		LDP -8(RSP), (R29, R30)							
+  state.go:55		0x2bf36c		910a43ff		ADD $656, RSP, RSP							
+  state.go:55		0x2bf370		d65f03c0		RET									
+  state.go:51		0x2bf374		910a63e2		ADD $664, RSP, R2							
+  state.go:51		0x2bf378		b24007e3		ORR $3, ZR, R3								
+  state.go:51		0x2bf37c		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:51		0x2bf380		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:51		0x2bf384		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:51		0x2bf388		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:51		0x2bf38c		d1000463		SUB $1, R3, R3								
+  state.go:51		0x2bf390		b5ffff63		CBNZ R3, -5(PC)								
+  state.go:51		0x2bf394		a9007c5f		STP (ZR, ZR), (R2)							
+  state.go:51		0x2bf398		a9017c5f		STP (ZR, ZR), 16(R2)							
+  state.go:51		0x2bf39c		a9027c5f		STP (ZR, ZR), 32(R2)							
+  state.go:51		0x2bf3a0		f900185f		MOVD ZR, 48(R2)								
+  state.go:51		0x2bf3a4		aa0603e0		MOVD R6, R0								
+  state.go:51		0x2bf3a8		aa0703e1		MOVD R7, R1								
+  state.go:51		0x2bf3ac		a97ffbfd		LDP -8(RSP), (R29, R30)							
+  state.go:51		0x2bf3b0		910a43ff		ADD $656, RSP, RSP							
+  state.go:51		0x2bf3b4		d65f03c0		RET									
+  state.go:47		0x2bf3b8		910a63e2		ADD $664, RSP, R2							
+  state.go:47		0x2bf3bc		b24007e3		ORR $3, ZR, R3								
+  state.go:47		0x2bf3c0		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:47		0x2bf3c4		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:47		0x2bf3c8		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:47		0x2bf3cc		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:47		0x2bf3d0		d1000463		SUB $1, R3, R3								
+  state.go:47		0x2bf3d4		b5ffff63		CBNZ R3, -5(PC)								
+  state.go:47		0x2bf3d8		a9007c5f		STP (ZR, ZR), (R2)							
+  state.go:47		0x2bf3dc		a9017c5f		STP (ZR, ZR), 16(R2)							
+  state.go:47		0x2bf3e0		a9027c5f		STP (ZR, ZR), 32(R2)							
+  state.go:47		0x2bf3e4		f900185f		MOVD ZR, 48(R2)								
+  state.go:47		0x2bf3e8		aa0503e0		MOVD R5, R0								
+  state.go:47		0x2bf3ec		aa0603e1		MOVD R6, R1								
+  state.go:47		0x2bf3f0		a97ffbfd		LDP -8(RSP), (R29, R30)							
+  state.go:47		0x2bf3f4		910a43ff		ADD $656, RSP, RSP							
+  state.go:47		0x2bf3f8		d65f03c0		RET									
+  state.go:43		0x2bf3fc		910a63e2		ADD $664, RSP, R2							
+  state.go:43		0x2bf400		b24007e5		ORR $3, ZR, R5								
+  state.go:43		0x2bf404		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:43		0x2bf408		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:43		0x2bf40c		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:43		0x2bf410		a8817c5f		STP.P (ZR, ZR), 16(R2)							
+  state.go:43		0x2bf414		d10004a5		SUB $1, R5, R5								
+  state.go:43		0x2bf418		b5ffff65		CBNZ R5, -5(PC)								
+  state.go:43		0x2bf41c		a9007c5f		STP (ZR, ZR), (R2)							
+  state.go:43		0x2bf420		a9017c5f		STP (ZR, ZR), 16(R2)							
+  state.go:43		0x2bf424		a9027c5f		STP (ZR, ZR), 32(R2)							
+  state.go:43		0x2bf428		f900185f		MOVD ZR, 48(R2)								
+  state.go:43		0x2bf42c		aa0303e0		MOVD R3, R0								
+  state.go:43		0x2bf430		aa0403e1		MOVD R4, R1								
+  state.go:43		0x2bf434		a97ffbfd		LDP -8(RSP), (R29, R30)							
+  state.go:43		0x2bf438		910a43ff		ADD $656, RSP, RSP							
+  state.go:43		0x2bf43c		d65f03c0		RET									
+  state.go:29		0x2bf440		a91007e0		STP (R0, R1), 256(RSP)							
+  state.go:29		0x2bf444		a9110fe2		STP (R2, R3), 272(RSP)							
+  state.go:29		0x2bf448		a91217e4		STP (R4, R5), 288(RSP)							
+  state.go:29		0x2bf44c		a9131fe6		STP (R6, R7), 304(RSP)							
+  state.go:29		0x2bf450		a91427e8		STP (R8, R9), 320(RSP)							
+  state.go:29		0x2bf454		a9152fea		STP (R10, R11), 336(RSP)						
+  state.go:29		0x2bf458		aa1e03e3		MOVD R30, R3								
+  state.go:29		0x2bf45c		97f75685		CALL runtime.morestack_noctxt.abi0(SB)					
+  state.go:29		0x2bf460		a95007e0		LDP 256(RSP), (R0, R1)							
+  state.go:29		0x2bf464		a9510fe2		LDP 272(RSP), (R2, R3)							
+  state.go:29		0x2bf468		a95217e4		LDP 288(RSP), (R4, R5)							
+  state.go:29		0x2bf46c		a9531fe6		LDP 304(RSP), (R6, R7)							
+  state.go:29		0x2bf470		a95427e8		LDP 320(RSP), (R8, R9)							
+  state.go:29		0x2bf474		a9552fea		LDP 336(RSP), (R10, R11)						
+  state.go:29		0x2bf478		17fffd46		JMP github.com/goldjg/carl/internal/review.BuildState(SB)		
+  state.go:29		0x2bf47c		00000000		?									

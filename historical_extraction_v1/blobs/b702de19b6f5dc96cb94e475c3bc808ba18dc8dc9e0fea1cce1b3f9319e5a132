@@ -1,0 +1,24 @@
+{
+  "case": "B_compensating_controls",
+  "track": "native",
+  "source_diff_sha256": "a72212ba4d7d1b001536717b56d771a7a821782df3d430e3bfaa22b4e0af697b",
+  "status": "live",
+  "started": "2026-10-10T19:16:47.508822+00:00",
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 881,
+    "output_tokens": 175
+  },
+  "scores": {
+    "security_sensitive": 0.91,
+    "scope_expansion": 0.93,
+    "architectural_change": 0.32,
+    "authentication_or_authorisation_change": 0.9,
+    "trust_boundary_change": 0.9,
+    "security_control_reduction": 0.95,
+    "breaking_change": 0.78,
+    "new_external_dependency": 0.1,
+    "human_review_warranted": 0.92
+  },
+  "duration_s": 0.449
+}

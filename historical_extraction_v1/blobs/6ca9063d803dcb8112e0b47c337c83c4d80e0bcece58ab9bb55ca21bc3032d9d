@@ -1,0 +1,12 @@
+{
+  "manifest_sha256": "cccd7d2d050c508c885cca360ce3517f3311bee3c8b4ddc826ac6a019cbea963",
+  "runner_sha256": "c07a716941cb8d9db1088f91b360f2068d2a6121d9cfef72b9134af049d45e01",
+  "cases": {
+    "A_mixed_intent": "201b4d59a65d32b10be981b621c6d28db7575cdbe533de91c99a14e776cb28c5",
+    "B_compensating_controls": "a72212ba4d7d1b001536717b56d771a7a821782df3d430e3bfaa22b4e0af697b",
+    "C_risk_displacement": "93d553deba519f037b5e7404d6b552c6cd67f916688d8dcef39c6a7f29d7759a",
+    "D_benign_camouflage": "09387610cf3a7ec39bea6a8fd337b12597322a608748c3c66bf5881df39a0f74",
+    "E_incomplete_remediation": "af2c9c3da2eea4b67c307f4d4feb893bb3e0b00f95e98b2fcfb9484c7ffb7c5d",
+    "F_ambiguous_intent": "6f4865fb0b0c6892c06baf2e35f003aa34c61eda5f9d1cf461cbb188c8ea7273"
+  }
+}

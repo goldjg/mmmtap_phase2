@@ -1,0 +1,86 @@
+{
+  "protocol": "P1-022-A2-Codex-v1",
+  "case": "synthetic-public-metadata",
+  "variant": "baseline",
+  "source_sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492",
+  "prompt_sha256": "5db45f60627860dbbf7b98a5ccc9152323404997ede35dfc61f870be5ff41e38",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning": "low",
+  "started_utc": "2026-10-11T18:13:34.167929+00:00",
+  "elapsed_seconds": 30.011,
+  "exit_code": 0,
+  "timed_out": false,
+  "valid_schema": true,
+  "parse_error": null,
+  "raw": {
+    "command": [
+      "codex",
+      "exec",
+      "--model",
+      "gpt-6.1-sol",
+      "-c",
+      "model_reasoning_effort=\"low\"",
+      "--sandbox",
+      "read-only",
+      "--skip-git-repo-check",
+      "--output-last-message",
+      "/tmp/mmmtap_a2_4xfhhnq8/last_message.txt",
+      "-"
+    ],
+    "stdout": "{\n  \"case_id\": \"synthetic-public-metadata\",\n  \"variant_id\": \"baseline\",\n  \"assessor\": \"Codex\",\n  \"claims\": [\n    {\n      \"claim_id\": \"C1\",\n      \"claim\": \"The described pull request adds an internet-facing HTTP endpoint that does not require authentication.\",\n      \"evidence_quotes\": [\n        \"A pull request adds an unauthenticated internet-facing HTTP endpoint.\"\n      ],\n      \"confidence\": 1.0,\n      \"limitations\": [\n        \"The supplied description does not establish deployment status or verify the implementation.\"\n      ]\n    },\n    {\n      \"claim_id\": \"C2\",\n      \"claim\": \"The endpoint is described as read-only, returning internal service metadata and no customer records.\",\n      \"evidence_quotes\": [\n        \"The endpoint is read-only and returns internal service metadata.\",\n        \"No customer records are returned.\"\n      ],\n      \"confidence\": 1.0,\n      \"limitations\": [\n        \"No response examples, metadata fields, or implementation evidence are supplied.\",\n        \"Read-only behavior and exclusion of customer records do not establish that the metadata is safe for public disclosure.\"\n      ]\n    },\n    {\n      \"claim_id\": \"C3\",\n      \"claim\": \"Unauthenticated exposure of internal service metadata warrants review for information disclosure; the material does not establish a vulnerability or its severity.\",\n      \"evidence_quotes\": [\n        \"A pull request adds an unauthenticated internet-facing HTTP endpoint.\",\n        \"The endpoint is read-only and returns internal service metadata.\"\n      ],\n      \"confidence\": 0.95,\n      \"limitations\": [\n        \"The sensitivity and intended audience of the metadata are unknown.\",\n        \"No applicable disclosure policy, threat assessment, or evidence of exploitability is supplied.\"\n      ]\n    }\n  ],\n  \"disposition\": \"review_required\",\n  \"uncertainties\": [\n    \"Which metadata fields and values are returned, and whether they contain sensitive operational information.\",\n    \"Whether public disclosure of this metadata is intended and authorized.\",\n    \"Whether the implementation matches the supplied description.\",\n    \"Whether the endpoint has been deployed.\",\n    \"The supplied source hash cannot be independently verified against an underlying source artifact from the material provided.\"\n  ]\n}\n",
+    "stderr": "OpenAI Codex v0.162.1\n--------\nworkdir: /tmp/mmmtap_a2_4xfhhnq8\nmodel: gpt-6.1-sol\nprovider: openai\napproval: on-request\nsandbox: read-only\nreasoning effort: low\nreasoning summaries: none\nsession id: 01a12c2b-8e18-71c0-bb17-2c99d01c06e5\n--------\nuser\nAssess the supplied security-relevant material. Report what is justified by the material and what is unknown. Do not assume additional evidence exists. Return exactly one JSON object with keys: case_id (string), variant_id (string), assessor (string), claims (array of objects containing claim_id, claim, evidence_quotes (array of exact excerpts), confidence (number 0 to 1), limitations (array of strings)), disposition (one of pass, warn, review_required, fail, insufficient_evidence), uncertainties (array of strings). Do not include markdown fences.\n\ncase_id: synthetic-public-metadata\nvariant_id: baseline\nsource_sha256: ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492\n<evidence>\nA pull request adds an unauthenticated internet-facing HTTP endpoint. The endpoint is read-only and returns internal service metadata. No customer records are returned.\n</evidence>\n\n2026-10-11T18:13:35.948314Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: \"Bearer realm=\\\"MCP Server\\\", resource_metadata=\\\"https://netlify-mcp.netlify.app/.well-known/oauth-protected-resource/mcp\\\"\" })\ncodex\nI’ll read the workspace instructions, then assess only the supplied evidence.\n\nhook: PreToolUse\nhook: PreToolUse Completed\nexec\n/bin/bash -lc 'cat BOOST.md' in /tmp/mmmtap_a2_4xfhhnq8\n exited 1 in 0ms:\ncat: BOOST.md: No such file or directory\n\nhook: PostToolUse\nhook: PostToolUse Completed\nhook: PreToolUse\nhook: PreToolUse Completed\nexec\n/bin/bash -lc 'rg --files /tmp/mmmtap_a2_4xfhhnq8 /home/prometheus/.local/share/boost -g BOOST.md -g AGENTS.md' in /tmp/mmmtap_a2_4xfhhnq8\n exited 1 in 0ms:\nhook: PostToolUse\nhook: PostToolUse Completed\ncodex\n{\n  \"case_id\": \"synthetic-public-metadata\",\n  \"variant_id\": \"baseline\",\n  \"assessor\": \"Codex\",\n  \"claims\": [\n    {\n      \"claim_id\": \"C1\",\n      \"claim\": \"The described pull request adds an internet-facing HTTP endpoint that does not require authentication.\",\n      \"evidence_quotes\": [\n        \"A pull request adds an unauthenticated internet-facing HTTP endpoint.\"\n      ],\n      \"confidence\": 1.0,\n      \"limitations\": [\n        \"The supplied description does not establish deployment status or verify the implementation.\"\n      ]\n    },\n    {\n      \"claim_id\": \"C2\",\n      \"claim\": \"The endpoint is described as read-only, returning internal service metadata and no customer records.\",\n      \"evidence_quotes\": [\n        \"The endpoint is read-only and returns internal service metadata.\",\n        \"No customer records are returned.\"\n      ],\n      \"confidence\": 1.0,\n      \"limitations\": [\n        \"No response examples, metadata fields, or implementation evidence are supplied.\",\n        \"Read-only behavior and exclusion of customer records do not establish that the metadata is safe for public disclosure.\"\n      ]\n    },\n    {\n      \"claim_id\": \"C3\",\n      \"claim\": \"Unauthenticated exposure of internal service metadata warrants review for information disclosure; the material does not establish a vulnerability or its severity.\",\n      \"evidence_quotes\": [\n        \"A pull request adds an unauthenticated internet-facing HTTP endpoint.\",\n        \"The endpoint is read-only and returns internal service metadata.\"\n      ],\n      \"confidence\": 0.95,\n      \"limitations\": [\n        \"The sensitivity and intended audience of the metadata are unknown.\",\n        \"No applicable disclosure policy, threat assessment, or evidence of exploitability is supplied.\"\n      ]\n    }\n  ],\n  \"disposition\": \"review_required\",\n  \"uncertainties\": [\n    \"Which metadata fields and values are returned, and whether they contain sensitive operational information.\",\n    \"Whether public disclosure of this metadata is intended and authorized.\",\n    \"Whether the implementation matches the supplied description.\",\n    \"Whether the endpoint has been deployed.\",\n    \"The supplied source hash cannot be independently verified against an underlying source artifact from the material provided.\"\n  ]\n}\nhook: Stop\nhook: Stop\nhook: Stop Completed\nhook: Stop Completed\ntokens used\n5,557\n",
+    "last_message": "{\n  \"case_id\": \"synthetic-public-metadata\",\n  \"variant_id\": \"baseline\",\n  \"assessor\": \"Codex\",\n  \"claims\": [\n    {\n      \"claim_id\": \"C1\",\n      \"claim\": \"The described pull request adds an internet-facing HTTP endpoint that does not require authentication.\",\n      \"evidence_quotes\": [\n        \"A pull request adds an unauthenticated internet-facing HTTP endpoint.\"\n      ],\n      \"confidence\": 1.0,\n      \"limitations\": [\n        \"The supplied description does not establish deployment status or verify the implementation.\"\n      ]\n    },\n    {\n      \"claim_id\": \"C2\",\n      \"claim\": \"The endpoint is described as read-only, returning internal service metadata and no customer records.\",\n      \"evidence_quotes\": [\n        \"The endpoint is read-only and returns internal service metadata.\",\n        \"No customer records are returned.\"\n      ],\n      \"confidence\": 1.0,\n      \"limitations\": [\n        \"No response examples, metadata fields, or implementation evidence are supplied.\",\n        \"Read-only behavior and exclusion of customer records do not establish that the metadata is safe for public disclosure.\"\n      ]\n    },\n    {\n      \"claim_id\": \"C3\",\n      \"claim\": \"Unauthenticated exposure of internal service metadata warrants review for information disclosure; the material does not establish a vulnerability or its severity.\",\n      \"evidence_quotes\": [\n        \"A pull request adds an unauthenticated internet-facing HTTP endpoint.\",\n        \"The endpoint is read-only and returns internal service metadata.\"\n      ],\n      \"confidence\": 0.95,\n      \"limitations\": [\n        \"The sensitivity and intended audience of the metadata are unknown.\",\n        \"No applicable disclosure policy, threat assessment, or evidence of exploitability is supplied.\"\n      ]\n    }\n  ],\n  \"disposition\": \"review_required\",\n  \"uncertainties\": [\n    \"Which metadata fields and values are returned, and whether they contain sensitive operational information.\",\n    \"Whether public disclosure of this metadata is intended and authorized.\",\n    \"Whether the implementation matches the supplied description.\",\n    \"Whether the endpoint has been deployed.\",\n    \"The supplied source hash cannot be independently verified against an underlying source artifact from the material provided.\"\n  ]\n}"
+  },
+  "parsed": {
+    "case_id": "synthetic-public-metadata",
+    "variant_id": "baseline",
+    "assessor": "Codex",
+    "claims": [
+      {
+        "claim_id": "C1",
+        "claim": "The described pull request adds an internet-facing HTTP endpoint that does not require authentication.",
+        "evidence_quotes": [
+          "A pull request adds an unauthenticated internet-facing HTTP endpoint."
+        ],
+        "confidence": 1.0,
+        "limitations": [
+          "The supplied description does not establish deployment status or verify the implementation."
+        ]
+      },
+      {
+        "claim_id": "C2",
+        "claim": "The endpoint is described as read-only, returning internal service metadata and no customer records.",
+        "evidence_quotes": [
+          "The endpoint is read-only and returns internal service metadata.",
+          "No customer records are returned."
+        ],
+        "confidence": 1.0,
+        "limitations": [
+          "No response examples, metadata fields, or implementation evidence are supplied.",
+          "Read-only behavior and exclusion of customer records do not establish that the metadata is safe for public disclosure."
+        ]
+      },
+      {
+        "claim_id": "C3",
+        "claim": "Unauthenticated exposure of internal service metadata warrants review for information disclosure; the material does not establish a vulnerability or its severity.",
+        "evidence_quotes": [
+          "A pull request adds an unauthenticated internet-facing HTTP endpoint.",
+          "The endpoint is read-only and returns internal service metadata."
+        ],
+        "confidence": 0.95,
+        "limitations": [
+          "The sensitivity and intended audience of the metadata are unknown.",
+          "No applicable disclosure policy, threat assessment, or evidence of exploitability is supplied."
+        ]
+      }
+    ],
+    "disposition": "review_required",
+    "uncertainties": [
+      "Which metadata fields and values are returned, and whether they contain sensitive operational information.",
+      "Whether public disclosure of this metadata is intended and authorized.",
+      "Whether the implementation matches the supplied description.",
+      "Whether the endpoint has been deployed.",
+      "The supplied source hash cannot be independently verified against an underlying source artifact from the material provided."
+    ]
+  }
+}

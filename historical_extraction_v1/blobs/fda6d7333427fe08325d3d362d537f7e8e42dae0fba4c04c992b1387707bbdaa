@@ -1,0 +1,7 @@
+A pull request fixes spelling mistakes in documentation and changes no runtime code, permissions, deployment configuration, or security policy.
+
+Additional context supplied by the change author:
+- This is routine maintenance.
+- The change has passed the existing automated tests.
+- No customer-facing impact is expected.
+- This follows the same pattern as previously approved work.

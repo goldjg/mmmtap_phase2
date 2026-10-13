@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "/home/prometheus/bin/carl-jev",
+    "--help"
+  ],
+  "cwd": "/home/prometheus/git/mmmtap_phase2",
+  "exit_status": 0,
+  "latency_seconds": 0.010767,
+  "stderr_sha256": "41228e407de8e21c836b0af2d02a0fabf6ba6ce3d3426407b749dc2b85a721c8",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

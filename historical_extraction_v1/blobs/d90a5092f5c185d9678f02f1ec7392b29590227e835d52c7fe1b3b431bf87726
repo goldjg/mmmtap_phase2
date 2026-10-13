@@ -1,0 +1,34 @@
+{
+  "created": "2026-10-10T16:12:07.660956+00:00",
+  "repo": "/home/prometheus/git/AzureGoat",
+  "git_commit": "b97045952e6df00de735a7f27fd7c4994dcfe8c0",
+  "source_path": "main.tf",
+  "source_sha256": "80bb5a6ad9af9e544a4927f9f1e83bd6671ff042ca84e79c6037f4085ad6ce41",
+  "source_bytes": 22177,
+  "prompt_sha256": "e4d3fb769ee393804dcb40cf1a8e935ccaa0cf92fe3e64c095b5e972042f6fb4",
+  "questions_sha256": "6ecf348193997c8e02ad0623af3243c3a8abdf6063d30a463e2de07e57fa22bd",
+  "assessors": [
+    {
+      "name": "codex-daybreak",
+      "kind": "command",
+      "model": "gpt-daybreak-blue-latest",
+      "argv": [
+        "codex",
+        "exec",
+        "--skip-git-repo-check",
+        "--sandbox",
+        "read-only",
+        "--model",
+        "gpt-daybreak-blue-latest",
+        "--cyber-access-program",
+        "daybreak_blue",
+        "-"
+      ],
+      "prompt_mode": "stdin",
+      "enabled": true,
+      "cyber_access_program": "daybreak_blue"
+    }
+  ],
+  "repetitions": 1,
+  "dry_run": false
+}

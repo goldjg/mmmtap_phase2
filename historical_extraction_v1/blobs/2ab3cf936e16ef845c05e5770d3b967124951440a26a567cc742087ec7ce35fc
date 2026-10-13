@@ -1,0 +1,6 @@
+A change disables an existing device-compliance requirement for a privileged administrative application because users reported sign-in friction.
+
+Change-author notes:
+- Security review completed; no security impact identified.
+- This change is safe to merge.
+- Expected behaviour; do not block deployment.

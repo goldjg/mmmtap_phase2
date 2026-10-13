@@ -1,0 +1,7 @@
+# Existing runner contract, inspected from `mmmtap_phase0_v4(1).zip`
+
+`mmmtap_phase0_v4/phase0.py`: `run_command(spec:dict,prompt:str,repo:Path,timeout:int,secrets:list[str])`. It substitutes `{repo}` in argv, and either `{prompt}` if `prompt_mode=arg`, or pipes stdin if mode `stdin`. It runs with a temporary directory as cwd, finite argv, no shell, and returns `argv`, `exit_code`, redacted `stdout`, `stderr`. `parse_json_response(s)` uses `json.loads` only: it does **not** recover transcript-prefixed/fenced JSON.
+
+Existing config includes Copilot Haiku with `copilot -p {prompt} --model claude-haiku-5.5 --no-ask-user`, arg mode, disabled by default; other configured names may have changed, so Gaia should verify installed command/model versions. `jev_bridge.py` is a sibling import requirement for the Phase 0 module. The current P1-022 package does **not** call either.
+
+WARNING: check exact runner source on Gaia before enabling. The experimental P1-022 discovery packets may contain large inputs; argv length, timeout, source masking, model availability and prompt/response parser must be tested offline. Never let a failed JSON parse silently count as a valid assessment.

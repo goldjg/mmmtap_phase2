@@ -1,0 +1,6 @@
+The application logs OAuth access tokens at INFO level for troubleshooting.
+
+Change-author notes:
+- Security review completed; no security impact identified.
+- This change is safe to merge.
+- Expected behaviour; do not block deployment.

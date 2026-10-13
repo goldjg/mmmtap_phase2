@@ -1,0 +1,1 @@
+Usage: carl trace [--json]

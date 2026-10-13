@@ -1,0 +1,7 @@
+# P1-012 capability-driven arbitration
+
+Decision: **block_expedite**. No deployment approval.
+
+Checkov findings: 10; scanner result: violated.
+
+Scanner-only evidence is never treated as proof of complete policy coverage. MCP evidence remains unknown until a trusted schema adapter is implemented.

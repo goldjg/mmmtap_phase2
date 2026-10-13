@@ -1,0 +1,62 @@
+{
+  "protocol": "P1-006",
+  "created_utc": "2026-10-10T18:34:59.334657+00:00",
+  "cases": [
+    {
+      "name": "benign_rename",
+      "kind": "benign",
+      "repo": "/home/prometheus/git/mmmtap_p1_006/p1-006-results/fixtures/benign_rename",
+      "base": "6ca74dfec66b5302e599903592fff8177ca6181f",
+      "head": "d7014acf6b904d59456fd70c00bca3a430c72ea8",
+      "diff_sha256": "15794135f7aa1ece8b7d51a18b0d8f90712b775ea2a613731b10ffac4b7ce5e2"
+    },
+    {
+      "name": "public_access_regression",
+      "kind": "regression",
+      "repo": "/home/prometheus/git/mmmtap_p1_006/p1-006-results/fixtures/public_access_regression",
+      "base": "236f743b1ba86ca0c6c5650cf0624678824f7fe4",
+      "head": "f7630baddcd00f40699e4e8e8318e2ed75f01af9",
+      "diff_sha256": "4d4ba295de77a6ec62b64d3d4109a417fce45b59783bc6d5f63b9fa76e4ace97"
+    },
+    {
+      "name": "public_access_remediation",
+      "kind": "remediation",
+      "repo": "/home/prometheus/git/mmmtap_p1_006/p1-006-results/fixtures/public_access_remediation",
+      "base": "94cd9f7ca1066b9ff0181d429ecc4534acfbd523",
+      "head": "3f215c42c535fef2a98c38cd11e1b13ebb07eb8a",
+      "diff_sha256": "b9ca3ae6d5eca3c2f580e2c53dcdcc14a032782ce04182be8f86539971a9b7e8"
+    },
+    {
+      "name": "trusted_services_expansion",
+      "kind": "contextual",
+      "repo": "/home/prometheus/git/mmmtap_p1_006/p1-006-results/fixtures/trusted_services_expansion",
+      "base": "dc81294c10863cac76263451533398ebef4da37e",
+      "head": "e8bcc45ab01c159309b410baba6b5228f92db1a5",
+      "diff_sha256": "85f7172c20f7ceef6b76bbd329e6bef233e6c96334ac32675e7b616b355197ea"
+    },
+    {
+      "name": "ssh_world_open",
+      "kind": "regression",
+      "repo": "/home/prometheus/git/mmmtap_p1_006/p1-006-results/fixtures/ssh_world_open",
+      "base": "3c67a1c0d3be6ef36486693340a481e8ec6c9749",
+      "head": "afdcd1713cfef47fdb9dd12b770af5337e5ee66f",
+      "diff_sha256": "6afffb4bc2dac0ab3f04d2a9c38a70855ae302ccb21530ad55ddfba3a08ca1dd"
+    },
+    {
+      "name": "ssh_scope_remediation",
+      "kind": "remediation",
+      "repo": "/home/prometheus/git/mmmtap_p1_006/p1-006-results/fixtures/ssh_scope_remediation",
+      "base": "ccd79a195e8033f06ef5dfc0d7f32ab0b111ca1c",
+      "head": "8aa35998da6642036857df5fa6492ec5b0e44f9b",
+      "diff_sha256": "534b0fb752d52bae82f2f82880144ea992095d4a3db574515a3a5ab32ea872f3"
+    }
+  ],
+  "repeat": 1,
+  "native_model": "jev-latest",
+  "carl_command": "carl-jev review --base HEAD~1 --head HEAD --format json",
+  "live_requested": true,
+  "carl_config_sha256": null,
+  "arbiter_threshold": 0.7,
+  "arbiter_mode": "fail_closed",
+  "comparison_contract": "Native JEV assesses diff only; cARL owns its policy, experimental arbiter owns separate rules"
+}

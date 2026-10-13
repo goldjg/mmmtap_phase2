@@ -1,0 +1,24 @@
+{
+  "case": "C_risk_displacement",
+  "track": "native",
+  "source_diff_sha256": "93d553deba519f037b5e7404d6b552c6cd67f916688d8dcef39c6a7f29d7759a",
+  "status": "live",
+  "started": "2026-10-10T19:16:48.551759+00:00",
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 769,
+    "output_tokens": 175
+  },
+  "scores": {
+    "security_sensitive": 0.62,
+    "scope_expansion": 0.24,
+    "architectural_change": 0.21,
+    "authentication_or_authorisation_change": 0.79,
+    "trust_boundary_change": 0.59,
+    "security_control_reduction": 0.67,
+    "breaking_change": 0.67,
+    "new_external_dependency": 0.04,
+    "human_review_warranted": 0.69
+  },
+  "duration_s": 0.449
+}

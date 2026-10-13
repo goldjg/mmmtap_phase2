@@ -1,0 +1,15 @@
+Usage: carl pack <subcommand> [arguments]
+
+Subcommands:
+  list                   List available packs
+  show <pack-id>         Show metadata for a pack
+  select <pack-id>...    Select packs for this repository
+  unselect <pack-id>...  Remove packs from the repository selection
+  effective              Show the computed effective pack set
+  profile                Inspect and activate policy profiles
+  registry               List and search explicit pack registries
+  install <pack-id>       Verify and install a registry pack
+  update [<pack-id>...]   Update registry-managed packs
+
+Options:
+  --json         Print machine-readable JSON output

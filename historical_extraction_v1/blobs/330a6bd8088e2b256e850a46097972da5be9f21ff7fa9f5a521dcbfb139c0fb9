@@ -1,0 +1,14 @@
+# P1-008 Stage 1 — offline freeze
+
+Six synthetic two-commit Terraform fixtures, not deployed.
+
+- **A_mixed_intent** (unsafe_mixed): primary container anonymous access disabled; minimum TLS version reduced from TLS1_2 to TLS1_0
+- **B_compensating_controls** (ambiguous_compensated): SSH allowed source widened to all IPv4 or source-star semantics; VM password authentication disabled
+- **C_risk_displacement** (unsafe_displaced): primary storage container made private; secondary storage container changed to blob-level anonymous access
+- **D_benign_camouflage** (unsafe_camouflaged): SSH source expanded among many harmless changed labels/comments
+- **E_incomplete_remediation** (unsafe_residual): primary container becomes private; second public blob container remains unchanged
+- **F_ambiguous_intent** (undecidable_context): storage network-rule bypass expands from None to AzureServices
+
+**Offline policy attack:** 12 / 18 synthetic cases classified as false expedites. These are deliberately adversarial signal assignments, **not observed model behaviour**, and not an empirical model false-expedite rate.
+
+The existing expedited triage rule bases priority on two low model scores and a security-sensitive flag. It cannot independently verify residual/new risk. No live experiment or Terraform deployment has occurred.

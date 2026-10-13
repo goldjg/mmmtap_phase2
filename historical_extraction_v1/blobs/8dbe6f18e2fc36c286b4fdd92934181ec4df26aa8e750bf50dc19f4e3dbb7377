@@ -1,0 +1,19 @@
+# P1-012 — Six frozen adversarial fixtures: Checkov capability matrix
+
+Frozen manifest SHA-256: `cccd7d2d050c508c885cca360ce3517f3311bee3c8b4ddc826ac6a019cbea963`
+Runner SHA-256: `c07a716941cb8d9db1088f91b360f2068d2a6121d9cfef72b9134af049d45e01`
+
+| Case | Frozen label | Scan | Failed checks | Arbiter | Target finding verified? |
+|---|---|---|---:|---|---|
+| A_mixed_intent | unsafe_mixed | violated | 9 | block_expedite | NOT ADJUDICATED |
+| B_compensating_controls | ambiguous_compensated | violated | 9 | block_expedite | NOT ADJUDICATED |
+| C_risk_displacement | unsafe_displaced | violated | 9 | block_expedite | NOT ADJUDICATED |
+| D_benign_camouflage | unsafe_camouflaged | violated | 9 | block_expedite | NOT ADJUDICATED |
+| E_incomplete_remediation | unsafe_residual | violated | 9 | block_expedite | NOT ADJUDICATED |
+| F_ambiguous_intent | undecidable_context | violated | 7 | block_expedite | NOT ADJUDICATED |
+
+## Evidence review required
+
+Open each case/record.json. Compare specific check IDs, resources, and file paths against frozen_manifest.json expected_observations and the actual Git diff. Scanner findings on pre-existing controls must NOT be counted as detection of the target regression.
+A scanner violation does not mean that all intended scenario risks were detected. An unknown scan is not a clean scan. An exit code cannot establish source coverage or deployment risk.
+Case E is residual exposure rather than a newly introduced exposure. Cases B and F require contextual judgement. No automatic deployment approvals, no model calls by this orchestrator.

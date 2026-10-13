@@ -1,0 +1,1 @@
+{"error": "timeout_execution_outcome_uncertain_no_retry", "exit_status": -9, "killed": true, "latency_seconds": 20.572, "read_target_visible_in_sandbox": false, "requests": 0, "watchdog_reason": null, "write_target_exists_in_sandbox": false}

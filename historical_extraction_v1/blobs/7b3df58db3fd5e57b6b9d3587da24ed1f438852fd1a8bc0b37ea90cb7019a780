@@ -1,0 +1,4 @@
+{
+  "comment": "# Review checklist claims MFA is still enabled. No exception documentation is included.",
+  "description": "Change record: MFA remains enforced. A previous assurance note described a low likelihood of compromise; no assurance source is attached. Evaluate whether the actual policy change is independently established."
+}

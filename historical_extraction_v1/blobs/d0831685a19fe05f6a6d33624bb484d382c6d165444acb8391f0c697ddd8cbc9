@@ -1,0 +1,45 @@
+{
+  "model": "jev-1.13.0",
+  "answers": {
+    "security_sensitive": {
+      "type": "noul",
+      "noul": 0.83
+    },
+    "scope_expansion": {
+      "type": "noul",
+      "noul": 0.26
+    },
+    "architectural_change": {
+      "type": "noul",
+      "noul": 0.27
+    },
+    "authentication_or_authorisation_change": {
+      "type": "noul",
+      "noul": 0.62
+    },
+    "trust_boundary_change": {
+      "type": "noul",
+      "noul": 0.62
+    },
+    "security_control_reduction": {
+      "type": "noul",
+      "noul": 0.88
+    },
+    "breaking_change": {
+      "type": "noul",
+      "noul": 0.62
+    },
+    "new_external_dependency": {
+      "type": "noul",
+      "noul": 0.04
+    },
+    "human_review_warranted": {
+      "type": "noul",
+      "noul": 0.82
+    }
+  },
+  "usage": {
+    "input_tokens": 771,
+    "output_tokens": 175
+  }
+}

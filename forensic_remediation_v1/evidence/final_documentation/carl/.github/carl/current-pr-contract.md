@@ -1,0 +1,351 @@
+<!-- version: 1.0.1 -->
+# Current PR Contract
+
+## Contract status
+
+Complete: bounded MMMTAP Phase 2 offline implementation and validation,
+explicitly approved by the 2026-10-12 user request. Assisted implementation;
+strict generator qualification remains blocked. The new evidence package is
+authoritative only with a verified `SHA256SUMS.txt`. The contracts below do not
+authorize live qualification.
+
+## Forensic remediation amendment (2026-10-12)
+
+Goal: repair independently reproduced parser and provenance defects and bind
+a newly sealed execution-readiness package to the exact tested implementation.
+The evidence baseline, including all outstanding worktree changes, is retained
+under the current session's `files/preservation_baseline/`; the deliverable is
+`../mmmtap_phase2/forensic_remediation_v1/`.
+
+Approved files: `internal/assessment` and its tests/fixtures, the sibling
+command if required for its frozen contract, `ASSESSMENT.md`, directly related
+Path B paragraphs in `ARCHITECTURE.md`, `CLI.md` and `ROADMAP.md`, this contract,
+and the Phase 2 Python adapters/planner/checkpoint/isolation controls and
+related tests/documentation. Preserve existing unrelated worktree changes.
+No dependency, release, deployment, shared-default or policy-threshold change.
+
+Plan: (1) retain pre-change hashes and red regressions; (2) enforce canonical
+provider interpretation without conflating it with policy arbitration;
+(3) preserve and verify failed preparation, process, receipt and token-usage
+evidence; (4) enforce frozen prompt/question/schema/role/policy and full
+implementation bindings in a plan superseding, not modifying, v3; (5) rerun
+offline controls and suites against final code and seal the new package.
+
+Contract assertions:
+1. Shared provider bytes have identical underlying judgements or are rejected
+   by both parsers; cARL's deterministic policy remains separately represented.
+2. Frozen instrument identity binds executed semantics and exact source/build
+   inputs; drift cannot validate or resume under an unchanged identity.
+3. All reserved first attempts retain explicit success/failure/incomplete
+   provenance; there are no silent retries or overwritten checkpoints.
+4. Preventive isolation is tested, not inferred from lack of tool events.
+   Any unsatisfied strict boundary keeps the affected adapter blocked.
+5. Prior research/input bytes, all earlier evidence and plans, installed Path A,
+   its source/interface, shared pack semantics and defaults remain unchanged.
+
+Validation: shared negative and positive response fixtures, targeted red/green
+tests, complete Python suite, relevant/full Go tests and vet, a new sibling-only
+build, real-CLI loopback controls with external networking disabled, complete
+nonempty mocked chains, policy replay, immutable resume and preservation audit.
+Commands, failures, results and exact implementation hashes are evidence.
+
+Stop the affected change and document a required decision if satisfying a
+contract requires redesigned methodology, weaker criteria, policy tuning,
+live inference, historical-code execution or protected Path A changes.
+Local receipts remain integrity anchors, never provider signatures. CLI
+watchdogs are not pre-dispatch authorization. No live calls, pilot, full
+experiment, deployments, new corpus admissions or scoring changes are approved.
+Reconcile durable Path B changes in this contract and `ASSESSMENT.md`, not
+shipped shared memory/trust defaults or their embedded mirrors.
+
+Completion evidence: the corrected revision-5 candidate passes 144 Python
+tests and 247 top-level Go tests (512 including subtests, 16 packages), Go vet,
+formatting and whitespace checks. Shared parser fixtures include 64 authored
+cases and the exact retained historical provider response. Forty-eight fresh
+real-CLI offline controls retain all three generator blocks. The complete
+6,885-job nonempty mock chain passes, with 1,215 Path B policy replays, both E3
+orders, matched-turn C3, zero new checkpoints on resume and 2,835 blinded pairs.
+These are offline wiring/contract results, not model or scientific qualification.
+
+The initial strict candidate rejected legitimate provider metadata; its rejected
+artifacts and interrupted mock first attempts remain preserved. V5 has distinct
+source/instrument identities and fresh controls. Its implementation SHA-256 is
+`c1d1c4d09715893e3c3ccd9deee77b787b189b3c511018f017842ee5ecb20ac3`;
+the instrument manifest SHA-256 is
+`be99adbb65cf5dfb2cb9aa2accebf683306ff565ecf81a515676111856fdd06a`.
+The sibling executable SHA-256 is
+`b51cb4c86a1e5b54b5bb496e67890ee8efd18f58603616f4eb28da144d7a275d`.
+Exact commands, source snapshots, limitations and final preservation/seal
+checks are in `../mmmtap_phase2/forensic_remediation_v1/`.
+Installed Path A, its protected source/interface, original research bytes,
+shared defaults and policy thresholds remain unchanged. No live call occurred.
+
+## Prior transport contract status
+
+Complete: the separate Go Path B live-capable transport is implemented and
+verified using offline tests only. No live qualification, provider/model
+calls or experimental execution is approved. The completed offline Path B
+and semantic-review contracts below are retained as historical context.
+
+## Path B transport amendment (2026-10-12)
+
+User approval covers `internal/assessment` transport/command/tests, the sibling
+command build, and reconciliation of `ASSESSMENT.md` and this contract only.
+Go validation logs, build metadata and a report are stored separately under
+`../mmmtap_phase2/integration_readiness_v1/go_validation/`. Build only the new
+`../mmmtap_phase2/integration_readiness_v1/bin/carl-assessment-challenge-v2`;
+do not overwrite earlier draft/v1 or installed Path A binaries.
+
+Assertions and plan: preserve exact native request bytes in one HTTP attempt;
+fail closed on credentials and authorization; never label redacted/truncated
+response bytes as an original complete response; validate replay schema and
+HTTP failure consistency; preserve first-attempt evidence without retry.
+Implement narrowly scoped regression tests, run the full uncached Go JSON
+suite, vet, gofmt and sibling build with dependency downloads disabled.
+All HTTP tests use localhost fixtures. Receipt integrity is not a signed
+provider receipt or served-model attestation.
+
+Forbidden scope: `cmd/carl`, `internal/review`, `internal/semantic`, embedded
+mirrors, shared memory/trust defaults, policy semantics, Python integration,
+frozen evidence and existing binaries. No new dependencies or external calls.
+Verify installed Path A SHA-256 remains
+`b34696d54d0b9c910d48c9adbe0155f825617d8e4c8981e58a2f50b5d0868428`.
+Stop if validation requires live inference, credentials or protected changes.
+
+Completion: the full uncached Go suite passed 242 top-level tests (391
+including subtests), across 16 packages with tests. Go vet, gofmt, whitespace
+checks and the sibling-only build passed. The compiled v2 binary replayed a
+historical v1 offline receipt and a new missing-credential v2 failure receipt;
+the latter recorded zero attempts and zero calls. All transport HTTP fixtures
+were localhost-only. The optional race check could not execute because this
+host's ThreadSanitizer does not support its 39-bit VMA range (requires 48).
+Its failure log and one corrected development-fixture failure are preserved.
+
+The v2 live receipt schema adds explicit complete/partial/truncated/withheld
+capture metadata and rejects inconsistent replay states; the v1 offline
+interface and native request bytes remain unchanged. SHA-256 of the new
+sibling is `be5a4b98d0acfd516839e9a5ab23071830f39ce0afa808d56a6acbbba1c92716`.
+All 65 protected-file hashes, including installed Path A and earlier sibling
+binaries, match the pre-change baseline. Final logs, commands, build metadata
+and limitations are recorded in `go_validation/report.json` under the
+readiness directory above. Shared memory/trust defaults and embedded mirrors
+were not changed. No live qualification or provider authentication is claimed.
+
+## Path B amendment
+
+User approval: implement a separately versioned cARL-JEV assessment-challenge
+interface, reusing cARL custom packs, role profiles and policy machinery.
+
+Goal: an offline-only sibling command and MMMTAP adapter with matched native
+questions, supplied-source provenance, immutable hash-bound evidence receipts
+and deterministic policy replay.
+
+Approved scope: new `cmd/carl-assessment-challenge`, `internal/assessment`,
+additive read-only `internal/pack/snapshot.go`, focused tests, `ASSESSMENT.md`,
+CLI/architecture documentation and durable governance reconciliation. MMMTAP
+may add a separate Path B module, test fixtures, policy examples and versioned
+validation outputs. Existing `cmd/carl`, `internal/review`, `internal/semantic`,
+installed binaries, existing execution plans and frozen evidence stay unchanged.
+No live calls, deployments, new dependencies or pilot execution.
+
+Plan: expose the existing pack evaluator without changing its semantics;
+capture local explicit pack/profile definitions; compile narrowly typed
+assessment rules only from effective non-overridden packs; validate source,
+parent and matched questions; preserve mock/imported response artifacts with
+explicit evidence labels; replay from a trusted receipt digest and frozen
+policy bytes. Example thresholds are offline fixtures, not approved
+experimental policy. No production policy is silently selected.
+
+Assertions: Path A byte preservation; real role/dependency/override machinery
+controls applied rules; source and native-question bindings fail closed;
+receipts distinguish integrity from authentication; failures and first attempts
+persist; replay uses frozen policy without network or current repository state.
+
+Validation: focused new tests, existing full Go/Python suites, Go vet/build,
+cross-language native-question equality and offline coverage of all 135 inputs.
+Stop if implementation requires live evaluation or modification of old evidence.
+Risks: receipt hashes do not attest a provider; policy examples need explicit
+approval; new assessment rule semantics must not reinterpret ordinary pack prose.
+Document these limitations and the remaining live qualification gates.
+
+Completion evidence: `../mmmtap_phase2/path_b_validation_v1/` contains the
+built sibling, source snapshots, raw test logs, 137 prepared/mock/replayed
+receipts covering all 135 frozen identities (108 source hashes) plus both
+E3-order examples, and a checksum manifest. The full Go suite passed 232
+top-level tests (297 including subtests); all 100 Python tests passed.
+Go vet, both command builds and Path A help equality passed. Live calls: zero.
+Nonempty-claim behavior is covered by unit fixtures; the historical mocked
+checkpoint assessments used in corpus coverage contain no claims.
+
+Governance reconciliation: Path B's durable boundary and qualification gates
+are recorded in `ASSESSMENT.md`, `ARCHITECTURE.md`, `CLI.md`, this contract and
+`ROADMAP.md`. Shared memory/trust-boundary files are shipped as embedded
+defaults, so their preliminary additions were removed rather than changing
+Path A's bundled policy. The full embedded-mirror tests now pass unchanged.
+No invariant, runtime, pack activation, embedded asset or release change was
+required. Initial formatting and embedded-mirror failures are preserved in
+the validation logs; they were development checks, not inference attempts.
+
+## Goal
+
+Implement an initial optional semantic evaluation capability in the cARL CLI,
+using a provider-neutral `SemanticEvaluator` abstraction and TypeSafe JEV as
+the first supported backend, with `carl review` as the initial vertical slice
+for bounded local or CI code review.
+
+## Non-goals
+
+- Do not make JEV or any hosted provider mandatory.
+- Do not make cARL a model router, generic agent framework, or generic
+  evaluator marketplace.
+- Do not let JEV or any provider decide cARL policy outcomes directly.
+- Do not replace deterministic cARL rules, pack composition, or governance
+  artefacts.
+- Do not send whole repositories, environment variables, secrets, credentials,
+  private keys, or obvious secret-bearing file contents to external providers.
+- Do not add multiple providers beyond the first JEV adapter.
+- Do not add SARIF or GitHub Checks output in this PR.
+- Do not modify release workflows, publishing automation, or unrelated
+  harness adapter behaviour.
+
+## Approved scope
+
+- New provider-neutral semantic evaluation models, interfaces, context/state
+  builder, review policy mapping, output formatting, and failure handling.
+- A TypeSafe JEV evaluator adapter that normalizes provider responses into
+  cARL-owned semantic signal types.
+- `carl review` with bounded git diff collection, optional task/PR text input,
+  dry-run payload inspection, text/JSON/Markdown output, and deterministic
+  exit codes.
+- Optional repository configuration for semantic evaluation under a cARL-owned
+  config file, including API-key environment-variable lookup only.
+- Unit and integration-style tests that mock provider behaviour and avoid live
+  network/API-key requirements.
+- Documentation updates describing configuration, privacy/trust boundary,
+  dry-run, CI usage, and the distinction between semantic signals and cARL
+  policy decisions.
+- Durable cARL memory/trust-boundary updates when needed to record the new
+  external semantic-evaluation boundary.
+
+## Forbidden scope
+
+- Do not persist API keys or accept API keys directly in repository
+  configuration.
+- Do not log, print, serialize, or include secrets/API keys in diagnostics,
+  exceptions, dry-run payloads, JSON output, telemetry, or files.
+- Do not hard-code TypeSafe or JEV concepts into provider-independent cARL
+  policy models.
+- Do not execute tests or repository commands as part of review state
+  collection unless explicitly supplied or already available.
+- Do not perform remote mutations, create releases, alter CI permissions, or
+  publish artifacts.
+- Do not modify unrelated local files or overwrite user-owned policy state
+  outside this contract.
+
+## Architectural constraints
+
+- JEV is an optional semantic signal provider; cARL remains the policy
+  authority.
+- The generic evaluator interface, state, question, signal, finding, and
+  result models must not be named after JEV.
+- The JEV adapter may translate between cARL-owned bounded question primitives
+  and provider-specific API shapes, but must not encode cARL policy decisions.
+- Context collection and external-provider payload construction must remain
+  clearly separated and inspectable.
+- Review context must be bounded, deterministic where practical, and auditable
+  by category; avoid blindly reading or sending the full repository.
+- Use existing Go standard-library-first patterns and repository command
+  conventions; add dependencies only with explicit justification.
+
+## Security constraints
+
+- Treat semantic evaluator providers as external hosted services.
+- Redact obvious secrets from collected diff/context and dry-run payloads.
+- Fail open by default when semantic evaluation is unavailable or unconfigured,
+  producing warnings/diagnostics without breaking existing cARL behaviour.
+- Handle missing/invalid API key, network failures, timeouts, malformed
+  responses, unsupported model, rate limiting, and provider outage without
+  exposing secrets or confusing stack traces in normal output.
+- Ensure tests never require real network access or a live TypeSafe API key.
+
+## Expected files
+
+- `cmd/carl/main.go`
+- `internal/semantic/**`
+- `internal/review/**`
+- `internal/cmdutil/**` if exit-code support requires small shared helpers
+- `CLI.md`
+- `README.md`
+- `ARCHITECTURE.md`
+- `.github/carl/current-pr-contract.md`
+- `.github/carl/memory.md` and/or `.github/carl/trust-boundaries.md` if
+  durable semantic-evaluation boundary documentation is needed
+- Focused `*_test.go` files for new behaviour
+
+## Contract assertions
+
+1. When semantic evaluation is disabled or unconfigured, existing cARL
+   behaviour remains unchanged and `carl review` fails open with clear
+   diagnostics rather than requiring JEV.
+2. `carl review --dry-run` reports the semantic questions and data categories
+   that would be sent without calling the provider and without exposing
+   secrets.
+3. JEV responses normalize into provider-independent semantic signals; cARL
+   review policy maps those signals to findings and a decision.
+4. Text, JSON, and Markdown outputs represent the same normalized review
+   result, and JSON includes complete normalized signals/findings/decision for
+   CI consumption.
+5. Exit codes distinguish pass, warn/review-required/fail, and
+   execution/configuration failure without requiring human-readable parsing.
+
+## Validation requirements
+
+- Run focused tests for semantic evaluator, JEV normalization, review policy,
+  redaction, dry-run, output formats, and exit codes.
+- Run `go test ./...` after implementation when feasible.
+- Run `go build ./cmd/carl` and `git diff --check`.
+- Confirm no real network/API key is required by tests.
+
+## Stop conditions
+
+Stop and report if:
+
+- the provider API contract cannot be represented without embedding cARL
+  policy inside the JEV adapter;
+- implementing the feature requires storing secrets in repository files;
+- bounded context collection cannot avoid sending obvious secret-bearing
+  content;
+- a required change would alter release automation, publish artifacts, or
+  rewrite unrelated governance/harness state;
+- validation requires live TypeSafe credentials or external network access.
+
+## Escalation triggers
+
+- Any need for a new dependency.
+- Any ambiguity in the TypeSafe JEV API that would materially affect external
+  request shape beyond a documented initial adapter assumption.
+- Any proposed fail-closed CI behaviour before repository policy explicitly
+  requires semantic evaluation.
+- Any trust-boundary change beyond optional outbound semantic evaluation.
+
+## cARL/docs update expectation
+
+Required. This PR adds a new optional command, external provider trust
+boundary, and durable architectural behaviour, so CLI/docs and durable cARL
+memory/trust-boundary documentation must be reconciled before final response.
+
+## Context reset notes
+
+After this PR completes, reset the contract or mark it complete so future
+tasks do not inherit semantic-evaluation implementation scope.
+
+## Completion evidence
+
+Completed on 2026-09-26 in the `feature/semantic-evaluation-jev` worktree.
+The implementation adds provider-neutral semantic evaluation models,
+bounded review state collection, the optional TypeSafe JEV adapter, `carl
+review`, dry-run payload inspection, text/JSON/Markdown output, fail-open
+diagnostics, deterministic decision exit codes, tests, and documentation for
+the new external semantic-evaluation trust boundary. Validation completed with
+`go test ./...`, `go vet ./...`, `go build -buildvcs=false ./cmd/carl`, and
+`git diff --check`.

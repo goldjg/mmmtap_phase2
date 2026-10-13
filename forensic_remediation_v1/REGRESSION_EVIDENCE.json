@@ -1,0 +1,138 @@
+{
+  "development_failures_retained": [
+    "evidence/commands/probe-expanded-cli-controls",
+    "evidence/development_controls/expanded_control_probe",
+    "evidence/commands/green-go-provider-metadata",
+    "CANDIDATE_V4_REJECTED.json"
+  ],
+  "evidence_class": "recorded_offline_commands",
+  "execution_plan_file": "v5/execution_plan_v5.json",
+  "execution_plan_manifest_sha256": "844703bcc5569894d140f0bf4a1e34d1db7a281b82d4e751cab39b6e77f013cf",
+  "execution_plan_sha256": "779afb5c40b89f610a2214f53df4f1ae2426eefaab6efaf6ad32c4b59e5f0b19",
+  "final_commands": {
+    "v5-final-bound-build-and-freeze": {
+      "command_record": "evidence/commands/v5-final-bound-build-and-freeze/command.json",
+      "command_record_sha256": "87ba9e6722c006605575ba1d83cd1cee304699bd80b45c0cc8da579f73052b1c",
+      "elapsed_seconds": 33.678299,
+      "exit_status": 0
+    },
+    "v5-final-bound-isolation-controls": {
+      "command_record": "evidence/commands/v5-final-bound-isolation-controls/command.json",
+      "command_record_sha256": "5ff0c9c8758337c5c6a7ac8170dc1f8d8a23b5f22e3e264a163a193e4a27dd90",
+      "elapsed_seconds": 416.355803,
+      "exit_status": 0
+    },
+    "v5-final-full-mock-and-plan": {
+      "command_record": "evidence/commands/v5-final-full-mock-and-plan/command.json",
+      "command_record_sha256": "304d3a93484813b07be9129ba0c096c09ba625db466a5dea2abb343d50caf03b",
+      "elapsed_seconds": 2747.327828,
+      "exit_status": 0
+    },
+    "v5-final-go-suite-and-vet": {
+      "command_record": "evidence/commands/v5-final-go-suite-and-vet/command.json",
+      "command_record_sha256": "f1ef63f9109f82a9f5f19b094a65eb2c4eff048dba91d536025890814ede3e71",
+      "elapsed_seconds": 31.26897,
+      "exit_status": 0
+    },
+    "v5-final-post-documentation-preservation": {
+      "command_record": "evidence/commands/v5-final-post-documentation-preservation/command.json",
+      "command_record_sha256": "061645b284d98a58fd0c3f931963cc8969fc12f38bdab5f4aad9904f9cd14d5d",
+      "elapsed_seconds": 50.420085,
+      "exit_status": 0
+    },
+    "v5-final-preservation-audit": {
+      "command_record": "evidence/commands/v5-final-preservation-audit/command.json",
+      "command_record_sha256": "1ad3cd052889b6c2fc4fd3138b280c516437742f58e9ce35e90bc335e466f778",
+      "elapsed_seconds": 25.25795,
+      "exit_status": 0
+    },
+    "v5-final-python-suite": {
+      "command_record": "evidence/commands/v5-final-python-suite/command.json",
+      "command_record_sha256": "a27cda5697299b83651b9e32e50857891a4d2f4084eaee30fedc22345533d9ca",
+      "elapsed_seconds": 313.205396,
+      "exit_status": 0
+    },
+    "v5-final-reproducible-build": {
+      "command_record": "evidence/commands/v5-final-reproducible-build/command.json",
+      "command_record_sha256": "ee997ccec380c1eb6c227c1b026fabd285585cff2d460fb1583f433903dbd913",
+      "elapsed_seconds": 6.201576,
+      "exit_status": 0
+    },
+    "v5-final-transport-audit": {
+      "command_record": "evidence/commands/v5-final-transport-audit/command.json",
+      "command_record_sha256": "5f91d8b576c623d2588d20fe4f20b9e45c1d457e72cd5b0077481b28bb694b1f",
+      "elapsed_seconds": 84.204185,
+      "exit_status": 0
+    }
+  },
+  "go": {
+    "formatting": "passed",
+    "including_subtests_passed": 512,
+    "packages_with_tests": 16,
+    "top_level_passed": 247,
+    "tracked_whitespace": "passed",
+    "vet": "passed"
+  },
+  "implementation_sha256": "c1d1c4d09715893e3c3ccd9deee77b787b189b3c511018f017842ee5ecb20ac3",
+  "independent_live_qualification": "not_performed",
+  "instruments_sha256": "be99adbb65cf5dfb2cb9aa2accebf683306ff565ecf81a515676111856fdd06a",
+  "live_provider_calls": 0,
+  "optional_race_check": "not_rerun; prior retained report documents unsupported 39-bit VMA; not claimed passed",
+  "path_b_binary_sha256": "b51cb4c86a1e5b54b5bb496e67890ee8efd18f58603616f4eb28da144d7a275d",
+  "producer_sha256": "5a20196990e751337b1f1d2f3ba0236628cefcd00ad3e896c753185feec300ee",
+  "python": {
+    "passed": 144,
+    "skipped": 0
+  },
+  "red_before_fix": {
+    "red-go-observed-provider-metadata": {
+      "command_record": "evidence/commands/red-go-observed-provider-metadata/command.json",
+      "exit_status": 1,
+      "hash_exact_original_sources_available": true,
+      "source_objects": "evidence/source_objects"
+    },
+    "red-go-remediation": {
+      "command_record": "evidence/commands/red-go-remediation/command.json",
+      "exit_status": 1,
+      "hash_exact_original_sources_available": true,
+      "source_objects": "evidence/source_objects"
+    },
+    "red-go-shared-historical-response": {
+      "command_record": "evidence/commands/red-go-shared-historical-response/command.json",
+      "exit_status": 1,
+      "hash_exact_original_sources_available": true,
+      "source_objects": "evidence/source_objects"
+    },
+    "red-python-observed-provider-metadata": {
+      "command_record": "evidence/commands/red-python-observed-provider-metadata/command.json",
+      "exit_status": 1,
+      "hash_exact_original_sources_available": true,
+      "source_objects": "evidence/source_objects"
+    },
+    "red-python-provenance-lifecycle": {
+      "command_record": "evidence/commands/red-python-provenance-lifecycle/command.json",
+      "exit_status": 1,
+      "hash_exact_original_sources_available": true,
+      "source_objects": "evidence/source_objects"
+    },
+    "red-python-remediation": {
+      "command_record": "evidence/commands/red-python-remediation/command.json",
+      "exit_status": 1,
+      "hash_exact_original_sources_available": true,
+      "source_objects": "evidence/source_objects"
+    },
+    "red-python-sealing-and-scope": {
+      "command_record": "evidence/commands/red-python-sealing-and-scope/command.json",
+      "exit_status": 1,
+      "hash_exact_original_sources_available": true,
+      "source_objects": "evidence/source_objects"
+    },
+    "red-python-shared-historical-response": {
+      "command_record": "evidence/commands/red-python-shared-historical-response/command.json",
+      "exit_status": 1,
+      "hash_exact_original_sources_available": true,
+      "source_objects": "evidence/source_objects"
+    }
+  },
+  "schema": "mmmtap-forensic-regression-evidence-v1"
+}

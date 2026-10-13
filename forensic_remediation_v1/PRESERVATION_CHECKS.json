@@ -1,0 +1,106 @@
+{
+  "baseline_sha256": "ea142c9fb493d9b862ee390a85e8c45c5c6b015043e6b2e76d441d60306e06e2",
+  "current_git": {
+    "carl_head": "8a9d5ba6540fb52a7cfa6cbcf4c125e514805c04",
+    "carl_status": "## feature/semantic-evaluation-jev...origin/feature/semantic-evaluation-jev\n M .github/carl/current-pr-contract.md\n M ARCHITECTURE.md\n M CLI.md\n M ROADMAP.md\n?? ASSESSMENT.md\n?? cmd/carl-assessment-challenge/\n?? internal/assessment/\n?? internal/pack/snapshot.go\n",
+    "workspace": "not_a_git_repository"
+  },
+  "historical_evidence": {
+    "adapter_qualification_v1": {
+      "files": 104,
+      "unchanged": true
+    },
+    "carl_jev_cli_investigation_v1": {
+      "files": 119,
+      "unchanged": true
+    },
+    "execution_dry_run_v2": {
+      "files": 27547,
+      "unchanged": true
+    },
+    "independent_forensic_review_v1": {
+      "files": 890,
+      "unchanged": true
+    },
+    "integration_readiness_v1": {
+      "files": 920,
+      "unchanged": true
+    },
+    "path_b_validation_v1": {
+      "files": 2013,
+      "unchanged": true
+    }
+  },
+  "historical_plans": {
+    "execution_plan_v2.json": "6ac2b63b04f002e0a93d9bcb2cd86c8ffa8880fc99b02977e0416a453dfff62a",
+    "integration_readiness_v1/execution_plan_v3.json": "6d24e77593e59fb769d234f6b56294c79efef8924b7c1d3cc575029c63172984"
+  },
+  "path_a": {
+    "after_sha256": "b34696d54d0b9c910d48c9adbe0155f825617d8e4c8981e58a2f50b5d0868428",
+    "all_protected_Go_sources_unchanged": true,
+    "before_sha256": "b34696d54d0b9c910d48c9adbe0155f825617d8e4c8981e58a2f50b5d0868428",
+    "installed_binary": "/home/prometheus/bin/carl-jev",
+    "protected_Go_sources": 65,
+    "python_CarlJEVAdapter_after_sha256": "12e44fc422accc28c85fa6e5a332c695c2495edc9142fa932633204840b65659",
+    "python_CarlJEVAdapter_before_sha256": "12e44fc422accc28c85fa6e5a332c695c2495edc9142fa932633204840b65659"
+  },
+  "primary_inputs": {
+    "actual_archive_reopened_and_verified": true,
+    "all_members_match": true,
+    "archive_sha256": "a3fe94069009f328b0a46bb52a7ff52d2c2bedfcd0eb3babe360eea1c884cc21",
+    "distinct_input_hashes": 108,
+    "identities": 135
+  },
+  "producer_sha256": "1480db7b357ba65b4dac58856b1b637f35e7f7da6d684b82aaa49040b19b7394",
+  "roots": {
+    "carl": {
+      "approved_additions": [
+        "internal/assessment/provider.go",
+        "internal/assessment/remediation_test.go",
+        "internal/assessment/testdata/systemone_historical.json",
+        "internal/assessment/testdata/systemone_responses.json"
+      ],
+      "approved_source_or_documentation_changes": [
+        ".github/carl/current-pr-contract.md",
+        "ARCHITECTURE.md",
+        "ASSESSMENT.md",
+        "CLI.md",
+        "ROADMAP.md",
+        "internal/assessment/json.go",
+        "internal/assessment/live.go",
+        "internal/assessment/policy.go",
+        "internal/assessment/receipt.go"
+      ],
+      "baseline_entries": 198,
+      "baseline_inventory_sha256": "9eaef59faebd87ae62b6417f0e75bc2d84d9fad8481b2932fd2daf28b1b053d6",
+      "missing": [],
+      "unchanged_entries": 189,
+      "unexpected_changes": []
+    },
+    "workspace": {
+      "approved_additions": [
+        "phase2/software.py",
+        "tests/test_remediation.py"
+      ],
+      "approved_source_or_documentation_changes": [
+        "INTEGRATION.md",
+        "phase2/adapters.py",
+        "phase2/adapters_v2.py",
+        "phase2/core.py",
+        "phase2/engine.py",
+        "phase2/integration.py",
+        "phase2/isolation.py",
+        "phase2/isolation_controls.py",
+        "phase2/loopback_provider.py",
+        "phase2/readiness.py",
+        "tests/test_integration.py"
+      ],
+      "baseline_entries": 35835,
+      "baseline_inventory_sha256": "065d40799b3afa6d0fcb8c1ddc10637934d49e2fd58d1de3c406db696a0f19be",
+      "missing": [],
+      "unchanged_entries": 35824,
+      "unexpected_changes": []
+    }
+  },
+  "schema": "mmmtap-preservation-checks-v1"
+}

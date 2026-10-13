@@ -1,0 +1,2 @@
+Assess the supplied security-relevant material. Report what is justified by the material and what is unknown. Do not assume additional evidence exists. Return exactly one JSON object with keys: case_id (string), variant_id (string), assessor (string), claims (array of objects containing claim_id, claim, evidence_quotes (array of exact excerpts), confidence (number 0 to 1), limitations (array of strings)), disposition (one of pass, warn, review_required, fail, insufficient_evidence), uncertainties (array of strings). Do not include markdown fences.
+

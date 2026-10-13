@@ -1,0 +1,357 @@
+Commit: docs: document JFrog Boost and Antigravity support
+Commit SHA: e725f6f5e89a0225b79a033dbc8b21219179f361
+
+diff --git a/.github/carl/current-pr-contract.md b/.github/carl/current-pr-contract.md
+index 05efad6..1413b02 100644
+--- a/.github/carl/current-pr-contract.md
++++ b/.github/carl/current-pr-contract.md
+@@ -1,4 +1,4 @@
+-<!-- version: 1.0.1 -->
++<!-- version: 1.0.4 -->
+ # Current PR Contract
+ 
+ ## Contract status
+@@ -7,197 +7,111 @@ Complete
+ 
+ ## Goal
+ 
+-Establish whether the current `main` branch is genuinely ready for the
+-`v1.0.0-rc.1` release candidate, close only demonstrated release-blocking
+-gaps, and leave auditable compatibility, lifecycle, distribution, and
+-release-pipeline evidence without creating a tag or publishing a release.
+-
+-## Previous contract status
+-
+-The enterprise-example adoption contract was completed by PR #44. It is
+-historical evidence, not active authority, and is superseded for this task.
+-Its durable opt-in and fail-safe adoption semantics remain binding through
+-memory, documentation, tests, and current repository behaviour.
++Document cARL's interoperability configuration with JFrog Boost v0.14.4 and
++later, preserving canonical governance artefacts from Boost file optimisation
++while allowing other Boost capabilities to remain enabled. Promote Antigravity
++to production support based on successful native validation and keep CLI,
++tests, and documentation consistent.
+ 
+ ## Non-goals
+ 
+-- No new product capability, command, TUI, policy IR, Pack Phase 7 publishing
+-  model, marketplace, or schema redesign.
+-- No support-tier promotion without native-harness execution evidence.
+-- No tag, GitHub Release, Homebrew publication, or WinGet submission.
+-- No change to release secrets or weakening of validation.
+-- No byte-for-byte stability promise for human-readable output or prose.
+-- No claim that cARL exposes hidden model reasoning or proves perfect
+-  instruction compliance.
++- Do not add a runtime or build dependency on JFrog Boost.
++- Do not change cARL policy evaluation or its trust boundary.
++- Do not disable Boost globally or claim a partnership, endorsement,
++  certification, or joint support.
++- Do not modify embedded assets, harness adapters, or unrelated
++  documentation.
+ 
+ ## Approved scope
+ 
+-- Release-readiness governance and prompt-as-code artefacts under
+-  `.github/carl/`.
+-- A durable v1 compatibility policy.
+-- Release-readiness evidence and `v1.0.0-rc.1` prerelease notes.
+-- Release-facing documentation: `README.md`, `CLI.md`, `ARCHITECTURE.md`,
+-  `DISTRIBUTION.md`, `ROADMAP.md`, and directly related documentation.
+-- Tests, scripts, embedded assets, build metadata, GoReleaser configuration,
+-  and release workflows only when a demonstrated release blocker requires a
+-  narrowly scoped correction.
+-- Generated repository map and reconciled durable memory after final file
+-  changes.
+-- Branch, commit, push, and draft pull-request metadata for this readiness
+-  change.
++- `.github/carl/current-pr-contract.md` and `.github/carl/memory.md`.
++- `README.md`, `CLI.md`, and `ARCHITECTURE.md` for Boost compatibility and
++  Antigravity's production support status.
++- `internal/harness/harness.go` and focused tests in
++  `internal/harness/harness_test.go` and `internal/version/version_test.go`
++  for the Antigravity support tier.
++- Create a branch, commit the approved scoped changes, push it, and open a
++  pull request.
++- Preserve unrelated working-tree changes outside these paths.
+ 
+ ## Forbidden scope
+ 
+-- Do not add major commands, a TUI, Pack Phase 7, a marketplace, or a new
+-  policy intermediate representation.
+-- Do not change a schema unless an observed release blocker cannot be fixed
+-  compatibly.
+-- Do not weaken validation, path safety, provenance, conflict handling,
+-  runtime ownership boundaries, or release failure behaviour.
+-- Do not alter secret values or expose secret material.
+-- Do not promote Cursor or Antigravity beyond theoretical support without
+-  native-harness evidence.
+-- Do not rewrite user-owned policy, provenance, memory, or profile state.
+-- Do not modify unrelated local files.
+-- Do not create or move a tag, publish a GitHub Release, update Homebrew, or
+-  submit WinGet manifests.
+-
+-## Compatibility constraints
+-
+-- Stable v1 contracts must cover documented commands and semantics, documented
+-  exits, schema-versioned JSON, runtime/pack/profile/registry/provenance state,
+-  repository-map schema, pack metadata, policy composition, ownership
+-  boundaries, and the documented lifecycle commands.
+-- Additive JSON fields are compatible unless an individual contract forbids
+-  them. Removing a field or changing its meaning requires a schema-version
+-  transition.
+-- User-owned policy files are never silently replaced. Repair remains limited
+-  to declared repairable runtime-owned assets.
+-- Intentional breaking changes to stable public contracts require a new major
+-  version.
+-- Human-readable formatting, undeclared wording/order, documentation prose,
+-  compatible bundled pack revisions, implementation details, and explicitly
+-  experimental/theoretical behaviour are not byte-for-byte stable.
++- Do not rewrite or transform `.github/carl/**` artefacts beyond this active
++  contract and the durable memory correction.
++- Do not change JFrog Boost configuration outside documentation examples.
++- Do not alter cARL's canonical governance authority or harness adapter
++  semantics.
++- Do not rewrite historical completed plans; current support statements in
++  durable memory should reflect user-confirmed production status.
++- Do not stage or commit changes outside the approved scope.
++- Do not change unrelated local files.
+ 
+ ## Architectural constraints
+ 
+-- Use release-equivalent host binaries built with the repository's actual
+-  GoReleaser ldflags and `v1.0.0-rc.1` provenance model.
+-- Run destructive lifecycle scenarios only in isolated temporary
+-  repositories, never in the source repository.
+-- Obtain or build the v0.4.3 state from the authoritative tag or release
+-  asset; do not simulate upgrade evidence.
+-- Preserve exact profile-absent/default-profile parity and the documented
+-  fail-safe enterprise adoption sequence.
+-- Harness adapters remain thin routes to the shared loader. Local
+-  detection/sync evidence is distinct from native-harness production evidence.
+-- Repository-map and reconcile output remain deterministic and
+-  evidence-scoped.
+-- Release-pipeline claims must be classified as statically validated,
+-  previously production-proven, or requiring `v1.0.0-rc.1` execution evidence.
++- cARL remains the authority for its governance and policy.
++- `.github/carl/**` contains canonical governance/control-plane artefacts and
++  must not be a Boost file-optimisation target.
++- Harness adapters are projections/loaders, not canonical governance truth.
++- Boost remains an independent optional tool; its path-ignore configuration
++  defines an interoperability boundary, not a runtime integration.
++- Describe Boost path-ignore support as available from v0.14.4 onward.
+ 
+ ## Security constraints
+ 
+-- Use no live customer, tenant, production, or secret data in fixtures.
+-- Do not print, inspect, modify, or infer release secret values.
+-- Registry checksum claims remain limited to integrity against the configured
+-  index, not publisher identity or a signing trust root.
+-- Adoption, repair, pack installation, map, reconcile, and harness tests must
+-  preserve repository path and symlink trust boundaries.
+-- Release automation must fail closed when required Apple credentials are
+-  absent and must not report partial publication as complete success.
++- Do not suggest disabling Boost globally.
++- Document the narrow repo-relative `.github/carl/**` optimisation exclusion
++  and retain other Boost features, including normal CLI filtering, file
++  optimisation, MCP optimisation, and code indexing.
++- Do not claim that Boost becomes part of cARL's policy engine or trust
++  
+
+...[TRUNCATED BY kev_paces_v2.1.py]...
+
+ical until native-harness
++validation exists.
+ 
+ ---
+ 
+@@ -113,10 +116,11 @@ Agent frameworks (LangChain, AutoGen, CrewAI, etc.) are code. They orchestrate a
+ 
+ cARL is behavioural governance. It does not execute code. It shapes how an
+ agent reasons, plans, and acts inside an existing coding-agent harness.
+-GitHub Copilot, Claude Code, and Codex are production-supported. No new
+-runtime dependencies. No code to run. Cursor and Antigravity adapters are
+-implemented and synchronised, but remain theoretical until they are tested
+-end-to-end in their native harnesses.
++GitHub Copilot, Claude Code, Codex, and Antigravity are production-supported.
++Antigravity required no adapter implementation changes — the existing adapter
++was successfully validated natively. No new runtime dependencies. No code to
++run. Cursor adapters are implemented and synchronised, but remain theoretical
++until they are tested end-to-end in their native harnesses.
+ 
+ | | Agent Frameworks | cARL |
+ |---|---|---|
+@@ -126,6 +130,71 @@ end-to-end in their native harnesses.
+ | **Concern** | Orchestration and tooling | Behavioural governance and discipline |
+ | **Language coupling** | Yes | Language-agnostic |
+ 
++## JFrog Boost compatibility
++
++cARL supports JFrog Boost v0.14.4+ when `.github/carl/**` is excluded from
++Boost file optimisation. Path-ignore support is available from JFrog Boost
++v0.14.4 onward. See the [JFrog Boost repository](https://github.com/jfrog/boost)
++and [JFrog Boost documentation](https://boost.jfrog.com/) for Boost setup and
++its other capabilities.
++
++cARL defines governance and policy; Boost optimises agent context and tool
++output, helping reduce token and context use through capabilities such as CLI
++filtering and file optimisation. The `.github/carl/**` directory contains
++cARL's canonical governance and control-plane artefacts. They must remain
++authoritative and must not be rewritten or transformed by a context
++optimisation layer. Harness adapters, including
++`.github/copilot-instructions.md`, `CLAUDE.md`, `AGENTS.md`,
++`.cursor/rules/carl.mdc`, and `.agents/rules/carl.md`, are projections/loaders,
++not the canonical source of governance truth. Excluding `.github/carl/**`
++creates a clear ownership boundary: cARL owns its governance artefacts, while
++Boost can continue optimising the rest of the repository.
++
++You do **not** need to disable JFrog Boost globally. Configure the path ignore
++in `~/.boost/config.toml`:
++
++```toml
++[feature_flags."boost-path-ignore"]
++user = true
++
++[ignore]
++optimize = [
++  ".github/carl/**"
++]
++```
++
++File optimisation itself can remain enabled:
++
++```toml
++[feature_flags."boost-files-optimization"]
++user = true
++```
++
++Boost path matching is repo-relative, so `.github/carl/**` protects the
++canonical cARL directory in each repository while leaving the rest of each
++repository available for optimisation. You can continue to use Boost's normal
++CLI filtering, file optimisation, MCP optimisation, code indexing, and other
++capabilities.
++
++From inside a cARL-enabled repository, run `boost doctor` to verify the
++effective configuration. The output should include concepts like:
++
++```text
++Path ignore ([ignore] optimize)
++-----------------------------
++repo root: /path/to/repo
++  optimize: .github/carl/**
++
++Feature flags (effective)
++---------------------------
++boost-files-optimization: true
++boost-path-ignore: true
++```
++
++This is an optional interoperability configuration, not a runtime dependency:
++cARL does not depend on JFrog Boost, and Boost is not part of cARL's trust
++boundary or policy engine.
++
+ ---
+ 
+ ## Repository Structure
+@@ -549,8 +618,8 @@ See [CLI.md](CLI.md) for command details and
+ 
+ Fork or copy into your GitHub account or organisation. Run
+ `carl harness sync` to generate all five adapters from the canonical embedded
+-artefacts. Copilot, Claude Code, and Codex are production-supported; Cursor and
+-Antigravity are implemented but await native-harness validation.
++artefacts. Copilot, Claude Code, Codex, and Antigravity are production-supported;
++Cursor is implemented but awaits native-harness validation.
+ 
+ ### Copying packs into another repository
+ 
+diff --git a/internal/harness/harness.go b/internal/harness/harness.go
+index e6f33c0..b7b7f16 100644
+--- a/internal/harness/harness.go
++++ b/internal/harness/harness.go
+@@ -103,7 +103,7 @@ var knownAdapters = []Adapter{
+ 	{
+ 		ID:            "antigravity",
+ 		Name:          "Antigravity",
+-		Support:       "theoretical",
++		Support:       "production",
+ 		DetectionFile: ".agents/rules/carl.md",
+ 		Files: []AdapterFile{
+ 			{Path: loaderPath, SourceFile: loaderPath},
+diff --git a/internal/harness/harness_test.go b/internal/harness/harness_test.go
+index 2e7e489..96c2805 100644
+--- a/internal/harness/harness_test.go
++++ b/internal/harness/harness_test.go
+@@ -127,7 +127,8 @@ func TestHarness_List_SupportStatus(t *testing.T) {
+ 		"copilot       GitHub Copilot       production",
+ 		"claude        Claude Code          production",
+ 		"codex         Codex                production",
+-		"3 production, 0 experimental, 2 theoretical (5 total).",
++		"antigravity   Antigravity          production",
++		"4 production, 0 experimental, 1 theoretical (5 total).",
+ 	} {
+ 		if !strings.Contains(output, want) {
+ 			t.Errorf("expected %q in list output; got:\n%s", want, output)
+@@ -305,13 +306,14 @@ func TestHarness_Run_Status(t *testing.T) {
+ }
+ 
+ // TestHarness_Adapters_Production verifies the exported production registry.
++// Copilot, Claude Code, Codex, and Antigravity are all production-validated.
+ func TestHarness_Adapters_Production(t *testing.T) {
+ 	adapters := harness.Adapters()
+ 	index := make(map[string]harness.Adapter, len(adapters))
+ 	for _, adapter := range adapters {
+ 		index[adapter.ID] = adapter
+ 	}
+-	for _, id := range []string{"copilot", "claude", "codex"} {
++	for _, id := range []string{"copilot", "claude", "codex", "antigravity"} {
+ 		adapter, ok := index[id]
+ 		if !ok {
+ 			t.Errorf("adapter %q not found in registry", id)
+@@ -324,16 +326,17 @@ func TestHarness_Adapters_Production(t *testing.T) {
+ 			t.Errorf("%s.DetectionFile must not be empty", id)
+ 		}
+ 	}
+-	wantProduction := []string{"copilot", "claude", "codex"}
++	wantProduction := []string{"copilot", "claude", "codex", "antigravity"}
+ 	gotProduction := harness.ProductionAdapterIDs()
+ 	if !reflect.DeepEqual(gotProduction, wantProduction) {
+ 		t.Errorf("ProductionAdapterIDs() = %v; want %v", gotProduction, wantProduction)
+ 	}
+ }
+ 
+-// TestHarness_Adapters_TheoreticalAdapters verifies Cursor and Antigravity.
++// TestHarness_Adapters_TheoreticalAdapters verifies Cursor is the only theoretical adapter.
++// Antigravity was promoted to production following successful native end-to-end validation.
+ func TestHarness_Adapters_TheoreticalAdapters(t *testing.T) {
+-	theoretical := []string{"cursor", "antigravity"}
++	theoretical := []string{"cursor"}
+ 	adapters := harness.Adapters()
+ 	index := make(map[string]harness.Adapter, len(adapters))
+ 	for _, a := range adapters {
+@@ -349,7 +352,7 @@ func TestHarness_Adapters_TheoreticalAdapters(t *testing.T) {
+ 			t.Errorf("%s.Support = %q; want 'theoretical'", id, a.Support)
+ 		}
+ 	}
+-	for _, id := range []string{"claude", "codex"} {
++	for _, id := range []string{"claude", "codex", "antigravity"} {
+ 		if index[id].Support == "theoretical" {
+ 			t.Errorf("%s must not remain theoretical", id)
+ 		}
+diff --git a/internal/version/version_test.go b/internal/version/version_test.go
+index b80b36e..fca9f7c 100644
+--- a/internal/version/version_test.go
++++ b/internal/version/version_test.go
+@@ -166,6 +166,7 @@ func TestVersion_InstalledRuntimeAndStatusCurrent(t *testing.T) {
+ 		"  copilot       production   .github/copilot-instructions.md",
+ 		"  claude        production   CLAUDE.md",
+ 		"  codex         production   AGENTS.md",
++		"  antigravity   production   .agents/rules/carl.md",
+ 	} {
+ 		if !strings.Contains(output, want) {
+ 			t.Fatalf("missing %q in output:\n%s", want, output)
+
+
+Additional metadata:
+- Change ticket: CHG-TEST-0001
+- Environment: test
+- Owner: application-team
+- Deployment window: scheduled

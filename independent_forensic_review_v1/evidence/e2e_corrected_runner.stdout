@@ -1,0 +1,41 @@
+{
+  "first": {
+    "mode": "mock",
+    "selected_jobs": 153,
+    "completed_or_preserved_jobs": 153,
+    "new_checkpoints": 153,
+    "preserved_checkpoints": 0,
+    "live_call_reservations": 0,
+    "status_counts": {
+      "mock_ok": 153
+    },
+    "complete": true,
+    "research_conclusions": "none",
+    "independent_adjudication": "not_performed"
+  },
+  "resume": {
+    "mode": "mock",
+    "selected_jobs": 153,
+    "completed_or_preserved_jobs": 153,
+    "new_checkpoints": 0,
+    "preserved_checkpoints": 153,
+    "live_call_reservations": 0,
+    "status_counts": {
+      "mock_ok": 153
+    },
+    "complete": true,
+    "research_conclusions": "none",
+    "independent_adjudication": "not_performed"
+  },
+  "checkpoint_bytes_unchanged": true,
+  "records_verified": 153,
+  "export": {
+    "exported_pairs": 63,
+    "omitted_pairs": 2772,
+    "public_directory": "/home/prometheus/git/mmmtap_phase2/independent_forensic_review_v1/evidence/reproduced_blinded",
+    "private_key_file": "/home/prometheus/git/mmmtap_phase2/independent_forensic_review_v1/evidence/reproduced_private_key.json",
+    "correctness": "not_scored"
+  },
+  "actual_model_calls": 0,
+  "native_systemone_calls": 0
+}

@@ -1,0 +1,33 @@
+{
+  "repo": "/home/prometheus/git/mmmtap-benign-control",
+  "base": "26593c527c2aea8ff77087182c6423914f267831",
+  "head": "175d29548035fb02e920c55e53a21f5b315982c1",
+  "diff_sha256": "12232eb717220e0c1b4e262e4389c494a8405de0438ab452e6f0f9fd6d6a50d5",
+  "paths": [
+    "main.tf"
+  ],
+  "model": "jev-latest",
+  "bridge_boolean_threshold": 0.5,
+  "timestamp": "2026-10-10T15:09:24.506622+00:00",
+  "bridge_stats": {
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 875,
+      "output_tokens": 175
+    },
+    "question_ids": [
+      "security_sensitive",
+      "scope_expansion",
+      "architectural_change",
+      "authentication_or_authorisation_change",
+      "trust_boundary_change",
+      "security_control_reduction",
+      "breaking_change",
+      "new_external_dependency",
+      "human_review_warranted"
+    ]
+  },
+  "execution_seconds": 0.475,
+  "decision": "pass",
+  "findings_count": 0
+}

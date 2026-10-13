@@ -1,0 +1,78 @@
+{
+  "authorised_to_deploy": false,
+  "decision": "block_expedite",
+  "evidence": [
+    {
+      "assessment": {
+        "exit_code": 1,
+        "failed": 8,
+        "findings": [
+          {
+            "check_id": "CKV_AZURE_190",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_33",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_206",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_59",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_1",
+            "file_path": "/main.tf",
+            "resource": "azurerm_linux_virtual_machine.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_50",
+            "file_path": "/main.tf",
+            "resource": "azurerm_linux_virtual_machine.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_149",
+            "file_path": "/main.tf",
+            "resource": "azurerm_linux_virtual_machine.fixture"
+          },
+          {
+            "check_id": "CKV_AZURE_36",
+            "file_path": "/main.tf",
+            "resource": "azurerm_storage_account_network_rules.fixture"
+          }
+        ],
+        "passed": 15,
+        "reason": "findings_present",
+        "skipped": 0,
+        "state": "violated",
+        "stderr_tail": "",
+        "tool": "checkov",
+        "version_constraint": ">=3,<4"
+      },
+      "capability": "iac.checkov",
+      "input_binding_sha256": "1e97997b366d3fc52e1b95ce6801d1411a44f7c708cc02beb74b3c3be2e28d09",
+      "input_files": {
+        "main.tf": "46e23e8839add4090420d4cbb3c6262a935a3a17ea9bb34ae4ce0bdbd8b32f82"
+      },
+      "limits": [
+        "source_scan_not_plan_or_deployment",
+        "policy_coverage_not_proven"
+      ],
+      "origin": "local_cli"
+    }
+  ],
+  "model_calls": 0,
+  "protocol": "P1-012",
+  "registry_sha256": "70d1bfc98d763e3084d54bd6740d439bf7e76e72a63dc4f8c4860b458c9e2af5",
+  "source": "/tmp/mmmtap-p1-012c-a6cnxt3g",
+  "source_hashes": {
+    "main.tf": "46e23e8839add4090420d4cbb3c6262a935a3a17ea9bb34ae4ce0bdbd8b32f82"
+  }
+}

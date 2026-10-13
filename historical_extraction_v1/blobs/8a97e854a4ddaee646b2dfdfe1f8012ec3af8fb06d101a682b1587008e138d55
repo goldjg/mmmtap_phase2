@@ -1,0 +1,24 @@
+# MMMTAP P1-022 — back to the thesis
+
+**Status:** Protocol and offline corpus inventory only. **Not** an executable model-calling harness. No hosted calls, credentials, Azure resources or security-action automation.
+
+Read `PREREGISTRATION.md` in full. It separates verified historical evidence, forward-frozen discovery material, adjudication, correction arms and regression checks. The historic corpus has already featured in MMMTAP and must not be described as untouched.
+
+### On Gaia
+
+```bash
+cd ~/git
+unzip -t ~/mmmtap_p1_022.zip || exit 1
+unzip -n ~/mmmtap_p1_022.zip || exit 1
+python3 -m py_compile mmmtap_p1_022/inventory.py
+python3 mmmtap_p1_022/inventory.py \
+  --source ~/mmmtap_p1_014_verified_inputs.zip \
+  --out ~/git/mmmtap_p1_022/p1_022_inventory.json
+```
+
+If your original archive is elsewhere, set `--source` to its **existing** location. This only audits 15×9 corpus members, checks recovery metadata and writes a reproducible five/ten case partition. Source ZIP untouched.
+
+**Next stage gate:** Inspect actual Phase 0 code contracts and historical labels, obtain independent adjudication rubric and freeze execution prompts before implementing/starting a call. We should not burn inference credits yet. If no independently verified susceptible cases exist, report that and run only a separate regression-introduction test.
+
+### Portability fix (v0.1.1)
+The packaged frozen inventory records the author's local absolute source path. `inventory.py` now ignores only that location when comparing an existing inventory. The source ZIP SHA-256, all 135 input hashes, counts, partition and all other metadata remain strict. It never overwrites the frozen inventory.

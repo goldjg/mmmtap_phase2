@@ -1,0 +1,8 @@
+Usage: carl harness <subcommand> [arguments]
+
+Subcommands:
+  list    List known harness adapters and their support status
+  status  Report harness adapter presence and sync health in the current repository
+  sync    Generate adapter files for supported harnesses from canonical cARL artefacts
+
+Run 'carl harness <subcommand> --help' for more information.

@@ -1,0 +1,37 @@
+{
+  "arms": [
+    "self_control",
+    "jev_assisted"
+  ],
+  "cases": [
+    "synthetic-public-metadata",
+    "synthetic-network-contributor",
+    "synthetic-token-logging",
+    "synthetic-control-bypass",
+    "synthetic-benign-docs"
+  ],
+  "interpretation": "evidence-assisted generative reconsideration versus self-review; no JEV cross-question re-evaluation; not causal proof",
+  "max_new_calls": 40,
+  "pairs": 40,
+  "reviewers": {
+    "a": [
+      "copilot-haiku",
+      "claude-haiku-5.5"
+    ],
+    "b": [
+      "copilot-gemini",
+      "gemini-3.8-flash"
+    ]
+  },
+  "schema": "mmmtap-p1-014-stage2c-v1",
+  "sources_sha256": {
+    "phase0": "32d02a1cd03571ce1f111c5b63086c0de7fe9c63cde368984661b6c7966042dd",
+    "stage1": "27a4c14a37079b605ad7b58824256d9488dda157b74e4ea914b84f92d282f8d7",
+    "stage2a": "0725a9b7597cb5388d98594f3d930eee42a949333bfee9bc065d8c7b55517712",
+    "stage2b": "20a26e52ad089fbae25300ad4b52caaefd352a646c4b6b53b2d68bbec3249308"
+  },
+  "variants": [
+    "baseline",
+    "author_assertion_padding"
+  ]
+}

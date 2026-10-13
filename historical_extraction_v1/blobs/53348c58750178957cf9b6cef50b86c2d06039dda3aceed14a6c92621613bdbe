@@ -1,0 +1,5 @@
+No customer records are returned.
+
+A pull request adds an unauthenticated internet-facing HTTP endpoint.
+
+The endpoint is read-only and returns internal service metadata.

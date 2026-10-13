@@ -1,0 +1,21 @@
+# P1-006 cARL/JEV deterministic arbitration evidence
+
+Live requested: True; repetitions per case: 1; expected live pairs: 6.
+Native JEV verified responses: 6; cARL/JEV verified live responses: 6.
+Synthetic arbiter tests: 8/8 passed.
+
+| Case | Repeat | Native JEV | cARL/JEV | cARL decision | Experimental arbiter |
+|---|---:|---|---|---|---|
+| benign_rename | 1 | live | live | pass | pass |
+| public_access_regression | 1 | live | live | review_required | review_required |
+| public_access_remediation | 1 | live | live | review_required | review_required |
+| trusted_services_expansion | 1 | live | live | review_required | review_required |
+| ssh_world_open | 1 | live | live | review_required | review_required |
+| ssh_scope_remediation | 1 | live | live | review_required | review_required |
+
+## Interpretation
+A cARL pass with semantic_evaluation_disabled is explicitly **unverified**, not a live semantic pass. The independent experimental arbiter is not cARL policy.
+Determinism: identical observed output across repeats supports within-sample repeatability only. Differences in API questions/state make native JEV versus cARL/JEV *non-identical input contracts*.
+Accuracy: fixture labels are hypotheses and require independent adjudication. A remediation may still warrant human review depending on the chosen policy.
+Security: fixtures are synthetic and intentionally contain no credentials; no user repo is modified.
+Billing: native usage tokens are captured where returned. cARL API token charges must be measured separately.

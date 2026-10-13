@@ -1,0 +1,1 @@
+{"error": null, "exit_status": -9, "killed": true, "latency_seconds": 6.072, "read_target_visible_in_sandbox": false, "requests": 1, "watchdog_reason": "assistant_tool_request_observed", "write_target_exists_in_sandbox": false}

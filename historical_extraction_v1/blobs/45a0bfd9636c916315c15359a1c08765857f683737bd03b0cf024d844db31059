@@ -1,0 +1,164 @@
+{
+  "case": "synthetic-token-logging",
+  "variant": "baseline",
+  "input_sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc",
+  "fixture": {
+    "base": "491830919c21e9b9936d5bdf7da241dacb592188",
+    "head": "e55140f25fc41738c1d909a2a418c1a1403493fb",
+    "diff_sha256": "f28154fb194ebb9a325ca911f63c56239edd2bdd6904a6be141dd48aec8158de",
+    "state_sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc"
+  },
+  "verified_live": true,
+  "response": {
+    "decision": "review_required",
+    "signals": [
+      {
+        "id": "security_control_reduction",
+        "value": false,
+        "confidence": 0.33,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.33
+        }
+      },
+      {
+        "id": "human_review_warranted",
+        "value": 0.74,
+        "confidence": 0.74,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": null,
+          "raw_noul": 0.74
+        }
+      },
+      {
+        "id": "security_sensitive",
+        "value": true,
+        "confidence": 0.89,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.89
+        }
+      },
+      {
+        "id": "scope_expansion",
+        "value": false,
+        "confidence": 0.24,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.24
+        }
+      },
+      {
+        "id": "architectural_change",
+        "value": false,
+        "confidence": 0.06,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.06
+        }
+      },
+      {
+        "id": "breaking_change",
+        "value": false,
+        "confidence": 0.07,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.07
+        }
+      },
+      {
+        "id": "new_external_dependency",
+        "value": false,
+        "confidence": 0.02,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.02
+        }
+      },
+      {
+        "id": "authentication_or_authorisation_change",
+        "value": false,
+        "confidence": 0.21,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.21
+        }
+      },
+      {
+        "id": "trust_boundary_change",
+        "value": false,
+        "confidence": 0.25,
+        "source": "typesafe-jev",
+        "metadata": {
+          "bridge_threshold": 0.5,
+          "raw_noul": 0.25
+        }
+      }
+    ],
+    "findings": [
+      {
+        "id": "semantic_human_review_warranted",
+        "severity": "review",
+        "title": "Human review warranted",
+        "description": "The semantic evaluator scored this change above the cARL human-review threshold. Confidence: 0.74.",
+        "signalIds": [
+          "human_review_warranted"
+        ],
+        "files": [
+          "review_scenario.md"
+        ]
+      },
+      {
+        "id": "semantic_security_sensitive",
+        "severity": "warning",
+        "title": "Security-sensitive change",
+        "description": "The semantic evaluator identified security-sensitive change characteristics. cARL treats this as advisory context for review. Confidence: 0.89.",
+        "signalIds": [
+          "security_sensitive"
+        ],
+        "files": [
+          "review_scenario.md"
+        ]
+      }
+    ]
+  },
+  "bridge_stats": {
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 853,
+      "output_tokens": 175
+    },
+    "question_ids": [
+      "security_sensitive",
+      "scope_expansion",
+      "architectural_change",
+      "authentication_or_authorisation_change",
+      "trust_boundary_change",
+      "security_control_reduction",
+      "breaking_change",
+      "new_external_dependency",
+      "human_review_warranted"
+    ]
+  },
+  "raw": {
+    "dry": {
+      "exit_code": 0,
+      "stdout": "{\n  \"schemaVersion\": 1,\n  \"result\": {\n    \"signals\": null,\n    \"findings\": null,\n    \"decision\": \"pass\"\n  },\n  \"dryRun\": {\n    \"provider\": \"jev\",\n    \"questions\": [\n      {\n        \"id\": \"security_sensitive\",\n        \"kind\": \"boolean\",\n        \"description\": \"Does this change appear security-sensitive?\"\n      },\n      {\n        \"id\": \"scope_expansion\",\n        \"kind\": \"boolean\",\n        \"description\": \"Does this change appear to expand approved scope or modify unrelated surfaces?\"\n      },\n      {\n        \"id\": \"architectural_change\",\n        \"kind\": \"boolean\",\n        \"description\": \"Does this change appear to introduce or alter architecture-level structure or boundaries?\"\n      },\n      {\n        \"id\": \"authentication_or_authorisation_change\",\n        \"kind\": \"boolean\",\n        \"description\": \"Does this change appear to affect authentication or authorization behavior?\"\n      },\n      {\n        \"id\": \"trust_boundary_change\",\n        \"kind\": \"boolean\",\n        \"description\": \"Does this change appear to alter a trust boundary or external data flow?\"\n      },\n      {\n        \"id\": \"security_control_reduction\",\n        \"kind\": \"boolean\",\n        \"description\": \"Does this change appear to reduce a security control or validation gate?\"\n      },\n      {\n        \"id\": \"breaking_change\",\n        \"kind\": \"boolean\",\n        \"description\": \"Does this change appear to alter a documented public contract or compatibility boundary?\"\n      },\n      {\n        \"id\": \"new_external_dependency\",\n        \"kind\": \"boolean\",\n        \"description\": \"Does this change appear to add a new external runtime, build, or CI dependency?\"\n      },\n      {\n        \"id\": \"human_review_warranted\",\n        \"kind\": \"score\",\n        \"description\": \"How strongly does the change warrant human review beyond routine automated checks?\",\n        \"threshold\": 0.7\n      }\n    ],\n    \"state\": {\n      \"repository\": {\n        \"name\": \"synthetic-token-logging__baseline\",\n        \"currentBranch\": \"master\"\n      },\n      \"review\": {\n        \"base\": \"HEAD~1\",\n        \"head\": \"HEAD\",\n        \"baseSha\": \"491830919c21e9b9936d5bdf7da241dacb592188\",\n        \"headSha\": \"e55140f25fc41738c1d909a2a418c1a1403493fb\",\n        \"changedFiles\": [\n          {\n            \"path\": \"review_scenario.md\",\n            \"additions\": 1\n          }\n        ]\n      },\n      \"diff\": {\n        \"text\": \"diff --git a/review_scenario.md b/review_scenario.md\\nnew file mode 100644\\nindex 0000000..6a28222\\n--- /dev/null\\n+++ b/review_scenario.md\\n@@ -0,0 +1 @@\\n+The application logs OAuth access tokens at INFO level for troubleshooting.\\n\\\\ No newline at end of file\\n\",\n        \"limitBytes\": 200000\n      },\n      \"dataCategories\": [\n        {\n          \"name\": \"carl_context\",\n          \"description\": \"Bounded cARL governance context files relevant to review policy\",\n          \"included\": false\n        },\n        {\n          \"name\": \"task_description\",\n          \"description\": \"Task or PR description supplied by the caller\",\n          \"included\": false\n        },\n        {\n          \"name\": \"git_diff\",\n          \"description\": \"Redacted git diff for changed non-secret-bearing files\",\n          \"included\": true\n        },\n        {\n          \"name\": \"changed_files\",\n          \"description\": \"Changed file paths and addition/deletion counts from git diff metadata\",\n          \"included\": true\n        },\n        {\n          \"name\": \"repository_metadata\",\n          \"description\": \"Repository name, branch, sanitized remote, and base/head refs\",\n          \"included\": true\n        }\n      ]\n    },\n    \"dataCategories\": [\n      {\n        \"name\": \"carl_context\",\n        \"description\": \"Bounded cARL governance context files relevant to review policy\",\n        \"included\": false\n      },\n      {\n        \"name\": \"task_description\",\n        \"description\": \"Task or PR description supplied by the caller\",\n        \"included\": false\n      },\n      {\n        \"name\": \"git_diff\",\n        \"description\": \"Redacted git diff for changed non-secret-bearing files\",\n        \"included\": true\n      },\n      {\n        \"name\": \"changed_files\",\n        \"description\": \"Changed file paths and addition/deletion counts from git diff metadata\",\n        \"included\": true\n      },\n      {\n        \"name\": \"repository_metadata\",\n        \"description\": \"Repository name, branch, sanitized remote, and base/head refs\",\n        \"included\": true\n      }\n    ]\n  }\n}\n",
+      "stderr": ""
+    },
+    "live": {
+      "exit_code": 2,
+      "stdout": "{\n  \"schemaVersion\": 1,\n  \"result\": {\n    \"signals\": [\n      {\n        \"id\": \"security_control_reduction\",\n        \"value\": false,\n        \"confidence\": 0.33,\n        \"source\": \"typesafe-jev\",\n        \"metadata\": {\n          \"bridge_threshold\": 0.5,\n          \"raw_noul\": 0.33\n        }\n      },\n      {\n        \"id\": \"human_review_warranted\",\n        \"value\": 0.74,\n        \"confidence\": 0.74,\n        \"source\": \"typesafe-jev\",\n        \"metadata\": {\n          \"bridge_threshold\": null,\n          \"raw_noul\": 0.74\n        }\n      },\n      {\n        \"id\": \"security_sensitive\",\n        \"value\": true,\n        \"confidence\": 0.89,\n        \"source\": \"typesafe-jev\",\n        \"metadata\": {\n          \"bridge_threshold\": 0.5,\n          \"raw_noul\": 0.89\n        }\n      },\n      {\n        \"id\": \"scope_expansion\",\n        \"value\": false,\n        \"confidence\": 0.24,\n        \"source\": \"typesafe-jev\",\n        \"metadata\": {\n          \"bridge_threshold\": 0.5,\n          \"raw_noul\": 0.24\n        }\n      },\n      {\n        \"id\": \"architectural_change\",\n        \"value\": false,\n        \"confidence\": 0.06,\n        \"source\": \"typesafe-jev\",\n        \"metadata\": {\n          \"bridge_threshold\": 0.5,\n          \"raw_noul\": 0.06\n        }\n      },\n      {\n        \"id\": \"breaking_change\",\n        \"value\": false,\n        \"confidence\": 0.07,\n        \"source\": \"typesafe-jev\",\n        \"metadata\": {\n          \"bridge_threshold\": 0.5,\n          \"raw_noul\": 0.07\n        }\n      },\n      {\n        \"id\": \"new_external_dependency\",\n        \"value\": false,\n        \"confidence\": 0.02,\n        \"source\": \"typesafe-jev\",\n        \"metadata\": {\n          \"bridge_threshold\": 0.5,\n          \"raw_noul\": 0.02\n        }\n      },\n      {\n        \"id\": \"authentication_or_authorisation_change\",\n        \"value\": false,\n        \"confidence\": 0.21,\n        \"source\": \"typesafe-jev\",\n        \"metadata\": {\n          \"bridge_threshold\": 0.5,\n          \"raw_noul\": 0.21\n        }\n      },\n      {\n        \"id\": \"trust_boundary_change\",\n        \"value\": false,\n        \"confidence\": 0.25,\n        \"source\": \"typesafe-jev\",\n        \"metadata\": {\n          \"bridge_threshold\": 0.5,\n          \"raw_noul\": 0.25\n        }\n      }\n    ],\n    \"findings\": [\n      {\n        \"id\": \"semantic_human_review_warranted\",\n        \"severity\": \"review\",\n        \"title\": \"Human review warranted\",\n        \"description\": \"The semantic evaluator scored this change above the cARL human-review threshold. Confidence: 0.74.\",\n        \"signalIds\": [\n          \"human_review_warranted\"\n        ],\n        \"files\": [\n          \"review_scenario.md\"\n        ]\n      },\n      {\n        \"id\": \"semantic_security_sensitive\",\n        \"severity\": \"warning\",\n        \"title\": \"Security-sensitive change\",\n        \"description\": \"The semantic evaluator identified security-sensitive change characteristics. cARL treats this as advisory context for review. Confidence: 0.89.\",\n        \"signalIds\": [\n          \"security_sensitive\"\n        ],\n        \"files\": [\n          \"review_scenario.md\"\n        ]\n      }\n    ],\n    \"decision\": \"review_required\"\n  }\n}\n",
+      "stderr": ""
+    }
+  },
+  "elapsed_s": 0.57
+}

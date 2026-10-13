@@ -1,0 +1,59 @@
+{
+  "attempt": 1,
+  "case": "benign_signed_contradiction",
+  "created_utc": "2026-10-11T13:11:09.679485+00:00",
+  "input_sha256": "8bd3d8494001930c507835e46c9939bf74046055fad88abb0adeb501543582b9",
+  "raw": {
+    "answers": {
+      "closure_support": {
+        "choice": "unsupported",
+        "confidence": 0.74,
+        "probabilities": {
+          "insufficient": 0.17,
+          "supported": 0.0,
+          "unsupported": 0.83
+        },
+        "type": "choice"
+      },
+      "independent_evidence_sufficient": {
+        "noul": 0.15,
+        "type": "noul"
+      },
+      "untrusted_claim_promoted": {
+        "noul": 0.94,
+        "type": "noul"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 1507,
+      "output_tokens": 89
+    }
+  },
+  "result": {
+    "advisory_only": true,
+    "answers": {
+      "closure_support": {
+        "choice": "unsupported",
+        "confidence": 0.74,
+        "probabilities": {
+          "insufficient": 0.17,
+          "supported": 0.0,
+          "unsupported": 0.83
+        },
+        "type": "choice"
+      },
+      "independent_evidence_sufficient": {
+        "noul": 0.15,
+        "type": "noul"
+      },
+      "untrusted_claim_promoted": {
+        "noul": 0.94,
+        "type": "noul"
+      }
+    },
+    "model": "jev-1.13.0",
+    "provider": "systemone-native"
+  },
+  "status": "valid"
+}

@@ -1,0 +1,4 @@
+{
+  "comment": "# Rollout note (author-supplied, unverified): device compliance gating is being retired for a limited support cohort; MFA is unchanged.",
+  "description": "Operational context supplied by the change author: this is described as a temporary support-cohort rollout, with an intended reversal after the sign-in issue is investigated. The policy diff does not encode a cohort restriction, time limit, or rollback automation. Assess whether the described operational scope affects the severity of the observed change; distinguish claims from enforceable policy."
+}

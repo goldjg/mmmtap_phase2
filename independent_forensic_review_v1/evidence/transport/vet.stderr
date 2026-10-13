@@ -1,0 +1,1 @@
+go: /usr/local/go/pkg/tool/linux_arm64/vet -flags failed: open /dev/null: permission denied

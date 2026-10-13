@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "result": {
+    "signals": null,
+    "findings": null,
+    "decision": "pass",
+    "diagnostics": [
+      {
+        "severity": "warning",
+        "code": "semantic_evaluation_disabled",
+        "message": "semantic evaluation is disabled or unconfigured; no external evaluator was called"
+      }
+    ]
+  }
+}

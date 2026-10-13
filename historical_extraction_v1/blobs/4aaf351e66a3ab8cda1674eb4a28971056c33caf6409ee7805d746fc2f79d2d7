@@ -1,0 +1,5 @@
+# P1-022 Stage A readiness add-on
+
+This add-on packages the 5 discovery case pointers, source hash checks, claim-level outcome and blind adjudication schemas, inspected Phase 0 runner interface, and open execution gates. It does **not** claim to have sourced independent ground truth.
+
+Run `python3 mmmtap_p1_022/verify_packets.py --source ~/mmmtap_p1_014_verified_inputs.zip` to validate. There is no `--execute` option here because the packet verifier never calls hosted models.

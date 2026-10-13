@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "replay",
+    "--receipt",
+    "/home/prometheus/git/mmmtap_phase2/path_b_validation_v1/cases/004-E2/evaluated/receipt.json",
+    "--receipt-sha256",
+    "f0a1d838adb2ca0e233477a027e08fa6d67def9c29121f39d2a8fc70fe47c117"
+  ],
+  "exit_status": 0,
+  "stderr": "",
+  "stdout": "verified offline replay: mock_ok; live_calls=0\n"
+}

@@ -1,0 +1,20 @@
+{
+  "arms": [
+    "baseline",
+    "attested_context"
+  ],
+  "attestation": "local HMAC-SHA256 research-only, no production identity proof",
+  "cases": [
+    "malicious_missing",
+    "malicious_valid_contradiction",
+    "benign_valid",
+    "benign_tampered",
+    "benign_missing"
+  ],
+  "p118_fixture_source_sha256": "87b214b63c649a34e2b728017b2c2fae5834ad71f243b5f4eccda3a7ae6e90aa",
+  "phase0_sha256": "32d02a1cd03571ce1f111c5b63086c0de7fe9c63cde368984661b6c7966042dd",
+  "planned_model_calls": 10,
+  "schema": "P1-019-protocol-v1",
+  "source_zip_sha256": "1eb33619947819e97f5dd93a6fe87640f6d269c0e45712aa45fd7b6d10e06344",
+  "test_key_id": "MMMTAP-RESEARCH-ONLY-v1"
+}

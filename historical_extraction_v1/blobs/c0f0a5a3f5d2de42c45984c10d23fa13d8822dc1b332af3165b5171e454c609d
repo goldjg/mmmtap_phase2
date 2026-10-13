@@ -1,0 +1,28 @@
+{
+  "case": "F_ambiguous_intent",
+  "track": "carl",
+  "source_diff_sha256": "6f4865fb0b0c6892c06baf2e35f003aa34c61eda5f9d1cf461cbb188c8ea7273",
+  "status": "live",
+  "started": "2026-10-10T19:16:52.317141+00:00",
+  "decision": "review_required",
+  "bridge_stats": {
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 891,
+      "output_tokens": 175
+    },
+    "question_ids": [
+      "security_sensitive",
+      "scope_expansion",
+      "architectural_change",
+      "authentication_or_authorisation_change",
+      "trust_boundary_change",
+      "security_control_reduction",
+      "breaking_change",
+      "new_external_dependency",
+      "human_review_warranted"
+    ]
+  },
+  "experimental_triage": "review_required",
+  "duration_s": 0.591
+}

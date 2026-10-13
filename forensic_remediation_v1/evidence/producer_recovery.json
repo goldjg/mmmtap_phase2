@@ -1,0 +1,16 @@
+{
+  "classification": "derived exact bytes, not retrospective execution",
+  "edits": [
+    {
+      "event_id": "8d82db8a-316d-4133-a419-76e23ccb7715",
+      "patch_sha256": "334d0791a4f73f36e2af2f2c81a13ae32dbd6d39f858e114d5218bb07a912572",
+      "result_sha256": "6e9659e41b46f554936d02643fa45a8d3baff7a36f33f7501345a5bbec028833",
+      "timestamp": "2026-10-12T08:23:06.941Z"
+    }
+  ],
+  "method": "own-session recorded file edits matched to the original report producer hash",
+  "producer_sha256": "6e9659e41b46f554936d02643fa45a8d3baff7a36f33f7501345a5bbec028833",
+  "report": "CANDIDATE_V4_PRESERVATION_CHECKS.json",
+  "report_sha256": "b4e5272183ed33e1912e6d0b40a2432953c1564f24ecbff028d0384201909d15",
+  "schema": "mmmtap-evidence-producer-recovery-v1"
+}

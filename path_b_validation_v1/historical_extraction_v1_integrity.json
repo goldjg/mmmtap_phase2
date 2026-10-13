@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "sha256sum",
+    "-c",
+    "--quiet",
+    "SHA256SUMS.txt"
+  ],
+  "cwd": "/home/prometheus/git/mmmtap_phase2/historical_extraction_v1",
+  "exit_status": 0,
+  "latency_seconds": 0.232336,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

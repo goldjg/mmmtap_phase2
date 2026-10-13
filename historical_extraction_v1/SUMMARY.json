@@ -1,0 +1,49 @@
+{
+  "additional_historical_cases_admitted": 0,
+  "all_evidence_status_counts": {
+    "duplicate": 358,
+    "eligible": 135,
+    "excluded": 5,
+    "pending": 297,
+    "reference_only": 2872
+  },
+  "archive_inventory_records": 44,
+  "archive_member_count": 1776,
+  "archive_status_counts": {
+    "exact_sha_match": 33,
+    "not_located": 9,
+    "same_name_different_sha": 2
+  },
+  "candidate_registry_rows": 3667,
+  "discovery_issue_count": 0,
+  "execution": "offline_no_inference_no_untrusted_code_execution",
+  "extraction_issue_count": 14,
+  "historical_label_groups_not_admitted_cases": 99,
+  "historical_recovered_source_occurrences": 420,
+  "historical_recovered_unique_hashes": 72,
+  "historical_source_status_counts": {
+    "duplicate": 358,
+    "eligible": 0,
+    "excluded": 0,
+    "pending": 62,
+    "reference_only": 0
+  },
+  "limitations": [
+    "Source occurrences, variants, labels and content hashes are not counts of independently admitted cases.",
+    "No new historical admission without case-specific reference and assessment-contract review.",
+    "JSON subobjects use declared canonical serialization; raw parent member bytes are preserved.",
+    "Git objects retained without checkout, hooks, diff generation or commit authentication.",
+    "Computed fixture generators and missing mutable repository sources are not executed or substituted.",
+    "Signatures, ground truth, historical model claims and adapter compatibility are not independently validated.",
+    "Only inventory SHA-matched ZIPs are examined; nested containers are indexed, not recursively expanded.",
+    "Default discovery rechecks reconciliation paths, not the whole host; use --search-root for additional local archives."
+  ],
+  "pending_registry_rows": 297,
+  "primary_archive_sha256": "a3fe94069009f328b0a46bb52a7ff52d2c2bedfcd0eb3babe360eea1c884cc21",
+  "primary_cases_preserved": 15,
+  "primary_inputs_verified": 135,
+  "primary_overlap_recovered_unique_hashes": 10,
+  "protocol": "MMMTAP-P2-historical-extraction-v1",
+  "unresolved_name_leads": 12,
+  "unresolved_source_hashes": 84
+}

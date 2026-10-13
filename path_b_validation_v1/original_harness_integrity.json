@@ -1,0 +1,11 @@
+{
+  "files_checked": 29185,
+  "frozen_archive_sha256": "a3fe94069009f328b0a46bb52a7ff52d2c2bedfcd0eb3babe360eea1c884cc21",
+  "mismatches": [
+    {
+      "current_sha256": "a63161a40e415146ac4c31f3b9bc549df81d76f03bd7d371deee6f48e8cc8cc4",
+      "expected_sha256": "92c2cb743a3d0d51a48872ffad4ab13c193c7245c917ed8c9675a22cf8c4fd14",
+      "file": "phase2/adapters.py"
+    }
+  ]
+}

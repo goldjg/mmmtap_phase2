@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "go",
+    "version"
+  ],
+  "cwd": "/home/prometheus/git/cARL-semantic-eval",
+  "exit_status": 0,
+  "latency_seconds": 0.022494,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "6dfc0a9dc581529966584d222f1f8c10ad1d33a5e7f77583554c6f65a4313917"
+}

@@ -1,0 +1,6 @@
+experiment=ambiguous-trust-boundary
+repo=/home/prometheus/git/mmmtap-ambiguous-trust
+base=86e502c420a703a86a68b8b501d388d5284651c8
+regression=582fe0b1f673302445904636bc077bf9419514a7
+remediation=c7297274e8d7234b9b085dd4a959eb42c12b182a
+change=None -> AzureServices -> None

@@ -1,0 +1,10 @@
+{"Time":"2026-10-12T09:50:24.575582059+01:00","Action":"start","Package":"github.com/goldjg/carl/internal/assessment"}
+{"Time":"2026-10-12T09:50:24.585870419+01:00","Action":"run","Package":"github.com/goldjg/carl/internal/assessment","Test":"TestForensicHistoricalProviderMetadata"}
+{"Time":"2026-10-12T09:50:24.586046122+01:00","Action":"output","Package":"github.com/goldjg/carl/internal/assessment","Test":"TestForensicHistoricalProviderMetadata","Output":"=== RUN   TestForensicHistoricalProviderMetadata\n"}
+{"Time":"2026-10-12T09:50:24.5866259+01:00","Action":"output","Package":"github.com/goldjg/carl/internal/assessment","Test":"TestForensicHistoricalProviderMetadata","Output":"    remediation_test.go:122: MMMTAP_EQUIVALENCE {\"accepted\":false,\"evidence\":null,\"id\":\"historical_native_response\"}\n"}
+{"Time":"2026-10-12T09:50:24.586664566+01:00","Action":"output","Package":"github.com/goldjg/carl/internal/assessment","Test":"TestForensicHistoricalProviderMetadata","Output":"    remediation_test.go:126: well-formed retained provider metadata rejected: unexpected provider field: type\n"}
+{"Time":"2026-10-12T09:50:24.586690437+01:00","Action":"output","Package":"github.com/goldjg/carl/internal/assessment","Test":"TestForensicHistoricalProviderMetadata","Output":"--- FAIL: TestForensicHistoricalProviderMetadata (0.00s)\n"}
+{"Time":"2026-10-12T09:50:24.586707418+01:00","Action":"fail","Package":"github.com/goldjg/carl/internal/assessment","Test":"TestForensicHistoricalProviderMetadata","Elapsed":0}
+{"Time":"2026-10-12T09:50:24.58673377+01:00","Action":"output","Package":"github.com/goldjg/carl/internal/assessment","Output":"FAIL\n"}
+{"Time":"2026-10-12T09:50:24.587934176+01:00","Action":"output","Package":"github.com/goldjg/carl/internal/assessment","Output":"FAIL\tgithub.com/goldjg/carl/internal/assessment\t0.012s\n"}
+{"Time":"2026-10-12T09:50:24.588042398+01:00","Action":"fail","Package":"github.com/goldjg/carl/internal/assessment","Elapsed":0.012}

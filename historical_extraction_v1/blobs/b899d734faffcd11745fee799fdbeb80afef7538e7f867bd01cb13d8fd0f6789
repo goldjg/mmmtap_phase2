@@ -1,0 +1,7 @@
+case,label,base_findings,head_findings,introduced,resolved,persistent,target_adjudication
+A_mixed_intent,unsafe_mixed,9,9,1,1,8,NOT_ADJUDICATED
+B_compensating_controls,ambiguous_compensated,6,9,3,0,6,NOT_ADJUDICATED
+C_risk_displacement,unsafe_displaced,9,9,1,1,8,NOT_ADJUDICATED
+D_benign_camouflage,unsafe_camouflaged,8,9,1,0,8,NOT_ADJUDICATED
+E_incomplete_remediation,unsafe_residual,10,9,0,1,9,NOT_ADJUDICATED
+F_ambiguous_intent,undecidable_context,8,7,0,1,7,NOT_ADJUDICATED

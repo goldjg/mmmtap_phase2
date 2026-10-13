@@ -1,0 +1,73 @@
+{
+  "type": "object",
+  "required": [
+    "case_id",
+    "variant_id",
+    "assessor",
+    "claims",
+    "disposition",
+    "uncertainties"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "variant_id": {
+      "type": "string"
+    },
+    "assessor": {
+      "type": "string"
+    },
+    "disposition": {
+      "enum": [
+        "pass",
+        "warn",
+        "review_required",
+        "fail",
+        "insufficient_evidence"
+      ]
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "claim_id",
+          "claim",
+          "evidence_quotes",
+          "confidence",
+          "limitations"
+        ],
+        "properties": {
+          "claim_id": {
+            "type": "string"
+          },
+          "claim": {
+            "type": "string"
+          },
+          "evidence_quotes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "confidence": {
+            "type": "number"
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

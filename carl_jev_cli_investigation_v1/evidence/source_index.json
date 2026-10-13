@@ -1,0 +1,146 @@
+[
+  {
+    "lines": 159,
+    "sha256": "abea661e9b4b83194278a428318ffdd653007660db6d7b9714018f1aab4e65d4",
+    "snapshot": "evidence/source/cARL-semantic-eval/cmd/carl/main.go.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/cmd/carl/main.go"
+  },
+  {
+    "lines": 1727,
+    "sha256": "d21beac4b4a3369c60d5e87d2cdd79c548ee071e51750bad13780fc16c1e5744",
+    "snapshot": "evidence/source/cARL-semantic-eval/CLI.md.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/CLI.md"
+  },
+  {
+    "lines": 479,
+    "sha256": "0a1ed8767866bd233f4af718918574b5a3f3e2c4f005167318f4e103109770e7",
+    "snapshot": "evidence/source/cARL-semantic-eval/ARCHITECTURE.md.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/ARCHITECTURE.md"
+  },
+  {
+    "lines": 3,
+    "sha256": "c120d32d060d31baf7f15b231f4d8c092d8543ac49c96f50116d5be4e17f5be5",
+    "snapshot": "evidence/source/cARL-semantic-eval/go.mod.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/go.mod"
+  },
+  {
+    "lines": 93,
+    "sha256": "1012b1f747c02d31476e7260122948b8569bd6e442aba142e7cca522485d8831",
+    "snapshot": "evidence/source/mmmtap_phase0_v5/jev_bridge.py.txt",
+    "source_path": "/home/prometheus/git/mmmtap_phase0_v5/jev_bridge.py"
+  },
+  {
+    "lines": 530,
+    "sha256": "a63161a40e415146ac4c31f3b9bc549df81d76f03bd7d371deee6f48e8cc8cc4",
+    "snapshot": "evidence/source/mmmtap_phase2/phase2/adapters.py.txt",
+    "source_path": "/home/prometheus/git/mmmtap_phase2/phase2/adapters.py"
+  },
+  {
+    "lines": 403,
+    "sha256": "dd2d43dd1b8230f4379869e86cab7de3e0c8758afc89efb2759f34cb9494acf9",
+    "snapshot": "evidence/source/mmmtap_phase2/phase2/engine.py.txt",
+    "source_path": "/home/prometheus/git/mmmtap_phase2/phase2/engine.py"
+  },
+  {
+    "lines": 297,
+    "sha256": "e4ad4e47d97072e99c38ceed458a491553213fa8eda3a1a37adbb4037f598186",
+    "snapshot": "evidence/source/mmmtap_phase2/phase2/core.py.txt",
+    "source_path": "/home/prometheus/git/mmmtap_phase2/phase2/core.py"
+  },
+  {
+    "lines": 62,
+    "sha256": "b6582fe55e9ec63440f7eb15ebb790bb68b4fd8789cf447e4df43916a5e59ca6",
+    "snapshot": "evidence/source/mmmtap_phase2/phase2/config.v1.json.txt",
+    "source_path": "/home/prometheus/git/mmmtap_phase2/phase2/config.v1.json"
+  },
+  {
+    "lines": 11,
+    "sha256": "91544ecd28bfa990330154d72c929894cea9849a0272513cb291635d8edb0773",
+    "snapshot": "evidence/source/mmmtap_phase2/phase2/prompts.v1.json.txt",
+    "source_path": "/home/prometheus/git/mmmtap_phase2/phase2/prompts.v1.json"
+  },
+  {
+    "lines": 115,
+    "sha256": "24f9455873256c15c7881c9b0600ef9d6e686a2e6bb219797697a2859c12c3fb",
+    "snapshot": "evidence/source/cARL-semantic-eval/internal/review/output.go.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/internal/review/output.go"
+  },
+  {
+    "lines": 194,
+    "sha256": "8b7c9820a956889c079fa8fe516e224a90fed6373b8569aad214c3c6a0ab7483",
+    "snapshot": "evidence/source/cARL-semantic-eval/internal/review/policy.go.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/internal/review/policy.go"
+  },
+  {
+    "lines": 31,
+    "sha256": "c809d5d6d303e96ffeb513285b69df686f7045c4d229f5fb5603408c5f4af60c",
+    "snapshot": "evidence/source/cARL-semantic-eval/internal/review/policy_test.go.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/internal/review/policy_test.go"
+  },
+  {
+    "lines": 56,
+    "sha256": "d26b48a7fb79b545c7d5e093e7db63949b227998fbeea644b9f075ca21910652",
+    "snapshot": "evidence/source/cARL-semantic-eval/internal/review/questions.go.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/internal/review/questions.go"
+  },
+  {
+    "lines": 203,
+    "sha256": "39ab1f8ccf237b8451c3d7b79fc500dbab79ad87595c9cad5d393c8dc8191422",
+    "snapshot": "evidence/source/cARL-semantic-eval/internal/review/review.go.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/internal/review/review.go"
+  },
+  {
+    "lines": 215,
+    "sha256": "56d8260198d1d7e6aac2b074aed43f1e8fe91e2ed67b6abfd943578c87712958",
+    "snapshot": "evidence/source/cARL-semantic-eval/internal/review/review_test.go.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/internal/review/review_test.go"
+  },
+  {
+    "lines": 268,
+    "sha256": "7ce2930fa6af055dfe4f581aa065dee4510a5e65e58269dba081c426164428f4",
+    "snapshot": "evidence/source/cARL-semantic-eval/internal/review/state.go.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/internal/review/state.go"
+  },
+  {
+    "lines": 154,
+    "sha256": "17431039240a762b49b6fba181f17a16acffdc3275459fa3551ef41dbec9f152",
+    "snapshot": "evidence/source/cARL-semantic-eval/internal/semantic/config.go.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/internal/semantic/config.go"
+  },
+  {
+    "lines": 50,
+    "sha256": "e18341a2bb6a7cfa8d79187bdcaec5d9e44e0ad36f874c8e753875d1268dc44d",
+    "snapshot": "evidence/source/cARL-semantic-eval/internal/semantic/config_test.go.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/internal/semantic/config_test.go"
+  },
+  {
+    "lines": 129,
+    "sha256": "bfca74313bb0b59260ab616a660d6d13ef4ffcff3acf2b448656e7c45a18e6b4",
+    "snapshot": "evidence/source/cARL-semantic-eval/internal/semantic/jev.go.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/internal/semantic/jev.go"
+  },
+  {
+    "lines": 67,
+    "sha256": "a1f5ea36f55a12114f5610a150af652fd7534af7eb10932cab89c57cc39d957a",
+    "snapshot": "evidence/source/cARL-semantic-eval/internal/semantic/jev_test.go.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/internal/semantic/jev_test.go"
+  },
+  {
+    "lines": 59,
+    "sha256": "5212451c7cf3ffa68439e489d9e1033e5cbf6a3318be4f701e3a0bff1d33aeb5",
+    "snapshot": "evidence/source/cARL-semantic-eval/internal/semantic/redact.go.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/internal/semantic/redact.go"
+  },
+  {
+    "lines": 27,
+    "sha256": "b998a5c49c7152d4cf268658d07571abfb90d5fa6792b2206461d65f0ba184da",
+    "snapshot": "evidence/source/cARL-semantic-eval/internal/semantic/redact_test.go.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/internal/semantic/redact_test.go"
+  },
+  {
+    "lines": 128,
+    "sha256": "2b7de277ee6b32608169ccc860add2799cb364bd1e26986c5ee7f442fbf90c0d",
+    "snapshot": "evidence/source/cARL-semantic-eval/internal/semantic/types.go.txt",
+    "source_path": "/home/prometheus/git/cARL-semantic-eval/internal/semantic/types.go"
+  }
+]

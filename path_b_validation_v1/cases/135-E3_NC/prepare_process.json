@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "prepare",
+    "--request",
+    "/home/prometheus/git/mmmtap_phase2/path_b_validation_v1/cases/135-E3_NC/request.json",
+    "--policy-root",
+    "/home/prometheus/git/mmmtap_phase2/path_b_policy_v1",
+    "--out",
+    "/home/prometheus/git/mmmtap_phase2/path_b_validation_v1/cases/135-E3_NC/prepared"
+  ],
+  "exit_status": 0,
+  "stderr": "",
+  "stdout": "f804641ce5d870e896b4ff76fb4659d641451abe3402120fafaa5893af5b282e  prepared.json\n"
+}

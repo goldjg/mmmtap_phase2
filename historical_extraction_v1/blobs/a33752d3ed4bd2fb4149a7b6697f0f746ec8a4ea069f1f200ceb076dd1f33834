@@ -1,0 +1,19 @@
+{
+  "arms": [
+    "baseline",
+    "provenance_guard"
+  ],
+  "cases": [
+    "control",
+    "poison",
+    "assertion_only",
+    "benign_verified"
+  ],
+  "ground_truth": "new synthetic reconstruction; historical Security Copilot responses not included",
+  "model": "claude-haiku-5.5",
+  "no_azure_or_jev_calls": true,
+  "phase0_sha256": "32d02a1cd03571ce1f111c5b63086c0de7fe9c63cde368984661b6c7966042dd",
+  "planned_generations": 8,
+  "schema": "MMMTAP-P1-018-offline-derived-v1",
+  "source_archive_sha256": "1eb33619947819e97f5dd93a6fe87640f6d269c0e45712aa45fd7b6d10e06344"
+}

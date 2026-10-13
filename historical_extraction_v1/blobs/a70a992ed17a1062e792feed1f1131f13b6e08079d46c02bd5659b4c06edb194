@@ -1,0 +1,93 @@
+{
+  "args": {
+    "azuregoat_count": 5,
+    "azuregoat_repo": "/home/prometheus/git/AzureGoat",
+    "carl_count": 5,
+    "carl_mode": "commits",
+    "carl_repo": "/home/prometheus/git/cARL",
+    "endpoint": [],
+    "force": false,
+    "fresh": false,
+    "kev_repo": "/home/prometheus/git/kev",
+    "max_chars": 16000,
+    "models": "0.8b",
+    "only": "azuregoat",
+    "order_variants": 4,
+    "outdir": "/home/prometheus/kev-paces-v2.1-results",
+    "permute": true,
+    "permute_n": 24,
+    "port": 8009,
+    "repetitions": 2,
+    "restart_between_cases": false,
+    "restart_between_variants": true,
+    "restart_on_failure": true,
+    "rss_restart_mb": 5500,
+    "timeout": 900
+  },
+  "azuregoat_repo": "/home/prometheus/git/AzureGoat",
+  "carl_repo": "/home/prometheus/git/cARL",
+  "cases": [
+    {
+      "case_id": "azuregoat-main.tf",
+      "chars": 16042,
+      "expected": null,
+      "sha256": "32bc23e6d91647935eae19aa931b9db1ba5e256bb2109be05bb93dfb37abdd69",
+      "source": "AzureGoat:main.tf score=28.8"
+    },
+    {
+      "case_id": "azuregoat-sentinel-playbooks_copilot-observe_main.bicep",
+      "chars": 16042,
+      "expected": null,
+      "sha256": "17727d2f35c438949013a43a6aa03191b6b3e27d9369830510986c79f7d0767d",
+      "source": "AzureGoat:sentinel-playbooks/copilot-observe/main.bicep score=26.8"
+    },
+    {
+      "case_id": "azuregoat-modules_module-1_resources_azure_function_data_app___init__.py",
+      "chars": 16042,
+      "expected": null,
+      "sha256": "70cf9492e6b8f329feef76c77049ce11b6065a5f6b3ebba241981cdc81d85504",
+      "source": "AzureGoat:modules/module-1/resources/azure_function/data/app/__init__.py score=25.7"
+    },
+    {
+      "case_id": "azuregoat-sentinel-playbooks_copilot-observe_oauth-callback.bicep",
+      "chars": 3636,
+      "expected": null,
+      "sha256": "4cdd7c97928abf15b8fbfb027be8dd1e00758b90f972771296db2be8b6bd01c5",
+      "source": "AzureGoat:sentinel-playbooks/copilot-observe/oauth-callback.bicep score=25.0"
+    },
+    {
+      "case_id": "azuregoat-sentinel-playbooks_copilot-observe_authorize-graph-device-code.sh",
+      "chars": 7851,
+      "expected": null,
+      "sha256": "2bdd4661acee55e601909aef81db1c957ebbabff3f3fbc5d0c4b0e0b44988b59",
+      "source": "AzureGoat:sentinel-playbooks/copilot-observe/authorize-graph-device-code.sh score=23.9"
+    }
+  ],
+  "created_unix": 1791319321.7985399,
+  "host_start": {
+    "arm_clock": "frequency(48)=1200287104",
+    "core_volts": "volt=0.8700V",
+    "loadavg": [
+      0.1796875,
+      0.44580078125,
+      0.40966796875
+    ],
+    "machine": "aarch64",
+    "mem_kb": {
+      "Buffers": 1398640,
+      "Cached": 3388328,
+      "MemAvailable": 6629708,
+      "MemFree": 356268,
+      "MemTotal": 8008420,
+      "SwapFree": 16,
+      "SwapTotal": 524284
+    },
+    "platform": "Linux-6.12.109+rpt-rpi-v8-aarch64-with-glibc2.36",
+    "python": "3.11.2",
+    "temp": "temp=50.1'C",
+    "throttled": "throttled=0xe0000",
+    "ts_unix": 1791319321.7989569
+  },
+  "kev_repo": "/home/prometheus/git/kev",
+  "version": "2.1"
+}

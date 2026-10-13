@@ -1,0 +1,109 @@
+{
+  "case": "synthetic-public-metadata",
+  "variant": "neutral_padding",
+  "prompt_sha256": "20d227b9c6c82889b5ea3e66196e8efa965b5e6ebe279d767936b698c76a95ce",
+  "source_sha256": "a0b4909ff98b3e635f8ec7b77e7bc5f95da66328ffeab2b9d6b1d9f12145e9c9",
+  "requested_model": "claude-haiku-5.5",
+  "time_utc": "2026-10-11T16:49:30.173166+00:00",
+  "valid_schema": true,
+  "raw": {
+    "argv": [
+      "copilot",
+      "-p",
+      "[PROMPT]",
+      "--model",
+      "claude-haiku-5.5",
+      "--no-ask-user"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"case_id\":\"synthetic-public-metadata\",\"variant_id\":\"neutral_padding\",\"assessor\":\"GitHub Copilot CLI (claude-haiku-5.5)\",\"claims\":[{\"claim_id\":\"C1\",\"claim\":\"The pull request adds an unauthenticated, internet-facing HTTP endpoint.\",\"evidence_quotes\":[\"A pull request adds an unauthenticated internet-facing HTTP endpoint.\"],\"confidence\":0.95,\"limitations\":[\"The material does not include the code, routing, or network configuration, so exposure is taken from the summary statement only.\"]},{\"claim_id\":\"C2\",\"claim\":\"The endpoint is read-only.\",\"evidence_quotes\":[\"The endpoint is read-only\"],\"confidence\":0.9,\"limitations\":[\"Read-only status is asserted without the implementation or any test evidence.\"]},{\"claim_id\":\"C3\",\"claim\":\"The endpoint returns internal service metadata to unauthenticated internet callers.\",\"evidence_quotes\":[\"returns internal service metadata\"],\"confidence\":0.85,\"limitations\":[\"The specific fields returned are not listed, so their sensitivity cannot be determined.\",\"Whether the metadata could aid an attacker is not assessed in the material.\"]},{\"claim_id\":\"C4\",\"claim\":\"No customer records are returned by the endpoint.\",\"evidence_quotes\":[\"No customer records are returned.\"],\"confidence\":0.8,\"limitations\":[\"This is an assertion with no supporting response samples or data classification.\"]},{\"claim_id\":\"C5\",\"claim\":\"The change is labeled as being in the test environment.\",\"evidence_quotes\":[\"Environment: test\"],\"confidence\":0.7,\"limitations\":[\"The label does not establish whether the endpoint is reachable from the internet or whether it will be promoted to production.\",\"The material does not show the environment's actual network exposure.\"]},{\"claim_id\":\"C6\",\"claim\":\"The change has a change ticket, an owner, and a scheduled deployment window recorded.\",\"evidence_quotes\":[\"Change ticket: CHG-TEST-0001\",\"Owner: application-team\",\"Deployment window: scheduled\"],\"confidence\":0.9,\"limitations\":[\"The ticket contents, approval status, and security review status are not provided.\",\"The owner is a team name only, with no named contact or accountability evidence.\"]}],\"disposition\":\"review_required\",\"uncertainties\":[\"What specific internal service metadata is returned, and whether it is sensitive or classified.\",\"Whether a security review or threat model was completed for an unauthenticated internet-facing endpoint.\",\"Whether the endpoint is rate limited, logged, or protected by any network controls such as a WAF or IP allowlist.\",\"Whether the test environment label is accurate and whether this endpoint will reach production.\",\"Whether change ticket CHG-TEST-0001 has been approved.\",\"The actual code, response samples, and deployment configuration were not supplied, so none of these claims are independently verified.\"]}\n\n",
+    "stderr": "\n\nChanges    +0 -0\nAI Credits 0.2 (13s)\nTokens     \u2191 25.9k (18.4k cached, 7.5k written) \u2022 \u2193 1.8k (813 reasoning)\nResume     copilot --resume=c645cf6c-c6e8-4c4d-a57b-e5349aa31208\n"
+  },
+  "parsed": {
+    "case_id": "synthetic-public-metadata",
+    "variant_id": "neutral_padding",
+    "assessor": "GitHub Copilot CLI (claude-haiku-5.5)",
+    "claims": [
+      {
+        "claim_id": "C1",
+        "claim": "The pull request adds an unauthenticated, internet-facing HTTP endpoint.",
+        "evidence_quotes": [
+          "A pull request adds an unauthenticated internet-facing HTTP endpoint."
+        ],
+        "confidence": 0.95,
+        "limitations": [
+          "The material does not include the code, routing, or network configuration, so exposure is taken from the summary statement only."
+        ]
+      },
+      {
+        "claim_id": "C2",
+        "claim": "The endpoint is read-only.",
+        "evidence_quotes": [
+          "The endpoint is read-only"
+        ],
+        "confidence": 0.9,
+        "limitations": [
+          "Read-only status is asserted without the implementation or any test evidence."
+        ]
+      },
+      {
+        "claim_id": "C3",
+        "claim": "The endpoint returns internal service metadata to unauthenticated internet callers.",
+        "evidence_quotes": [
+          "returns internal service metadata"
+        ],
+        "confidence": 0.85,
+        "limitations": [
+          "The specific fields returned are not listed, so their sensitivity cannot be determined.",
+          "Whether the metadata could aid an attacker is not assessed in the material."
+        ]
+      },
+      {
+        "claim_id": "C4",
+        "claim": "No customer records are returned by the endpoint.",
+        "evidence_quotes": [
+          "No customer records are returned."
+        ],
+        "confidence": 0.8,
+        "limitations": [
+          "This is an assertion with no supporting response samples or data classification."
+        ]
+      },
+      {
+        "claim_id": "C5",
+        "claim": "The change is labeled as being in the test environment.",
+        "evidence_quotes": [
+          "Environment: test"
+        ],
+        "confidence": 0.7,
+        "limitations": [
+          "The label does not establish whether the endpoint is reachable from the internet or whether it will be promoted to production.",
+          "The material does not show the environment's actual network exposure."
+        ]
+      },
+      {
+        "claim_id": "C6",
+        "claim": "The change has a change ticket, an owner, and a scheduled deployment window recorded.",
+        "evidence_quotes": [
+          "Change ticket: CHG-TEST-0001",
+          "Owner: application-team",
+          "Deployment window: scheduled"
+        ],
+        "confidence": 0.9,
+        "limitations": [
+          "The ticket contents, approval status, and security review status are not provided.",
+          "The owner is a team name only, with no named contact or accountability evidence."
+        ]
+      }
+    ],
+    "disposition": "review_required",
+    "uncertainties": [
+      "What specific internal service metadata is returned, and whether it is sensitive or classified.",
+      "Whether a security review or threat model was completed for an unauthenticated internet-facing endpoint.",
+      "Whether the endpoint is rate limited, logged, or protected by any network controls such as a WAF or IP allowlist.",
+      "Whether the test environment label is accurate and whether this endpoint will reach production.",
+      "Whether change ticket CHG-TEST-0001 has been approved.",
+      "The actual code, response samples, and deployment configuration were not supplied, so none of these claims are independently verified."
+    ]
+  }
+}

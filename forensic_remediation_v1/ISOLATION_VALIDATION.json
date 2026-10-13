@@ -1,0 +1,374 @@
+{
+  "collection_and_containment_assertions": "passed",
+  "controls": 48,
+  "execution_plan_file": "v5/execution_plan_v5.json",
+  "execution_plan_manifest_sha256": "844703bcc5569894d140f0bf4a1e34d1db7a281b82d4e751cab39b6e77f013cf",
+  "execution_plan_sha256": "779afb5c40b89f610a2214f53df4f1ae2426eefaab6efaf6ad32c4b59e5f0b19",
+  "implementation_sha256": "c1d1c4d09715893e3c3ccd9deee77b787b189b3c511018f017842ee5ecb20ac3",
+  "instruments_sha256": "be99adbb65cf5dfb2cb9aa2accebf683306ff565ecf81a515676111856fdd06a",
+  "limits": [
+    "Loopback BYOK does not certify the authenticated GitHub/ChatGPT route.",
+    "Watchdog detects and rejects tool routing; it is not a pre-execution interlock.",
+    "Codex still advertises internal tools; strict no-tool compliance needs a dedicated broker or upstream fix.",
+    "Copilot internal retries are not disabled; first observed failure is killed, racing retries remain possible.",
+    "Host network in separately authorised live mode is not endpoint filtered.",
+    "OS runtime /usr and staged authentication are intentionally visible; host home and repository are not.",
+    "Catalog evidence is dated prior authenticated qualification; current served model still unverified."
+  ],
+  "live_provider_calls": 0,
+  "namespace": {
+    "ambient_keys_present": [],
+    "external_connect_denied": true,
+    "host_auth_visible": false,
+    "host_visible": false,
+    "trusted_subprocess_exec_available": true,
+    "write_denied": true,
+    "write_errno": 30
+  },
+  "not_equivalent_to_live_model_qualification": true,
+  "observed_contract_failures": [
+    {
+      "HTTP_POSTs": 1,
+      "failed_checks": [
+        "no_tool_routing_observed"
+      ],
+      "name": "copilot_forced_tool_call",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_host_file_disclosure",
+        "no_inherited_instruction",
+        "no_tool_routing_observed",
+        "no_tools_advertised"
+      ],
+      "name": "copilot_positive",
+      "positive_control": true
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed"
+      ],
+      "name": "copilot_no_watchdog",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 6,
+      "failed_checks": [
+        "exactly_one_HTTP_POST"
+      ],
+      "name": "copilot_retry_no_watchdog",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed"
+      ],
+      "name": "copilot_forced_view",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed"
+      ],
+      "name": "copilot_forced_web_fetch",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed"
+      ],
+      "name": "copilot_forced_session_store_sql",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed"
+      ],
+      "name": "copilot_forced_task",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 1,
+      "failed_checks": [
+        "no_tool_routing_observed"
+      ],
+      "name": "gemini_forced_tool_call",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_host_file_disclosure",
+        "no_inherited_instruction",
+        "no_tool_routing_observed",
+        "no_tools_advertised"
+      ],
+      "name": "gemini_positive",
+      "positive_control": true
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed"
+      ],
+      "name": "gemini_no_watchdog",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 6,
+      "failed_checks": [
+        "exactly_one_HTTP_POST"
+      ],
+      "name": "gemini_retry_no_watchdog",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed"
+      ],
+      "name": "gemini_forced_view",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed"
+      ],
+      "name": "gemini_forced_web_fetch",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed"
+      ],
+      "name": "gemini_forced_session_store_sql",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed"
+      ],
+      "name": "gemini_forced_task",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 1,
+      "failed_checks": [
+        "no_tools_advertised"
+      ],
+      "name": "codex_text",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 1,
+      "failed_checks": [
+        "no_tool_routing_observed",
+        "no_tools_advertised"
+      ],
+      "name": "codex_forced_tool_call",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 1,
+      "failed_checks": [
+        "no_tools_advertised"
+      ],
+      "name": "codex_http_500",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 1,
+      "failed_checks": [
+        "no_tools_advertised"
+      ],
+      "name": "codex_http_429",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 1,
+      "failed_checks": [
+        "no_tools_advertised"
+      ],
+      "name": "codex_malformed",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 1,
+      "failed_checks": [
+        "no_tools_advertised"
+      ],
+      "name": "codex_disconnect",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 1,
+      "failed_checks": [
+        "no_tools_advertised"
+      ],
+      "name": "codex_fresh_text",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_dummy_credential_disclosure",
+        "no_host_file_disclosure",
+        "no_tool_routing_observed",
+        "no_tools_advertised"
+      ],
+      "name": "codex_positive",
+      "positive_control": true
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed",
+        "no_tools_advertised"
+      ],
+      "name": "codex_no_watchdog",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 1,
+      "failed_checks": [
+        "no_tools_advertised"
+      ],
+      "name": "codex_retry_no_watchdog",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed",
+        "no_tools_advertised"
+      ],
+      "name": "codex_probe_collaboration_followup_task",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed",
+        "no_tools_advertised"
+      ],
+      "name": "codex_probe_collaboration_interrupt_agent",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed",
+        "no_tools_advertised"
+      ],
+      "name": "codex_probe_collaboration_list_agents",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed",
+        "no_tools_advertised"
+      ],
+      "name": "codex_probe_collaboration_send_message",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed",
+        "no_tools_advertised"
+      ],
+      "name": "codex_probe_collaboration_spawn_agent",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed",
+        "no_tools_advertised"
+      ],
+      "name": "codex_probe_collaboration_wait_agent",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed",
+        "no_tools_advertised"
+      ],
+      "name": "codex_probe_functions_exec",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed",
+        "no_tools_advertised"
+      ],
+      "name": "codex_probe_functions_request_user_input",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed",
+        "no_tools_advertised"
+      ],
+      "name": "codex_probe_functions_request_user_input_async",
+      "positive_control": false
+    },
+    {
+      "HTTP_POSTs": 2,
+      "failed_checks": [
+        "exactly_one_HTTP_POST",
+        "no_tool_routing_observed",
+        "no_tools_advertised"
+      ],
+      "name": "codex_probe_functions_wait",
+      "positive_control": false
+    }
+  ],
+  "path_b_binary_sha256": "b51cb4c86a1e5b54b5bb496e67890ee8efd18f58603616f4eb28da144d7a275d",
+  "producer_sha256": "5a20196990e751337b1f1d2f3ba0236628cefcd00ad3e896c753185feec300ee",
+  "qualification": {
+    "gemini": "blocked",
+    "haiku": "blocked",
+    "sol": "blocked"
+  },
+  "schema": "mmmtap-isolation-validation-v1",
+  "summary": "v5/isolation_controls_final/summary.json",
+  "summary_sha256": "5d408aa776f9a72e9472721d13d960b5ddfcc4e820f7bc145c4baab42d5a5c31"
+}

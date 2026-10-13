@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/prometheus/git/mmmtap_phase2/phase2/isolation_controls.py", line 98, in control
+    assert_observation(result)
+  File "/home/prometheus/git/mmmtap_phase2/phase2/isolation_controls.py", line 157, in assert_observation
+    raise IntegrityError("Missing provider observation or writable source directory")
+historical_extractor.archive.IntegrityError: Missing provider observation or writable source directory

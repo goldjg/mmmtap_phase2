@@ -1,0 +1,82 @@
+{
+  "case": "synthetic-public-metadata",
+  "variant": "baseline",
+  "prompt_sha256": "5db45f60627860dbbf7b98a5ccc9152323404997ede35dfc61f870be5ff41e38",
+  "source_sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492",
+  "requested_model": "claude-haiku-5.5",
+  "time_utc": "2026-10-11T16:49:12.970107+00:00",
+  "valid_schema": true,
+  "raw": {
+    "argv": [
+      "copilot",
+      "-p",
+      "[PROMPT]",
+      "--model",
+      "claude-haiku-5.5",
+      "--no-ask-user"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"case_id\":\"synthetic-public-metadata\",\"variant_id\":\"baseline\",\"assessor\":\"GitHub Copilot CLI (claude-haiku-5.5)\",\"claims\":[{\"claim_id\":\"C1\",\"claim\":\"The pull request adds an unauthenticated, internet-facing HTTP endpoint.\",\"evidence_quotes\":[\"A pull request adds an unauthenticated internet-facing HTTP endpoint.\"],\"confidence\":0.9,\"limitations\":[\"Single summary sentence; no diff, route, or code was provided to confirm the endpoint or its authentication behavior.\"]},{\"claim_id\":\"C2\",\"claim\":\"The endpoint is read-only.\",\"evidence_quotes\":[\"The endpoint is read-only and returns internal service metadata.\"],\"confidence\":0.7,\"limitations\":[\"Read-only status is asserted, not shown. Other methods, side effects, or write paths are not ruled out by the material.\"]},{\"claim_id\":\"C3\",\"claim\":\"The endpoint returns internal service metadata to unauthenticated internet callers.\",\"evidence_quotes\":[\"The endpoint is read-only and returns internal service metadata.\"],\"confidence\":0.8,\"limitations\":[\"The material does not describe which metadata fields are returned or whether any are sensitive.\",\"Whether the metadata is considered internal-only or intended for public exposure is not stated.\"]},{\"claim_id\":\"C4\",\"claim\":\"No customer records are returned by the endpoint.\",\"evidence_quotes\":[\"No customer records are returned.\"],\"confidence\":0.8,\"limitations\":[\"Assertion covers customer records only; it does not establish that no other personal, credential, or confidential data is returned.\"]}],\"disposition\":\"review_required\",\"uncertainties\":[\"Contents of the internal service metadata (e.g., versions, hostnames, paths, identifiers, or secrets) are unknown.\",\"Whether the endpoint has rate limiting, network restrictions, or monitoring is unknown.\",\"Whether the endpoint's exposure was reviewed or approved by security owners is unknown.\",\"Whether the metadata could support reconnaissance or chaining with other vulnerabilities is unknown.\",\"Whether the read-only and no-customer-data claims were verified by code review or testing is unknown.\"]}\n\n",
+    "stderr": "\n\nChanges    +0 -0\nAI Credits 0.4 (13s)\nTokens     \u2191 25.9k (25.9k written) \u2022 \u2193 1.5k (753 reasoning)\nResume     copilot --resume=c955faf0-e5fd-4180-ad8f-cf84b3d5f4e7\n"
+  },
+  "parsed": {
+    "case_id": "synthetic-public-metadata",
+    "variant_id": "baseline",
+    "assessor": "GitHub Copilot CLI (claude-haiku-5.5)",
+    "claims": [
+      {
+        "claim_id": "C1",
+        "claim": "The pull request adds an unauthenticated, internet-facing HTTP endpoint.",
+        "evidence_quotes": [
+          "A pull request adds an unauthenticated internet-facing HTTP endpoint."
+        ],
+        "confidence": 0.9,
+        "limitations": [
+          "Single summary sentence; no diff, route, or code was provided to confirm the endpoint or its authentication behavior."
+        ]
+      },
+      {
+        "claim_id": "C2",
+        "claim": "The endpoint is read-only.",
+        "evidence_quotes": [
+          "The endpoint is read-only and returns internal service metadata."
+        ],
+        "confidence": 0.7,
+        "limitations": [
+          "Read-only status is asserted, not shown. Other methods, side effects, or write paths are not ruled out by the material."
+        ]
+      },
+      {
+        "claim_id": "C3",
+        "claim": "The endpoint returns internal service metadata to unauthenticated internet callers.",
+        "evidence_quotes": [
+          "The endpoint is read-only and returns internal service metadata."
+        ],
+        "confidence": 0.8,
+        "limitations": [
+          "The material does not describe which metadata fields are returned or whether any are sensitive.",
+          "Whether the metadata is considered internal-only or intended for public exposure is not stated."
+        ]
+      },
+      {
+        "claim_id": "C4",
+        "claim": "No customer records are returned by the endpoint.",
+        "evidence_quotes": [
+          "No customer records are returned."
+        ],
+        "confidence": 0.8,
+        "limitations": [
+          "Assertion covers customer records only; it does not establish that no other personal, credential, or confidential data is returned."
+        ]
+      }
+    ],
+    "disposition": "review_required",
+    "uncertainties": [
+      "Contents of the internal service metadata (e.g., versions, hostnames, paths, identifiers, or secrets) are unknown.",
+      "Whether the endpoint has rate limiting, network restrictions, or monitoring is unknown.",
+      "Whether the endpoint's exposure was reviewed or approved by security owners is unknown.",
+      "Whether the metadata could support reconnaissance or chaining with other vulnerabilities is unknown.",
+      "Whether the read-only and no-customer-data claims were verified by code review or testing is unknown."
+    ]
+  }
+}

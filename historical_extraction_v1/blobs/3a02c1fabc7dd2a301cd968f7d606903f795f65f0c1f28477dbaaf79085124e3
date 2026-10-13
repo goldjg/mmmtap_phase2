@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[user]
+	name = MMMTAP Stage2B
+	email = stage2b@mmmtap.invalid

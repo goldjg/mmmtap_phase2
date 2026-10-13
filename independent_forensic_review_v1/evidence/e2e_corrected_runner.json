@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/usr/bin/bwrap",
+    "--ro-bind",
+    "/",
+    "/",
+    "--bind",
+    "/home/prometheus/git/mmmtap_phase2/independent_forensic_review_v1/evidence",
+    "/home/prometheus/git/mmmtap_phase2/independent_forensic_review_v1/evidence",
+    "--unshare-net",
+    "--die-with-parent",
+    "--proc",
+    "/proc",
+    "--dev",
+    "/dev",
+    "--tmpfs",
+    "/tmp",
+    "--chdir",
+    "/home/prometheus/git/mmmtap_phase2",
+    "--",
+    "/usr/bin/python",
+    "/home/prometheus/git/mmmtap_phase2/independent_forensic_review_v1/evidence/reproduce_e2e.py"
+  ],
+  "elapsed_seconds": 84.51102946698666,
+  "exit_status": 0
+}

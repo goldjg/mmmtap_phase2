@@ -1,0 +1,75 @@
+{
+  "case": "carl-5436e6dd98",
+  "variant": "baseline",
+  "prompt_sha256": "6260570c0cc04e6df293e4f491e240cf8488d738a962bc3c00f0cd1e3f98dc10",
+  "source_sha256": "2a54c21c2bcdf0d43b7fdb3b31cd4426db3de0f6990e88be90e112846656325f",
+  "requested_model": "claude-haiku-5.5",
+  "time_utc": "2026-10-11T17:21:28.006639+00:00",
+  "valid_schema": true,
+  "raw": {
+    "argv": [
+      "copilot",
+      "-p",
+      "[PROMPT]",
+      "--model",
+      "claude-haiku-5.5",
+      "--no-ask-user"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"case_id\":\"carl-5436e6dd98\",\"variant_id\":\"baseline\",\"assessor\":\"GitHub Copilot CLI (Claude Haiku 5.5)\",\"claims\":[{\"claim_id\":\"C1\",\"claim\":\"The commit rewords the RELEASE_READINESS.md statement from 'No external state was changed.' to 'Those evidence lookups changed no external state.' This is a wording change only; the diff shows no change to the underlying behavior.\",\"evidence_quotes\":[\"-workflow/job/step conclusions. No external state was changed.\",\"+workflow/job/step conclusions. Those evidence lookups changed no external\",\"+state.\"],\"confidence\":0.95,\"limitations\":[\"The diff shows only the documentation text, not the commands or API calls that were run.\"]},{\"claim_id\":\"C2\",\"claim\":\"The document states that the evidence lookups were read-only public GitHub API calls that verified the latest main commit, the v0.4.3 release, and its workflow results. This is a self-report in the document, and the material does not independently confirm it.\",\"evidence_quotes\":[\"Read-only public GitHub API calls verified the latest `main` commit, the\"],\"confidence\":0.3,\"limitations\":[\"The line is unchanged context in the diff, not new evidence.\",\"No API request logs, responses, timestamps, or credentials-scope information are included.\",\"The read-only nature of the calls is asserted, not demonstrated.\"]},{\"claim_id\":\"C3\",\"claim\":\"The release facts stated in the document (v0.4.3 is the authoritative release, it has 12 assets, and the release workflow and job/step conclusions were successful) are accurate.\",\"evidence_quotes\":[\"its 12 assets, and the successful release\"],\"confidence\":0.1,\"limitations\":[\"No release, asset list, or workflow run data is included in the material.\",\"The claim cannot be verified from the supplied diff.\"]}],\"disposition\":\"insufficient_evidence\",\"uncertainties\":[\"Whether the GitHub API lookups described in the document were actually performed and were read-only.\",\"Whether the v0.4.3 release, its 12 assets, and the release workflow results match the live repository state.\",\"Whether the latest main commit referenced in the document is current or correct.\",\"Whether any other external state (tokens, releases, tags) was changed during the work described.\",\"The full RELEASE_READINESS.md content and surrounding context are not included in the supplied material.\"]}\n\n",
+    "stderr": "\n\nChanges    +0 -0\nAI Credits 0.4 (12s)\nTokens     \u2191 26.1k (26.1k written) \u2022 \u2193 1.5k (740 reasoning)\nResume     copilot --resume=335e7dc3-d976-4df7-b4d6-36a8b6052755\n"
+  },
+  "parsed": {
+    "case_id": "carl-5436e6dd98",
+    "variant_id": "baseline",
+    "assessor": "GitHub Copilot CLI (Claude Haiku 5.5)",
+    "claims": [
+      {
+        "claim_id": "C1",
+        "claim": "The commit rewords the RELEASE_READINESS.md statement from 'No external state was changed.' to 'Those evidence lookups changed no external state.' This is a wording change only; the diff shows no change to the underlying behavior.",
+        "evidence_quotes": [
+          "-workflow/job/step conclusions. No external state was changed.",
+          "+workflow/job/step conclusions. Those evidence lookups changed no external",
+          "+state."
+        ],
+        "confidence": 0.95,
+        "limitations": [
+          "The diff shows only the documentation text, not the commands or API calls that were run."
+        ]
+      },
+      {
+        "claim_id": "C2",
+        "claim": "The document states that the evidence lookups were read-only public GitHub API calls that verified the latest main commit, the v0.4.3 release, and its workflow results. This is a self-report in the document, and the material does not independently confirm it.",
+        "evidence_quotes": [
+          "Read-only public GitHub API calls verified the latest `main` commit, the"
+        ],
+        "confidence": 0.3,
+        "limitations": [
+          "The line is unchanged context in the diff, not new evidence.",
+          "No API request logs, responses, timestamps, or credentials-scope information are included.",
+          "The read-only nature of the calls is asserted, not demonstrated."
+        ]
+      },
+      {
+        "claim_id": "C3",
+        "claim": "The release facts stated in the document (v0.4.3 is the authoritative release, it has 12 assets, and the release workflow and job/step conclusions were successful) are accurate.",
+        "evidence_quotes": [
+          "its 12 assets, and the successful release"
+        ],
+        "confidence": 0.1,
+        "limitations": [
+          "No release, asset list, or workflow run data is included in the material.",
+          "The claim cannot be verified from the supplied diff."
+        ]
+      }
+    ],
+    "disposition": "insufficient_evidence",
+    "uncertainties": [
+      "Whether the GitHub API lookups described in the document were actually performed and were read-only.",
+      "Whether the v0.4.3 release, its 12 assets, and the release workflow results match the live repository state.",
+      "Whether the latest main commit referenced in the document is current or correct.",
+      "Whether any other external state (tokens, releases, tags) was changed during the work described.",
+      "The full RELEASE_READINESS.md content and surrounding context are not included in the supplied material."
+    ]
+  }
+}

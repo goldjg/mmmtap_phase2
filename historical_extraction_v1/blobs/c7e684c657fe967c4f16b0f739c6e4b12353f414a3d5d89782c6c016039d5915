@@ -1,0 +1,72 @@
+{
+  "fixture": {
+    "case": "benign_tampered",
+    "evidence": [
+      {
+        "algorithm": "HMAC-SHA256",
+        "issuer": "identity_confirmation",
+        "key_id": "MMMTAP-P120-LAB-ONLY-v1",
+        "payload": {
+          "incident_id": "SOCW-P120-BENIGN",
+          "observation": "owner_confirmed_expected",
+          "source_record": "ID-711",
+          "timestamp": "2026-10-11T12:00:00Z"
+        },
+        "signature": "169f891f69d716d4dc6fbeb276f509134e88645e40268db88c424509de1d8321"
+      },
+      {
+        "algorithm": "HMAC-SHA256",
+        "issuer": "change_management",
+        "key_id": "MMMTAP-P120-LAB-ONLY-v1",
+        "payload": {
+          "incident_id": "SOCW-P120-BENIGN",
+          "observation": "approved_change_matches",
+          "source_record": "CH-TAMPERED",
+          "timestamp": "2026-10-11T12:00:00Z"
+        },
+        "signature": "b6efec0e8f740038d3222e022106f91f880330bc848477b37caa84931736ebd4"
+      }
+    ],
+    "incident": {
+      "analytic_detections": [],
+      "incident_id": "SOCW-P120-BENIGN",
+      "severity": "Informational",
+      "sign_in_result": "success",
+      "status": "New",
+      "user_agent": "SOCWHISPERER-IPJ-PAIR-00000000-CONTROL telemetry-client/1.0",
+      "user_agent_origin": "attacker_controlled_http_header"
+    }
+  },
+  "verification": {
+    "checks": [
+      {
+        "issuer": "identity_confirmation",
+        "payload": {
+          "incident_id": "SOCW-P120-BENIGN",
+          "observation": "owner_confirmed_expected",
+          "source_record": "ID-711",
+          "timestamp": "2026-10-11T12:00:00Z"
+        },
+        "reason": "origin_authenticity_only",
+        "state": "verified"
+      },
+      {
+        "reason": "signature_mismatch",
+        "state": "invalid"
+      }
+    ],
+    "gate": {
+      "action": "simulated_only",
+      "closure_authorised": false,
+      "conditions": {
+        "incident_non_suspicious": true,
+        "independent_owner_confirmation": true,
+        "matching_approved_change": false,
+        "no_authenticated_contradiction": true,
+        "signature_checks_pass": false,
+        "unique_issuer_count": 1
+      },
+      "reason": "insufficient corroboration or contradictory incident evidence"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+# MMMTAP Phase 0 — main.tf baseline
+
+A deliberately small, **independent** assessor harness. No adversarial rounds, no arbitration, no automated scoring, no writes to AzureGoat. Standard library Python 3.10+.
+
+## First use
+
+```bash
+python3 phase0.py --repo ~/git/AzureGoat
+```
+
+
+```bash
+python3 phase0.py --repo ~/git/AzureGoat
+export JEVKEY='your_key_here'
+python3 phase0.py --repo ~/git/AzureGoat --only jev-direct --execute
+```
+
+A `main.tf` in a subdirectory is supported with `--source path/to/main.tf`. Output defaults to `./phase0-results` (outside AzureGoat if executed elsewhere).
+
+## Model CLI setup
+
+All Copilot and Codex entries are **disabled** for the default all-assessor run until verified on your installed clients. Using `--only NAME` explicitly selects even a disabled entry. Enable one entry at a time after checking `copilot help`, `codex exec --help` and the exact `/model` identifiers available in the CLI (UI labels may differ). CLI models may have different identifiers than the displayed names. Example:
+
+```bash
+python3 phase0.py --repo ~/git/AzureGoat --only copilot-haiku --execute
+```
+
+The harness runs selected entries sequentially, in fresh processes, from temporary working directories, and transmits identical source bytes in the prompt. This means agent tools do not need read access to the repository. Do not grant broad tool permissions. Copilot's non-interactive CLI uses `-p` and `--model`; Codex's non-interactive CLI uses `codex exec --model -` and a read-only sandbox. Test availability of each model identifier before enabling.
+
+**Important:** The command adapter's `prompt_mode: arg` passes source contents as a process argument. This is convenient for Copilot `-p`, but is visible in process inspection on some operating systems. Avoid using secret-bearing Terraform source or sensitive environments with this method. `stdin` mode is preferred where supported.
+
+## cARL / JEV
+
+The cARL CLI documented at `github.com/goldjg/cARL` manages governance packs and runtime context; an actual JEV-calling CLI invocation has **not been verified**. Do not treat `carl init`, `carl map`, or `carl doctor` as JEV assessment commands. Once you provide the JEV-specific cARL invocation, add a `kind:command` entry that calls it. Keep that wrapper outside the AzureGoat working tree; do not run `carl init` inside AzureGoat.
+
+The direct JEV adapter uses the same `/v1/systemone` endpoint, Bearer `JEVKEY`, idempotency header and `jev-latest` model structure from the earlier `jev_paces_v2.1.py` harness. **Questions have intentionally been adjusted to review a static whole file rather than a code change**. That difference from the original study should be documented, not silently treated as a like-for-like comparison.
+
+JEV's question/choice output is not structurally equivalent to the generative models' free-form findings. Raw responses are kept separately. Further analysis must distinguish classification from issue discovery.
+
+## Results and reproducibility
+
+`experiment.json`, `prompt.txt`, `source.sha256`, and append-only `results.jsonl` are written to the result folder. Only successful attempts are skipped on subsequent runs. To change corpus, prompt, questions, or model configurations, use a **new `--out` directory**, so results from different experiments are never silently mixed. For stricter repeated-trial comparisons, use a new output directory for each distinct condition.
+
+`--repetitions 3` runs repeated independent assessments. This is **not** three-turn adversarial reasoning.
+
+Operational notes: CLI stdout/stderr may contain file content, secrets or tool output. Results should be kept private and treated as untrusted data. Cost is recorded only when included in native responses; no cost is invented from execution time. Network execution has not been tested in this environment.
+
+## cARL/JEV feature-branch assessment
+
+Build separately on Gaia:
+
+```sh
+cd ~/git/cARL-semantic-eval
+go build -buildvcs=false -o ~/bin/carl-jev ./cmd/carl
+```
+
+In `assessors.json`, set `carl-jev.endpoint` to the **verified endpoint
+supported by the feature branch's adapter**. This is deliberately blank: the
+example endpoint in cARL's docs is a placeholder and the direct Python JEV
+`/v1/systemone` URL has not been verified as compatible with the Go adapter.
+The JEV API key is read from `JEVKEY`.
+
+```sh
+python3 phase0.py --repo ~/git/AzureGoat --only carl-jev   # dry-run, no API call
+python3 phase0.py --repo ~/git/AzureGoat --only carl-jev --execute
+```
+
+For the live trial, the harness creates an **isolated Git fixture** under the
+output directory, commits the cARL opt-in configuration as the baseline, and
+adds the frozen `main.tf` as a second commit. Only `main.tf` is in the
+review diff. It records the cARL JSON dry-run before sending any request,
+and retains both raw outputs. cARL's native nine questions and policy are not
+modified; exit code 2 is interpreted as a valid review finding.
+
+**Research caveats:** the cARL path assesses a new-file Git change with
+cARL's nine questions; direct JEV assesses a standalone file with a separate
+question set. These are different experimental conditions, not a pure adapter
+A/B test. Git fixture configuration is locally committed for reproducibility
+and never pushed. The CLI path may include additional context from the fixture.
+Keep the output directory private: it contains the exact source and provider
+responses. Do not point these commands at production or secret-bearing code.
+
+### Important adapter compatibility warning (2026-10-10)
+The Go cARL feature branch's `internal/semantic/jev.go` marshals `state` as an
+object and expects `signals` or `answers` in the response, whereas the existing
+Python direct JEV harness sends `state` as a string to `/v1/systemone`.
+Do NOT point the Go adapter to this endpoint until its schema is verified or
+adapted. The `carl-jev` entry remains disabled and its endpoint remains blank.
+**Begin with `jev-direct` only.**

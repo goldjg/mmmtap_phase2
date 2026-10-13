@@ -1,0 +1,17 @@
+# P1-012C — Baseline-aware Checkov evidence correlation
+
+All base scans performed with the same pinned runner as head scans. Existing head-side records reused. No JEV inference or deployment.
+
+| Case | Base failures | Head failures | Introduced | Resolved | Persistent | Target adjudication |
+|---|---:|---:|---:|---:|---:|---|
+| A_mixed_intent | 9 | 9 | 1 | 1 | 8 | NOT ADJUDICATED |
+| B_compensating_controls | 6 | 9 | 3 | 0 | 6 | NOT ADJUDICATED |
+| C_risk_displacement | 9 | 9 | 1 | 1 | 8 | NOT ADJUDICATED |
+| D_benign_camouflage | 8 | 9 | 1 | 0 | 8 | NOT ADJUDICATED |
+| E_incomplete_remediation | 10 | 9 | 0 | 1 | 9 | NOT ADJUDICATED |
+| F_ambiguous_intent | 8 | 7 | 0 | 1 | 7 | NOT ADJUDICATED |
+
+Finding identity = (Checkov check ID, resource identity, file path). A change in finding presence does not prove a regression was introduced, and an unchanged finding does not prove source semantics were unchanged.
+Case E is residual exposure; B/F have contextual ambiguity. Scanner policy and the research objective may point in different directions, especially the AzureServices bypass.
+Absence of findings does not prove compliance; scanning a git-exported source is not a Terraform plan or deployed-state assessment.
+Manual check-ID/resource/diff adjudication remains required. cARL policy unchanged.

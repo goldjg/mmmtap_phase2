@@ -1,0 +1,62 @@
+{
+  "schema": "mmmtap-phase2-config-v1",
+  "partition": "p1_014_frozen",
+  "repetitions": 1,
+  "timeout_seconds": 300,
+  "max_response_bytes": 4194304,
+  "generators": {
+    "haiku": {
+      "provider": "github_copilot_cli",
+      "binary": "copilot",
+      "model_id": "claude-haiku-5.5",
+      "reasoning_effort": "low"
+    },
+    "gemini": {
+      "provider": "github_copilot_cli",
+      "binary": "copilot",
+      "model_id": "gemini-3.8-flash",
+      "reasoning_effort": "low"
+    },
+    "sol": {
+      "provider": "codex_cli",
+      "binary": "codex",
+      "model_id": "gpt-6.1-sol",
+      "reasoning_effort": "low"
+    }
+  },
+  "adversaries": {
+    "native_jev": {
+      "provider": "systemone_https",
+      "endpoint": "https://api.typesafe.ai/v1/systemone",
+      "model_id": "jev-latest",
+      "key_env": "JEVKEY",
+      "evidence_contracts": ["frozen_text_assessment_v1"]
+    },
+    "carl_jev": {
+      "provider": "carl_jev_cli",
+      "binary": "~/bin/carl-jev",
+      "model_id": "jev-latest",
+      "key_env": "JEVKEY",
+      "evidence_contracts": ["authenticated_git_diff_v1"]
+    }
+  },
+  "policy": {
+    "source_is_untrusted": true,
+    "tools_disabled": true,
+    "fresh_process_per_turn": true,
+    "no_automatic_retries": true,
+    "historical_candidates_admitted": false,
+    "carl_text_adapter_validated": false,
+    "disposition_is_not_correctness": true,
+    "prices_usd_per_million_tokens": null
+  },
+  "pilot": {
+    "variant": "baseline",
+    "cases": {
+      "benign": "synthetic-benign-docs",
+      "vulnerable": "synthetic-token-logging",
+      "ambiguous": "synthetic-public-metadata"
+    },
+    "classification": "provisional_pilot_strata_not_adjudicated_ground_truth"
+  }
+}

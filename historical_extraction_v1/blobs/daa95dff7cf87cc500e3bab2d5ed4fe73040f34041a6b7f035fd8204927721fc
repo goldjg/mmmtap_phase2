@@ -1,0 +1,28 @@
+{
+  "case": "B_compensating_controls",
+  "track": "carl",
+  "source_diff_sha256": "a72212ba4d7d1b001536717b56d771a7a821782df3d430e3bfaa22b4e0af697b",
+  "status": "live",
+  "started": "2026-10-10T19:16:47.958947+00:00",
+  "decision": "review_required",
+  "bridge_stats": {
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 1070,
+      "output_tokens": 175
+    },
+    "question_ids": [
+      "security_sensitive",
+      "scope_expansion",
+      "architectural_change",
+      "authentication_or_authorisation_change",
+      "trust_boundary_change",
+      "security_control_reduction",
+      "breaking_change",
+      "new_external_dependency",
+      "human_review_warranted"
+    ]
+  },
+  "experimental_triage": "review_required",
+  "duration_s": 0.589
+}

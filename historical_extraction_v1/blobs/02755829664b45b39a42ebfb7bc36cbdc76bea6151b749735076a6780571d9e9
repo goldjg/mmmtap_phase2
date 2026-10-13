@@ -1,0 +1,46 @@
+{
+  "case": "ssh_scope_remediation",
+  "kind": "remediation",
+  "repetition": 1,
+  "diff_sha256": "534b0fb752d52bae82f2f82880144ea992095d4a3db574515a3a5ab32ea872f3",
+  "native": {
+    "status": "live",
+    "duration_s": 0.45,
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 671,
+      "output_tokens": 175
+    },
+    "scores": {
+      "security_sensitive": 0.87,
+      "scope_expansion": 0.1,
+      "architectural_change": 0.1,
+      "authentication_or_authorisation_change": 0.54,
+      "trust_boundary_change": 0.84,
+      "security_control_reduction": 0.1,
+      "breaking_change": 0.24,
+      "new_external_dependency": 0.02,
+      "human_review_warranted": 0.55
+    }
+  },
+  "carl": {
+    "verified_live_semantics": false,
+    "decision": "pass",
+    "finding_count": 0,
+    "diagnostics": [
+      "semantic_evaluation_disabled"
+    ],
+    "signals": null,
+    "signal_ids": [],
+    "status": "unverified",
+    "exit_code": 0,
+    "duration_s": 0.041
+  },
+  "experimental_arbiter": {
+    "decision": "review_required",
+    "reason": "missing_semantic_signals"
+  },
+  "prior_attempts": [
+    "attempt-01"
+  ]
+}

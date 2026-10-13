@@ -1,0 +1,6 @@
+{
+  "decision": "block_expedite",
+  "scanner_state": "violated",
+  "out": "/home/prometheus/git/mmmtap_p1_012c_results/F_ambiguous_intent",
+  "model_calls": 0
+}

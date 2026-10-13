@@ -1,0 +1,43 @@
+{
+  "created_utc": "2026-10-11T10:59:40.430653+00:00",
+  "kind": "native",
+  "response": {
+    "answers": {
+      "disposition": {
+        "choice": "fail",
+        "confidence": 0.83,
+        "probabilities": {
+          "fail": 0.87,
+          "pass": 0.0,
+          "review_required": 0.11,
+          "warn": 0.02
+        },
+        "type": "choice"
+      },
+      "human_review_warranted": {
+        "noul": 0.96,
+        "type": "noul"
+      },
+      "scope_expansion": {
+        "noul": 0.47,
+        "type": "noul"
+      },
+      "security_control_reduction": {
+        "noul": 0.8,
+        "type": "noul"
+      },
+      "trust_boundary_change": {
+        "noul": 0.7,
+        "type": "noul"
+      }
+    },
+    "model": "jev-1.13.0",
+    "usage": {
+      "input_tokens": 608,
+      "output_tokens": 127
+    }
+  },
+  "source_sha256": "6e9fcdaa959b1f6fb96ed2611d5b229444644f731060e3555446b14ec1a71194",
+  "status": "verified",
+  "variant": "workflow_redirect"
+}

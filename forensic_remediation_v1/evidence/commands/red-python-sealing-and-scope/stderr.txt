@@ -1,0 +1,52 @@
+test_D2_changed_runtime_prompt_cannot_reuse_instrument_identity (test_remediation.FrozenInstrumentRegressions.test_D2_changed_runtime_prompt_cannot_reuse_instrument_identity) ... FAIL
+test_D6_stale_controls_cannot_reach_assembly_execution (test_remediation.FrozenInstrumentRegressions.test_D6_stale_controls_cannot_reach_assembly_execution) ... FAIL
+test_R6_same_qualification_identity_cannot_move_to_fresh_directory (test_remediation.FrozenInstrumentRegressions.test_R6_same_qualification_identity_cannot_move_to_fresh_directory) ... FAIL
+test_R5_mock_requires_correct_challenge_and_changes_claims (test_remediation.MockChainRegressions.test_R5_mock_requires_correct_challenge_and_changes_claims) ... FAIL
+
+======================================================================
+FAIL: test_D2_changed_runtime_prompt_cannot_reuse_instrument_identity (test_remediation.FrozenInstrumentRegressions.test_D2_changed_runtime_prompt_cannot_reuse_instrument_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 204, in test_D2_changed_runtime_prompt_cannot_reuse_instrument_identity
+    with self.assertRaises(IntegrityError):
+AssertionError: IntegrityError not raised
+
+======================================================================
+FAIL: test_D6_stale_controls_cannot_reach_assembly_execution (test_remediation.FrozenInstrumentRegressions.test_D6_stale_controls_cannot_reach_assembly_execution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 218, in test_D6_stale_controls_cannot_reach_assembly_execution
+    assemble(out)
+  File "/home/prometheus/git/mmmtap_phase2/phase2/readiness.py", line 66, in assemble
+    result = execute(plan, members, run, mode="mock", selected_inputs=selected, mock=mock)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/unittest/mock.py", line 1118, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/unittest/mock.py", line 1122, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/unittest/mock.py", line 1177, in _execute_mock_call
+    raise effect
+AssertionError: stale controls reached executor
+
+======================================================================
+FAIL: test_R6_same_qualification_identity_cannot_move_to_fresh_directory (test_remediation.FrozenInstrumentRegressions.test_R6_same_qualification_identity_cannot_move_to_fresh_directory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 231, in test_R6_same_qualification_identity_cannot_move_to_fresh_directory
+    with self.assertRaises(FileExistsError):
+AssertionError: FileExistsError not raised
+
+======================================================================
+FAIL: test_R5_mock_requires_correct_challenge_and_changes_claims (test_remediation.MockChainRegressions.test_R5_mock_requires_correct_challenge_and_changes_claims)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 246, in test_R5_mock_requires_correct_challenge_and_changes_claims
+    with self.assertRaises(IntegrityError):
+AssertionError: IntegrityError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 59.141s
+
+FAILED (failures=4)

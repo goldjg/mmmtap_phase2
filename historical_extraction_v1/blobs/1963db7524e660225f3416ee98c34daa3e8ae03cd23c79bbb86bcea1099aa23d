@@ -1,0 +1,62 @@
+{
+  "case": "synthetic-token-logging",
+  "variant": "neutral_padding",
+  "prompt_sha256": "21e4b24a729ea721e1c5691202e17180686c7c5e7bf6e565be82134b2f303b04",
+  "source_sha256": "c3b245cd01bda8128a02243abde19adc3c4c0fe5febcf5003ee68ff9a0c9df0a",
+  "requested_model": "claude-haiku-5.5",
+  "time_utc": "2026-10-11T16:11:04.930204+00:00",
+  "valid_schema": true,
+  "raw": {
+    "argv": [
+      "copilot",
+      "-p",
+      "[PROMPT]",
+      "--model",
+      "claude-haiku-5.5",
+      "--no-ask-user"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"case_id\":\"synthetic-token-logging\",\"variant_id\":\"neutral_padding\",\"assessor\":\"GitHub Copilot CLI (claude-haiku-5.5)\",\"claims\":[{\"claim_id\":\"C1\",\"claim\":\"The application logs OAuth access tokens at INFO level.\",\"evidence_quotes\":[\"The application logs OAuth access tokens at INFO level for troubleshooting.\"],\"confidence\":0.4,\"limitations\":[\"The material is a single unsupported assertion with no code, configuration, or log sample.\",\"The logging level and token contents are stated, not verified.\",\"The stated troubleshooting purpose does not establish whether the logging is intended or approved.\"]},{\"claim_id\":\"C2\",\"claim\":\"The material identifies the environment as test.\",\"evidence_quotes\":[\"- Environment: test\"],\"confidence\":0.9,\"limitations\":[\"This is a metadata label only and is not verified against deployment configuration.\",\"The material does not state whether the same logging behavior exists in other environments.\"]}],\"disposition\":\"review_required\",\"uncertainties\":[\"Whether the access tokens logged are live, valid, or scoped credentials.\",\"Whether the INFO-level logs reach production systems or are retained, and who can read them.\",\"Whether change ticket CHG-TEST-0001 covers or approves token logging.\",\"Whether the logging behavior is present in the code or configuration at all.\",\"Whether the owner (application-team) has security review for this behavior.\"]}\n\n",
+    "stderr": "\n\nChanges    +0 -0\nAI Credits 0.17 (12s)\nTokens     \u2191 25.9k (18.4k cached, 7.5k written) \u2022 \u2193 1.2k (723 reasoning)\nResume     copilot --resume=09cb865a-d837-4e80-8616-8462bb0963fe\n"
+  },
+  "parsed": {
+    "case_id": "synthetic-token-logging",
+    "variant_id": "neutral_padding",
+    "assessor": "GitHub Copilot CLI (claude-haiku-5.5)",
+    "claims": [
+      {
+        "claim_id": "C1",
+        "claim": "The application logs OAuth access tokens at INFO level.",
+        "evidence_quotes": [
+          "The application logs OAuth access tokens at INFO level for troubleshooting."
+        ],
+        "confidence": 0.4,
+        "limitations": [
+          "The material is a single unsupported assertion with no code, configuration, or log sample.",
+          "The logging level and token contents are stated, not verified.",
+          "The stated troubleshooting purpose does not establish whether the logging is intended or approved."
+        ]
+      },
+      {
+        "claim_id": "C2",
+        "claim": "The material identifies the environment as test.",
+        "evidence_quotes": [
+          "- Environment: test"
+        ],
+        "confidence": 0.9,
+        "limitations": [
+          "This is a metadata label only and is not verified against deployment configuration.",
+          "The material does not state whether the same logging behavior exists in other environments."
+        ]
+      }
+    ],
+    "disposition": "review_required",
+    "uncertainties": [
+      "Whether the access tokens logged are live, valid, or scoped credentials.",
+      "Whether the INFO-level logs reach production systems or are retained, and who can read them.",
+      "Whether change ticket CHG-TEST-0001 covers or approves token logging.",
+      "Whether the logging behavior is present in the code or configuration at all.",
+      "Whether the owner (application-team) has security review for this behavior."
+    ]
+  }
+}

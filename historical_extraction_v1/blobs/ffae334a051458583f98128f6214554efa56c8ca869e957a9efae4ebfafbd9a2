@@ -1,0 +1,8 @@
+semantic_evaluation:
+  enabled: true
+  provider: jev
+  fail_mode: closed
+  jev:
+    api_key_env: JEVKEY
+    endpoint: http://127.0.0.1:42645/evaluate
+    model: jev-latest

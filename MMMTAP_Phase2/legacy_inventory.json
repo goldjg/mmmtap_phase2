@@ -1,0 +1,269 @@
+{
+  "status": "archive_level_inventory_only_not_deduplicated",
+  "archives": [
+    {
+      "archive": "Copy of MMMTAP_P1-022_A2_Codex.zip",
+      "sha256": "48370c5a1ddf5324a9b87954c730bda9ef940e64e3fa1d60bc00574b4ad2737c",
+      "entries": 5,
+      "zip_integrity": true
+    },
+    {
+      "archive": "Copy of mmmtap_p1_017a_results.zip",
+      "sha256": "07d51f7d2e2367b49bf92c78d86f7b6b063899828221661de47617b86062e321",
+      "entries": 301,
+      "zip_integrity": true
+    },
+    {
+      "archive": "Copy of mmmtap_p1_022_stage_a_results.zip",
+      "sha256": "911dbbf60e989095b95ddb6995ce2819b9492f1410a9edb006706fc9724ba5eb",
+      "entries": 21,
+      "zip_integrity": true
+    },
+    {
+      "archive": "MMMTAP_Handoff_P1-018_2026-10-11(1).zip",
+      "sha256": "e3ecd5b52f6de71f5ce3fe3bcd1fa0b1fb1a80eef7dbe4ab3d6d4207d053fbb7",
+      "entries": 4,
+      "zip_integrity": true
+    },
+    {
+      "archive": "MMMTAP_P1-022_A2_REPEAT_BLIND_REVIEW.zip",
+      "sha256": "1bfe5098cafdaea04a874001f91a54212d010c8321292573f9959f8c62962199",
+      "entries": 19,
+      "zip_integrity": true
+    },
+    {
+      "archive": "MMMTAP_P1-022_A2_REPEAT_COMPLETED_FROZEN_v2(1).zip",
+      "sha256": "3b39cb7de477ad1d25b0e3b26d33305e898be9ae3b21b01207697fd9aa3e79f6",
+      "entries": 5,
+      "zip_integrity": true
+    },
+    {
+      "archive": "MMMTAP_P1-022_A2_REPEAT_PRIVATE_KEY.zip",
+      "sha256": "c732dd5f1b98000c6264b9aa8553734bff86b4011187b6ac58e38f1a600007ed",
+      "entries": 2,
+      "zip_integrity": true
+    },
+    {
+      "archive": "MMMTAP_P1-022_A2_REPEAT_UNBLINDED_ANALYSIS.zip",
+      "sha256": "d24482e26f3b75c3c58bc38bf502695de73599ea31e2c75863710718dca1a885",
+      "entries": 5,
+      "zip_integrity": true
+    },
+    {
+      "archive": "azuregoat-main.tf.zip",
+      "sha256": "1f371999bf169958054065c27e1a81a981a553c27846aa8b0bb7ac750970fdf2",
+      "entries": 19,
+      "zip_integrity": true
+    },
+    {
+      "archive": "jev-kev-research-results.zip",
+      "sha256": "bcea3869d04852e2ccab6d08b60350b65448d1fb6c1f1b5b36817fb5b24c7cfc",
+      "entries": 24,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap-ambiguous-trust-results.zip",
+      "sha256": "6fdb8abbb666f750ef34fed81ffeab175072d18abac58d3dd0534f1433f3faab",
+      "entries": 10,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap-contextual-discrimination-results.zip",
+      "sha256": "4944c74c32d6fa4c2279b769a7f542601aec9eaea35ab9883f5d51ccc0698062",
+      "entries": 14,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap-repeatability-results.zip",
+      "sha256": "b8bc4211af467722c44ded3234381e4b72a45f28f119feb87433233c4a6dc8dc",
+      "entries": 121,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_handoff_2026-10-10(1).zip",
+      "sha256": "9151511566c72e3eaa535737d900a15ed31c3650ba54bc3a4dcd74d7ab6d2fb2",
+      "entries": 5,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_007b_results.zip",
+      "sha256": "9e7e7c19c33e6158fbe1cd3b6d729c63a0afc40b198f873b20d9a5b70579eee0",
+      "entries": 198,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_008_live_results.zip",
+      "sha256": "a03356cd6764b981a86fa5ee6f9e6b9726464452aad9d7c58ae400bf2d1b385b",
+      "entries": 70,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_012_matrix_evidence.zip",
+      "sha256": "ce9fc02d4f119d3fe08a3aae48e58712f9a6a1671ecead28dd64e458d3b8f8be",
+      "entries": 34,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_012c_results.zip",
+      "sha256": "087a942977408c34d4330a821b7dbebe0f86ee48c7cc47abd4681b848f94ebd4",
+      "entries": 35,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_014_stage1_v2_complete.zip",
+      "sha256": "27a4c14a37079b605ad7b58824256d9488dda157b74e4ea914b84f92d282f8d7",
+      "entries": 94,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_014_stage1_v2_results.zip",
+      "sha256": "2ae36440884f80aef93255721b07281d083c06e57f2e32d952153951306eb4fb",
+      "entries": 51,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_014_stage2a_results.zip",
+      "sha256": "0725a9b7597cb5388d98594f3d930eee42a949333bfee9bc065d8c7b55517712",
+      "entries": 13,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_014_stage2b_results.zip",
+      "sha256": "20a26e52ad089fbae25300ad4b52caaefd352a646c4b6b53b2d68bbec3249308",
+      "entries": 600,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_014_stage2c_results.zip",
+      "sha256": "b4bc9e8c2d3ea105bcff3db74a7643f8a1ab385e23a00d3a0b8a378540ad4cea",
+      "entries": 84,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_014_verified_inputs.zip",
+      "sha256": "a3fe94069009f328b0a46bb52a7ff52d2c2bedfcd0eb3babe360eea1c884cc21",
+      "entries": 137,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_015_results.zip",
+      "sha256": "d5697fdc58bacf5151b6d68bc52bbb548cfd85771807c93583aab6056434827d",
+      "entries": 124,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_016_results.zip",
+      "sha256": "32b66a7f620a7a02f3cfd4afcf7d60ee095d39244f91d7778df239138198909a",
+      "entries": 85,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_017a_results.zip",
+      "sha256": "b02a404618b0bb1ff33d17f9bb25bd4661f696a426da594107fe66170adc740d",
+      "entries": 258,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_017b_results.zip",
+      "sha256": "761217ae42304481576f36d7dcd57e642bbe7081568bc648d0746babf5727a68",
+      "entries": 29,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_017b_round1_results.zip",
+      "sha256": "cc7c06c9d1d104396b4cb350c3cfb1fdd93f8a1ce964caea58df295f82f3753f",
+      "entries": 13,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_018_results.zip",
+      "sha256": "c90b73b113ac019245a014a27b1f6d97b8854c5955a99cadd2acaaedb9fb3d7a",
+      "entries": 21,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_019_results.zip",
+      "sha256": "80b74808bc1a7e93443a0ee9ef94beb1843946b795239793e9e4e230d7bdf97a",
+      "entries": 31,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_020_results.zip",
+      "sha256": "c66987d46daff5da7b5b557735f7938f189f63e3cc2524b29bc12b1ca2f76e6a",
+      "entries": 41,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_021_results.zip",
+      "sha256": "82f437e33a52509e2188689d10fc225fa63fc51a9123f501442dba284db956dd",
+      "entries": 64,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_022_a2_codex_frozen.zip",
+      "sha256": "3a163855418415f81b641c3cfaf9febf04759bf957608a4051ec0f3f4c45fb5f",
+      "entries": 22,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_022_a2_repeatability_frozen.zip",
+      "sha256": "a528364286e5661449b3e474d3b3f3f2c1fef9530f5c5a484a10e24178eebd1c",
+      "entries": 15,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_022_blind_review.zip",
+      "sha256": "5f23f0667019fe4c6bca26fce09ceae25e4c6a7ae911ead96051b563ec55dd16",
+      "entries": 5,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_022_stage_a_readiness(1).zip",
+      "sha256": "980ec3a0f8b59a296fa3cfa7fc1f1f00278a7f5d0bfecc9c89946bc076805222",
+      "entries": 16,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_p1_022_stage_a_results.zip",
+      "sha256": "b6fceec49cc832e8ce01ca400d1babba0b489a988d779c44615bb7e4220b0eb0",
+      "entries": 6,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_phase0(1).zip",
+      "sha256": "9779218cd771b3eea3f2bba0f768d90b7b3b08f3efe7de8c163f4a037857faa9",
+      "entries": 6,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_phase0_runner.zip",
+      "sha256": "d0d9a51535231e3153a652128b006a5a56d2c2067648a9cb9fc0fb50ee250fb2",
+      "entries": 53,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_phase0_v2(1).zip",
+      "sha256": "753898135f6044ba65c76fb3e8e00f8a8fdca99490e1a5ab09f5869c101c29af",
+      "entries": 3,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_phase0_v3(1).zip",
+      "sha256": "bb6a61504e49eb9f48dfbb2204d240bec77beb3943f515fe43ea94f88f28a5da",
+      "entries": 3,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_phase0_v4(1).zip",
+      "sha256": "fe22e7ace3aa2fb0941604008b8bc65eb3cb0261c3beda12fb4fa32cb890662d",
+      "entries": 5,
+      "zip_integrity": true
+    },
+    {
+      "archive": "mmmtap_phase0_v5(1).zip",
+      "sha256": "0744a86d03f73cfa9fe00247533ee8e2f2b815fe28daa008ec0f3d17b5e802b1",
+      "entries": 6,
+      "zip_integrity": true
+    }
+  ]
+}

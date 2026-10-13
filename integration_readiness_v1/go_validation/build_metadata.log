@@ -1,0 +1,14 @@
+../mmmtap_phase2/integration_readiness_v1/bin/carl-assessment-challenge-v2: go1.26.5
+	path	github.com/goldjg/carl/cmd/carl-assessment-challenge
+	mod	github.com/goldjg/carl	(devel)	
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	DefaultGODEBUG=containermaxprocs=0,cryptocustomrand=1,decoratemappings=0,tlssecpmlkem=0,tlssha1=1,updatemaxprocs=0,urlstrictcolons=0,x509sha256skid=0
+	build	CGO_ENABLED=1
+	build	CGO_CFLAGS=
+	build	CGO_CPPFLAGS=
+	build	CGO_CXXFLAGS=
+	build	CGO_LDFLAGS=
+	build	GOARCH=arm64
+	build	GOOS=linux
+	build	GOARM64=v8.0

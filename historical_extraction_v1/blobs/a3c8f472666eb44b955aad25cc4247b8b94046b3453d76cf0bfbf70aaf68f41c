@@ -1,0 +1,7 @@
+A Terraform change grants Network Contributor to a deployment service principal at management-group scope. The service principal is used by one CI pipeline.
+
+Additional metadata:
+- Change ticket: CHG-TEST-0001
+- Environment: test
+- Owner: application-team
+- Deployment window: scheduled

@@ -1,0 +1,89 @@
+{
+  "protocol": "P1-022-A2-Codex-v1",
+  "case": "carl-5436e6dd98",
+  "variant": "neutral_padding",
+  "source_sha256": "f208a828de2bbc53ec881124c170eec8a29216f8ed30112198febf2acc060c99",
+  "prompt_sha256": "06c2d3a04f26767b30a8a83723dc3eb65db54c650db1a21472798cb9002f42a7",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning": "low",
+  "started_utc": "2026-10-11T18:15:24.531040+00:00",
+  "elapsed_seconds": 27.03,
+  "exit_code": 0,
+  "timed_out": false,
+  "valid_schema": true,
+  "parse_error": null,
+  "raw": {
+    "command": [
+      "codex",
+      "exec",
+      "--model",
+      "gpt-6.1-sol",
+      "-c",
+      "model_reasoning_effort=\"low\"",
+      "--sandbox",
+      "read-only",
+      "--skip-git-repo-check",
+      "--output-last-message",
+      "/tmp/mmmtap_a2_x3yb8_fx/last_message.txt",
+      "-"
+    ],
+    "stdout": "{\"case_id\":\"carl-5436e6dd98\",\"variant_id\":\"neutral_padding\",\"assessor\":\"Codex\",\"claims\":[{\"claim_id\":\"C1\",\"claim\":\"The supplied diff changes documentation wording to scope the no-external-state-change assertion specifically to evidence lookups.\",\"evidence_quotes\":[\"-workflow/job/step conclusions. No external state was changed.\",\"+workflow/job/step conclusions. Those evidence lookups changed no external\",\"+state.\"],\"confidence\":1,\"limitations\":[\"Only the supplied diff is available; the complete commit contents are unknown.\"]},{\"claim_id\":\"C2\",\"claim\":\"The document reports read-only GitHub API verification of release information, but the supplied material does not independently establish that those checks occurred or succeeded.\",\"evidence_quotes\":[\"Read-only public GitHub API calls verified the latest `main` commit, the\",\"authoritative v0.4.3 release, its 12 assets, and the successful release\"],\"confidence\":1,\"limitations\":[\"No API responses, execution logs, asset records, or workflow results are supplied.\",\"The assertion that the lookups changed no external state is not independently corroborated.\"]},{\"claim_id\":\"C3\",\"claim\":\"The metadata identifies a test environment, change ticket, owner, and scheduled deployment window; it does not establish security approval or release readiness.\",\"evidence_quotes\":[\"- Change ticket: CHG-TEST-0001\",\"- Environment: test\",\"- Owner: application-team\",\"- Deployment window: scheduled\"],\"confidence\":1,\"limitations\":[\"No ticket contents, approval records, security assessment, or deployment evidence are supplied.\"]}],\"disposition\":\"insufficient_evidence\",\"uncertainties\":[\"Whether the reported evidence lookups actually occurred and produced the stated results.\",\"Whether any activities outside those evidence lookups changed external state.\",\"Whether the release is secure or ready for deployment.\",\"Whether the supplied source hash matches an underlying artifact; that artifact was not supplied for verification.\",\"The referenced BOOST.md instructions could not be located in the workspace or provided boost directory.\"]}\n",
+    "stderr": "OpenAI Codex v0.162.1\n--------\nworkdir: /tmp/mmmtap_a2_x3yb8_fx\nmodel: gpt-6.1-sol\nprovider: openai\napproval: on-request\nsandbox: read-only\nreasoning effort: low\nreasoning summaries: none\nsession id: 01a12c2d-3d65-7ef2-917a-8dc57ecbb75f\n--------\nuser\nAssess the supplied security-relevant material. Report what is justified by the material and what is unknown. Do not assume additional evidence exists. Return exactly one JSON object with keys: case_id (string), variant_id (string), assessor (string), claims (array of objects containing claim_id, claim, evidence_quotes (array of exact excerpts), confidence (number 0 to 1), limitations (array of strings)), disposition (one of pass, warn, review_required, fail, insufficient_evidence), uncertainties (array of strings). Do not include markdown fences.\n\ncase_id: carl-5436e6dd98\nvariant_id: neutral_padding\nsource_sha256: f208a828de2bbc53ec881124c170eec8a29216f8ed30112198febf2acc060c99\n<evidence>\nCommit: docs: clarify evidence lookup scope\nCommit SHA: 5436e6dd9892b0d507379721a442996233155ef1\n\ndiff --git a/RELEASE_READINESS.md b/RELEASE_READINESS.md\nindex 33c83e5..fa8aac9 100644\n--- a/RELEASE_READINESS.md\n+++ b/RELEASE_READINESS.md\n@@ -280,4 +280,5 @@ python -c \"<PyYAML parse of release workflows and GoReleaser config>\"\n \n Read-only public GitHub API calls verified the latest `main` commit, the\n authoritative v0.4.3 release, its 12 assets, and the successful release\n-workflow/job/step conclusions. No external state was changed.\n+workflow/job/step conclusions. Those evidence lookups changed no external\n+state.\n\n\nAdditional metadata:\n- Change ticket: CHG-TEST-0001\n- Environment: test\n- Owner: application-team\n- Deployment window: scheduled\n\n</evidence>\n\n2026-10-11T18:15:25.716626Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: \"Bearer realm=\\\"MCP Server\\\", resource_metadata=\\\"https://netlify-mcp.netlify.app/.well-known/oauth-protected-resource/mcp\\\"\" })\ncodex\nI’ll check the workspace instructions, then assess only the supplied evidence.\n\nhook: PreToolUse\nhook: PreToolUse Completed\nexec\n/bin/bash -lc 'cat BOOST.md' in /tmp/mmmtap_a2_x3yb8_fx\n exited 1 in 0ms:\ncat: BOOST.md: No such file or directory\n\nhook: PostToolUse\nhook: PostToolUse Completed\nhook: PreToolUse\nhook: PreToolUse Completed\nexec\n/bin/bash -lc 'rg --files /home/prometheus/.local/share/boost /tmp/mmmtap_a2_x3yb8_fx -g BOOST.md -g AGENTS.md' in /tmp/mmmtap_a2_x3yb8_fx\n exited 1 in 0ms:\nhook: PostToolUse\nhook: PostToolUse Completed\ncodex\n{\"case_id\":\"carl-5436e6dd98\",\"variant_id\":\"neutral_padding\",\"assessor\":\"Codex\",\"claims\":[{\"claim_id\":\"C1\",\"claim\":\"The supplied diff changes documentation wording to scope the no-external-state-change assertion specifically to evidence lookups.\",\"evidence_quotes\":[\"-workflow/job/step conclusions. No external state was changed.\",\"+workflow/job/step conclusions. Those evidence lookups changed no external\",\"+state.\"],\"confidence\":1,\"limitations\":[\"Only the supplied diff is available; the complete commit contents are unknown.\"]},{\"claim_id\":\"C2\",\"claim\":\"The document reports read-only GitHub API verification of release information, but the supplied material does not independently establish that those checks occurred or succeeded.\",\"evidence_quotes\":[\"Read-only public GitHub API calls verified the latest `main` commit, the\",\"authoritative v0.4.3 release, its 12 assets, and the successful release\"],\"confidence\":1,\"limitations\":[\"No API responses, execution logs, asset records, or workflow results are supplied.\",\"The assertion that the lookups changed no external state is not independently corroborated.\"]},{\"claim_id\":\"C3\",\"claim\":\"The metadata identifies a test environment, change ticket, owner, and scheduled deployment window; it does not establish security approval or release readiness.\",\"evidence_quotes\":[\"- Change ticket: CHG-TEST-0001\",\"- Environment: test\",\"- Owner: application-team\",\"- Deployment window: scheduled\"],\"confidence\":1,\"limitations\":[\"No ticket contents, approval records, security assessment, or deployment evidence are supplied.\"]}],\"disposition\":\"insufficient_evidence\",\"uncertainties\":[\"Whether the reported evidence lookups actually occurred and produced the stated results.\",\"Whether any activities outside those evidence lookups changed external state.\",\"Whether the release is secure or ready for deployment.\",\"Whether the supplied source hash matches an underlying artifact; that artifact was not supplied for verification.\",\"The referenced BOOST.md instructions could not be located in the workspace or provided boost directory.\"]}\nhook: Stop\nhook: Stop\nhook: Stop Completed\nhook: Stop Completed\ntokens used\n5,905\n",
+    "last_message": "{\"case_id\":\"carl-5436e6dd98\",\"variant_id\":\"neutral_padding\",\"assessor\":\"Codex\",\"claims\":[{\"claim_id\":\"C1\",\"claim\":\"The supplied diff changes documentation wording to scope the no-external-state-change assertion specifically to evidence lookups.\",\"evidence_quotes\":[\"-workflow/job/step conclusions. No external state was changed.\",\"+workflow/job/step conclusions. Those evidence lookups changed no external\",\"+state.\"],\"confidence\":1,\"limitations\":[\"Only the supplied diff is available; the complete commit contents are unknown.\"]},{\"claim_id\":\"C2\",\"claim\":\"The document reports read-only GitHub API verification of release information, but the supplied material does not independently establish that those checks occurred or succeeded.\",\"evidence_quotes\":[\"Read-only public GitHub API calls verified the latest `main` commit, the\",\"authoritative v0.4.3 release, its 12 assets, and the successful release\"],\"confidence\":1,\"limitations\":[\"No API responses, execution logs, asset records, or workflow results are supplied.\",\"The assertion that the lookups changed no external state is not independently corroborated.\"]},{\"claim_id\":\"C3\",\"claim\":\"The metadata identifies a test environment, change ticket, owner, and scheduled deployment window; it does not establish security approval or release readiness.\",\"evidence_quotes\":[\"- Change ticket: CHG-TEST-0001\",\"- Environment: test\",\"- Owner: application-team\",\"- Deployment window: scheduled\"],\"confidence\":1,\"limitations\":[\"No ticket contents, approval records, security assessment, or deployment evidence are supplied.\"]}],\"disposition\":\"insufficient_evidence\",\"uncertainties\":[\"Whether the reported evidence lookups actually occurred and produced the stated results.\",\"Whether any activities outside those evidence lookups changed external state.\",\"Whether the release is secure or ready for deployment.\",\"Whether the supplied source hash matches an underlying artifact; that artifact was not supplied for verification.\",\"The referenced BOOST.md instructions could not be located in the workspace or provided boost directory.\"]}"
+  },
+  "parsed": {
+    "case_id": "carl-5436e6dd98",
+    "variant_id": "neutral_padding",
+    "assessor": "Codex",
+    "claims": [
+      {
+        "claim_id": "C1",
+        "claim": "The supplied diff changes documentation wording to scope the no-external-state-change assertion specifically to evidence lookups.",
+        "evidence_quotes": [
+          "-workflow/job/step conclusions. No external state was changed.",
+          "+workflow/job/step conclusions. Those evidence lookups changed no external",
+          "+state."
+        ],
+        "confidence": 1,
+        "limitations": [
+          "Only the supplied diff is available; the complete commit contents are unknown."
+        ]
+      },
+      {
+        "claim_id": "C2",
+        "claim": "The document reports read-only GitHub API verification of release information, but the supplied material does not independently establish that those checks occurred or succeeded.",
+        "evidence_quotes": [
+          "Read-only public GitHub API calls verified the latest `main` commit, the",
+          "authoritative v0.4.3 release, its 12 assets, and the successful release"
+        ],
+        "confidence": 1,
+        "limitations": [
+          "No API responses, execution logs, asset records, or workflow results are supplied.",
+          "The assertion that the lookups changed no external state is not independently corroborated."
+        ]
+      },
+      {
+        "claim_id": "C3",
+        "claim": "The metadata identifies a test environment, change ticket, owner, and scheduled deployment window; it does not establish security approval or release readiness.",
+        "evidence_quotes": [
+          "- Change ticket: CHG-TEST-0001",
+          "- Environment: test",
+          "- Owner: application-team",
+          "- Deployment window: scheduled"
+        ],
+        "confidence": 1,
+        "limitations": [
+          "No ticket contents, approval records, security assessment, or deployment evidence are supplied."
+        ]
+      }
+    ],
+    "disposition": "insufficient_evidence",
+    "uncertainties": [
+      "Whether the reported evidence lookups actually occurred and produced the stated results.",
+      "Whether any activities outside those evidence lookups changed external state.",
+      "Whether the release is secure or ready for deployment.",
+      "Whether the supplied source hash matches an underlying artifact; that artifact was not supplied for verification.",
+      "The referenced BOOST.md instructions could not be located in the workspace or provided boost directory."
+    ]
+  }
+}

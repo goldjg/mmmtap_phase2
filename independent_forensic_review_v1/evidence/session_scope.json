@@ -1,0 +1,8 @@
+{
+  "source": "/home/prometheus/.copilot/session-state/3374c7d5-61e9-41b6-bfc5-0f0f55533363/events.jsonl",
+  "total_lines_at_capture": 5089,
+  "review_cutoff_utc": "2026-10-12T06:05:42",
+  "pre_review_events": 4565,
+  "pre_review_bytes_sha256": "57fd716f26f11199de99d63ed0cd31e4d69aabae15cde4026561fde59c0fd715",
+  "note": "Current review and subagent events excluded. No Iris assessment consulted."
+}

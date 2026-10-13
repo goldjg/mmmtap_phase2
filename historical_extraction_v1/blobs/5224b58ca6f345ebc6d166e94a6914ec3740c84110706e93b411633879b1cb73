@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "result": {
+    "signals": null,
+    "findings": null,
+    "decision": "pass"
+  },
+  "dryRun": {
+    "provider": "jev",
+    "questions": [
+      {
+        "id": "security_sensitive",
+        "kind": "boolean",
+        "description": "Does this change appear security-sensitive?"
+      },
+      {
+        "id": "scope_expansion",
+        "kind": "boolean",
+        "description": "Does this change appear to expand approved scope or modify unrelated surfaces?"
+      },
+      {
+        "id": "architectural_change",
+        "kind": "boolean",
+        "description": "Does this change appear to introduce or alter architecture-level structure or boundaries?"
+      },
+      {
+        "id": "authentication_or_authorisation_change",
+        "kind": "boolean",
+        "description": "Does this change appear to affect authentication or authorization behavior?"
+      },
+      {
+        "id": "trust_boundary_change",
+        "kind": "boolean",
+        "description": "Does this change appear to alter a trust boundary or external data flow?"
+      },
+      {
+        "id": "security_control_reduction",
+        "kind": "boolean",
+        "description": "Does this change appear to reduce a security control or validation gate?"
+      },
+      {
+        "id": "breaking_change",
+        "kind": "boolean",
+        "description": "Does this change appear to alter a documented public contract or compatibility boundary?"
+      },
+      {
+        "id": "new_external_dependency",
+        "kind": "boolean",
+        "description": "Does this change appear to add a new external runtime, build, or CI dependency?"
+      },
+      {
+        "id": "human_review_warranted",
+        "kind": "score",
+        "description": "How strongly does the change warrant human review beyond routine automated checks?",
+        "threshold": 0.7
+      }
+    ],
+    "state": {
+      "repository": {
+        "name": "ssh_world_open",
+        "currentBranch": "master"
+      },
+      "review": {
+        "base": "HEAD~1",
+        "head": "HEAD",
+        "baseSha": "3c67a1c0d3be6ef36486693340a481e8ec6c9749",
+        "headSha": "afdcd1713cfef47fdb9dd12b770af5337e5ee66f",
+        "changedFiles": [
+          {
+            "path": "main.tf",
+            "additions": 1,
+            "deletions": 1
+          }
+        ]
+      },
+      "diff": {
+        "text": "diff --git a/main.tf b/main.tf\nindex e58b45d..85178cf 100644\n--- a/main.tf\n+++ b/main.tf\n@@ -3,5 +3,5 @@ terraform {\n }\n \n locals {\n-  source_address_prefix = \"10.1.0.0/24\"\n+  source_address_prefix = \"*\"\n }\n",
+        "limitBytes": 200000
+      },
+      "dataCategories": [
+        {
+          "name": "carl_context",
+          "description": "Bounded cARL governance context files relevant to review policy",
+          "included": false
+        },
+        {
+          "name": "task_description",
+          "description": "Task or PR description supplied by the caller",
+          "included": false
+        },
+        {
+          "name": "git_diff",
+          "description": "Redacted git diff for changed non-secret-bearing files",
+          "included": true
+        },
+        {
+          "name": "changed_files",
+          "description": "Changed file paths and addition/deletion counts from git diff metadata",
+          "included": true
+        },
+        {
+          "name": "repository_metadata",
+          "description": "Repository name, branch, sanitized remote, and base/head refs",
+          "included": true
+        }
+      ]
+    },
+    "dataCategories": [
+      {
+        "name": "carl_context",
+        "description": "Bounded cARL governance context files relevant to review policy",
+        "included": false
+      },
+      {
+        "name": "task_description",
+        "description": "Task or PR description supplied by the caller",
+        "included": false
+      },
+      {
+        "name": "git_diff",
+        "description": "Redacted git diff for changed non-secret-bearing files",
+        "included": true
+      },
+      {
+        "name": "changed_files",
+        "description": "Changed file paths and addition/deletion counts from git diff metadata",
+        "included": true
+      },
+      {
+        "name": "repository_metadata",
+        "description": "Repository name, branch, sanitized remote, and base/head refs",
+        "included": true
+      }
+    ]
+  }
+}

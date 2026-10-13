@@ -1,0 +1,3 @@
+A Terraform change grants Network Contributor to a deployment service principal at management-group scope.
+
+The service principal is used by one CI pipeline.

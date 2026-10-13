@@ -1,0 +1,43 @@
+test_all_generator_commands_keep_untrusted_prompts_out_of_flags (test_harness.AdapterTests.test_all_generator_commands_keep_untrusted_prompts_out_of_flags) ... ok
+test_carl_signals_alone_are_not_proof_of_live_systemone (test_harness.AdapterTests.test_carl_signals_alone_are_not_proof_of_live_systemone) ... ok
+test_copilot_and_codex_event_contracts (test_harness.AdapterTests.test_copilot_and_codex_event_contracts) ... ok
+test_mock_receipts_never_enable_live (test_harness.AdapterTests.test_mock_receipts_never_enable_live) ... ok
+test_no_live_adapter_without_authorisation (test_harness.AdapterTests.test_no_live_adapter_without_authorisation) ... ok
+test_process_output_is_bounded_and_timeout_has_no_retry (test_harness.AdapterTests.test_process_output_is_bounded_and_timeout_has_no_retry) ... ok
+test_raw_bytes_preserved (test_harness.AdapterTests.test_raw_bytes_preserved) ... ok
+test_readiness_probe_never_marks_offline_success_live (test_harness.AdapterTests.test_readiness_probe_never_marks_offline_success_live) ... ok
+test_schema_and_change_accounting (test_harness.AdapterTests.test_schema_and_change_accounting) ... ok
+test_successful_contract_smoke_still_requires_observed_model_and_operator_review (test_harness.AdapterTests.test_successful_contract_smoke_still_requires_observed_model_and_operator_review) ... ok
+test_systemone_exact_ids_numerical_values_and_model (test_harness.AdapterTests.test_systemone_exact_ids_numerical_values_and_model) ... ok
+test_tool_calls_retries_multiple_finals_and_malformed_events_rejected (test_harness.AdapterTests.test_tool_calls_retries_multiple_finals_and_malformed_events_rejected) ... ok
+test_unsupported_contract_never_makes_network_or_cli_calls (test_harness.AdapterTests.test_unsupported_contract_never_makes_network_or_cli_calls) ... ok
+test_blind_packet_has_no_treatment_or_model_metadata (test_harness.AdjudicationTests.test_blind_packet_has_no_treatment_or_model_metadata) ... ok
+test_incomplete_or_unblinded_reviews_rejected (test_harness.AdjudicationTests.test_incomplete_or_unblinded_reviews_rejected) ... ok
+test_key_may_not_be_inside_export (test_harness.AdjudicationTests.test_key_may_not_be_inside_export) ... ok
+test_modified_key_mapping_rejected (test_harness.AdjudicationTests.test_modified_key_mapping_rejected) ... ok
+test_score_requires_frozen_independent_reviews (test_harness.AdjudicationTests.test_score_requires_frozen_independent_reviews) ... ok
+test_arm_isolation_and_both_sequential_orders (test_harness.ExecutionTests.test_arm_isolation_and_both_sequential_orders) ... ok
+test_interrupted_intent_is_not_retried (test_harness.ExecutionTests.test_interrupted_intent_is_not_retried) ... ok
+test_live_budget_persists_across_resume (test_harness.ExecutionTests.test_live_budget_persists_across_resume) ... ok
+test_live_requires_authorisation_budget_and_no_mock (test_harness.ExecutionTests.test_live_requires_authorisation_budget_and_no_mock) ... ok
+test_malformed_output_is_preserved_not_repaired (test_harness.ExecutionTests.test_malformed_output_is_preserved_not_repaired) ... ok
+test_mock_run_cannot_be_resumed_as_live (test_harness.ExecutionTests.test_mock_run_cannot_be_resumed_as_live) ... ok
+test_no_live_smoke_without_explicit_authorisation (test_harness.ExecutionTests.test_no_live_smoke_without_explicit_authorisation) ... ok
+test_offline_run_expected_statuses_and_no_inference (test_harness.ExecutionTests.test_offline_run_expected_statuses_and_no_inference) ... ok
+test_parent_checkpoint_hashes_bound (test_harness.ExecutionTests.test_parent_checkpoint_hashes_bound) ... ok
+test_partial_adapter_exceptions_are_checkpointed (test_harness.ExecutionTests.test_partial_adapter_exceptions_are_checkpointed) ... ok
+test_resume_preserves_successes_and_failures_without_retry (test_harness.ExecutionTests.test_resume_preserves_successes_and_failures_without_retry) ... ok
+test_tampered_checkpoint_or_ledger_rejected (test_harness.ExecutionTests.test_tampered_checkpoint_or_ledger_rejected) ... ok
+test_changed_source_or_template_refuses_old_plan (test_harness.PlannerTests.test_changed_source_or_template_refuses_old_plan) ... ok
+test_claims_only_go_in_untrusted_systemone_state (test_harness.PlannerTests.test_claims_only_go_in_untrusted_systemone_state) ... ok
+test_cross_arm_manifest_tampering_rejected (test_harness.PlannerTests.test_cross_arm_manifest_tampering_rejected) ... ok
+test_exact_full_matrix_and_determinism (test_harness.PlannerTests.test_exact_full_matrix_and_determinism) ... ok
+test_identical_bytes_do_not_collapse_distinct_frozen_variants (test_harness.PlannerTests.test_identical_bytes_do_not_collapse_distinct_frozen_variants) ... ok
+test_prompt_injection_is_data_not_orchestration (test_harness.PlannerTests.test_prompt_injection_is_data_not_orchestration) ... ok
+test_required_settings_and_no_policy_weakening (test_harness.PlannerTests.test_required_settings_and_no_policy_weakening) ... ok
+test_retry_is_distinct_and_requires_provenance (test_harness.PlannerTests.test_retry_is_distinct_and_requires_provenance) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 34.908s
+
+OK

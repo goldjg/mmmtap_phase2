@@ -1,0 +1,66 @@
+test_D1_preserved_actual_response_type_and_confidence_metadata (test_remediation.ProviderResponseRegressions.test_D1_preserved_actual_response_type_and_confidence_metadata) ... ERROR
+test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) ... 
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='observed_noul_type_tag') ... ERROR
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='observed_choice_metadata') ... ERROR
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='choice_confidence_without_type') ... ERROR
+  test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='choice_confidence_zero') ... ERROR
+
+======================================================================
+ERROR: test_D1_preserved_actual_response_type_and_confidence_metadata (test_remediation.ProviderResponseRegressions.test_D1_preserved_actual_response_type_and_confidence_metadata)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 32, in test_D1_preserved_actual_response_type_and_confidence_metadata
+    parsed = parse_systemone(raw, request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/prometheus/git/mmmtap_phase2/phase2/adapters.py", line 395, in parse_systemone
+    raise ValueError("SystemOne invalid noul")
+ValueError: SystemOne invalid noul
+
+======================================================================
+ERROR: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='observed_noul_type_tag')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 43, in test_D1_shared_provider_byte_fixtures
+    parsed = parse_systemone(raw, request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/prometheus/git/mmmtap_phase2/phase2/adapters.py", line 395, in parse_systemone
+    raise ValueError("SystemOne invalid noul")
+ValueError: SystemOne invalid noul
+
+======================================================================
+ERROR: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='observed_choice_metadata')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 43, in test_D1_shared_provider_byte_fixtures
+    parsed = parse_systemone(raw, request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/prometheus/git/mmmtap_phase2/phase2/adapters.py", line 399, in parse_systemone
+    raise ValueError("SystemOne invalid choice")
+ValueError: SystemOne invalid choice
+
+======================================================================
+ERROR: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='choice_confidence_without_type')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 43, in test_D1_shared_provider_byte_fixtures
+    parsed = parse_systemone(raw, request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/prometheus/git/mmmtap_phase2/phase2/adapters.py", line 399, in parse_systemone
+    raise ValueError("SystemOne invalid choice")
+ValueError: SystemOne invalid choice
+
+======================================================================
+ERROR: test_D1_shared_provider_byte_fixtures (test_remediation.ProviderResponseRegressions.test_D1_shared_provider_byte_fixtures) (case='choice_confidence_zero')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/prometheus/git/mmmtap_phase2/tests/test_remediation.py", line 43, in test_D1_shared_provider_byte_fixtures
+    parsed = parse_systemone(raw, request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/prometheus/git/mmmtap_phase2/phase2/adapters.py", line 399, in parse_systemone
+    raise ValueError("SystemOne invalid choice")
+ValueError: SystemOne invalid choice
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.020s
+
+FAILED (errors=5)
