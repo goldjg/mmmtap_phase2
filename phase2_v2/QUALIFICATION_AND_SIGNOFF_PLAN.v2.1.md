@@ -18,6 +18,14 @@ automatic improvement, merged endpoint or co-primary designation.
 See `OUTCOME_MOVEMENT_AMENDMENT.v2.1-RD02.md`. The proposed Q0/Q1 scope,
 matrix, repetitions and cost counts below are unchanged; no execution approval.
 
+**RD04 operational construct: DECIDED BY PI.** Disposition now means an
+operational security decision on whether a change may proceed; model output
+is an evaluated recommendation, not enforcement. See
+`OPERATIONAL_DISPOSITION_AMENDMENT.v2.1-RD04.md` and proposed
+`OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md`. RD03 remains proposed. Exact
+policy obligations/action mappings (including the frozen
+`insufficient_evidence` value) and authorization are pending.
+
 ## Proposed smallest useful qualification scope
 
 Separate two modules. They answer different questions and may not be pooled.
@@ -88,6 +96,27 @@ source/claim correlations, one repeat, small case count and curated
 sources prohibit efficacy, calibration or significance conclusions.
 Held-out scientific evaluation requires a separate D06 design.
 
+## RD04 feasibility within the unchanged proposed matrix
+
+The existing 153-position design can structurally exercise operational
+decisions without new arms, provided each source/shared B0 has an approved,
+immutable operational policy delivered identically to all arms. It cannot
+currently qualify policy warrant: actual policy packets, fifth-value mapping,
+warning prerequisites, human authority, adequate source/verification evidence,
+independent reference guides and versioned policy-delivery wiring are missing.
+This task changes none of those executable surfaces.
+
+Verification-heavy policies may yield only holds from static descriptions.
+Do not weaken obligations or force labels to improve coverage. Review the
+three proposed sampling roles for evidence of permission/warnings/holds/
+established blocking conditions prospectively; if they cannot cover relevant
+reasoning, request a scope amendment, not extra runs or a silently enlarged
+matrix. No counter-policy factorial cells are added. Current matrix and
+repetition count remain proposals, not approved.
+
+Future actual policy texts add tokens and review labor; re-estimate with the
+existing cost method after text approval, no invented credit budget.
+
 ## Gates and qualification observations
 
 Before any Q1 execution: D01-D05 approval, D06 bounded scope versus primary
@@ -121,6 +150,11 @@ Approval must specify any quantitative minimum
 completion/agreement/false-review criterion before Q1;
 none is chosen here. These observations do not authorize advancing to a full
 study even if engineering gates pass.
+For RD04 additionally retain governing policy digest/anchors, derived
+recommendation action and immediate-eligibility pairs, condition/obligation
+movement and evidence-policy warrant separately. Unknown mappings remain
+unavailable; exact labels remain visible. Pilot labels are never real release
+authorizations. Adjudicators use frozen policy, not outcome-dependent rules.
 
 ## Cost estimation without an arbitrary budget
 
@@ -177,7 +211,7 @@ explicitly costed and approved; do not invent a blanket percentage.
 | D01 contract/prompt | Whole-object equality, complete accounting, control clarity and examples accepted; no validity relaxation | Methods lead | Pending |
 | D02 constructs | Scoped labels, applicability, conditional/actual impact ambiguity, score meaning and provenance rubric approved | Methods lead + adjudication lead | Pending |
 | D03 policy | Intended review actions, missing-score behavior, held-out development process, thresholds/operators and research implementation approved separately | PI + methods lead | Pending; no thresholds selected |
-| D04 outcomes | RD01 direction and RD02 disposition principle decided, not effect direction; separately reported A/B families and independent justification; operational scoring, materiality, estimands, primary comparisons/outcomes, margins if applicable, multiplicity still needed | PI + statistician | Disposition principle DECIDED BY PI; no blanket D04 approval |
+| D04 outcomes | RD01 direction, RD02 movement and RD04 operational construct decided; exact/action/finding/warrant/reason records, policy text/obligations/all-five-value mappings, scoring, estimands/primary/statistical choices still needed | PI + statistician | Construct DECIDED BY PI; RD03 proposed; no blanket D04 approval |
 | D05 adjudication | Two-reviewer staffing, independence, staged content/pair/rationale blinding, transition guide, resolver, custody and unresolved-label policy accepted | Adjudication lead | Pending |
 | D06/D07 | Qualification R/scope versus study power; invalid-output treatment, censoring and sensitivity plan fixed | Statistician + methods lead | Pending |
 | D08/D09 | No accidental injection/arm change; presentation paths, identity and shared judge dependence disclosed | PI + instrument lead | Pending |

@@ -16,6 +16,21 @@ decision and supersession map. It approves the direction only; hypotheses,
 estimands, rubrics, thresholds, sample size and execution remain unresolved.
 Candidate assessment-change hypotheses are in `PHASE2_V2_HYPOTHESES.md`.
 
+## Operational construct amendment RD04
+
+**DECIDED BY PI:** dispositions concern whether an assessed change may proceed
+under applicable security policy, not merely what its source describes.
+See `OPERATIONAL_DISPOSITION_AMENDMENT.v2.1-RD04.md` and proposed
+`OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md`. RD01/RD02 stay unchanged; RD03
+remains proposed. Exact obligations/action mappings/authority and methodology
+remain pending. Models produce evaluated recommendations, not release
+execution. Frozen enum includes insufficient_evidence; its action mapping
+requires PI decision. Future approved policy packets must be separately
+versioned/delivered across matched arms; no current prompt/executor change.
+Historical pilot labels are not deployment authorizations. Exact label,
+operational action, finding movement, evidence-policy warrant and reported
+reason records remain distinct. The 153-position proposal and arms unchanged.
+
 ## Design goals and boundaries
 
 1. Preserve v1 as immutable evidence, including invalid and blocked results.

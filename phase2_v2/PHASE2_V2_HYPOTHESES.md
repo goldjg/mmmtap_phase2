@@ -1,6 +1,6 @@
 # Phase 2 v2 hypotheses and outcome definitions
 
-**RD01/RD02-amended draft preregistration scaffold; not frozen or approved.** The pilot did not
+**RD01/RD02/RD04-amended draft preregistration scaffold; not frozen or approved.** The pilot did not
 establish the original hypotheses. This document makes proposed hypotheses
 measurable, but no v2 observation may begin until the human decisions listed
 below are resolved and the final version is frozen and hashed.
@@ -48,6 +48,16 @@ finding movement is measured independently. See
 as drafted at `0fafdc5c`; their IDs identify lineage, not unchanged definitions.
 Operational scoring, inferential primacy and statistical tests remain pending.
 
+RD04 interpretation is **DECIDED BY PI**: disposition means an operational
+security decision about whether the assessed change may proceed, not merely
+a judgment describing its source. The objective is whether JEV changes those
+decisions, what/why, and whether evidence and applicable security policy
+warrant them. See `OPERATIONAL_DISPOSITION_AMENDMENT.v2.1-RD04.md`.
+This traceably supplements RD01-H1/H2 without changing RD02's label-movement
+rule. Exact policies/obligations/authority and all statistical choices remain
+pending; RD03 stays proposed. A model output is an evaluated recommendation,
+not actual release approval or enforcement.
+
 ### RD01-H1 — Separately reported outcome movement beyond matched controls (RD02)
 
 **Candidate questions:** do disposition movement and material finding
@@ -65,6 +75,16 @@ labels; do not invent an ordinal severity scale. A proposed nondirectional
 contrast is the paired difference in disposition-change indicators between
 treatment and control; its estimand, admissibility and inferential status
 are pending. Do not combine `D` with a finding-change indicator.
+
+**Separate operational action observation (proposed, not a new combined
+endpoint):** derive permission/hold/block recommendation and immediate
+eligibility from approved policy, recording action pairs, warnings/conditions
+and changed obligations alongside exact labels. Different labels may share
+immediate eligibility (pass/eligible warn; review_required/fail). An unchanged
+warn can have changed prerequisites. No ordinal severity scale or new
+disposition value; action mapping of existing `insufficient_evidence` remains
+pending. Missing policy/invalid outputs yield unavailable mappings, not no
+movement. Detailed fields in `OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md`.
 
 **B. Material finding movement (separate family).** Independently align
 atomic security findings from B0 through follow-ups and record substantive
@@ -103,8 +123,13 @@ occurred. Proposed categories for each family are `justified`, `unjustified`,
 `mixed`, `unresolved`; detailed decision rules and inferential status remain
 pending. No automatic category follows from a judge score or contract validity.
 
-For A, evaluate whether available evidence and the assessment's reasoning
-justify the exact disposition transition, even with unchanged findings.
+For A, evaluate whether time-available evidence and the frozen applicable
+operational policy justify the exact disposition/action recommendation
+transition, even with unchanged findings. Source support is not sufficient
+permission unless the policy makes it so. Governing policy is a normative
+packet distinct from source/challenge evidence; no reviewer-invented
+requirements after observing outcomes. Policy changes and later evidence
+belong to separate retrospective analysis, not the main time-available warrant.
 For B, evaluate each aligned finding's content/evidential-scope transition
 using source entailment, independent verification and impact inference
 before/after. Evidence-equivalent content may be described as such, but is
@@ -181,7 +206,9 @@ success.
 ## Decisions to freeze before preregistration
 
 RD01's objective and RD02's disposition-movement measurement principle are
-decided, not blanket approval of D04. Remaining operational definitions are
+decided along with RD04's operational construct, not blanket approval of
+decision-register D04. Exact policy obligations, all-five-value mappings and
+remaining operational definitions are
 pending. The PI/methods lead and statistician must specify: the primary hypothesis or
 co-primary family; the natural-source population and reference set;
 atomic-claim segmentation and materiality; reviewer number, qualifications,

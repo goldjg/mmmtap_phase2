@@ -16,22 +16,33 @@ no ordinal scale or automatic improvement is implied. See
 `OUTCOME_MOVEMENT_AMENDMENT.v2.1-RD02.md`. This is not blanket D04 approval;
 remaining methodological and execution choices are pending.
 
+**RD04 operational disposition construct: DECIDED BY PI.** Dispositions
+represent security decisions about permitting an assessed change to proceed,
+not merely descriptions of evidence. See
+`OPERATIONAL_DISPOSITION_AMENDMENT.v2.1-RD04.md` and proposed
+`OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md`. Models supply evaluated
+recommendations, not release execution authority. Exact policy obligations/
+thresholds/authority remain pending. Frozen vocabulary also includes
+`insufficient_evidence`; its operational mapping requires an explicit PI
+decision. RD03 remains proposed, not approved by RD04.
+
 | ID | Matter | Development implementation | Human decision still required |
 |---|---|---|---|
 | D01 | Lifecycle equality | Reuse the unchanged v1 validator, including equality of the entire retained claim object and complete ID accounting | Approve clarified prompts for research use; any narrower equality definition requires a new contract |
 | D02 | Judgment constructs | Separately typed source entailment, independent verification, and impact inference; each has a label, nullable score, rationale, and source quotes | Approve definitions, score interpretation, labels, and applicability rubric before research use |
 | D03 | Thresholds/actions | No default experimental policy; only explicitly supplied `offline_fixture` rules are executable here | Approve versioned thresholds, boundary operators, action meanings, target populations, and missing-score handling |
-| D04 | Outcome families / primary outcomes | RD01 objective and RD02 disposition-movement principle DECIDED BY PI; disposition and material finding movements separately reported, justification independent of movement | Operational scoring/materiality, justification rules, estimands, inferentially primary outcomes/contrasts, multiplicity, margins if applicable and stops pending; no combined endpoint or co-primary declaration; adoption study deferred |
-| D05 | Adjudication | Authored fixtures are labeled synthetic, not independently adjudicated | Select independent reviewers, materiality/atomicity rubric, blinding, disagreement resolution, reference-set custody |
+| D04 | Outcome families / primary outcomes | RD01 direction, RD02 disposition movement and RD04 operational construct DECIDED BY PI; separate label/action/finding/warrant/reason records proposed, not implemented | Policy text/obligations, all-five-value action mapping, warnings, scoring/materiality, RD03 justification, estimands/primary contrasts/multiplicity/stops pending; no combined endpoint or co-primary declaration |
+| D05 | Adjudication | Authored fixtures are labeled synthetic, not independently adjudicated | Select independent reviewers, materiality/atomicity rubric, blinding, disagreement resolution, reference-set custody; approve RD03 with RD04 policy-bound warrant and separate policy anchors |
 | D06 | Repetitions/statistics | No new matrix, repetitions, or sample size | Approve repetition count, power rationale, clustering, and analysis plan |
 | D07 | Invalid outputs/missingness | Raw text retained; syntax/shape/lifecycle failure remains contract-invalid and cannot supply a child assessment | Decide descriptive adjudication versus primary admissibility and dependency-censoring analysis; no retroactive repairs |
 | D08 | Experimental arms | Existing B0/C1/C2/C3/E1/E2/E3_NC/E3_CN names/roles preserved; no executor wiring | Any arm/comparison changes require explicit methodological approval |
 | D09 | Judge dependence | No independent-judge claim; signals and policy decisions are distinct records | Approve judge identity/transport contract and treatment of shared SystemOne dependence |
-| D10 | Evidence provenance | Supplied text never becomes authenticated Git or deployed-state evidence | Approve source population, provenance categories, independent-evidence requirements, and impact applicability |
-| D11 | Launch/isolation | No provider adapter, execution entry point, or live-policy mode | Separate bounded-pilot authorization and isolation qualification; full 6,885-position experiment remains unauthorized |
+| D10 | Evidence provenance | Supplied text never becomes authenticated Git or deployed-state evidence | Approve source population, provenance categories, independent-evidence requirements and impact applicability; separately approve governing policy owner/version/digest/effective scope and delivery |
+| D11 | Launch/isolation | No provider adapter, execution entry point, or live-policy mode | Separate bounded-pilot authorization and isolation qualification; approve packet delivery and decision authority; any release enforcement requires separate authorization; full 6,885-position experiment remains unauthorized |
 
 All methodological and execution decisions remain pending for experimental
-use except the recorded RD01 direction and RD02 measurement principles.
+use except the recorded RD01 direction, RD02 measurement principles and
+RD04 operational-versus-descriptive construct.
 No statistical plan or execution approval follows. Implementation of
 development mechanics does not resolve D02-D11. Test-only numeric constants
 are not threshold recommendations and must not be fitted to pilot scores.

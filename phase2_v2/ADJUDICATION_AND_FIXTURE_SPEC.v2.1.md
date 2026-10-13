@@ -16,6 +16,14 @@ claims. Material finding movement and evidence justification are independent
 observations. See `OUTCOME_MOVEMENT_AMENDMENT.v2.1-RD02.md`; detailed scoring,
 materiality and justification rules remain pending, not blanket D04 approval.
 
+**RD04 operational construct: DECIDED BY PI.** For future assessments,
+dispositions concern permission to proceed, not merely source description;
+model decisions are evaluated recommendations, never release execution here.
+See `OPERATIONAL_DISPOSITION_AMENDMENT.v2.1-RD04.md` and
+`OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md`. Policy text/obligations/all-five-
+value mappings and RD03 rubric remain pending. Historical examples keep
+their original limited semantics; no pilot operational authority inferred.
+
 ## Roles and evidence custody
 
 Propose a custodian, a fixture author, two independent security/source-review
@@ -47,6 +55,10 @@ policies; neither may contain credentials or personal account information.
    boundaries and genuinely unresolved questions. Resolve reference ambiguity
    or mark it explicit; do not infer gold labels from the synthetic filename.
    Freeze/hash the guide and two reference sheets before observing outputs.
+   Separately approve/seal governing operational policy, applicability,
+   warning prerequisites, evidence obligations and authority context; bind
+   delivery to each endpoint. Policy is normative, not a source assertion.
+   Reviewers cannot add requirements after seeing model labels.
 2. **Blind export.** Custodian generates random opaque IDs not derived from
    arm/model/order. Supply exact source and output claims in a uniform layout;
    remove only routing metadata, not substantive caveats or qualifiers.
@@ -88,6 +100,11 @@ policies; neither may contain credentials or personal account information.
    pairs plus intermediate/final finding alignments. Never rank disposition
    labels, invent an ordinal severity scale, or use a movement materiality
    filter for family A.
+   In separate records derive policy-bound permission/hold/block recommendation,
+   current eligibility and obligation changes. Keep exact labels even when
+   actions coincide; unresolved insufficient_evidence mapping is unavailable,
+   not auto-permission. Reveal frozen policy anchors, not judge authority;
+   missing historical policy remains missing.
    In separate fields evaluate justification of A and B using available
    evidence: proposed justified/unjustified/mixed/unresolved categories, with
    independent reasons and disagreements. An evidence-equivalent description
@@ -124,6 +141,10 @@ substantive movements, unchanged findings and auxiliary edits; separate
 evidence spans, reviewer disagreement and unresolved judgments. Missing/
 invalid observations have explicit availability/contract/parent-status fields,
 not no-movement defaults. These are planning fields, not a schema change.
+RD04 adds policy-context digest/requirement anchors, action and eligibility
+pairs, warning conditions and obligation differences, and independent
+operational-action warrant fields proposed in the policy contract. Preserve
+time-available versus later-evidence/policy supplements, not hindsight labels.
 Rationale-link sheets
 are produced only after paired-label freeze and reference raw challenge/
 source/output spans, never a guessed internal cause.
