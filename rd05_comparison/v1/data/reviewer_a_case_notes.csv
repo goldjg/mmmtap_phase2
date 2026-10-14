@@ -1,0 +1,15 @@
+blind_id,report_id_prefix,observed_movement_as_reported,assessment_text_as_reported,derived_disposition_unit,derived_transition_judgment_count
+b-13d9dacc015207b1164dbe45,b-13d9dacc,"insufficient_evidence → unchanged","Warranted retention. The E-DIFF evidence remains indeterminate. Finding rewording may be substantive or equivalent; materiality unresolved.",retention,0
+b-83ee4ce200effbf5e699350f,b-83ee4ce2,"review_required → insufficient_evidence","Justified. Missing E-TEST warrants evidence remediation, not an otherwise unsupported human-review requirement.",transition,1
+b-20dbc4607de9e2b208d2c824,b-20dbc460,"fail → unchanged","Warranted retention of fail, but the finding revision is unjustified: it incorrectly claims exposure requires no log access.",retention,0
+b-79b869e4eae3d7a6405cf1c4,b-79b869e4,"insufficient_evidence → pass","Unjustified. Mandatory E-TEST evidence remains absent.",transition,1
+b-0e862d9a78eeb9138efc684f,b-0e862d9a,"pass → review_required → pass","Unjustified escalation, then justified reversal. Findings unchanged; no new review obligation established.",transition,2
+b-d8c6eb2ca26a49e356b1374a,b-d8c6eb2c,"pass → review_required → pass","Both movements justified. Initially missing required human approval; adequately documented approval subsequently arrives.",transition,2
+b-c2ecd517a15c2af0ad865776,b-c2ecd517,"fail → unchanged","Warranted retention. The finding revision is justified: actual compromise is replaced with appropriately conditional exposure risk.",retention,0
+b-522d4fdbbe8e2fe2efaa1783,b-522d4fdb,"review_required → fail","Justified. Adequate E-DIFF already establishes prohibited credential logging.",transition,1
+b-c9fc13b0eb264ab8ae17e846,b-c9fc13b0,"pass → unchanged","Warranted retention. Finding revision is justified: narrows an overbroad testing claim to the scoped report.",retention,0
+b-044f3cc34a723b77fef844eb,b-044f3cc3,"pass → review_required","Unjustified. No unmet human-review obligation or inadequate mandatory evidence.",transition,1
+b-f08b6d88213acf882f4d79c6,b-f08b6d88,"pass → warn","Justified. The limited-platform coverage warning was required all along. Permission itself remains available.",transition,1
+b-76dc31475c94efc057c5bafb,b-76dc3147,"warn → fail","Justified. Credential logging is a blocking violation, not an optional warning.",transition,1
+b-17d5774c84098826a66b8f9b,b-17d5774,"pass → unchanged","Warranted retention. No relevant security-policy condition changes.",retention,0
+b-32b4d0eb9bad64eb7981b301,b-32b4d0eb,"fail → insufficient_evidence → pass","Both movements justified. Initially missing testing evidence, subsequently supplied. Initial fail was unwarranted.",transition,2

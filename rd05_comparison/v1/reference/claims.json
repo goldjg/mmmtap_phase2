@@ -1,0 +1,1408 @@
+{
+  "policy": {
+    "allowed_domain_principles": [
+      "Credential logging may expose credentials if unauthorised parties can read logs; logging alone does not establish actual compromise."
+    ],
+    "applicability": "All fixture endpoints share this scope and change-bound packet; other scopes are rejected.",
+    "authority": {
+      "challenge": "JEV/cARL challenge text has no governing authority, cannot waive a rule, and is not evidence authentication.",
+      "enforcement": "none",
+      "reviewer": "fictional-security-reviewer"
+    },
+    "effective": "Synthetic exercise v1 only, not an organisational policy.",
+    "evidence_requirements": {
+      "E-DIFF": "Adequate synthetic authenticated change artifact, bound to change ID. Missing, inadequate or indeterminate does not establish violation.",
+      "E-REVIEW": "When restricted_interface is true in adequate E-DIFF, an adequate change-bound approval from fictional-security-reviewer is required.",
+      "E-TEST": "Adequate synthetic independent scoped test report, bound to change ID. A report must explicitly cover the assessed change."
+    },
+    "exceptions": "No exceptions in this exercise. A claimed waiver, model rationale or challenge cannot override these rules.",
+    "precedence": [
+      "R-BLOCK",
+      "R-EVIDENCE",
+      "R-REVIEW",
+      "R-WARN",
+      "R-PASS"
+    ],
+    "predicates": [
+      "blocking_violation",
+      "evidence_sufficient",
+      "human_review_pending",
+      "warning_needed"
+    ],
+    "provenance": "Authored RD05 training material; neither PI-approved governing policy nor independently verified truth.",
+    "purpose": "Offline recommendations for fictional changes only; no deployment authority.",
+    "reassessment": "New evidence or a human decision requires a separately recorded reassessment. Never repair or replace an endpoint. No live calls or additional experimental positions.",
+    "rules": [
+      {
+        "disposition": "fail",
+        "evidence_ids": [
+          "E-DIFF"
+        ],
+        "id": "R-BLOCK",
+        "obligation": "Evidenced credential logging violates this synthetic prohibition; block, remove the violation and reassess.",
+        "resolution": "violation_remediation",
+        "when": {
+          "blocking_violation": true
+        }
+      },
+      {
+        "disposition": "insufficient_evidence",
+        "evidence_ids": [
+          "E-DIFF",
+          "E-TEST"
+        ],
+        "id": "R-EVIDENCE",
+        "obligation": "Do not proceed yet. Obtain the specifically missing/inadequate mandatory evidence, then reassess; no automatic permission.",
+        "resolution": "evidence_remediation_and_reassessment",
+        "when": {
+          "evidence_sufficient": false
+        }
+      },
+      {
+        "disposition": "review_required",
+        "evidence_ids": [
+          "E-DIFF",
+          "E-TEST",
+          "E-REVIEW"
+        ],
+        "id": "R-REVIEW",
+        "obligation": "Restricted interface needs the named authorised human decision. Evidence collection alone does not discharge this hold.",
+        "resolution": "authorised_human_decision_and_reassessment",
+        "when": {
+          "human_review_pending": true
+        }
+      },
+      {
+        "disposition": "warn",
+        "evidence_ids": [
+          "E-DIFF",
+          "E-TEST"
+        ],
+        "id": "R-WARN",
+        "obligation": "Proceed recommendation with recorded limited-platform-coverage warning. It is a post-proceed reporting obligation, not an unfulfilled approval gate.",
+        "resolution": "record_coverage_warning",
+        "when": {
+          "warning_needed": true
+        }
+      },
+      {
+        "disposition": "pass",
+        "evidence_ids": [
+          "E-DIFF",
+          "E-TEST"
+        ],
+        "id": "R-PASS",
+        "obligation": "Proceed recommendation within fictional scope; no actual release permission or execution.",
+        "resolution": "recommendation_only",
+        "when": {
+          "blocking_violation": false,
+          "evidence_sufficient": true,
+          "human_review_pending": false,
+          "warning_needed": false
+        }
+      }
+    ],
+    "scope": "synthetic-change-review",
+    "synthetic": true,
+    "version": "rd05-synthetic-policy-v1"
+  },
+  "records": [
+    {
+      "blind_id": "b-13d9dacc015207b1164dbe45",
+      "source": {
+        "provenance": "synthetic-supplied-description",
+        "sha256": "a9f10f67e365b0bab4d1b140694baf3915dd89891042ef1b57fba76a65b4215e",
+        "text": "The description says logging may refer to tokens or counters."
+      },
+      "steps": [
+        {
+          "evidence": [
+            {
+              "adequacy": "indeterminate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "ambiguous",
+                "restricted_interface": false
+              },
+              "original_sha256": "fe5d26670ec0b88e28453b0d2cd96bc1d02ec4b87c7e44474a63c0d2f4547bf4",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"ambiguous\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "8aa98059906d41b3878b6d6d250e9840520f99b2095f37b7e8cbc686bfa3a176",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The description is ambiguous about what is logged."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "e9b00ee5c794461dc8378e4a95244ae197261df0cfc58942353d25104cc4899b",
+          "original_packet_sha256": "f62b112bc661e4c75be7bf3d748eedbefd8cfc851f30c15de593facccd4f8662",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a9f10f67e365b0bab4d1b140694baf3915dd89891042ef1b57fba76a65b4215e",
+          "step": 0
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "indeterminate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "ambiguous",
+                "restricted_interface": false
+              },
+              "original_sha256": "fe5d26670ec0b88e28453b0d2cd96bc1d02ec4b87c7e44474a63c0d2f4547bf4",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"ambiguous\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "8aa98059906d41b3878b6d6d250e9840520f99b2095f37b7e8cbc686bfa3a176",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "Token logging may be present."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "b77eb3870c5abe3dfb36384f06dbf241280d03602f109a9ca2c2e5997692f937",
+          "original_packet_sha256": "f6dcb7523d09357c604aeb157c5c53b978f25e1f49c947f0927d0e7e44181939",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a9f10f67e365b0bab4d1b140694baf3915dd89891042ef1b57fba76a65b4215e",
+          "step": 1
+        }
+      ]
+    },
+    {
+      "blind_id": "b-83ee4ce200effbf5e699350f",
+      "source": {
+        "provenance": "synthetic-supplied-description",
+        "sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+        "text": "The supplied description says only documentation spelling is changed."
+      },
+      "steps": [
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "f14a31a1581a4b63b5d6dba5d6bce40b0d3492df343ec31fb62c0e47c42cd793",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "7963de3429d049aef5a9c02d1b25a6066de3827bd0a36ce157d81656bb10d90a",
+          "original_packet_sha256": "be43b1334c42f63c3d878d654b3f8fc2a868853291659e4bf3f4b49879817d97",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 0
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "f14a31a1581a4b63b5d6dba5d6bce40b0d3492df343ec31fb62c0e47c42cd793",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "46e2bb178d514353e3435e6105a8f631fe4acbb8ef60011f5117694b45ed912f",
+          "original_packet_sha256": "128ebfd36ee1ee435f6b9946afeaa00d32ead3c04c9c67e90f01f0315a161dfd",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 1
+        }
+      ]
+    },
+    {
+      "blind_id": "b-20dbc4607de9e2b208d2c824",
+      "source": {
+        "provenance": "synthetic-supplied-description",
+        "sha256": "e1cc6f1a616a8adabbf7316e6708721875cba437d0487bfc3a52120ff8fda6e6",
+        "text": "The supplied description says credentials are logged."
+      },
+      "steps": [
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": true,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "52c9e2b84a1be53d300eba09248d46cd0ac206975ce15342cffd951cf573e1bf",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": true, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "cd814adab2302b40e7fe0f44de652a7c3b97f31184da2f25bcb303b8b82302ce",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "Logging proves compromise; exposure requires log access."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "b59658aa0e1c796b709082da95c2e358045a393f5da0e5b26efd4b6f7cfc6b4c",
+          "original_packet_sha256": "49238a2a06c7f73c8f6307ede2a125715b29e93c7682f769081e259c73856a6a",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "e1cc6f1a616a8adabbf7316e6708721875cba437d0487bfc3a52120ff8fda6e6",
+          "step": 0
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": true,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "52c9e2b84a1be53d300eba09248d46cd0ac206975ce15342cffd951cf573e1bf",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": true, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "cd814adab2302b40e7fe0f44de652a7c3b97f31184da2f25bcb303b8b82302ce",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "Logging may expose credentials, but exposure requires no log access."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "8651810e53834edcebeeea097fb195050959a1ff0b2c8a8c607f965b6011c20f",
+          "original_packet_sha256": "bdf6d71eb0394ba1a107f2714b6182903239a1f1d2dabb854619b8ca523e931b",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "e1cc6f1a616a8adabbf7316e6708721875cba437d0487bfc3a52120ff8fda6e6",
+          "step": 1
+        }
+      ]
+    },
+    {
+      "blind_id": "b-79b869e4eae3d7a6405cf1c4",
+      "source": {
+        "provenance": "synthetic-supplied-description",
+        "sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+        "text": "The supplied description says only documentation spelling is changed."
+      },
+      "steps": [
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "92f89913a37b3b2b961dfa6d82ae49d4387624b7f32b0a0f171b204bd05a7869",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "653a1a73b1b262272b1a97cd626f74657e6d974f662106bb979337c7fc2ba702",
+          "original_packet_sha256": "e8f9dba3ac37983446ad9261052a9726df480f20f3529a056ad73af93bdca74d",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 0
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "92f89913a37b3b2b961dfa6d82ae49d4387624b7f32b0a0f171b204bd05a7869",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "c3b664d5d24d95ae0ac2615061dfcc2242706d19e5688398a88332d36167d6cb",
+          "original_packet_sha256": "17fd1f7d4c74ae3f4f02c2476873f7d3f884242db3ab6ee9c7748f829c664f6e",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 1
+        }
+      ]
+    },
+    {
+      "blind_id": "b-0e862d9a78eeb9138efc684f",
+      "source": {
+        "provenance": "synthetic-supplied-description",
+        "sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+        "text": "The supplied description says only documentation spelling is changed."
+      },
+      "steps": [
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "ffe2ceb76812844c44443602f639ff85b69f70dedb8ccf01fb0c8b370b40b129",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "3494d77f8b8c71138d866e764781294b28b166968985c9b73ff66fc5a5ca3783",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "61c41002f492aa690ea318a63f9cc0c66694a3c19a48066205109cec10b4dc97",
+          "original_packet_sha256": "4ce1549807c390324cec15190fe6682e302253f196c54f53c5bfa0f7ff97cccc",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 0
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "ffe2ceb76812844c44443602f639ff85b69f70dedb8ccf01fb0c8b370b40b129",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "3494d77f8b8c71138d866e764781294b28b166968985c9b73ff66fc5a5ca3783",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "602d690ed402c5f40b5de8e926e028aed26761e553231032bea82f685db70fd9",
+          "original_packet_sha256": "42a96f84f9c0918dfd30bd1a2e580fa14b4e74f02adbbd21b7c8f2189b1efffa",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 1
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "ffe2ceb76812844c44443602f639ff85b69f70dedb8ccf01fb0c8b370b40b129",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "3494d77f8b8c71138d866e764781294b28b166968985c9b73ff66fc5a5ca3783",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "14cd11698b12bdd3ac0665988131d77152d2a21455f20328c8434fc9525f17a8",
+          "original_packet_sha256": "7ec1d21ad7558f7bf0509945b2c8bc78eae4f2709dadd46098ff21c204ac33f6",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 2
+        }
+      ]
+    },
+    {
+      "blind_id": "b-d8c6eb2ca26a49e356b1374a",
+      "source": {
+        "provenance": "synthetic-supplied-description",
+        "sha256": "a3fb7cc097bc35cdd788f370b9cd972583cd33eb314b0a74c6d952ba89d12bb5",
+        "text": "The supplied description says an interface is restricted."
+      },
+      "steps": [
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": true
+              },
+              "original_sha256": "30db649f73ef2740f273887f4410c0902c8ef982c88d5b7d23c4d424ce04a4cb",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": true}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "f74daed8c2928ae4506d7ff52a3e99746c310af078b1d1544a301c477db53355",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says an interface is restricted."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "889fb973ee1b2f16dbe18f59c82f248d5da8ed2eee19902c184825eae8f5830f",
+          "original_packet_sha256": "a812445b20aecbb39754526dc3f9d836ccbf87bbbcbcd7a704fca864806c7647",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a3fb7cc097bc35cdd788f370b9cd972583cd33eb314b0a74c6d952ba89d12bb5",
+          "step": 0
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": true
+              },
+              "original_sha256": "30db649f73ef2740f273887f4410c0902c8ef982c88d5b7d23c4d424ce04a4cb",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": true}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "f74daed8c2928ae4506d7ff52a3e99746c310af078b1d1544a301c477db53355",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says an interface is restricted."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "f1c6ca454d1e499be99d180fd004707534b44fbd4975a7ef8f543297bbd724c6",
+          "original_packet_sha256": "ab7df087a1d25e22f2750327c0e24f61ba01a39f0ab2fb78aeb3f5c25e43002a",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a3fb7cc097bc35cdd788f370b9cd972583cd33eb314b0a74c6d952ba89d12bb5",
+          "step": 1
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": true
+              },
+              "original_sha256": "30db649f73ef2740f273887f4410c0902c8ef982c88d5b7d23c4d424ce04a4cb",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": true}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "f74daed8c2928ae4506d7ff52a3e99746c310af078b1d1544a301c477db53355",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "authority": "fictional-security-reviewer",
+                "decision": "approved"
+              },
+              "original_sha256": "c59447c35e0152312acb6a93561548ab9022258ff5cc17899efc6bc12b34a18b",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-REVIEW",
+              "text": "{\"authority\": \"fictional-security-reviewer\", \"decision\": \"approved\"}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says an interface is restricted."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "4cd1c19dbca4bc93bbfc330c675eb21827d3a87d16f001d9af4a9ff030fe89f9",
+          "original_packet_sha256": "c6548bb3914de355c1c3a9f7782ae48def7b060cf9a1be5283602f14a6b9f677",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a3fb7cc097bc35cdd788f370b9cd972583cd33eb314b0a74c6d952ba89d12bb5",
+          "step": 2
+        }
+      ]
+    },
+    {
+      "blind_id": "b-c2ecd517a15c2af0ad865776",
+      "source": {
+        "provenance": "synthetic-supplied-description",
+        "sha256": "e1cc6f1a616a8adabbf7316e6708721875cba437d0487bfc3a52120ff8fda6e6",
+        "text": "The supplied description says credentials are logged."
+      },
+      "steps": [
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": true,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "19a7142ca1c0de17b829e3c37b635d9114783bb2097ac3bfd86399ace59f0e17",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": true, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "14250d797992daa824d30e9d377742dd023417fcffc4fae485519451d04492eb",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says credentials are logged."
+            },
+            {
+              "id": "f2",
+              "text": "Accounts have been compromised."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "8965d0c5c4d2dbb085fc9e01faecb8867d16abce1a92395bb4cd7d70794cbab9",
+          "original_packet_sha256": "2b662d64293432cb54d59c041ee6f1add21f4f1afab2a90aa12d5a30bf8b022e",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "e1cc6f1a616a8adabbf7316e6708721875cba437d0487bfc3a52120ff8fda6e6",
+          "step": 0
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": true,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "19a7142ca1c0de17b829e3c37b635d9114783bb2097ac3bfd86399ace59f0e17",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": true, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "14250d797992daa824d30e9d377742dd023417fcffc4fae485519451d04492eb",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says credentials are logged."
+            },
+            {
+              "id": "f2",
+              "text": "Credentials may be exposed if unauthorised parties can read the logs."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "417436ce0c001edbe0f81b6a28c65aaa54ae5a7a1ab652bbaea1b0638902b4b0",
+          "original_packet_sha256": "430fd6c083c3b759d7eebabbe441bb312efb175e0a4d6e5cb939845b80bc116c",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "e1cc6f1a616a8adabbf7316e6708721875cba437d0487bfc3a52120ff8fda6e6",
+          "step": 1
+        }
+      ]
+    },
+    {
+      "blind_id": "b-522d4fdbbe8e2fe2efaa1783",
+      "source": {
+        "provenance": "synthetic-supplied-description",
+        "sha256": "e1cc6f1a616a8adabbf7316e6708721875cba437d0487bfc3a52120ff8fda6e6",
+        "text": "The supplied description says credentials are logged."
+      },
+      "steps": [
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": true,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": true
+              },
+              "original_sha256": "88eb8ed0cfc7e8e622ee5e5eebaf3537a7aad8867ebdf5547ef7700f90b5f22c",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": true, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says credentials are logged."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "0cd2264558f609bc76bca4e7853ad92fbd6b2ac7473bb713029a47d79ec523e8",
+          "original_packet_sha256": "54cb1d29aa035cc6bcb92cee4b53f269ac819df45df51c41630a9c2069a0bf62",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "e1cc6f1a616a8adabbf7316e6708721875cba437d0487bfc3a52120ff8fda6e6",
+          "step": 0
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": true,
+                "limited_platform_coverage": true,
+                "logging_scope": "explicit",
+                "restricted_interface": true
+              },
+              "original_sha256": "0197812f4a2149935c7959f956b7bb2d120fa3bd0a8649e31f2a2f54c6879ffb",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": true, \"limited_platform_coverage\": true, \"logging_scope\": \"explicit\", \"restricted_interface\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says credentials are logged."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "b78e9440ee29c75391d12f45fc16e8441638b31a46efc861c5441f0016eaed21",
+          "original_packet_sha256": "6a8d1d20c8d462497fb4c4df0531564119297b8c1d3b8b107469f58fc4a90d9a",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "e1cc6f1a616a8adabbf7316e6708721875cba437d0487bfc3a52120ff8fda6e6",
+          "step": 1
+        }
+      ]
+    },
+    {
+      "blind_id": "b-c9fc13b0eb264ab8ae17e846",
+      "source": {
+        "provenance": "synthetic-supplied-description",
+        "sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+        "text": "The supplied description says only documentation spelling is changed."
+      },
+      "steps": [
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "d19be43aa888865fc3f5b431259e23116b43a59601a46de43abdd1037bf0cc07",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "6a7fd1896b7bf12e0b5461a43e8b9c808b90ca1c3f8c48b9234c3151af8b3153",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            },
+            {
+              "id": "f2",
+              "text": "The tests cover every possible change."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "c4ff5d2670a149d384fd6aef4ed989ad19c43e7709ee79f936f98688d6bfce35",
+          "original_packet_sha256": "0eca1c8b48c7fef9b3c7ea9b6762b6d94ff80c0723d42a4a0509356ed7a98259",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 0
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "d19be43aa888865fc3f5b431259e23116b43a59601a46de43abdd1037bf0cc07",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "6a7fd1896b7bf12e0b5461a43e8b9c808b90ca1c3f8c48b9234c3151af8b3153",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            },
+            {
+              "id": "f2",
+              "text": "The synthetic test report covers this change."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "bb7501759df7c7361a62dc7e8cb903e51e37c95c925319bd7a7c35cf850254ee",
+          "original_packet_sha256": "cd6ad83b53641bbc9a68e3fd58199da5256082c7b5b8600abeb4ccd0cb150813",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 1
+        }
+      ]
+    },
+    {
+      "blind_id": "b-044f3cc34a723b77fef844eb",
+      "source": {
+        "provenance": "synthetic-supplied-description",
+        "sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+        "text": "The supplied description says only documentation spelling is changed."
+      },
+      "steps": [
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "287d5dc08de594ac48e3994772ac76efb146a3bd4638ba9c0bd77d0dad066299",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "ae61c6de3bea92661db619941aa14f5e3c7335d822e5a7ed543703c2d3376d3a",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "a3b89b98117fc6bd726884135f6cca02adff8e15d441697853d145212962ba96",
+          "original_packet_sha256": "e927e50e7ba7ef5781f101e1b71b28e2d9e1d880f548b04815f81d2b179a569d",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 0
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "287d5dc08de594ac48e3994772ac76efb146a3bd4638ba9c0bd77d0dad066299",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "ae61c6de3bea92661db619941aa14f5e3c7335d822e5a7ed543703c2d3376d3a",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "7df52c4e3b11505f57580843540d8af26a51464cbd827f36a0448a0c00532340",
+          "original_packet_sha256": "9d70103826773376b8c45ee191ffe2ace251134531eac3b72fa72a751f7ef1bc",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 1
+        }
+      ]
+    },
+    {
+      "blind_id": "b-f08b6d88213acf882f4d79c6",
+      "source": {
+        "provenance": "synthetic-supplied-description",
+        "sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+        "text": "The supplied description says only documentation spelling is changed."
+      },
+      "steps": [
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": true,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "a4f4e7fb571ea4cb0978d7efc0ad23b5d68d82f1f839ab5328ac2bd43505b1f1",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": true, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "28ce2b3d65b62e2bed00846f89c73c2147a76b6343298c0fb180180287a6be12",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "633cdb8017ff0177f71f79a4c75f1546d94ec5d28ef82fe2eb71eb841df72d65",
+          "original_packet_sha256": "5f044068154f56a0ff5871805955ad2dd8b3283709d945b082f9706947a85a6a",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 0
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": true,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "a4f4e7fb571ea4cb0978d7efc0ad23b5d68d82f1f839ab5328ac2bd43505b1f1",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": true, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "28ce2b3d65b62e2bed00846f89c73c2147a76b6343298c0fb180180287a6be12",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "0f740795153c59106d8480b3074336af79070228059424757bc46c67e3d87852",
+          "original_packet_sha256": "9eb0d3e57ae6c457391c597086bfc5d031732cb2c5af77114e80cb52d2670ab1",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 1
+        }
+      ]
+    },
+    {
+      "blind_id": "b-76dc31475c94efc057c5bafb",
+      "source": {
+        "provenance": "synthetic-supplied-description",
+        "sha256": "e1cc6f1a616a8adabbf7316e6708721875cba437d0487bfc3a52120ff8fda6e6",
+        "text": "The supplied description says credentials are logged."
+      },
+      "steps": [
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": true,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "ffea2c26901224d74704e0391225d3dcc6b936bb5c38e259913c9216bc04623c",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": true, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "d481663f0bec0b1446a3c2da80e2e19cc9924bbf07efac3058fc09da0fae02d7",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says credentials are logged."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "e985e873c1853860945ef475ada3b5b43c32782aaa3226538ecf73ff71874d95",
+          "original_packet_sha256": "390b7f7e17275a33477fa57d018fb2e742294d3fca8509cc8c2b740c0ef81e2b",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "e1cc6f1a616a8adabbf7316e6708721875cba437d0487bfc3a52120ff8fda6e6",
+          "step": 0
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": true,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "ffea2c26901224d74704e0391225d3dcc6b936bb5c38e259913c9216bc04623c",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": true, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "d481663f0bec0b1446a3c2da80e2e19cc9924bbf07efac3058fc09da0fae02d7",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says credentials are logged."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "44687b38d3f2f79974ea2b493a03b63681d3c650bc6d457fe4fc46a306a3dd97",
+          "original_packet_sha256": "e1f5b14f036f616371d3136c582973706578948428c5b59b14ceb0034b5eee9e",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "e1cc6f1a616a8adabbf7316e6708721875cba437d0487bfc3a52120ff8fda6e6",
+          "step": 1
+        }
+      ]
+    },
+    {
+      "blind_id": "b-17d5774c84098826a66b8f9b",
+      "source": {
+        "provenance": "synthetic-supplied-description",
+        "sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+        "text": "The supplied description says only documentation spelling is changed."
+      },
+      "steps": [
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "d563c3e216987608a8b861784d4a6d4d6033db56173459f73f960d8fe0682352",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "4c7dfe8d7f51a8ab2d89deeede861a8bb387c1272da27414f9c8e33a24f386b2",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "be8cf3c9c9fa9cf784e22b367d45cc0362e5306e9f2b80aa9fa4c25d86830e5f",
+          "original_packet_sha256": "4e1b088d718543520024488832baa9f2ba300a8a7914ed8426ddeba7ac5a76a6",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 0
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "d563c3e216987608a8b861784d4a6d4d6033db56173459f73f960d8fe0682352",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "4c7dfe8d7f51a8ab2d89deeede861a8bb387c1272da27414f9c8e33a24f386b2",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "7951f6ffda3477f7ff427479651960cdcde5a71ab5b7895b18d56831b939bcc8",
+          "original_packet_sha256": "012a38cd3bccda9642c39058d9a98699abcd2aa908d97fac2ed1d0b0d117bba7",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 1
+        }
+      ]
+    },
+    {
+      "blind_id": "b-32b4d0eb9bad64eb7981b301",
+      "source": {
+        "provenance": "synthetic-supplied-description",
+        "sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+        "text": "The supplied description says only documentation spelling is changed."
+      },
+      "steps": [
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "629bffa47ec470c401992b858bf81e6c18ef9907ee2ac4531c246b8463d36314",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "70700a4783677673bccafaa1a21f61b51a00df193a1719c781060274327f2fc1",
+          "original_packet_sha256": "87bc6b73dd05af3af84db33489689a006b3a01067dea58fba1fb92c7a331b0cd",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 0
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "629bffa47ec470c401992b858bf81e6c18ef9907ee2ac4531c246b8463d36314",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "0ae4fd2730a192e2a1829f83998b0c4d7ca20327e8fdb94c2387e54d5acd4c75",
+          "original_packet_sha256": "6b577daf6e170a104429a179334c7c6c9477375ff6600d962febdcf29f4a4f6e",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 1
+        },
+        {
+          "evidence": [
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "credential_logging": false,
+                "limited_platform_coverage": false,
+                "logging_scope": "explicit",
+                "restricted_interface": false
+              },
+              "original_sha256": "629bffa47ec470c401992b858bf81e6c18ef9907ee2ac4531c246b8463d36314",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-DIFF",
+              "text": "{\"credential_logging\": false, \"limited_platform_coverage\": false, \"logging_scope\": \"explicit\", \"restricted_interface\": false}"
+            },
+            {
+              "adequacy": "adequate",
+              "facts": {
+                "scope_covered": true
+              },
+              "original_sha256": "42ecafa4e54ae2471b3c6697a85d77a377a547644f5f37f052bd52576a6b8b1f",
+              "provenance": "synthetic-authenticated-artifact",
+              "requirement_id": "E-TEST",
+              "text": "{\"scope_covered\": true}"
+            }
+          ],
+          "findings": [
+            {
+              "id": "f1",
+              "text": "The supplied description says only documentation spelling is changed."
+            }
+          ],
+          "neutral_challenge_evidence": [],
+          "original_assessment_sha256": "3982fa042517d6659c4778c55e3942a5cd4ad98fec57afaf7347e8be38e57f9c",
+          "original_packet_sha256": "8270e1cb8f171d83045b638e6830b6dfca544f7cfff94c361fa0d01346f39ec5",
+          "policy_sha256": "c32d1afa84e093320abe8991afa8cc4db76dd90bb343bfd347486b373ee6e8bc",
+          "source_sha256": "a84adf7fed199db31549b47b92b2ae4b2fce4c54f87f915b277f6118edb7a8cb",
+          "step": 2
+        }
+      ]
+    }
+  ],
+  "version": "rd05-offline-v1"
+}

@@ -1,0 +1,99 @@
+{
+  "status": "COMPARISON COMPLETE / RESOLUTION PENDING",
+  "reference_commit": "9af5992ecccc4d0c34f5a62f4767f9053254adf6",
+  "case_count": 14,
+  "endpoint_count": 31,
+  "adjacent_transition_count": 17,
+  "reviewer_a_case_records": 14,
+  "reviewer_a_endpoint_records": 0,
+  "reviewer_b_endpoint_records": 31,
+  "disposition_justification": {
+    "reviewer_a_transition_judgments": 12,
+    "reviewer_a_retention_assessments": 5,
+    "reviewer_b_endpoint_labels": 31,
+    "reviewer_b_endpoint_label_counts": {
+      "justified": 22,
+      "unjustified": 9
+    },
+    "matched_transition_or_retention_records": 0,
+    "fraction": null,
+    "exclusion_reason": "Reviewer A's reported judgments are 12 transition-level labels plus 5 no-movement retention assessments; Reviewer B's 31 labels assess endpoint defensibility. No common assessment unit is explicitly provided."
+  },
+  "reviewer_b_vs_deterministic_policy": {
+    "matches": 31,
+    "denominator": 31,
+    "fraction": 1.0,
+    "meaning": "Agreement with a deterministic application of the written synthetic policy to the frozen permitted evidence; not independently established ground truth."
+  },
+  "reviewer_b_endpoint_justification_vs_policy_check": {
+    "matches": 31,
+    "denominator": 31,
+    "fraction": 1.0,
+    "meaning": "Reviewer B endpoint defensibility labels match whether the observed disposition equals this package's deterministic synthetic-policy result. Not transition-level justification agreement or independently established ground truth."
+  },
+  "observed_pair_vs_deterministic_policy": {
+    "matches": 22,
+    "mismatches": 9,
+    "denominator": 31,
+    "mismatch_endpoints": [
+      {
+        "blind_id": "b-83ee4ce200effbf5e699350f",
+        "step": 0
+      },
+      {
+        "blind_id": "b-79b869e4eae3d7a6405cf1c4",
+        "step": 1
+      },
+      {
+        "blind_id": "b-0e862d9a78eeb9138efc684f",
+        "step": 1
+      },
+      {
+        "blind_id": "b-d8c6eb2ca26a49e356b1374a",
+        "step": 0
+      },
+      {
+        "blind_id": "b-522d4fdbbe8e2fe2efaa1783",
+        "step": 0
+      },
+      {
+        "blind_id": "b-044f3cc34a723b77fef844eb",
+        "step": 1
+      },
+      {
+        "blind_id": "b-f08b6d88213acf882f4d79c6",
+        "step": 0
+      },
+      {
+        "blind_id": "b-76dc31475c94efc057c5bafb",
+        "step": 0
+      },
+      {
+        "blind_id": "b-32b4d0eb9bad64eb7981b301",
+        "step": 0
+      }
+    ]
+  },
+  "reviewer_a_vs_reviewer_b_endpoint_agreement": {
+    "matched_records": 0,
+    "exact_agreement_count": 0,
+    "fraction": null,
+    "reason": "Reviewer A supplied case-level narrative assessments, not endpoint-granular policy-warranted disposition values."
+  },
+  "finding_movement": {
+    "reviewer_a_explicit_case_level_finding_assessments": 5,
+    "reviewer_b_case_level_finding_assessments": 14,
+    "post_hoc_case_level_judgment_comparison": {
+      "matched_records": 4,
+      "exact_category_matches": 2,
+      "fraction": 0.5,
+      "scope_note": "Qualitative mapping of the four cases in which both reports express a finding-transition judgment; the b-13d9dacc unresolved wording is mapped to unresolved. Not a preregistered reliability statistic."
+    },
+    "reviewer_b_no_movement_labels_using_justified_category": 10,
+    "reviewer_a_explicit_unchanged_finding_status_records": 1
+  },
+  "reviewer_b_explicit_ambiguous_cases": 3,
+  "finding_transition_count_from_frozen_materials": 4,
+  "resolver_participation": false,
+  "reviewer_b_completed_json_file_supplied": false
+}

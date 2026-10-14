@@ -1,0 +1,46 @@
+{
+  "reference": {
+    "repository": "goldjg/mmmtap_phase2",
+    "commit_abbreviated": "9af5992",
+    "commit_full": "9af5992ecccc4d0c34f5a62f4767f9053254adf6",
+    "retrieval_note": "Retrieved from the upstream commit after the user explicitly authorized online retrieval because the supplied workspace had no repository metadata or RD05 source tree. Comparison calculations were run locally from the preserved snapshot.",
+    "excluded_materials": [
+      "phase2_v2/rd05_offline/authored.py",
+      "phase2_v2/rd05_offline/exercise.v1/custodian/**",
+      "phase2_v2/rd05_offline/REPORT.md",
+      "phase2_v2/rd05_offline/exercise.v1/resolution.json"
+    ],
+    "files": [
+      {
+        "local_path": "reference/policy.v1.json",
+        "upstream_path": "phase2_v2/rd05_offline/policy.v1.json",
+        "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e",
+        "git_blob_sha": "a23465d4f497b2e2949876f477a60b01f50e6d7f"
+      },
+      {
+        "local_path": "reference/README.md",
+        "upstream_path": "phase2_v2/rd05_offline/README.md",
+        "sha256": "4e612a4baad6125e9357ee7002d53ed331b8a9b19fe753a6bddcf2609d15301a",
+        "git_blob_sha": "1e72354be2ea29d87a1ee63f47b61cbdcdc1d17d"
+      },
+      {
+        "local_path": "reference/RD03.md",
+        "upstream_path": "phase2_v2/EVIDENCE_JUSTIFICATION_PROPOSAL.v2.1-RD03.md",
+        "sha256": "4ab23791a77def9616ee7200f672b915aa2e8af791ecb9e39974bf8b6060b982",
+        "git_blob_sha": "17b84be4a1476b1656d8c830eac97299085bcdde"
+      },
+      {
+        "local_path": "reference/claims.json",
+        "upstream_path": "phase2_v2/rd05_offline/exercise.v1/claims.json",
+        "sha256": "5aff8543c6f516fe838838366ea30a2296f6b84e4d6eee9c012fd4945970039e",
+        "git_blob_sha": "a8c6ef7f672335ac908afc56812b8bb601011a1d"
+      },
+      {
+        "local_path": "reference/pairs.json",
+        "upstream_path": "phase2_v2/rd05_offline/exercise.v1/pairs.json",
+        "sha256": "6c07377eb5751bf815bad90a39f3e2eb0f4d0ea34180dc521dd90f536ed8157f",
+        "git_blob_sha": "2bee986115095959d7eb999712cdc5a61e900e3c"
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "input_method": "Two separate report texts pasted by the user in the conversation",
+  "original_uploads_received": false,
+  "verbatim_preservation_note": "The report text as supplied was copied into the corresponding input file without editorial changes. Original source-file bytes and line endings were not supplied, so the hashes identify these preserved text copies, not an independently verified original file container.",
+  "reviewer_a": {
+    "report_file": "reviewer_a.md",
+    "reviewer_label": "Reviewer A",
+    "provider_and_surface_as_stated_by_user": "GPT-6 via ChatGPT",
+    "report_date": null,
+    "identity_or_provider_independently_verified": false
+  },
+  "reviewer_b": {
+    "report_file": "reviewer_b.md",
+    "reviewer_label": "Reviewer B",
+    "provider_and_surface_as_stated_by_user": "Gemini via standalone Gemini iOS app",
+    "report_date": null,
+    "identity_or_provider_independently_verified": false
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "hashes": {
+      "reviewer_a.md": "175f72bdaabbb23c76a5d2cb4dd96f5eec07367e2b9840f5248e158a564d04ff",
+      "reviewer_b.md": "c0f80c163735a4e81b59bad8513a403f214303ad4f9b958b84dbf10a3c8df7ec"
+    }
+  }
+}
