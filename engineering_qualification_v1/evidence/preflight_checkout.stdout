@@ -1,0 +1,449 @@
+{
+  "automatic_progression": false,
+  "checks": [
+    {
+      "check": "inspected_source_and_configuration",
+      "evidence": {
+        "expected_files": 96,
+        "failures": [
+          {
+            "path": "phase2_v2/ADJUDICATION_AND_FIXTURE_SPEC.v2.1.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/ADJUDICATION_TRAINING_EXAMPLES.v2.1-RD03.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/DECISION_REGISTER.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/DEVELOPMENT_INCREMENT_REPORT.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/EVIDENCE_JUSTIFICATION_PROPOSAL.v2.1-RD03.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/INSTRUMENT.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/INSUFFICIENT_EVIDENCE_CLARIFICATION.v2.1-RD04-IE01.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/OPERATIONAL_DISPOSITION_AMENDMENT.v2.1-RD04.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/OUTCOME_MOVEMENT_AMENDMENT.v2.1-RD02.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/PHASE2_V2_DESIGN.md",
+            "reason": "byte_binding_mismatch"
+          },
+          {
+            "path": "phase2_v2/PHASE2_V2_HYPOTHESES.md",
+            "reason": "byte_binding_mismatch"
+          },
+          {
+            "path": "phase2_v2/QUALIFICATION_AND_SIGNOFF_PLAN.v2.1.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/RESEARCH_DIRECTION_AMENDMENT.v2.1-RD01.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/SCIENTIFIC_DECISION_BRIEF.v2.1.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/challenge_fixtures.v2.1.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/instrument.py",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/lifecycle_examples.v2.1.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/prompts.v2.1.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/README.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/REPORT.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/__init__.py",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/authored.py",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/claims.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/custodian/fixtures.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/custodian/identity_key.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/custodian/linkage.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/custodian/references.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/pairs.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/resolution.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/reviewer_A.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/reviewer_B.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/inventory.v1.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/policy.v1.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/test_tool.py",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/tool.py",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/test_instrument.py",
+            "reason": "missing_or_nonregular"
+          }
+        ],
+        "verified_files": 59
+      },
+      "status": "FAIL"
+    },
+    {
+      "check": "rd05_original_package_integrity",
+      "evidence": {
+        "expected_files": 17,
+        "failures": [
+          {
+            "path": "phase2_v2/rd05_offline/README.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/REPORT.md",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/__init__.py",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/authored.py",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/claims.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/custodian/fixtures.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/custodian/identity_key.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/custodian/linkage.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/custodian/references.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/pairs.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/resolution.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/reviewer_A.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/exercise.v1/reviewer_B.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/inventory.v1.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/policy.v1.json",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/test_tool.py",
+            "reason": "missing_or_nonregular"
+          },
+          {
+            "path": "phase2_v2/rd05_offline/tool.py",
+            "reason": "missing_or_nonregular"
+          }
+        ],
+        "verified_files": 0
+      },
+      "status": "FAIL"
+    },
+    {
+      "check": "comparison_package_integrity",
+      "evidence": {
+        "expected_files": 24,
+        "failures": [],
+        "verified_files": 24
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "frozen_instrument_and_lifecycle_integrity",
+      "evidence": {
+        "expected_files": 1,
+        "failures": [
+          {
+            "path": "phase2_v2/instrument.py",
+            "reason": "missing_or_nonregular"
+          }
+        ],
+        "verified_files": 0
+      },
+      "status": "FAIL"
+    },
+    {
+      "check": "proposed_campaign_size",
+      "evidence": {
+        "basis": "unchanged proposal, not an executable or approved manifest",
+        "carl_jev_positions": 27,
+        "engineering_repetitions": 1,
+        "generator_positions": 99,
+        "generators": 3,
+        "inputs": 3,
+        "matched_units": 9,
+        "native_positions": 27,
+        "plan_integrity": "FAIL",
+        "scheduled_positions": 153,
+        "source": "phase2_v2/QUALIFICATION_AND_SIGNOFF_PLAN.v2.1.md",
+        "specialist_positions": 54
+      },
+      "status": "BLOCKED/UNKNOWN"
+    },
+    {
+      "check": "dependency_and_invalid_output_accounting",
+      "evidence": {
+        "anchors": [
+          "phase2_v2/continuation.py",
+          "phase2_v2/instrument.py:inspect_assessment"
+        ],
+        "assessment_basis": "baseline bindings failed; current implementation cannot be certified",
+        "observation": "v2 offline continuation checks verified ok parents and blocked children; no Q1 executor materializes all scheduled outcomes. Primary admissibility and dependency-censoring analysis remain undecided."
+      },
+      "status": "BLOCKED/UNKNOWN"
+    },
+    {
+      "check": "evidence_records_and_custody",
+      "evidence": {
+        "anchors": [
+          "phase2_v2/instrument.py:AssessmentDiagnostic",
+          "phase2_v2/instrument.py:JudgeRecord",
+          "operator_execution_v1/runtime.py:execute"
+        ],
+        "assessment_basis": "baseline bindings failed; current implementation cannot be certified",
+        "observation": "Raw typed diagnostics and request hashes exist in memory. No Q1 durable separated generator/specialist/operational records, timestamped receipts, sealed manifest or blinded reference export is wired."
+      },
+      "status": "BLOCKED/UNKNOWN"
+    },
+    {
+      "check": "first_attempt_reservation_and_resumption",
+      "evidence": {
+        "anchors": [
+          "operator_execution_v1/runtime.py:execute",
+          "phase2_v2/continuation.py:plan_continuation"
+        ],
+        "assessment_basis": "baseline bindings failed; current implementation cannot be certified",
+        "observation": "v1 has locked durable reservations and incomplete-attempt preservation; v2 continuation is a pure planner and cannot reserve attempts. No Q1 durable campaign-wide registry or crash/restart integration exists."
+      },
+      "status": "BLOCKED/UNKNOWN"
+    },
+    {
+      "check": "frozen_campaign_inputs",
+      "evidence": {
+        "anchors": [
+          "phase2_v2/QUALIFICATION_AND_SIGNOFF_PLAN.v2.1.md",
+          "operator_execution_v1/planning.py"
+        ],
+        "assessment_basis": "baseline bindings failed; current implementation cannot be certified",
+        "observation": "No frozen Q1 manifest, three approved natural-source/reference packets or approval receipts; old pilot manifests are v1."
+      },
+      "status": "BLOCKED/UNKNOWN"
+    },
+    {
+      "check": "governing_and_challenge_policy_packets",
+      "evidence": {
+        "anchors": [
+          "phase2_v2/instrument.py:map_challenges",
+          "phase2_v2/OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md"
+        ],
+        "assessment_basis": "baseline bindings failed; current implementation cannot be certified",
+        "observation": "Only synthetic RD05 governing policy and offline_fixture challenge mappings exist. Approved operational obligations, adequacy, precedence, authority and research challenge thresholds are absent."
+      },
+      "status": "BLOCKED/UNKNOWN"
+    },
+    {
+      "check": "human_approvals_and_launch",
+      "evidence": {
+        "anchors": [
+          "phase2_v2/DECISION_REGISTER.md",
+          "phase2_v2/QUALIFICATION_AND_SIGNOFF_PLAN.v2.1.md"
+        ],
+        "assessment_basis": "baseline bindings failed; current implementation cannot be certified",
+        "observation": "D01-D11 unresolved scope applies, RD03 remains proposed; RD01/RD02/RD04 and IE01 boundaries preserved. Separate explicit bounded qualification approval required; no automatic stage transition."
+      },
+      "status": "BLOCKED/UNKNOWN"
+    },
+    {
+      "check": "intermediate_final_movement",
+      "evidence": {
+        "anchors": [
+          "phase2_v2/rd05_offline/tool.py",
+          "phase2_v2/OUTCOME_MOVEMENT_AMENDMENT.v2.1-RD02.md"
+        ],
+        "assessment_basis": "baseline bindings failed; current implementation cannot be certified",
+        "observation": "RD05 fixture tooling preserves exact transitions; natural Q1 outputs have no wired sidecar for independent baseline/intermediate/final movement and unavailable outcomes. Materiality, action mapping and RD03 justification remain human choices."
+      },
+      "status": "BLOCKED/UNKNOWN"
+    },
+    {
+      "check": "live_environment_and_release_containment",
+      "evidence": {
+        "anchors": [
+          "engineering_qualification_v1/preflight.py",
+          "phase2_v2/OPERATIONAL_DISPOSITION_AMENDMENT.v2.1-RD04.md"
+        ],
+        "assessment_basis": "baseline bindings failed; current implementation cannot be certified",
+        "observation": "This preflight has no execution path. Offline packets grant no release authority. Future live no-release containment and current provider availability/identity cannot be certified offline; credentials or release integrations must never be exposed to recommendation records."
+      },
+      "status": "BLOCKED/UNKNOWN"
+    },
+    {
+      "check": "matched_policy_delivery",
+      "evidence": {
+        "anchors": [
+          "phase2_v2/instrument.py:render_assessment_prompt"
+        ],
+        "assessment_basis": "baseline bindings failed; current implementation cannot be certified",
+        "observation": "render_assessment_prompt has source/prior/challenge bindings but no governing-policy packet field or equal-delivery enforcement across matched arms."
+      },
+      "status": "BLOCKED/UNKNOWN"
+    },
+    {
+      "check": "provider_call_limits_and_budget",
+      "evidence": {
+        "anchors": [
+          "operator_execution_v1/planning.py:estimate",
+          "phase2_v2/QUALIFICATION_AND_SIGNOFF_PLAN.v2.1.md"
+        ],
+        "assessment_basis": "baseline bindings failed; current implementation cannot be certified",
+        "observation": "153 is a position ceiling, not HTTP/request/billing control. No approved tariffs, wrapper/token assumptions, account entitlements, cost envelope or Q1 persisted attempt cap; v1 caps adapter invocations only."
+      },
+      "status": "BLOCKED/UNKNOWN"
+    },
+    {
+      "check": "provider_model_judge_identity",
+      "evidence": {
+        "anchors": [
+          "operator_execution_v1/runtime.py:_identity",
+          "phase2_v2/instrument.py:JudgeRecord"
+        ],
+        "assessment_basis": "baseline bindings failed; current implementation cannot be certified",
+        "observation": "Historical requested models and dated observations are not a v2 transport/version contract or current served-model evidence. Shared SystemOne is not independent judge replication."
+      },
+      "status": "BLOCKED/UNKNOWN"
+    },
+    {
+      "check": "strict_isolation",
+      "evidence": {
+        "anchors": [
+          "phase2/adapters_v2.py:GeneratorAdapter",
+          "phase2/isolation_controls.py:validate_controls",
+          "operator_execution_v1/runtime.py:execute"
+        ],
+        "assessment_basis": "baseline bindings failed; current implementation cannot be certified",
+        "observation": "Old controls mark all three generators blocked: tool interlock, internal retry prevention and live egress unresolved. No v2 per-arm/per-context containment executor exists."
+      },
+      "status": "BLOCKED/UNKNOWN"
+    },
+    {
+      "check": "original_40538_entry_custody",
+      "evidence": "Original custody root not supplied; sanitized public copies cannot establish original custody.",
+      "status": "BLOCKED/UNKNOWN"
+    }
+  ],
+  "executable_and_configuration_sha256": {
+    "__init__.py": "d8c00e80ae6a91ec152686780282e50039d94d60f9a39af9e30f1360a0f33d5e",
+    "bindings.v1.json": "e621f3b78de1dd6f7ecca4ee53e27320fcc7fadde4b2243a0e2ff70ef66642a6",
+    "preflight.py": "b584fc5375b6af87ed4482947be6cab757292a9e8d8961f22de035440cbcae6f"
+  },
+  "inspected_commit": "b06371e48af5919af6fffd563fb1226d8be0dae4",
+  "launch_authorized": false,
+  "meaning": "Offline evidence inspection only; never permission to launch or evidence of scientific validity.",
+  "observed_at_utc": "2026-10-26T19:24:33.342935+00:00",
+  "overall": "FAIL",
+  "provider_calls": 0,
+  "python_executable": "/usr/bin/python",
+  "python_implementation": "CPython",
+  "python_version": "3.11.2",
+  "release_execution_available": false,
+  "schema": "mmmtap-engineering-preflight-v1",
+  "source_root": "/home/prometheus/git/mmmtap_phase2"
+}

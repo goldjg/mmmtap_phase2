@@ -1,0 +1,10 @@
+{
+  "observed_at_utc": "2026-10-26T19:26:28.109537+00:00",
+  "method": "Import existing reproduce.py without invoking main; verify_hashes; expected_disposition for every frozen claims endpoint; compare exact keys and Reviewer B values; hash comparison package before/after. No writes to comparison package.",
+  "endpoint_count": 31,
+  "matches": 31,
+  "comparison_files_unchanged": 24,
+  "provider_calls": 0,
+  "a_b_structured_endpoint_agreement": null,
+  "rd03": "PROPOSED"
+}

@@ -1,0 +1,55 @@
+[
+  {
+    "name": "preflight_combined",
+    "argv": [
+      "python",
+      "-m",
+      "engineering_qualification_v1.preflight",
+      "--source-root",
+      ".offline_qualification_source",
+      "--custody-root",
+      "."
+    ],
+    "cwd": ".",
+    "started_at_utc": "2026-10-26T19:23:38.233029+00:00",
+    "finished_at_utc": "2026-10-26T19:24:33.155747+00:00",
+    "exit_status": 2,
+    "expected_exit_status": 2,
+    "stdout_sha256": "0eff805f00154b98a53a9a6dd54bda802fb07e86bbea61cb67a7fc8d2520589d",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "provider_calls": 0
+  },
+  {
+    "name": "preflight_checkout",
+    "argv": [
+      "python",
+      "-m",
+      "engineering_qualification_v1.preflight"
+    ],
+    "cwd": ".",
+    "started_at_utc": "2026-10-26T19:24:33.156287+00:00",
+    "finished_at_utc": "2026-10-26T19:24:33.372991+00:00",
+    "exit_status": 1,
+    "expected_exit_status": 1,
+    "stdout_sha256": "ce324a5f3f55e98b865f089a8bbe61aee00b194a36a1688ead5b1fa57d380616",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "provider_calls": 0
+  },
+  {
+    "name": "original_custody_final",
+    "argv": [
+      "python",
+      "-m",
+      "operator_execution_v1",
+      "verify"
+    ],
+    "cwd": ".",
+    "started_at_utc": "2026-10-26T19:24:33.374121+00:00",
+    "finished_at_utc": "2026-10-26T19:25:11.112865+00:00",
+    "exit_status": 0,
+    "expected_exit_status": 0,
+    "stdout_sha256": "3edbc2744e840148b5efda742fb9d8bf8cc339db6519993bda5dd6e76e33eb2e",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "provider_calls": 0
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "python",
+    "-m",
+    "unittest",
+    "-q",
+    "tests.test_integration.IntegrationTests",
+    "tests.test_remediation.FrozenInstrumentRegressions",
+    "tests.test_remediation.PathBProvenanceRegressions"
+  ],
+  "cwd": ".",
+  "environment_override": {
+    "GOCACHE": ".offline_qualification_source/.go-cache",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "dependency_downloads": "disabled by existing build_path_b",
+  "started_at_utc": "2026-10-26T19:24:48.675165+00:00",
+  "finished_at_utc": "2026-10-26T19:26:23.815966+00:00",
+  "exit_status": 1,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "89c4ef4314d5b55d1fb233ebca9a15238aca9665d7e876943d8f57fd8a634ed9",
+  "provider_calls": 0
+}

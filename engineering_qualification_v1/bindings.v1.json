@@ -1,0 +1,574 @@
+{
+  "files": [
+    {
+      "bytes": 169,
+      "path": "operator_execution_v1/__init__.py",
+      "sha256": "140f9e9e5bbf0ff362e43b4459c753d1f07c187edfcfb5fed959f7d0a241cb06"
+    },
+    {
+      "bytes": 6933,
+      "path": "operator_execution_v1/__main__.py",
+      "sha256": "a3698e46c11569083f640eb7b1d4384ee4c2e6c58a282c52e7fd4615f0cfa9ab"
+    },
+    {
+      "bytes": 20149,
+      "path": "operator_execution_v1/checks.py",
+      "sha256": "c8f6774ba905194681cf1f19896ceed6116a6ee313c0596ef3822de138a7b9e8"
+    },
+    {
+      "bytes": 7219,
+      "path": "operator_execution_v1/mock_validation.py",
+      "sha256": "f9ba51e8c65bc58b07e2f19baf3baabddbdcdc1acbb6c7d188544966f2f676bf"
+    },
+    {
+      "bytes": 11451,
+      "path": "operator_execution_v1/planning.py",
+      "sha256": "3d3c832d393d4f03c3c71e2649c106010d6a4468c16ef1b56de07f26d3c52ad6"
+    },
+    {
+      "bytes": 1937,
+      "path": "operator_execution_v1/probe_runner.py",
+      "sha256": "1a7caad561ba857af9822e852d303f3e34d08076e3d9954ea9e314271bcbb2f3"
+    },
+    {
+      "bytes": 2608,
+      "path": "operator_execution_v1/process_guard.py",
+      "sha256": "4ed4dd258b02ef8db4720b451e1efa7bc2666b40fb596eab8b0cc653a38b9cd6"
+    },
+    {
+      "bytes": 4719,
+      "path": "operator_execution_v1/profiles.py",
+      "sha256": "b433fb704f8b5ecea6ed40d99651db5bec6ed5c6e946d63dafcd5ef378dab789"
+    },
+    {
+      "bytes": 27445,
+      "path": "operator_execution_v1/runtime.py",
+      "sha256": "07fb1802f22c8481e0995a8d3eac92b39196b41c0756eb8b9214f2b1b9ed8952"
+    },
+    {
+      "bytes": 20466,
+      "path": "operator_execution_v1/transports.py",
+      "sha256": "3d9ff8cfc66b32b7e1fc5f38a664e10db6722c796aa7fb7aa41f080dde6b914d"
+    },
+    {
+      "bytes": 3343,
+      "path": "operator_execution_v1/validation_runner.py",
+      "sha256": "52876498b102e68bb6f77a15119122979b71b01569cb9fc026fe4d6223accbde"
+    },
+    {
+      "bytes": 1269,
+      "path": "operator_execution_v1/worker.py",
+      "sha256": "57dedd934beba53c6f949145a175b8d21eeea548ac16eedfd4c3af3c5a5d493e"
+    },
+    {
+      "bytes": 68,
+      "path": "phase2/__init__.py",
+      "sha256": "83436a6013643e820eabf0291c252d791c86c9cd857bb708461d156eda3d1b0d"
+    },
+    {
+      "bytes": 7600,
+      "path": "phase2/__main__.py",
+      "sha256": "629e8ddc85c51aa7d042a7dc696931e7c6279a1664099e1f0effe7661c35e935"
+    },
+    {
+      "bytes": 31540,
+      "path": "phase2/adapters.py",
+      "sha256": "5be359fd3282f45b0ce626303ffc58840633fea43d09f01d62287a0f0f72c339"
+    },
+    {
+      "bytes": 23408,
+      "path": "phase2/adapters_v2.py",
+      "sha256": "34db7fcbe5208f4804268137dfb5b2db96c09c3c8a57fb30814edd4245932ea5"
+    },
+    {
+      "bytes": 16299,
+      "path": "phase2/adjudication.py",
+      "sha256": "d74082613d9bc0c446542d6149fd498fcb2c9ecf391ffe4aea00396c25cfb5a8"
+    },
+    {
+      "bytes": 1710,
+      "path": "phase2/config.v1.json",
+      "sha256": "b6582fe55e9ec63440f7eb15ebb790bb68b4fd8789cf447e4df43916a5e59ca6"
+    },
+    {
+      "bytes": 18539,
+      "path": "phase2/core.py",
+      "sha256": "c7b0108a863686a3756a92c18310c96fb914131439d86764d15bdacdab262af8"
+    },
+    {
+      "bytes": 25102,
+      "path": "phase2/engine.py",
+      "sha256": "1b36a4285d6db6da6a28c43acf1d62e111acab7e935ec331eca5436b27d5faf2"
+    },
+    {
+      "bytes": 23037,
+      "path": "phase2/integration.py",
+      "sha256": "4c27da8b69d48950b003076e3ac0d1422e2025df0ad98e7767f302a80909e9fa"
+    },
+    {
+      "bytes": 14684,
+      "path": "phase2/isolation.py",
+      "sha256": "bfed6dc705ed969e2141a386dbbba152c3217513ee4061aa39f4e380a13c30c1"
+    },
+    {
+      "bytes": 21829,
+      "path": "phase2/isolation_controls.py",
+      "sha256": "f307e798989a110c8605d2917e21fb70c6a56089384b8a27f90c043e0ed84f53"
+    },
+    {
+      "bytes": 15705,
+      "path": "phase2/loopback_provider.py",
+      "sha256": "89c45797398bad85dc1d0754720b06bcf7cf7f094aa6a9c1be0595ea0c0a65a9"
+    },
+    {
+      "bytes": 5579,
+      "path": "phase2/path_b.py",
+      "sha256": "88aaac24ce2b14a44dfab5064a417eb313518efeac64b07436dc6798b0a177cc"
+    },
+    {
+      "bytes": 2058,
+      "path": "phase2/prompts.v1.json",
+      "sha256": "91544ecd28bfa990330154d72c929894cea9849a0272513cb291635d8edb0773"
+    },
+    {
+      "bytes": 21332,
+      "path": "phase2/qualification.py",
+      "sha256": "0c2dea860c6d7ff9e65d65f119953713c9e57528aa055d851d4dda31acfc136a"
+    },
+    {
+      "bytes": 13125,
+      "path": "phase2/qualification_report.py",
+      "sha256": "e98c116787cb75505dc080537eb2419fe4e1bc56a5667c12817dc335a9a21e39"
+    },
+    {
+      "bytes": 18396,
+      "path": "phase2/readiness.py",
+      "sha256": "f8b349b031672614ae0133fe53e0ea5eecd4c19acadd8b217288984d3b8b0bb5"
+    },
+    {
+      "bytes": 7625,
+      "path": "phase2/software.py",
+      "sha256": "debb12fd9f8bfeae9cc7fcf7acc0846fe899c8cb71bb6a86c75fd9b8b8dd4e98"
+    },
+    {
+      "bytes": 18715,
+      "path": "phase2_v2/ADJUDICATION_AND_FIXTURE_SPEC.v2.1.md",
+      "sha256": "7923556f7cc3195ce53e2fde8c67f13ba61617d97d0caeaf1f9183fc58ab539d"
+    },
+    {
+      "bytes": 17557,
+      "path": "phase2_v2/ADJUDICATION_TRAINING_EXAMPLES.v2.1-RD03.md",
+      "sha256": "5e1627e9b9528de50f1197a8d3a70ac0d8688390b7c105182401b9d0de8e7086"
+    },
+    {
+      "bytes": 5088,
+      "path": "phase2_v2/CONTINUATION_CONTROLLER_REVIEW.md",
+      "sha256": "e650a317beaa939bba40ad85662c3253c99651dbb838dffb03121da31c3fe756"
+    },
+    {
+      "bytes": 5651,
+      "path": "phase2_v2/DECISION_REGISTER.md",
+      "sha256": "60a2ce2d7cfe252f383690ea499216d1250755291234887c208a8d11707672e0"
+    },
+    {
+      "bytes": 8024,
+      "path": "phase2_v2/DEVELOPMENT_INCREMENT_REPORT.md",
+      "sha256": "32907ad954b601fa17016bdaf8739905fbf91667df67c6146f318a27b693e44d"
+    },
+    {
+      "bytes": 32109,
+      "path": "phase2_v2/EVIDENCE_JUSTIFICATION_PROPOSAL.v2.1-RD03.md",
+      "sha256": "4ab23791a77def9616ee7200f672b915aa2e8af791ecb9e39974bf8b6060b982"
+    },
+    {
+      "bytes": 4472,
+      "path": "phase2_v2/INSTRUMENT.md",
+      "sha256": "157cd313c350b7a3efe837e876f85f1c47a2482f00bf60128af266f1f982549a"
+    },
+    {
+      "bytes": 8145,
+      "path": "phase2_v2/INSUFFICIENT_EVIDENCE_CLARIFICATION.v2.1-RD04-IE01.md",
+      "sha256": "da76793aae7398618335e3c72b2427c6cc8ef43c0a39240b81a048465e138625"
+    },
+    {
+      "bytes": 12426,
+      "path": "phase2_v2/OPERATIONAL_DISPOSITION_AMENDMENT.v2.1-RD04.md",
+      "sha256": "235322a5e376bb00279193437a444d4d65a6a792ded2ca6338012a58f71c79ec"
+    },
+    {
+      "bytes": 15431,
+      "path": "phase2_v2/OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md",
+      "sha256": "933f8e28593ca8db4a2315ca8ca3688018cbd039fa90b6baadacfa6f4218a6d0"
+    },
+    {
+      "bytes": 12448,
+      "path": "phase2_v2/OUTCOME_MOVEMENT_AMENDMENT.v2.1-RD02.md",
+      "sha256": "569adc2e402da66452c900c02e209c59298b50a95cef2a3edad0294fb6a2fe3a"
+    },
+    {
+      "bytes": 12355,
+      "path": "phase2_v2/PHASE2_V2_DESIGN.md",
+      "sha256": "77dcc1f13d87daa43d5fc0b8f41124dd032aef3ad3fb60f8d05b4871fd100d71"
+    },
+    {
+      "bytes": 13756,
+      "path": "phase2_v2/PHASE2_V2_HYPOTHESES.md",
+      "sha256": "53e7ffd9e7c7b10525cac4c83c5e0239495a2aaaec928eb9daba3a8593a32a26"
+    },
+    {
+      "bytes": 13752,
+      "path": "phase2_v2/POST_PILOT_ROOT_CAUSE.md",
+      "sha256": "6ba0d2a948d3426296247fe152c50e3ba5176c7768d41f99d63bd0e10e8e23c3"
+    },
+    {
+      "bytes": 18872,
+      "path": "phase2_v2/QUALIFICATION_AND_SIGNOFF_PLAN.v2.1.md",
+      "sha256": "b0a80da386f970399e17defdb49108b8178399956e48b2034deef77b414c82cd"
+    },
+    {
+      "bytes": 11321,
+      "path": "phase2_v2/RESEARCH_DIRECTION_AMENDMENT.v2.1-RD01.md",
+      "sha256": "92aa6989ae4d31bc4a6950885b60b0cec11615eb8cc6009017d613878ea27239"
+    },
+    {
+      "bytes": 15754,
+      "path": "phase2_v2/SCIENTIFIC_DECISION_BRIEF.v2.1.md",
+      "sha256": "9a80bbf8eece84c97c45c4c89505e985c249fa9682f9bc67d22cb2bfee412ac5"
+    },
+    {
+      "bytes": 104,
+      "path": "phase2_v2/__init__.py",
+      "sha256": "1dc43d272251130197e6c000738f10160b1c13abd25ee0008c8aa7e4da94da69"
+    },
+    {
+      "bytes": 5830,
+      "path": "phase2_v2/challenge_fixtures.v2.1.json",
+      "sha256": "79db91ef071f7430fc847bdad5a7e5b799269ce411741477d7bba428fc4ba85d"
+    },
+    {
+      "bytes": 19417,
+      "path": "phase2_v2/continuation.py",
+      "sha256": "8c67006a268f4a95ebd36164231a18b78a866e9eb479e644582d67d234442639"
+    },
+    {
+      "bytes": 15604,
+      "path": "phase2_v2/instrument.py",
+      "sha256": "402349002e15676e5a43e01b4fac5a14e8f79922d7989595d69e2d0b84247567"
+    },
+    {
+      "bytes": 3235,
+      "path": "phase2_v2/lifecycle_examples.v2.1.json",
+      "sha256": "7b51299188349d08dcca98a87de4de18cbec37f1c3f42987cb38123949d870f6"
+    },
+    {
+      "bytes": 3630,
+      "path": "phase2_v2/prompts.v2.1.json",
+      "sha256": "90053b81873b284ee7b1cbd13e579914a515c1bb0658e59d2efe2a592436c1a3"
+    },
+    {
+      "bytes": 12456,
+      "path": "phase2_v2/rd05_offline/README.md",
+      "sha256": "4e612a4baad6125e9357ee7002d53ed331b8a9b19fe753a6bddcf2609d15301a"
+    },
+    {
+      "bytes": 13287,
+      "path": "phase2_v2/rd05_offline/REPORT.md",
+      "sha256": "b60f71e071246b2c08f1ee67be03747239c6d76a945b2f27526ba8a36da74bf1"
+    },
+    {
+      "bytes": 82,
+      "path": "phase2_v2/rd05_offline/__init__.py",
+      "sha256": "7bdef6a5bc8e62c4b48f54026ea7cbe8f8dba787d3cddd3cb3fce0ac2aab7470"
+    },
+    {
+      "bytes": 7171,
+      "path": "phase2_v2/rd05_offline/authored.py",
+      "sha256": "00fcabeb7d1c87807930720f8606194dcf0084638cf0c9d3bb2aa6be78c8cc8b"
+    },
+    {
+      "bytes": 61619,
+      "path": "phase2_v2/rd05_offline/exercise.v1/claims.json",
+      "sha256": "5aff8543c6f516fe838838366ea30a2296f6b84e4d6eee9c012fd4945970039e"
+    },
+    {
+      "bytes": 77317,
+      "path": "phase2_v2/rd05_offline/exercise.v1/custodian/fixtures.json",
+      "sha256": "7f31511d5480e2ef07868609415a2e4f76a554f4cd137ec491dcc8730d5ef732"
+    },
+    {
+      "bytes": 11130,
+      "path": "phase2_v2/rd05_offline/exercise.v1/custodian/identity_key.json",
+      "sha256": "992aad2fc01fa88fa80ecc38a35d46b6222ee97d5ee14f041664d7b913f72936"
+    },
+    {
+      "bytes": 6047,
+      "path": "phase2_v2/rd05_offline/exercise.v1/custodian/linkage.json",
+      "sha256": "5a742b237e43f42c4a38d60b9d5b94ce9dacd3546c659a2b018dc6d4d66cb129"
+    },
+    {
+      "bytes": 9120,
+      "path": "phase2_v2/rd05_offline/exercise.v1/custodian/references.json",
+      "sha256": "da40f6f8cf5742e40b5b37de70d4b5cf821b3ad9a52a4dde186a2e618467706b"
+    },
+    {
+      "bytes": 4612,
+      "path": "phase2_v2/rd05_offline/exercise.v1/pairs.json",
+      "sha256": "6c07377eb5751bf815bad90a39f3e2eb0f4d0ea34180dc521dd90f536ed8157f"
+    },
+    {
+      "bytes": 184,
+      "path": "phase2_v2/rd05_offline/exercise.v1/resolution.json",
+      "sha256": "2ab074a11a60bd212ef40d1b669555d1ce97890a838bd6426902729aee53f6bd"
+    },
+    {
+      "bytes": 42627,
+      "path": "phase2_v2/rd05_offline/exercise.v1/reviewer_A.json",
+      "sha256": "cbd136268226229c07115e433a7e0905024ce800832eea2640885fd400cec9e6"
+    },
+    {
+      "bytes": 42627,
+      "path": "phase2_v2/rd05_offline/exercise.v1/reviewer_B.json",
+      "sha256": "d37d4e064a9e1c5db01cd2170b28ddc3fa63df29371d558996efc268d0129c71"
+    },
+    {
+      "bytes": 2707,
+      "path": "phase2_v2/rd05_offline/inventory.v1.json",
+      "sha256": "a8757a5d7beb8162f0270e00cb58a9f4532e195b8cca519ddf432e718e57714e"
+    },
+    {
+      "bytes": 3746,
+      "path": "phase2_v2/rd05_offline/policy.v1.json",
+      "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e"
+    },
+    {
+      "bytes": 16759,
+      "path": "phase2_v2/rd05_offline/test_tool.py",
+      "sha256": "5033df113c1ed01b2f37b399bfcad39d7983eed44819b22f0945513bddf69a75"
+    },
+    {
+      "bytes": 29474,
+      "path": "phase2_v2/rd05_offline/tool.py",
+      "sha256": "a0205d5b683789ecb7f41b26934658639acad9ba6fb571969ac036cccf54030c"
+    },
+    {
+      "bytes": 9466,
+      "path": "phase2_v2/test_continuation.py",
+      "sha256": "2e3ed30c57bef346e7e50f84240faf1926b1c83701d92694c93792d222180697"
+    },
+    {
+      "bytes": 21253,
+      "path": "phase2_v2/test_instrument.py",
+      "sha256": "454800b21ed327d1794496b054c05f47ad401da9cc744048e6c65c6a1b6e6bde"
+    },
+    {
+      "bytes": 7530,
+      "path": "rd05_comparison/v1/README.md",
+      "sha256": "f83f6fc94ed73e664f31ba37f35abe2f00998bb91c00c2388dbf88396a5e7789"
+    },
+    {
+      "bytes": 2242,
+      "path": "rd05_comparison/v1/SHA256SUMS.txt",
+      "sha256": "aef20620c0015ebc273073e8a942a9914d044b6e13cb9ecf8c2f015b6b1a4330"
+    },
+    {
+      "bytes": 4243,
+      "path": "rd05_comparison/v1/comparison/discrepancies.csv",
+      "sha256": "69a112a03bb392a6332c68852f53caf86efce893a2889125d47fd0c5f6fcd1c4"
+    },
+    {
+      "bytes": 3819,
+      "path": "rd05_comparison/v1/comparison/disposition_justification_comparison.csv",
+      "sha256": "5af44f2b05cee94ce098be0faa9037b876d323bc708b74d9918d27d56f28b944"
+    },
+    {
+      "bytes": 9298,
+      "path": "rd05_comparison/v1/comparison/endpoint_policy_comparison.csv",
+      "sha256": "bf442d9d0ced328eb253ddd73a68b32fcd1857320402cb87226a556230a4ad7e"
+    },
+    {
+      "bytes": 4693,
+      "path": "rd05_comparison/v1/comparison/finding_movement_comparison.csv",
+      "sha256": "9ca26542b2760f27f077dcd084ae2dd03387eabcae9a4b27e7a518fcf07bdebe"
+    },
+    {
+      "bytes": 3096,
+      "path": "rd05_comparison/v1/comparison/observed_pair_mismatches.csv",
+      "sha256": "7c4ebf39d2a467e2b09aef45e337b251f6abe9f4bec6c99786da7eab40507166"
+    },
+    {
+      "bytes": 3257,
+      "path": "rd05_comparison/v1/comparison/source_anchors.csv",
+      "sha256": "64ecf2cf1352ceced8f0fffdb9cd44a7255df258b0fff483b7feabd2259a4c62"
+    },
+    {
+      "bytes": 3523,
+      "path": "rd05_comparison/v1/comparison/summary.json",
+      "sha256": "f1d0593d060ffd2ac0452d08bf1b2676600177ad987b9cf06937ca95e34ee73d"
+    },
+    {
+      "bytes": 1250,
+      "path": "rd05_comparison/v1/comparison/uncertainty_comparison.csv",
+      "sha256": "4a0092cd0cf8b62ea965499cad5c9aab9eb7f892b0555324524570ddb6f1563a"
+    },
+    {
+      "bytes": 2711,
+      "path": "rd05_comparison/v1/data/reviewer_a_case_notes.csv",
+      "sha256": "b1343b2c34bb87af9e46c305d207747cfa5d8d6e8b98caef440337382e8f4ef1"
+    },
+    {
+      "bytes": 1278,
+      "path": "rd05_comparison/v1/data/reviewer_b_endpoint_justifications.csv",
+      "sha256": "195ec4ea6cbaee0fecff31bc3a875df6fe028eca8e6fffd97e3a9e8c1160f935"
+    },
+    {
+      "bytes": 1362,
+      "path": "rd05_comparison/v1/data/reviewer_b_endpoint_values.csv",
+      "sha256": "99c0f34b592db08a70955317e346287bc9e91d0a734920cd955a61d7f986ca9d"
+    },
+    {
+      "bytes": 1192,
+      "path": "rd05_comparison/v1/inputs/review_source_metadata.json",
+      "sha256": "a3fb17c1aafefc5a9e1699012ab3997fdfd6a921929a7d1b31bd8c6e4f578265"
+    },
+    {
+      "bytes": 2786,
+      "path": "rd05_comparison/v1/inputs/reviewer_a.md",
+      "sha256": "175f72bdaabbb23c76a5d2cb4dd96f5eec07367e2b9840f5248e158a564d04ff"
+    },
+    {
+      "bytes": 6777,
+      "path": "rd05_comparison/v1/inputs/reviewer_b.md",
+      "sha256": "c0f80c163735a4e81b59bad8513a403f214303ad4f9b958b84dbf10a3c8df7ec"
+    },
+    {
+      "bytes": 32109,
+      "path": "rd05_comparison/v1/reference/RD03.md",
+      "sha256": "4ab23791a77def9616ee7200f672b915aa2e8af791ecb9e39974bf8b6060b982"
+    },
+    {
+      "bytes": 12456,
+      "path": "rd05_comparison/v1/reference/README.md",
+      "sha256": "4e612a4baad6125e9357ee7002d53ed331b8a9b19fe753a6bddcf2609d15301a"
+    },
+    {
+      "bytes": 61619,
+      "path": "rd05_comparison/v1/reference/claims.json",
+      "sha256": "5aff8543c6f516fe838838366ea30a2296f6b84e4d6eee9c012fd4945970039e"
+    },
+    {
+      "bytes": 4612,
+      "path": "rd05_comparison/v1/reference/pairs.json",
+      "sha256": "6c07377eb5751bf815bad90a39f3e2eb0f4d0ea34180dc521dd90f536ed8157f"
+    },
+    {
+      "bytes": 3746,
+      "path": "rd05_comparison/v1/reference/policy.v1.json",
+      "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e"
+    },
+    {
+      "bytes": 15775,
+      "path": "rd05_comparison/v1/reproduce.py",
+      "sha256": "b405e9eddaf277ebe8654cdcfee762e7067e3f2b0e1057b459fec78d019965a0"
+    },
+    {
+      "bytes": 2854,
+      "path": "rd05_comparison/v1/resolution/independent_resolver_sheet.csv",
+      "sha256": "528f63cf2c2a10b8d56c3a037edf2c1f96d3cde6a8a0476b73313539780d9092"
+    },
+    {
+      "bytes": 2127,
+      "path": "rd05_comparison/v1/source_manifest.json",
+      "sha256": "3d836eae37516302c5fbf13e44901b4560169145e9b9a1e13f0007fe315b8967"
+    }
+  ],
+  "inspected_commit": "b06371e48af5919af6fffd563fb1226d8be0dae4",
+  "launch_gaps": {
+    "dependency_and_invalid_output_accounting": {
+      "anchors": [
+        "phase2_v2/continuation.py",
+        "phase2_v2/instrument.py:inspect_assessment"
+      ],
+      "observation": "v2 offline continuation checks verified ok parents and blocked children; no Q1 executor materializes all scheduled outcomes. Primary admissibility and dependency-censoring analysis remain undecided."
+    },
+    "evidence_records_and_custody": {
+      "anchors": [
+        "phase2_v2/instrument.py:AssessmentDiagnostic",
+        "phase2_v2/instrument.py:JudgeRecord",
+        "operator_execution_v1/runtime.py:execute"
+      ],
+      "observation": "Raw typed diagnostics and request hashes exist in memory. No Q1 durable separated generator/specialist/operational records, timestamped receipts, sealed manifest or blinded reference export is wired."
+    },
+    "first_attempt_reservation_and_resumption": {
+      "anchors": [
+        "operator_execution_v1/runtime.py:execute",
+        "phase2_v2/continuation.py:plan_continuation"
+      ],
+      "observation": "v1 has locked durable reservations and incomplete-attempt preservation; v2 continuation is a pure planner and cannot reserve attempts. No Q1 durable campaign-wide registry or crash/restart integration exists."
+    },
+    "frozen_campaign_inputs": {
+      "anchors": [
+        "phase2_v2/QUALIFICATION_AND_SIGNOFF_PLAN.v2.1.md",
+        "operator_execution_v1/planning.py"
+      ],
+      "observation": "No frozen Q1 manifest, three approved natural-source/reference packets or approval receipts; old pilot manifests are v1."
+    },
+    "governing_and_challenge_policy_packets": {
+      "anchors": [
+        "phase2_v2/instrument.py:map_challenges",
+        "phase2_v2/OPERATIONAL_POLICY_CONTRACT.v2.1-RD04.md"
+      ],
+      "observation": "Only synthetic RD05 governing policy and offline_fixture challenge mappings exist. Approved operational obligations, adequacy, precedence, authority and research challenge thresholds are absent."
+    },
+    "human_approvals_and_launch": {
+      "anchors": [
+        "phase2_v2/DECISION_REGISTER.md",
+        "phase2_v2/QUALIFICATION_AND_SIGNOFF_PLAN.v2.1.md"
+      ],
+      "observation": "D01-D11 unresolved scope applies, RD03 remains proposed; RD01/RD02/RD04 and IE01 boundaries preserved. Separate explicit bounded qualification approval required; no automatic stage transition."
+    },
+    "intermediate_final_movement": {
+      "anchors": [
+        "phase2_v2/rd05_offline/tool.py",
+        "phase2_v2/OUTCOME_MOVEMENT_AMENDMENT.v2.1-RD02.md"
+      ],
+      "observation": "RD05 fixture tooling preserves exact transitions; natural Q1 outputs have no wired sidecar for independent baseline/intermediate/final movement and unavailable outcomes. Materiality, action mapping and RD03 justification remain human choices."
+    },
+    "live_environment_and_release_containment": {
+      "anchors": [
+        "engineering_qualification_v1/preflight.py",
+        "phase2_v2/OPERATIONAL_DISPOSITION_AMENDMENT.v2.1-RD04.md"
+      ],
+      "observation": "This preflight has no execution path. Offline packets grant no release authority. Future live no-release containment and current provider availability/identity cannot be certified offline; credentials or release integrations must never be exposed to recommendation records."
+    },
+    "matched_policy_delivery": {
+      "anchors": [
+        "phase2_v2/instrument.py:render_assessment_prompt"
+      ],
+      "observation": "render_assessment_prompt has source/prior/challenge bindings but no governing-policy packet field or equal-delivery enforcement across matched arms."
+    },
+    "provider_call_limits_and_budget": {
+      "anchors": [
+        "operator_execution_v1/planning.py:estimate",
+        "phase2_v2/QUALIFICATION_AND_SIGNOFF_PLAN.v2.1.md"
+      ],
+      "observation": "153 is a position ceiling, not HTTP/request/billing control. No approved tariffs, wrapper/token assumptions, account entitlements, cost envelope or Q1 persisted attempt cap; v1 caps adapter invocations only."
+    },
+    "provider_model_judge_identity": {
+      "anchors": [
+        "operator_execution_v1/runtime.py:_identity",
+        "phase2_v2/instrument.py:JudgeRecord"
+      ],
+      "observation": "Historical requested models and dated observations are not a v2 transport/version contract or current served-model evidence. Shared SystemOne is not independent judge replication."
+    },
+    "strict_isolation": {
+      "anchors": [
+        "phase2/adapters_v2.py:GeneratorAdapter",
+        "phase2/isolation_controls.py:validate_controls",
+        "operator_execution_v1/runtime.py:execute"
+      ],
+      "observation": "Old controls mark all three generators blocked: tool interlock, internal retry prevention and live egress unresolved. No v2 per-arm/per-context containment executor exists."
+    }
+  },
+  "preservation_baseline_sha256": "edd040e78fc0d5ad152c1b33763f9871e39d2d02cc6fb74753c726eb40793a4f",
+  "schema": "mmmtap-engineering-bindings-v1"
+}
