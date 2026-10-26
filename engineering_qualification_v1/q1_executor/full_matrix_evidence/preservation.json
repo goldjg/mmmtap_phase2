@@ -1,0 +1,9 @@
+{
+  "changed_historical_executor_files": [],
+  "changed_unrelated_paths": [],
+  "classification": "synthetic engineering preservation check",
+  "historical_executor_files_unchanged": 48,
+  "pre_existing_unrelated_paths_unchanged": 726,
+  "real_provider_calls": 0,
+  "unrelated_snapshot_sha256": "5d957cb0a278b7c6c6234efa2e5e01b2b06fb235914829660e5f7861bc2d63ea"
+}

@@ -56,6 +56,9 @@ def validate_manifest(root):
     check_bindings()
     raw = read_file(root, "manifest.json")
     m = decode(raw)
+    if "full_matrix" in m:
+        from .full_matrix import validate
+        return validate(root, m, raw)
     if set(m) != {"campaign_id", "manifest_sha256", "execution_contract", "instrument_version", "simulation_only",
                   "packets", "contracts", "positions", "attempt_ceiling", "simulated_budget_units"}:
         raise ValueError("manifest_shape")
@@ -129,6 +132,13 @@ def validate_manifest(root):
 
 
 def request_for(m, p, receipts, root):
+    if "full_matrix" in m:
+        from .full_matrix import matrix_request
+        return matrix_request(m, p, receipts, root)
+    return slice_request(m, p, receipts, root)
+
+
+def slice_request(m, p, receipts, root):
     instrument, _, _ = load()
     ap, sp = p["assessment_parent"], p["specialist_parent"]
     source = read_file(root, m["packets"]["source"]["path"]).decode()
@@ -188,6 +198,11 @@ class FakeProvider:
                     for dim, label, score in (("source_entailment", "supported", 1),
                                               ("independent_verification", "not_independently_verified", None),
                                               ("impact_inference", "not_applicable", None))}})
+            if p["fake_behavior"] == "invalid_specialist":
+                obj["claims"] = []
+            if p["fake_behavior"] == "null_scores":
+                for claim in obj["claims"]:
+                    claim["source_entailment"].update(label="unverifiable", score=None)
         else:
             previous = req["previous_assessment"]
             claims = copy.deepcopy(previous["claims"]) if previous else [{
@@ -196,9 +211,15 @@ class FakeProvider:
                 "limitations": ["Synthetic supplied text; no authenticated implementation."]}]
             changes = [] if previous is None else [{"claim_id": c["claim_id"], "action": "retained",
                                                     "reason": "Identical scripted claim object."} for c in claims]
+            if "full_matrix_contract" in req and previous is None:
+                claims[0]["claim"] = req["source_text"].strip()
             if p["fake_behavior"] == "invalid_lifecycle":
                 changes = []
             obj = {"case_id": p["case_id"], "variant_id": p["variant_id"], "claims": claims,
                    "disposition": p["fake_disposition"], "uncertainties": [], "changes": changes}
+            if "full_matrix_contract" in req and previous is not None:
+                obj["uncertainties"] = ["synthetic-private-history:" + p["unit_id"] + ":" + p["arm"]]
         observed = None if p["fake_behavior"] == "unknown_identity" else p["identity"]
+        if p["fake_behavior"] == "mismatched_identity":
+            observed = {**p["identity"], "model": "unknown-fake-model"}
         return encode(obj), observed

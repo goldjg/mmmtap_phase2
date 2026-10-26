@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/usr/bin/python",
+    "-m",
+    "engineering_qualification_v1.q1_executor",
+    "resume",
+    "--campaign",
+    "engineering_qualification_v1/q1_executor/full_matrix_evidence/demonstration/normal-campaign"
+  ],
+  "cwd": ".",
+  "environment_override": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_status": 0,
+  "finished_at_utc": "2026-10-26T20:42:07.264568+00:00",
+  "name": "normal_explicit_resume_1",
+  "real_provider_calls": 0,
+  "started_at_utc": "2026-10-26T20:42:04.957433+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "77c981fac52e4e5de0f6ef8856d1a269006b507062ec21ec9e771e8e0b8ba795"
+}

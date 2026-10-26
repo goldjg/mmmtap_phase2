@@ -1,0 +1,42 @@
+{
+  "edge": {
+    "error": "matrix_topology_identity_or_manifest_binding",
+    "readonly_verifier_left_corrupt_copy_unchanged": true,
+    "rejected": true
+  },
+  "journal": {
+    "error": "event_hash_chain_changed",
+    "readonly_verifier_left_corrupt_copy_unchanged": true,
+    "rejected": true
+  },
+  "observed_identity": {
+    "error": "raw_response_or_identity_changed",
+    "readonly_verifier_left_corrupt_copy_unchanged": true,
+    "rejected": true
+  },
+  "policy": {
+    "error": "matrix_topology_identity_or_manifest_binding",
+    "readonly_verifier_left_corrupt_copy_unchanged": true,
+    "rejected": true
+  },
+  "receipt": {
+    "error": "receipt_or_diagnostics_changed",
+    "readonly_verifier_left_corrupt_copy_unchanged": true,
+    "rejected": true
+  },
+  "request_parent": {
+    "error": "request_policy_source_or_parent_binding_changed",
+    "readonly_verifier_left_corrupt_copy_unchanged": true,
+    "rejected": true
+  },
+  "requested_identity": {
+    "error": "matrix_topology_identity_or_manifest_binding",
+    "readonly_verifier_left_corrupt_copy_unchanged": true,
+    "rejected": true
+  },
+  "source": {
+    "error": "matrix_packet_bytes_or_authority_changed",
+    "readonly_verifier_left_corrupt_copy_unchanged": true,
+    "rejected": true
+  }
+}

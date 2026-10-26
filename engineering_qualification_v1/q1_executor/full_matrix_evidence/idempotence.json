@@ -1,0 +1,74 @@
+{
+  "adverse": {
+    "additional_resumes": 2,
+    "after_sha256": {
+      ".lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "c01-challenge-policy.json": "2c99a87d2d257e2e18acf71cfa78e66333cdd1802f191c47a566cb9afe5737f7",
+      "c01-governing-policy.json": "64cb83caaf844fd7d4738c8e850815e45a6c1c0fec5c5bdf3280d6040ac05486",
+      "c01-source.txt": "e2b0b71f04e9884f25d97b55131aa541efa82267c3db26def9707fb3aa8da301",
+      "c02-challenge-policy.json": "59f552a9fdef1842ae1d8e40bb8664669a3837a269cf69e3d1700990750f0996",
+      "c02-governing-policy.json": "a705adead7d07b53f39d68779c8d53ab861aa13c8e7eab7c10c4921ccae56a51",
+      "c02-source.txt": "b560d6d3d75e24cb318f5d7bdf96d3de4bc40dc226658ba89df46a2dfba9ace2",
+      "c03-challenge-policy.json": "71d215acdd0cc0a8e48da679eefbe2ceafbde485c04aaad3deffc3bb24228489",
+      "c03-governing-policy.json": "5e36669e91ad18616c97e5c79c264029b298d3305c1cd8b82d2caebb53f97ce4",
+      "c03-source.txt": "97c3ccfdb8219150ee687d0fc1190c21db65b8c3cf588c9551acb62e490e5068",
+      "campaign.sqlite3": "7c9abf61002cd0d059407c07462198b3b4bc7be9f889a1b545b0e7987fb40dca",
+      "manifest.json": "55d8620268e3b889005a50aa333c574f1291e3f25b56d0f66fc4ec9c5597829a"
+    },
+    "all_files_unchanged": true,
+    "attempt_reservations": 141,
+    "before_sha256": {
+      ".lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "c01-challenge-policy.json": "2c99a87d2d257e2e18acf71cfa78e66333cdd1802f191c47a566cb9afe5737f7",
+      "c01-governing-policy.json": "64cb83caaf844fd7d4738c8e850815e45a6c1c0fec5c5bdf3280d6040ac05486",
+      "c01-source.txt": "e2b0b71f04e9884f25d97b55131aa541efa82267c3db26def9707fb3aa8da301",
+      "c02-challenge-policy.json": "59f552a9fdef1842ae1d8e40bb8664669a3837a269cf69e3d1700990750f0996",
+      "c02-governing-policy.json": "a705adead7d07b53f39d68779c8d53ab861aa13c8e7eab7c10c4921ccae56a51",
+      "c02-source.txt": "b560d6d3d75e24cb318f5d7bdf96d3de4bc40dc226658ba89df46a2dfba9ace2",
+      "c03-challenge-policy.json": "71d215acdd0cc0a8e48da679eefbe2ceafbde485c04aaad3deffc3bb24228489",
+      "c03-governing-policy.json": "5e36669e91ad18616c97e5c79c264029b298d3305c1cd8b82d2caebb53f97ce4",
+      "c03-source.txt": "97c3ccfdb8219150ee687d0fc1190c21db65b8c3cf588c9551acb62e490e5068",
+      "campaign.sqlite3": "7c9abf61002cd0d059407c07462198b3b4bc7be9f889a1b545b0e7987fb40dca",
+      "manifest.json": "55d8620268e3b889005a50aa333c574f1291e3f25b56d0f66fc4ec9c5597829a"
+    },
+    "evidence_tip_sha256": "5b9b7b2ecdb3b5b856a154d8cdf50ad220153b520e2ef422335e5e351d532b03",
+    "fake_invocations": 140,
+    "summary_unchanged": true
+  },
+  "normal": {
+    "additional_resumes": 2,
+    "after_sha256": {
+      ".lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "c01-challenge-policy.json": "2c99a87d2d257e2e18acf71cfa78e66333cdd1802f191c47a566cb9afe5737f7",
+      "c01-governing-policy.json": "64cb83caaf844fd7d4738c8e850815e45a6c1c0fec5c5bdf3280d6040ac05486",
+      "c01-source.txt": "e2b0b71f04e9884f25d97b55131aa541efa82267c3db26def9707fb3aa8da301",
+      "c02-challenge-policy.json": "59f552a9fdef1842ae1d8e40bb8664669a3837a269cf69e3d1700990750f0996",
+      "c02-governing-policy.json": "a705adead7d07b53f39d68779c8d53ab861aa13c8e7eab7c10c4921ccae56a51",
+      "c02-source.txt": "b560d6d3d75e24cb318f5d7bdf96d3de4bc40dc226658ba89df46a2dfba9ace2",
+      "c03-challenge-policy.json": "71d215acdd0cc0a8e48da679eefbe2ceafbde485c04aaad3deffc3bb24228489",
+      "c03-governing-policy.json": "5e36669e91ad18616c97e5c79c264029b298d3305c1cd8b82d2caebb53f97ce4",
+      "c03-source.txt": "97c3ccfdb8219150ee687d0fc1190c21db65b8c3cf588c9551acb62e490e5068",
+      "campaign.sqlite3": "9f8a6ed6d8225ed559f067b1c984c86bf287e9305398107f913e95f1508b579e",
+      "manifest.json": "908ca9b6d903963423ef73bf570c32836c1398b45049d4af75dc610a3bb818d5"
+    },
+    "all_files_unchanged": true,
+    "attempt_reservations": 153,
+    "before_sha256": {
+      ".lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "c01-challenge-policy.json": "2c99a87d2d257e2e18acf71cfa78e66333cdd1802f191c47a566cb9afe5737f7",
+      "c01-governing-policy.json": "64cb83caaf844fd7d4738c8e850815e45a6c1c0fec5c5bdf3280d6040ac05486",
+      "c01-source.txt": "e2b0b71f04e9884f25d97b55131aa541efa82267c3db26def9707fb3aa8da301",
+      "c02-challenge-policy.json": "59f552a9fdef1842ae1d8e40bb8664669a3837a269cf69e3d1700990750f0996",
+      "c02-governing-policy.json": "a705adead7d07b53f39d68779c8d53ab861aa13c8e7eab7c10c4921ccae56a51",
+      "c02-source.txt": "b560d6d3d75e24cb318f5d7bdf96d3de4bc40dc226658ba89df46a2dfba9ace2",
+      "c03-challenge-policy.json": "71d215acdd0cc0a8e48da679eefbe2ceafbde485c04aaad3deffc3bb24228489",
+      "c03-governing-policy.json": "5e36669e91ad18616c97e5c79c264029b298d3305c1cd8b82d2caebb53f97ce4",
+      "c03-source.txt": "97c3ccfdb8219150ee687d0fc1190c21db65b8c3cf588c9551acb62e490e5068",
+      "campaign.sqlite3": "9f8a6ed6d8225ed559f067b1c984c86bf287e9305398107f913e95f1508b579e",
+      "manifest.json": "908ca9b6d903963423ef73bf570c32836c1398b45049d4af75dc610a3bb818d5"
+    },
+    "evidence_tip_sha256": "9d9e5674f00194735de70c7fa8422eab115543c4d422341a9a5932e7f8e99352",
+    "fake_invocations": 153,
+    "summary_unchanged": true
+  }
+}

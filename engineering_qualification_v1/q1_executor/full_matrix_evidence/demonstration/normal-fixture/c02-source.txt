@@ -1,0 +1,1 @@
+SYNTHETIC UNAPPROVED: The supplied toy diff records a secret token in a log statement.

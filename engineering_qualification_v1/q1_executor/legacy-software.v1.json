@@ -1,0 +1,13 @@
+{
+  "files": {
+    "__init__.py": "bf83531e1cc549fb6f45e9e2c87532ab1e222ae97420262603b9bad4949f3939",
+    "__main__.py": "0eca3d1742fa377861634d7fd280952e5b6b4594deaaa2418e00f89fac101af3",
+    "contracts.json": "788abecde50692174ea1ff03fa9814539cd0b25c66303545d3184d42cd877381",
+    "contracts.py": "07a0c0a02cb4631af7b8fbb77b764c850d7cb236c365c285a965da9542d44ea4",
+    "engine.py": "653fb927c1ad2af963e51a6dc53526468288b531ada72d755c31fc67a77ef734",
+    "model.py": "defabd79d3f5e6ee936409ccbb0f327c10c608dd8ec19484a6774c2614a69711"
+  },
+  "python_executable_sha256": "2ceb9199570aaf34a254b9ea88b1d77f38530833e2a12688d002a59c905b51b2",
+  "python_version": "3.11.2 (main, Oct  7 2026, 12:35:07) [GCC 12.2.0]",
+  "sqlite_version": "3.40.1"
+}

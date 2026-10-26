@@ -36,6 +36,11 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
     command = sub.add_parser("demo")
     command.add_argument("--output", type=Path, required=True)
+    command = sub.add_parser("matrix-demo", help="Two synthetic 153-position campaigns; no live providers.")
+    command.add_argument("--output", type=Path, required=True)
+    command = sub.add_parser("matrix-build", help="Reproduce a frozen full-matrix fixture.")
+    command.add_argument("--output", type=Path, required=True)
+    command.add_argument("--scenario", choices=("normal", "adverse"), required=True)
     for name in ("resume", "verify"):
         command = sub.add_parser(name)
         command.add_argument("--campaign", type=Path, required=True)
@@ -47,6 +52,12 @@ def main():
     try:
         if args.command == "demo":
             output = demo(args.output)
+        elif args.command == "matrix-demo":
+            from .full_matrix import demo as matrix_demo
+            output = matrix_demo(args.output)
+        elif args.command == "matrix-build":
+            from .full_matrix import build
+            output = build(args.output, args.scenario)
         elif args.command == "resume":
             output = resume(args.campaign, interrupt_after_reservation=args.interrupt_after_reservation)
         else:

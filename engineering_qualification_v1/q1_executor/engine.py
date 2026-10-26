@@ -25,6 +25,16 @@ def software():
             "python_executable_sha256": raw_hash(Path(sys.executable).resolve().read_bytes())}
 
 
+def historical_software_compatible(m, recorded):
+    # Explicit read-only compatibility for the preserved c9f546b slice. Never
+    # change its bytes or pretend that the current auditor was its producer.
+    legacy = decode(read_file(PACKAGE, "legacy-software.v1.json"))
+    runtime = software()
+    return ("full_matrix" not in m and recorded == legacy
+            and all(recorded[k] == runtime[k] for k in
+                    ("python_version", "sqlite_version", "python_executable_sha256")))
+
+
 @contextmanager
 def lock(root, *, readonly=False):
     # No verifier writes, including lock-file creation or SQLite sidecars.
@@ -125,11 +135,11 @@ def create(root: Path, fixture: Path = PACKAGE / "fixtures"):
     return root
 
 
-def make_receipt(db, root, m, p, state, reason, at):
+def make_receipt(db, root, m, p, state, reason, at, *, saved=None, times=None):
     ident = p["id"]
     attempt = db.execute("SELECT * FROM attempts WHERE id=?", (ident,)).fetchone()
     response = db.execute("SELECT * FROM responses WHERE id=?", (ident,)).fetchone()
-    saved = receipts(db)
+    saved = receipts(db) if saved is None else saved
     req = decode(attempt["request"]) if attempt else None
     diag = {"parsed": None, "availability": state}
     if state in ("completed", "invalid") or state == "unavailable" and response is not None:
@@ -139,11 +149,13 @@ def make_receipt(db, root, m, p, state, reason, at):
     disposition = diag["parsed"]["disposition"] if state == "completed" and p["kind"] == "generator" else None
     previous = req["previous_assessment"]["disposition"] if req and req["previous_assessment"] else None
     baseline = next((saved[q["id"]]["disposition"] for q in m["positions"]
-                     if q["arm"] == "B0" and q["id"] in saved and saved[q["id"]]["state"] == "completed"), None)
+                     if q["arm"] == "B0" and q["id"] in saved and saved[q["id"]]["state"] == "completed"
+                     and ("full_matrix" not in m or q["unit_id"] == p["unit_id"])), None)
     if p["arm"] == "B0" and disposition is not None:
         baseline = disposition
-    observed_events = [decode(r["body"]) for r in db.execute("SELECT body FROM events ORDER BY seq")]
-    times = {e["kind"]: e["at"] for e in observed_events if e["position"] == ident}
+    if times is None:
+        observed_events = [decode(r["body"]) for r in db.execute("SELECT body FROM events ORDER BY seq")]
+        times = {e["kind"]: e["at"] for e in observed_events if e["position"] == ident}
     return decode(encode({"schema": VERSION + "-receipt", "position": ident, "manifest_sha256": m["manifest_sha256"],
             "packet_bindings": p["packet_bindings"], "requested_identity": p["identity"],
             "observed_identity": decode(response["observed"]) if response else None,
@@ -226,7 +238,9 @@ def resume(root: Path, provider: Provider | None = None, *, interrupt_after_rese
                         db.execute("INSERT INTO invocations VALUES (?,?,1)", (p["id"], at))
                         event(db, "fake_invoked", p["id"], {"cost": 1}, at)
                 try:
-                    raw, observed = provider.invoke(req, record_invocation)
+                    # The provider owns its request copy. Validation uses the
+                    # persisted canonical request, never provider-mutated context.
+                    raw, observed = provider.invoke(decode(encode(req)), record_invocation)
                 except RuntimeError:
                     with transaction(db):
                         finish(db, root, m, p, "unavailable", "fake_provider_exception_before_response")
@@ -253,6 +267,8 @@ def verify_database(db, root):
     creation = decode(meta[0]["value"])
     expected_creation = {"manifest_file_sha256": raw_hash(raw_manifest), "manifest_sha256": m["manifest_sha256"],
                          "software": software(), "execution_contract": VERSION, "schema_sha256": schema_digest(db)}
+    if historical_software_compatible(m, creation.get("software")):
+        expected_creation["software"] = creation["software"]
     if creation != expected_creation or meta[0]["value"] != encode(creation):
         raise ValueError("manifest_or_software_binding_changed")
     positions = {p["id"]: p for p in m["positions"]}
@@ -264,9 +280,16 @@ def verify_database(db, root):
     reserved_seen, started_seen, invoked_seen, response_seen, finished_seen = set(), set(), set(), set(), set()
     tip = None
     event_rows = list(db.execute("SELECT * FROM events ORDER BY seq"))
+    # Reuse decoded audit projections only within this verification boundary.
+    # Every boundary still rereads all persisted bytes and replays every event.
+    decoded_events = [decode(row["body"]) for row in event_rows]
+    times_by_id = {ident: {} for ident in positions}
+    for e in decoded_events:
+        if e["position"] in times_by_id:
+            times_by_id[e["position"]][e["kind"]] = e["at"]
     last_time = None
     for index, row in enumerate(event_rows):
-        e = decode(row["body"])
+        e = decoded_events[index]
         if (set(e) != {"sequence", "previous_event_sha256", "at", "kind", "position", "data"}
                 or e["sequence"] != index or row["seq"] != index or e["previous_event_sha256"] != tip
                 or row["hash"] != digest(e) or row["body"] != encode(e)):
@@ -327,7 +350,7 @@ def verify_database(db, root):
                 valid = state == "started" and ident in response_seen
             if not valid:
                 raise ValueError("contradictory_terminal_state")
-            expected = make_receipt(db, root, m, p, target, reason, e["at"])
+            expected = make_receipt(db, root, m, p, target, reason, e["at"], saved=saved, times=times_by_id[ident])
             stored = db.execute("SELECT body FROM receipts WHERE id=?", (ident,)).fetchone()[0]
             if (saved[ident] != expected or stored != encode(expected)
                     or data != {"state": target, "reason": reason, "receipt_sha256": digest(expected)}):

@@ -1,0 +1,23 @@
+{
+  "all_positions_terminal": true,
+  "attempt_reservations": 141,
+  "campaign_id": "synthetic-q1-full-matrix-v1-adverse",
+  "evidence_tip_sha256": "5b9b7b2ecdb3b5b856a154d8cdf50ad220153b520e2ef422335e5e351d532b03",
+  "fake_provider_invocations": 140,
+  "journal_events": 714,
+  "live_execution_authorized": false,
+  "manifest_sha256": "e00675c8d218de30ffde5b2772b9ce10fc1d627a46b17aaed1178a0fc0130ef3",
+  "real_provider_calls": 0,
+  "remaining_simulated_budget": 0,
+  "scheduled_positions": 153,
+  "simulated_expenditure_units": 140,
+  "simulated_reserved_units": 141,
+  "states": {
+    "blocked": 11,
+    "completed": 134,
+    "interrupted": 1,
+    "invalid": 3,
+    "unavailable": 4
+  },
+  "verification": "PASS"
+}

@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "python",
+    "-m",
+    "engineering_qualification_v1.q1_executor",
+    "matrix-demo",
+    "--output",
+    "engineering_qualification_v1/q1_executor/full_matrix_evidence/demonstration"
+  ],
+  "cwd": ".",
+  "environment_override": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_status": 0,
+  "finished_at_utc": "2026-10-26T20:40:50.482692+00:00",
+  "name": "final_demo",
+  "real_provider_calls": 0,
+  "started_at_utc": "2026-10-26T20:36:27.112235+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "875e8f92b8ce7f788a9ef4cf4f7fbef905fffba289223cfb96e77935df80bbb0"
+}

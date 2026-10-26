@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "python",
+    "-m",
+    "engineering_qualification_v1.q1_executor",
+    "verify",
+    "--campaign",
+    "engineering_qualification_v1/q1_executor/full_matrix_evidence/demonstration/normal-campaign",
+    "--history"
+  ],
+  "cwd": ".",
+  "environment_override": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_status": 0,
+  "finished_at_utc": "2026-10-26T20:40:16.175777+00:00",
+  "name": "normal_verify",
+  "real_provider_calls": 0,
+  "started_at_utc": "2026-10-26T20:40:14.141741+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "4156aa0002a84fb263b7133e78d17e0af0c1bf96d4ad6eabc7de8655909cea2b"
+}

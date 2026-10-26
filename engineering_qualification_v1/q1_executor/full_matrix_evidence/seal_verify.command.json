@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "sha256sum",
+    "-c",
+    "SHA256SUMS.full-matrix.v1.txt"
+  ],
+  "cwd": "engineering_qualification_v1/q1_executor",
+  "environment_override": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_status": 0,
+  "finished_at_utc": "2026-10-26T20:45:32.112782+00:00",
+  "name": "seal_verify",
+  "real_provider_calls": 0,
+  "started_at_utc": "2026-10-26T20:45:32.036724+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "937ff56aec567fe4e4784e8bcfbf8249c7d132ffee30fa0c5a17fb7cee98764c"
+}

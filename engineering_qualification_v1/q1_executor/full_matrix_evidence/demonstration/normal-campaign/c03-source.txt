@@ -1,0 +1,1 @@
+SYNTHETIC UNAPPROVED: Public metadata could expose a token if an unverified configuration enables logging.

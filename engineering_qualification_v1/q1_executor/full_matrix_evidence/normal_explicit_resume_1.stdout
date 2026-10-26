@@ -1,0 +1,19 @@
+{
+  "all_positions_terminal": true,
+  "attempt_reservations": 153,
+  "campaign_id": "synthetic-q1-full-matrix-v1-normal",
+  "evidence_tip_sha256": "9d9e5674f00194735de70c7fa8422eab115543c4d422341a9a5932e7f8e99352",
+  "fake_provider_invocations": 153,
+  "journal_events": 766,
+  "live_execution_authorized": false,
+  "manifest_sha256": "ff52e5e375bb4bdc6f5ff17a91f1a35ef82f7a0c5487af83f73fda52d89bf53c",
+  "real_provider_calls": 0,
+  "remaining_simulated_budget": 0,
+  "scheduled_positions": 153,
+  "simulated_expenditure_units": 153,
+  "simulated_reserved_units": 153,
+  "states": {
+    "completed": 153
+  },
+  "verification": "PASS"
+}

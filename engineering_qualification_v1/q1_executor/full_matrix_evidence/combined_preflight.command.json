@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "python",
+    "-m",
+    "engineering_qualification_v1.preflight",
+    "--source-root",
+    "/tmp/q1-preflight-source",
+    "--custody-root",
+    "."
+  ],
+  "cwd": ".",
+  "environment_override": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_status": 2,
+  "finished_at_utc": "2026-10-26T20:39:52.060932+00:00",
+  "name": "combined_preflight",
+  "real_provider_calls": 0,
+  "started_at_utc": "2026-10-26T20:39:26.938866+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "92fb485e67047535633e6e78cdcb3b0eae46975ec888c1c8bb06d3b383a2caf3"
+}

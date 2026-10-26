@@ -1,0 +1,62 @@
+{
+  "adverse": {
+    "all_positions_terminal": true,
+    "attempt_reservations": 141,
+    "campaign_id": "synthetic-q1-full-matrix-v1-adverse",
+    "evidence_tip_sha256": "5b9b7b2ecdb3b5b856a154d8cdf50ad220153b520e2ef422335e5e351d532b03",
+    "fake_provider_invocations": 140,
+    "journal_events": 714,
+    "live_execution_authorized": false,
+    "manifest_sha256": "e00675c8d218de30ffde5b2772b9ce10fc1d627a46b17aaed1178a0fc0130ef3",
+    "real_provider_calls": 0,
+    "remaining_simulated_budget": 0,
+    "scheduled_positions": 153,
+    "simulated_expenditure_units": 140,
+    "simulated_reserved_units": 141,
+    "states": {
+      "blocked": 11,
+      "completed": 134,
+      "interrupted": 1,
+      "invalid": 3,
+      "unavailable": 4
+    },
+    "verification": "PASS"
+  },
+  "classification": "SYNTHETIC ENGINEERING OBSERVATIONS ONLY",
+  "criteria": {
+    "10_original_topology_and_scientific_contracts_unchanged": "PASS",
+    "1_exact_153_and_99_54_split": "PASS",
+    "2_all_eight_arms_nine_units": "PASS",
+    "3_all_scheduled_positions_have_durable_terminal_receipts": "PASS",
+    "4_manifest_dependency_identity_packet_bindings_verified": "PASS",
+    "5_real_process_exit_75_after_reservation_no_duplicate_invocation": "PASS",
+    "6_repeated_resumes_all_campaign_files_unchanged": "PASS",
+    "7_negative_corruption_rejected": "PASS",
+    "8_historical_evidence_unchanged": "PASS",
+    "9_zero_real_provider_calls": "PASS"
+  },
+  "final_test_failures": 0,
+  "live_execution_authorized": false,
+  "normal": {
+    "all_positions_terminal": true,
+    "attempt_reservations": 153,
+    "campaign_id": "synthetic-q1-full-matrix-v1-normal",
+    "evidence_tip_sha256": "9d9e5674f00194735de70c7fa8422eab115543c4d422341a9a5932e7f8e99352",
+    "fake_provider_invocations": 153,
+    "journal_events": 766,
+    "live_execution_authorized": false,
+    "manifest_sha256": "ff52e5e375bb4bdc6f5ff17a91f1a35ef82f7a0c5487af83f73fda52d89bf53c",
+    "real_provider_calls": 0,
+    "remaining_simulated_budget": 0,
+    "scheduled_positions": 153,
+    "simulated_expenditure_units": 153,
+    "simulated_reserved_units": 153,
+    "states": {
+      "completed": 153
+    },
+    "verification": "PASS"
+  },
+  "status": "Q1 153-POSITION OFFLINE TOPOLOGY QUALIFIED \u2014 LIVE Q1 BLOCKED",
+  "tests_passed": 110,
+  "topology_ambiguities": []
+}
