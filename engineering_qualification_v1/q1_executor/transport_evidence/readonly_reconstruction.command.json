@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "python",
+    "-m",
+    "engineering_qualification_v1.q1_executor",
+    "verify",
+    "--campaign",
+    "engineering_qualification_v1/q1_executor/transport_evidence/demonstration/campaign",
+    "--history"
+  ],
+  "cwd": ".",
+  "environment_override": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_status": 0,
+  "finished_at_utc": "2026-10-26T21:32:13.654850+00:00",
+  "name": "readonly_reconstruction",
+  "real_provider_calls": 0,
+  "started_at_utc": "2026-10-26T21:32:12.976501+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "d4e4fb6fc74b3326b66a3813e2a10285cab202521880e30f452349c8325b1c82"
+}

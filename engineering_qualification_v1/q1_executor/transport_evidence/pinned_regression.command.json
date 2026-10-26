@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "python",
+    "-m",
+    "unittest",
+    "-q",
+    "phase2_v2.rd05_offline.test_tool",
+    "phase2_v2.test_instrument",
+    "phase2_v2.test_continuation",
+    "tests.test_harness"
+  ],
+  "cwd": "/tmp/q1-pinned-regression",
+  "environment_override": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_status": 0,
+  "finished_at_utc": "2026-10-26T21:30:34.762112+00:00",
+  "name": "pinned_regression",
+  "real_provider_calls": 0,
+  "started_at_utc": "2026-10-26T21:29:45.842342+00:00",
+  "stderr_sha256": "6c448326ceda72411496357e955df8b728ee3bfacc54ab4f22292457f167e7b4",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

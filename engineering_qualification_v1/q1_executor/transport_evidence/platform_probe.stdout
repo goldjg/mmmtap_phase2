@@ -1,0 +1,22 @@
+{
+  "classification": "OFFLINE ENGINEERING PLATFORM PROBES; NO PROVIDER CALLS",
+  "landlock": {
+    "abi": -1,
+    "errno": 38,
+    "status": "UNAVAILABLE"
+  },
+  "machine": "aarch64",
+  "namespace_without_inner_seccomp": {
+    "exit": 0,
+    "stderr": "",
+    "stdout": "fork_allowed_without_inner_seccomp\n"
+  },
+  "network_control_used": "irreversible native seccomp default-deny allowlist; no sockets admitted",
+  "network_namespace_setup": {
+    "exit": 1,
+    "status": "UNAVAILABLE",
+    "stderr": "bwrap: loopback: Failed to create NETLINK_ROUTE socket: Operation not permitted\n"
+  },
+  "platform": "Linux-6.12.109+rpt-rpi-v8-aarch64-with-glibc2.36",
+  "real_provider_calls": 0
+}

@@ -1,0 +1,1 @@
+{"checks":["reservation","receipt-gap","duplicate","demonstration_repeated_resume","corruption","real_provider_calls"],"real_provider_calls":0,"verification":"PASS"}

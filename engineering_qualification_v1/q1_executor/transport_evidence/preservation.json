@@ -1,0 +1,8 @@
+{
+  "changed_historical_files": [],
+  "changed_unrelated_paths": [],
+  "historical_executor_files_unchanged": 167,
+  "real_provider_calls": 0,
+  "unrelated_snapshot_sha256": "ca25e57dcdaa263aa1354d042b34520f4a93bc2be5f69763955e947f6fd949aa",
+  "unrelated_worktree_paths_unchanged": 726
+}

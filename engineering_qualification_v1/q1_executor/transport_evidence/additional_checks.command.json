@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "python",
+    "engineering_qualification_v1/q1_executor/transport_evidence/additional_checks.py"
+  ],
+  "cwd": ".",
+  "environment_override": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_status": 0,
+  "finished_at_utc": "2026-10-26T21:33:27.296359+00:00",
+  "name": "additional_checks",
+  "real_provider_calls": 0,
+  "started_at_utc": "2026-10-26T21:33:17.450711+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "546a282cb7e7ff1da83eedd3a9af1795e8567084cb1d2fad6af48a5c50fbe56d"
+}

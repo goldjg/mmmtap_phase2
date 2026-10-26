@@ -28,9 +28,10 @@ def software():
 def historical_software_compatible(m, recorded):
     # Explicit read-only compatibility for the preserved c9f546b slice. Never
     # change its bytes or pretend that the current auditor was its producer.
-    legacy = decode(read_file(PACKAGE, "legacy-software.v1.json"))
+    name = "legacy-software.matrix.v1.json" if "full_matrix" in m else "legacy-software.v1.json"
+    legacy = decode(read_file(PACKAGE, name))
     runtime = software()
-    return ("full_matrix" not in m and recorded == legacy
+    return ("transport" not in m and recorded == legacy
             and all(recorded[k] == runtime[k] for k in
                     ("python_version", "sqlite_version", "python_executable_sha256")))
 
@@ -116,6 +117,8 @@ def create(root: Path, fixture: Path = PACKAGE / "fixtures"):
             CREATE TABLE receipts (id TEXT PRIMARY KEY, body BLOB NOT NULL);
             CREATE TABLE events (seq INTEGER PRIMARY KEY, body BLOB NOT NULL, hash TEXT UNIQUE NOT NULL);
         """)
+        if "transport" in manifest:
+            db.execute("CREATE TABLE transports (id TEXT PRIMARY KEY, envelope BLOB NOT NULL, record BLOB)")
         db.row_factory = sqlite3.Row
         with transaction(db):
             creation = {"manifest_file_sha256": raw_hash(manifest_raw), "manifest_sha256": manifest["manifest_sha256"],
@@ -142,8 +145,16 @@ def make_receipt(db, root, m, p, state, reason, at, *, saved=None, times=None):
     saved = receipts(db) if saved is None else saved
     req = decode(attempt["request"]) if attempt else None
     diag = {"parsed": None, "availability": state}
+    transport_record = None
+    if "transport" in m:
+        row = db.execute("SELECT record FROM transports WHERE id=?", (ident,)).fetchone()
+        transport_record = decode(row[0]) if row and row[0] else None
     if state in ("completed", "invalid") or state == "unavailable" and response is not None:
-        actual_state, actual_reason, diag = validate_response(p, req, response["raw"], decode(response["observed"]))
+        if "transport" in m:
+            from .transport import outcome
+            actual_state, actual_reason, diag = outcome(p, req, transport_record)
+        else:
+            actual_state, actual_reason, diag = validate_response(p, req, response["raw"], decode(response["observed"]))
         if (actual_state, actual_reason) != (state, reason):
             raise ValueError("terminal_validation_contradiction")
     disposition = diag["parsed"]["disposition"] if state == "completed" and p["kind"] == "generator" else None
@@ -156,7 +167,7 @@ def make_receipt(db, root, m, p, state, reason, at, *, saved=None, times=None):
     if times is None:
         observed_events = [decode(r["body"]) for r in db.execute("SELECT body FROM events ORDER BY seq")]
         times = {e["kind"]: e["at"] for e in observed_events if e["position"] == ident}
-    return decode(encode({"schema": VERSION + "-receipt", "position": ident, "manifest_sha256": m["manifest_sha256"],
+    receipt = {"schema": VERSION + "-receipt", "position": ident, "manifest_sha256": m["manifest_sha256"],
             "packet_bindings": p["packet_bindings"], "requested_identity": p["identity"],
             "observed_identity": decode(response["observed"]) if response else None,
             "parents": {d: digest(saved[d]) for d in p["dependencies"]},
@@ -167,7 +178,12 @@ def make_receipt(db, root, m, p, state, reason, at, *, saved=None, times=None):
             "response_sha256": raw_hash(response["raw"]) if response else None,
             "reserved_at": times.get("reserved"), "started_at": times.get("started"), "outcome_at": at,
             "simulated_reserved_units": attempt["cost"] if attempt else 0,
-            "live_execution_authorized": False}))
+            "live_execution_authorized": False}
+    if "transport" in m:
+        from .transport import VERSION as TRANSPORT_VERSION
+        receipt.update(schema=TRANSPORT_VERSION + "-receipt", transport_record_sha256=(
+            digest(transport_record) if transport_record is not None else None))
+    return decode(encode(receipt))
 
 
 def finish(db, root, m, p, state, reason):
@@ -196,10 +212,78 @@ def reserve(db, root, m, p):
         db.execute("INSERT INTO attempts VALUES (?,?,1)", (p["id"], encode(req)))
         event(db, "reserved", p["id"], {"request_sha256": digest(req), "cost": 1, "parents": req["parents"]})
         db.execute("UPDATE positions SET state='reserved' WHERE id=?", (p["id"],))
+        if "transport" in m:
+            from .transport import envelope_for
+            envelope = envelope_for(m, p, encode(req))
+            db.execute("INSERT INTO transports VALUES (?,?,NULL)", (p["id"], encode(envelope)))
+            event(db, "transport_prepared", p["id"], {"envelope_sha256": digest(envelope)})
     return True
 
 
-def resume(root: Path, provider: Provider | None = None, *, interrupt_after_reservation=None):
+def execute_transport(db, root, m, p, req, interrupt_position):
+    from .transport import OfflineSubprocessTransport, decode as transport_decode, outcome, unb64
+    row = db.execute("SELECT envelope,record FROM transports WHERE id=?", (p["id"],)).fetchone()
+    if row[1] is not None or db.execute("SELECT state FROM positions WHERE id=?", (p["id"],)).fetchone()[0] != "started":
+        raise ValueError("duplicate_transport_launch_refused")
+    envelope = transport_decode(row[0])
+    workspace = root / ".transport-work" / envelope["attempt_id"]
+    def persist(record):
+        with transaction(db):
+            old = db.execute("SELECT record FROM transports WHERE id=?", (p["id"],)).fetchone()[0]
+            if record["status"] == "launch_intent":
+                if old is not None:
+                    raise ValueError("duplicate_transport_launch_refused")
+                at = record["launch_intent_at"]
+                db.execute("INSERT INTO invocations VALUES (?,?,1)", (p["id"], at))
+                event(db, "transport_invoked", p["id"], {"cost": 1}, at)
+            elif old is None:
+                raise ValueError("transport_progress_without_launch_intent")
+            db.execute("UPDATE transports SET record=? WHERE id=?", (encode(record), p["id"]))
+            event(db, "transport_progress", p["id"], record)
+        if (interrupt_position == p["id"] and record["status"] == "running"
+                and unb64(record["stdout_b64"]) and unb64(record["stderr_b64"])):
+            # Abrupt executor death while the adapter is still running. bwrap's
+            # die-with-parent and PID namespace tear down the execution context.
+            os._exit(75)
+    sealed = db.execute("SELECT request FROM attempts WHERE id=?", (p["id"],)).fetchone()[0]
+    result = OfflineSubprocessTransport(m["transport"]["specification"]).invoke(envelope, sealed, workspace, persist)
+    with transaction(db):
+        db.execute("INSERT INTO responses VALUES (?,?,?)", (p["id"], result.raw, encode(result.observed)))
+        event(db, "response", p["id"], {"raw_sha256": raw_hash(result.raw), "observed_identity": result.observed})
+    state, reason, _ = outcome(p, req, result.record)
+    with transaction(db):
+        finish(db, root, m, p, state, reason)
+    if workspace.parent.exists() and not any(workspace.parent.iterdir()):
+        workspace.parent.rmdir()
+
+
+def recover_transport(db, root, m, p):
+    import shutil
+    from .transport import now as transport_now
+    row = db.execute("SELECT * FROM transports WHERE id=?", (p["id"],)).fetchone()
+    if row is None:
+        raise ValueError("missing_reserved_transport_envelope")
+    envelope = decode(row["envelope"])
+    workspace = root / ".transport-work" / envelope["attempt_id"]
+    if row["record"] is not None:
+        record = decode(row["record"])
+        if record["status"] in ("launch_intent", "running"):
+            # No signal to a saved PID: PID reuse cannot kill an unrelated task.
+            # The namespace supervisor is bound to the dead executor by the OS.
+            record.update(status="interrupted", uncertain_completion=True, ended_at=transport_now(), cleanup=True)
+            with transaction(db):
+                db.execute("UPDATE transports SET record=? WHERE id=?", (encode(record), p["id"]))
+                event(db, "transport_progress", p["id"], record)
+    if workspace.is_symlink() or workspace.parent.is_symlink():
+        raise ValueError("unsafe_transport_cleanup_path")
+    if workspace.exists():
+        shutil.rmtree(workspace)
+    if workspace.parent.exists() and not any(workspace.parent.iterdir()):
+        workspace.parent.rmdir()
+
+
+def resume(root: Path, provider: Provider | None = None, *, interrupt_after_reservation=None,
+           offline_subprocess=False, interrupt_after_transport_start=None):
     root = root.absolute()
     provider = FakeProvider() if provider is None else provider
     if type(provider) is not FakeProvider:
@@ -208,11 +292,15 @@ def resume(root: Path, provider: Provider | None = None, *, interrupt_after_rese
         db = connect(root)
         try:
             m = verify_database(db, root)["manifest"]
+            if ("transport" in m) != offline_subprocess:
+                raise ValueError("explicit_offline_subprocess_selection_required_for_transport_manifest")
             for p in m["positions"]:
                 state = db.execute("SELECT state FROM positions WHERE id=?", (p["id"],)).fetchone()["state"]
                 if state in TERMINAL:
                     continue
                 if state in ("reserved", "started"):
+                    if "transport" in m:
+                        recover_transport(db, root, m, p)
                     with transaction(db):
                         finish(db, root, m, p, "interrupted", "abandoned_reservation_no_reissue")
                     continue
@@ -232,6 +320,9 @@ def resume(root: Path, provider: Provider | None = None, *, interrupt_after_rese
                     db.execute("UPDATE positions SET state='started' WHERE id=?", (p["id"],))
                     event(db, "started", p["id"], {})
                 req = decode(db.execute("SELECT request FROM attempts WHERE id=?", (p["id"],)).fetchone()[0])
+                if "transport" in m:
+                    execute_transport(db, root, m, p, req, interrupt_after_transport_start)
+                    continue
                 def record_invocation():
                     with transaction(db):
                         at = now()
@@ -267,7 +358,8 @@ def verify_database(db, root):
     creation = decode(meta[0]["value"])
     expected_creation = {"manifest_file_sha256": raw_hash(raw_manifest), "manifest_sha256": m["manifest_sha256"],
                          "software": software(), "execution_contract": VERSION, "schema_sha256": schema_digest(db)}
-    if historical_software_compatible(m, creation.get("software")):
+    if (historical_software_compatible(m, creation.get("software"))
+            and all(r[0] in TERMINAL for r in db.execute("SELECT state FROM positions"))):
         expected_creation["software"] = creation["software"]
     if creation != expected_creation or meta[0]["value"] != encode(creation):
         raise ValueError("manifest_or_software_binding_changed")
@@ -277,6 +369,8 @@ def verify_database(db, root):
     invoked = {r["id"]: r for r in db.execute("SELECT * FROM invocations")}
     responses = {r["id"]: r for r in db.execute("SELECT * FROM responses")}
     saved = receipts(db)
+    transport_rows = {r["id"]: r for r in db.execute("SELECT * FROM transports")} if "transport" in m else {}
+    prepared_seen, progress = set(), {}
     reserved_seen, started_seen, invoked_seen, response_seen, finished_seen = set(), set(), set(), set(), set()
     tip = None
     event_rows = list(db.execute("SELECT * FROM events ORDER BY seq"))
@@ -319,12 +413,30 @@ def verify_database(db, root):
             if state != "reserved" or data != {}:
                 raise ValueError("invalid_start")
             started_seen.add(ident); states[ident] = "started"
-        elif kind == "fake_invoked":
+        elif kind in ("fake_invoked", "transport_invoked"):
+            if (kind == "transport_invoked") != ("transport" in m):
+                raise ValueError("invocation_transport_kind_changed")
             if state != "started" or ident in invoked_seen or data != {"cost": 1}:
                 raise ValueError("duplicate_or_invalid_fake_invocation")
             if dict(invoked[ident]) != {"id": ident, "at": e["at"], "cost": 1}:
                 raise ValueError("invocation_trace_changed")
             invoked_seen.add(ident)
+        elif kind == "transport_prepared" and "transport" in m:
+            from .transport import envelope_for
+            envelope = envelope_for(m, p, attempts[ident]["request"])
+            if (state != "reserved" or ident in prepared_seen
+                    or decode(transport_rows[ident]["envelope"]) != envelope
+                    or transport_rows[ident]["envelope"] != encode(envelope)
+                    or data != {"envelope_sha256": digest(envelope)}):
+                raise ValueError("transport_envelope_binding_changed")
+            prepared_seen.add(ident)
+        elif kind == "transport_progress" and "transport" in m:
+            from .transport import verify_record
+            if state != "started" or ident not in invoked_seen or ident not in prepared_seen:
+                raise ValueError("transport_progress_without_reserved_invocation")
+            verify_record(data, decode(transport_rows[ident]["envelope"]), m["transport"]["specification"],
+                          root, progress.get(ident))
+            progress[ident] = data
         elif kind == "response":
             r = responses[ident]
             if (state != "started" or ident not in invoked_seen or ident in response_seen
@@ -360,6 +472,17 @@ def verify_database(db, root):
             raise ValueError("unknown_journal_event")
     if not event_rows:
         raise ValueError("missing_journal")
+    if "transport" in m:
+        from .transport import unb64
+        if set(transport_rows) != reserved_seen or prepared_seen != reserved_seen or set(progress) != invoked_seen:
+            raise ValueError("transport_projection_coverage")
+        for ident, row in transport_rows.items():
+            expected = encode(progress[ident]) if ident in progress else None
+            if row["record"] != expected:
+                raise ValueError("transport_record_projection_changed")
+            if ident in responses and (responses[ident]["raw"] != unb64(progress[ident]["stdout_b64"])
+                                       or decode(responses[ident]["observed"]) != progress[ident]["observed_identity"]):
+                raise ValueError("transport_raw_or_identity_projection_changed")
     if (set(attempts) != reserved_seen or set(invoked) != invoked_seen or set(responses) != response_seen
             or set(saved) != finished_seen or dict(db.execute("SELECT id,state FROM positions")) != states):
         raise ValueError("missing_extra_or_changed_materialized_evidence")
@@ -374,6 +497,10 @@ def verify_database(db, root):
                "manifest_sha256": m["manifest_sha256"], "evidence_tip_sha256": tip,
                "journal_events": len(event_rows), "verification": "PASS", "real_provider_calls": 0,
                "all_positions_terminal": all(s in TERMINAL for s in states.values()), "live_execution_authorized": False}
+    if "transport" in m:
+        summary.update(fake_provider_invocations=0, subprocess_transport_launch_intents=len(invoked),
+                       subprocess_bootstraps_verified=sum(r["bootstrap_verified"] for r in progress.values()),
+                       transport_contract=m["transport"]["version"])
     return {"manifest": m, "summary": summary, "history": [decode(r["body"]) for r in event_rows], "receipts": saved}
 
 

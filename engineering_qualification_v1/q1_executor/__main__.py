@@ -41,11 +41,16 @@ def main():
     command = sub.add_parser("matrix-build", help="Reproduce a frozen full-matrix fixture.")
     command.add_argument("--output", type=Path, required=True)
     command.add_argument("--scenario", choices=("normal", "adverse"), required=True)
+    for name in ("transport-demo", "transport-probes"):
+        command = sub.add_parser(name, help="Offline-only pinned subprocess fixture.")
+        command.add_argument("--output", type=Path, required=True)
     for name in ("resume", "verify"):
         command = sub.add_parser(name)
         command.add_argument("--campaign", type=Path, required=True)
         if name == "resume":
             command.add_argument("--interrupt-after-reservation", help="Simulation fault injection only; exits 75.")
+            command.add_argument("--offline-subprocess", action="store_true", help="Pinned local fixture only; network denied.")
+            command.add_argument("--interrupt-after-transport-start", help="Offline fault injection: abrupt executor exit 75.")
         else:
             command.add_argument("--history", action="store_true", help="Include reconstructed journal and exact receipts.")
     args = parser.parse_args()
@@ -58,8 +63,13 @@ def main():
         elif args.command == "matrix-build":
             from .full_matrix import build
             output = build(args.output, args.scenario)
+        elif args.command in ("transport-demo", "transport-probes"):
+            from .transport_qualification import demo as transport_demo, probes
+            output = (transport_demo if args.command == "transport-demo" else probes)(args.output)
         elif args.command == "resume":
-            output = resume(args.campaign, interrupt_after_reservation=args.interrupt_after_reservation)
+            output = resume(args.campaign, interrupt_after_reservation=args.interrupt_after_reservation,
+                            offline_subprocess=args.offline_subprocess,
+                            interrupt_after_transport_start=args.interrupt_after_transport_start)
         else:
             report = verify(args.campaign)
             output = report if args.history else report["summary"]

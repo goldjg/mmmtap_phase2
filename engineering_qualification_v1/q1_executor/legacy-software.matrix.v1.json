@@ -1,0 +1,15 @@
+{
+  "files": {
+    "__init__.py": "bf83531e1cc549fb6f45e9e2c87532ab1e222ae97420262603b9bad4949f3939",
+    "__main__.py": "ba8a13a66acf9f9f6481a8d7f52710714b59a53c188bffa3c29747865973a208",
+    "contracts.json": "788abecde50692174ea1ff03fa9814539cd0b25c66303545d3184d42cd877381",
+    "contracts.py": "07a0c0a02cb4631af7b8fbb77b764c850d7cb236c365c285a965da9542d44ea4",
+    "engine.py": "d82bac62643eaa6e26b69d68660ed6a2d374f07e00d82b5973802a8f2dea8fbe",
+    "full_matrix.py": "63a18c701deb870172f08d528c9cbc82331a1405bca78ce07528d36a189f6833",
+    "legacy-software.v1.json": "bbe32793c4ee98a6123ddd9732496270e0fce15730fcd2b0f8010a0b1a90d64b",
+    "model.py": "f230df3578d083384ed8d57f25d21af0a61ccca959f940acefa62b8c1b1dce57"
+  },
+  "python_executable_sha256": "2ceb9199570aaf34a254b9ea88b1d77f38530833e2a12688d002a59c905b51b2",
+  "python_version": "3.11.2 (main, Oct  7 2026, 12:35:07) [GCC 12.2.0]",
+  "sqlite_version": "3.40.1"
+}

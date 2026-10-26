@@ -56,9 +56,16 @@ def validate_manifest(root):
     check_bindings()
     raw = read_file(root, "manifest.json")
     m = decode(raw)
+    if "transport" in m:
+        from .transport import validate_manifest as validate_transport_manifest
+        return validate_transport_manifest(root, m, raw)
     if "full_matrix" in m:
         from .full_matrix import validate
         return validate(root, m, raw)
+    return validate_slice_manifest(root, m, raw)
+
+
+def validate_slice_manifest(root, m, raw):
     if set(m) != {"campaign_id", "manifest_sha256", "execution_contract", "instrument_version", "simulation_only",
                   "packets", "contracts", "positions", "attempt_ceiling", "simulated_budget_units"}:
         raise ValueError("manifest_shape")
