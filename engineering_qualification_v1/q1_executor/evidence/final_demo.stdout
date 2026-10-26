@@ -1,0 +1,97 @@
+{
+  "after_interruption": {
+    "all_positions_terminal": false,
+    "attempt_reservations": 10,
+    "campaign_id": "synthetic-q1-vertical-slice-v1",
+    "evidence_tip_sha256": "83b6e2f1302e8a8c8c1e2c5eeaeec307948b38484f50ae2f71c4ce8801cb9259",
+    "fake_provider_invocations": 9,
+    "journal_events": 49,
+    "live_execution_authorized": false,
+    "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+    "real_provider_calls": 0,
+    "remaining_simulated_budget": 0,
+    "scheduled_positions": 15,
+    "simulated_expenditure_units": 9,
+    "simulated_reserved_units": 10,
+    "states": {
+      "blocked": 3,
+      "completed": 6,
+      "invalid": 1,
+      "reserved": 1,
+      "scheduled": 2,
+      "unavailable": 2
+    },
+    "verification": "PASS"
+  },
+  "first_resume": {
+    "all_positions_terminal": true,
+    "attempt_reservations": 10,
+    "campaign_id": "synthetic-q1-vertical-slice-v1",
+    "evidence_tip_sha256": "e2731679054117be1e726aeb3525941a3d3ca0e5b9b90f99900882bff3bf81ae",
+    "fake_provider_invocations": 9,
+    "journal_events": 52,
+    "live_execution_authorized": false,
+    "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+    "real_provider_calls": 0,
+    "remaining_simulated_budget": 0,
+    "scheduled_positions": 15,
+    "simulated_expenditure_units": 9,
+    "simulated_reserved_units": 10,
+    "states": {
+      "blocked": 4,
+      "completed": 6,
+      "interrupted": 1,
+      "invalid": 1,
+      "unavailable": 3
+    },
+    "verification": "PASS"
+  },
+  "interruption_exit_status": 75,
+  "second_resume": {
+    "all_positions_terminal": true,
+    "attempt_reservations": 10,
+    "campaign_id": "synthetic-q1-vertical-slice-v1",
+    "evidence_tip_sha256": "e2731679054117be1e726aeb3525941a3d3ca0e5b9b90f99900882bff3bf81ae",
+    "fake_provider_invocations": 9,
+    "journal_events": 52,
+    "live_execution_authorized": false,
+    "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+    "real_provider_calls": 0,
+    "remaining_simulated_budget": 0,
+    "scheduled_positions": 15,
+    "simulated_expenditure_units": 9,
+    "simulated_reserved_units": 10,
+    "states": {
+      "blocked": 4,
+      "completed": 6,
+      "interrupted": 1,
+      "invalid": 1,
+      "unavailable": 3
+    },
+    "verification": "PASS"
+  },
+  "second_resume_database_unchanged": true,
+  "verification": {
+    "all_positions_terminal": true,
+    "attempt_reservations": 10,
+    "campaign_id": "synthetic-q1-vertical-slice-v1",
+    "evidence_tip_sha256": "e2731679054117be1e726aeb3525941a3d3ca0e5b9b90f99900882bff3bf81ae",
+    "fake_provider_invocations": 9,
+    "journal_events": 52,
+    "live_execution_authorized": false,
+    "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+    "real_provider_calls": 0,
+    "remaining_simulated_budget": 0,
+    "scheduled_positions": 15,
+    "simulated_expenditure_units": 9,
+    "simulated_reserved_units": 10,
+    "states": {
+      "blocked": 4,
+      "completed": 6,
+      "interrupted": 1,
+      "invalid": 1,
+      "unavailable": 3
+    },
+    "verification": "PASS"
+  }
+}

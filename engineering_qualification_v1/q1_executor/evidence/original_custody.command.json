@@ -1,0 +1,19 @@
+{
+  "name": "original_custody",
+  "argv": [
+    "python",
+    "-m",
+    "operator_execution_v1",
+    "verify"
+  ],
+  "cwd": ".",
+  "started_at_utc": "2026-10-26T19:59:10.745229+00:00",
+  "finished_at_utc": "2026-10-26T19:59:37.408863+00:00",
+  "exit_status": 0,
+  "real_provider_calls": 0,
+  "environment_override": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "stdout_sha256": "3edbc2744e840148b5efda742fb9d8bf8cc339db6519993bda5dd6e76e33eb2e",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

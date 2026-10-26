@@ -1,0 +1,365 @@
+from __future__ import annotations
+
+from collections import Counter
+from contextlib import contextmanager
+from datetime import datetime, timezone
+import fcntl
+import os
+from pathlib import Path
+import sqlite3
+import sys
+
+from . import VERSION
+from .model import (PACKAGE, TERMINAL, FakeProvider, Provider, decode, digest, encode,
+                    raw_hash, read_file, request_for, validate_manifest, validate_response)
+
+
+def now():
+    return datetime.now(timezone.utc).isoformat()
+
+
+def software():
+    files = {p.name: raw_hash(p.read_bytes()) for p in sorted(PACKAGE.iterdir())
+             if p.suffix in (".py", ".json") and not p.name.startswith("test_")}
+    return {"files": files, "python_version": sys.version, "sqlite_version": sqlite3.sqlite_version,
+            "python_executable_sha256": raw_hash(Path(sys.executable).resolve().read_bytes())}
+
+
+@contextmanager
+def lock(root, *, readonly=False):
+    # No verifier writes, including lock-file creation or SQLite sidecars.
+    read_file(root, ".lock")
+    with (root / ".lock").open("rb") as stream:
+        try:
+            fcntl.flock(stream, (fcntl.LOCK_SH if readonly else fcntl.LOCK_EX) | fcntl.LOCK_NB)
+        except BlockingIOError as exc:
+            raise ValueError("campaign_busy_no_recovery_or_duplicate_worker") from exc
+        try:
+            yield
+        finally:
+            fcntl.flock(stream, fcntl.LOCK_UN)
+
+
+def connect(root, *, readonly=False):
+    path = root / "campaign.sqlite3"
+    if path.is_symlink() or not path.is_file():
+        raise ValueError("missing_or_symlinked_database")
+    db = sqlite3.connect(path.as_uri() + ("?mode=ro" if readonly else "?mode=rw"), uri=True,
+                         isolation_level=None, timeout=10)
+    db.row_factory = sqlite3.Row
+    if readonly:
+        db.execute("PRAGMA query_only=ON")
+    else:
+        db.execute("PRAGMA synchronous=FULL")
+    return db
+
+
+@contextmanager
+def transaction(db):
+    db.execute("BEGIN IMMEDIATE")
+    try:
+        yield
+        db.execute("COMMIT")
+    except BaseException:
+        db.execute("ROLLBACK")
+        raise
+
+
+def event(db, kind, ident, data, at=None):
+    tail = db.execute("SELECT seq,hash FROM events ORDER BY seq DESC LIMIT 1").fetchone()
+    body = {"sequence": tail["seq"] + 1 if tail else 0, "previous_event_sha256": tail["hash"] if tail else None,
+            "at": at or now(), "kind": kind, "position": ident, "data": data}
+    db.execute("INSERT INTO events VALUES (?,?,?)", (body["sequence"], encode(body), digest(body)))
+    return body
+
+
+def receipts(db):
+    return {r["id"]: decode(r["body"]) for r in db.execute("SELECT * FROM receipts")}
+
+
+def schema_digest(db):
+    return digest([list(r) for r in db.execute(
+        "SELECT type,name,sql FROM sqlite_master WHERE name NOT LIKE 'sqlite_%' ORDER BY type,name")])
+
+
+def create(root: Path, fixture: Path = PACKAGE / "fixtures"):
+    root = root.absolute()
+    manifest, manifest_raw = validate_manifest(fixture)
+    root.mkdir(mode=0o700, parents=False, exist_ok=False)
+    # A partial initialization is refused on restart; never reset an existing campaign.
+    for name in ["manifest.json", *(r["path"] for r in manifest["packets"].values())]:
+        if Path(name).name != name:
+            raise ValueError("simulation_packets_must_be_flat_files")
+        with (root / name).open("xb") as stream:
+            stream.write(read_file(fixture, name)); stream.flush(); os.fsync(stream.fileno())
+    (root / ".lock").touch(exist_ok=False)
+    db = sqlite3.connect(root / "campaign.sqlite3", isolation_level=None)
+    try:
+        db.execute("PRAGMA synchronous=FULL")
+        db.execute("PRAGMA journal_mode=DELETE")
+        db.executescript("""
+            CREATE TABLE meta (key TEXT PRIMARY KEY, value BLOB NOT NULL);
+            CREATE TABLE positions (id TEXT PRIMARY KEY, state TEXT NOT NULL);
+            CREATE TABLE attempts (id TEXT PRIMARY KEY, request BLOB NOT NULL, cost INTEGER NOT NULL);
+            CREATE TABLE invocations (id TEXT PRIMARY KEY, at TEXT NOT NULL, cost INTEGER NOT NULL);
+            CREATE TABLE responses (id TEXT PRIMARY KEY, raw BLOB NOT NULL, observed BLOB NOT NULL);
+            CREATE TABLE receipts (id TEXT PRIMARY KEY, body BLOB NOT NULL);
+            CREATE TABLE events (seq INTEGER PRIMARY KEY, body BLOB NOT NULL, hash TEXT UNIQUE NOT NULL);
+        """)
+        db.row_factory = sqlite3.Row
+        with transaction(db):
+            creation = {"manifest_file_sha256": raw_hash(manifest_raw), "manifest_sha256": manifest["manifest_sha256"],
+                        "software": software(), "execution_contract": VERSION, "schema_sha256": schema_digest(db)}
+            db.execute("INSERT INTO meta VALUES ('creation',?)", (encode(creation),))
+            for p in manifest["positions"]:
+                db.execute("INSERT INTO positions VALUES (?, 'scheduled')", (p["id"],))
+            event(db, "created", None, creation)
+    finally:
+        db.close()
+    for directory in (root, root.parent):
+        fd = os.open(directory, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+    return root
+
+
+def make_receipt(db, root, m, p, state, reason, at):
+    ident = p["id"]
+    attempt = db.execute("SELECT * FROM attempts WHERE id=?", (ident,)).fetchone()
+    response = db.execute("SELECT * FROM responses WHERE id=?", (ident,)).fetchone()
+    saved = receipts(db)
+    req = decode(attempt["request"]) if attempt else None
+    diag = {"parsed": None, "availability": state}
+    if state in ("completed", "invalid") or state == "unavailable" and response is not None:
+        actual_state, actual_reason, diag = validate_response(p, req, response["raw"], decode(response["observed"]))
+        if (actual_state, actual_reason) != (state, reason):
+            raise ValueError("terminal_validation_contradiction")
+    disposition = diag["parsed"]["disposition"] if state == "completed" and p["kind"] == "generator" else None
+    previous = req["previous_assessment"]["disposition"] if req and req["previous_assessment"] else None
+    baseline = next((saved[q["id"]]["disposition"] for q in m["positions"]
+                     if q["arm"] == "B0" and q["id"] in saved and saved[q["id"]]["state"] == "completed"), None)
+    if p["arm"] == "B0" and disposition is not None:
+        baseline = disposition
+    observed_events = [decode(r["body"]) for r in db.execute("SELECT body FROM events ORDER BY seq")]
+    times = {e["kind"]: e["at"] for e in observed_events if e["position"] == ident}
+    return decode(encode({"schema": VERSION + "-receipt", "position": ident, "manifest_sha256": m["manifest_sha256"],
+            "packet_bindings": p["packet_bindings"], "requested_identity": p["identity"],
+            "observed_identity": decode(response["observed"]) if response else None,
+            "parents": {d: digest(saved[d]) for d in p["dependencies"]},
+            "state": state, "reason": reason, "diagnostics": diag, "disposition": disposition,
+            "preceding_disposition_pair": [previous, disposition] if previous is not None and disposition is not None else None,
+            "baseline_disposition_pair": [baseline, disposition] if baseline is not None and disposition is not None else None,
+            "request_sha256": raw_hash(attempt["request"]) if attempt else None,
+            "response_sha256": raw_hash(response["raw"]) if response else None,
+            "reserved_at": times.get("reserved"), "started_at": times.get("started"), "outcome_at": at,
+            "simulated_reserved_units": attempt["cost"] if attempt else 0,
+            "live_execution_authorized": False}))
+
+
+def finish(db, root, m, p, state, reason):
+    ident, at = p["id"], now()
+    receipt = make_receipt(db, root, m, p, state, reason, at)
+    db.execute("INSERT INTO receipts VALUES (?,?)", (ident, encode(receipt)))
+    db.execute("UPDATE positions SET state=? WHERE id=?", (state, ident))
+    event(db, "outcome", ident, {"state": state, "reason": reason, "receipt_sha256": digest(receipt)}, at)
+
+
+def reserve(db, root, m, p):
+    """Transaction + unique primary key; never calls a provider or retries."""
+    with transaction(db):
+        # Recheck the full manifest, packets and parent evidence at the reservation boundary.
+        if verify_database(db, root)["manifest"] != m:
+            raise ValueError("manifest_changed_before_reservation")
+        if db.execute("SELECT state FROM positions WHERE id=?", (p["id"],)).fetchone()["state"] != "scheduled":
+            return False
+        saved = receipts(db)
+        if any(d not in saved or saved[d]["state"] != "completed" for d in p["dependencies"]):
+            raise ValueError("unverified_or_unsuccessful_parent")
+        used, cost = db.execute("SELECT count(*),coalesce(sum(cost),0) FROM attempts").fetchone()
+        if used >= m["attempt_ceiling"] or cost + 1 > m["simulated_budget_units"]:
+            return False
+        req = request_for(m, p, saved, root)
+        db.execute("INSERT INTO attempts VALUES (?,?,1)", (p["id"], encode(req)))
+        event(db, "reserved", p["id"], {"request_sha256": digest(req), "cost": 1, "parents": req["parents"]})
+        db.execute("UPDATE positions SET state='reserved' WHERE id=?", (p["id"],))
+    return True
+
+
+def resume(root: Path, provider: Provider | None = None, *, interrupt_after_reservation=None):
+    root = root.absolute()
+    provider = FakeProvider() if provider is None else provider
+    if type(provider) is not FakeProvider:
+        raise ValueError("only_the_local_fake_provider_is_permitted")
+    with lock(root):
+        db = connect(root)
+        try:
+            m = verify_database(db, root)["manifest"]
+            for p in m["positions"]:
+                state = db.execute("SELECT state FROM positions WHERE id=?", (p["id"],)).fetchone()["state"]
+                if state in TERMINAL:
+                    continue
+                if state in ("reserved", "started"):
+                    with transaction(db):
+                        finish(db, root, m, p, "interrupted", "abandoned_reservation_no_reissue")
+                    continue
+                saved = receipts(db)
+                if any(saved[d]["state"] != "completed" for d in p["dependencies"]):
+                    with transaction(db):
+                        finish(db, root, m, p, "blocked", "unsuccessful_parent")
+                    continue
+                if not reserve(db, root, m, p):
+                    with transaction(db):
+                        finish(db, root, m, p, "unavailable", "simulated_budget_exhausted")
+                    continue
+                if interrupt_after_reservation == p["id"]:
+                    # Real process termination: SQLite reservation already committed and fsynced.
+                    os._exit(75)
+                with transaction(db):
+                    db.execute("UPDATE positions SET state='started' WHERE id=?", (p["id"],))
+                    event(db, "started", p["id"], {})
+                req = decode(db.execute("SELECT request FROM attempts WHERE id=?", (p["id"],)).fetchone()[0])
+                def record_invocation():
+                    with transaction(db):
+                        at = now()
+                        db.execute("INSERT INTO invocations VALUES (?,?,1)", (p["id"], at))
+                        event(db, "fake_invoked", p["id"], {"cost": 1}, at)
+                try:
+                    raw, observed = provider.invoke(req, record_invocation)
+                except RuntimeError:
+                    with transaction(db):
+                        finish(db, root, m, p, "unavailable", "fake_provider_exception_before_response")
+                    continue
+                with transaction(db):
+                    db.execute("INSERT INTO responses VALUES (?,?,?)", (p["id"], raw, encode(observed)))
+                    event(db, "response", p["id"], {"raw_sha256": raw_hash(raw), "observed_identity": observed})
+                state, reason, _ = validate_response(p, req, raw, observed)
+                with transaction(db):
+                    finish(db, root, m, p, state, reason)
+            return verify_database(db, root)["summary"]
+        finally:
+            db.close()
+
+
+def verify_database(db, root):
+    """Reconstruct the append-only history, then check every materialized projection."""
+    m, raw_manifest = validate_manifest(root)
+    if db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
+        raise ValueError("sqlite_integrity_failure")
+    meta = list(db.execute("SELECT * FROM meta"))
+    if len(meta) != 1 or meta[0]["key"] != "creation":
+        raise ValueError("creation_record_missing_or_extra")
+    creation = decode(meta[0]["value"])
+    expected_creation = {"manifest_file_sha256": raw_hash(raw_manifest), "manifest_sha256": m["manifest_sha256"],
+                         "software": software(), "execution_contract": VERSION, "schema_sha256": schema_digest(db)}
+    if creation != expected_creation or meta[0]["value"] != encode(creation):
+        raise ValueError("manifest_or_software_binding_changed")
+    positions = {p["id"]: p for p in m["positions"]}
+    states = {ident: "scheduled" for ident in positions}
+    attempts = {r["id"]: r for r in db.execute("SELECT * FROM attempts")}
+    invoked = {r["id"]: r for r in db.execute("SELECT * FROM invocations")}
+    responses = {r["id"]: r for r in db.execute("SELECT * FROM responses")}
+    saved = receipts(db)
+    reserved_seen, started_seen, invoked_seen, response_seen, finished_seen = set(), set(), set(), set(), set()
+    tip = None
+    event_rows = list(db.execute("SELECT * FROM events ORDER BY seq"))
+    last_time = None
+    for index, row in enumerate(event_rows):
+        e = decode(row["body"])
+        if (set(e) != {"sequence", "previous_event_sha256", "at", "kind", "position", "data"}
+                or e["sequence"] != index or row["seq"] != index or e["previous_event_sha256"] != tip
+                or row["hash"] != digest(e) or row["body"] != encode(e)):
+            raise ValueError("event_hash_chain_changed")
+        at = datetime.fromisoformat(e["at"])
+        if at.tzinfo is None or last_time is not None and at < last_time:
+            raise ValueError("event_timestamp_order")
+        last_time, tip = at, row["hash"]
+        kind, ident, data = e["kind"], e["position"], e["data"]
+        if index == 0:
+            if (kind, ident, data) != ("created", None, creation):
+                raise ValueError("creation_event_mismatch")
+            continue
+        if ident not in positions:
+            raise ValueError("unknown_journal_position")
+        p, state = positions[ident], states[ident]
+        if kind == "reserved":
+            if state != "scheduled" or ident in reserved_seen or any(states[d] != "completed" for d in p["dependencies"]):
+                raise ValueError("duplicate_reservation_or_unsuccessful_parent")
+            a = attempts[ident]
+            expected_request = request_for(m, p, saved, root)
+            if (decode(a["request"]) != expected_request or a["cost"] != 1
+                    or data != {"request_sha256": raw_hash(a["request"]), "cost": 1, "parents": expected_request["parents"]}):
+                raise ValueError("request_policy_source_or_parent_binding_changed")
+            reserved_seen.add(ident); states[ident] = "reserved"
+        elif kind == "started":
+            if state != "reserved" or data != {}:
+                raise ValueError("invalid_start")
+            started_seen.add(ident); states[ident] = "started"
+        elif kind == "fake_invoked":
+            if state != "started" or ident in invoked_seen or data != {"cost": 1}:
+                raise ValueError("duplicate_or_invalid_fake_invocation")
+            if dict(invoked[ident]) != {"id": ident, "at": e["at"], "cost": 1}:
+                raise ValueError("invocation_trace_changed")
+            invoked_seen.add(ident)
+        elif kind == "response":
+            r = responses[ident]
+            if (state != "started" or ident not in invoked_seen or ident in response_seen
+                    or data != {"raw_sha256": raw_hash(r["raw"]), "observed_identity": decode(r["observed"])}
+                    or r["observed"] != encode(decode(r["observed"]))):
+                raise ValueError("raw_response_or_identity_changed")
+            response_seen.add(ident)
+        elif kind == "outcome":
+            target, reason = data["state"], data["reason"]
+            failed = any(states[d] != "completed" for d in p["dependencies"])
+            if target not in TERMINAL or state in TERMINAL or ident in finished_seen:
+                raise ValueError("nonmonotonic_or_duplicate_outcome")
+            if target == "blocked":
+                valid = state == "scheduled" and failed and reason == "unsuccessful_parent"
+            elif target == "interrupted":
+                valid = state in ("reserved", "started") and reason == "abandoned_reservation_no_reissue"
+            elif state == "scheduled":
+                valid = (target == "unavailable" and not failed and reason == "simulated_budget_exhausted"
+                         and (len(reserved_seen) >= m["attempt_ceiling"] or len(reserved_seen) >= m["simulated_budget_units"]))
+            elif target == "unavailable" and ident not in response_seen:
+                valid = state == "started" and ident in invoked_seen and reason == "fake_provider_exception_before_response"
+            else:
+                valid = state == "started" and ident in response_seen
+            if not valid:
+                raise ValueError("contradictory_terminal_state")
+            expected = make_receipt(db, root, m, p, target, reason, e["at"])
+            stored = db.execute("SELECT body FROM receipts WHERE id=?", (ident,)).fetchone()[0]
+            if (saved[ident] != expected or stored != encode(expected)
+                    or data != {"state": target, "reason": reason, "receipt_sha256": digest(expected)}):
+                raise ValueError("receipt_or_diagnostics_changed")
+            finished_seen.add(ident); states[ident] = target
+        else:
+            raise ValueError("unknown_journal_event")
+    if not event_rows:
+        raise ValueError("missing_journal")
+    if (set(attempts) != reserved_seen or set(invoked) != invoked_seen or set(responses) != response_seen
+            or set(saved) != finished_seen or dict(db.execute("SELECT id,state FROM positions")) != states):
+        raise ValueError("missing_extra_or_changed_materialized_evidence")
+    reserved_cost = sum(r["cost"] for r in attempts.values())
+    if len(attempts) > m["attempt_ceiling"] or reserved_cost > m["simulated_budget_units"]:
+        raise ValueError("attempt_or_budget_ceiling_exceeded")
+    summary = {"campaign_id": m["campaign_id"], "scheduled_positions": len(positions),
+               "states": dict(sorted(Counter(states.values()).items())), "fake_provider_invocations": len(invoked),
+               "attempt_reservations": len(attempts), "simulated_reserved_units": reserved_cost,
+               "simulated_expenditure_units": sum(r["cost"] for r in invoked.values()),
+               "remaining_simulated_budget": m["simulated_budget_units"] - reserved_cost,
+               "manifest_sha256": m["manifest_sha256"], "evidence_tip_sha256": tip,
+               "journal_events": len(event_rows), "verification": "PASS", "real_provider_calls": 0,
+               "all_positions_terminal": all(s in TERMINAL for s in states.values()), "live_execution_authorized": False}
+    return {"manifest": m, "summary": summary, "history": [decode(r["body"]) for r in event_rows], "receipts": saved}
+
+
+def verify(root: Path):
+    root = root.absolute()
+    with lock(root, readonly=True):
+        db = connect(root, readonly=True)
+        try:
+            db.execute("BEGIN")
+            return verify_database(db, root)
+        finally:
+            db.close()

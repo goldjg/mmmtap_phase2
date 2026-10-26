@@ -1,0 +1,22 @@
+{
+  "name": "final_verify",
+  "argv": [
+    "python",
+    "-m",
+    "engineering_qualification_v1.q1_executor",
+    "verify",
+    "--campaign",
+    "/tmp/mmmtap-q1-slice-final",
+    "--history"
+  ],
+  "cwd": ".",
+  "started_at_utc": "2026-10-26T20:00:28.831923+00:00",
+  "finished_at_utc": "2026-10-26T20:00:29.263416+00:00",
+  "exit_status": 0,
+  "real_provider_calls": 0,
+  "environment_override": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "stdout_sha256": "d0b375aa9b0597f82f2479ff2959a34e2d95183cb0e4a9f616a72945d09833d7",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "explicit_resume_1",
+  "argv": [
+    "python",
+    "-m",
+    "engineering_qualification_v1.q1_executor",
+    "resume",
+    "--campaign",
+    "/tmp/mmmtap-q1-slice-final"
+  ],
+  "cwd": ".",
+  "started_at_utc": "2026-10-26T20:00:27.200414+00:00",
+  "finished_at_utc": "2026-10-26T20:00:27.861011+00:00",
+  "exit_status": 0,
+  "real_provider_calls": 0,
+  "environment_override": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "stdout_sha256": "e92a1eda23b1a07579682efd68b590a50a7f34c5c4393832e1553acc6a6fba2d",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

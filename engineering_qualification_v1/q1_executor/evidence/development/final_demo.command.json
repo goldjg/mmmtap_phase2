@@ -1,0 +1,21 @@
+{
+  "name": "final_demo",
+  "argv": [
+    "python",
+    "-m",
+    "engineering_qualification_v1.q1_executor",
+    "demo",
+    "--output",
+    "/tmp/mmmtap-q1-vertical-slice"
+  ],
+  "cwd": ".",
+  "started_at_utc": "2026-10-26T19:55:47.107517+00:00",
+  "finished_at_utc": "2026-10-26T19:55:50.689148+00:00",
+  "exit_status": 0,
+  "real_provider_calls": 0,
+  "environment_override": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "stdout_sha256": "17e441f0cc4144e95d2056d0cfc780272ada963bd7a344e84a19f72575b97049",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

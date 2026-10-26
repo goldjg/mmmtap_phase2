@@ -1,0 +1,21 @@
+{
+  "name": "focused_tests",
+  "argv": [
+    "python",
+    "-m",
+    "unittest",
+    "-q",
+    "engineering_qualification_v1.q1_executor.test_executor",
+    "engineering_qualification_v1.test_preflight"
+  ],
+  "cwd": ".",
+  "started_at_utc": "2026-10-26T19:59:09.853251+00:00",
+  "finished_at_utc": "2026-10-26T19:59:27.311609+00:00",
+  "exit_status": 0,
+  "real_provider_calls": 0,
+  "environment_override": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "c1e598451cac4fc212a6f4817a980b70514dcb552d423108df6b7f7f9b31b39f"
+}

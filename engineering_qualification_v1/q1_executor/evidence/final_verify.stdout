@@ -1,0 +1,1871 @@
+{
+  "history": [
+    {
+      "at": "2026-10-26T19:59:10.471700+00:00",
+      "data": {
+        "execution_contract": "mmmtap-q1-simulation-executor-v1",
+        "manifest_file_sha256": "24edf2ce4a2f70b43c5c498c6cc6bcdd1330791867b8a2865c6f3a998d6fc0e6",
+        "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+        "schema_sha256": "7588c7271c88050e3e9bd909ce655d1ab7aefa7382087d59e5fc5605f13fa444",
+        "software": {
+          "files": {
+            "__init__.py": "bf83531e1cc549fb6f45e9e2c87532ab1e222ae97420262603b9bad4949f3939",
+            "__main__.py": "0eca3d1742fa377861634d7fd280952e5b6b4594deaaa2418e00f89fac101af3",
+            "contracts.json": "788abecde50692174ea1ff03fa9814539cd0b25c66303545d3184d42cd877381",
+            "contracts.py": "07a0c0a02cb4631af7b8fbb77b764c850d7cb236c365c285a965da9542d44ea4",
+            "engine.py": "653fb927c1ad2af963e51a6dc53526468288b531ada72d755c31fc67a77ef734",
+            "model.py": "defabd79d3f5e6ee936409ccbb0f327c10c608dd8ec19484a6774c2614a69711"
+          },
+          "python_executable_sha256": "2ceb9199570aaf34a254b9ea88b1d77f38530833e2a12688d002a59c905b51b2",
+          "python_version": "3.11.2 (main, Oct  7 2026, 12:35:07) [GCC 12.2.0]",
+          "sqlite_version": "3.40.1"
+        }
+      },
+      "kind": "created",
+      "position": null,
+      "previous_event_sha256": null,
+      "sequence": 0
+    },
+    {
+      "at": "2026-10-26T19:59:11.228467+00:00",
+      "data": {
+        "cost": 1,
+        "parents": {},
+        "request_sha256": "9d4f13647d97271f1457b1fed3696535c79c73aa7ea1b43feaaea2cead8eeff0"
+      },
+      "kind": "reserved",
+      "position": "baseline",
+      "previous_event_sha256": "998a5bdbbfc712948bf93bd64902837f87c7f1cfd80f6729c02337bac0910f05",
+      "sequence": 1
+    },
+    {
+      "at": "2026-10-26T19:59:11.229831+00:00",
+      "data": {},
+      "kind": "started",
+      "position": "baseline",
+      "previous_event_sha256": "bf3fb8beabea6933232336bdde2909209a8553336ecbdc5ff7bae27b9b6ea464",
+      "sequence": 2
+    },
+    {
+      "at": "2026-10-26T19:59:11.231239+00:00",
+      "data": {
+        "cost": 1
+      },
+      "kind": "fake_invoked",
+      "position": "baseline",
+      "previous_event_sha256": "96aad484a4afd747b1969d6cbbd9799867b1b58a92f6bbebd44356df61edb464",
+      "sequence": 3
+    },
+    {
+      "at": "2026-10-26T19:59:11.232707+00:00",
+      "data": {
+        "observed_identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "raw_sha256": "5c648110069be3ec99d1ac0fdc7115d3bdd7a64125f343fcc6f703c35d21306c"
+      },
+      "kind": "response",
+      "position": "baseline",
+      "previous_event_sha256": "6a0d9826180e016201e326529bf9a1021d8c241da897ea8c9f5043a22d4d72b8",
+      "sequence": 4
+    },
+    {
+      "at": "2026-10-26T19:59:11.238139+00:00",
+      "data": {
+        "reason": null,
+        "receipt_sha256": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888",
+        "state": "completed"
+      },
+      "kind": "outcome",
+      "position": "baseline",
+      "previous_event_sha256": "096bfda6174e34f8825a66f99a4724f415b5bc43aa7bd03862cc9ac81d0afd56",
+      "sequence": 5
+    },
+    {
+      "at": "2026-10-26T19:59:11.320132+00:00",
+      "data": {
+        "cost": 1,
+        "parents": {
+          "baseline": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888"
+        },
+        "request_sha256": "9d6de7641db829fdd8581ae7ac473da41c1e9192fb9a39647970ea219c169ce6"
+      },
+      "kind": "reserved",
+      "position": "control",
+      "previous_event_sha256": "c1a81ab8c5d1adbd802a4cad5b5d4784a51815060d19d443bfd5a66b90c69158",
+      "sequence": 6
+    },
+    {
+      "at": "2026-10-26T19:59:11.320853+00:00",
+      "data": {},
+      "kind": "started",
+      "position": "control",
+      "previous_event_sha256": "3acac5e8493f1260042a1b4be99f0011133b99b5393d2d268e1443e3e5b9b446",
+      "sequence": 7
+    },
+    {
+      "at": "2026-10-26T19:59:11.321560+00:00",
+      "data": {
+        "cost": 1
+      },
+      "kind": "fake_invoked",
+      "position": "control",
+      "previous_event_sha256": "0d674927927ab4a98a913ac38e6d6878f04fde0de4c44c214c40882bbeba9468",
+      "sequence": 8
+    },
+    {
+      "at": "2026-10-26T19:59:11.322972+00:00",
+      "data": {
+        "observed_identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "raw_sha256": "304cfbafa28c73b607c9084ba22ef39a76c3143b6b4822aa376f9049b8377df7"
+      },
+      "kind": "response",
+      "position": "control",
+      "previous_event_sha256": "61632b029c37b01442413d1db389431f50d0bdebaf877ccbcabae210208580e7",
+      "sequence": 9
+    },
+    {
+      "at": "2026-10-26T19:59:11.324201+00:00",
+      "data": {
+        "reason": null,
+        "receipt_sha256": "51c77ce300816cf6d6133750c45822369a32024824022321e7ca416c6239c570",
+        "state": "completed"
+      },
+      "kind": "outcome",
+      "position": "control",
+      "previous_event_sha256": "0152a3c633cb11969fac377e51c3a9968b1662f3042121367ccf231bcc34def0",
+      "sequence": 10
+    },
+    {
+      "at": "2026-10-26T19:59:11.420965+00:00",
+      "data": {
+        "cost": 1,
+        "parents": {
+          "baseline": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888"
+        },
+        "request_sha256": "9898df10dd2fbd919120248f691359bb68a9414714e79dd1c6474fa37ae6c7dd"
+      },
+      "kind": "reserved",
+      "position": "invalid",
+      "previous_event_sha256": "4e1beabdc6fb30740daab61cfef782dd6ba818819f552cf27f2e7e8176db4ffb",
+      "sequence": 11
+    },
+    {
+      "at": "2026-10-26T19:59:11.422249+00:00",
+      "data": {},
+      "kind": "started",
+      "position": "invalid",
+      "previous_event_sha256": "27b1773f25f76a6c1dfff0b22b20ec0658985a7c78a446541e384fe34b3d6f78",
+      "sequence": 12
+    },
+    {
+      "at": "2026-10-26T19:59:11.423493+00:00",
+      "data": {
+        "cost": 1
+      },
+      "kind": "fake_invoked",
+      "position": "invalid",
+      "previous_event_sha256": "bc5bef5e8575251687d6a923c8ca8f82b971a7ac8c2b500eb8412145de490ef3",
+      "sequence": 13
+    },
+    {
+      "at": "2026-10-26T19:59:11.424878+00:00",
+      "data": {
+        "observed_identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "raw_sha256": "5c648110069be3ec99d1ac0fdc7115d3bdd7a64125f343fcc6f703c35d21306c"
+      },
+      "kind": "response",
+      "position": "invalid",
+      "previous_event_sha256": "c0be3b71c9b6863513242cc96759d5e5bb427b21982eb5888a558b65ed74b5c7",
+      "sequence": 14
+    },
+    {
+      "at": "2026-10-26T19:59:11.426047+00:00",
+      "data": {
+        "reason": "incomplete_change_accounting",
+        "receipt_sha256": "9da2b321629a0446b44a232970ffc0bdc2a63b33f8630c63d6b22dc8b713c991",
+        "state": "invalid"
+      },
+      "kind": "outcome",
+      "position": "invalid",
+      "previous_event_sha256": "91e5fc2b4da142d7de9ae4926e271453cafd1cedfbc9d58f98b89f134e617be2",
+      "sequence": 15
+    },
+    {
+      "at": "2026-10-26T19:59:11.434853+00:00",
+      "data": {
+        "reason": "unsuccessful_parent",
+        "receipt_sha256": "1e175007e4647fd23ca8e67dd0e98cc3e65f33a32059fbd6520b04e942076640",
+        "state": "blocked"
+      },
+      "kind": "outcome",
+      "position": "invalid-child",
+      "previous_event_sha256": "dad742cffa2c386ae953079424c9f27fc05093e5c66e87aae6f64602abaeded5",
+      "sequence": 16
+    },
+    {
+      "at": "2026-10-26T19:59:11.555003+00:00",
+      "data": {
+        "cost": 1,
+        "parents": {
+          "baseline": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888"
+        },
+        "request_sha256": "f4e37ac9a98a70ec8b77a926c46c454077cb7d0a5c8099a4af588fb0c3f76cf5"
+      },
+      "kind": "reserved",
+      "position": "native",
+      "previous_event_sha256": "8d222edf74d36c635431944347b80a599b56ccfbae4c7a66a28dd1446cfe3228",
+      "sequence": 17
+    },
+    {
+      "at": "2026-10-26T19:59:11.556046+00:00",
+      "data": {},
+      "kind": "started",
+      "position": "native",
+      "previous_event_sha256": "e0730fb377bc219494b9aac9fed4acd05661e3495471e6be65f6bbf1725c772c",
+      "sequence": 18
+    },
+    {
+      "at": "2026-10-26T19:59:11.557352+00:00",
+      "data": {
+        "cost": 1
+      },
+      "kind": "fake_invoked",
+      "position": "native",
+      "previous_event_sha256": "dde0ac6b03ec324e51d9a53bc0b797fa4c75151b756edeabf68089fd38174009",
+      "sequence": 19
+    },
+    {
+      "at": "2026-10-26T19:59:11.559342+00:00",
+      "data": {
+        "observed_identity": {
+          "model": "fake-specialist-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "raw_sha256": "273d6a5237429d63848ce2e9d1e512e678496e0046b836e6f60af8285f3bfd45"
+      },
+      "kind": "response",
+      "position": "native",
+      "previous_event_sha256": "cb16330cdc6bc18807752c10d9c66dd2dcc865667a9a09d21282ae31c55cf03f",
+      "sequence": 20
+    },
+    {
+      "at": "2026-10-26T19:59:11.561186+00:00",
+      "data": {
+        "reason": null,
+        "receipt_sha256": "0e34c376b020142f5230da1c826cf05825e84866dde7c35b8310b502b7c6f413",
+        "state": "completed"
+      },
+      "kind": "outcome",
+      "position": "native",
+      "previous_event_sha256": "4098bd9775ca3c6e8afb009863d75b1debb4b7770dbb8486010a30460c16b8f3",
+      "sequence": 21
+    },
+    {
+      "at": "2026-10-26T19:59:11.686656+00:00",
+      "data": {
+        "cost": 1,
+        "parents": {
+          "baseline": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888",
+          "native": "0e34c376b020142f5230da1c826cf05825e84866dde7c35b8310b502b7c6f413"
+        },
+        "request_sha256": "a2274e5945ab1cde77c09d9a6d2b4c008b8c64e0f63a47daa41c0fc53aee3628"
+      },
+      "kind": "reserved",
+      "position": "intermediate",
+      "previous_event_sha256": "27b4bd86a1162636c9978701973fa32d916f71e769e7ce9d31bf96f063bf4df9",
+      "sequence": 22
+    },
+    {
+      "at": "2026-10-26T19:59:11.687982+00:00",
+      "data": {},
+      "kind": "started",
+      "position": "intermediate",
+      "previous_event_sha256": "ad1b95e235510551094d8ec7abe071d859ede329847bbe3f201196b344741e15",
+      "sequence": 23
+    },
+    {
+      "at": "2026-10-26T19:59:11.689528+00:00",
+      "data": {
+        "cost": 1
+      },
+      "kind": "fake_invoked",
+      "position": "intermediate",
+      "previous_event_sha256": "b6545116781e94405b854e169ebe898df258186884ac1b05da2e5b2efbbda983",
+      "sequence": 24
+    },
+    {
+      "at": "2026-10-26T19:59:11.691744+00:00",
+      "data": {
+        "observed_identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "raw_sha256": "c24e7377453e4b358262953c90078b359b75af8eaeb8113331a0eec4bef4a5e8"
+      },
+      "kind": "response",
+      "position": "intermediate",
+      "previous_event_sha256": "f42f6d8c5eca691ef03dc019c8bb72b0d4de4c64590a300566e741f6823fcc63",
+      "sequence": 25
+    },
+    {
+      "at": "2026-10-26T19:59:11.693260+00:00",
+      "data": {
+        "reason": null,
+        "receipt_sha256": "d6ae28caf22ae489af86dc10f2108fd9a76c658e2bbb46ab530ff2cec78bac07",
+        "state": "completed"
+      },
+      "kind": "outcome",
+      "position": "intermediate",
+      "previous_event_sha256": "637d1e0e7c7f47fe59b88a93551acea78b02cca91bd18fd8e5b5496574cd2b48",
+      "sequence": 26
+    },
+    {
+      "at": "2026-10-26T19:59:11.823136+00:00",
+      "data": {
+        "cost": 1,
+        "parents": {
+          "intermediate": "d6ae28caf22ae489af86dc10f2108fd9a76c658e2bbb46ab530ff2cec78bac07"
+        },
+        "request_sha256": "f59dcb5841eed61c9f4ce8d1a6a6c06dac1f4878dd1a79007068d0911be7ad08"
+      },
+      "kind": "reserved",
+      "position": "carl",
+      "previous_event_sha256": "a05a5d959a311e15afa98f3ad4e85f7df2c01daa01ebc893e6eed5551b310e7f",
+      "sequence": 27
+    },
+    {
+      "at": "2026-10-26T19:59:11.824039+00:00",
+      "data": {},
+      "kind": "started",
+      "position": "carl",
+      "previous_event_sha256": "0faef9cd636f22648a25e4c6dd8257b5da6a2714c6523b459e902f8e4f2e53ea",
+      "sequence": 28
+    },
+    {
+      "at": "2026-10-26T19:59:11.824969+00:00",
+      "data": {
+        "cost": 1
+      },
+      "kind": "fake_invoked",
+      "position": "carl",
+      "previous_event_sha256": "8dd14f02a4da3d731934298aa5cd19d9c87ddf3d254730716e22d4f5a50ee75b",
+      "sequence": 29
+    },
+    {
+      "at": "2026-10-26T19:59:11.827069+00:00",
+      "data": {
+        "observed_identity": {
+          "model": "fake-specialist-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "raw_sha256": "d42138485e7abd33d22599ab399c861cc8766543cd701fb9aa6c10f4a2fba9a9"
+      },
+      "kind": "response",
+      "position": "carl",
+      "previous_event_sha256": "cbae89c1b8b60d20416ec2e1251e206c958656510d116a950fb5a2fe3cbc71b8",
+      "sequence": 30
+    },
+    {
+      "at": "2026-10-26T19:59:11.828372+00:00",
+      "data": {
+        "reason": null,
+        "receipt_sha256": "dca4b47b9e15ca872e8b37c733f3d410b8fb239a95af171528a6856f7e3be9a6",
+        "state": "completed"
+      },
+      "kind": "outcome",
+      "position": "carl",
+      "previous_event_sha256": "d1682f54f51ce75e445ea465c6603faa83b86ec273126680baa281426533f31c",
+      "sequence": 31
+    },
+    {
+      "at": "2026-10-26T19:59:11.980604+00:00",
+      "data": {
+        "cost": 1,
+        "parents": {
+          "carl": "dca4b47b9e15ca872e8b37c733f3d410b8fb239a95af171528a6856f7e3be9a6",
+          "intermediate": "d6ae28caf22ae489af86dc10f2108fd9a76c658e2bbb46ab530ff2cec78bac07"
+        },
+        "request_sha256": "fffd22f9e29dabda900094d4b80072b8774399d77da04b78b7f394a8054f5241"
+      },
+      "kind": "reserved",
+      "position": "final",
+      "previous_event_sha256": "9e013a9e21b357282d87d435814554838f42baee6d0dde5ae0ba9409b274c6af",
+      "sequence": 32
+    },
+    {
+      "at": "2026-10-26T19:59:11.981466+00:00",
+      "data": {},
+      "kind": "started",
+      "position": "final",
+      "previous_event_sha256": "02a3a35a949cd2f0366d939be072520c6c9ff77937b92d50520c9668bc04d44a",
+      "sequence": 33
+    },
+    {
+      "at": "2026-10-26T19:59:11.982495+00:00",
+      "data": {
+        "cost": 1
+      },
+      "kind": "fake_invoked",
+      "position": "final",
+      "previous_event_sha256": "f080a573639f5daaf09f415b3180a83a3af74673c6f943e65259d07b2f313db2",
+      "sequence": 34
+    },
+    {
+      "at": "2026-10-26T19:59:11.983759+00:00",
+      "data": {
+        "observed_identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "raw_sha256": "304cfbafa28c73b607c9084ba22ef39a76c3143b6b4822aa376f9049b8377df7"
+      },
+      "kind": "response",
+      "position": "final",
+      "previous_event_sha256": "02f92c245dd4819e6baf7fe652bd8cdda0b2922750f7dc6fed2eac592e120b2d",
+      "sequence": 35
+    },
+    {
+      "at": "2026-10-26T19:59:11.984852+00:00",
+      "data": {
+        "reason": null,
+        "receipt_sha256": "929213accd40e8410869ffbf0cda9f2a494e2226ab5696e6031be006914d11bc",
+        "state": "completed"
+      },
+      "kind": "outcome",
+      "position": "final",
+      "previous_event_sha256": "dd678dfdd403e79eaf99c002a36f5d12d7087f800e3062b3184528ada4d9a1ca",
+      "sequence": 36
+    },
+    {
+      "at": "2026-10-26T19:59:12.129670+00:00",
+      "data": {
+        "cost": 1,
+        "parents": {
+          "baseline": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888"
+        },
+        "request_sha256": "7d02effc14ff4b34639719a073996324aeee98c080a5a2ebb51e5e537b62ed2f"
+      },
+      "kind": "reserved",
+      "position": "exception",
+      "previous_event_sha256": "dbe901adb84adf6ba9a973adbf5509a73dad086240d4d38752bbb145026ae52e",
+      "sequence": 37
+    },
+    {
+      "at": "2026-10-26T19:59:12.131267+00:00",
+      "data": {},
+      "kind": "started",
+      "position": "exception",
+      "previous_event_sha256": "845541b0ed5e92a2960d5e6f8698cf3050d308723f4826468af03382f3b6c10b",
+      "sequence": 38
+    },
+    {
+      "at": "2026-10-26T19:59:12.132323+00:00",
+      "data": {
+        "cost": 1
+      },
+      "kind": "fake_invoked",
+      "position": "exception",
+      "previous_event_sha256": "d2ceb453bbaa26ec4f5b0dc1b86fe48b5d5ca2954cc75af155343a88248c7f7d",
+      "sequence": 39
+    },
+    {
+      "at": "2026-10-26T19:59:12.133335+00:00",
+      "data": {
+        "reason": "fake_provider_exception_before_response",
+        "receipt_sha256": "568c4e6dc5ed2121e3f0cb6a06e4970b8569baf26185e4b60f13c07e6bf3d895",
+        "state": "unavailable"
+      },
+      "kind": "outcome",
+      "position": "exception",
+      "previous_event_sha256": "a899acd033a4fd66b3b0daccf96770f3e9236c999acc08216cdc5d3ec1559ac1",
+      "sequence": 40
+    },
+    {
+      "at": "2026-10-26T19:59:12.141761+00:00",
+      "data": {
+        "reason": "unsuccessful_parent",
+        "receipt_sha256": "ac4a69899b5ea7e01df14ae9846d363ab93738ab7bd3cfbc8cf96f69b706fde1",
+        "state": "blocked"
+      },
+      "kind": "outcome",
+      "position": "exception-child",
+      "previous_event_sha256": "a94474e7b0ee5c68c5183de19e26b1c7e3a5c6737eb08567a49d5bb709090d9a",
+      "sequence": 41
+    },
+    {
+      "at": "2026-10-26T19:59:12.271670+00:00",
+      "data": {
+        "cost": 1,
+        "parents": {
+          "baseline": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888"
+        },
+        "request_sha256": "7e2a2f6209d896b3d4a5ea2342ae1bdee1f3423dd0578456eb14bcad7771fdf2"
+      },
+      "kind": "reserved",
+      "position": "unknown-identity",
+      "previous_event_sha256": "9db592396ac6ed55ab0b6df6d8017df0d76fae76ab0f5a74cc21d983ff07d24f",
+      "sequence": 42
+    },
+    {
+      "at": "2026-10-26T19:59:12.273200+00:00",
+      "data": {},
+      "kind": "started",
+      "position": "unknown-identity",
+      "previous_event_sha256": "cfd59d5d1226f75d8cdb31c6712936786798c97b6d3d9cf30831077b6a278740",
+      "sequence": 43
+    },
+    {
+      "at": "2026-10-26T19:59:12.273951+00:00",
+      "data": {
+        "cost": 1
+      },
+      "kind": "fake_invoked",
+      "position": "unknown-identity",
+      "previous_event_sha256": "2d2d3ce5bec1bcc925004e87172c5050259e78b64a33920681200cb34598d975",
+      "sequence": 44
+    },
+    {
+      "at": "2026-10-26T19:59:12.274949+00:00",
+      "data": {
+        "observed_identity": null,
+        "raw_sha256": "304cfbafa28c73b607c9084ba22ef39a76c3143b6b4822aa376f9049b8377df7"
+      },
+      "kind": "response",
+      "position": "unknown-identity",
+      "previous_event_sha256": "e6aca2e95d2fd8387a708167a739ac9a048e5ca52509be8877f399ef277de97e",
+      "sequence": 45
+    },
+    {
+      "at": "2026-10-26T19:59:12.275398+00:00",
+      "data": {
+        "reason": "unknown_or_mismatched_fake_identity",
+        "receipt_sha256": "2a7971fdb6d4ca3104610ed6bc1f6ffe6a244feba0e4b8f9fad7b88eb1a16c9a",
+        "state": "unavailable"
+      },
+      "kind": "outcome",
+      "position": "unknown-identity",
+      "previous_event_sha256": "c4cd61f4ce8e50951a95e69bfacb2c6d024f12b1cb91ab65c56772b6a075604f",
+      "sequence": 46
+    },
+    {
+      "at": "2026-10-26T19:59:12.281606+00:00",
+      "data": {
+        "reason": "unsuccessful_parent",
+        "receipt_sha256": "4ba076cd4066e8d550cc4f07d18a7efee2fed75483b0f3e6b9005bcab71e26d7",
+        "state": "blocked"
+      },
+      "kind": "outcome",
+      "position": "identity-child",
+      "previous_event_sha256": "89f452345460aa9f68d56f69de8652189484f9abd476f4424bc07c46e35f3654",
+      "sequence": 47
+    },
+    {
+      "at": "2026-10-26T19:59:12.418919+00:00",
+      "data": {
+        "cost": 1,
+        "parents": {
+          "baseline": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888"
+        },
+        "request_sha256": "09e3a9b28a02932e876921265fd4546e2d923e6c97547ee62233538e56c600a2"
+      },
+      "kind": "reserved",
+      "position": "interruption",
+      "previous_event_sha256": "0aa9299948738b3246da04620c883263b227c6236e9cf8a33040b94a28cd4414",
+      "sequence": 48
+    },
+    {
+      "at": "2026-10-26T19:59:12.717606+00:00",
+      "data": {
+        "reason": "abandoned_reservation_no_reissue",
+        "receipt_sha256": "7c009eb2e5baae353139a76ca6107fdd9972d9f2579862547bcdae74076cc1e0",
+        "state": "interrupted"
+      },
+      "kind": "outcome",
+      "position": "interruption",
+      "previous_event_sha256": "83b6e2f1302e8a8c8c1e2c5eeaeec307948b38484f50ae2f71c4ce8801cb9259",
+      "sequence": 49
+    },
+    {
+      "at": "2026-10-26T19:59:12.723887+00:00",
+      "data": {
+        "reason": "unsuccessful_parent",
+        "receipt_sha256": "110552ed12037f329157c1acf11f7d686e5848bdabf4a358902374e0ccfd383b",
+        "state": "blocked"
+      },
+      "kind": "outcome",
+      "position": "interruption-child",
+      "previous_event_sha256": "d1090f38270ff4eeadee4df7da9d6995cb93f7bafa3085b36f4d97ef24c8b6c0",
+      "sequence": 50
+    },
+    {
+      "at": "2026-10-26T19:59:12.882705+00:00",
+      "data": {
+        "reason": "simulated_budget_exhausted",
+        "receipt_sha256": "7f51ab416f4dd28886b6f9f0e7ba5cad71a2b2a8834ea77e59b848652376df2b",
+        "state": "unavailable"
+      },
+      "kind": "outcome",
+      "position": "budget-tail",
+      "previous_event_sha256": "d1f3fc075769a164233b2d12a1c594a5eff5611f3d9de7d7f7c1206049724a33",
+      "sequence": 51
+    }
+  ],
+  "manifest": {
+    "attempt_ceiling": 10,
+    "campaign_id": "synthetic-q1-vertical-slice-v1",
+    "contracts": {
+      "commit": "de9b83299f6732c3d53dff2fc1ab568049e1420f",
+      "files": {
+        "historical_extractor/__init__.py": {
+          "blob": "97663a5d7ea8c494327c5766fa96056564175abd",
+          "sha256": "cc48231fbebe9684d408ca23b7ce6b6a29c4d18aad68ac475a4fe16d307ec977"
+        },
+        "historical_extractor/archive.py": {
+          "blob": "12ff86b483581f5bd0e69eda4ddf45f717e00d08",
+          "sha256": "78b616ccab2b53c89a95801118f331ddcc0d16e912dd13b47bcf81045cb2ac16"
+        },
+        "historical_extractor/extract.py": {
+          "blob": "4fbadefe172c83f7f07f7b76b08c5b3b323da055",
+          "sha256": "d108236230563e828f17a8a18df19cdd09f50199a1ae0e180abe84e3203dc85e"
+        },
+        "phase2/core.py": {
+          "blob": "d274add6048f9bd60c05906dc5733a35fbe8adb1",
+          "sha256": "c7b0108a863686a3756a92c18310c96fb914131439d86764d15bdacdab262af8"
+        },
+        "phase2_v2/__init__.py": {
+          "blob": "94d966719b2d2837a36c5a6ed5d67f76d55d858f",
+          "sha256": "1dc43d272251130197e6c000738f10160b1c13abd25ee0008c8aa7e4da94da69"
+        },
+        "phase2_v2/continuation.py": {
+          "blob": "7d6496622d71d1bda79c4b12cd45128bb30d9733",
+          "sha256": "8c67006a268f4a95ebd36164231a18b78a866e9eb479e644582d67d234442639"
+        },
+        "phase2_v2/instrument.py": {
+          "blob": "f7c4189b0fb7144ab883ac82344e8c5411ac78c6",
+          "sha256": "402349002e15676e5a43e01b4fac5a14e8f79922d7989595d69e2d0b84247567"
+        }
+      }
+    },
+    "execution_contract": "mmmtap-q1-simulation-executor-v1",
+    "instrument_version": "mmmtap-p2-instrument-v2.1-offline",
+    "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+    "packets": {
+      "challenge_policy": {
+        "path": "challenge-policy.json",
+        "sha256": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696"
+      },
+      "governing_policy": {
+        "path": "governing-policy.json",
+        "sha256": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f"
+      },
+      "source": {
+        "path": "source.txt",
+        "sha256": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      }
+    },
+    "positions": [
+      {
+        "arm": "B0",
+        "assessment_parent": null,
+        "case_id": "synthetic-q1-vertical-slice-v1",
+        "dependencies": [],
+        "fake_behavior": "valid",
+        "fake_disposition": "pass",
+        "id": "baseline",
+        "identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "kind": "generator",
+        "packet_bindings": {
+          "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+          "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+          "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+        },
+        "path": "none",
+        "role": "baseline",
+        "specialist_parent": null,
+        "variant_id": "simulation"
+      },
+      {
+        "arm": "C1",
+        "assessment_parent": "baseline",
+        "case_id": "synthetic-q1-vertical-slice-v1",
+        "dependencies": [
+          "baseline"
+        ],
+        "fake_behavior": "valid",
+        "fake_disposition": "pass",
+        "id": "control",
+        "identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "kind": "generator",
+        "packet_bindings": {
+          "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+          "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+          "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+        },
+        "path": "none",
+        "role": "control",
+        "specialist_parent": null,
+        "variant_id": "simulation"
+      },
+      {
+        "arm": "C2",
+        "assessment_parent": "baseline",
+        "case_id": "synthetic-q1-vertical-slice-v1",
+        "dependencies": [
+          "baseline"
+        ],
+        "fake_behavior": "invalid_lifecycle",
+        "fake_disposition": "pass",
+        "id": "invalid",
+        "identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "kind": "generator",
+        "packet_bindings": {
+          "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+          "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+          "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+        },
+        "path": "none",
+        "role": "control",
+        "specialist_parent": null,
+        "variant_id": "simulation"
+      },
+      {
+        "arm": "C3",
+        "assessment_parent": "invalid",
+        "case_id": "synthetic-q1-vertical-slice-v1",
+        "dependencies": [
+          "invalid"
+        ],
+        "fake_behavior": "valid",
+        "fake_disposition": "pass",
+        "id": "invalid-child",
+        "identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "kind": "generator",
+        "packet_bindings": {
+          "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+          "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+          "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+        },
+        "path": "none",
+        "role": "control",
+        "specialist_parent": null,
+        "variant_id": "simulation"
+      },
+      {
+        "arm": "E3_NC",
+        "assessment_parent": "baseline",
+        "case_id": "synthetic-q1-vertical-slice-v1",
+        "dependencies": [
+          "baseline"
+        ],
+        "fake_behavior": "valid",
+        "fake_disposition": "pass",
+        "id": "native",
+        "identity": {
+          "model": "fake-specialist-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "kind": "specialist",
+        "packet_bindings": {
+          "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+          "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+          "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+        },
+        "path": "native_simulation",
+        "role": "specialist",
+        "specialist_parent": null,
+        "variant_id": "simulation"
+      },
+      {
+        "arm": "E3_NC",
+        "assessment_parent": "baseline",
+        "case_id": "synthetic-q1-vertical-slice-v1",
+        "dependencies": [
+          "baseline",
+          "native"
+        ],
+        "fake_behavior": "valid",
+        "fake_disposition": "review_required",
+        "id": "intermediate",
+        "identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "kind": "generator",
+        "packet_bindings": {
+          "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+          "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+          "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+        },
+        "path": "native_simulation",
+        "role": "challenge_continuation",
+        "specialist_parent": "native",
+        "variant_id": "simulation"
+      },
+      {
+        "arm": "E3_NC",
+        "assessment_parent": "intermediate",
+        "case_id": "synthetic-q1-vertical-slice-v1",
+        "dependencies": [
+          "intermediate"
+        ],
+        "fake_behavior": "valid",
+        "fake_disposition": "pass",
+        "id": "carl",
+        "identity": {
+          "model": "fake-specialist-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "kind": "specialist",
+        "packet_bindings": {
+          "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+          "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+          "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+        },
+        "path": "carl_simulation",
+        "role": "specialist",
+        "specialist_parent": null,
+        "variant_id": "simulation"
+      },
+      {
+        "arm": "E3_NC",
+        "assessment_parent": "intermediate",
+        "case_id": "synthetic-q1-vertical-slice-v1",
+        "dependencies": [
+          "intermediate",
+          "carl"
+        ],
+        "fake_behavior": "valid",
+        "fake_disposition": "pass",
+        "id": "final",
+        "identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "kind": "generator",
+        "packet_bindings": {
+          "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+          "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+          "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+        },
+        "path": "carl_simulation",
+        "role": "challenge_continuation",
+        "specialist_parent": "carl",
+        "variant_id": "simulation"
+      },
+      {
+        "arm": "C1",
+        "assessment_parent": "baseline",
+        "case_id": "synthetic-q1-vertical-slice-v1",
+        "dependencies": [
+          "baseline"
+        ],
+        "fake_behavior": "exception",
+        "fake_disposition": "pass",
+        "id": "exception",
+        "identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "kind": "generator",
+        "packet_bindings": {
+          "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+          "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+          "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+        },
+        "path": "none",
+        "role": "diagnostic_branch",
+        "specialist_parent": null,
+        "variant_id": "simulation"
+      },
+      {
+        "arm": "C1",
+        "assessment_parent": "exception",
+        "case_id": "synthetic-q1-vertical-slice-v1",
+        "dependencies": [
+          "exception"
+        ],
+        "fake_behavior": "valid",
+        "fake_disposition": "pass",
+        "id": "exception-child",
+        "identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "kind": "generator",
+        "packet_bindings": {
+          "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+          "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+          "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+        },
+        "path": "none",
+        "role": "diagnostic_branch",
+        "specialist_parent": null,
+        "variant_id": "simulation"
+      },
+      {
+        "arm": "C1",
+        "assessment_parent": "baseline",
+        "case_id": "synthetic-q1-vertical-slice-v1",
+        "dependencies": [
+          "baseline"
+        ],
+        "fake_behavior": "unknown_identity",
+        "fake_disposition": "pass",
+        "id": "unknown-identity",
+        "identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "kind": "generator",
+        "packet_bindings": {
+          "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+          "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+          "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+        },
+        "path": "none",
+        "role": "diagnostic_branch",
+        "specialist_parent": null,
+        "variant_id": "simulation"
+      },
+      {
+        "arm": "C1",
+        "assessment_parent": "unknown-identity",
+        "case_id": "synthetic-q1-vertical-slice-v1",
+        "dependencies": [
+          "unknown-identity"
+        ],
+        "fake_behavior": "valid",
+        "fake_disposition": "pass",
+        "id": "identity-child",
+        "identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "kind": "generator",
+        "packet_bindings": {
+          "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+          "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+          "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+        },
+        "path": "none",
+        "role": "diagnostic_branch",
+        "specialist_parent": null,
+        "variant_id": "simulation"
+      },
+      {
+        "arm": "C1",
+        "assessment_parent": "baseline",
+        "case_id": "synthetic-q1-vertical-slice-v1",
+        "dependencies": [
+          "baseline"
+        ],
+        "fake_behavior": "valid",
+        "fake_disposition": "pass",
+        "id": "interruption",
+        "identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "kind": "generator",
+        "packet_bindings": {
+          "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+          "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+          "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+        },
+        "path": "none",
+        "role": "diagnostic_branch",
+        "specialist_parent": null,
+        "variant_id": "simulation"
+      },
+      {
+        "arm": "C1",
+        "assessment_parent": "interruption",
+        "case_id": "synthetic-q1-vertical-slice-v1",
+        "dependencies": [
+          "interruption"
+        ],
+        "fake_behavior": "valid",
+        "fake_disposition": "pass",
+        "id": "interruption-child",
+        "identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "kind": "generator",
+        "packet_bindings": {
+          "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+          "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+          "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+        },
+        "path": "none",
+        "role": "diagnostic_branch",
+        "specialist_parent": null,
+        "variant_id": "simulation"
+      },
+      {
+        "arm": "C1",
+        "assessment_parent": "baseline",
+        "case_id": "synthetic-q1-vertical-slice-v1",
+        "dependencies": [
+          "baseline"
+        ],
+        "fake_behavior": "valid",
+        "fake_disposition": "pass",
+        "id": "budget-tail",
+        "identity": {
+          "model": "fake-generator-v1",
+          "provider": "deterministic-local-fake-v1"
+        },
+        "kind": "generator",
+        "packet_bindings": {
+          "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+          "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+          "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+        },
+        "path": "none",
+        "role": "diagnostic_branch",
+        "specialist_parent": null,
+        "variant_id": "simulation"
+      }
+    ],
+    "simulated_budget_units": 10,
+    "simulation_only": true
+  },
+  "receipts": {
+    "baseline": {
+      "baseline_disposition_pair": [
+        "pass",
+        "pass"
+      ],
+      "diagnostics": {
+        "error": null,
+        "failure_layer": null,
+        "parsed": {
+          "case_id": "synthetic-q1-vertical-slice-v1",
+          "changes": [],
+          "claims": [
+            {
+              "claim": "The synthetic change updates documentation.",
+              "claim_id": "c1",
+              "confidence": 0.5,
+              "evidence_quotes": [
+                "This synthetic change updates documentation only."
+              ],
+              "limitations": [
+                "Synthetic supplied text; no authenticated implementation."
+              ]
+            }
+          ],
+          "disposition": "pass",
+          "uncertainties": [],
+          "variant_id": "simulation"
+        },
+        "quote_audit": [
+          {
+            "claim_id": "c1",
+            "exact_source_substring": true,
+            "quote": "This synthetic change updates documentation only."
+          }
+        ],
+        "raw": "{\"case_id\":\"synthetic-q1-vertical-slice-v1\",\"changes\":[],\"claims\":[{\"claim\":\"The synthetic change updates documentation.\",\"claim_id\":\"c1\",\"confidence\":0.5,\"evidence_quotes\":[\"This synthetic change updates documentation only.\"],\"limitations\":[\"Synthetic supplied text; no authenticated implementation.\"]}],\"disposition\":\"pass\",\"uncertainties\":[],\"variant_id\":\"simulation\"}",
+        "source_sha256": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "disposition": "pass",
+      "live_execution_authorized": false,
+      "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+      "observed_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "outcome_at": "2026-10-26T19:59:11.238139+00:00",
+      "packet_bindings": {
+        "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+        "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+        "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "parents": {},
+      "position": "baseline",
+      "preceding_disposition_pair": null,
+      "reason": null,
+      "request_sha256": "9d4f13647d97271f1457b1fed3696535c79c73aa7ea1b43feaaea2cead8eeff0",
+      "requested_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "reserved_at": "2026-10-26T19:59:11.228467+00:00",
+      "response_sha256": "5c648110069be3ec99d1ac0fdc7115d3bdd7a64125f343fcc6f703c35d21306c",
+      "schema": "mmmtap-q1-simulation-executor-v1-receipt",
+      "simulated_reserved_units": 1,
+      "started_at": "2026-10-26T19:59:11.229831+00:00",
+      "state": "completed"
+    },
+    "budget-tail": {
+      "baseline_disposition_pair": null,
+      "diagnostics": {
+        "availability": "unavailable",
+        "parsed": null
+      },
+      "disposition": null,
+      "live_execution_authorized": false,
+      "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+      "observed_identity": null,
+      "outcome_at": "2026-10-26T19:59:12.882705+00:00",
+      "packet_bindings": {
+        "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+        "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+        "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "parents": {
+        "baseline": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888"
+      },
+      "position": "budget-tail",
+      "preceding_disposition_pair": null,
+      "reason": "simulated_budget_exhausted",
+      "request_sha256": null,
+      "requested_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "reserved_at": null,
+      "response_sha256": null,
+      "schema": "mmmtap-q1-simulation-executor-v1-receipt",
+      "simulated_reserved_units": 0,
+      "started_at": null,
+      "state": "unavailable"
+    },
+    "carl": {
+      "baseline_disposition_pair": null,
+      "diagnostics": {
+        "judgments": [
+          {
+            "claim_id": "c1",
+            "dimension": "source_entailment",
+            "evidence_quotes": [],
+            "label": "supported",
+            "rationale": "Scripted local test value, no empirical judgment.",
+            "score": 1
+          },
+          {
+            "claim_id": "c1",
+            "dimension": "independent_verification",
+            "evidence_quotes": [],
+            "label": "not_independently_verified",
+            "rationale": "Scripted local test value, no empirical judgment.",
+            "score": null
+          },
+          {
+            "claim_id": "c1",
+            "dimension": "impact_inference",
+            "evidence_quotes": [],
+            "label": "not_applicable",
+            "rationale": "Scripted local test value, no empirical judgment.",
+            "score": null
+          }
+        ],
+        "parsed": {
+          "claims": [
+            {
+              "claim_id": "c1",
+              "impact_inference": {
+                "evidence_quotes": [],
+                "label": "not_applicable",
+                "rationale": "Scripted local test value, no empirical judgment.",
+                "score": null
+              },
+              "independent_verification": {
+                "evidence_quotes": [],
+                "label": "not_independently_verified",
+                "rationale": "Scripted local test value, no empirical judgment.",
+                "score": null
+              },
+              "source_entailment": {
+                "evidence_quotes": [],
+                "label": "supported",
+                "rationale": "Scripted local test value, no empirical judgment.",
+                "score": 1
+              }
+            }
+          ],
+          "request_sha256": "2f9298530d937b442462f569ca922f0f24c72d0f131b58d502ff5eac60654a35",
+          "schema": "mmmtap-p2-instrument-v2.1-offline-judgments"
+        }
+      },
+      "disposition": null,
+      "live_execution_authorized": false,
+      "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+      "observed_identity": {
+        "model": "fake-specialist-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "outcome_at": "2026-10-26T19:59:11.828372+00:00",
+      "packet_bindings": {
+        "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+        "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+        "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "parents": {
+        "intermediate": "d6ae28caf22ae489af86dc10f2108fd9a76c658e2bbb46ab530ff2cec78bac07"
+      },
+      "position": "carl",
+      "preceding_disposition_pair": null,
+      "reason": null,
+      "request_sha256": "f59dcb5841eed61c9f4ce8d1a6a6c06dac1f4878dd1a79007068d0911be7ad08",
+      "requested_identity": {
+        "model": "fake-specialist-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "reserved_at": "2026-10-26T19:59:11.823136+00:00",
+      "response_sha256": "d42138485e7abd33d22599ab399c861cc8766543cd701fb9aa6c10f4a2fba9a9",
+      "schema": "mmmtap-q1-simulation-executor-v1-receipt",
+      "simulated_reserved_units": 1,
+      "started_at": "2026-10-26T19:59:11.824039+00:00",
+      "state": "completed"
+    },
+    "control": {
+      "baseline_disposition_pair": [
+        "pass",
+        "pass"
+      ],
+      "diagnostics": {
+        "error": null,
+        "failure_layer": null,
+        "parsed": {
+          "case_id": "synthetic-q1-vertical-slice-v1",
+          "changes": [
+            {
+              "action": "retained",
+              "claim_id": "c1",
+              "reason": "Identical scripted claim object."
+            }
+          ],
+          "claims": [
+            {
+              "claim": "The synthetic change updates documentation.",
+              "claim_id": "c1",
+              "confidence": 0.5,
+              "evidence_quotes": [
+                "This synthetic change updates documentation only."
+              ],
+              "limitations": [
+                "Synthetic supplied text; no authenticated implementation."
+              ]
+            }
+          ],
+          "disposition": "pass",
+          "uncertainties": [],
+          "variant_id": "simulation"
+        },
+        "quote_audit": [
+          {
+            "claim_id": "c1",
+            "exact_source_substring": true,
+            "quote": "This synthetic change updates documentation only."
+          }
+        ],
+        "raw": "{\"case_id\":\"synthetic-q1-vertical-slice-v1\",\"changes\":[{\"action\":\"retained\",\"claim_id\":\"c1\",\"reason\":\"Identical scripted claim object.\"}],\"claims\":[{\"claim\":\"The synthetic change updates documentation.\",\"claim_id\":\"c1\",\"confidence\":0.5,\"evidence_quotes\":[\"This synthetic change updates documentation only.\"],\"limitations\":[\"Synthetic supplied text; no authenticated implementation.\"]}],\"disposition\":\"pass\",\"uncertainties\":[],\"variant_id\":\"simulation\"}",
+        "source_sha256": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "disposition": "pass",
+      "live_execution_authorized": false,
+      "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+      "observed_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "outcome_at": "2026-10-26T19:59:11.324201+00:00",
+      "packet_bindings": {
+        "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+        "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+        "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "parents": {
+        "baseline": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888"
+      },
+      "position": "control",
+      "preceding_disposition_pair": [
+        "pass",
+        "pass"
+      ],
+      "reason": null,
+      "request_sha256": "9d6de7641db829fdd8581ae7ac473da41c1e9192fb9a39647970ea219c169ce6",
+      "requested_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "reserved_at": "2026-10-26T19:59:11.320132+00:00",
+      "response_sha256": "304cfbafa28c73b607c9084ba22ef39a76c3143b6b4822aa376f9049b8377df7",
+      "schema": "mmmtap-q1-simulation-executor-v1-receipt",
+      "simulated_reserved_units": 1,
+      "started_at": "2026-10-26T19:59:11.320853+00:00",
+      "state": "completed"
+    },
+    "exception": {
+      "baseline_disposition_pair": null,
+      "diagnostics": {
+        "availability": "unavailable",
+        "parsed": null
+      },
+      "disposition": null,
+      "live_execution_authorized": false,
+      "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+      "observed_identity": null,
+      "outcome_at": "2026-10-26T19:59:12.133335+00:00",
+      "packet_bindings": {
+        "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+        "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+        "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "parents": {
+        "baseline": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888"
+      },
+      "position": "exception",
+      "preceding_disposition_pair": null,
+      "reason": "fake_provider_exception_before_response",
+      "request_sha256": "7d02effc14ff4b34639719a073996324aeee98c080a5a2ebb51e5e537b62ed2f",
+      "requested_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "reserved_at": "2026-10-26T19:59:12.129670+00:00",
+      "response_sha256": null,
+      "schema": "mmmtap-q1-simulation-executor-v1-receipt",
+      "simulated_reserved_units": 1,
+      "started_at": "2026-10-26T19:59:12.131267+00:00",
+      "state": "unavailable"
+    },
+    "exception-child": {
+      "baseline_disposition_pair": null,
+      "diagnostics": {
+        "availability": "blocked",
+        "parsed": null
+      },
+      "disposition": null,
+      "live_execution_authorized": false,
+      "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+      "observed_identity": null,
+      "outcome_at": "2026-10-26T19:59:12.141761+00:00",
+      "packet_bindings": {
+        "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+        "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+        "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "parents": {
+        "exception": "568c4e6dc5ed2121e3f0cb6a06e4970b8569baf26185e4b60f13c07e6bf3d895"
+      },
+      "position": "exception-child",
+      "preceding_disposition_pair": null,
+      "reason": "unsuccessful_parent",
+      "request_sha256": null,
+      "requested_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "reserved_at": null,
+      "response_sha256": null,
+      "schema": "mmmtap-q1-simulation-executor-v1-receipt",
+      "simulated_reserved_units": 0,
+      "started_at": null,
+      "state": "blocked"
+    },
+    "final": {
+      "baseline_disposition_pair": [
+        "pass",
+        "pass"
+      ],
+      "diagnostics": {
+        "error": null,
+        "failure_layer": null,
+        "parsed": {
+          "case_id": "synthetic-q1-vertical-slice-v1",
+          "changes": [
+            {
+              "action": "retained",
+              "claim_id": "c1",
+              "reason": "Identical scripted claim object."
+            }
+          ],
+          "claims": [
+            {
+              "claim": "The synthetic change updates documentation.",
+              "claim_id": "c1",
+              "confidence": 0.5,
+              "evidence_quotes": [
+                "This synthetic change updates documentation only."
+              ],
+              "limitations": [
+                "Synthetic supplied text; no authenticated implementation."
+              ]
+            }
+          ],
+          "disposition": "pass",
+          "uncertainties": [],
+          "variant_id": "simulation"
+        },
+        "quote_audit": [
+          {
+            "claim_id": "c1",
+            "exact_source_substring": true,
+            "quote": "This synthetic change updates documentation only."
+          }
+        ],
+        "raw": "{\"case_id\":\"synthetic-q1-vertical-slice-v1\",\"changes\":[{\"action\":\"retained\",\"claim_id\":\"c1\",\"reason\":\"Identical scripted claim object.\"}],\"claims\":[{\"claim\":\"The synthetic change updates documentation.\",\"claim_id\":\"c1\",\"confidence\":0.5,\"evidence_quotes\":[\"This synthetic change updates documentation only.\"],\"limitations\":[\"Synthetic supplied text; no authenticated implementation.\"]}],\"disposition\":\"pass\",\"uncertainties\":[],\"variant_id\":\"simulation\"}",
+        "source_sha256": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "disposition": "pass",
+      "live_execution_authorized": false,
+      "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+      "observed_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "outcome_at": "2026-10-26T19:59:11.984852+00:00",
+      "packet_bindings": {
+        "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+        "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+        "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "parents": {
+        "carl": "dca4b47b9e15ca872e8b37c733f3d410b8fb239a95af171528a6856f7e3be9a6",
+        "intermediate": "d6ae28caf22ae489af86dc10f2108fd9a76c658e2bbb46ab530ff2cec78bac07"
+      },
+      "position": "final",
+      "preceding_disposition_pair": [
+        "review_required",
+        "pass"
+      ],
+      "reason": null,
+      "request_sha256": "fffd22f9e29dabda900094d4b80072b8774399d77da04b78b7f394a8054f5241",
+      "requested_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "reserved_at": "2026-10-26T19:59:11.980604+00:00",
+      "response_sha256": "304cfbafa28c73b607c9084ba22ef39a76c3143b6b4822aa376f9049b8377df7",
+      "schema": "mmmtap-q1-simulation-executor-v1-receipt",
+      "simulated_reserved_units": 1,
+      "started_at": "2026-10-26T19:59:11.981466+00:00",
+      "state": "completed"
+    },
+    "identity-child": {
+      "baseline_disposition_pair": null,
+      "diagnostics": {
+        "availability": "blocked",
+        "parsed": null
+      },
+      "disposition": null,
+      "live_execution_authorized": false,
+      "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+      "observed_identity": null,
+      "outcome_at": "2026-10-26T19:59:12.281606+00:00",
+      "packet_bindings": {
+        "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+        "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+        "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "parents": {
+        "unknown-identity": "2a7971fdb6d4ca3104610ed6bc1f6ffe6a244feba0e4b8f9fad7b88eb1a16c9a"
+      },
+      "position": "identity-child",
+      "preceding_disposition_pair": null,
+      "reason": "unsuccessful_parent",
+      "request_sha256": null,
+      "requested_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "reserved_at": null,
+      "response_sha256": null,
+      "schema": "mmmtap-q1-simulation-executor-v1-receipt",
+      "simulated_reserved_units": 0,
+      "started_at": null,
+      "state": "blocked"
+    },
+    "intermediate": {
+      "baseline_disposition_pair": [
+        "pass",
+        "review_required"
+      ],
+      "diagnostics": {
+        "error": null,
+        "failure_layer": null,
+        "parsed": {
+          "case_id": "synthetic-q1-vertical-slice-v1",
+          "changes": [
+            {
+              "action": "retained",
+              "claim_id": "c1",
+              "reason": "Identical scripted claim object."
+            }
+          ],
+          "claims": [
+            {
+              "claim": "The synthetic change updates documentation.",
+              "claim_id": "c1",
+              "confidence": 0.5,
+              "evidence_quotes": [
+                "This synthetic change updates documentation only."
+              ],
+              "limitations": [
+                "Synthetic supplied text; no authenticated implementation."
+              ]
+            }
+          ],
+          "disposition": "review_required",
+          "uncertainties": [],
+          "variant_id": "simulation"
+        },
+        "quote_audit": [
+          {
+            "claim_id": "c1",
+            "exact_source_substring": true,
+            "quote": "This synthetic change updates documentation only."
+          }
+        ],
+        "raw": "{\"case_id\":\"synthetic-q1-vertical-slice-v1\",\"changes\":[{\"action\":\"retained\",\"claim_id\":\"c1\",\"reason\":\"Identical scripted claim object.\"}],\"claims\":[{\"claim\":\"The synthetic change updates documentation.\",\"claim_id\":\"c1\",\"confidence\":0.5,\"evidence_quotes\":[\"This synthetic change updates documentation only.\"],\"limitations\":[\"Synthetic supplied text; no authenticated implementation.\"]}],\"disposition\":\"review_required\",\"uncertainties\":[],\"variant_id\":\"simulation\"}",
+        "source_sha256": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "disposition": "review_required",
+      "live_execution_authorized": false,
+      "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+      "observed_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "outcome_at": "2026-10-26T19:59:11.693260+00:00",
+      "packet_bindings": {
+        "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+        "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+        "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "parents": {
+        "baseline": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888",
+        "native": "0e34c376b020142f5230da1c826cf05825e84866dde7c35b8310b502b7c6f413"
+      },
+      "position": "intermediate",
+      "preceding_disposition_pair": [
+        "pass",
+        "review_required"
+      ],
+      "reason": null,
+      "request_sha256": "a2274e5945ab1cde77c09d9a6d2b4c008b8c64e0f63a47daa41c0fc53aee3628",
+      "requested_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "reserved_at": "2026-10-26T19:59:11.686656+00:00",
+      "response_sha256": "c24e7377453e4b358262953c90078b359b75af8eaeb8113331a0eec4bef4a5e8",
+      "schema": "mmmtap-q1-simulation-executor-v1-receipt",
+      "simulated_reserved_units": 1,
+      "started_at": "2026-10-26T19:59:11.687982+00:00",
+      "state": "completed"
+    },
+    "interruption": {
+      "baseline_disposition_pair": null,
+      "diagnostics": {
+        "availability": "interrupted",
+        "parsed": null
+      },
+      "disposition": null,
+      "live_execution_authorized": false,
+      "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+      "observed_identity": null,
+      "outcome_at": "2026-10-26T19:59:12.717606+00:00",
+      "packet_bindings": {
+        "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+        "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+        "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "parents": {
+        "baseline": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888"
+      },
+      "position": "interruption",
+      "preceding_disposition_pair": null,
+      "reason": "abandoned_reservation_no_reissue",
+      "request_sha256": "09e3a9b28a02932e876921265fd4546e2d923e6c97547ee62233538e56c600a2",
+      "requested_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "reserved_at": "2026-10-26T19:59:12.418919+00:00",
+      "response_sha256": null,
+      "schema": "mmmtap-q1-simulation-executor-v1-receipt",
+      "simulated_reserved_units": 1,
+      "started_at": null,
+      "state": "interrupted"
+    },
+    "interruption-child": {
+      "baseline_disposition_pair": null,
+      "diagnostics": {
+        "availability": "blocked",
+        "parsed": null
+      },
+      "disposition": null,
+      "live_execution_authorized": false,
+      "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+      "observed_identity": null,
+      "outcome_at": "2026-10-26T19:59:12.723887+00:00",
+      "packet_bindings": {
+        "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+        "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+        "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "parents": {
+        "interruption": "7c009eb2e5baae353139a76ca6107fdd9972d9f2579862547bcdae74076cc1e0"
+      },
+      "position": "interruption-child",
+      "preceding_disposition_pair": null,
+      "reason": "unsuccessful_parent",
+      "request_sha256": null,
+      "requested_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "reserved_at": null,
+      "response_sha256": null,
+      "schema": "mmmtap-q1-simulation-executor-v1-receipt",
+      "simulated_reserved_units": 0,
+      "started_at": null,
+      "state": "blocked"
+    },
+    "invalid": {
+      "baseline_disposition_pair": null,
+      "diagnostics": {
+        "error": "incomplete_change_accounting",
+        "failure_layer": "lifecycle",
+        "parsed": null,
+        "quote_audit": [],
+        "raw": "{\"case_id\":\"synthetic-q1-vertical-slice-v1\",\"changes\":[],\"claims\":[{\"claim\":\"The synthetic change updates documentation.\",\"claim_id\":\"c1\",\"confidence\":0.5,\"evidence_quotes\":[\"This synthetic change updates documentation only.\"],\"limitations\":[\"Synthetic supplied text; no authenticated implementation.\"]}],\"disposition\":\"pass\",\"uncertainties\":[],\"variant_id\":\"simulation\"}",
+        "source_sha256": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "disposition": null,
+      "live_execution_authorized": false,
+      "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+      "observed_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "outcome_at": "2026-10-26T19:59:11.426047+00:00",
+      "packet_bindings": {
+        "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+        "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+        "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "parents": {
+        "baseline": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888"
+      },
+      "position": "invalid",
+      "preceding_disposition_pair": null,
+      "reason": "incomplete_change_accounting",
+      "request_sha256": "9898df10dd2fbd919120248f691359bb68a9414714e79dd1c6474fa37ae6c7dd",
+      "requested_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "reserved_at": "2026-10-26T19:59:11.420965+00:00",
+      "response_sha256": "5c648110069be3ec99d1ac0fdc7115d3bdd7a64125f343fcc6f703c35d21306c",
+      "schema": "mmmtap-q1-simulation-executor-v1-receipt",
+      "simulated_reserved_units": 1,
+      "started_at": "2026-10-26T19:59:11.422249+00:00",
+      "state": "invalid"
+    },
+    "invalid-child": {
+      "baseline_disposition_pair": null,
+      "diagnostics": {
+        "availability": "blocked",
+        "parsed": null
+      },
+      "disposition": null,
+      "live_execution_authorized": false,
+      "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+      "observed_identity": null,
+      "outcome_at": "2026-10-26T19:59:11.434853+00:00",
+      "packet_bindings": {
+        "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+        "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+        "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "parents": {
+        "invalid": "9da2b321629a0446b44a232970ffc0bdc2a63b33f8630c63d6b22dc8b713c991"
+      },
+      "position": "invalid-child",
+      "preceding_disposition_pair": null,
+      "reason": "unsuccessful_parent",
+      "request_sha256": null,
+      "requested_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "reserved_at": null,
+      "response_sha256": null,
+      "schema": "mmmtap-q1-simulation-executor-v1-receipt",
+      "simulated_reserved_units": 0,
+      "started_at": null,
+      "state": "blocked"
+    },
+    "native": {
+      "baseline_disposition_pair": null,
+      "diagnostics": {
+        "judgments": [
+          {
+            "claim_id": "c1",
+            "dimension": "source_entailment",
+            "evidence_quotes": [],
+            "label": "supported",
+            "rationale": "Scripted local test value, no empirical judgment.",
+            "score": 1
+          },
+          {
+            "claim_id": "c1",
+            "dimension": "independent_verification",
+            "evidence_quotes": [],
+            "label": "not_independently_verified",
+            "rationale": "Scripted local test value, no empirical judgment.",
+            "score": null
+          },
+          {
+            "claim_id": "c1",
+            "dimension": "impact_inference",
+            "evidence_quotes": [],
+            "label": "not_applicable",
+            "rationale": "Scripted local test value, no empirical judgment.",
+            "score": null
+          }
+        ],
+        "parsed": {
+          "claims": [
+            {
+              "claim_id": "c1",
+              "impact_inference": {
+                "evidence_quotes": [],
+                "label": "not_applicable",
+                "rationale": "Scripted local test value, no empirical judgment.",
+                "score": null
+              },
+              "independent_verification": {
+                "evidence_quotes": [],
+                "label": "not_independently_verified",
+                "rationale": "Scripted local test value, no empirical judgment.",
+                "score": null
+              },
+              "source_entailment": {
+                "evidence_quotes": [],
+                "label": "supported",
+                "rationale": "Scripted local test value, no empirical judgment.",
+                "score": 1
+              }
+            }
+          ],
+          "request_sha256": "0c3a86bc9908d924d842a6dc7baafdf7561459fcd4d54ac52be8b54468d1f3de",
+          "schema": "mmmtap-p2-instrument-v2.1-offline-judgments"
+        }
+      },
+      "disposition": null,
+      "live_execution_authorized": false,
+      "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+      "observed_identity": {
+        "model": "fake-specialist-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "outcome_at": "2026-10-26T19:59:11.561186+00:00",
+      "packet_bindings": {
+        "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+        "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+        "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "parents": {
+        "baseline": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888"
+      },
+      "position": "native",
+      "preceding_disposition_pair": null,
+      "reason": null,
+      "request_sha256": "f4e37ac9a98a70ec8b77a926c46c454077cb7d0a5c8099a4af588fb0c3f76cf5",
+      "requested_identity": {
+        "model": "fake-specialist-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "reserved_at": "2026-10-26T19:59:11.555003+00:00",
+      "response_sha256": "273d6a5237429d63848ce2e9d1e512e678496e0046b836e6f60af8285f3bfd45",
+      "schema": "mmmtap-q1-simulation-executor-v1-receipt",
+      "simulated_reserved_units": 1,
+      "started_at": "2026-10-26T19:59:11.556046+00:00",
+      "state": "completed"
+    },
+    "unknown-identity": {
+      "baseline_disposition_pair": null,
+      "diagnostics": {
+        "availability": "identity_unavailable",
+        "parsed": null
+      },
+      "disposition": null,
+      "live_execution_authorized": false,
+      "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+      "observed_identity": null,
+      "outcome_at": "2026-10-26T19:59:12.275398+00:00",
+      "packet_bindings": {
+        "challenge_policy": "df98da5af5fb41dd0efa93264cd7d5b5080711d0cdc0d4b904ac44d70f826696",
+        "governing_policy": "9b9c17bc71405937fcbbb9348d4b5b8d08aec6afd32dc3474675a9bfec098c7f",
+        "source": "a2dea10167b2eab27d666601704651f1e6b9b091d10ecde4c2a7b27139323306"
+      },
+      "parents": {
+        "baseline": "eb8e30f9846303626c49ac2f6265c5890bc332cf7219e3c5380a4ea6ca5f8888"
+      },
+      "position": "unknown-identity",
+      "preceding_disposition_pair": null,
+      "reason": "unknown_or_mismatched_fake_identity",
+      "request_sha256": "7e2a2f6209d896b3d4a5ea2342ae1bdee1f3423dd0578456eb14bcad7771fdf2",
+      "requested_identity": {
+        "model": "fake-generator-v1",
+        "provider": "deterministic-local-fake-v1"
+      },
+      "reserved_at": "2026-10-26T19:59:12.271670+00:00",
+      "response_sha256": "304cfbafa28c73b607c9084ba22ef39a76c3143b6b4822aa376f9049b8377df7",
+      "schema": "mmmtap-q1-simulation-executor-v1-receipt",
+      "simulated_reserved_units": 1,
+      "started_at": "2026-10-26T19:59:12.273200+00:00",
+      "state": "unavailable"
+    }
+  },
+  "summary": {
+    "all_positions_terminal": true,
+    "attempt_reservations": 10,
+    "campaign_id": "synthetic-q1-vertical-slice-v1",
+    "evidence_tip_sha256": "e2731679054117be1e726aeb3525941a3d3ca0e5b9b90f99900882bff3bf81ae",
+    "fake_provider_invocations": 9,
+    "journal_events": 52,
+    "live_execution_authorized": false,
+    "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+    "real_provider_calls": 0,
+    "remaining_simulated_budget": 0,
+    "scheduled_positions": 15,
+    "simulated_expenditure_units": 9,
+    "simulated_reserved_units": 10,
+    "states": {
+      "blocked": 4,
+      "completed": 6,
+      "interrupted": 1,
+      "invalid": 1,
+      "unavailable": 3
+    },
+    "verification": "PASS"
+  }
+}
