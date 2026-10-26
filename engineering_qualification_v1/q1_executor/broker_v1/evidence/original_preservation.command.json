@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python",
+    "-B",
+    "-m",
+    "operator_execution_v1",
+    "verify"
+  ],
+  "cwd": "/home/prometheus/git/mmmtap_phase2",
+  "exit_status": 0,
+  "real_provider_calls": 0,
+  "recorded_at_utc": "2026-10-26T22:15:20.554695+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "3edbc2744e840148b5efda742fb9d8bf8cc339db6519993bda5dd6e76e33eb2e",
+  "timing": "original invocation timing not captured"
+}

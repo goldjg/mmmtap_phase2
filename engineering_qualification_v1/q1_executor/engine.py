@@ -26,12 +26,13 @@ def software():
 
 
 def historical_software_compatible(m, recorded):
-    # Explicit read-only compatibility for the preserved c9f546b slice. Never
-    # change its bytes or pretend that the current auditor was its producer.
-    name = "legacy-software.matrix.v1.json" if "full_matrix" in m else "legacy-software.v1.json"
+    # Exact historical producer fingerprints, accepted only for fully terminal
+    # read-only replay below. Incomplete campaigns cannot inherit new code.
+    name = ("legacy-software.transport.v1.json" if "transport" in m else
+            "legacy-software.matrix.v1.json" if "full_matrix" in m else "legacy-software.v1.json")
     legacy = decode(read_file(PACKAGE, name))
     runtime = software()
-    return ("transport" not in m and recorded == legacy
+    return (recorded == legacy
             and all(recorded[k] == runtime[k] for k in
                     ("python_version", "sqlite_version", "python_executable_sha256")))
 
@@ -96,6 +97,12 @@ def schema_digest(db):
 def create(root: Path, fixture: Path = PACKAGE / "fixtures"):
     root = root.absolute()
     manifest, manifest_raw = validate_manifest(fixture)
+    if "transport" in manifest:
+        from .transport import specification
+        from .broker_v1.contract import is_broker, specification as broker_specification
+        current = broker_specification() if is_broker(manifest) else specification()
+        if manifest["transport"]["specification"] != current:
+            raise ValueError("historical_transport_configuration_readonly")
     root.mkdir(mode=0o700, parents=False, exist_ok=False)
     # A partial initialization is refused on restart; never reset an existing campaign.
     for name in ["manifest.json", *(r["path"] for r in manifest["packets"].values())]:
@@ -180,9 +187,12 @@ def make_receipt(db, root, m, p, state, reason, at, *, saved=None, times=None):
             "simulated_reserved_units": attempt["cost"] if attempt else 0,
             "live_execution_authorized": False}
     if "transport" in m:
-        from .transport import VERSION as TRANSPORT_VERSION
-        receipt.update(schema=TRANSPORT_VERSION + "-receipt", transport_record_sha256=(
+        receipt.update(schema=m["transport"]["version"] + "-receipt", transport_record_sha256=(
             digest(transport_record) if transport_record is not None else None))
+    from .broker_v1.contract import is_broker
+    if is_broker(m):
+        from .broker_v1.broker import receipt_binding
+        receipt.update(receipt_binding(db, ident))
     return decode(encode(receipt))
 
 
@@ -246,7 +256,13 @@ def execute_transport(db, root, m, p, req, interrupt_position):
             # die-with-parent and PID namespace tear down the execution context.
             os._exit(75)
     sealed = db.execute("SELECT request FROM attempts WHERE id=?", (p["id"],)).fetchone()[0]
-    result = OfflineSubprocessTransport(m["transport"]["specification"]).invoke(envelope, sealed, workspace, persist)
+    from .broker_v1.contract import is_broker
+    if is_broker(m):
+        from .broker_v1.runtime import BrokerTransport
+        implementation = BrokerTransport(m["transport"]["specification"], root, p["id"])
+    else:
+        implementation = OfflineSubprocessTransport(m["transport"]["specification"])
+    result = implementation.invoke(envelope, sealed, workspace, persist)
     with transaction(db):
         db.execute("INSERT INTO responses VALUES (?,?,?)", (p["id"], result.raw, encode(result.observed)))
         event(db, "response", p["id"], {"raw_sha256": raw_hash(result.raw), "observed_identity": result.observed})
@@ -259,6 +275,10 @@ def execute_transport(db, root, m, p, req, interrupt_position):
 
 def recover_transport(db, root, m, p):
     import shutil
+    from .broker_v1.contract import is_broker
+    if is_broker(m):
+        from .broker_v1.broker import reconcile
+        reconcile(db, root, m, p)
     from .transport import now as transport_now
     row = db.execute("SELECT * FROM transports WHERE id=?", (p["id"],)).fetchone()
     if row is None:
@@ -437,6 +457,13 @@ def verify_database(db, root):
             verify_record(data, decode(transport_rows[ident]["envelope"]), m["transport"]["specification"],
                           root, progress.get(ident))
             progress[ident] = data
+        elif kind in ("broker_event", "broker_rejected"):
+            from .broker_v1.contract import is_broker
+            if not is_broker(m):
+                raise ValueError("broker_event_without_broker_contract")
+            if kind == "broker_event" and (state != "started" or ident not in invoked_seen):
+                raise ValueError("broker_event_without_reserved_worker")
+            # Full broker state/authorisation replay follows this engine replay.
         elif kind == "response":
             r = responses[ident]
             if (state != "started" or ident not in invoked_seen or ident in response_seen
@@ -501,6 +528,10 @@ def verify_database(db, root):
         summary.update(fake_provider_invocations=0, subprocess_transport_launch_intents=len(invoked),
                        subprocess_bootstraps_verified=sum(r["bootstrap_verified"] for r in progress.values()),
                        transport_contract=m["transport"]["version"])
+    from .broker_v1.contract import is_broker
+    if is_broker(m):
+        from .broker_v1.broker import audit
+        summary.update(audit(db, m))
     return {"manifest": m, "summary": summary, "history": [decode(r["body"]) for r in event_rows], "receipts": saved}
 
 

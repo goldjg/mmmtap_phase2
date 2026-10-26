@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "python",
+    "-B",
+    "-m",
+    "engineering_qualification_v1.q1_executor",
+    "verify",
+    "--campaign",
+    "/tmp/mmmtap-q1-broker/engineering_qualification_v1/q1_executor/broker_v1/evidence/qualification/chain/campaign",
+    "--history"
+  ],
+  "cwd": "/tmp/mmmtap-q1-broker",
+  "exit_status": 0,
+  "finished_at_utc": "2026-10-26T22:15:30.332725+00:00",
+  "name": "readonly_reconstruction",
+  "real_provider_calls": 0,
+  "started_at_utc": "2026-10-26T22:15:29.394488+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "77e771e741a28dc70f867ad2671833b5b5c4e54ca43325f632fb25ad116f3d4b"
+}

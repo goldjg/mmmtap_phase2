@@ -1,0 +1,10 @@
+{
+  "excluded_from_acceptance": [
+    "Initial smoke and development cases in fresh /tmp directories.",
+    "One development run exceeded the original two-second outer transport deadline before dispatch. The separately versioned broker limit is ten seconds with a two-second provider deadline.",
+    "A development run failed closed after qualification source bytes changed. It was never resumed with changed code.",
+    "A pre-hardening capture preceded the rejected-request journal replay correction. It is retained outside this evidence package."
+  ],
+  "final_acceptance": "Only evidence/qualification with the final pinned source/configuration is included.",
+  "live_provider_calls": 0
+}

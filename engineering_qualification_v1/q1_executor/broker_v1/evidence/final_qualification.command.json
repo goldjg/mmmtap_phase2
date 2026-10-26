@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "python",
+    "-B",
+    "-m",
+    "engineering_qualification_v1.q1_executor.broker_v1",
+    "--output",
+    "/tmp/mmmtap-q1-broker/engineering_qualification_v1/q1_executor/broker_v1/evidence/qualification"
+  ],
+  "cwd": "/tmp/mmmtap-q1-broker",
+  "exit_status": 0,
+  "finished_at_utc": "2026-10-26T22:14:35.186234+00:00",
+  "name": "final_qualification",
+  "real_provider_calls": 0,
+  "started_at_utc": "2026-10-26T22:12:36.481925+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "41ab6eb11fac7dcd97aa12295908fe5c352125181de7a92d93a55953cd2d86b7"
+}

@@ -98,9 +98,13 @@ def extension(scenarios=None):
 
 
 def validate_extension(m):
+    from .broker_v1.contract import is_broker, validate_extension as broker_validate
+    if is_broker(m):
+        return broker_validate(m)
     ext = m["transport"]
     if (set(ext) != {"version", "specification", "configuration_sha256", "scenarios"}
-            or ext["version"] != VERSION or ext["specification"] != specification()
+            or ext["version"] != VERSION or ext["specification"] not in (
+                specification(), decode(read_file(PACKAGE, "legacy-transport-specification.v1.json")))
             or ext["configuration_sha256"] != digest(ext["specification"])
             or not isinstance(ext["scenarios"], dict)
             or any(k not in {p["id"] for p in m["positions"]} or v not in SCENARIOS
@@ -109,6 +113,11 @@ def validate_extension(m):
 
 
 def envelope_for(m, p, sealed_request):
+    from .broker_v1.contract import is_broker, envelope_for as broker_envelope
+    return (broker_envelope if is_broker(m) else base_envelope_for)(m, p, sealed_request)
+
+
+def base_envelope_for(m, p, sealed_request):
     ext = m["transport"]
     spec = ext["specification"]
     return {"contract": VERSION, "attempt_id": digest({"manifest": m["manifest_sha256"], "position": p["id"]}),
@@ -122,7 +131,18 @@ def envelope_for(m, p, sealed_request):
             "adapter_sha256": spec["bindings"]["adapter"]["sha256"],
             "seccomp_library": spec["bindings"]["seccomp"]["path"],
             # Public synthetic canary only. Never probe a credential or custody file.
-            "forbidden_probe": str(PACKAGE / "transport_evidence" / "forbidden-canary.txt")}
+            "forbidden_probe": str(Path(spec["bindings"]["adapter"]["path"]).parent / "transport_evidence" / "forbidden-canary.txt")}
+
+
+def launch_argv(spec, workspace):
+    return [spec["bindings"]["bwrap"]["path"], "--unshare-user", "--unshare-pid", "--unshare-ipc",
+                "--unshare-uts", "--die-with-parent", "--new-session", "--cap-drop", "ALL", "--hostname", "q1-offline",
+                "--ro-bind", "/usr", "/usr", "--symlink", "usr/lib", "/lib", "--symlink", "usr/bin", "/bin",
+                "--proc", "/proc", "--dev", "/dev", "--size", "16777216", "--tmpfs", "/work",
+                "--size", "16777216", "--tmpfs", "/home",
+                "--dir", "/home/assessor", "--ro-bind", str((workspace / "inputs").absolute()), "/inputs",
+                "--size", "16777216", "--tmpfs", "/response", "--chdir", "/work", "--",
+                spec["bindings"]["python"]["path"], "-I", "-S", "-B", "/inputs/bootstrap.py"]
 
 
 class OfflineSubprocessTransport:
@@ -149,14 +169,7 @@ class OfflineSubprocessTransport:
             (inputs / name).write_bytes(raw)
         for p in inputs.iterdir():
             p.chmod(0o400)
-        argv = [self.spec["bindings"]["bwrap"]["path"], "--unshare-user", "--unshare-pid", "--unshare-ipc",
-                "--unshare-uts", "--die-with-parent", "--new-session", "--cap-drop", "ALL", "--hostname", "q1-offline",
-                "--ro-bind", "/usr", "/usr", "--symlink", "usr/lib", "/lib", "--symlink", "usr/bin", "/bin",
-                "--proc", "/proc", "--dev", "/dev", "--size", "16777216", "--tmpfs", "/work",
-                "--size", "16777216", "--tmpfs", "/home",
-                "--dir", "/home/assessor", "--ro-bind", str(inputs.absolute()), "/inputs",
-                "--size", "16777216", "--tmpfs", "/response", "--chdir", "/work", "--",
-                self.spec["bindings"]["python"]["path"], "-I", "-S", "-B", "/inputs/bootstrap.py"]
+        argv = launch_argv(self.spec, workspace)
         rec = {"contract": VERSION, "attempt_id": envelope["attempt_id"],
                "request_sha256": envelope["request_sha256"], "configuration_sha256": envelope["configuration_sha256"],
                "context_id": envelope["attempt_id"], "workspace": str(workspace.absolute()),
@@ -249,6 +262,14 @@ def outcome(p, req, rec):
 
 
 def verify_record(rec, envelope, spec, root, previous):
+    from .broker_v1 import VERSION as BROKER_VERSION
+    if spec["contract"] == BROKER_VERSION:
+        from .broker_v1.contract import verify_record as broker_verify
+        return broker_verify(rec, envelope, spec, root, previous)
+    return base_verify_record(rec, envelope, spec, root, previous)
+
+
+def base_verify_record(rec, envelope, spec, root, previous):
     """Read-only structural/monotonic replay. Process output is not attestation."""
     required = {"contract", "attempt_id", "request_sha256", "configuration_sha256", "context_id", "workspace", "argv",
                 "environment", "launch_intent_at", "started_at", "ended_at", "pid", "status", "returncode",

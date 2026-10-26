@@ -1,0 +1,19 @@
+{
+  "baseline_commit": "4cda2184504147d65b161d60eca1bcbd10ac5398",
+  "command_records_verified": 36,
+  "frozen_scientific_validators_and_decisions_changed": false,
+  "intentionally_extended_files": [
+    "engineering_qualification_v1/q1_executor/engine.py",
+    "engineering_qualification_v1/q1_executor/transport.py"
+  ],
+  "operator_sealed_files_verified": 1165,
+  "original_entries_changed_or_missing": 0,
+  "original_entries_verified": 40538,
+  "original_worktree_status_unchanged": true,
+  "preexisting_executor_files": 394,
+  "preexisting_executor_files_unchanged": 392,
+  "topology_153_reexecuted": false,
+  "unrelated_modified_worktree_changes": 0,
+  "unrelated_modified_worktree_paths_preserved": 729,
+  "v5_sealed_files_verified": 4699
+}

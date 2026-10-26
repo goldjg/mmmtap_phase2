@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "python",
+    "-B",
+    "-m",
+    "unittest",
+    "-q",
+    "engineering_qualification_v1.q1_executor.broker_v1.test_broker",
+    "engineering_qualification_v1.q1_executor.test_executor",
+    "engineering_qualification_v1.q1_executor.test_transport",
+    "engineering_qualification_v1.test_preflight",
+    "phase2_v2.rd05_offline.test_tool",
+    "phase2_v2.test_instrument",
+    "phase2_v2.test_continuation",
+    "tests.test_harness"
+  ],
+  "cwd": "/tmp/mmmtap-q1-broker",
+  "exit_status": 0,
+  "finished_at_utc": "2026-10-26T22:14:36.972310+00:00",
+  "name": "regressions",
+  "real_provider_calls": 0,
+  "started_at_utc": "2026-10-26T22:12:39.956409+00:00",
+  "stderr_sha256": "9ce90cd13436d830a3cfb3a56e029c0613298ab48399e8377811c6a250e4c96b",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
