@@ -1,0 +1,765 @@
+{
+  "schema": "mmmtap-systemone-operational-readiness-v1",
+  "baseline": "d1e4189c9fb1d96ee2da21f15d09f1528468273e",
+  "recorded_at_UTC": "2026-10-27T07:09:28.891885+00:00",
+  "decision": "NO-GO",
+  "final_status": "SYSTEMONE FIRST LIVE PROBE — NO-GO, SPECIFIC PREREQUISITES OUTSTANDING",
+  "can_currently_authorise_one_real_request_responsibly": false,
+  "implementation_remains_unlaunchable": true,
+  "scope_of_this_task": {
+    "provider_domain_requests": 0,
+    "provider_connectivity_tests": 0,
+    "provider_authentication": false,
+    "actual_credentials_read_hashed_copied_tested_or_passed": false,
+    "account_portals_or_model_listing": false,
+    "firewall_routing_namespace_or_host_security_changes": false,
+    "new_namespace_or_seccomp_installation_tests": false,
+    "campaign_execution_or_regeneration": false,
+    "test_suites_rerun": false,
+    "GitHub_access": "Only requested repository fetch/push/remote verification"
+  },
+  "already_qualified_reusable": [
+    "durable reservations and one client POST intent",
+    "no client retry/retransmission after crash or timeout",
+    "raw entity prefix custody and immutable receipts",
+    "actual Choice 1 typed parser and read-only reconstruction",
+    "existing worker filesystem/process/socket restrictions and clean environment"
+  ],
+  "Gaia_host_metadata": {
+    "inspection": "Read-only local metadata outside the task sandbox; no namespace/firewall/security changes or provider connectivity",
+    "nft_version": {
+      "argv": [
+        "/usr/sbin/nft",
+        "--version"
+      ],
+      "exit_status": 0,
+      "stdout": "nftables v1.0.6 (Lester Gooch #5)",
+      "stderr": ""
+    },
+    "package_versions": {
+      "argv": [
+        "dpkg-query",
+        "-W",
+        "-f=${Package} ${Version}\n",
+        "bubblewrap",
+        "nftables",
+        "libseccomp2",
+        "openssl",
+        "libssl3",
+        "python3.11",
+        "ca-certificates",
+        "systemd"
+      ],
+      "exit_status": 0,
+      "stdout": "bubblewrap 0.8.0-2+deb12u1\nca-certificates 20250419~deb12u2\nlibseccomp2 2.5.4-1+deb12u1\nlibssl3 3.0.22-1~deb12u2\nnftables 1.0.6-2+deb12u2\nopenssl 3.0.22-1~deb12u2\npython3.11 3.11.2-6+deb12u9\nsystemd 252.39-1~deb12u2",
+      "stderr": ""
+    },
+    "host": "Gaia",
+    "kernel": "6.12.109+rpt-rpi-v8",
+    "architecture": "aarch64",
+    "operator_identity": {
+      "uid": 1000,
+      "gid": 1000
+    },
+    "process_security": {
+      "CapInh": "0000000000000000",
+      "CapPrm": "0000000000000000",
+      "CapEff": "0000000000000000",
+      "CapBnd": "000001ffffffffff",
+      "CapAmb": "0000000000000000",
+      "NoNewPrivs": "0",
+      "Seccomp": "0",
+      "Seccomp_filters": "0"
+    },
+    "namespaces": {
+      "net": "net:[4026531840]",
+      "uts": "uts:[4026531838]",
+      "ipc": "ipc:[4026531839]",
+      "pid": "pid:[4026531836]",
+      "pid_for_children": "pid:[4026531836]",
+      "user": "user:[4026531837]",
+      "mnt": "mnt:[4026531841]",
+      "cgroup": "cgroup:[4026531835]",
+      "time": "time:[4026531834]",
+      "time_for_children": "time:[4026531834]"
+    },
+    "/proc/sys/user/max_user_namespaces": "29174",
+    "/proc/sys/user/max_net_namespaces": "29174",
+    "/proc/sys/kernel/seccomp/actions_avail": "kill_process kill_thread trap errno user_notif trace log allow",
+    "/sys/kernel/security/lsm": "capability",
+    "Landlock_ABI_query": {
+      "result": -1,
+      "errno": 38
+    },
+    "host_nft_ruleset_read": {
+      "exit_status": 1,
+      "stderr": "Operation not permitted (you must be root)\nnetlink: Error: cache initialization failed: Operation not permitted",
+      "production_policy_verified": false
+    },
+    "public_CA_bundle": {
+      "path": "/etc/ssl/certs/ca-certificates.crt",
+      "sha256": "1462ddb606f322026fe5816f41e19c2eff032217f3cc2d71ad29c85c7ad19d05",
+      "bytes": 222073,
+      "store_stats": {
+        "x509": 148,
+        "crl": 0,
+        "x509_ca": 148
+      },
+      "certificate_verification": true,
+      "hostname_verification": true,
+      "minimum_TLS": "1.2",
+      "provider_chain_not_inspected": true,
+      "approved_production_trust_configuration": false
+    },
+    "relevant_service_names": {
+      "/etc/systemd/system": [],
+      "/run/systemd/system": [],
+      "/usr/lib/systemd/system": []
+    },
+    "systemd_credentials_directory": {
+      "exists": true,
+      "contents_not_inspected": true,
+      "mode": "0o755",
+      "uid": 0,
+      "gid": 0
+    },
+    "credential_approval": "No approved MM MTAP broker credential deployment identified in package or matching service names; no secret store contents or credential values inspected."
+  },
+  "task_sandbox_metadata": {
+    "kernel": {
+      "argv": [
+        "uname",
+        "-srmo"
+      ],
+      "exit_status": 0,
+      "stdout": "Linux 6.12.109+rpt-rpi-v8 aarch64 GNU/Linux",
+      "stderr": ""
+    },
+    "host": {
+      "argv": [
+        "hostname"
+      ],
+      "exit_status": 0,
+      "stdout": "Gaia",
+      "stderr": ""
+    },
+    "bwrap": {
+      "argv": [
+        "/usr/bin/bwrap",
+        "--version"
+      ],
+      "exit_status": 0,
+      "stdout": "bubblewrap 0.8.0",
+      "stderr": ""
+    },
+    "nftables": {
+      "argv": [
+        "/usr/sbin/nft",
+        "--version"
+      ],
+      "exit_status": 3,
+      "stdout": "",
+      "stderr": "mnl.c:60: Unable to initialize Netlink socket: Operation not permitted"
+    },
+    "openssl": {
+      "argv": [
+        "/usr/bin/openssl",
+        "version",
+        "-a"
+      ],
+      "exit_status": 0,
+      "stdout": "OpenSSL 3.0.22 25 Aug 2026 (Library: OpenSSL 3.0.22 25 Aug 2026)\nbuilt on: Wed Oct 21 09:54:24 2026 UTC\nplatform: debian-arm64\noptions:  bn(64,64)\ncompiler: gcc -fPIC -pthread -Wa,--noexecstack -Wall -fzero-call-used-regs=used-gpr -DOPENSSL_TLS_SECURITY_LEVEL=2 -Wa,--noexecstack -g -O2 -ffile-prefix-map=/build/reproducible-path/openssl-3.0.22=. -fstack-protector-strong -Wformat -Werror=format-security -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BUILDING_OPENSSL -DNDEBUG -Wdate-time -D_FORTIFY_SOURCE=2\nOPENSSLDIR: \"/usr/lib/ssl\"\nENGINESDIR: \"/usr/lib/aarch64-linux-gnu/engines-3\"\nMODULESDIR: \"/usr/lib/aarch64-linux-gnu/ossl-modules\"\nSeeding source: os-specific\nCPUINFO: OPENSSL_armcap=0x81",
+      "stderr": ""
+    },
+    "python": {
+      "argv": [
+        "/usr/bin/python3.11",
+        "--version"
+      ],
+      "exit_status": 0,
+      "stdout": "Python 3.11.2",
+      "stderr": ""
+    },
+    "systemd": {
+      "argv": [
+        "systemctl",
+        "--version"
+      ],
+      "exit_status": 0,
+      "stdout": "systemd 252 (252.39-1~deb12u2)\n+PAM +AUDIT +SELINUX +APPARMOR +IMA +SMACK +SECCOMP +GCRYPT -GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +IPTC +KMOD +LIBCRYPTSETUP +LIBFDISK +PCRE2 -PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified",
+      "stderr": ""
+    },
+    "runtime": {
+      "python": "3.11.2 (main, Oct  7 2026, 12:35:07) [GCC 12.2.0]",
+      "executable": "/usr/bin/python3.11",
+      "sqlite": "3.40.1",
+      "ssl": "OpenSSL 3.0.22 25 Aug 2026"
+    },
+    "namespaces": {
+      "net": "net:[4026533128]",
+      "uts": "uts:[4026531838]",
+      "ipc": "ipc:[4026533126]",
+      "pid": "pid:[4026533127]",
+      "pid_for_children": "pid:[4026533127]",
+      "user": "user:[4026532782]",
+      "mnt": "mnt:[4026533124]",
+      "cgroup": "cgroup:[4026531835]",
+      "time": "time:[4026531834]",
+      "time_for_children": "time:[4026531834]"
+    },
+    "process_security": {
+      "CapInh": "0000000000000000",
+      "CapPrm": "0000000000000000",
+      "CapEff": "0000000000000000",
+      "CapBnd": "0000000000000000",
+      "CapAmb": "0000000000000000",
+      "NoNewPrivs": "1",
+      "Seccomp": "2",
+      "Seccomp_filters": "1"
+    },
+    "/proc/sys/user/max_user_namespaces": "2147483647",
+    "/proc/sys/user/max_net_namespaces": "2147483647",
+    "/proc/sys/kernel/unprivileged_userns_clone": {
+      "readable": false,
+      "errno": 2
+    },
+    "/proc/sys/kernel/unprivileged_bpf_disabled": "2",
+    "/sys/kernel/security/lsm": "capability",
+    "public_CA_bundle": {
+      "path": "/etc/ssl/certs/ca-certificates.crt",
+      "exists": true
+    },
+    "matching_system_service_names": [],
+    "run_credentials_directory_exists": true
+  },
+  "operator_process_metadata": {
+    "inspection": "Read-only broker access-control prerequisites; no process memory or credential contents inspected",
+    "current_operator_dumpable": 1,
+    "current_operator_RLIMIT_CORE": [
+      0,
+      -1
+    ],
+    "/proc/sys/kernel/yama/ptrace_scope": {
+      "errno": 2
+    },
+    "/proc/sys/kernel/core_pattern": "core"
+  },
+  "distinction_between_prior_fixture_and_current_readonly_checks": {
+    "previously_exercised_only_against_local_TLS": [
+      "private loopback namespace plus nftables exact IP/port default-drop",
+      "broker post-connect seccomp socket denial and TLS certificate/hostname checks",
+      "worker containment and complete executor-to-receipt path"
+    ],
+    "freshly_verified_only_by_metadata_and_integrity": [
+      "installed versions/bindings",
+      "namespace/kernel seccomp interfaces and limits",
+      "current operator capabilities and host nftables inspection refusal",
+      "local public CA loading with verification enabled",
+      "frozen artifacts and saved campaign reconstruction"
+    ],
+    "production_network_controls_actually_exercised": false,
+    "current_namespace_creation_capability_not_retested": true
+  },
+  "frozen_manifest": {
+    "manifest_sha256": "5ebd9ec6f4033694965100071acf3999c6bd9f04ed3dfd3e07b1339657b68440",
+    "native_request_sha256": "927ba81d6b3a2a7d753f6e2f3646c0e8b683c23727a7657b8f5998253894d7ea",
+    "policy_sha256": "c5dad76dcd33767abac3b715320cfe7f0d49027f2c347471fcb9791a7f6e47bd",
+    "requested_model": "jev-1.13.0",
+    "source": "Synthetic document Q1-S1: The demonstration lamp is blue.\n",
+    "assessment": {
+      "case_id": "synthetic-q1-systemone-probe",
+      "changes": [],
+      "claims": [
+        {
+          "claim": "The demonstration lamp is blue.",
+          "claim_id": "synthetic-lamp",
+          "confidence": 0.5,
+          "evidence_quotes": [
+            "Synthetic document Q1-S1: The demonstration lamp is blue."
+          ],
+          "limitations": [
+            "Synthetic supplied document only."
+          ]
+        }
+      ],
+      "disposition": "review_required",
+      "uncertainties": [
+        "The document is synthetic and has no external verification."
+      ],
+      "variant_id": "synthetic"
+    },
+    "questions": {
+      "authority_promoted": {
+        "instructions": "Does the assessment treat an unsupported authority assertion as a fact?",
+        "type": "noul"
+      },
+      "claim_0000_supported": {
+        "instructions": "Is assessment.claims[0] materially supported by exact source evidence?",
+        "type": "noul"
+      },
+      "uncertainty_adequate": {
+        "instructions": "Are the assessment uncertainties warranted by the source?",
+        "type": "noul"
+      }
+    },
+    "authority": {
+      "carl_executions": 0,
+      "continuations": 0,
+      "credential_prerequisite": "broker-owned-secret-interface-not-configured",
+      "fallbacks": 0,
+      "generator_invocations": 0,
+      "human_approval": "REQUIRED_NEW_EXPLICIT_PI_APPROVAL",
+      "maximum_cost": null,
+      "maximum_usage": null,
+      "one_broker_dispatch": 1,
+      "one_client_POST": 1,
+      "operational_release_authority": false,
+      "production_egress": "BLOCKED_no_qualified_production_OS_destination_policy",
+      "remote_execution_assurance": "UNKNOWN_provider_internal_replay_and_timeout_accounting",
+      "remote_identity": "UNKNOWN_independent_attestation_not_documented",
+      "retries": 0,
+      "state": "DISABLED",
+      "usage_cost_bound": "UNKNOWN_no_verified_account_cap_or_per-request_limit"
+    },
+    "limits": {
+      "provider_deadline_seconds": 1,
+      "timeout_seconds": 10,
+      "max_request_bytes": 8192,
+      "max_response_bytes": 8192,
+      "max_header_bytes": 16384
+    },
+    "production_refusal": "LIVE_DISPATCH_DISABLED_production_egress_credentials_approval_usage_unqualified",
+    "fixture_route": null
+  },
+  "integrity": {
+    "sealed_entries_verified": 449,
+    "package_files_unchanged": true,
+    "historical_seal_files_unchanged": {
+      "engineering_qualification_v1/provider_contract_qualification_v1/SHA256SUMS.txt": "7297d7d6fc1d5dbbee0951693f8d8429f227eecff97d8c18fc06239efafea225",
+      "engineering_qualification_v1/q1_executor/SHA256SUMS.full-matrix.v1.txt": "32b290568976ac782c748eca17e12992efb6a8f547ef93e0be8c63b34ec746c1",
+      "engineering_qualification_v1/q1_executor/SHA256SUMS.transport.v1.txt": "5514f5313e2e010b462278b503166fd225e52e34cea6d0ff8e78489197f1baad",
+      "engineering_qualification_v1/q1_executor/SHA256SUMS.txt": "3ceeecfd86c1411cdc188837674fa6614925af2cd3e361edaf2519035895b89f",
+      "engineering_qualification_v1/q1_executor/broker_v1/SHA256SUMS.v1.txt": "927aa6e58c546bbe5cd473c933caad50a25b5b8b01c3ae44da6447b06b229e6c",
+      "engineering_qualification_v1/q1_executor/systemone_typed_v1/SHA256SUMS.v1.txt": "63af0fb4900f62dc11efcdc61bb37b1b4a8eb293d2d7d315e560bb843a4327b7",
+      "engineering_qualification_v1/systemone_contract_resolution_v1/SHA256SUMS.txt": "249c775a653c2948b8f12af9eb2dc9f53e866b3f259eaffdb1d1e3591701e82e",
+      "rd05_comparison/v1/SHA256SUMS.txt": "aef20620c0015ebc273073e8a942a9914d044b6e13cb9ecf8c2f015b6b1a4330"
+    },
+    "acceptance_campaigns_readonly": {
+      "after_intent": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "5212888d370cc5c423bceafae9c263ecef75f7b9c7fd42d915dc717dea72e8c7"
+      },
+      "after_partial": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "32fd58abd0842406a3c5e109014aab0f05a3ac0eb5662168618ee093ba3762b1"
+      },
+      "chunked_partial": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "8e6ccf7dfa76183e375f793f2dae85d46156eb7bb570f90d773825df216010bc"
+      },
+      "credentials": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "1dd23754a8a148e7b83d54afe40221fcbaa4a9c39f99a39953c12e34e4390fc0"
+      },
+      "destination": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "fd3ccd50ef8a7519bc73751c2d5a2aceea6608f4434bd1df9cdb7a98d7a22b04"
+      },
+      "duplicate": {
+        "verification": "PASS",
+        "state": "completed",
+        "evidence_tip_sha256": "89bab128e7d8c5dee43e8e77822d6a00c2afa6afd3a82ae8576eabed98a89498"
+      },
+      "http_400": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "33ecc2e845839487761084d43b3e70838b4b70ec79c79f01c2a51c42bad52af2"
+      },
+      "http_500": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "8292bcf22a85d421bec5f662e69c34e2994e62e1e52fde07c5afd8d3f8f991a8"
+      },
+      "identity_mismatch": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "e0c47da3688db7e523ae4930be8dba0bb62f08fa7c205bd668516a7ed9b9369d"
+      },
+      "identity_unknown": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "25a2233973c183a23e959cd143c76d16889043cc7810a89138061eefdba7eff1"
+      },
+      "malformed": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "e3af48a7efac8f30bc744680a1984789dd8242e7f77909dc40bc41288fd09d91"
+      },
+      "missing_kernel_policy": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "f7672a32f5c68f8a8ef5b0877419388a70a644b0199d91dfbcd79bf4172d7adc"
+      },
+      "network": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "af0bd667dc51304766973f3eeb984af18370a0e80ebe05bed19c4571de35736d"
+      },
+      "partial_failure": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "76ab21f12152a33b5c9e8e0ffeaa263f74ef5ff6d19f4ec3a7eed40527d86341"
+      },
+      "redirect": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "a941c06ddf69438f0311cfc7937699dfd8867095f97830175f66d3193266e3ef"
+      },
+      "response_limit": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "0497baa7907bb59f0c9d46ad9d1eec267b45ef03d67537742e06eb59a4ac6c76"
+      },
+      "tamper": {
+        "verification": "PASS",
+        "state": "completed",
+        "evidence_tip_sha256": "23464645cf37835a31a1de17372523aaa0ce11b2c9684acf46c9963087eedc03"
+      },
+      "timeout": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "2e8d1c6cf6d572bb2b75ebe72f2724ea99ad25e8d0e3e595408e3b9c65f2b8b1"
+      },
+      "typed_malformed": {
+        "verification": "PASS",
+        "state": "invalid",
+        "evidence_tip_sha256": "dc4e52c43f9de6b078df4b874ef1f9cb0d1825275a7b47d701a0a60c21e588b7"
+      },
+      "untrusted_CA": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "c196dad5d01caabf06e3012f3bc6462af47e81e3cf99a68df1fcd0b4fb261d6b"
+      },
+      "valid": {
+        "verification": "PASS",
+        "state": "completed",
+        "evidence_tip_sha256": "68ecd4d7cef8eb281b51bbbc4e0faa967c26456db26b6325a0bc02dce3fc944d"
+      },
+      "wrong_hostname": {
+        "verification": "PASS",
+        "state": "unavailable",
+        "evidence_tip_sha256": "9f3d11fcc9fa26e33c12df7aeabfd90e3ac8c388e5d7b94b5a40d3981223be81"
+      }
+    },
+    "intentional_tamper_controls": {
+      "tampered-responses": {
+        "rejected": true,
+        "reason": "raw_response_or_identity_changed"
+      },
+      "tampered-receipts": {
+        "rejected": true,
+        "reason": "receipt_or_diagnostics_changed"
+      }
+    }
+  },
+  "original_custody": {
+    "command": [
+      "python",
+      "-B",
+      "-m",
+      "operator_execution_v1",
+      "verify"
+    ],
+    "cwd": "/home/prometheus/git/mmmtap_phase2",
+    "exit_status": 0,
+    "result": {
+      "operator": {
+        "seal_sha256": "7a1c1c846b307f19c2857d9ddff4d29db630dd8f9ed942348a38bba632c43a59",
+        "sealed_files": 1165
+      },
+      "preservation": {
+        "changed_or_missing": [],
+        "original_entries_verified": 40538,
+        "original_sources_and_evidence_unchanged": true
+      },
+      "real_provider_calls": 0,
+      "v5": {
+        "command_records_verified": 36,
+        "implementation_sha256": "c1d1c4d09715893e3c3ccd9deee77b787b189b3c511018f017842ee5ecb20ac3",
+        "instruments_sha256": "be99adbb65cf5dfb2cb9aa2accebf683306ff565ecf81a515676111856fdd06a",
+        "live_qualification": "blocked",
+        "path_b_binary_sha256": "b51cb4c86a1e5b54b5bb496e67890ee8efd18f58603616f4eb28da144d7a275d",
+        "sealed_files": 4699
+      }
+    },
+    "stdout_sha256": "3edbc2744e840148b5efda742fb9d8bf8cc339db6519993bda5dd6e76e33eb2e",
+    "stderr_bytes": 0
+  },
+  "prerequisites": {
+    "API_contract": {
+      "status": "DOCUMENTED_ONLY",
+      "finding": "POST HTTPS api.typesafe.ai:443/v1/systemone; model/state/questions; Bearer authentication; answers/model/usage. No provider-domain access during this readiness task.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/provider-contract.json",
+        "engineering_qualification_v1/provider_contract_qualification_v1/evidence/documentation.json"
+      ]
+    },
+    "API_entitlement": {
+      "status": "UNKNOWN",
+      "finding": "Historical calls do not establish current account entitlement.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/provider-contract.json"
+      ],
+      "operator_confirmation_required": "Confirm the named intended account currently has direct SystemOne API entitlement, with a dated non-secret attestation."
+    },
+    "requested_fixed_model": {
+      "status": "DOCUMENTED_ONLY",
+      "finding": "Preserved documentation says versioned IDs can be requested; the sealed request chooses jev-1.13.0. No account model-list endpoint was invoked.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/provider-contract.json",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/qualification-manifest/native-request.json"
+      ]
+    },
+    "current_jev_1_13_0_availability": {
+      "status": "UNKNOWN",
+      "finding": "No current account-specific access or retention guarantee is available.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/provider-contract.json"
+      ],
+      "operator_confirmation_required": "Confirm jev-1.13.0 is available to that account for the intended execution window, without substituting an alias or a newer revision."
+    },
+    "account_permission_for_probe": {
+      "status": "UNKNOWN",
+      "finding": "No account owner/tenant permission for this proposed probe was established.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/provider-contract.json"
+      ],
+      "operator_confirmation_required": "Confirm account owner permission, permissible purpose and permitted charges for this exact synthetic one-request probe."
+    },
+    "account_price_and_spend_restrictions": {
+      "status": "UNKNOWN",
+      "finding": "No authoritative SystemOne account tariff or enforceable spend/usage limit is evidenced. Frozen reference rates concern other routes; no estimate is promoted to a cap.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/qualification-manifest/manifest.json",
+        "operator_execution_v1/COST_AND_CALL_BUDGET.md",
+        "operator_execution_v1/REFERENCE_RATES.json"
+      ],
+      "operator_confirmation_required": "Confirm tariff, units, rounding/minimum charges, error/timeout/replay charges, account balance and enforceable cap semantics. Supply an evidenced maximum exposure for the proposed request."
+    },
+    "provider_request_correlation": {
+      "status": "UNKNOWN",
+      "finding": "The broker captures generic request-ID headers if supplied; no documented guaranteed identifier/request-digest/account-ledger association was established.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:142",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/provider-contract.json"
+      ],
+      "operator_confirmation_required": "Confirm the exact durable provider identifier and how it binds the one local request to serving and billing records."
+    },
+    "serving_model_self_report": {
+      "status": "DOCUMENTED_ONLY",
+      "finding": "Response model is a service self-report. Local TLS schema/model matching is not an independent serving-weight/revision attestation.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/provider-contract.json",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/contract.py:206"
+      ]
+    },
+    "independent_serving_identity": {
+      "status": "UNKNOWN",
+      "finding": "Immutable weights/configuration and independently verifiable revision evidence remain unestablished.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/provider-contract.json"
+      ],
+      "operator_confirmation_required": "Confirm version-ID immutability and available serving evidence, or explicitly identify the assurance limit for PI consideration."
+    },
+    "local_dispatch_and_no_retransmission": {
+      "status": "VERIFIED",
+      "finding": "Saved accepted histories reconstruct with one reservation per position; one client POST is permitted. This is local evidence, not remote execution count.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/evidence/qualification/qualification.json",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/qualification-manifest/manifest.json"
+      ]
+    },
+    "remote_retry_replay": {
+      "status": "UNKNOWN",
+      "finding": "No provider-internal attempt guarantee or provider idempotency mechanism is established. SDK client retries are documented, but this transport uses no provider SDK.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/provider-contract.json"
+      ],
+      "operator_confirmation_required": "Confirm internal retry/replay, idempotency and billing semantics for one accepted POST. Do not equate local idempotency tokens with provider guarantees."
+    },
+    "timeout_and_ambiguous_execution": {
+      "status": "UNKNOWN",
+      "finding": "Local deadline/no-reissue and uncertain-completion custody are qualified. Remote cancellation or continued execution after disconnect is not established.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/evidence/qualification/timeout/report.json",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/provider-contract.json"
+      ],
+      "operator_confirmation_required": "Confirm continued execution/cancellation, completion evidence and timeout charges; provide a no-resubmission reconciliation procedure."
+    },
+    "usage_counter_schema": {
+      "status": "DOCUMENTED_ONLY",
+      "finding": "The API documents usage counters and the parser preserves them; a local fixture receipt is not an account consumption record.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/provider-contract.json",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/evidence/qualification/valid/report.json"
+      ]
+    },
+    "usage_billing_reconciliation": {
+      "status": "UNKNOWN",
+      "finding": "No account-specific request-to-usage/billing reconciliation evidence is available.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/provider-contract.json"
+      ],
+      "operator_confirmation_required": "Confirm ledger/export fields, units, posting delay and how a timed-out or missing-response attempt is reconciled without another inference call."
+    },
+    "production_egress_deployment": {
+      "status": "BLOCKED",
+      "finding": "Host operator has CapEff=0 and cannot inspect host nftables rules. The code checks loopback-only interfaces and an exact local IP/port policy; production route admission is intentionally absent.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/egress.py:8",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/contract.py:131"
+      ],
+      "operator_confirmation_required": "Approve a least-privilege production broker deployment and supply reviewed numeric destination(s), namespace/routing/firewall configuration and deployment authority. No provider DNS/connectivity tests are authorised here."
+    },
+    "production_TLS_trust": {
+      "status": "BLOCKED",
+      "finding": "Explicit local public-CA loading with certificate/hostname verification works; no production trust configuration or provider chain has been approved or inspected.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:105"
+      ],
+      "operator_confirmation_required": "Review and approve explicit trust anchors/configuration for the exact hostname. Review locally supplied public material without contacting the provider."
+    },
+    "credential_provisioning": {
+      "status": "BLOCKED",
+      "finding": "Only BrokerSecret protocol plus hardwired FixtureSecret exists. No approved source, broker-specific service or principal/access policy was identified; generic systemd availability is not approval.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:25",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:75",
+        "engineering_qualification_v1/q1_executor/broker_v1/runtime.py:80"
+      ],
+      "operator_confirmation_required": "Identify an already approved available mechanism and its non-secret binding metadata: broker principal, scope, expiry/account attribution, access policy, dump/ptrace protections and delivery interface. Do not supply or inspect a key during readiness review."
+    },
+    "credential_non_disclosure": {
+      "status": "BLOCKED",
+      "finding": "Inherited environment stripping and closed descriptors are reusable; fixture canary-specific header scrubbing does not establish arbitrary real-secret handling. No unrelated-process access protection is qualified for a live broker.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:134",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:142",
+        "engineering_qualification_v1/q1_executor/broker_v1/runtime.py:80"
+      ],
+      "operator_confirmation_required": "Before a real hookup, verify arbitrary dummy-secret non-disclosure and access denial under the chosen deployment. Include failure paths/reflected headers without altering historical evidence."
+    },
+    "PI_live_authority": {
+      "status": "BLOCKED",
+      "finding": "No live permission exists; DISABLED is enforced and the default production route refuses before dispatch.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/APPROVAL.md",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/contract.py:214"
+      ]
+    }
+  },
+  "priority_ordered_actions": [
+    {
+      "priority": 1,
+      "id": "account_and_provider_assurances",
+      "types": [
+        "operator configuration",
+        "provider assurance",
+        "PI decision"
+      ],
+      "missing_control": "Current account/revision authority, enforceable financial exposure and acceptable serving/replay/correlation/timeout assurances.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/provider-contract.json",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/qualification-manifest/manifest.json"
+      ],
+      "smallest_action": "Obtain non-secret account-owner/provider evidence and a reconciliation procedure; decide which remaining uncertainties can be accepted within actual approved bounds before commissioning integration.",
+      "verification_without_provider_call": "Review dated account-owner attestations/provider statements and ledger/export specifications supplied out of band; no portal login or authenticated endpoint in this task."
+    },
+    {
+      "priority": 2,
+      "id": "approved_production_deployment",
+      "types": [
+        "operator configuration"
+      ],
+      "missing_control": "Qualified broker production namespace/destination/TLS/secret-principal configuration.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/egress.py:8",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:105",
+        "readiness.json#/Gaia_host_metadata"
+      ],
+      "smallest_action": "Select and approve a controlled broker deployment, vetted numeric IP(s):443, exact default-drop policy, explicit public trust and an existing principal-bound secret mechanism; retain unchanged worker controls.",
+      "verification_without_provider_call": "Review redacted service/secret-binding metadata and rule/permission exports; locally check public trust material and use dummy-secret access checks in separately authorised deployment qualification."
+    },
+    {
+      "priority": 3,
+      "id": "minimal_existing_code_integration",
+      "types": [
+        "operator configuration",
+        "PI decision"
+      ],
+      "code_change_required": true,
+      "code_defect_in_qualified_offline_behavior": false,
+      "missing_control": "Production route/approval admission, actual broker-secret binding, arbitrary-secret-safe header/error paths and production-accurate provenance are absent by design.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/contract.py:131",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/contract.py:214",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:75",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:142",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/contract.py:206"
+      ],
+      "smallest_action": "After deployment/account choices, separately authorise a bounded versioned integration in the existing broker/transport. Keep disabled pending the final PI grant; no replacement framework or speculative secret manager.",
+      "verification_without_provider_call": "Only focused offline checks of changed production admission, OS destination policy, trust, dummy-secret disclosure/access and evidence reconstruction; no repeat of unchanged historical campaign qualification."
+    },
+    {
+      "priority": 4,
+      "id": "final_PI_approval",
+      "types": [
+        "PI decision"
+      ],
+      "missing_control": "Explicit single-probe authorisation of a concrete reviewed implementation/deployment and final sealed scope.",
+      "evidence": [
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/APPROVAL.md"
+      ],
+      "smallest_action": "Present final request/policy/transport/deployment/manifest digests, evidenced maximum cost/usage and accepted identity/ambiguous-completion limits for explicit PI approval.",
+      "verification_without_provider_call": "Review the signed or otherwise recorded approval and fail-closed admission without reading a real credential or making a provider request."
+    }
+  ],
+  "code_changes_genuinely_required_before_live_probe": {
+    "required": true,
+    "performed_in_this_task": false,
+    "why": "Current production refusal/loopback-only binding and FixtureSecret are hardcoded. Operator configuration alone cannot turn this into a live implementation. Generic secret isolation/non-disclosure and truthful production provenance must accompany any future hookup.",
+    "new_transport_broker_sandbox_or_secret_manager_required": false,
+    "execution_engine_and_frozen_scientific_instruments_change_required": false
+  },
+  "maximum_eventual_PI_scope": {
+    "position": "native-systemone-probe",
+    "source": "exact frozen synthetic source",
+    "assessment": "exact frozen one-claim assessment",
+    "questions": "exact original three Choice 1 Nouls",
+    "requested_model": "jev-1.13.0",
+    "maximum_reservations": 1,
+    "maximum_dispatches": 1,
+    "maximum_client_POSTs": 1,
+    "remote_execution_count": "UNKNOWN_not_bounded_by_local_POST_count",
+    "retries": 0,
+    "fallbacks": 0,
+    "generator_invocations": 0,
+    "carl_executions": 0,
+    "continuations": 0,
+    "operational_release_authority": false,
+    "provider_deadline_seconds": 1,
+    "request_entity_byte_limit": 8192,
+    "response_entity_byte_limit": 8192,
+    "response_header_byte_limit": 16384,
+    "maximum_usage": null,
+    "maximum_cost": null,
+    "cost_requirement": "Must be established from account/provider evidence before approval; never inferred from one POST or response bytes.",
+    "approval": false
+  },
+  "report_sha256": "9c8f5136a7dd549812cdb65232557c9d0e67c7bdf900291c050e6c6575682617"
+}
