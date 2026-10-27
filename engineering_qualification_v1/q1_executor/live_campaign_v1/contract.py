@@ -197,11 +197,13 @@ def validate_manifest(root, m, raw):
     validate_route(q["production_route"], fixture=False)
     ext = m["transport"]
     spec = specification()
+    legacy_spec = decode(read_file(PACKAGE, "legacy-campaign-specification.v1.json"))
     for k in ("adapter", "bootstrap"):
         spec["bindings"][k]["path"] = ext["specification"]["bindings"][k]["path"]
+        legacy_spec["bindings"][k]["path"] = ext["specification"]["bindings"][k]["path"]
     if (set(ext) != {"version", "specification", "configuration_sha256", "scenarios"}
-            or ext["version"] != VERSION or ext["specification"] != spec
-            or ext["configuration_sha256"] != digest(spec)
+            or ext["version"] != VERSION or ext["specification"] not in (spec, legacy_spec)
+            or ext["configuration_sha256"] != digest(ext["specification"])
             or set(ext["scenarios"]) - {p["id"] for p in ps}
             or any(s not in {"valid", "invalid_assessment", "identity_unknown", "identity_mismatch", "http_500",
                 "jev_interrupt", "empty_claims", "bad_quote", "destination", "policy_digest", "alter_request", "network", "spawn", "exec",

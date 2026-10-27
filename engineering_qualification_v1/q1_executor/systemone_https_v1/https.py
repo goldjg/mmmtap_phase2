@@ -67,7 +67,8 @@ def dispatch(db, ident, incoming, m, env, rec, *, credential_fd=None, credential
     from ..broker_v1.broker import append
     require_fixture(m)
     from ..live_campaign_v1.contract import is_campaign, CLI_DESTINATION
-    campaign = is_campaign(m)
+    from ..lower_assurance_v1.contract import is_lower
+    campaign = is_campaign(m) or is_lower(m)
     selected_destination = env["destination"]
     if campaign:
         expected = DESTINATION if env["role"] == "specialist" else CLI_DESTINATION
@@ -75,6 +76,9 @@ def dispatch(db, ident, incoming, m, env, rec, *, credential_fd=None, credential
             raise ValueError("campaign_destination_not_exactly_approved")
         q = m["production_campaign"]
         route = q["fixture_route"] or q["production_route"]
+        if is_lower(m):
+            from ..lower_assurance_v1.admission import route as lower_route
+            route=lower_route(m)
         if env["role"] == "generator" and q["fixture_route"] is None:
             raise ValueError("BLOCKED_subscription_CLI_strict_boundary_not_qualified")
     else:

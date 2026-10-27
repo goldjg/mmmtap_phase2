@@ -24,7 +24,8 @@ class BrokerTransport:
     def __init__(self, spec, root, ident):
         from ..systemone_https_v1.contract import specification as https_specification
         from ..live_campaign_v1.contract import specification as campaign_specification
-        if spec not in (specification(), https_specification(), campaign_specification()):
+        from ..lower_assurance_v1.contract import specification as lower_specification
+        if spec not in (specification(), https_specification(), campaign_specification(), lower_specification()):
             raise ValueError("only_pinned_offline_broker_permitted")
         self.spec, self.root, self.ident = spec, root, ident
 
@@ -57,14 +58,15 @@ class BrokerTransport:
                "bootstrap_verified": False, "cleanup": False, "processes": []}
         from ..systemone_https_v1 import VERSION as HTTPS_VERSION
         from ..live_campaign_v1 import VERSION as CAMPAIGN
-        https = spec["contract"] in (HTTPS_VERSION, CAMPAIGN)
+        from ..lower_assurance_v1 import VERSION as LOWER
+        https = spec["contract"] in (HTTPS_VERSION, CAMPAIGN, LOWER)
         if https:
             rec["https"] = None
         jevkey = "credential_binding" in envelope
         credential_fds = []
         if jevkey:
             from ..systemone_https_v1.credential import configured, harden
-            if spec["contract"] == CAMPAIGN:
+            if spec["contract"] in (CAMPAIGN, LOWER):
                 from ..live_campaign_v1.credential import configured
             rec["credential_handoff"] = {"contract": envelope["credential_binding"]["version"],
                 "source_configured": configured(), "launcher_protection": harden(),
@@ -98,6 +100,10 @@ class BrokerTransport:
                 "engineering_qualification_v1.q1_executor.broker_v1.broker",
                 "--campaign", str(self.root), "--position", self.ident,
                 "--manifest", envelope["manifest_sha256"]]
+            if spec["contract"] == LOWER:
+                from ..lower_assurance_v1.admission import broker_prefix
+                candidate=decode((self.root/"manifest.json").read_bytes())
+                argv=broker_prefix(candidate)+argv
             inherited = ()
             if jevkey:
                 parent_channel, broker_channel = socket.socketpair(socket.AF_UNIX, socket.SOCK_SEQPACKET)
@@ -114,7 +120,7 @@ class BrokerTransport:
                 broker_channel.close(); credential_fds.remove(broker_channel)
                 try:
                     source = None
-                    if spec["contract"] == CAMPAIGN:
+                    if spec["contract"] in (CAMPAIGN, LOWER):
                         from ..live_campaign_v1.credential import issue
                         source = issue
                     handoff = handoff_from_environment(parent_channel, broker.pid, source=source)

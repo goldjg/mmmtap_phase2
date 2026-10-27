@@ -79,6 +79,9 @@ def base_envelope_for(m, p, sealed):
 
 
 def envelope_for(m, p, sealed):
+    from ..lower_assurance_v1.contract import is_lower, envelope_for as lower_envelope
+    if is_lower(m):
+        return lower_envelope(m, p, sealed)
     from ..systemone_https_v1.contract import is_https, envelope_for as https_envelope
     return (https_envelope if is_https(m) else base_envelope_for)(m, p, sealed)
 
@@ -86,7 +89,8 @@ def envelope_for(m, p, sealed):
 def is_broker(m):
     from ..systemone_https_v1 import VERSION as HTTPS_VERSION
     from ..live_campaign_v1 import VERSION as CAMPAIGN
-    return m.get("transport", {}).get("version") in (VERSION, HTTPS_VERSION, CAMPAIGN)
+    from ..lower_assurance_v1 import VERSION as LOWER
+    return m.get("transport", {}).get("version") in (VERSION, HTTPS_VERSION, CAMPAIGN, LOWER)
 
 
 def message(envelope, sealed):
@@ -96,7 +100,8 @@ def message(envelope, sealed):
 def verify_record(rec, envelope, spec, root, previous):
     from ..systemone_https_v1 import VERSION as HTTPS_VERSION
     from ..live_campaign_v1 import VERSION as CAMPAIGN
-    if rec["contract"] in (HTTPS_VERSION, CAMPAIGN):
+    from ..lower_assurance_v1 import VERSION as LOWER
+    if rec["contract"] in (HTTPS_VERSION, CAMPAIGN, LOWER):
         from ..systemone_https_v1.audit import verify_transport
         return verify_transport(rec, envelope, spec, root, previous)
     if rec["contract"] != VERSION:

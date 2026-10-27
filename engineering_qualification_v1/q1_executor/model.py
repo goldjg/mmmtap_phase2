@@ -56,6 +56,9 @@ def validate_manifest(root):
     check_bindings()
     raw = read_file(root, "manifest.json")
     m = decode(raw)
+    from .lower_assurance_v1.contract import is_lower, validate_manifest as validate_lower
+    if is_lower(m):
+        return validate_lower(root, m, raw)
     from .live_campaign_v1.contract import is_campaign, validate_manifest as validate_campaign
     if is_campaign(m):
         return validate_campaign(root, m, raw)
@@ -154,6 +157,9 @@ def validate_slice_manifest(root, m, raw):
 
 
 def request_for(m, p, receipts, root, *, captured=None):
+    from .lower_assurance_v1.contract import is_lower, request_for as lower_request
+    if is_lower(m):
+        return lower_request(m, p, receipts, root, captured=captured)
     from .live_campaign_v1.contract import is_campaign, request_for as campaign_request
     if is_campaign(m):
         return campaign_request(m, p, receipts, root, captured=captured)

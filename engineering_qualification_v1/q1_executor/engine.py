@@ -21,7 +21,7 @@ def now():
 def software():
     files = {p.name: raw_hash(p.read_bytes()) for p in sorted(PACKAGE.iterdir())
              if p.suffix in (".py", ".json") and not p.name.startswith("test_")}
-    for folder in ("systemone_typed_v1", "systemone_https_v1", "live_campaign_v1"):
+    for folder in ("systemone_typed_v1", "systemone_https_v1", "live_campaign_v1", "lower_assurance_v1"):
         typed = PACKAGE / folder
         files.update({p.relative_to(PACKAGE).as_posix(): raw_hash(p.read_bytes())
                       for p in sorted(typed.iterdir()) if p.suffix in (".py", ".json") and not p.name.startswith("test_")})
@@ -41,7 +41,8 @@ def historical_software_compatible(m, recorded):
     choice1 = decode(read_file(PACKAGE, "legacy-software.choice1.v1.json"))
     https = decode(read_file(PACKAGE, "legacy-software.https.v1.json"))
     jevkey = decode(read_file(PACKAGE, "legacy-software.jevkey.v1.json"))
-    return (recorded in (legacy, choice1, https, jevkey)
+    full_live = decode(read_file(PACKAGE, "legacy-software.full-live.v1.json"))
+    return (recorded in (legacy, choice1, https, jevkey, full_live)
             and all(recorded[k] == runtime[k] for k in
                     ("python_version", "sqlite_version", "python_executable_sha256")))
 
@@ -121,6 +122,9 @@ def create(root: Path, fixture: Path = PACKAGE / "fixtures"):
             from .live_campaign_v1.contract import is_campaign, specification as campaign_spec
             if is_campaign(manifest):
                 current = campaign_spec()
+            from .lower_assurance_v1.contract import is_lower, specification as lower_spec
+            if is_lower(manifest):
+                current = lower_spec()
         if manifest["transport"]["specification"] != current:
             raise ValueError("historical_transport_configuration_readonly")
     root.mkdir(mode=0o700, parents=False, exist_ok=False)
@@ -130,6 +134,13 @@ def create(root: Path, fixture: Path = PACKAGE / "fixtures"):
             raise ValueError("simulation_packets_must_be_flat_files")
         with (root / name).open("xb") as stream:
             stream.write(read_file(fixture, name)); stream.flush(); os.fsync(stream.fileno())
+    from .lower_assurance_v1.contract import is_lower
+    if is_lower(manifest) and not manifest["simulation_only"]:
+        from .lower_assurance_v1.admission import require_authorisation
+        if root != Path(manifest["launch_candidate"]["custody_destination"]):
+            raise ValueError("launch_custody_destination_not_the_sealed_candidate")
+        with (root / "launch-authorisation.json").open("xb") as stream:
+            stream.write(require_authorisation(manifest)[1]);stream.flush();os.fsync(stream.fileno())
     (root / ".lock").touch(exist_ok=False)
     db = sqlite3.connect(root / "campaign.sqlite3", isolation_level=None)
     try:
@@ -151,9 +162,12 @@ def create(root: Path, fixture: Path = PACKAGE / "fixtures"):
             creation = {"manifest_file_sha256": raw_hash(manifest_raw), "manifest_sha256": manifest["manifest_sha256"],
                         "software": software(), "execution_contract": VERSION, "schema_sha256": schema_digest(db)}
             from .live_campaign_v1.contract import is_campaign
-            if is_campaign(manifest):
+            from .lower_assurance_v1.contract import is_lower
+            if is_campaign(manifest) or is_lower(manifest):
                 from .live_campaign_v1.launch import initialise_authority
                 creation["deployment_authority"] = initialise_authority(root, fixture)
+            if is_lower(manifest) and not manifest["simulation_only"]:
+                creation["launch_authorisation_sha256"] = raw_hash(read_file(root, "launch-authorisation.json"))
             db.execute("INSERT INTO meta VALUES ('creation',?)", (encode(creation),))
             for p in manifest["positions"]:
                 db.execute("INSERT INTO positions VALUES (?, 'scheduled')", (p["id"],))
@@ -221,6 +235,12 @@ def make_receipt(db, root, m, p, state, reason, at, *, saved=None, times=None, b
         receipt.update(schema=m["specialist_observation"]["version"] + "-receipt",
                        instrument_contract=m["specialist_observation"]["version"],
                        transport_contract=m["transport"]["version"])
+    from .lower_assurance_v1.contract import is_lower
+    if is_lower(m):
+        receipt.update(assurance=m["assurance"], assurance_sha256=digest(m["assurance"]),
+                       strict_scientific_pooling_permitted=False)
+        if p["kind"] == "generator":
+            receipt["CLI_evidence"] = transport_record.get("cli") if transport_record else None
     return decode(encode(receipt))
 
 
@@ -285,7 +305,11 @@ def execute_transport(db, root, m, p, req, interrupt_position):
             os._exit(75)
     sealed = db.execute("SELECT request FROM attempts WHERE id=?", (p["id"],)).fetchone()[0]
     from .broker_v1.contract import is_broker
-    if is_broker(m):
+    from .lower_assurance_v1.contract import is_lower
+    if is_lower(m) and p["kind"] == "generator":
+        from .lower_assurance_v1.cli import CLITransport
+        implementation = CLITransport(m, root, p)
+    elif is_broker(m):
         from .broker_v1.runtime import BrokerTransport
         implementation = BrokerTransport(m["transport"]["specification"], root, p["id"])
     else:
@@ -342,6 +366,9 @@ def resume(root: Path, provider: Provider | None = None, *, interrupt_after_rese
         db = connect(root)
         try:
             m = verify_database(db, root)["manifest"]
+            from .lower_assurance_v1.contract import is_lower, require_execution
+            if is_lower(m):
+                require_execution(m)
             if ("transport" in m) != offline_subprocess:
                 raise ValueError("explicit_offline_subprocess_selection_required_for_transport_manifest")
             for p in m["positions"]:
@@ -409,7 +436,8 @@ def verify_database(db, root):
     expected_creation = {"manifest_file_sha256": raw_hash(raw_manifest), "manifest_sha256": m["manifest_sha256"],
                          "software": software(), "execution_contract": VERSION, "schema_sha256": schema_digest(db)}
     from .live_campaign_v1.contract import is_campaign
-    if is_campaign(m):
+    from .lower_assurance_v1.contract import is_lower
+    if is_campaign(m) or is_lower(m):
         # Read-only reconstruction checks the sealed authority record without
         # requiring the original deployment inode on an archival checkout.
         # Active execution additionally calls validate_authority under flock.
@@ -419,6 +447,11 @@ def verify_database(db, root):
                     "database_device", "database_inode", "authority_directory", "scope"}):
             raise ValueError("deployment_authority_binding_changed")
         expected_creation["deployment_authority"] = authority
+    if is_lower(m) and not m["simulation_only"]:
+        from .lower_assurance_v1.admission import validate_decision
+        approval_raw=read_file(root,"launch-authorisation.json")
+        validate_decision(m,approval_raw)
+        expected_creation["launch_authorisation_sha256"]=raw_hash(approval_raw)
     if (historical_software_compatible(m, creation.get("software"))
             and all(r[0] in TERMINAL for r in db.execute("SELECT state FROM positions"))):
         expected_creation["software"] = creation["software"]
@@ -573,8 +606,11 @@ def verify_database(db, root):
                "all_positions_terminal": all(s in TERMINAL for s in states.values()), "live_execution_authorized": False}
     if "transport" in m:
         summary.update(fake_provider_invocations=0, subprocess_transport_launch_intents=len(invoked),
-                       subprocess_bootstraps_verified=sum(r["bootstrap_verified"] for r in progress.values()),
+                       subprocess_bootstraps_verified=sum(r.get("bootstrap_verified",False) for r in progress.values()),
                        transport_contract=m["transport"]["version"])
+    if is_lower(m):
+        summary.update(assurance=m["assurance"]["designation"], strict_scientific_pooling_permitted=False,
+            lower_assurance_CLI_launches=sum(r.get("cli",{}).get("top_level_CLI_launches",0) for r in progress.values()))
     from .broker_v1.contract import is_broker
     if is_broker(m):
         from .broker_v1.broker import audit

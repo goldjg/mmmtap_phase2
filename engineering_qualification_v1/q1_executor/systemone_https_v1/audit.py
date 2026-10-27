@@ -19,7 +19,8 @@ TRANSITIONS = {
 def verify_transport(rec, envelope, spec, root, previous):
     def base(value):
         from ..live_campaign_v1 import VERSION as CAMPAIGN
-        if "https" not in value or value["contract"] not in (VERSION, CAMPAIGN):
+        from ..lower_assurance_v1 import VERSION as LOWER
+        if "https" not in value or value["contract"] not in (VERSION, CAMPAIGN, LOWER):
             raise ValueError("https_transport_record_shape")
         has_binding = "credential_binding" in envelope
         if has_binding:
@@ -101,7 +102,9 @@ def audit(db, m):
     from ..broker_v1.contract import envelope_for
     histories, rejections = {}, 0
     from ..live_campaign_v1.contract import is_campaign
-    campaign = is_campaign(m)
+    from ..lower_assurance_v1.contract import is_lower
+    lower = is_lower(m)
+    campaign = is_campaign(m) or lower
     positions = {p["id"]: p for p in m["positions"]}
     for (body,) in db.execute("SELECT body FROM events ORDER BY seq"):
         event = decode(body); ident, rec = event["position"], event["data"]
@@ -139,12 +142,16 @@ def audit(db, m):
             raise ValueError("https_identity_without_complete_response")
         hist.append(rec)
     for ident, raw, observed in db.execute("SELECT id,raw,observed FROM responses"):
+        if lower and positions[ident]["kind"] == "generator":
+            continue  # CLI streams are audited by their own transport verifier.
         hist = histories.get(ident, [])
         if hist and (raw != transport.unb64(hist[-1]["raw_b64"]) or decode(observed) != hist[-1]["observed_identity"]):
             raise ValueError("https_response_custody_changed")
         if not hist and raw:
             raise ValueError("https_response_without_dispatch")
     for ident, _, record in db.execute("SELECT id,envelope,record FROM transports"):
+        if lower and positions[ident]["kind"] == "generator":
+            continue
         if record:
             rec = decode(record)
             hist = histories.get(ident, [])
