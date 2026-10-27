@@ -1,0 +1,37 @@
+{
+  "inspection": "non-secret executable bytes only; no CLI invocation, credential or auth-file access",
+  "paths": {
+    "gemini": {
+      "configured_binary_exists": true,
+      "configured_binary_matches": false,
+      "configured_path": "/home/prometheus/.local/bin/copilot",
+      "configured_sha256": "6403d0ba6c55f888dc7c745597373da690f041c94e4691b3894ce70fa27cde7a",
+      "current_command_path": "/home/prometheus/.local/bin/copilot",
+      "current_executable_sha256": "1253bb0cf8704e94d849639182a356e85f77577cafd1f566ab88d75ad19abb35",
+      "current_matches_historical_pin": false,
+      "current_resolved_path": "/home/prometheus/.local/bin/copilot",
+      "model": "gemini-3.8-flash"
+    },
+    "haiku": {
+      "configured_binary_exists": true,
+      "configured_binary_matches": false,
+      "configured_path": "/home/prometheus/.local/bin/copilot",
+      "configured_sha256": "6403d0ba6c55f888dc7c745597373da690f041c94e4691b3894ce70fa27cde7a",
+      "current_command_path": "/home/prometheus/.local/bin/copilot",
+      "current_executable_sha256": "1253bb0cf8704e94d849639182a356e85f77577cafd1f566ab88d75ad19abb35",
+      "current_matches_historical_pin": false,
+      "current_resolved_path": "/home/prometheus/.local/bin/copilot",
+      "model": "claude-haiku-5.5"
+    },
+    "sol": {
+      "configured_binary_exists": false,
+      "configured_path": "/home/prometheus/.codex/packages/standalone/releases/0.162.1-aarch64-unknown-linux-musl/bin/codex",
+      "configured_sha256": "071cbe8d821cf1b02b6d8ba6c8b7991b228fcb8519dcb68a37d31222bb8cabe5",
+      "current_command_path": "/home/prometheus/.local/bin/codex",
+      "current_executable_sha256": "8813c8d8a4cea2eeba271b72ab22f49628b184b24ab18dbef06b4ce41e9a8d39",
+      "current_matches_historical_pin": false,
+      "current_resolved_path": "/home/prometheus/.codex/packages/standalone/releases/0.164.0-aarch64-unknown-linux-musl/bin/codex",
+      "model": "gpt-6.1-sol"
+    }
+  }
+}

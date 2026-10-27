@@ -1,0 +1,23 @@
+{
+  "architecture": "aarch64",
+  "capability_metadata": {
+    "CapEff": "0000000000000000",
+    "NoNewPrivs": "1",
+    "Seccomp": "2"
+  },
+  "host_firewall_or_routing_modified": false,
+  "inspection": "read-only local metadata; no DNS, account, login, authentication or connectivity tests",
+  "kernel": "6.12.109+rpt-rpi-v8",
+  "production_authority_directory_exists": false,
+  "production_namespace_and_destination_provisioned_by_this_task": false,
+  "uid": 1000,
+  "versions": {
+    "OpenSSL": "OpenSSL 3.0.22 25 Aug 2026 (Library: OpenSSL 3.0.22 25 Aug 2026)",
+    "bwrap": "bubblewrap 0.8.0",
+    "nft": {
+      "exit_status": 0,
+      "stderr": "",
+      "stdout": "nftables v1.0.6 (Lester Gooch #5)"
+    }
+  }
+}

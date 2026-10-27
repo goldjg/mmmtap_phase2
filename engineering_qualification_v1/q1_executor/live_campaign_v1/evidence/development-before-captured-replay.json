@@ -1,0 +1,115 @@
+{
+  "files": {
+    "campaign/.lock": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "campaign/c01-source.txt": {
+      "bytes": 143,
+      "sha256": "fda7a8f254ace4e83eb3214b78a2ae20ef6318803f25d337d6b67fa573a1c1df"
+    },
+    "campaign/c02-source.txt": {
+      "bytes": 75,
+      "sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc"
+    },
+    "campaign/c03-source.txt": {
+      "bytes": 168,
+      "sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492"
+    },
+    "campaign/campaign.sqlite3": {
+      "bytes": 13295616,
+      "sha256": "8364bf0625b80e663f19ce495d68ba4f916331e0d9470abc3fb0805f7a8a9f09"
+    },
+    "campaign/challenge-policy.json": {
+      "bytes": 3813,
+      "sha256": "4291e804f6c81881ce188246c311590119a4e600d16f340e03e8b2e6910daea7"
+    },
+    "campaign/governing-policy.json": {
+      "bytes": 3746,
+      "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e"
+    },
+    "campaign/manifest.json": {
+      "bytes": 133473,
+      "sha256": "e2123555229bb0706d3f430c0c24a540e617aa76519fc80caf716299619f55f3"
+    },
+    "campaign/research-decisions.json": {
+      "bytes": 883,
+      "sha256": "360531699358273781fbcbeeb3efbcaae7ffc3c9276e00c8892f155947c24a0b"
+    },
+    "campaign/source-bundle.json": {
+      "bytes": 702,
+      "sha256": "ff76e1c1cf41a45e6d77136f2584f1a8d4765bbf9eb7a95c1525d0673f7171ed"
+    },
+    "deployment-authority/.lock": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "deployment-authority/authority.json": {
+      "bytes": 600,
+      "sha256": "543d9179545aafad95eb12adac9386800da0c574021318013492110185dff6a2"
+    },
+    "first.stderr": {
+      "bytes": 110,
+      "sha256": "80805ec32a28e02740ce6622a29fcefc94ad315ee446604836e6ff34c3ad4d43"
+    },
+    "first.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "kernel-probe.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "local-peer.pem": {
+      "bytes": 1168,
+      "sha256": "b4411624d39c18ad2bedf8e83a1a6d6c31fad616015a2618c8adb9440c094383"
+    },
+    "packets/c01-source.txt": {
+      "bytes": 143,
+      "sha256": "fda7a8f254ace4e83eb3214b78a2ae20ef6318803f25d337d6b67fa573a1c1df"
+    },
+    "packets/c02-source.txt": {
+      "bytes": 75,
+      "sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc"
+    },
+    "packets/c03-source.txt": {
+      "bytes": 168,
+      "sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492"
+    },
+    "packets/challenge-policy.json": {
+      "bytes": 3813,
+      "sha256": "4291e804f6c81881ce188246c311590119a4e600d16f340e03e8b2e6910daea7"
+    },
+    "packets/governing-policy.json": {
+      "bytes": 3746,
+      "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e"
+    },
+    "packets/manifest.json": {
+      "bytes": 133473,
+      "sha256": "e2123555229bb0706d3f430c0c24a540e617aa76519fc80caf716299619f55f3"
+    },
+    "packets/research-decisions.json": {
+      "bytes": 883,
+      "sha256": "360531699358273781fbcbeeb3efbcaae7ffc3c9276e00c8892f155947c24a0b"
+    },
+    "packets/source-bundle.json": {
+      "bytes": 702,
+      "sha256": "ff76e1c1cf41a45e6d77136f2584f1a8d4765bbf9eb7a95c1525d0673f7171ed"
+    },
+    "port": {
+      "bytes": 5,
+      "sha256": "cb7dd06fb4d2c1624e5edde244ae34e4d364e651b8365bbe3040e3cf4906318d"
+    },
+    "posts.jsonl": {
+      "bytes": 24771,
+      "sha256": "72189253a753501ac481065dd4302d7169f99520139fc0af978114f45a8915f1"
+    },
+    "server.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "reason": "Redundant prior-request cARL compilation approached supervisor deadline; corrected by sealed compiler snapshot and per-input read-only verification. Producer change refused continuation.",
+  "retained_directory": "acceptance",
+  "status": "UNQUALIFIED_DEVELOPMENT_FIRST_ATTEMPTS_RETAINED_IN_PLACE_NOT_REISSUED"
+}

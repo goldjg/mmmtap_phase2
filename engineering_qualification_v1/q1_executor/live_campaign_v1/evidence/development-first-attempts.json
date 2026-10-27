@@ -1,0 +1,499 @@
+{
+  "failures": [
+    "ACK/credential journal ordering defect corrected",
+    "private fixture loopback setup corrected",
+    "producer changed during development: reserved attempts not reissued",
+    "ENOSPC on /tmp: first attempts preserved; checkout moved to persistent permitted workspace"
+  ],
+  "files": {
+    "q1-campaign-development-01": {
+      "local-peer.pem": {
+        "bytes": 1168,
+        "sha256": "5bfb069d1ea0d65c14da28a871ce3ee57c5f20027ce732a5c8e0c9d533613bdb"
+      },
+      "port": {
+        "bytes": 5,
+        "sha256": "a9dbd4d2f2bd492cfdd71ad7c25b8779777a53f8ad811426410c8fa1c6f71a18"
+      },
+      "server.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "q1-campaign-development-02": {
+      "kernel-probe.stderr": {
+        "bytes": 390,
+        "sha256": "a7f17a3e6198115fa67034024aa429269d4b93b296562fe3cd70021d4e642b12"
+      },
+      "local-peer.pem": {
+        "bytes": 1168,
+        "sha256": "0be7388fe897c22bba350e69cb11c341974ea171d58f5a2642fe2b6c19ab31fd"
+      },
+      "port": {
+        "bytes": 5,
+        "sha256": "a71f383486f82c463cf8828293610a928d64b75552330ef927428d65df79147b"
+      },
+      "server.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "q1-campaign-development-03": {
+      "campaign/.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "campaign/c01-source.txt": {
+        "bytes": 143,
+        "sha256": "fda7a8f254ace4e83eb3214b78a2ae20ef6318803f25d337d6b67fa573a1c1df"
+      },
+      "campaign/c02-source.txt": {
+        "bytes": 75,
+        "sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc"
+      },
+      "campaign/c03-source.txt": {
+        "bytes": 168,
+        "sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492"
+      },
+      "campaign/campaign.sqlite3": {
+        "bytes": 4730880,
+        "sha256": "8ee643bdad895e7efbdd4fac23157efe669927d397a6b132a2f22cc289385895"
+      },
+      "campaign/challenge-policy.json": {
+        "bytes": 3813,
+        "sha256": "4291e804f6c81881ce188246c311590119a4e600d16f340e03e8b2e6910daea7"
+      },
+      "campaign/governing-policy.json": {
+        "bytes": 3746,
+        "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e"
+      },
+      "campaign/manifest.json": {
+        "bytes": 133328,
+        "sha256": "0244260fe59d80a96906ed67242d59984120445cdcd51d49d6c3311f72d1aeed"
+      },
+      "campaign/research-decisions.json": {
+        "bytes": 883,
+        "sha256": "360531699358273781fbcbeeb3efbcaae7ffc3c9276e00c8892f155947c24a0b"
+      },
+      "campaign/source-bundle.json": {
+        "bytes": 702,
+        "sha256": "ff76e1c1cf41a45e6d77136f2584f1a8d4765bbf9eb7a95c1525d0673f7171ed"
+      },
+      "deployment-authority/.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "deployment-authority/authority.json": {
+        "bytes": 398,
+        "sha256": "c77da17e3b8f1e1b848cc62c312840a7527663f03f6747e160944bbe1a22ff71"
+      },
+      "first.stderr": {
+        "bytes": 105,
+        "sha256": "65aa257898077decc89ffdc09a7070809c7af16e86d7dc39db04efcd76f0f230"
+      },
+      "first.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "kernel-probe.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "local-peer.pem": {
+        "bytes": 1168,
+        "sha256": "3ab02fdd6067fcc6140c9e0a1a0c04ad24ebed946a3c1bdc1e4ac8e69d59f82b"
+      },
+      "packets/c01-source.txt": {
+        "bytes": 143,
+        "sha256": "fda7a8f254ace4e83eb3214b78a2ae20ef6318803f25d337d6b67fa573a1c1df"
+      },
+      "packets/c02-source.txt": {
+        "bytes": 75,
+        "sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc"
+      },
+      "packets/c03-source.txt": {
+        "bytes": 168,
+        "sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492"
+      },
+      "packets/challenge-policy.json": {
+        "bytes": 3813,
+        "sha256": "4291e804f6c81881ce188246c311590119a4e600d16f340e03e8b2e6910daea7"
+      },
+      "packets/governing-policy.json": {
+        "bytes": 3746,
+        "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e"
+      },
+      "packets/manifest.json": {
+        "bytes": 133328,
+        "sha256": "0244260fe59d80a96906ed67242d59984120445cdcd51d49d6c3311f72d1aeed"
+      },
+      "packets/research-decisions.json": {
+        "bytes": 883,
+        "sha256": "360531699358273781fbcbeeb3efbcaae7ffc3c9276e00c8892f155947c24a0b"
+      },
+      "packets/source-bundle.json": {
+        "bytes": 702,
+        "sha256": "ff76e1c1cf41a45e6d77136f2584f1a8d4765bbf9eb7a95c1525d0673f7171ed"
+      },
+      "port": {
+        "bytes": 5,
+        "sha256": "deeea775f536d609113ae8cae06f77922a0098f824f304fa708ec95f57f396f7"
+      },
+      "posts.jsonl": {
+        "bytes": 3566,
+        "sha256": "7ee1551bbb4045860e328944004cf9214b8c864c86533101755259066c17a1f6"
+      },
+      "server.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "q1-campaign-development-04": {
+      "campaign/.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "campaign/c01-source.txt": {
+        "bytes": 143,
+        "sha256": "fda7a8f254ace4e83eb3214b78a2ae20ef6318803f25d337d6b67fa573a1c1df"
+      },
+      "campaign/c02-source.txt": {
+        "bytes": 75,
+        "sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc"
+      },
+      "campaign/c03-source.txt": {
+        "bytes": 168,
+        "sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492"
+      },
+      "campaign/campaign.sqlite3": {
+        "bytes": 15630336,
+        "sha256": "741cf040391ac0db83761711bee42f522f9f64c7e57a3886498e7b3a58bb1f3a"
+      },
+      "campaign/challenge-policy.json": {
+        "bytes": 3813,
+        "sha256": "4291e804f6c81881ce188246c311590119a4e600d16f340e03e8b2e6910daea7"
+      },
+      "campaign/governing-policy.json": {
+        "bytes": 3746,
+        "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e"
+      },
+      "campaign/manifest.json": {
+        "bytes": 133328,
+        "sha256": "52adf1998717072c2df219820da9c081332c81deeb9f64518a37b8a832aebbb4"
+      },
+      "campaign/research-decisions.json": {
+        "bytes": 883,
+        "sha256": "360531699358273781fbcbeeb3efbcaae7ffc3c9276e00c8892f155947c24a0b"
+      },
+      "campaign/source-bundle.json": {
+        "bytes": 702,
+        "sha256": "ff76e1c1cf41a45e6d77136f2584f1a8d4765bbf9eb7a95c1525d0673f7171ed"
+      },
+      "deployment-authority/.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "deployment-authority/authority.json": {
+        "bytes": 398,
+        "sha256": "fa95dc5742e5e8c34fe0bdb28d0bc876aace80d47398e84099fb5995f393632f"
+      },
+      "first.stderr": {
+        "bytes": 110,
+        "sha256": "47898b5e79e4bffaac5553d1a08b5a933f5313e13ce64702d182aea0e5b73107"
+      },
+      "first.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "kernel-probe.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "local-peer.pem": {
+        "bytes": 1168,
+        "sha256": "bdfa5538729dd49b08c66620cdeee46945f768e4ec8fe32f85668866695de936"
+      },
+      "packets/c01-source.txt": {
+        "bytes": 143,
+        "sha256": "fda7a8f254ace4e83eb3214b78a2ae20ef6318803f25d337d6b67fa573a1c1df"
+      },
+      "packets/c02-source.txt": {
+        "bytes": 75,
+        "sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc"
+      },
+      "packets/c03-source.txt": {
+        "bytes": 168,
+        "sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492"
+      },
+      "packets/challenge-policy.json": {
+        "bytes": 3813,
+        "sha256": "4291e804f6c81881ce188246c311590119a4e600d16f340e03e8b2e6910daea7"
+      },
+      "packets/governing-policy.json": {
+        "bytes": 3746,
+        "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e"
+      },
+      "packets/manifest.json": {
+        "bytes": 133328,
+        "sha256": "52adf1998717072c2df219820da9c081332c81deeb9f64518a37b8a832aebbb4"
+      },
+      "packets/research-decisions.json": {
+        "bytes": 883,
+        "sha256": "360531699358273781fbcbeeb3efbcaae7ffc3c9276e00c8892f155947c24a0b"
+      },
+      "packets/source-bundle.json": {
+        "bytes": 702,
+        "sha256": "ff76e1c1cf41a45e6d77136f2584f1a8d4765bbf9eb7a95c1525d0673f7171ed"
+      },
+      "port": {
+        "bytes": 5,
+        "sha256": "a8df5186b3a638f2f95da979fb0cfefac589f2ab9e562ba94a2c64baa8c8c5bf"
+      },
+      "posts.jsonl": {
+        "bytes": 11838,
+        "sha256": "0d4efc04b7cbd69c90ea828f12547c8382d46192acd549906ebf1c9a299807cb"
+      },
+      "server.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "q1-campaign-final-qualification": {
+      "campaign/.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "campaign/c01-source.txt": {
+        "bytes": 143,
+        "sha256": "fda7a8f254ace4e83eb3214b78a2ae20ef6318803f25d337d6b67fa573a1c1df"
+      },
+      "campaign/c02-source.txt": {
+        "bytes": 75,
+        "sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc"
+      },
+      "campaign/c03-source.txt": {
+        "bytes": 168,
+        "sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492"
+      },
+      "campaign/campaign.sqlite3": {
+        "bytes": 5509120,
+        "sha256": "8efed9f44111ce994e2f81dc6d3b5094f821fbd12e4c5363b7dfd9ea5bcef4b1"
+      },
+      "campaign/challenge-policy.json": {
+        "bytes": 3813,
+        "sha256": "4291e804f6c81881ce188246c311590119a4e600d16f340e03e8b2e6910daea7"
+      },
+      "campaign/governing-policy.json": {
+        "bytes": 3746,
+        "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e"
+      },
+      "campaign/manifest.json": {
+        "bytes": 133328,
+        "sha256": "1e28bd8638ebedbf485bc830d416d07c3a7bebf780fb24c10e10c33a7e16c86f"
+      },
+      "campaign/research-decisions.json": {
+        "bytes": 883,
+        "sha256": "360531699358273781fbcbeeb3efbcaae7ffc3c9276e00c8892f155947c24a0b"
+      },
+      "campaign/source-bundle.json": {
+        "bytes": 702,
+        "sha256": "ff76e1c1cf41a45e6d77136f2584f1a8d4765bbf9eb7a95c1525d0673f7171ed"
+      },
+      "deployment-authority/.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "deployment-authority/authority.json": {
+        "bytes": 408,
+        "sha256": "5503b369348143abaae5131c31e534375ca83a0e26ba6136bb407061b378cd7e"
+      },
+      "first.stderr": {
+        "bytes": 124,
+        "sha256": "405fb58c0fd422f7f08207b2aa00891e667fe1d4ff7bfede9b27c60eb71f3186"
+      },
+      "first.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "kernel-probe.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "local-peer.pem": {
+        "bytes": 1168,
+        "sha256": "661810d964224652fc025b10c609e982805d801b27cc8039c02a79677dec2de9"
+      },
+      "packets/c01-source.txt": {
+        "bytes": 143,
+        "sha256": "fda7a8f254ace4e83eb3214b78a2ae20ef6318803f25d337d6b67fa573a1c1df"
+      },
+      "packets/c02-source.txt": {
+        "bytes": 75,
+        "sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc"
+      },
+      "packets/c03-source.txt": {
+        "bytes": 168,
+        "sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492"
+      },
+      "packets/challenge-policy.json": {
+        "bytes": 3813,
+        "sha256": "4291e804f6c81881ce188246c311590119a4e600d16f340e03e8b2e6910daea7"
+      },
+      "packets/governing-policy.json": {
+        "bytes": 3746,
+        "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e"
+      },
+      "packets/manifest.json": {
+        "bytes": 133328,
+        "sha256": "1e28bd8638ebedbf485bc830d416d07c3a7bebf780fb24c10e10c33a7e16c86f"
+      },
+      "packets/research-decisions.json": {
+        "bytes": 883,
+        "sha256": "360531699358273781fbcbeeb3efbcaae7ffc3c9276e00c8892f155947c24a0b"
+      },
+      "packets/source-bundle.json": {
+        "bytes": 702,
+        "sha256": "ff76e1c1cf41a45e6d77136f2584f1a8d4765bbf9eb7a95c1525d0673f7171ed"
+      },
+      "port": {
+        "bytes": 5,
+        "sha256": "555b734f86047bffe9f284ab12f471d4c683ace955b41bbd94cf5ea13337fd68"
+      },
+      "posts.jsonl": {
+        "bytes": 9080,
+        "sha256": "4059e255c785c1982938dcebc150c2d8304457638111bbf34f5b173f3f0e2bda"
+      },
+      "server.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "q1-campaign-final-qualification-02": {
+      "campaign/.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "campaign/.transport-work/adb7db7db4986204b11a70fb0d96d6ed46cd1c03044b43444339276180259a8a/inputs/adapter.py": {
+        "bytes": 3943,
+        "sha256": "b681fa0117c58b571c3217857c3a9d9d833740338060bcee2f3007a70894be8b"
+      },
+      "campaign/.transport-work/adb7db7db4986204b11a70fb0d96d6ed46cd1c03044b43444339276180259a8a/inputs/bootstrap.py": {
+        "bytes": 4008,
+        "sha256": "84ce7f12362ebbef588fa8f515c5a0d45c9568dd993926dd8ec4d33aed557a5e"
+      },
+      "campaign/.transport-work/adb7db7db4986204b11a70fb0d96d6ed46cd1c03044b43444339276180259a8a/inputs/envelope.json": {
+        "bytes": 1761,
+        "sha256": "a21378ad09454fb8595f472b38da31ecb901b08ffcaa94d59fe1cb0d1b05550f"
+      },
+      "campaign/.transport-work/adb7db7db4986204b11a70fb0d96d6ed46cd1c03044b43444339276180259a8a/inputs/request.json": {
+        "bytes": 17814,
+        "sha256": "cdc6ab40970704a67e51e4d49ff3c90c72f2b1ce8e350d428117bcab3b5c884f"
+      },
+      "campaign/c01-source.txt": {
+        "bytes": 143,
+        "sha256": "fda7a8f254ace4e83eb3214b78a2ae20ef6318803f25d337d6b67fa573a1c1df"
+      },
+      "campaign/c02-source.txt": {
+        "bytes": 75,
+        "sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc"
+      },
+      "campaign/c03-source.txt": {
+        "bytes": 168,
+        "sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492"
+      },
+      "campaign/campaign.sqlite3": {
+        "bytes": 434176,
+        "sha256": "6fbf181afa1bb7eefbc62d958184159b4b23422030f96d4f7206901eb4485222"
+      },
+      "campaign/challenge-policy.json": {
+        "bytes": 3813,
+        "sha256": "4291e804f6c81881ce188246c311590119a4e600d16f340e03e8b2e6910daea7"
+      },
+      "campaign/governing-policy.json": {
+        "bytes": 3746,
+        "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e"
+      },
+      "campaign/manifest.json": {
+        "bytes": 133441,
+        "sha256": "a5c309ea9cfd88a79cf8e887209d8cc685a3504a7181461085d06b055ecd4cc8"
+      },
+      "campaign/research-decisions.json": {
+        "bytes": 883,
+        "sha256": "360531699358273781fbcbeeb3efbcaae7ffc3c9276e00c8892f155947c24a0b"
+      },
+      "campaign/source-bundle.json": {
+        "bytes": 702,
+        "sha256": "ff76e1c1cf41a45e6d77136f2584f1a8d4765bbf9eb7a95c1525d0673f7171ed"
+      },
+      "deployment-authority/.lock": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "deployment-authority/authority.json": {
+        "bytes": 414,
+        "sha256": "ac308f8b3f616d526625096ff2af0326c7e32dedc06aa4e7e2b671f061e1f108"
+      },
+      "first.stderr": {
+        "bytes": 116,
+        "sha256": "cac73b7a34fb48d80425714d0666e4093050f60d388e92b4f1b66866187fdc73"
+      },
+      "first.stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "kernel-probe.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "local-peer.pem": {
+        "bytes": 1168,
+        "sha256": "e3be972977fa59063856962c8e31ef6a51a1a0450cccea63fd1688bb6bee629a"
+      },
+      "packets/c01-source.txt": {
+        "bytes": 143,
+        "sha256": "fda7a8f254ace4e83eb3214b78a2ae20ef6318803f25d337d6b67fa573a1c1df"
+      },
+      "packets/c02-source.txt": {
+        "bytes": 75,
+        "sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc"
+      },
+      "packets/c03-source.txt": {
+        "bytes": 168,
+        "sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492"
+      },
+      "packets/challenge-policy.json": {
+        "bytes": 3813,
+        "sha256": "4291e804f6c81881ce188246c311590119a4e600d16f340e03e8b2e6910daea7"
+      },
+      "packets/governing-policy.json": {
+        "bytes": 3746,
+        "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e"
+      },
+      "packets/manifest.json": {
+        "bytes": 133441,
+        "sha256": "a5c309ea9cfd88a79cf8e887209d8cc685a3504a7181461085d06b055ecd4cc8"
+      },
+      "packets/research-decisions.json": {
+        "bytes": 883,
+        "sha256": "360531699358273781fbcbeeb3efbcaae7ffc3c9276e00c8892f155947c24a0b"
+      },
+      "packets/source-bundle.json": {
+        "bytes": 702,
+        "sha256": "ff76e1c1cf41a45e6d77136f2584f1a8d4765bbf9eb7a95c1525d0673f7171ed"
+      },
+      "port": {
+        "bytes": 5,
+        "sha256": "33caa5edbcad1ad443974fb97ea6e46edfd46c3733e4c071e0f0266a049c49cd"
+      },
+      "posts.jsonl": {
+        "bytes": 797,
+        "sha256": "801076eca9143d37cd82ec1ada83b2d298ec2f76d37ab7bb18590170e8ed862d"
+      },
+      "server.stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  "status": "UNQUALIFIED_DEVELOPMENT_ONLY_NOT_EXPERIMENTAL_OBSERVATIONS"
+}

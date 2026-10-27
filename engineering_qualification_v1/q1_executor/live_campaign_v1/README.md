@@ -72,6 +72,13 @@ defaults authorised for research.
 
 Offline evidence
 
+Observed: **153 terminal receipts — 128 completed, 12 unavailable, 11 blocked,
+one invalid and one interrupted**. The 141-unit reservation quota was exhausted;
+133 actual local TLS POSTs exercised all five fixture routes. The interrupted
+prefix survived recovery with no retransmission. All 13 targeted negative checks,
+48 focused tests, 87 historical read-only reconstructions, ten historical seal
+sets (2,548 entries) and the original 40,538 custody-entry check passed.
+
 The [acceptance record](evidence/qualified-full-campaign/acceptance.json) records the actual
 153-position run, route/POST counts, all terminal receipts, interruption/recovery,
 budget censoring, positive and no-challenge cARL cases, worker probes, actual
@@ -80,6 +87,14 @@ Generator fixtures traverse worker → broker → local TLS → the existing CLI
 event parser; they do **not** invoke or certify the real Copilot/Codex binaries.
 Both specialist presentations traverse actual local HTTPS and Choice 1 parsing.
 `/q1-fixture/cli-events` exists only on this local peer, not the SystemOne API.
+The [launch record](evidence/launch-record.json) binds the exact code commit,
+manifest and packet hashes and records **NOT APPROVED**.
+
+Reproduce only into a new output directory, without inheriting operator JEVKEY:
+
+```sh
+env -u JEVKEY unshare -Urn python -B -m engineering_qualification_v1.q1_executor.live_campaign_v1 qualify --output /persistent/private/new-q1-offline
+```
 
 The local quota is reservation units, not tokens/dollars. Production maximums
 are 153 local reservations/invocations, at most 99 CLI invocations and 54 client

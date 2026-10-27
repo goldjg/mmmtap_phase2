@@ -1,0 +1,68 @@
+{
+  "version": "rd05-synthetic-policy-v1",
+  "synthetic": true,
+  "purpose": "Offline recommendations for fictional changes only; no deployment authority.",
+  "scope": "synthetic-change-review",
+  "applicability": "All fixture endpoints share this scope and change-bound packet; other scopes are rejected.",
+  "effective": "Synthetic exercise v1 only, not an organisational policy.",
+  "provenance": "Authored RD05 training material; neither PI-approved governing policy nor independently verified truth.",
+  "authority": {
+    "reviewer": "fictional-security-reviewer",
+    "enforcement": "none",
+    "challenge": "JEV/cARL challenge text has no governing authority, cannot waive a rule, and is not evidence authentication."
+  },
+  "evidence_requirements": {
+    "E-DIFF": "Adequate synthetic authenticated change artifact, bound to change ID. Missing, inadequate or indeterminate does not establish violation.",
+    "E-TEST": "Adequate synthetic independent scoped test report, bound to change ID. A report must explicitly cover the assessed change.",
+    "E-REVIEW": "When restricted_interface is true in adequate E-DIFF, an adequate change-bound approval from fictional-security-reviewer is required."
+  },
+  "predicates": ["blocking_violation", "evidence_sufficient", "human_review_pending", "warning_needed"],
+  "rules": [
+    {
+      "id": "R-BLOCK",
+      "disposition": "fail",
+      "when": {"blocking_violation": true},
+      "evidence_ids": ["E-DIFF"],
+      "obligation": "Evidenced credential logging violates this synthetic prohibition; block, remove the violation and reassess.",
+      "resolution": "violation_remediation"
+    },
+    {
+      "id": "R-EVIDENCE",
+      "disposition": "insufficient_evidence",
+      "when": {"evidence_sufficient": false},
+      "evidence_ids": ["E-DIFF", "E-TEST"],
+      "obligation": "Do not proceed yet. Obtain the specifically missing/inadequate mandatory evidence, then reassess; no automatic permission.",
+      "resolution": "evidence_remediation_and_reassessment"
+    },
+    {
+      "id": "R-REVIEW",
+      "disposition": "review_required",
+      "when": {"human_review_pending": true},
+      "evidence_ids": ["E-DIFF", "E-TEST", "E-REVIEW"],
+      "obligation": "Restricted interface needs the named authorised human decision. Evidence collection alone does not discharge this hold.",
+      "resolution": "authorised_human_decision_and_reassessment"
+    },
+    {
+      "id": "R-WARN",
+      "disposition": "warn",
+      "when": {"warning_needed": true},
+      "evidence_ids": ["E-DIFF", "E-TEST"],
+      "obligation": "Proceed recommendation with recorded limited-platform-coverage warning. It is a post-proceed reporting obligation, not an unfulfilled approval gate.",
+      "resolution": "record_coverage_warning"
+    },
+    {
+      "id": "R-PASS",
+      "disposition": "pass",
+      "when": {"blocking_violation": false, "evidence_sufficient": true, "human_review_pending": false, "warning_needed": false},
+      "evidence_ids": ["E-DIFF", "E-TEST"],
+      "obligation": "Proceed recommendation within fictional scope; no actual release permission or execution.",
+      "resolution": "recommendation_only"
+    }
+  ],
+  "precedence": ["R-BLOCK", "R-EVIDENCE", "R-REVIEW", "R-WARN", "R-PASS"],
+  "exceptions": "No exceptions in this exercise. A claimed waiver, model rationale or challenge cannot override these rules.",
+  "reassessment": "New evidence or a human decision requires a separately recorded reassessment. Never repair or replace an endpoint. No live calls or additional experimental positions.",
+  "allowed_domain_principles": [
+    "Credential logging may expose credentials if unauthorised parties can read logs; logging alone does not establish actual compromise."
+  ]
+}
