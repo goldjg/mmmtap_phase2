@@ -1,0 +1,213 @@
+{
+  "files": [
+    {
+      "bytes": 150,
+      "path": "engineering_qualification_v1/q1_executor/broker_v1/__init__.py",
+      "scope": "upstream_main",
+      "sha256": "9691f430a13427027c66542aba105763241a7ab2b3a4f754c035d0b8316bc61f"
+    },
+    {
+      "bytes": 422,
+      "path": "engineering_qualification_v1/q1_executor/broker_v1/__main__.py",
+      "scope": "upstream_main",
+      "sha256": "6d1f4d574185eeb94a76fecebea0664fba4f6f704aeec980c592c37c41f089aa"
+    },
+    {
+      "bytes": 15456,
+      "path": "engineering_qualification_v1/q1_executor/broker_v1/broker.py",
+      "scope": "upstream_main",
+      "sha256": "97e79709b12e41caa37eb25029a00d347c9692e9ef50b8edd7cd1047adc4d2c7"
+    },
+    {
+      "bytes": 4149,
+      "path": "engineering_qualification_v1/q1_executor/broker_v1/contract.py",
+      "scope": "upstream_main",
+      "sha256": "1d34246e1a752061110992b12b4a5531239ae6bdad95a322593449c56a386f8b"
+    },
+    {
+      "bytes": 3775,
+      "path": "engineering_qualification_v1/q1_executor/broker_v1/provider.py",
+      "scope": "upstream_main",
+      "sha256": "d16e2b8d84c3419c783681df75a354db141601d511821bb24e757a1a32f6c5f4"
+    },
+    {
+      "bytes": 13907,
+      "path": "engineering_qualification_v1/q1_executor/broker_v1/qualification.py",
+      "scope": "upstream_main",
+      "sha256": "37bdcc2191b97506f54516b89c61ccff1a73d27e37c7441236e04dfb71ec9e98"
+    },
+    {
+      "bytes": 12870,
+      "path": "engineering_qualification_v1/q1_executor/broker_v1/runtime.py",
+      "scope": "upstream_main",
+      "sha256": "278bd8de42dc61e9c9f6ccedd47b2f3d2fdb410bfb2ba5fd53f0f4db053bbe90"
+    },
+    {
+      "bytes": 6188,
+      "path": "engineering_qualification_v1/q1_executor/broker_v1/test_broker.py",
+      "scope": "upstream_main",
+      "sha256": "5e628c64c8266be9fde260f70c1ebe68558eb5b8b9ddc2f20fc348b0c8054639"
+    },
+    {
+      "bytes": 3402,
+      "path": "engineering_qualification_v1/q1_executor/broker_v1/worker.py",
+      "scope": "upstream_main",
+      "sha256": "83f56c89b85032bcc83f7a50342cc2905596be4a535a1e46a538646e7b2836a5"
+    },
+    {
+      "bytes": 30775,
+      "path": "engineering_qualification_v1/q1_executor/engine.py",
+      "scope": "upstream_main",
+      "sha256": "90c31c6df8dc13aa77e5af10e12bf05967aadde5164af9c624e33064eb91f545"
+    },
+    {
+      "bytes": 12697,
+      "path": "engineering_qualification_v1/q1_executor/model.py",
+      "scope": "upstream_main",
+      "sha256": "11acb884a48ac7c5ec74070edf0dea6127575e679959ba8fe26d7ec6f1fa9c5d"
+    },
+    {
+      "bytes": 19252,
+      "path": "engineering_qualification_v1/q1_executor/transport.py",
+      "scope": "upstream_main",
+      "sha256": "95679c7e82e1ec513580056f4b947df6bcab93fa566412934f5819cb25629d12"
+    },
+    {
+      "bytes": 4008,
+      "path": "engineering_qualification_v1/q1_executor/transport_bootstrap.py",
+      "scope": "upstream_main",
+      "sha256": "84ce7f12362ebbef588fa8f515c5a0d45c9568dd993926dd8ec4d33aed557a5e"
+    },
+    {
+      "bytes": 146274,
+      "path": "forensic_remediation_v1/v5/bin/carl-assessment-challenge-v5.build.json",
+      "scope": "upstream_main",
+      "sha256": "bb532eccd63b09e5f31e1b9b6c078a95cf41038d9409148947d8a3d09293a6c2"
+    },
+    {
+      "bytes": 7498,
+      "path": "forensic_remediation_v1/v5/instruments/config.v4.json",
+      "scope": "upstream_main",
+      "sha256": "094c816ebd35ab6b40c10d3f7d3f0409d40da0f8523238d1478fbad1646a8dfc"
+    },
+    {
+      "bytes": 9018,
+      "path": "forensic_remediation_v1/v5/instruments/software_source/cARL-semantic-eval/internal/assessment/command.go",
+      "scope": "upstream_main",
+      "sha256": "807dd389a5a88bd3b866a18470f61d86026ee9f1c0deb2c174d73a5d61f6671c"
+    },
+    {
+      "bytes": 4903,
+      "path": "forensic_remediation_v1/v5/instruments/software_source/cARL-semantic-eval/internal/assessment/json.go",
+      "scope": "upstream_main",
+      "sha256": "3b6075b170a21945290905c0d6ee76fed8376e76cb7534e88ac48e03bbc96859"
+    },
+    {
+      "bytes": 23288,
+      "path": "forensic_remediation_v1/v5/instruments/software_source/cARL-semantic-eval/internal/assessment/live.go",
+      "scope": "upstream_main",
+      "sha256": "69bfddd93e2c14991bbc524c753ff3071b55f55d2b52cd19e38727fd897e38ee"
+    },
+    {
+      "bytes": 7510,
+      "path": "forensic_remediation_v1/v5/instruments/software_source/cARL-semantic-eval/internal/assessment/policy.go",
+      "scope": "upstream_main",
+      "sha256": "0ff9acea5d80b9e874316697321c001e5a155e97b0ccd1fe4d84bc9e5c53e2a7"
+    },
+    {
+      "bytes": 5375,
+      "path": "forensic_remediation_v1/v5/instruments/software_source/cARL-semantic-eval/internal/assessment/provider.go",
+      "scope": "upstream_main",
+      "sha256": "d50b021a41529ebb5a052df4e3223c598fb2088afd9e61e8ed124d4d4b9b01e8"
+    },
+    {
+      "bytes": 4757,
+      "path": "forensic_remediation_v1/v5/instruments/software_source/cARL-semantic-eval/internal/assessment/receipt.go",
+      "scope": "upstream_main",
+      "sha256": "ee85963e0ae4a1df4388f980bfd33be0772557298f40cd1388aef15b37a42ff7"
+    },
+    {
+      "bytes": 9516,
+      "path": "forensic_remediation_v1/v5/instruments/software_source/cARL-semantic-eval/internal/assessment/request.go",
+      "scope": "upstream_main",
+      "sha256": "8a9f33825b41821508486c031202ed650fad71aec42542a866e2bdc5cf3d2a7b"
+    },
+    {
+      "bytes": 31540,
+      "path": "phase2/adapters.py",
+      "scope": "upstream_main",
+      "sha256": "5be359fd3282f45b0ce626303ffc58840633fea43d09f01d62287a0f0f72c339"
+    },
+    {
+      "bytes": 23408,
+      "path": "phase2/adapters_v2.py",
+      "scope": "upstream_main",
+      "sha256": "34db7fcbe5208f4804268137dfb5b2db96c09c3c8a57fb30814edd4245932ea5"
+    },
+    {
+      "bytes": 1710,
+      "path": "phase2/config.v1.json",
+      "scope": "upstream_main",
+      "sha256": "b6582fe55e9ec63440f7eb15ebb790bb68b4fd8789cf447e4df43916a5e59ca6"
+    },
+    {
+      "bytes": 23037,
+      "path": "phase2/integration.py",
+      "scope": "upstream_main",
+      "sha256": "4c27da8b69d48950b003076e3ac0d1422e2025df0ad98e7767f302a80909e9fa"
+    },
+    {
+      "bytes": 7625,
+      "path": "phase2/software.py",
+      "scope": "upstream_main",
+      "sha256": "debb12fd9f8bfeae9cc7fcf7acc0846fe899c8cb71bb6a86c75fd9b8b8dd4e98"
+    },
+    {
+      "bytes": 19417,
+      "path": "phase2_v2/continuation.py",
+      "scope": "upstream_main",
+      "sha256": "8c67006a268f4a95ebd36164231a18b78a866e9eb479e644582d67d234442639"
+    },
+    {
+      "bytes": 15604,
+      "path": "phase2_v2/instrument.py",
+      "scope": "upstream_main",
+      "sha256": "402349002e15676e5a43e01b4fac5a14e8f79922d7989595d69e2d0b84247567"
+    },
+    {
+      "matches_frozen_v5": true,
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/assessment/live.go",
+      "scope": "local_sibling_source",
+      "sha256": "69bfddd93e2c14991bbc524c753ff3071b55f55d2b52cd19e38727fd897e38ee"
+    },
+    {
+      "matches_frozen_v5": true,
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/assessment/provider.go",
+      "scope": "local_sibling_source",
+      "sha256": "d50b021a41529ebb5a052df4e3223c598fb2088afd9e61e8ed124d4d4b9b01e8"
+    },
+    {
+      "matches_frozen_v5": true,
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/assessment/request.go",
+      "scope": "local_sibling_source",
+      "sha256": "8a9f33825b41821508486c031202ed650fad71aec42542a866e2bdc5cf3d2a7b"
+    },
+    {
+      "matches_frozen_v5": true,
+      "path": "/home/prometheus/git/cARL-semantic-eval/internal/assessment/command.go",
+      "scope": "local_sibling_source",
+      "sha256": "807dd389a5a88bd3b866a18470f61d86026ee9f1c0deb2c174d73a5d61f6671c"
+    },
+    {
+      "path": "/usr/local/go/src/net/http/transport.go",
+      "scope": "local_standard_library",
+      "sha256": "c9146e77adc22d4b74ba77384ec7be7fc27c3af21ff20485f642b4d611b381a4"
+    },
+    {
+      "path": "/usr/lib/python3.11/urllib/request.py",
+      "scope": "local_standard_library",
+      "sha256": "f3348315e7c74cba5596e5dd9e4092fee2742218730d882ec216f57c6c173536"
+    }
+  ],
+  "upstream_main": "5cdf8cc0978650a72215fc90ac0da13208b0fe27"
+}

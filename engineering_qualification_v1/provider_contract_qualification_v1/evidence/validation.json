@@ -1,0 +1,270 @@
+{
+  "broker_seal": [
+    {
+      "path": "engineering_qualification_v1/q1_executor/broker_v1/SHA256SUMS.v1.txt",
+      "status": "PASS",
+      "verified_entries": 480
+    }
+  ],
+  "deliverable_sha256": {
+    "ASSESSMENT.md": "a6553eeb380ce887c98118a99062b12015c16b89790ae837090c1c2dce7c706a",
+    "compatibility_matrix.json": "465c691a34a999fcba3eff21732dcb2f55bc284edbd5ce6ef90a3e4eaa7f3afb",
+    "proposed_probes.json": "2661c154712e6477e43c0c619f91ca6f062c03885ee53811a97399fefe2863ea"
+  },
+  "final_deliverable_consistency": {
+    "all_local_report_links_resolve": true,
+    "observed_at_utc": "2026-10-27T02:58:11.585653+00:00",
+    "properties": 65,
+    "proposed_client_posts_conditional": 8,
+    "provider_execution_ceiling": null,
+    "status": "PASS"
+  },
+  "json_consistency": "PASS",
+  "local_markdown_links": "PASS",
+  "matrix_paths": 5,
+  "matrix_property_assessments": 65,
+  "new_adapters": 0,
+  "observed_at_utc": "2026-10-27T02:54:18.121507+00:00",
+  "original_custody": {
+    "operator": {
+      "seal_sha256": "7a1c1c846b307f19c2857d9ddff4d29db630dd8f9ed942348a38bba632c43a59",
+      "sealed_files": 1165
+    },
+    "preservation": {
+      "changed_or_missing": [],
+      "original_entries_verified": 40538,
+      "original_sources_and_evidence_unchanged": true
+    },
+    "real_provider_calls": 0,
+    "v5": {
+      "command_records_verified": 36,
+      "implementation_sha256": "c1d1c4d09715893e3c3ccd9deee77b787b189b3c511018f017842ee5ecb20ac3",
+      "instruments_sha256": "be99adbb65cf5dfb2cb9aa2accebf683306ff565ecf81a515676111856fdd06a",
+      "live_qualification": "blocked",
+      "path_b_binary_sha256": "b51cb4c86a1e5b54b5bb496e67890ee8efd18f58603616f4eb28da144d7a275d",
+      "sealed_files": 4699
+    }
+  },
+  "properties_per_path": 13,
+  "provider_executables_invoked": 0,
+  "read_only_campaign_audits": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "engineering_qualification_v1.q1_executor",
+        "verify",
+        "--campaign",
+        "/tmp/mmmtap-q1-provider-contract/engineering_qualification_v1/q1_executor/evidence/demo-campaign"
+      ],
+      "campaign": "engineering_qualification_v1/q1_executor/evidence/demo-campaign",
+      "campaign_files_unchanged": true,
+      "ended_at_utc": "2026-10-27T02:54:13.501732+00:00",
+      "exit_status": 0,
+      "started_at_utc": "2026-10-27T02:54:12.631608+00:00",
+      "summary": {
+        "all_positions_terminal": true,
+        "attempt_reservations": 10,
+        "campaign_id": "synthetic-q1-vertical-slice-v1",
+        "evidence_tip_sha256": "e2731679054117be1e726aeb3525941a3d3ca0e5b9b90f99900882bff3bf81ae",
+        "fake_provider_invocations": 9,
+        "journal_events": 52,
+        "live_execution_authorized": false,
+        "manifest_sha256": "576f9f13041873eff319d516d6e0a8041b055ee75cde2431553dbc5a544199c5",
+        "real_provider_calls": 0,
+        "remaining_simulated_budget": 0,
+        "scheduled_positions": 15,
+        "simulated_expenditure_units": 9,
+        "simulated_reserved_units": 10,
+        "states": {
+          "blocked": 4,
+          "completed": 6,
+          "interrupted": 1,
+          "invalid": 1,
+          "unavailable": 3
+        },
+        "verification": "PASS"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "engineering_qualification_v1.q1_executor",
+        "verify",
+        "--campaign",
+        "/tmp/mmmtap-q1-provider-contract/engineering_qualification_v1/q1_executor/full_matrix_evidence/demonstration/normal-campaign"
+      ],
+      "campaign": "engineering_qualification_v1/q1_executor/full_matrix_evidence/demonstration/normal-campaign",
+      "campaign_files_unchanged": true,
+      "ended_at_utc": "2026-10-27T02:54:15.079519+00:00",
+      "exit_status": 0,
+      "started_at_utc": "2026-10-27T02:54:13.527532+00:00",
+      "summary": {
+        "all_positions_terminal": true,
+        "attempt_reservations": 153,
+        "campaign_id": "synthetic-q1-full-matrix-v1-normal",
+        "evidence_tip_sha256": "9d9e5674f00194735de70c7fa8422eab115543c4d422341a9a5932e7f8e99352",
+        "fake_provider_invocations": 153,
+        "journal_events": 766,
+        "live_execution_authorized": false,
+        "manifest_sha256": "ff52e5e375bb4bdc6f5ff17a91f1a35ef82f7a0c5487af83f73fda52d89bf53c",
+        "real_provider_calls": 0,
+        "remaining_simulated_budget": 0,
+        "scheduled_positions": 153,
+        "simulated_expenditure_units": 153,
+        "simulated_reserved_units": 153,
+        "states": {
+          "completed": 153
+        },
+        "verification": "PASS"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "engineering_qualification_v1.q1_executor",
+        "verify",
+        "--campaign",
+        "/tmp/mmmtap-q1-provider-contract/engineering_qualification_v1/q1_executor/full_matrix_evidence/demonstration/adverse-campaign"
+      ],
+      "campaign": "engineering_qualification_v1/q1_executor/full_matrix_evidence/demonstration/adverse-campaign",
+      "campaign_files_unchanged": true,
+      "ended_at_utc": "2026-10-27T02:54:16.460188+00:00",
+      "exit_status": 0,
+      "started_at_utc": "2026-10-27T02:54:15.115555+00:00",
+      "summary": {
+        "all_positions_terminal": true,
+        "attempt_reservations": 141,
+        "campaign_id": "synthetic-q1-full-matrix-v1-adverse",
+        "evidence_tip_sha256": "5b9b7b2ecdb3b5b856a154d8cdf50ad220153b520e2ef422335e5e351d532b03",
+        "fake_provider_invocations": 140,
+        "journal_events": 714,
+        "live_execution_authorized": false,
+        "manifest_sha256": "e00675c8d218de30ffde5b2772b9ce10fc1d627a46b17aaed1178a0fc0130ef3",
+        "real_provider_calls": 0,
+        "remaining_simulated_budget": 0,
+        "scheduled_positions": 153,
+        "simulated_expenditure_units": 140,
+        "simulated_reserved_units": 141,
+        "states": {
+          "blocked": 11,
+          "completed": 134,
+          "interrupted": 1,
+          "invalid": 3,
+          "unavailable": 4
+        },
+        "verification": "PASS"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "engineering_qualification_v1.q1_executor",
+        "verify",
+        "--campaign",
+        "/tmp/mmmtap-q1-provider-contract/engineering_qualification_v1/q1_executor/transport_evidence/demonstration/campaign"
+      ],
+      "campaign": "engineering_qualification_v1/q1_executor/transport_evidence/demonstration/campaign",
+      "campaign_files_unchanged": true,
+      "ended_at_utc": "2026-10-27T02:54:17.262778+00:00",
+      "exit_status": 0,
+      "started_at_utc": "2026-10-27T02:54:16.481491+00:00",
+      "summary": {
+        "all_positions_terminal": true,
+        "attempt_reservations": 10,
+        "campaign_id": "synthetic-q1-transport-v1-2da8c2ca7ab2",
+        "evidence_tip_sha256": "c98763d65cd16facf36e69271169e3a91ff6f7f9ebf84523a332585a2222e998",
+        "fake_provider_invocations": 0,
+        "journal_events": 123,
+        "live_execution_authorized": false,
+        "manifest_sha256": "fa6e20b382c460c0949191df3bb01ff0b21057b649a74a052a817914b4d5d449",
+        "real_provider_calls": 0,
+        "remaining_simulated_budget": 0,
+        "scheduled_positions": 15,
+        "simulated_expenditure_units": 10,
+        "simulated_reserved_units": 10,
+        "states": {
+          "blocked": 4,
+          "completed": 6,
+          "interrupted": 1,
+          "invalid": 1,
+          "unavailable": 3
+        },
+        "subprocess_bootstraps_verified": 10,
+        "subprocess_transport_launch_intents": 10,
+        "transport_contract": "q1-offline-subprocess-v1",
+        "verification": "PASS"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "engineering_qualification_v1.q1_executor",
+        "verify",
+        "--campaign",
+        "/tmp/mmmtap-q1-provider-contract/engineering_qualification_v1/q1_executor/broker_v1/evidence/qualification/chain/campaign"
+      ],
+      "campaign": "engineering_qualification_v1/q1_executor/broker_v1/evidence/qualification/chain/campaign",
+      "campaign_files_unchanged": true,
+      "ended_at_utc": "2026-10-27T02:54:18.022673+00:00",
+      "exit_status": 0,
+      "started_at_utc": "2026-10-27T02:54:17.272602+00:00",
+      "summary": {
+        "all_positions_terminal": true,
+        "attempt_reservations": 7,
+        "broker_authorised_requests": 7,
+        "broker_complete_responses": 7,
+        "broker_dispatch_intents": 7,
+        "broker_partial_responses": 7,
+        "broker_rejected_requests": 0,
+        "broker_reserved_not_dispatched": 0,
+        "broker_terminal_failures": 0,
+        "broker_uncertain_completions": 0,
+        "campaign_id": "synthetic-q1-broker-v1-a4accbe9b5ba",
+        "evidence_tip_sha256": "1ed275c9db4db08ead25b4c7562098ea535faa21ea48560609d0c1a17e6826e5",
+        "fake_provider_invocations": 0,
+        "journal_events": 133,
+        "live_execution_authorized": false,
+        "manifest_sha256": "c4590f4651628a5a6e44103947a6615c7243411e2c1c0d4747ec82cab380c5c7",
+        "mock_provider_acceptances": 7,
+        "mock_provider_process_starts": 7,
+        "real_provider_calls": 0,
+        "remaining_simulated_budget": 1,
+        "remote_exactly_once_claimed": false,
+        "scheduled_positions": 8,
+        "simulated_expenditure_units": 7,
+        "simulated_reserved_units": 7,
+        "states": {
+          "blocked": 1,
+          "completed": 6,
+          "invalid": 1
+        },
+        "subprocess_bootstraps_verified": 7,
+        "subprocess_transport_launch_intents": 7,
+        "transport_contract": "q1-offline-broker-v1",
+        "verification": "PASS"
+      }
+    }
+  ],
+  "real_provider_calls": 0,
+  "schema": "mmmtap-q1-provider-contract-validation-v1",
+  "scientific_contract_changes": 0,
+  "simulation_runs": 0,
+  "source_hash_bindings_verified": 35,
+  "unrelated_original_tracked_diff": {
+    "after_sha256": "3dbe179f0cf3498cd8b54b3500d6d33b67a1b07551d849aba55b4840c7178ee5",
+    "before_sha256": "3dbe179f0cf3498cd8b54b3500d6d33b67a1b07551d849aba55b4840c7178ee5",
+    "byte_identical": true,
+    "note": "Raw binary diff retained only in temporary local storage; not published or printed."
+  },
+  "upstream_preexisting_tracked_diff": "empty"
+}

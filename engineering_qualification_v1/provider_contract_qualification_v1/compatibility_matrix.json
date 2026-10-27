@@ -1,0 +1,892 @@
+{
+  "baseline": "5cdf8cc0978650a72215fc90ac0da13208b0fe27",
+  "classification_scope": "Each status describes the current transport at the precise scope in finding; VERIFIED_OFFLINE never covers unobserved provider behavior. INCOMPATIBLE means cannot satisfy the unchanged contract as currently implemented.",
+  "classifications": [
+    "VERIFIED_OFFLINE",
+    "DOCUMENTED_NOT_VERIFIED",
+    "REQUIRES_BOUNDED_LIVE_PROBE",
+    "INCOMPATIBLE",
+    "UNKNOWN"
+  ],
+  "date": "2026-10-27",
+  "documentation": "evidence/documentation.json",
+  "enforceable_total_provider_execution_count": null,
+  "evidence": {
+    "blocked_generators": {
+      "path": "phase2/adapters_v2.py",
+      "symbols": [
+        "copilot_argv",
+        "codex_argv",
+        "GeneratorAdapter.invoke",
+        "PathBAdapter.invoke"
+      ]
+    },
+    "broker_acceptance": {
+      "path": "engineering_qualification_v1/q1_executor/broker_v1/evidence/RESULTS.md"
+    },
+    "broker_authority": {
+      "path": "engineering_qualification_v1/q1_executor/broker_v1/broker.py",
+      "symbols": [
+        "authorise",
+        "dispatch",
+        "reconcile",
+        "audit"
+      ]
+    },
+    "broker_binding": {
+      "path": "engineering_qualification_v1/q1_executor/broker_v1/contract.py",
+      "symbols": [
+        "specification",
+        "envelope_for"
+      ]
+    },
+    "carl_build": {
+      "path": "forensic_remediation_v1/v5/bin/carl-assessment-challenge-v5.build.json"
+    },
+    "carl_command": {
+      "path": "forensic_remediation_v1/v5/instruments/software_source/cARL-semantic-eval/internal/assessment/command.go",
+      "symbols": [
+        "Usage",
+        "executeLive"
+      ]
+    },
+    "carl_live": {
+      "path": "forensic_remediation_v1/v5/instruments/software_source/cARL-semantic-eval/internal/assessment/live.go",
+      "symbols": [
+        "newClient",
+        "NewLiveTransport",
+        "EvaluateLive",
+        "keepHeaders"
+      ]
+    },
+    "carl_request": {
+      "path": "forensic_remediation_v1/v5/instruments/software_source/cARL-semantic-eval/internal/assessment/request.go",
+      "symbols": [
+        "MatchedQuestions",
+        "ValidateRequest"
+      ]
+    },
+    "go_metadata": {
+      "path": "engineering_qualification_v1/provider_contract_qualification_v1/evidence/go_binary_metadata.json"
+    },
+    "historical_cli_controls": {
+      "path": "integration_readiness_v1/isolation_controls_final/summary.json"
+    },
+    "historical_config": {
+      "path": "phase2/config.v1.json"
+    },
+    "legacy_adapters": {
+      "path": "phase2/adapters.py",
+      "symbols": [
+        "GeneratorAdapter.invoke",
+        "NativeJEVAdapter.invoke",
+        "parse_systemone"
+      ]
+    },
+    "local_inventory": {
+      "path": "engineering_qualification_v1/provider_contract_qualification_v1/evidence/local_inventory.json"
+    },
+    "old_carl_review": {
+      "path": "carl_jev_cli_investigation_v1/CLI_CAPABILITIES.md"
+    },
+    "proposed_integration_config": {
+      "path": "forensic_remediation_v1/v5/instruments/config.v4.json"
+    },
+    "q1_response_contract": {
+      "path": "engineering_qualification_v1/q1_executor/model.py",
+      "symbols": [
+        "validate_response"
+      ]
+    },
+    "source_index": {
+      "path": "engineering_qualification_v1/provider_contract_qualification_v1/evidence/source_index.json"
+    },
+    "v2_specialist_contract": {
+      "path": "phase2_v2/instrument.py",
+      "symbols": [
+        "build_judge_request",
+        "parse_judgments"
+      ]
+    },
+    "worker_filter": {
+      "path": "engineering_qualification_v1/q1_executor/transport_bootstrap.py",
+      "symbols": [
+        "ALLOWED",
+        "main"
+      ]
+    }
+  },
+  "global_remote_dependencies": [
+    "provider-side single-execution/no replay or internal retry contract",
+    "served-model revision evidence independent of client or generated text",
+    "remote context isolation assurance",
+    "remote cancellation/completion reconciliation",
+    "account entitlement and billing terms"
+  ],
+  "launch_authorized": false,
+  "paths": [
+    {
+      "current_q1_real_configuration": "NONE: frozen proposal preserves original identity slots; broker is mock-only",
+      "exact_argv_source": "phase2/adapters_v2.py:copilot_argv",
+      "historical_invocation": "copilot --model gemini-3.8-flash --output-format json --stream off ... -p PROMPT",
+      "judge_group": null,
+      "observed_model": null,
+      "path": "gemini",
+      "preferred_candidate": "UNDECIDED",
+      "probe_ids": [
+        "G-gemini"
+      ],
+      "properties": {
+        "automatic_retries": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "blocked_generators",
+            "historical_cli_controls",
+            "local_inventory"
+          ],
+          "finding": "No preventive inference-retry switch established. Historical watchdog terminates after a visible failure and can race retries; current binary differs.",
+          "resolution": "OFFLINE_TRANSPORT_PROOF_AND_PROVIDER_COOPERATION"
+        },
+        "broker_receipts": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "broker_binding",
+            "broker_authority",
+            "q1_response_contract"
+          ],
+          "finding": "Only synthetic identities, mock framing/MAC and local mock destination qualify. Current real CLI output cannot be inserted as mock evidence.",
+          "resolution": "NEW_VERSION_OFFLINE_BINDING"
+        },
+        "correlation": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "legacy_adapters",
+            "broker_binding"
+          ],
+          "finding": "CLI session/call IDs and events may exist; no independently reconciled provider request ID is bound into broker receipts.",
+          "resolution": "OFFLINE_METADATA_BINDING_THEN_PROBE"
+        },
+        "egress": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "broker_binding",
+            "blocked_generators"
+          ],
+          "finding": "Current broker has no real network path or destination allowlist for this CLI; historical live route not provider scoped.",
+          "resolution": "OFFLINE_DEPLOYMENT_CONTROL"
+        },
+        "fallback": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "blocked_generators",
+            "local_inventory"
+          ],
+          "finding": "Explicit requested model is supplied; current binary routing and remote substitution cannot be established from CLI events.",
+          "resolution": "PROVIDER_COOPERATION_AND_CONDITIONAL_PROBE"
+        },
+        "fresh_context": {
+          "classification": "REQUIRES_BOUNDED_LIVE_PROBE",
+          "evidence": [
+            "legacy_adapters",
+            "blocked_generators"
+          ],
+          "finding": "Fresh home/cwd, no resume and ephemeral Codex intent exist in source; not proof of CLI initialization or remote isolation for the current build.",
+          "resolution": "OFFLINE_REBIND_AND_PAIRED_PROBE"
+        },
+        "identity": {
+          "classification": "REQUIRES_BOUNDED_LIVE_PROBE",
+          "evidence": [
+            "blocked_generators",
+            "legacy_adapters"
+          ],
+          "finding": "Requested ID is known; model call and accounting events are client reports, not provider attestation.",
+          "resolution": "PROVIDER_CORRELATION_AND_CONDITIONAL_PROBE"
+        },
+        "no_tools": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "historical_cli_controls",
+            "blocked_generators",
+            "worker_filter"
+          ],
+          "finding": "Historical loopback advertised no tools with placeholder/exclusion flags; current binary not qualified. It cannot be placed in unchanged worker filter.",
+          "resolution": "OFFLINE_PREVENTIVE_CONTAINMENT"
+        },
+        "packet_delivery": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "blocked_generators",
+            "historical_cli_controls"
+          ],
+          "finding": "Prompt delivery flags and validators are inspectable, but CLI system prefix, transformations and current tool schema are not sealed by the Q1 broker.",
+          "resolution": "OFFLINE_WIRE_CONTRACT_THEN_PROBE"
+        },
+        "raw_bytes": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "legacy_adapters"
+          ],
+          "finding": "Captures CLI stdout/stderr, not raw HTTP responses. Legacy credential redaction alters streams; parser output is another derived surface.",
+          "resolution": "OFFLINE_TRANSPORT_CHANGE"
+        },
+        "sealed_reservation": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "broker_binding",
+            "broker_authority",
+            "legacy_adapters"
+          ],
+          "finding": "Legacy CLI call is not a selectable real destination in the sealed broker. One Popen is not one HTTP request.",
+          "resolution": "OFFLINE_INTEGRATION"
+        },
+        "timeout_cancel": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "legacy_adapters",
+            "blocked_generators"
+          ],
+          "finding": "Local process deadline/kill exists; remote completion and cancellation are unacknowledged. Current CLI reconnects remain unbounded.",
+          "resolution": "OFFLINE_FAILURE_TESTS_AND_PROVIDER_COOPERATION"
+        },
+        "usage_billing": {
+          "classification": "REQUIRES_BOUNDED_LIVE_PROBE",
+          "evidence": [
+            "legacy_adapters",
+            "blocked_generators"
+          ],
+          "finding": "CLI usage parsing exists; account-specific billing, hidden calls and billable reasoning/caching remain unverified.",
+          "resolution": "CONDITIONAL_PROBE_AND_ACCOUNT_EVIDENCE"
+        }
+      },
+      "requested_model": "gemini-3.8-flash",
+      "requested_provider": "github_copilot_cli",
+      "role": "generator",
+      "strict_one_shot_qualified": false,
+      "technical_preference_if_authorised": {
+        "authority": "Separate provider account/key/billing authorisation required; do not reuse Copilot or ChatGPT login material. No architecture selected or adapter built.",
+        "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent",
+        "model": "gemini-3.8-flash",
+        "transport": "direct stateless HTTPS; SDK only after pinning/retry audit"
+      }
+    },
+    {
+      "current_q1_real_configuration": "NONE: frozen proposal preserves original identity slots; broker is mock-only",
+      "exact_argv_source": "phase2/adapters_v2.py:copilot_argv",
+      "historical_invocation": "copilot --model claude-haiku-5.5 --output-format json --stream off ... -p PROMPT",
+      "judge_group": null,
+      "observed_model": null,
+      "path": "haiku",
+      "preferred_candidate": "UNDECIDED",
+      "probe_ids": [
+        "G-haiku"
+      ],
+      "properties": {
+        "automatic_retries": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "blocked_generators",
+            "historical_cli_controls",
+            "local_inventory"
+          ],
+          "finding": "No preventive inference-retry switch established. Historical watchdog terminates after a visible failure and can race retries; current binary differs.",
+          "resolution": "OFFLINE_TRANSPORT_PROOF_AND_PROVIDER_COOPERATION"
+        },
+        "broker_receipts": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "broker_binding",
+            "broker_authority",
+            "q1_response_contract"
+          ],
+          "finding": "Only synthetic identities, mock framing/MAC and local mock destination qualify. Current real CLI output cannot be inserted as mock evidence.",
+          "resolution": "NEW_VERSION_OFFLINE_BINDING"
+        },
+        "correlation": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "legacy_adapters",
+            "broker_binding"
+          ],
+          "finding": "CLI session/call IDs and events may exist; no independently reconciled provider request ID is bound into broker receipts.",
+          "resolution": "OFFLINE_METADATA_BINDING_THEN_PROBE"
+        },
+        "egress": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "broker_binding",
+            "blocked_generators"
+          ],
+          "finding": "Current broker has no real network path or destination allowlist for this CLI; historical live route not provider scoped.",
+          "resolution": "OFFLINE_DEPLOYMENT_CONTROL"
+        },
+        "fallback": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "blocked_generators",
+            "local_inventory"
+          ],
+          "finding": "Explicit requested model is supplied; current binary routing and remote substitution cannot be established from CLI events.",
+          "resolution": "PROVIDER_COOPERATION_AND_CONDITIONAL_PROBE"
+        },
+        "fresh_context": {
+          "classification": "REQUIRES_BOUNDED_LIVE_PROBE",
+          "evidence": [
+            "legacy_adapters",
+            "blocked_generators"
+          ],
+          "finding": "Fresh home/cwd, no resume and ephemeral Codex intent exist in source; not proof of CLI initialization or remote isolation for the current build.",
+          "resolution": "OFFLINE_REBIND_AND_PAIRED_PROBE"
+        },
+        "identity": {
+          "classification": "REQUIRES_BOUNDED_LIVE_PROBE",
+          "evidence": [
+            "blocked_generators",
+            "legacy_adapters"
+          ],
+          "finding": "Requested ID is known; model call and accounting events are client reports, not provider attestation.",
+          "resolution": "PROVIDER_CORRELATION_AND_CONDITIONAL_PROBE"
+        },
+        "no_tools": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "historical_cli_controls",
+            "blocked_generators",
+            "worker_filter"
+          ],
+          "finding": "Historical loopback advertised no tools with placeholder/exclusion flags; current binary not qualified. It cannot be placed in unchanged worker filter.",
+          "resolution": "OFFLINE_PREVENTIVE_CONTAINMENT"
+        },
+        "packet_delivery": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "blocked_generators",
+            "historical_cli_controls"
+          ],
+          "finding": "Prompt delivery flags and validators are inspectable, but CLI system prefix, transformations and current tool schema are not sealed by the Q1 broker.",
+          "resolution": "OFFLINE_WIRE_CONTRACT_THEN_PROBE"
+        },
+        "raw_bytes": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "legacy_adapters"
+          ],
+          "finding": "Captures CLI stdout/stderr, not raw HTTP responses. Legacy credential redaction alters streams; parser output is another derived surface.",
+          "resolution": "OFFLINE_TRANSPORT_CHANGE"
+        },
+        "sealed_reservation": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "broker_binding",
+            "broker_authority",
+            "legacy_adapters"
+          ],
+          "finding": "Legacy CLI call is not a selectable real destination in the sealed broker. One Popen is not one HTTP request.",
+          "resolution": "OFFLINE_INTEGRATION"
+        },
+        "timeout_cancel": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "legacy_adapters",
+            "blocked_generators"
+          ],
+          "finding": "Local process deadline/kill exists; remote completion and cancellation are unacknowledged. Current CLI reconnects remain unbounded.",
+          "resolution": "OFFLINE_FAILURE_TESTS_AND_PROVIDER_COOPERATION"
+        },
+        "usage_billing": {
+          "classification": "REQUIRES_BOUNDED_LIVE_PROBE",
+          "evidence": [
+            "legacy_adapters",
+            "blocked_generators"
+          ],
+          "finding": "CLI usage parsing exists; account-specific billing, hidden calls and billable reasoning/caching remain unverified.",
+          "resolution": "CONDITIONAL_PROBE_AND_ACCOUNT_EVIDENCE"
+        }
+      },
+      "requested_model": "claude-haiku-5.5",
+      "requested_provider": "github_copilot_cli",
+      "role": "generator",
+      "strict_one_shot_qualified": false,
+      "technical_preference_if_authorised": {
+        "authority": "Separate provider account/key/billing authorisation required; do not reuse Copilot or ChatGPT login material. No architecture selected or adapter built.",
+        "endpoint": "https://api.anthropic.com/v1/messages",
+        "model": "claude-haiku-5-5",
+        "transport": "direct stateless HTTPS; SDK only after pinning/retry audit"
+      }
+    },
+    {
+      "current_q1_real_configuration": "NONE: frozen proposal preserves original identity slots; broker is mock-only",
+      "exact_argv_source": "phase2/adapters_v2.py:codex_argv",
+      "historical_invocation": "codex exec --model gpt-6.1-sol --json ... -",
+      "judge_group": null,
+      "observed_model": null,
+      "path": "sol",
+      "preferred_candidate": "UNDECIDED",
+      "probe_ids": [
+        "G-sol"
+      ],
+      "properties": {
+        "automatic_retries": {
+          "classification": "DOCUMENTED_NOT_VERIFIED",
+          "evidence": [
+            "blocked_generators",
+            "historical_cli_controls",
+            "local_inventory"
+          ],
+          "finding": "Codex argv sets request_max_retries=0 and stream_max_retries=0 on an explicit provider; actual 0.164.0 behavior unverified.",
+          "resolution": "OFFLINE_TRANSPORT_PROOF_AND_PROVIDER_COOPERATION"
+        },
+        "broker_receipts": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "broker_binding",
+            "broker_authority",
+            "q1_response_contract"
+          ],
+          "finding": "Only synthetic identities, mock framing/MAC and local mock destination qualify. Current real CLI output cannot be inserted as mock evidence.",
+          "resolution": "NEW_VERSION_OFFLINE_BINDING"
+        },
+        "correlation": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "legacy_adapters",
+            "broker_binding"
+          ],
+          "finding": "CLI session/call IDs and events may exist; no independently reconciled provider request ID is bound into broker receipts.",
+          "resolution": "OFFLINE_METADATA_BINDING_THEN_PROBE"
+        },
+        "egress": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "broker_binding",
+            "blocked_generators"
+          ],
+          "finding": "Current broker has no real network path or destination allowlist for this CLI; historical live route not provider scoped.",
+          "resolution": "OFFLINE_DEPLOYMENT_CONTROL"
+        },
+        "fallback": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "blocked_generators",
+            "local_inventory"
+          ],
+          "finding": "Explicit requested model is supplied; current binary routing and remote substitution cannot be established from CLI events.",
+          "resolution": "PROVIDER_COOPERATION_AND_CONDITIONAL_PROBE"
+        },
+        "fresh_context": {
+          "classification": "REQUIRES_BOUNDED_LIVE_PROBE",
+          "evidence": [
+            "legacy_adapters",
+            "blocked_generators"
+          ],
+          "finding": "Fresh home/cwd, no resume and ephemeral Codex intent exist in source; not proof of CLI initialization or remote isolation for the current build.",
+          "resolution": "OFFLINE_REBIND_AND_PAIRED_PROBE"
+        },
+        "identity": {
+          "classification": "REQUIRES_BOUNDED_LIVE_PROBE",
+          "evidence": [
+            "blocked_generators",
+            "legacy_adapters"
+          ],
+          "finding": "Requested ID is known; client event/debug identity is not independent evidence. Sol parser explicitly leaves observed_model null.",
+          "resolution": "PROVIDER_CORRELATION_AND_CONDITIONAL_PROBE"
+        },
+        "no_tools": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "historical_cli_controls",
+            "blocked_generators",
+            "worker_filter"
+          ],
+          "finding": "Historical Codex exposed ten internal routes despite disable flags. Current runtime is unqualified and feature flags are not a preventive interlock.",
+          "resolution": "OFFLINE_PREVENTIVE_CONTAINMENT"
+        },
+        "packet_delivery": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "blocked_generators",
+            "historical_cli_controls"
+          ],
+          "finding": "Prompt delivery flags and validators are inspectable, but CLI system prefix, transformations and current tool schema are not sealed by the Q1 broker.",
+          "resolution": "OFFLINE_WIRE_CONTRACT_THEN_PROBE"
+        },
+        "raw_bytes": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "legacy_adapters"
+          ],
+          "finding": "Captures CLI stdout/stderr, not raw HTTP responses. Legacy credential redaction alters streams; parser output is another derived surface.",
+          "resolution": "OFFLINE_TRANSPORT_CHANGE"
+        },
+        "sealed_reservation": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "broker_binding",
+            "broker_authority",
+            "legacy_adapters"
+          ],
+          "finding": "Legacy CLI call is not a selectable real destination in the sealed broker. One Popen is not one HTTP request.",
+          "resolution": "OFFLINE_INTEGRATION"
+        },
+        "timeout_cancel": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "legacy_adapters",
+            "blocked_generators"
+          ],
+          "finding": "Local process deadline/kill exists; remote completion and cancellation are unacknowledged. Current CLI reconnects remain unbounded.",
+          "resolution": "OFFLINE_FAILURE_TESTS_AND_PROVIDER_COOPERATION"
+        },
+        "usage_billing": {
+          "classification": "REQUIRES_BOUNDED_LIVE_PROBE",
+          "evidence": [
+            "legacy_adapters",
+            "blocked_generators"
+          ],
+          "finding": "CLI usage parsing exists; account-specific billing, hidden calls and billable reasoning/caching remain unverified.",
+          "resolution": "CONDITIONAL_PROBE_AND_ACCOUNT_EVIDENCE"
+        }
+      },
+      "requested_model": "gpt-6.1-sol",
+      "requested_provider": "codex_cli",
+      "role": "generator",
+      "strict_one_shot_qualified": false,
+      "technical_preference_if_authorised": {
+        "authority": "Separate provider account/key/billing authorisation required; do not reuse Copilot or ChatGPT login material. No architecture selected or adapter built.",
+        "endpoint": "https://api.openai.com/v1/responses",
+        "model": "gpt-6.1-sol",
+        "transport": "direct stateless HTTPS; SDK only after pinning/retry audit"
+      }
+    },
+    {
+      "current_q1_real_configuration": "NONE; original model slot only",
+      "exact_argv_source": "phase2/adapters.py:NativeJEVAdapter.invoke",
+      "historical_invocation": "NativeJEVAdapter.invoke(request, frozen_text_assessment_v1, authorised=True): urllib POST https://api.typesafe.ai/v1/systemone; JEVKEY bearer; not executed",
+      "judge_group": "shared_systemone",
+      "observed_model": null,
+      "path": "native_jev",
+      "preferred_candidate": "direct SystemOne HTTPS in trusted broker, conditional on custody and protocol repair",
+      "probe_ids": [
+        "J-shared"
+      ],
+      "properties": {
+        "automatic_retries": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "legacy_adapters"
+          ],
+          "finding": "No application retry loop and NoRedirect exist. Default urllib opener may use environment proxy handlers; runtime and provider internal attempts are unverified.",
+          "resolution": "OFFLINE_CLIENT_AUDIT_AND_PROVIDER_COOPERATION"
+        },
+        "broker_receipts": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "v2_specialist_contract",
+            "q1_response_contract",
+            "broker_binding"
+          ],
+          "finding": "Native typed answers do not satisfy frozen v2 judgment schema; broker live destination and metadata schema absent.",
+          "resolution": "OFFLINE_CONTRACT_RESOLUTION"
+        },
+        "correlation": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "legacy_adapters"
+          ],
+          "finding": "No response headers or remote request correlation preserved by existing adapter.",
+          "resolution": "OFFLINE_METADATA_CAPTURE_THEN_SHARED_JEV_PROBE"
+        },
+        "egress": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "legacy_adapters",
+            "broker_binding"
+          ],
+          "finding": "Exact URL check is not network confinement. Default opener/proxy/DNS route is not a provider allowlist; current Q1 broker denies all real destinations.",
+          "resolution": "OFFLINE_DEPLOYMENT_CONTROL"
+        },
+        "fallback": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "legacy_adapters",
+            "historical_config"
+          ],
+          "finding": "Request body carries model, no local fallback branch; jev-latest is a movable alias, not a fixed judge version.",
+          "resolution": "HUMAN_MODEL_PIN_DECISION_AND_PROVIDER_COOPERATION"
+        },
+        "fresh_context": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "legacy_adapters"
+          ],
+          "finding": "Body supplies complete state/questions; no conversation ID. Remote statelessness is not established; the fixed typed catalog has no meaningful prior-conversation marker test.",
+          "resolution": "SHARED_JEV_PAIR_AND_PROVIDER_ASSURANCE"
+        },
+        "identity": {
+          "classification": "REQUIRES_BOUNDED_LIVE_PROBE",
+          "evidence": [
+            "legacy_adapters"
+          ],
+          "finding": "Strict response model parser establishes only presence of a model string. Nonempty alias passes; no returned request ID/attestation checked.",
+          "resolution": "PROVIDER_CORRELATION_AND_SHARED_JEV_PROBE"
+        },
+        "no_tools": {
+          "classification": "VERIFIED_OFFLINE",
+          "evidence": [
+            "legacy_adapters"
+          ],
+          "finding": "Inspected NativeJEVAdapter is a direct urllib POST/parser and has no local agent/tool dispatch code. This verifies local source behavior only; provider processing remains unverified.",
+          "resolution": "RETAIN_AT_BROKER_BOUNDARY"
+        },
+        "packet_delivery": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "legacy_adapters",
+            "v2_specialist_contract",
+            "q1_response_contract"
+          ],
+          "finding": "Existing native questions differ from frozen v2 three-dimension judge-request/response contract. No demonstrated semantics-preserving bridge.",
+          "resolution": "HUMAN_INSTRUMENT_DECISION_OFFLINE"
+        },
+        "raw_bytes": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "legacy_adapters"
+          ],
+          "finding": "HTTPError bodies captured, but response headers omitted; read failure can discard partial data. Raw bytes may be redacted and truncated.",
+          "resolution": "OFFLINE_CUSTODY_REPAIR"
+        },
+        "sealed_reservation": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "legacy_adapters",
+            "broker_authority"
+          ],
+          "finding": "Native adapter has one Python open call but no binding to Q1 broker dispatch journal.",
+          "resolution": "OFFLINE_INTEGRATION"
+        },
+        "timeout_cancel": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "legacy_adapters"
+          ],
+          "finding": "urllib timeout is not a guaranteed whole-exchange deadline. No remote cancellation or durable per-chunk publication in this adapter.",
+          "resolution": "OFFLINE_DEADLINE_AND_CUSTODY_REPAIR; EXTERNAL_COMPLETION_ASSURANCE"
+        },
+        "usage_billing": {
+          "classification": "REQUIRES_BOUNDED_LIVE_PROBE",
+          "evidence": [
+            "legacy_adapters"
+          ],
+          "finding": "Optional typed usage parser exists; billing unit and actual totals need account/provider evidence. No max_tokens request control established.",
+          "resolution": "SHARED_JEV_PROBE_AND_ACCOUNT_EVIDENCE"
+        }
+      },
+      "requested_model": "jev-latest",
+      "requested_provider": "systemone_https",
+      "role": "specialist",
+      "strict_one_shot_qualified": false
+    },
+    {
+      "candidate_invocation": [
+        "carl-assessment-challenge-v5 prepare --request FILE --policy-root DIR --out NEW_DIR",
+        "carl-assessment-challenge-v5 evaluate-live --prepared FILE --prepared-sha256 HASH --authorize-live --timeout-seconds N --out NEW_DIR",
+        "carl-assessment-challenge-v5 replay --receipt FILE --receipt-sha256 HASH"
+      ],
+      "current_q1_real_configuration": "NONE; no real broker destination",
+      "exact_argv_source": "phase2/adapters_v2.py:PathBAdapter.invoke; frozen V5 internal/assessment/command.go:Usage",
+      "historical_invocation": "carl-jev review --base BASE --head HEAD --task-file FILE --format json; unsuitable for frozen non-Git text",
+      "invocation_warning": "Recorded syntax only; no cARL invocation occurred. evaluate-live must not bypass the broker.",
+      "judge_group": "shared_systemone",
+      "observed_model": null,
+      "path": "carl_jev",
+      "preferred_candidate": "existing V5 assessment preparation/policy with broker-owned SystemOne exchange; conditional, not the Git-review CLI",
+      "probe_ids": [
+        "J-shared"
+      ],
+      "properties": {
+        "automatic_retries": {
+          "classification": "VERIFIED_OFFLINE",
+          "evidence": [
+            "carl_live",
+            "carl_build",
+            "source_index",
+            "go_metadata"
+          ],
+          "finding": "V5 local source has one Do, fresh HTTP/1 transport, no proxy/redirect/reuse, req.GetBody=nil, no retry loop. This verifies source-level client replay prevention, not remote execution counts or binary/runtime behavior.",
+          "resolution": "BINARY_BINDING_AND_PROVIDER_COOPERATION"
+        },
+        "broker_receipts": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "carl_command",
+            "v2_specialist_contract",
+            "broker_binding"
+          ],
+          "finding": "Existing cARL live receipt and policy output differ from Q1 immutable receipts/judgment schema and mock framing. Do not replace broker raw evidence with parsed cARL results.",
+          "resolution": "OFFLINE_VERSIONED_CONTRACT_RESOLUTION"
+        },
+        "correlation": {
+          "classification": "REQUIRES_BOUNDED_LIVE_PROBE",
+          "evidence": [
+            "carl_live",
+            "carl_command"
+          ],
+          "finding": "Prepared/request/implementation hashes, status, sanitized headers and TLS captured. No injected broker correlation header; remote request ID existence/lookup unknown.",
+          "resolution": "OFFLINE_METADATA_BINDING_THEN_SHARED_JEV_PROBE"
+        },
+        "egress": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "carl_live",
+            "worker_filter",
+            "broker_binding"
+          ],
+          "finding": "Fixed endpoint and Proxy=nil prevent URL/proxy selection in source, but no broker network confinement exists. Worker filter forbids running Go runtime/network anyway.",
+          "resolution": "OFFLINE_BROKER_EGRESS_BOUNDARY"
+        },
+        "fallback": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "carl_request",
+            "carl_live"
+          ],
+          "finding": "No client fallback in inspected source, but native.Model accepts nonempty strings and default request uses moving jev-latest; returned model need not be version pinned.",
+          "resolution": "HUMAN_MODEL_PIN_DECISION_AND_PROVIDER_COOPERATION"
+        },
+        "fresh_context": {
+          "classification": "UNKNOWN",
+          "evidence": [
+            "carl_request",
+            "carl_live"
+          ],
+          "finding": "Prepared request fixes complete native state/questions; fresh HTTP transport per command. Fixed numeric question catalog cannot meaningfully test prior-conversation recall; shared server context needs provider assurance.",
+          "resolution": "SHARED_JEV_PAIR_AND_PROVIDER_ASSURANCE"
+        },
+        "identity": {
+          "classification": "REQUIRES_BOUNDED_LIVE_PROBE",
+          "evidence": [
+            "carl_live"
+          ],
+          "finding": "Receipt explicitly says local integrity, provider_authenticated=false; TLS certificate hashes identify endpoint, not served model.",
+          "resolution": "PROVIDER_CORRELATION_AND_SHARED_JEV_PROBE"
+        },
+        "no_tools": {
+          "classification": "VERIFIED_OFFLINE",
+          "evidence": [
+            "carl_live",
+            "carl_request",
+            "old_carl_review"
+          ],
+          "finding": "Assessment live source posts prepared body; no LLM tools or arbitrary repo discovery. Preparation reads only explicit policy files; historical review CLI does require Git and is a separate incompatible path.",
+          "resolution": "KEEP_PREPARATION_OUTSIDE_WORKER_AND_FREEZE_POLICY"
+        },
+        "packet_delivery": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "carl_request",
+            "v2_specialist_contract"
+          ],
+          "finding": "MatchedQuestions fixes claim support, uncertainty and authority Nouls, unlike v2 three-dimension labels/scores/rationales/quotes. Captured cARL policy is locally deterministic but not a v2 mapping.",
+          "resolution": "HUMAN_INSTRUMENT_DECISION_OFFLINE"
+        },
+        "raw_bytes": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "carl_live",
+            "carl_command"
+          ],
+          "finding": "Exact complete/error/partial/truncated HTTP bodies are represented, but credential/encoding bodies are withheld. CLI writes evidence only after EvaluateLive returns, so crash can lose received prefixes.",
+          "resolution": "OFFLINE_INCREMENTAL_BROKER_CUSTODY; DECIDE_PROTECTED_RAW_QUARANTINE"
+        },
+        "sealed_reservation": {
+          "classification": "INCOMPATIBLE",
+          "evidence": [
+            "carl_command",
+            "broker_authority"
+          ],
+          "finding": "CLI intent/new-directory exclusion is not Q1 campaign authority. Standalone evaluate-live can be invoked again with another output directory.",
+          "resolution": "OFFLINE_BROKER_OWNED_DISPATCH"
+        },
+        "timeout_cancel": {
+          "classification": "VERIFIED_OFFLINE",
+          "evidence": [
+            "carl_live",
+            "carl_command"
+          ],
+          "finding": "context.WithTimeout and explicit failure classes exist in inspected source. Local timeout is not remote cancellation; whole-call reads remain volatile until return.",
+          "resolution": "OFFLINE_CRASH_CUSTODY; EXTERNAL_COMPLETION_ASSURANCE"
+        },
+        "usage_billing": {
+          "classification": "REQUIRES_BOUNDED_LIVE_PROBE",
+          "evidence": [
+            "carl_live",
+            "carl_request"
+          ],
+          "finding": "Typed optional usage accepted, but live billing and internal attempts unknown. No request token ceiling established.",
+          "resolution": "SHARED_JEV_PROBE_AND_ACCOUNT_EVIDENCE"
+        }
+      },
+      "requested_model": "jev-latest",
+      "requested_provider": "carl_assessment_challenge_v1 (proposed integration); historical carl_jev_cli review",
+      "role": "specialist",
+      "strict_one_shot_qualified": false
+    }
+  ],
+  "properties": [
+    {
+      "id": "sealed_reservation",
+      "requirement": "One sealed request per durable reservation"
+    },
+    {
+      "id": "automatic_retries",
+      "requirement": "Explicit prevention of automatic retries"
+    },
+    {
+      "id": "fallback",
+      "requirement": "Prevent model fallback/substitution"
+    },
+    {
+      "id": "fresh_context",
+      "requirement": "Fresh request/session; no carry-over"
+    },
+    {
+      "id": "raw_bytes",
+      "requirement": "Raw errors, partial and complete response bytes"
+    },
+    {
+      "id": "identity",
+      "requirement": "Requested and independently supported observed identity"
+    },
+    {
+      "id": "packet_delivery",
+      "requirement": "Deterministic prompt and policy delivery"
+    },
+    {
+      "id": "no_tools",
+      "requirement": "No implicit tools/repository/agent permissions"
+    },
+    {
+      "id": "egress",
+      "requirement": "Restricted approved-provider egress"
+    },
+    {
+      "id": "timeout_cancel",
+      "requirement": "Timeout/cancellation and ambiguous completion"
+    },
+    {
+      "id": "correlation",
+      "requirement": "Request IDs, correlation and metadata"
+    },
+    {
+      "id": "usage_billing",
+      "requirement": "Token usage and billing observations"
+    },
+    {
+      "id": "broker_receipts",
+      "requirement": "Existing broker/reservation/receipt compatibility"
+    }
+  ],
+  "provider_calls": 0,
+  "reason": "No current real broker transport or provider-internal attempt guarantee. Token limits cannot remedy this.",
+  "schema": "mmmtap-q1-provider-contract-assessment-v1"
+}

@@ -1,0 +1,128 @@
+{
+  "binaries": {
+    "bwrap": {
+      "executed": false,
+      "located": "/usr/bin/bwrap",
+      "resolved": "/usr/bin/bwrap",
+      "sha256": "ff5add553bea12a45c18ebe6c67d3ed637052b869a1ca2fc5d74a6a2e8c5cce6"
+    },
+    "carl": {
+      "executed": false,
+      "located": "/usr/local/bin/carl",
+      "resolved": "/usr/local/bin/carl",
+      "sha256": "4e1a874a30e2b60322b62906f688ca11dbb301319fd60a86258211fc9c67694e"
+    },
+    "carl-assessment-challenge-v4": {
+      "executed": false,
+      "exists": true,
+      "located": "/home/prometheus/git/mmmtap_phase2/forensic_remediation_v1/bin/carl-assessment-challenge-v4",
+      "sha256": "5191cb8328cfd77ae64ef2cbb59bfa7096883bfd1660bb6c39e3c32f41f048b3"
+    },
+    "carl-assessment-challenge-v5": {
+      "executed": false,
+      "exists": true,
+      "located": "/home/prometheus/git/mmmtap_phase2/forensic_remediation_v1/v5/bin/carl-assessment-challenge-v5",
+      "sha256": "b51cb4c86a1e5b54b5bb496e67890ee8efd18f58603616f4eb28da144d7a275d"
+    },
+    "carl-jev": {
+      "executed": false,
+      "located": "/home/prometheus/bin/carl-jev",
+      "resolved": "/home/prometheus/bin/carl-jev",
+      "sha256": "b34696d54d0b9c910d48c9adbe0155f825617d8e4c8981e58a2f50b5d0868428"
+    },
+    "claude": {
+      "executed": false,
+      "located": null,
+      "resolved": null,
+      "sha256": null
+    },
+    "codex": {
+      "executed": false,
+      "historical_0_162_1_exists": false,
+      "located": "/home/prometheus/.local/bin/codex",
+      "package_metadata": {
+        "entrypoint": "bin/codex",
+        "layoutVersion": 1,
+        "pathDir": "codex-path",
+        "resourcesDir": "codex-resources",
+        "target": "aarch64-unknown-linux-musl",
+        "variant": "codex",
+        "version": "0.164.0"
+      },
+      "package_metadata_sha256": "28dd4b4e31da1d3caaca29fade8f7e5fe1da8d8cfc1c0bfe266bc9f341c57570",
+      "resolved": "/home/prometheus/.codex/packages/standalone/releases/0.164.0-aarch64-unknown-linux-musl/bin/codex",
+      "sha256": "8813c8d8a4cea2eeba271b72ab22f49628b184b24ab18dbef06b4ce41e9a8d39"
+    },
+    "copilot": {
+      "embedded_version_literals": [
+        {
+          "offset": 103737054,
+          "text": "buildVersion:\"1.0.103\""
+        }
+      ],
+      "executed": false,
+      "located": "/home/prometheus/.local/bin/copilot",
+      "resolved": "/home/prometheus/.local/bin/copilot",
+      "sha256": "1253bb0cf8704e94d849639182a356e85f77577cafd1f566ab88d75ad19abb35",
+      "version_caveat": "Embedded build version only; wrapper supports cached package selection. Effective runtime version not executed or verified."
+    },
+    "gemini": {
+      "executed": false,
+      "located": null,
+      "resolved": null,
+      "sha256": null
+    },
+    "node": {
+      "executed": false,
+      "located": "/usr/local/bin/node",
+      "resolved": "/usr/local/lib/nodejs/node-v24.21.0-linux-arm64/bin/node",
+      "sha256": "0f8949d1028f6d61506b2d5bc57e7e6fe893d7b1997509b7847294fc9c616584"
+    }
+  },
+  "node_package_roots": {
+    "/home/prometheus/.local/lib/node_modules": [],
+    "/usr/local/lib/node_modules": [
+      {
+        "name": "n",
+        "sha256": "acb01a7daa4b114146453a24a2809bfcd9fefba514437895487846391c7e6a9b",
+        "version": "10.2.0"
+      }
+    ]
+  },
+  "observed_at_utc": "2026-10-27T02:44:29.806375+00:00",
+  "python_packages": {
+    "anthropic": {
+      "status": "not installed in inspected Python environment"
+    },
+    "google-auth": {
+      "status": "not installed in inspected Python environment"
+    },
+    "google-genai": {
+      "status": "not installed in inspected Python environment"
+    },
+    "google-generativeai": {
+      "status": "not installed in inspected Python environment"
+    },
+    "httpx": {
+      "status": "not installed in inspected Python environment"
+    },
+    "openai": {
+      "status": "not installed in inspected Python environment"
+    },
+    "requests": {
+      "location": "/usr/lib/python3/dist-packages",
+      "version": "2.28.1"
+    },
+    "typesafe": {
+      "status": "not installed in inspected Python environment"
+    },
+    "typesafe-sdk": {
+      "status": "not installed in inspected Python environment"
+    },
+    "urllib3": {
+      "location": "/usr/lib/python3/dist-packages",
+      "version": "1.26.12"
+    }
+  },
+  "scope": "Metadata and static files only. No credential, environment-value, user configuration or private session-history inspection. No provider executable invoked. Package absence is scoped to these roots/interpreter."
+}

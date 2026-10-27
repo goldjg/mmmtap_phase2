@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "python",
+    "-B",
+    "-m",
+    "operator_execution_v1",
+    "verify"
+  ],
+  "cwd": "/home/prometheus/git/mmmtap_phase2",
+  "exit_status": 0,
+  "provider_calls": 0,
+  "purpose": "Read-only original 40538-entry custody verifier, not the sanitized isolated checkout.",
+  "timing": "Exact start/end not captured; invoked and completed during this 2026-10-27 assessment."
+}
