@@ -1,0 +1,182 @@
+{
+  "baseline": "bfdfc894b5fef8e49420332dec02e36b5bc4f6e1",
+  "pilot_manifest": {
+    "path": "operator_runs_v1/pilot/manifest.json",
+    "sha256": "e575998628c94df813a14c68111fe38c7445d0c3dd2f461b8987678bfdb45c8b"
+  },
+  "samples": [
+    {
+      "arm": "E1",
+      "assessment_parent": "b5b793743ce865984dde51f88ab4b0dfe2bd4d67a84e28b9fd82c796880e3020",
+      "case_id": "synthetic-benign-docs",
+      "claim_ids": [
+        "doc-fix-no-runtime-impact"
+      ],
+      "generator": "gemini",
+      "id": "native-low",
+      "identity_basis": "historical returned model field and local custody, not signed provider attestation",
+      "job_id": "24f677ae3aacb291fca8174487a243c8bccbe7eb1607aa6e8b959b1229c3308f",
+      "kind": "historical_pilot_live_record_not_new_observation",
+      "mechanism": "native_jev",
+      "original_http_entity_bytes": true,
+      "record_files": [
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/24f677ae3aacb291fca8174487a243c8bccbe7eb1607aa6e8b959b1229c3308f/raw.json",
+          "sha256": "f317279210ba0d88a939eeecb89bac11f83270056b49c55ae0528240d2d68237"
+        },
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/24f677ae3aacb291fca8174487a243c8bccbe7eb1607aa6e8b959b1229c3308f/payload.json",
+          "sha256": "626b649a14dae29e8bea6eb92ba2a40c6161986e654671c92c70bacef5857ba0"
+        },
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/24f677ae3aacb291fca8174487a243c8bccbe7eb1607aa6e8b959b1229c3308f/intent.json",
+          "sha256": "7e72b5825136df13ed398768f1210faeae251cb83aaad4d325f78921e4e35507"
+        },
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/24f677ae3aacb291fca8174487a243c8bccbe7eb1607aa6e8b959b1229c3308f/result.json",
+          "sha256": "3ba8488807e453050f71d3fe03ecfb436019b7a242d06759e3130ef7162490de"
+        }
+      ],
+      "response_file": "evidence/native-low.response.bin",
+      "response_sha256": "3dd5239e6bd2664c9a65568c0c8026bd38f2a2515a543a60b0a5e58b26d6cb91"
+    },
+    {
+      "arm": "E2",
+      "assessment_parent": "b5b793743ce865984dde51f88ab4b0dfe2bd4d67a84e28b9fd82c796880e3020",
+      "case_id": "synthetic-benign-docs",
+      "claim_ids": [
+        "doc-fix-no-runtime-impact"
+      ],
+      "generator": "gemini",
+      "id": "carl-low",
+      "identity_basis": "historical returned model field and local custody, not signed provider attestation",
+      "job_id": "e8b79fe00e6280371207eaac10f08e38e10a4097f07d0c842f0084a31133ebe9",
+      "kind": "historical_pilot_live_record_not_new_observation",
+      "mechanism": "carl_jev",
+      "original_http_entity_bytes": true,
+      "record_files": [
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/e8b79fe00e6280371207eaac10f08e38e10a4097f07d0c842f0084a31133ebe9/raw.json",
+          "sha256": "3b15229d120394192c18042ccde827fd781a26cba98465a7f067dacaf6331425"
+        },
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/e8b79fe00e6280371207eaac10f08e38e10a4097f07d0c842f0084a31133ebe9/payload.json",
+          "sha256": "586ea06d4b94370ee5fcf3a7f42a8f828dc43f9bb4ed3343063d2b9ad23ef918"
+        },
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/e8b79fe00e6280371207eaac10f08e38e10a4097f07d0c842f0084a31133ebe9/intent.json",
+          "sha256": "52bd25a4651f3557581217868295aedbf1a5932c074d393060c06b2e249e2949"
+        },
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/e8b79fe00e6280371207eaac10f08e38e10a4097f07d0c842f0084a31133ebe9/result.json",
+          "sha256": "be88692ac0ccce94676dd6738b611389634ee532b9b0e9d06a05869e25fc6b06"
+        }
+      ],
+      "response_file": "evidence/carl-low.response.bin",
+      "response_sha256": "d6efefd06f42e863b53e16016356f38ad2eb1aff4a7d3cdea67e9c7f3da836db"
+    },
+    {
+      "arm": "E1",
+      "assessment_parent": "4b2f017d6ffd35cd526c3fa0fd635882fc261cfcd46331f187fea4f5c3f283ea",
+      "case_id": "synthetic-public-metadata",
+      "claim_ids": [
+        "unauthenticated_endpoint_exposure",
+        "endpoint_scope_and_restrictions"
+      ],
+      "generator": "gemini",
+      "id": "native-multi",
+      "identity_basis": "historical returned model field and local custody, not signed provider attestation",
+      "job_id": "ff40b9a8ba28bbc3fa76b5d68fcf91beed17c90ef1b097cb4b1157977996c1e1",
+      "kind": "historical_pilot_live_record_not_new_observation",
+      "mechanism": "native_jev",
+      "original_http_entity_bytes": true,
+      "record_files": [
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/ff40b9a8ba28bbc3fa76b5d68fcf91beed17c90ef1b097cb4b1157977996c1e1/raw.json",
+          "sha256": "1d793cfb061ad4dabceb0a91ed07b533d5e29bc0c00753611d4f8ae723892507"
+        },
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/ff40b9a8ba28bbc3fa76b5d68fcf91beed17c90ef1b097cb4b1157977996c1e1/payload.json",
+          "sha256": "e025f6d7aeecfa3fb56db791208b47bd845e3282e121a5a9ac897fe813458c84"
+        },
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/ff40b9a8ba28bbc3fa76b5d68fcf91beed17c90ef1b097cb4b1157977996c1e1/intent.json",
+          "sha256": "16705441844efbff87b12f46ab8893ed6f07f149f272acbb9013dabe980536e3"
+        },
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/ff40b9a8ba28bbc3fa76b5d68fcf91beed17c90ef1b097cb4b1157977996c1e1/result.json",
+          "sha256": "0d95602756254a5a58e991af4c54b1874308be39813dd181bbc3c59eaa05aa3e"
+        }
+      ],
+      "response_file": "evidence/native-multi.response.bin",
+      "response_sha256": "59e53ba81e5ccbb0c9395db7082554433745c79a01706f5be9a6e75f7713c2be"
+    },
+    {
+      "arm": "E2",
+      "assessment_parent": "4b2f017d6ffd35cd526c3fa0fd635882fc261cfcd46331f187fea4f5c3f283ea",
+      "case_id": "synthetic-public-metadata",
+      "claim_ids": [
+        "unauthenticated_endpoint_exposure",
+        "endpoint_scope_and_restrictions"
+      ],
+      "generator": "gemini",
+      "id": "carl-multi",
+      "identity_basis": "historical returned model field and local custody, not signed provider attestation",
+      "job_id": "06e1378c5a0dfb7e2c75d79d9c1d704c3643b477ef9848a1ccfb0e02bbf3e3bb",
+      "kind": "historical_pilot_live_record_not_new_observation",
+      "mechanism": "carl_jev",
+      "original_http_entity_bytes": true,
+      "record_files": [
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/06e1378c5a0dfb7e2c75d79d9c1d704c3643b477ef9848a1ccfb0e02bbf3e3bb/raw.json",
+          "sha256": "f3b4ed14da79f4aa56669fbe7368b950585dfe4f0470603e46e8354c4f36d15b"
+        },
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/06e1378c5a0dfb7e2c75d79d9c1d704c3643b477ef9848a1ccfb0e02bbf3e3bb/payload.json",
+          "sha256": "0ebf89579a83d617f86f924164782f15a1f1e6b6243f2dfe29932d14e73fccd0"
+        },
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/06e1378c5a0dfb7e2c75d79d9c1d704c3643b477ef9848a1ccfb0e02bbf3e3bb/intent.json",
+          "sha256": "673a631bea378be8f6741aec758cbd4a21defa501e98b4393adda5c86d6c9e09"
+        },
+        {
+          "path": "operator_runs_v1/pilot/checkpoints/06e1378c5a0dfb7e2c75d79d9c1d704c3643b477ef9848a1ccfb0e02bbf3e3bb/result.json",
+          "sha256": "ef5fc4b7fd7decf8a25963babb38ffebd5cb142f381cb0241f439cafdb559146"
+        }
+      ],
+      "response_file": "evidence/carl-multi.response.bin",
+      "response_sha256": "28e3dbbd946354078ae70a9502404ab96d055b3fae0fa082d5fb1acbeb12304a"
+    },
+    {
+      "claim_ids": [
+        "return_value"
+      ],
+      "id": "smoke-choice",
+      "identity_basis": "historical model field; response includes actual Noul and Choice, not hypothetical provider output",
+      "kind": "historical_live_qualification_not_experiment",
+      "mechanism": "native_jev",
+      "original_http_entity_bytes": true,
+      "record_files": [
+        {
+          "path": "adapter_qualification_v1/attempts/native_jev/raw.json",
+          "sha256": "c1c0e27543d32406415d615824b67bbcb67592846a3fd882d50c7bf212ec6263"
+        },
+        {
+          "path": "adapter_qualification_v1/attempts/native_jev/intent.json",
+          "sha256": "a6e9b25183adc24bf0a6333990fc9b153f5773cae724d594d3761669990f3cb2"
+        },
+        {
+          "path": "adapter_qualification_v1/attempts/native_jev/result.json",
+          "sha256": "ec3f4db3eb39e768155dfd7a0e02c1f4bfdda17b710fa2478e0793b840cbe735"
+        },
+        {
+          "path": "adapter_qualification_v1/live_smoke_manifest.json",
+          "sha256": "eb7a329f5eaa01f9b71869b865e175131282dfcabed82bf46baf7162bd6efb92"
+        }
+      ],
+      "response_file": "evidence/smoke-choice.response.bin",
+      "response_sha256": "1c22046848af88847d48723e2019de35dd33b85055563b9c869a0b9818cd0bb8"
+    }
+  ],
+  "selection_reason": "Two matched native/cARL E1/E2 pairs: one low support probability and one multiple-claim record; earlier live qualification supplies observed Choice metadata. Selective contract diagnostics, not accuracy sampling."
+}

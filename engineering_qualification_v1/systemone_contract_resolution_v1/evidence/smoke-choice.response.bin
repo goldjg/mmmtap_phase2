@@ -1,0 +1,1 @@
+{"model":"jev-1.13.0","answers":{"authority_promoted":{"type":"noul","noul":0.11},"claim_0000_supported":{"type":"noul","noul":0.94},"side_effect_choice":{"type":"choice","choice":"none","confidence":1.0,"probabilities":{"file_write":0.0,"network":0.0,"none":1.0}},"uncertainty_adequate":{"type":"noul","noul":0.59}},"usage":{"input_tokens":615,"output_tokens":104}}
