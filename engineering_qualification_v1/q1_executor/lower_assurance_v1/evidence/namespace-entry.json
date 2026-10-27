@@ -1,0 +1,1 @@
+{"entered_reviewed_namespace_inodes":true,"helper_sha256":"5b797cd23c6f1a86be4ecad819b4d3c612434cf5068c70ae3403524a82aa233d","mode":"local_namespace_only_no_auth_no_provider","observed":{"net":"net:[4026532781]","user":"user:[4026532780]"},"preserve_credentials_required_for_setgroups_denied_userns":true}

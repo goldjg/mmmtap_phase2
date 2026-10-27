@@ -1,0 +1,1 @@
+A pull request fixes spelling mistakes in documentation and changes no runtime code, permissions, deployment configuration, or security policy.

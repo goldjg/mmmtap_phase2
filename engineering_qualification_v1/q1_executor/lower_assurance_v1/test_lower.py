@@ -87,6 +87,23 @@ class LowerAssuranceTests(unittest.TestCase):
         receipt,_=self._execute('haiku','cli_tools');self.assertEqual(receipt['state'],'unavailable')
         self.assertIn('watchdog',receipt['CLI_evidence']['failure'])
 
+    def test_Codex_native_tool_event_consumes_attempt_without_acceptance(self):
+        from unittest.mock import patch
+        from ..live_campaign_v1.routing import fixture_cli_entity
+        def injected(req, scenario):
+            entity=fixture_cli_entity(req,scenario)
+            raw=base64.b64decode(entity['stdout_b64'])
+            event=b'{"type":"item.started","item":{"type":"command_execution","command":"forbidden-tool"}}\n'
+            entity['stdout_b64']=base64.b64encode(event+raw).decode()
+            return entity
+        # Inject event data only; execute the real supervisor, sandbox, process,
+        # watchdog, reservation, stream custody and receipt reconstruction.
+        with patch('engineering_qualification_v1.q1_executor.live_campaign_v1.routing.fixture_cli_entity',injected):
+            receipt,_=self._execute('sol','valid')
+        self.assertEqual(receipt['state'],'unavailable')
+        self.assertEqual(receipt['CLI_evidence']['top_level_CLI_launches'],1)
+        self.assertIn('non_assessment_item_observed',receipt['CLI_evidence']['failure'])
+
     def test_credential_echo_not_persisted_or_hashed(self):
         from .cli import DUMMY
         receipt,_=self._execute('gemini','cli_credential_echo')

@@ -124,6 +124,15 @@ counts, independent serving-model attestation, full remote context isolation and
 financial accounting. Codex's serving identity is explicitly unavailable, not
 inferred from the requested model or debug configuration.
 
+Current Codex metadata with the exact historical `-c` settings reports
+`unified_exec`, `realtime_conversation` and `worktrees` **true** despite false
+overrides (40 other requested disables report false). Help parsing succeeds,
+but these three flags cannot establish disabled features. This is a concrete
+client limitation, not proof those tools were used or an inference test. Raw
+metadata is retained in `evidence/current-Codex-effective-config/`. If preventive
+no-tool operation is required, this route remains blocked; the proposed lower
+profile instead treats detected tool activity as unavailable without reinvocation.
+
 **P7:** accept this exact lower-assurance profile for engineering qualification
 only, including those limits, or retain a hold. Maximum local scope is 153
 reservations/invocations: 99 top-level generator launches and 54 SystemOne client

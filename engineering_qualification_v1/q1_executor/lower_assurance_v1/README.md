@@ -19,6 +19,11 @@ Changed execution boundary
   only in credential-free, networkless sandboxes. Current Copilot explicitly
   requires `--sync-session off` instead of `--no-remote-export`; no restriction
   was silently removed. Raw compatibility output is retained under `evidence/`.
+  A credential-free, networkless Codex `features list` with the exact `-c`
+  settings reports 40 of 43 requested disables false, but `unified_exec`,
+  `realtime_conversation` and `worktrees` true. Their historical false overrides
+  are not certified effective. This reinforces the explicit detective tool
+  boundary; P7 must accept it or retain the launch hold.
 - One unique Q1 reservation/invocation journal commit precedes each CLI Popen.
   A new contained process/home/workspace is created per attempt, with no harness
   retries, reruns, repairs or fallback. Only the selected subscription credential
@@ -71,3 +76,14 @@ Reproduce offline into a new persistent directory:
 ```sh
 env -u JEVKEY -u COPILOT_GITHUB_TOKEN unshare -Urn python -B -m engineering_qualification_v1.q1_executor.lower_assurance_v1 qualify --output /persistent/private/new-q1-lower-offline
 ```
+
+Observed candidate result: **153 terminal receipts: 140 completed, 6 unavailable,
+5 blocked, 1 invalid, 1 interrupted**. There were 95 contained CLI event-fixture
+processes and 53 local TLS POSTs, preserving 51 valid Choice 1 specialist records.
+All 49 focused tests pass; all eight candidate tamper/admission checks reject.
+Interruption recovery does not retransmit and another resume leaves custody
+unchanged. Read-only checks preserve 88 prior campaigns, 11 historical seal sets
+(2,784 entries) and all 40,538 original custody entries. See
+[evidence/verification.json](evidence/verification.json) for exact hashes,
+measured bounds and remaining P1–P7/deployment/account decisions. Live admission
+remains blocked. No real provider call, CLI inference or real credential use.
