@@ -1,7 +1,7 @@
 Q1 full campaign integration — live launch blocked
 
 This is an extension of the existing Q1 executor, not a second execution engine.
-The [proposed manifest](campaign-packets/manifest.json) binds the original 153-position
+The [proposed manifest](sealed-campaign/manifest.json) binds the original 153-position
 graph: 99 generators, 27 native SystemOne and 27 cARL/SystemOne specialists;
 three cases, three generator identities, eight arms, one repetition, 198 edges.
 Approval is **NOT APPROVED**. Production creation/dispatch fails before provider
@@ -44,6 +44,10 @@ Implementation checklist
   journal grows. Rules, compiler and scientific semantics are unchanged.
 - Fix bootstrap ACK/probe ordering before credential-readiness journal commits;
   retain the original SQLite I/O error if SQLite already rolled back.
+- Reuse the already decoded broker receipt projection within each complete
+  read-only verification, and select supervisor records by position in SQLite.
+  Profiling found repeated whole-journal decoding dominated startup. Every event,
+  raw prefix, binding and transition is still audited; timeouts were not enlarged.
 
 Exact proposed inputs, not approved research evidence
 
@@ -68,7 +72,7 @@ defaults authorised for research.
 
 Offline evidence
 
-The [acceptance record](evidence/offline-full-campaign/acceptance.json) records the actual
+The [acceptance record](evidence/qualified-full-campaign/acceptance.json) records the actual
 153-position run, route/POST counts, all terminal receipts, interruption/recovery,
 budget censoring, positive and no-challenge cARL cases, worker probes, actual
 kernel destination denials and tampering/copy/concurrency rejections.
@@ -93,7 +97,7 @@ become interrupted; never retransmit, copy/rebind the database, or replace an
 endpoint. The abandoned development records, including the `/tmp` ENOSPC failure,
 are preserved separately and are not acceptance/research results. The superseded
 Earlier packet and qualification directories remain in place; only
-`campaign-packets/` and `evidence/offline-full-campaign/` are current. Recursive cleanup
+`sealed-campaign/` and `evidence/qualified-full-campaign/` are current. Recursive cleanup
 was rejected by automatic approval review, so those directories were not removed.
 
 Smallest remaining actions, in order

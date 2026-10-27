@@ -43,8 +43,11 @@ def death_guard():
 
 
 def records(db, ident):
-    return [e["data"] for e in (decode(r[0]) for r in db.execute("SELECT body FROM events ORDER BY seq"))
-            if e["kind"] == "broker_event" and e["position"] == ident]
+    # Filter in SQLite; never repeatedly decode unrelated raw-response frames
+    # in the Python supervisor. The complete verifier still audits every event.
+    return [decode(r[0])["data"] for r in db.execute(
+        "SELECT body FROM events WHERE json_extract(body,'$.position')=? "
+        "AND json_extract(body,'$.kind')='broker_event' ORDER BY seq", (ident,))]
 
 
 def binding(env):
@@ -218,8 +221,8 @@ def reconcile(db, root, m, p):
                                   reason="recovery_no_retransmission"))
 
 
-def receipt_binding(db, ident):
-    history = records(db, ident)
+def receipt_binding(db, ident, *, history=None):
+    history = records(db, ident) if history is None else history
     last = history[-1] if history else None
     result = {"broker_record_sha256": digest(last) if last else None,
               "broker_raw_sha256": raw_hash(unb64(last["raw_b64"])) if last else None}

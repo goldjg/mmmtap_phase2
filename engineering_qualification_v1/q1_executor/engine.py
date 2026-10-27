@@ -169,7 +169,7 @@ def create(root: Path, fixture: Path = PACKAGE / "fixtures"):
     return root
 
 
-def make_receipt(db, root, m, p, state, reason, at, *, saved=None, times=None):
+def make_receipt(db, root, m, p, state, reason, at, *, saved=None, times=None, broker_history=None):
     ident = p["id"]
     attempt = db.execute("SELECT * FROM attempts WHERE id=?", (ident,)).fetchone()
     response = db.execute("SELECT * FROM responses WHERE id=?", (ident,)).fetchone()
@@ -216,7 +216,7 @@ def make_receipt(db, root, m, p, state, reason, at, *, saved=None, times=None):
     from .broker_v1.contract import is_broker
     if is_broker(m):
         from .broker_v1.broker import receipt_binding
-        receipt.update(receipt_binding(db, ident))
+        receipt.update(receipt_binding(db, ident, history=broker_history))
     if "specialist_observation" in m and p["kind"] == "specialist":
         receipt.update(schema=m["specialist_observation"]["version"] + "-receipt",
                        instrument_contract=m["specialist_observation"]["version"],
@@ -439,9 +439,14 @@ def verify_database(db, root):
     # Every boundary still rereads all persisted bytes and replays every event.
     decoded_events = [decode(row["body"]) for row in event_rows]
     times_by_id = {ident: {} for ident in positions}
+    broker_history_by_id = {}
     for e in decoded_events:
         if e["position"] in times_by_id:
             times_by_id[e["position"]][e["kind"]] = e["at"]
+            if e["kind"] == "broker_event":
+                # receipt_binding uses the final committed broker projection;
+                # full prefix/transition audits below still visit every record.
+                broker_history_by_id[e["position"]] = [e["data"]]
     last_time = None
     for index, row in enumerate(event_rows):
         e = decoded_events[index]
@@ -530,7 +535,8 @@ def verify_database(db, root):
                 valid = state == "started" and ident in response_seen
             if not valid:
                 raise ValueError("contradictory_terminal_state")
-            expected = make_receipt(db, root, m, p, target, reason, e["at"], saved=saved, times=times_by_id[ident])
+            expected = make_receipt(db, root, m, p, target, reason, e["at"], saved=saved, times=times_by_id[ident],
+                                    broker_history=broker_history_by_id.get(ident, []))
             stored = db.execute("SELECT body FROM receipts WHERE id=?", (ident,)).fetchone()[0]
             if (saved[ident] != expected or stored != encode(expected)
                     or data != {"state": target, "reason": reason, "receipt_sha256": digest(expected)}):
