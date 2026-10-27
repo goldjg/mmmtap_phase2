@@ -254,6 +254,10 @@ class OfflineSubprocessTransport:
 
 
 def outcome(p, req, rec):
+    from .live_campaign_v1 import VERSION as CAMPAIGN
+    if rec["contract"] == CAMPAIGN:
+        from .live_campaign_v1.contract import outcome as campaign_outcome
+        return campaign_outcome(p, req, rec)
     from .systemone_https_v1 import VERSION as HTTPS_VERSION
     if rec["contract"] == HTTPS_VERSION:
         from .systemone_https_v1.contract import outcome as https_outcome
@@ -268,7 +272,8 @@ def outcome(p, req, rec):
 def verify_record(rec, envelope, spec, root, previous):
     from .broker_v1 import VERSION as BROKER_VERSION
     from .systemone_https_v1 import VERSION as HTTPS_VERSION
-    if spec["contract"] in (BROKER_VERSION, HTTPS_VERSION):
+    from .live_campaign_v1 import VERSION as CAMPAIGN
+    if spec["contract"] in (BROKER_VERSION, HTTPS_VERSION, CAMPAIGN):
         from .broker_v1.contract import verify_record as broker_verify
         return broker_verify(rec, envelope, spec, root, previous)
     return base_verify_record(rec, envelope, spec, root, previous)

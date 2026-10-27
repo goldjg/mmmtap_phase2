@@ -18,7 +18,8 @@ TRANSITIONS = {
 
 def verify_transport(rec, envelope, spec, root, previous):
     def base(value):
-        if "https" not in value or value["contract"] != VERSION:
+        from ..live_campaign_v1 import VERSION as CAMPAIGN
+        if "https" not in value or value["contract"] not in (VERSION, CAMPAIGN):
             raise ValueError("https_transport_record_shape")
         has_binding = "credential_binding" in envelope
         if has_binding:
@@ -38,7 +39,7 @@ def verify_transport(rec, envelope, spec, root, previous):
         raise ValueError("https_false_transport_completion")
 
 
-def metadata(meta, env, raw, stage):
+def metadata(meta, env, raw, stage, request=None, simulation=True):
     if meta is None:
         if stage not in {"authorised", "interrupted"} or raw:
             raise ValueError("https_missing_metadata")
@@ -58,11 +59,14 @@ def metadata(meta, env, raw, stage):
                 or not credential["broker_JEVKEY_environment_absent"] or not credential["broker_environment_minimal"]
                 or meta["client_POSTs"] and (not credential["received_once"] or not credential["descriptor_closed"])):
             raise ValueError("JEVKEY_broker_protection_changed")
-    if (set(meta) != fields or meta["contract"] != VERSION or meta["destination"] != DESTINATION
-            or meta["request_entity_sha256"] != raw_hash(native_request()) or meta["requested_model"] != MODEL
+    expected_request = native_request() if request is None else encode(request["instrument_request"])
+    model_expected = env["requested_identity"]["model"]
+    assurance = "local_TLS_fixture_only_not_genuine_SystemOne" if simulation else "TLS_provider_model_self_report_not_serving_attestation"
+    if (set(meta) != fields or meta["contract"] != env["broker_contract"] or meta["destination"] != env["destination"]
+            or meta["request_entity_sha256"] != raw_hash(expected_request) or meta["requested_model"] != model_expected
             or meta["client_POSTs"] not in (0, 1) or meta["retries"] != 0
             or meta["response_entity_bytes"] != len(raw)
-            or meta["identity_assurance"] != "local_TLS_fixture_only_not_genuine_SystemOne"
+            or meta["identity_assurance"] != assurance
             or meta["remote_execution_assurance"] != "UNKNOWN"
             or meta["credential_source"] != ("JEVKEY_via_single_use_broker_pipe" if jevkey else "explicit_broker_fixture_interface")):
         raise ValueError("https_metadata_or_request_binding")
@@ -79,13 +83,13 @@ def metadata(meta, env, raw, stage):
             usage = entity.get("usage")
         except (ValueError, UnicodeError, AttributeError):
             model, usage = None, None
-        state = "unknown" if model is None else "matched" if model == MODEL else "mismatch"
+        state = "unknown" if model is None else "matched" if model == model_expected else "mismatch"
         if (meta["returned_model"], meta["identity_state"], meta["usage"]) != (model, state, usage):
             raise ValueError("https_returned_identity_or_usage_changed")
     if meta["client_POSTs"]:
         if (not meta["tls"] or meta["tls"]["certificate_verified"] is not True
                 or meta["tls"]["hostname_verified"] is not True
-                or meta["tls"]["server_hostname"] != DESTINATION["host"]
+                or meta["tls"]["server_hostname"] != env["destination"]["host"]
                 or not meta["egress"] or meta["egress"].get("secondary_socket_denied") is not True):
             raise ValueError("https_unqualified_network_or_TLS")
     if stage == "complete_response" and (meta["http_status"] != 200 or not meta["response_complete"]):
@@ -96,6 +100,9 @@ def audit(db, m):
     from ..broker_v1.broker import binding, REJECTIONS
     from ..broker_v1.contract import envelope_for
     histories, rejections = {}, 0
+    from ..live_campaign_v1.contract import is_campaign
+    campaign = is_campaign(m)
+    positions = {p["id"]: p for p in m["positions"]}
     for (body,) in db.execute("SELECT body FROM events ORDER BY seq"):
         event = decode(body); ident, rec = event["position"], event["data"]
         if event["kind"] == "broker_rejected":
@@ -104,10 +111,10 @@ def audit(db, m):
             rejections += 1
         if event["kind"] != "broker_event":
             continue
-        if ident != POSITION:
+        if ident not in positions or not campaign and ident != POSITION:
             raise ValueError("https_unscheduled_dispatch")
         request = db.execute("SELECT request FROM attempts WHERE id=?", (ident,)).fetchone()[0]
-        env = envelope_for(m, m["positions"][0], request)
+        env = envelope_for(m, positions[ident], request)
         expected = binding(env)
         if (set(rec) != set(expected) | {"stage", "raw_b64", "observed_identity", "uncertain_completion", "reason", "frame_integrity", "https"}
                 or any(rec[k] != v for k, v in expected.items())):
@@ -122,10 +129,10 @@ def audit(db, m):
             raise ValueError("https_raw_prefix_changed")
         if raw and rec["stage"] in {"authorised", "dispatch_intent", "https_connected", "request_write_intent", "request_delivered", "response_headers"}:
             raise ValueError("https_bytes_before_response")
-        metadata(rec["https"], env, raw, rec["stage"])
+        metadata(rec["https"], env, raw, rec["stage"], decode(request) if campaign else None, m["simulation_only"])
         if rec["stage"] == "complete_response":
             model = rec["https"]["returned_model"]
-            observed = dict(identity(), model=model) if model else None
+            observed = dict(env["requested_identity"], model=model) if model else None
             if rec["uncertain_completion"] or rec["observed_identity"] != observed or not rec["frame_integrity"]:
                 raise ValueError("https_false_completion_or_identity")
         elif rec["observed_identity"] is not None:

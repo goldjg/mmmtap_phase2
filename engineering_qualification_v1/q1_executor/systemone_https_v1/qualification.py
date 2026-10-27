@@ -25,7 +25,8 @@ def certificate(root, name, host):
     cert, key = root / (name + ".pem"), root / (name + ".key")
     subprocess.run(["openssl", "req", "-x509", "-newkey", "rsa:2048", "-nodes", "-days", "2",
                     "-subj", "/CN=" + host, "-addext", "subjectAltName=DNS:" + host,
-                    "-keyout", str(key), "-out", str(cert)], check=True, capture_output=True)
+                    "-keyout", str(key), "-out", str(cert)], check=True, capture_output=True,
+                    env={"LANG": "C.UTF-8", "PATH": "/usr/bin:/bin"})
     return cert, key
 
 

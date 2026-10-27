@@ -29,7 +29,8 @@ SCENARIOS = {"valid", "malformed", "http_400", "http_500", "partial_failure", "t
 
 
 def is_https(m):
-    return m.get("transport", {}).get("version") == VERSION
+    from ..live_campaign_v1 import VERSION as CAMPAIGN
+    return m.get("transport", {}).get("version") in (VERSION, CAMPAIGN)
 
 
 def native_request():
@@ -177,21 +178,29 @@ def validate_manifest(root, m, raw):
 
 
 def validate_extension(m):
+    from ..live_campaign_v1.contract import is_campaign
+    if is_campaign(m):
+        return  # Full campaign validation precedes all envelope reconstruction.
     ext = m["transport"]
     expected = specification()
     legacy = decode(read_file(PACKAGE, "legacy-https-specification.v1.json"))
+    jevkey = decode(read_file(PACKAGE, "legacy-https-specification.jevkey.v1.json"))
     # Only repository paths may move during read-only reconstruction.
     for key in ("adapter", "bootstrap"):
         expected["bindings"][key]["path"] = ext["specification"]["bindings"][key]["path"]
         legacy["bindings"][key]["path"] = ext["specification"]["bindings"][key]["path"]
+        jevkey["bindings"][key]["path"] = ext["specification"]["bindings"][key]["path"]
     if (set(ext) != {"version", "specification", "configuration_sha256", "scenarios"}
-            or ext["version"] != VERSION or ext["specification"] not in (expected, legacy)
+            or ext["version"] != VERSION or ext["specification"] not in (expected, legacy, jevkey)
             or ext["configuration_sha256"] != digest(ext["specification"])
             or set(ext["scenarios"]) != {POSITION} or ext["scenarios"][POSITION] not in SCENARIOS):
         raise ValueError("https_versioned_transport_binding")
 
 
 def envelope_for(m, p, sealed):
+    from ..live_campaign_v1.contract import is_campaign, envelope_for as campaign_envelope
+    if is_campaign(m):
+        return campaign_envelope(m, p, sealed)
     from ..broker_v1.contract import base_envelope_for
     env = base_envelope_for(m, p, sealed)
     env.update(broker_contract=VERSION, destination=DESTINATION, requested_identity=identity(),
@@ -230,5 +239,8 @@ def outcome(p, req, rec):
 
 
 def require_fixture(m):
+    from ..live_campaign_v1.contract import is_campaign, require_execution
+    if is_campaign(m):
+        return require_execution(m)
     if m["https_qualification"]["fixture_route"] is None:
         raise ValueError("LIVE_DISPATCH_DISABLED_production_egress_credentials_approval_usage_unqualified")

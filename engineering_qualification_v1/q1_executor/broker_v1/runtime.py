@@ -23,7 +23,8 @@ from ..model import PACKAGE, decode, encode, raw_hash
 class BrokerTransport:
     def __init__(self, spec, root, ident):
         from ..systemone_https_v1.contract import specification as https_specification
-        if spec not in (specification(), https_specification()):
+        from ..live_campaign_v1.contract import specification as campaign_specification
+        if spec not in (specification(), https_specification(), campaign_specification()):
             raise ValueError("only_pinned_offline_broker_permitted")
         self.spec, self.root, self.ident = spec, root, ident
 
@@ -55,13 +56,16 @@ class BrokerTransport:
                "observed_identity": None, "identity_provenance": "not_observed", "identity_status": "unknown",
                "bootstrap_verified": False, "cleanup": False, "processes": []}
         from ..systemone_https_v1 import VERSION as HTTPS_VERSION
-        https = spec["contract"] == HTTPS_VERSION
+        from ..live_campaign_v1 import VERSION as CAMPAIGN
+        https = spec["contract"] in (HTTPS_VERSION, CAMPAIGN)
         if https:
             rec["https"] = None
         jevkey = "credential_binding" in envelope
         credential_fds = []
         if jevkey:
             from ..systemone_https_v1.credential import configured, harden
+            if spec["contract"] == CAMPAIGN:
+                from ..live_campaign_v1.credential import configured
             rec["credential_handoff"] = {"contract": envelope["credential_binding"]["version"],
                 "source_configured": configured(), "launcher_protection": harden(),
                 "broker_ready_before_release": False, "broker_sender_PID_authenticated": False,
@@ -70,6 +74,7 @@ class BrokerTransport:
         worker = broker = None
         selector = selectors.DefaultSelector()
         pending, worker_buf, broker_buf, stderr = [], bytearray(), bytearray(), bytearray()
+        probes = bytearray()
         worker_echo, forced, last = None, None, None
         ro = engine.connect(self.root, readonly=True)
         deadline = time.monotonic() + spec["timeout_seconds"]
@@ -108,7 +113,11 @@ class BrokerTransport:
                 from ..systemone_https_v1.credential import handoff_from_environment
                 broker_channel.close(); credential_fds.remove(broker_channel)
                 try:
-                    handoff = handoff_from_environment(parent_channel, broker.pid)
+                    source = None
+                    if spec["contract"] == CAMPAIGN:
+                        from ..live_campaign_v1.credential import issue
+                        source = issue
+                    handoff = handoff_from_environment(parent_channel, broker.pid, source=source)
                 finally:
                     credential_fds.remove(parent_channel)
                 rec["credential_handoff"] = {**handoff, "broker_pid": broker.pid}
@@ -168,7 +177,10 @@ class BrokerTransport:
                                     raise ValueError("duplicate_worker_result")
                                 worker_echo = transport.unb64(frame["raw_b64"])
                             elif frame.get("type") == "probe":
-                                stderr.extend(encode(frame) + b"\n")
+                                # stdout/stderr readiness order is arbitrary.
+                                # Never let a worker probe overtake the actual
+                                # bootstrap ACK on the diagnostic stream.
+                                probes.extend(encode(frame) + b"\n")
                             else:
                                 raise ValueError("invalid_worker_frame")
                 try:
@@ -177,7 +189,12 @@ class BrokerTransport:
                         "attempt_id": envelope["attempt_id"], "request_sha256": envelope["request_sha256"], "seccomp_loaded": True}
                 except (ValueError, IndexError, UnicodeError):
                     pass
+                if rec["bootstrap_verified"] and probes:
+                    stderr.extend(probes); probes.clear()
                 if pending and rec["bootstrap_verified"]:
+                    # Broker credential readiness is itself journalled. Its
+                    # snapshot must contain the ACK that justified this state.
+                    rec["stderr_b64"] = transport.b64(stderr)
                     if broker is None:
                         start_broker()
                     for frame in pending:

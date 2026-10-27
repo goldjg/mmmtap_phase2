@@ -21,7 +21,7 @@ def now():
 def software():
     files = {p.name: raw_hash(p.read_bytes()) for p in sorted(PACKAGE.iterdir())
              if p.suffix in (".py", ".json") and not p.name.startswith("test_")}
-    for folder in ("systemone_typed_v1", "systemone_https_v1"):
+    for folder in ("systemone_typed_v1", "systemone_https_v1", "live_campaign_v1"):
         typed = PACKAGE / folder
         files.update({p.relative_to(PACKAGE).as_posix(): raw_hash(p.read_bytes())
                       for p in sorted(typed.iterdir()) if p.suffix in (".py", ".json") and not p.name.startswith("test_")})
@@ -40,7 +40,8 @@ def historical_software_compatible(m, recorded):
     runtime = software()
     choice1 = decode(read_file(PACKAGE, "legacy-software.choice1.v1.json"))
     https = decode(read_file(PACKAGE, "legacy-software.https.v1.json"))
-    return (recorded in (legacy, choice1, https)
+    jevkey = decode(read_file(PACKAGE, "legacy-software.jevkey.v1.json"))
+    return (recorded in (legacy, choice1, https, jevkey)
             and all(recorded[k] == runtime[k] for k in
                     ("python_version", "sqlite_version", "python_executable_sha256")))
 
@@ -81,7 +82,11 @@ def transaction(db):
         yield
         db.execute("COMMIT")
     except BaseException:
-        db.execute("ROLLBACK")
+        # SQLite may already have rolled back after an I/O/storage failure.
+        # Preserve that original failure, rather than replacing it with
+        # "cannot rollback - no transaction is active". Never reissue work.
+        if db.in_transaction:
+            db.execute("ROLLBACK")
         raise
 
 
@@ -113,6 +118,9 @@ def create(root: Path, fixture: Path = PACKAGE / "fixtures"):
         if is_https(manifest):
             require_fixture(manifest)
             current = https_specification()
+            from .live_campaign_v1.contract import is_campaign, specification as campaign_spec
+            if is_campaign(manifest):
+                current = campaign_spec()
         if manifest["transport"]["specification"] != current:
             raise ValueError("historical_transport_configuration_readonly")
     root.mkdir(mode=0o700, parents=False, exist_ok=False)
@@ -142,6 +150,10 @@ def create(root: Path, fixture: Path = PACKAGE / "fixtures"):
         with transaction(db):
             creation = {"manifest_file_sha256": raw_hash(manifest_raw), "manifest_sha256": manifest["manifest_sha256"],
                         "software": software(), "execution_contract": VERSION, "schema_sha256": schema_digest(db)}
+            from .live_campaign_v1.contract import is_campaign
+            if is_campaign(manifest):
+                from .live_campaign_v1.launch import initialise_authority
+                creation["deployment_authority"] = initialise_authority(root, fixture)
             db.execute("INSERT INTO meta VALUES ('creation',?)", (encode(creation),))
             for p in manifest["positions"]:
                 db.execute("INSERT INTO positions VALUES (?, 'scheduled')", (p["id"],))
@@ -324,7 +336,9 @@ def resume(root: Path, provider: Provider | None = None, *, interrupt_after_rese
     provider = FakeProvider() if provider is None else provider
     if type(provider) is not FakeProvider:
         raise ValueError("only_the_local_fake_provider_is_permitted")
-    with lock(root):
+    from .live_campaign_v1.credential import session
+    from .live_campaign_v1.launch import authority_lock
+    with lock(root), authority_lock(root), session():
         db = connect(root)
         try:
             m = verify_database(db, root)["manifest"]
@@ -394,6 +408,17 @@ def verify_database(db, root):
     creation = decode(meta[0]["value"])
     expected_creation = {"manifest_file_sha256": raw_hash(raw_manifest), "manifest_sha256": m["manifest_sha256"],
                          "software": software(), "execution_contract": VERSION, "schema_sha256": schema_digest(db)}
+    from .live_campaign_v1.contract import is_campaign
+    if is_campaign(m):
+        # Read-only reconstruction checks the sealed authority record without
+        # requiring the original deployment inode on an archival checkout.
+        # Active execution additionally calls validate_authority under flock.
+        authority = creation.get("deployment_authority")
+        if (not isinstance(authority, dict) or authority.get("manifest_sha256") != m["manifest_sha256"]
+                or set(authority) != {"manifest_sha256", "canonical_custody", "custody_device", "custody_inode",
+                    "database_device", "database_inode", "authority_directory", "scope"}):
+            raise ValueError("deployment_authority_binding_changed")
+        expected_creation["deployment_authority"] = authority
     if (historical_software_compatible(m, creation.get("software"))
             and all(r[0] in TERMINAL for r in db.execute("SELECT state FROM positions"))):
         expected_creation["software"] = creation["software"]
@@ -440,7 +465,7 @@ def verify_database(db, root):
             if state != "scheduled" or ident in reserved_seen or any(states[d] != "completed" for d in p["dependencies"]):
                 raise ValueError("duplicate_reservation_or_unsuccessful_parent")
             a = attempts[ident]
-            expected_request = request_for(m, p, saved, root)
+            expected_request = request_for(m, p, saved, root, captured=decode(a["request"]))
             if (decode(a["request"]) != expected_request or a["cost"] != 1
                     or data != {"request_sha256": raw_hash(a["request"]), "cost": 1, "parents": expected_request["parents"]}):
                 raise ValueError("request_policy_source_or_parent_binding_changed")

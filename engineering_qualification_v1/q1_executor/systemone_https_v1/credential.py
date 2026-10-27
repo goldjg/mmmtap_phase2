@@ -79,12 +79,12 @@ def broker_ready(control_fd):
     return read_fd, protection
 
 
-def handoff_from_environment(channel, expected_pid, timeout=2):
+def handoff_from_environment(channel, expected_pid, timeout=2, *, source=None):
     """Only runtime caller; tests run that caller in a clean dummy environment."""
     protection = harden()
     write_fd = None
     try:
-        if not configured():
+        if source is None and not configured():
             raise ValueError("JEVKEY_not_configured")
         channel.settimeout(timeout)
         data, ancillary, flags, _ = channel.recvmsg(len(READY), socket.CMSG_SPACE(16) + socket.CMSG_SPACE(12), socket.MSG_CMSG_CLOEXEC)
@@ -104,12 +104,18 @@ def handoff_from_environment(channel, expected_pid, timeout=2):
             raise ValueError("credential_anonymous_pipe_required")
         # Remove from this launcher's environment so later children cannot
         # inherit it. This does not mutate the operator's parent shell.
-        value = os.environ.pop("JEVKEY")
-        try:
-            token = bytearray(value.strip().encode("ascii"))
-        except (UnicodeError, AttributeError):
-            raise ValueError("JEVKEY_invalid_encoding") from None
-        del value
+        if source is None:
+            value = os.environ.pop("JEVKEY")
+            try:
+                token = bytearray(value.strip().encode("ascii"))
+            except (UnicodeError, AttributeError):
+                raise ValueError("JEVKEY_invalid_encoding") from None
+            del value
+        else:
+            # Invoked only AFTER kernel sender authentication above. The
+            # campaign launcher retains its protected in-memory source, never
+            # an environment variable or an inherited credential descriptor.
+            token = source()
         try:
             validate(token)
             write_all(write_fd, struct.pack("!I", len(token)))

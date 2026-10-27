@@ -56,6 +56,9 @@ def validate_manifest(root):
     check_bindings()
     raw = read_file(root, "manifest.json")
     m = decode(raw)
+    from .live_campaign_v1.contract import is_campaign, validate_manifest as validate_campaign
+    if is_campaign(m):
+        return validate_campaign(root, m, raw)
     from .systemone_https_v1.contract import is_https, validate_manifest as validate_https
     if is_https(m):
         return validate_https(root, m, raw)
@@ -150,7 +153,10 @@ def validate_slice_manifest(root, m, raw):
     return m, raw
 
 
-def request_for(m, p, receipts, root):
+def request_for(m, p, receipts, root, *, captured=None):
+    from .live_campaign_v1.contract import is_campaign, request_for as campaign_request
+    if is_campaign(m):
+        return campaign_request(m, p, receipts, root, captured=captured)
     from .systemone_https_v1.contract import is_https, request_for as https_request
     if is_https(m):
         return https_request(m, p, receipts, root)
