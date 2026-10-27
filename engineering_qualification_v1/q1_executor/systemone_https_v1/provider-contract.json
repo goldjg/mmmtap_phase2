@@ -1,0 +1,40 @@
+{
+  "reviewed_date": "2026-10-27",
+  "inspection": "Public documentation and preserved historical entities only; no authenticated API inspection",
+  "sources": [
+    "https://docs.typesafe.ai/api/system-one",
+    "https://docs.typesafe.ai/models",
+    "https://docs.typesafe.ai/api/list-models",
+    "https://docs.typesafe.ai/api/errors",
+    "https://docs.typesafe.ai/sdk/python/api/retries",
+    "engineering_qualification_v1/systemone_contract_resolution_v1/evidence/selection.json"
+  ],
+  "documented": {
+    "destination": "https://api.typesafe.ai:443/v1/systemone",
+    "method": "POST",
+    "authentication": "Authorization: Bearer <token>",
+    "request": "model selects a name/alias; state is string/object/array; questions maps caller-chosen names to typed questions",
+    "question_types": ["noul", "choice", "score", "box"],
+    "selected_catalog": "The approved Choice 1 catalog uses three Nouls for this single-claim input; no auxiliary Choice extension",
+    "response": "answers keyed by question name; model self-report; usage input_tokens/output_tokens",
+    "fixed_revision": "Models page explicitly documents versioned IDs as accepted, even when omitted from the account models listing",
+    "selected_model": "jev-1.13.0",
+    "alias": "jev-latest moves with stable releases; models page currently maps it to jev-1.14.0",
+    "historical_evidence": "The five preserved entities report jev-1.13.0; none establishes current account entitlement or independent attestation",
+    "SDK_retries": "Documented client-side automatic retries exist; this transport imports no provider SDK and performs no retry"
+  },
+  "unknowns_and_exact_provider_questions": {
+    "account_entitlement": "Can the selected account currently request jev-1.13.0, and for how long is that revision retained? Supply account-specific evidence without an inference call.",
+    "immutable_identity": "Does a versioned ID guarantee immutable serving weights/configuration? What signed or otherwise independently verifiable evidence identifies the serving revision?",
+    "correlation": "Which response header/entity field is the durable request identifier, and can it be reconciled with the exact request digest and an account usage/billing export? Generic request-ID headers are captured if present but are not a documented guarantee.",
+    "remote_replay": "Can one accepted POST be internally retried, replayed or executed more than once? Does any idempotency mechanism bound execution or billing? No provider idempotency header is sent or assumed.",
+    "timeout_completion": "After a client timeout/disconnect, can execution continue, and how can its final execution and charge be reconciled without resubmission?",
+    "usage_and_cost_cap": "Is there an enforceable account or per-request input-token/spend cap for this request? What are the applicable account tariff, rounding, minimum charge and error/timeout billing rules?",
+    "credential_provision": "Can a least-privilege credential be provisioned to the approved broker secret interface with account attribution, scope and expiry? No real credential has been read or configured."
+  },
+  "local_only_blockers": {
+    "production_egress": "BLOCKED: only private loopback namespace/nftables/seccomp is qualified. A production numeric destination/IP update and firewall deployment policy, system trust store and secret implementation require separate qualification.",
+    "live_enablement": "No implementation. DISABLED is enforced; changing the switch and resealing does not launch.",
+    "usage_cap": "No verified account cap; maximum_usage and maximum_cost remain null rather than invented. Response byte limits do not bound remote compute or charges."
+  }
+}

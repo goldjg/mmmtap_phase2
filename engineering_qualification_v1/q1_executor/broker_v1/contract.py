@@ -37,6 +37,9 @@ def extension(scenarios=None):
 
 
 def validate_extension(m):
+    from ..systemone_https_v1.contract import is_https, validate_extension as https_validate
+    if is_https(m):
+        return https_validate(m)
     ext = m["transport"]
     expected = specification()
     # Read-only reconstruction may run in a relocated checkout. Executable
@@ -45,10 +48,12 @@ def validate_extension(m):
     for key in ("adapter", "bootstrap"):
         expected["bindings"][key]["path"] = ext["specification"]["bindings"][key]["path"]
     legacy = decode(read_file(PACKAGE, "legacy-broker-specification.v1.json"))
+    choice1 = decode(read_file(PACKAGE, "legacy-broker-specification.choice1.v1.json"))
     for key in ("adapter", "bootstrap"):
         legacy["bindings"][key]["path"] = ext["specification"]["bindings"][key]["path"]
+        choice1["bindings"][key]["path"] = ext["specification"]["bindings"][key]["path"]
     if (set(ext) != {"version", "specification", "configuration_sha256", "scenarios"}
-            or ext["version"] != VERSION or ext["specification"] not in (expected, legacy)
+            or ext["version"] != VERSION or ext["specification"] not in (expected, legacy, choice1)
             or ext["configuration_sha256"] != digest(ext["specification"])
             or not isinstance(ext["scenarios"], dict)
             or any(k not in {p["id"] for p in m["positions"]} or v not in SCENARIOS
@@ -56,7 +61,7 @@ def validate_extension(m):
         raise ValueError("offline_broker_manifest_binding")
 
 
-def envelope_for(m, p, sealed):
+def base_envelope_for(m, p, sealed):
     # The original bootstrap/filter is reused byte-for-byte. Its v1 request
     # contract remains intact; this explicit extension pins the broker boundary.
     env = transport.base_envelope_for(m, p, sealed)
@@ -73,8 +78,14 @@ def envelope_for(m, p, sealed):
     return env
 
 
+def envelope_for(m, p, sealed):
+    from ..systemone_https_v1.contract import is_https, envelope_for as https_envelope
+    return (https_envelope if is_https(m) else base_envelope_for)(m, p, sealed)
+
+
 def is_broker(m):
-    return m.get("transport", {}).get("version") == VERSION
+    from ..systemone_https_v1 import VERSION as HTTPS_VERSION
+    return m.get("transport", {}).get("version") in (VERSION, HTTPS_VERSION)
 
 
 def message(envelope, sealed):
@@ -82,6 +93,10 @@ def message(envelope, sealed):
 
 
 def verify_record(rec, envelope, spec, root, previous):
+    from ..systemone_https_v1 import VERSION as HTTPS_VERSION
+    if rec["contract"] == HTTPS_VERSION:
+        from ..systemone_https_v1.audit import verify_transport
+        return verify_transport(rec, envelope, spec, root, previous)
     if rec["contract"] != VERSION:
         raise ValueError("broker_transport_contract")
     old = dict(previous, contract=transport.VERSION) if previous else None

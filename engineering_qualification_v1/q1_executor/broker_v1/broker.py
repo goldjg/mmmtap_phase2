@@ -48,11 +48,11 @@ def records(db, ident):
 
 
 def binding(env):
-    return {"contract": VERSION, "attempt_id": env["attempt_id"], "campaign_id": env["campaign_id"],
+    return {"contract": env["broker_contract"], "attempt_id": env["attempt_id"], "campaign_id": env["campaign_id"],
             "manifest_sha256": env["manifest_sha256"], "position": env["position"],
             "request_sha256": env["request_sha256"], "envelope_sha256": digest(env),
             "packet_bindings": env["packet_bindings"], "role": env["role"],
-            "requested_identity": env["requested_identity"], "destination": DESTINATION,
+            "requested_identity": env["requested_identity"], "destination": env["destination"],
             "idempotency_token": env["idempotency_token"], "deadline_seconds": env["deadline_seconds"],
             "response_byte_limit": env["response_byte_limit"]}
 
@@ -100,11 +100,19 @@ def authorise(db, root, ident, manifest_hash, incoming):
             raise ValueError("reservation_required")
         rec = {**binding(env), "stage": "authorised", "raw_b64": "", "observed_identity": None,
                "uncertain_completion": False, "reason": None, "frame_integrity": True}
+        from ..systemone_https_v1.contract import is_https, require_fixture
+        if is_https(m):
+            require_fixture(m)
+            rec["https"] = None
         engine.event(db, "broker_event", ident, rec)
     return m, env, rec
 
 
 def dispatch(db, ident, incoming, m, env, rec):
+    from ..systemone_https_v1.contract import is_https
+    if is_https(m):
+        from ..systemone_https_v1.https import dispatch as https_dispatch
+        return https_dispatch(db, ident, incoming, m, env, rec)
     scenario = env["scenario"]
     if scenario == "before_dispatch":
         os._exit(71)  # reservation consumed; no intent and no mock process.
@@ -199,7 +207,11 @@ def dispatch(db, ident, incoming, m, env, rec):
 
 def reconcile(db, root, m, p):
     history = records(db, p["id"])
-    if history and TRANSITIONS[history[-1]["stage"]]:
+    transitions = TRANSITIONS
+    from ..systemone_https_v1.contract import is_https
+    if is_https(m):
+        from ..systemone_https_v1.audit import TRANSITIONS as transitions
+    if history and transitions[history[-1]["stage"]]:
         last = history[-1]
         append(db, p["id"], dict(last, stage="interrupted", uncertain_completion=(last["stage"] != "authorised"),
                                   reason="recovery_no_retransmission"))
@@ -208,12 +220,19 @@ def reconcile(db, root, m, p):
 def receipt_binding(db, ident):
     history = records(db, ident)
     last = history[-1] if history else None
-    return {"broker_record_sha256": digest(last) if last else None,
-            "broker_raw_sha256": raw_hash(unb64(last["raw_b64"])) if last else None}
+    result = {"broker_record_sha256": digest(last) if last else None,
+              "broker_raw_sha256": raw_hash(unb64(last["raw_b64"])) if last else None}
+    if last and "https" in last:
+        result["https"] = last["https"]
+    return result
 
 
 def audit(db, m):
     """Read-only broker replay inside the existing hash-chain verifier."""
+    from ..systemone_https_v1.contract import is_https
+    if is_https(m):
+        from ..systemone_https_v1.audit import audit as https_audit
+        return https_audit(db, m)
     positions = {p["id"]: p for p in m["positions"]}
     histories, rejected_count = {}, 0
     for row in db.execute("SELECT body FROM events ORDER BY seq"):

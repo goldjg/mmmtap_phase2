@@ -21,7 +21,8 @@ from ..model import PACKAGE, decode, encode, raw_hash
 
 class BrokerTransport:
     def __init__(self, spec, root, ident):
-        if spec != specification():
+        from ..systemone_https_v1.contract import specification as https_specification
+        if spec not in (specification(), https_specification()):
             raise ValueError("only_pinned_offline_broker_permitted")
         self.spec, self.root, self.ident = spec, root, ident
 
@@ -44,7 +45,7 @@ class BrokerTransport:
         for p in inputs.iterdir():
             p.chmod(0o400)
         argv = transport.launch_argv(spec, workspace)
-        rec = {"contract": VERSION, "attempt_id": envelope["attempt_id"],
+        rec = {"contract": spec["contract"], "attempt_id": envelope["attempt_id"],
                "request_sha256": envelope["request_sha256"], "configuration_sha256": envelope["configuration_sha256"],
                "context_id": envelope["attempt_id"], "workspace": str(workspace.absolute()),
                "argv": argv, "environment": spec["environment"], "launch_intent_at": transport.now(),
@@ -52,6 +53,10 @@ class BrokerTransport:
                "returncode": None, "uncertain_completion": True, "stdout_b64": "", "stderr_b64": "",
                "observed_identity": None, "identity_provenance": "not_observed", "identity_status": "unknown",
                "bootstrap_verified": False, "cleanup": False, "processes": []}
+        from ..systemone_https_v1 import VERSION as HTTPS_VERSION
+        https = spec["contract"] == HTTPS_VERSION
+        if https:
+            rec["https"] = None
         persist(rec)
         worker = broker = None
         selector = selectors.DefaultSelector()
@@ -158,6 +163,8 @@ class BrokerTransport:
                     last = current
                     if last:
                         rec["stdout_b64"] = last["raw_b64"]
+                        if https:
+                            rec["https"] = last["https"]
                     rec["stderr_b64"] = transport.b64(stderr)
                     rec["processes"] = (transport.process_tree(worker.pid) +
                                         (transport.process_tree(broker.pid) if broker else [])) or rec["processes"]
@@ -215,6 +222,9 @@ class BrokerTransport:
             rec["stdout_b64"] = last["raw_b64"]
             rec["observed_identity"] = last["observed_identity"]
             rec["identity_provenance"] = "untrusted_synthetic_mock_self_report_local_MAC_not_provider_attestation"
+            if https:
+                rec["https"] = last["https"]
+                rec["identity_provenance"] = "local_TLS_fixture_entity_self_report_not_genuine_SystemOne_attestation"
         rec["identity_status"] = "unknown" if rec["observed_identity"] is None else (
             "matched" if rec["observed_identity"] == envelope["requested_identity"] else "mismatch")
         raw = transport.unb64(rec["stdout_b64"])

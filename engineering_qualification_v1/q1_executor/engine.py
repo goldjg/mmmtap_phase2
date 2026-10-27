@@ -21,9 +21,10 @@ def now():
 def software():
     files = {p.name: raw_hash(p.read_bytes()) for p in sorted(PACKAGE.iterdir())
              if p.suffix in (".py", ".json") and not p.name.startswith("test_")}
-    typed = PACKAGE / "systemone_typed_v1"
-    files.update({p.relative_to(PACKAGE).as_posix(): raw_hash(p.read_bytes())
-                  for p in sorted(typed.iterdir()) if p.suffix in (".py", ".json") and not p.name.startswith("test_")})
+    for folder in ("systemone_typed_v1", "systemone_https_v1"):
+        typed = PACKAGE / folder
+        files.update({p.relative_to(PACKAGE).as_posix(): raw_hash(p.read_bytes())
+                      for p in sorted(typed.iterdir()) if p.suffix in (".py", ".json") and not p.name.startswith("test_")})
     return {"files": files, "python_version": sys.version, "sqlite_version": sqlite3.sqlite_version,
             "python_executable_sha256": raw_hash(Path(sys.executable).resolve().read_bytes())}
 
@@ -37,7 +38,8 @@ def historical_software_compatible(m, recorded):
             "legacy-software.matrix.v1.json" if "full_matrix" in m else "legacy-software.v1.json")
     legacy = decode(read_file(PACKAGE, name))
     runtime = software()
-    return (recorded == legacy
+    choice1 = decode(read_file(PACKAGE, "legacy-software.choice1.v1.json"))
+    return (recorded in (legacy, choice1)
             and all(recorded[k] == runtime[k] for k in
                     ("python_version", "sqlite_version", "python_executable_sha256")))
 
@@ -106,6 +108,10 @@ def create(root: Path, fixture: Path = PACKAGE / "fixtures"):
         from .transport import specification
         from .broker_v1.contract import is_broker, specification as broker_specification
         current = broker_specification() if is_broker(manifest) else specification()
+        from .systemone_https_v1.contract import is_https, specification as https_specification, require_fixture
+        if is_https(manifest):
+            require_fixture(manifest)
+            current = https_specification()
         if manifest["transport"]["specification"] != current:
             raise ValueError("historical_transport_configuration_readonly")
     root.mkdir(mode=0o700, parents=False, exist_ok=False)

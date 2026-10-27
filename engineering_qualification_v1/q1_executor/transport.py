@@ -254,6 +254,10 @@ class OfflineSubprocessTransport:
 
 
 def outcome(p, req, rec):
+    from .systemone_https_v1 import VERSION as HTTPS_VERSION
+    if rec["contract"] == HTTPS_VERSION:
+        from .systemone_https_v1.contract import outcome as https_outcome
+        return https_outcome(p, req, rec)
     if rec["status"] != "completed":
         return "unavailable", "transport_" + rec["status"], {"parsed": None, "availability": "transport_failure"}
     if rec["identity_status"] != "matched":
@@ -263,7 +267,8 @@ def outcome(p, req, rec):
 
 def verify_record(rec, envelope, spec, root, previous):
     from .broker_v1 import VERSION as BROKER_VERSION
-    if spec["contract"] == BROKER_VERSION:
+    from .systemone_https_v1 import VERSION as HTTPS_VERSION
+    if spec["contract"] in (BROKER_VERSION, HTTPS_VERSION):
         from .broker_v1.contract import verify_record as broker_verify
         return broker_verify(rec, envelope, spec, root, previous)
     return base_verify_record(rec, envelope, spec, root, previous)

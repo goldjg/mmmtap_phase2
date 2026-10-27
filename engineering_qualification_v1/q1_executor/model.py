@@ -56,6 +56,9 @@ def validate_manifest(root):
     check_bindings()
     raw = read_file(root, "manifest.json")
     m = decode(raw)
+    from .systemone_https_v1.contract import is_https, validate_manifest as validate_https
+    if is_https(m):
+        return validate_https(root, m, raw)
     if "specialist_observation" in m:
         from .broker_v1.contract import is_broker
         if not is_broker(m) or "full_matrix" in m:
@@ -148,6 +151,9 @@ def validate_slice_manifest(root, m, raw):
 
 
 def request_for(m, p, receipts, root):
+    from .systemone_https_v1.contract import is_https, request_for as https_request
+    if is_https(m):
+        return https_request(m, p, receipts, root)
     if "specialist_observation" in m:
         from .systemone_typed_v1.replay import request_for as typed_request
         return typed_request(m, p, receipts, root)
