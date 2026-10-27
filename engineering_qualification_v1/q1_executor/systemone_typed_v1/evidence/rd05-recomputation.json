@@ -1,0 +1,6 @@
+{
+  "reproduction_stdout": "COMPARISON COMPLETE / RESOLUTION PENDING: 14 cases, 31 endpoints, Reviewer B/policy 31/31, observed pair/policy 22/31, A/B matched endpoint records 0.\n",
+  "all_recomputed_bytes_equal_frozen_comparison": true,
+  "production_comparison_modified": false,
+  "method": "Imported reproduce.py with ROOT bound to a temporary copy; compared every file SHA-256 before/after."
+}

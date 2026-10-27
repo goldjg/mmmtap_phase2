@@ -21,6 +21,9 @@ def now():
 def software():
     files = {p.name: raw_hash(p.read_bytes()) for p in sorted(PACKAGE.iterdir())
              if p.suffix in (".py", ".json") and not p.name.startswith("test_")}
+    typed = PACKAGE / "systemone_typed_v1"
+    files.update({p.relative_to(PACKAGE).as_posix(): raw_hash(p.read_bytes())
+                  for p in sorted(typed.iterdir()) if p.suffix in (".py", ".json") and not p.name.startswith("test_")})
     return {"files": files, "python_version": sys.version, "sqlite_version": sqlite3.sqlite_version,
             "python_executable_sha256": raw_hash(Path(sys.executable).resolve().read_bytes())}
 
@@ -28,7 +31,9 @@ def software():
 def historical_software_compatible(m, recorded):
     # Exact historical producer fingerprints, accepted only for fully terminal
     # read-only replay below. Incomplete campaigns cannot inherit new code.
-    name = ("legacy-software.transport.v1.json" if "transport" in m else
+    from .broker_v1.contract import is_broker
+    name = ("legacy-software.broker.v1.json" if is_broker(m) else
+            "legacy-software.transport.v1.json" if "transport" in m else
             "legacy-software.matrix.v1.json" if "full_matrix" in m else "legacy-software.v1.json")
     legacy = decode(read_file(PACKAGE, name))
     runtime = software()
@@ -193,6 +198,10 @@ def make_receipt(db, root, m, p, state, reason, at, *, saved=None, times=None):
     if is_broker(m):
         from .broker_v1.broker import receipt_binding
         receipt.update(receipt_binding(db, ident))
+    if "specialist_observation" in m and p["kind"] == "specialist":
+        receipt.update(schema=m["specialist_observation"]["version"] + "-receipt",
+                       instrument_contract=m["specialist_observation"]["version"],
+                       transport_contract=m["transport"]["version"])
     return decode(encode(receipt))
 
 

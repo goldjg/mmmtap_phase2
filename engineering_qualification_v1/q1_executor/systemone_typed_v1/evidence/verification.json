@@ -1,0 +1,468 @@
+{
+  "status": "CHOICE 1 TYPED SPECIALIST INTEGRATED — OFFLINE QUALIFIED, LIVE Q1 BLOCKED",
+  "baseline": "9f375374c9daab1b6ae3a36e15593a340e65b9b7",
+  "recorded_at_utc": "2026-10-27T03:55:25.420566+00:00",
+  "test_count": 152,
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1"
+      ],
+      "exit_status": 0,
+      "tests": 15,
+      "duration_seconds_from_unittest": 40.9,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "6a7e1a069dd6a723a163adbfc278fcee301634e9a2c948b08d91bc2ba9ebdea0"
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "-q",
+        "phase2_v2.test_instrument",
+        "phase2_v2.test_continuation",
+        "phase2_v2.rd05_offline.test_tool",
+        "tests.test_harness",
+        "engineering_qualification_v1.q1_executor.test_executor",
+        "engineering_qualification_v1.q1_executor.test_transport",
+        "engineering_qualification_v1.q1_executor.test_full_matrix",
+        "engineering_qualification_v1.q1_executor.broker_v1.test_broker",
+        "engineering_qualification_v1.systemone_contract_resolution_v1.test_contract"
+      ],
+      "exit_status": 0,
+      "tests": 137,
+      "duration_seconds_from_unittest": 288.577,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "513d563dac2d555d0932e4029456f080f1d23abb725799ca01f4bd57a5bc3870"
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "engineering_qualification_v1.q1_executor.systemone_typed_v1",
+        "--output",
+        "/tmp/choice1-acceptance-final"
+      ],
+      "exit_status": 0,
+      "stdout_sha256": "e6d1510da5b9de1910388b7df465e70cb5b8f4425461a72f131b2f5d591656ba",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "operator_execution_v1",
+        "verify"
+      ],
+      "cwd": "/home/prometheus/git/mmmtap_phase2",
+      "exit_status": 0,
+      "stdout_sha256": "3edbc2744e840148b5efda742fb9d8bf8cc339db6519993bda5dd6e76e33eb2e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "engineering_qualification_v1/q1_executor/systemone_typed_v1/evidence/check_preservation.py"
+      ],
+      "environment": {
+        "PYTHONPATH": "."
+      },
+      "exit_status": 0,
+      "first_execution_source": "/tmp/choice1-preservation.py; exact repeated checker changed diff base to explicit baseline for post-commit reproducibility",
+      "stdout_sha256": "ae6f39ed31247757c318026693368dca556c7210653a25e484c9c449ef41e68e",
+      "repeat_output_equal": true
+    }
+  ],
+  "command_timing_note": "Separate start/end timestamps were not captured; unittest elapsed durations are preserved verbatim.",
+  "original_custody": {
+    "operator": {
+      "seal_sha256": "7a1c1c846b307f19c2857d9ddff4d29db630dd8f9ed942348a38bba632c43a59",
+      "sealed_files": 1165
+    },
+    "preservation": {
+      "changed_or_missing": [],
+      "original_entries_verified": 40538,
+      "original_sources_and_evidence_unchanged": true
+    },
+    "real_provider_calls": 0,
+    "v5": {
+      "command_records_verified": 36,
+      "implementation_sha256": "c1d1c4d09715893e3c3ccd9deee77b787b189b3c511018f017842ee5ecb20ac3",
+      "instruments_sha256": "be99adbb65cf5dfb2cb9aa2accebf683306ff565ecf81a515676111856fdd06a",
+      "live_qualification": "blocked",
+      "path_b_binary_sha256": "b51cb4c86a1e5b54b5bb496e67890ee8efd18f58603616f4eb28da144d7a275d",
+      "sealed_files": 4699
+    }
+  },
+  "acceptance": {
+    "campaigns": {
+      "duplicate": {
+        "readonly_and_repeated_resume_files_unchanged": true,
+        "report": "duplicate/report.json",
+        "summary": {
+          "all_positions_terminal": true,
+          "attempt_reservations": 2,
+          "broker_authorised_requests": 2,
+          "broker_complete_responses": 2,
+          "broker_dispatch_intents": 2,
+          "broker_partial_responses": 2,
+          "broker_rejected_requests": 0,
+          "broker_reserved_not_dispatched": 0,
+          "broker_terminal_failures": 0,
+          "broker_uncertain_completions": 0,
+          "campaign_id": "synthetic-q1-choice1-6057978b9e82",
+          "evidence_tip_sha256": "2a51b6ec29b84d0278ffcc0a63fb12de21e44e3af1ef43e82811dbb800387020",
+          "fake_provider_invocations": 0,
+          "journal_events": 39,
+          "live_execution_authorized": false,
+          "manifest_sha256": "61e1f26fad88c2f09c1cc88e321a85a12c83e21a1fa52396857a024b44294ace",
+          "mock_provider_acceptances": 2,
+          "mock_provider_process_starts": 2,
+          "real_provider_calls": 0,
+          "remaining_simulated_budget": 1,
+          "remote_exactly_once_claimed": false,
+          "scheduled_positions": 3,
+          "simulated_expenditure_units": 2,
+          "simulated_reserved_units": 2,
+          "states": {
+            "blocked": 1,
+            "completed": 1,
+            "invalid": 1
+          },
+          "subprocess_bootstraps_verified": 2,
+          "subprocess_transport_launch_intents": 2,
+          "transport_contract": "q1-offline-broker-v1",
+          "verification": "PASS"
+        }
+      },
+      "extra": {
+        "readonly_and_repeated_resume_files_unchanged": true,
+        "report": "extra/report.json",
+        "summary": {
+          "all_positions_terminal": true,
+          "attempt_reservations": 2,
+          "broker_authorised_requests": 2,
+          "broker_complete_responses": 2,
+          "broker_dispatch_intents": 2,
+          "broker_partial_responses": 2,
+          "broker_rejected_requests": 0,
+          "broker_reserved_not_dispatched": 0,
+          "broker_terminal_failures": 0,
+          "broker_uncertain_completions": 0,
+          "campaign_id": "synthetic-q1-choice1-9bb641eafa7e",
+          "evidence_tip_sha256": "1e9d918ca90a0138bfb0f9d5ca3d45b5e131fd18de6c0c55b9b3473ed18b2059",
+          "fake_provider_invocations": 0,
+          "journal_events": 40,
+          "live_execution_authorized": false,
+          "manifest_sha256": "1c45cdc49f09701ed73cbf41d3003ad4942f4d71844c4227c538681b93feb277",
+          "mock_provider_acceptances": 2,
+          "mock_provider_process_starts": 2,
+          "real_provider_calls": 0,
+          "remaining_simulated_budget": 1,
+          "remote_exactly_once_claimed": false,
+          "scheduled_positions": 3,
+          "simulated_expenditure_units": 2,
+          "simulated_reserved_units": 2,
+          "states": {
+            "blocked": 1,
+            "completed": 1,
+            "invalid": 1
+          },
+          "subprocess_bootstraps_verified": 2,
+          "subprocess_transport_launch_intents": 2,
+          "transport_contract": "q1-offline-broker-v1",
+          "verification": "PASS"
+        }
+      },
+      "low_pair": {
+        "readonly_and_repeated_resume_files_unchanged": true,
+        "report": "low_pair/report.json",
+        "summary": {
+          "all_positions_terminal": true,
+          "attempt_reservations": 5,
+          "broker_authorised_requests": 5,
+          "broker_complete_responses": 5,
+          "broker_dispatch_intents": 5,
+          "broker_partial_responses": 5,
+          "broker_rejected_requests": 0,
+          "broker_reserved_not_dispatched": 0,
+          "broker_terminal_failures": 0,
+          "broker_uncertain_completions": 0,
+          "campaign_id": "synthetic-q1-choice1-37f379126275",
+          "evidence_tip_sha256": "134320178fb10a664c5aede6f382bd8a65312c5e7b5ab9483c6da44a6201bee7",
+          "fake_provider_invocations": 0,
+          "journal_events": 94,
+          "live_execution_authorized": false,
+          "manifest_sha256": "3af4a9a5b1cb90dd86d299235a1904a742e0f508bfb060e948e5d03e7e08ac1b",
+          "mock_provider_acceptances": 5,
+          "mock_provider_process_starts": 5,
+          "real_provider_calls": 0,
+          "remaining_simulated_budget": 0,
+          "remote_exactly_once_claimed": false,
+          "scheduled_positions": 5,
+          "simulated_expenditure_units": 5,
+          "simulated_reserved_units": 5,
+          "states": {
+            "completed": 5
+          },
+          "subprocess_bootstraps_verified": 5,
+          "subprocess_transport_launch_intents": 5,
+          "transport_contract": "q1-offline-broker-v1",
+          "verification": "PASS"
+        }
+      },
+      "missing": {
+        "readonly_and_repeated_resume_files_unchanged": true,
+        "report": "missing/report.json",
+        "summary": {
+          "all_positions_terminal": true,
+          "attempt_reservations": 2,
+          "broker_authorised_requests": 2,
+          "broker_complete_responses": 2,
+          "broker_dispatch_intents": 2,
+          "broker_partial_responses": 2,
+          "broker_rejected_requests": 0,
+          "broker_reserved_not_dispatched": 0,
+          "broker_terminal_failures": 0,
+          "broker_uncertain_completions": 0,
+          "campaign_id": "synthetic-q1-choice1-f14d845991f9",
+          "evidence_tip_sha256": "c661786c98a129d2bdfcf141a5b78ef8088168ff0f83faff3d6fc29f20d2d036",
+          "fake_provider_invocations": 0,
+          "journal_events": 40,
+          "live_execution_authorized": false,
+          "manifest_sha256": "d35d8cee74566cc28f4075e7213a1fadc851166799f030fe13ed0f24302458bf",
+          "mock_provider_acceptances": 2,
+          "mock_provider_process_starts": 2,
+          "real_provider_calls": 0,
+          "remaining_simulated_budget": 1,
+          "remote_exactly_once_claimed": false,
+          "scheduled_positions": 3,
+          "simulated_expenditure_units": 2,
+          "simulated_reserved_units": 2,
+          "states": {
+            "blocked": 1,
+            "completed": 1,
+            "invalid": 1
+          },
+          "subprocess_bootstraps_verified": 2,
+          "subprocess_transport_launch_intents": 2,
+          "transport_contract": "q1-offline-broker-v1",
+          "verification": "PASS"
+        }
+      },
+      "multi_pair": {
+        "readonly_and_repeated_resume_files_unchanged": true,
+        "report": "multi_pair/report.json",
+        "summary": {
+          "all_positions_terminal": true,
+          "attempt_reservations": 5,
+          "broker_authorised_requests": 5,
+          "broker_complete_responses": 5,
+          "broker_dispatch_intents": 5,
+          "broker_partial_responses": 5,
+          "broker_rejected_requests": 0,
+          "broker_reserved_not_dispatched": 0,
+          "broker_terminal_failures": 0,
+          "broker_uncertain_completions": 0,
+          "campaign_id": "synthetic-q1-choice1-db02d88d169b",
+          "evidence_tip_sha256": "effb794569782b3dc88f4aad847429864665329d7c627129bbf66a485e63b87b",
+          "fake_provider_invocations": 0,
+          "journal_events": 95,
+          "live_execution_authorized": false,
+          "manifest_sha256": "6512e9de74aecb4551845388586b0aad6f39cf9d26486782c0370e25d41e310a",
+          "mock_provider_acceptances": 5,
+          "mock_provider_process_starts": 5,
+          "real_provider_calls": 0,
+          "remaining_simulated_budget": 0,
+          "remote_exactly_once_claimed": false,
+          "scheduled_positions": 5,
+          "simulated_expenditure_units": 5,
+          "simulated_reserved_units": 5,
+          "states": {
+            "completed": 5
+          },
+          "subprocess_bootstraps_verified": 5,
+          "subprocess_transport_launch_intents": 5,
+          "transport_contract": "q1-offline-broker-v1",
+          "verification": "PASS"
+        }
+      },
+      "qualification_choice": {
+        "readonly_and_repeated_resume_files_unchanged": true,
+        "report": "qualification_choice/report.json",
+        "summary": {
+          "all_positions_terminal": true,
+          "attempt_reservations": 3,
+          "broker_authorised_requests": 3,
+          "broker_complete_responses": 3,
+          "broker_dispatch_intents": 3,
+          "broker_partial_responses": 3,
+          "broker_rejected_requests": 0,
+          "broker_reserved_not_dispatched": 0,
+          "broker_terminal_failures": 0,
+          "broker_uncertain_completions": 0,
+          "campaign_id": "synthetic-q1-choice1-e67b9e4fac81",
+          "evidence_tip_sha256": "3f83c5a31cb9181dd75adb6faf66dcd3beeb828a3c314b19e37c263311d15949",
+          "fake_provider_invocations": 0,
+          "journal_events": 59,
+          "live_execution_authorized": false,
+          "manifest_sha256": "e260e1f23e7468c62205e38d2a8c4d735d368c9e723b7210ebed5ccacb9ae22d",
+          "mock_provider_acceptances": 3,
+          "mock_provider_process_starts": 3,
+          "real_provider_calls": 0,
+          "remaining_simulated_budget": 0,
+          "remote_exactly_once_claimed": false,
+          "scheduled_positions": 3,
+          "simulated_expenditure_units": 3,
+          "simulated_reserved_units": 3,
+          "states": {
+            "completed": 3
+          },
+          "subprocess_bootstraps_verified": 3,
+          "subprocess_transport_launch_intents": 3,
+          "transport_contract": "q1-offline-broker-v1",
+          "verification": "PASS"
+        }
+      },
+      "reservation_restart": {
+        "readonly_and_repeated_resume_files_unchanged": true,
+        "report": "reservation_restart/report.json",
+        "summary": {
+          "all_positions_terminal": true,
+          "attempt_reservations": 2,
+          "broker_authorised_requests": 1,
+          "broker_complete_responses": 1,
+          "broker_dispatch_intents": 1,
+          "broker_partial_responses": 1,
+          "broker_rejected_requests": 0,
+          "broker_reserved_not_dispatched": 1,
+          "broker_terminal_failures": 0,
+          "broker_uncertain_completions": 0,
+          "campaign_id": "synthetic-q1-choice1-244373dad60b",
+          "evidence_tip_sha256": "86641b67d2dc684061fb0b2465d0d9d1ec470a001560359dc600307549f26989",
+          "fake_provider_invocations": 0,
+          "journal_events": 24,
+          "live_execution_authorized": false,
+          "manifest_sha256": "5012d0471ee9403067e461530f6a4ad57b082050fc461e31d1b051c422b5f200",
+          "mock_provider_acceptances": 1,
+          "mock_provider_process_starts": 1,
+          "real_provider_calls": 0,
+          "remaining_simulated_budget": 1,
+          "remote_exactly_once_claimed": false,
+          "scheduled_positions": 3,
+          "simulated_expenditure_units": 1,
+          "simulated_reserved_units": 2,
+          "states": {
+            "blocked": 1,
+            "completed": 1,
+            "interrupted": 1
+          },
+          "subprocess_bootstraps_verified": 1,
+          "subprocess_transport_launch_intents": 1,
+          "transport_contract": "q1-offline-broker-v1",
+          "verification": "PASS"
+        }
+      },
+      "wrong_type": {
+        "readonly_and_repeated_resume_files_unchanged": true,
+        "report": "wrong_type/report.json",
+        "summary": {
+          "all_positions_terminal": true,
+          "attempt_reservations": 2,
+          "broker_authorised_requests": 2,
+          "broker_complete_responses": 2,
+          "broker_dispatch_intents": 2,
+          "broker_partial_responses": 2,
+          "broker_rejected_requests": 0,
+          "broker_reserved_not_dispatched": 0,
+          "broker_terminal_failures": 0,
+          "broker_uncertain_completions": 0,
+          "campaign_id": "synthetic-q1-choice1-d7adc81e2cbf",
+          "evidence_tip_sha256": "763d7925066cb5ffba5169b999538c599d40bdaab83f27cf9d7dbe36926a377a",
+          "fake_provider_invocations": 0,
+          "journal_events": 40,
+          "live_execution_authorized": false,
+          "manifest_sha256": "69deac3deacc37386e82ac6b0c4b6f89bd9e9f26daf4fbf8fbbacc1ed6e9e894",
+          "mock_provider_acceptances": 2,
+          "mock_provider_process_starts": 2,
+          "real_provider_calls": 0,
+          "remaining_simulated_budget": 1,
+          "remote_exactly_once_claimed": false,
+          "scheduled_positions": 3,
+          "simulated_expenditure_units": 2,
+          "simulated_reserved_units": 2,
+          "states": {
+            "blocked": 1,
+            "completed": 1,
+            "invalid": 1
+          },
+          "subprocess_bootstraps_verified": 2,
+          "subprocess_transport_launch_intents": 2,
+          "transport_contract": "q1-offline-broker-v1",
+          "verification": "PASS"
+        }
+      }
+    },
+    "carl_observations_with_separate_policy_trace": 2,
+    "exact_historical_bodies_replayed": 5,
+    "experimental_execution": false,
+    "generator_inferences": 0,
+    "instrument_contract": "systemone-typed-challenge-v1",
+    "native_observations": 3,
+    "negative_specialist_responses_retained_and_rejected": 4,
+    "real_provider_calls": 0,
+    "remote_carl_executions": 0,
+    "status": "CHOICE 1 TYPED SPECIALIST INTEGRATED — OFFLINE QUALIFIED, LIVE Q1 BLOCKED"
+  },
+  "all_eight_committed_campaigns_readonly_verified_after_copy": true,
+  "rd05_recomputation": {
+    "reproduction_stdout": "COMPARISON COMPLETE / RESOLUTION PENDING: 14 cases, 31 endpoints, Reviewer B/policy 31/31, observed pair/policy 22/31, A/B matched endpoint records 0.\n",
+    "all_recomputed_bytes_equal_frozen_comparison": true,
+    "production_comparison_modified": false,
+    "method": "Imported reproduce.py with ROOT bound to a temporary copy; compared every file SHA-256 before/after."
+  },
+  "existing_seals_and_38_historical_campaigns": "preservation.json",
+  "real_provider_calls": 0,
+  "generator_inferences": 0,
+  "remote_carl_executions": 0,
+  "credentials_read": false,
+  "experimental_execution": false,
+  "frozen_v1_v2_validators_changed": false,
+  "historical_pilot_outcomes_reclassified": false,
+  "original_shared_worktree_edit_strategy": "No implementation edits; isolated /tmp/mmmtap-choice1 clone from verified upstream main.",
+  "development_attempts": [
+    {
+      "result": "first focused run: 14 tests passed, one test helper errored due to a redundant JSON decode; corrected and all 15 passed",
+      "output": "development/first_focused.stderr"
+    },
+    {
+      "result": "earlier regression run overlapped producer source edits; fingerprint guards rejected two campaigns (including full-matrix class setup). No guard was weakened. Final stable-source run passed all 137 tests.",
+      "output": "development/concurrent_regressions.stderr"
+    }
+  ],
+  "implementation_limitations": [
+    "Offline historical replay route only; changed assessments cannot reuse responses.",
+    "Native original requests have canonical payload custody, not authenticated original HTTP wire capture.",
+    "Qualification side-effect Choice is a separately marked historical extension.",
+    "Scripted continuations prove delivery/lifecycle accounting, not model response behavior.",
+    "Captured cARL thresholds are historical replay only; no prospective threshold approval."
+  ],
+  "remaining_live_blockers": [
+    "Explicitly authorised provider access/qualification calls",
+    "Qualified one-shot provider transport, retries, served identity and context separation",
+    "Usage/budget qualification",
+    "Prospective challenge thresholds and continuation policy",
+    "RD03 reference/adjudication rubric and statistical methods",
+    "Operational governing-policy rules and separate execution approval"
+  ]
+}

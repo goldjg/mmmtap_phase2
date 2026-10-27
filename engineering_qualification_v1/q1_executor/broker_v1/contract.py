@@ -3,7 +3,7 @@ from pathlib import Path
 
 from . import VERSION, DESTINATION
 from .. import transport
-from ..model import PACKAGE, digest, raw_hash, encode
+from ..model import PACKAGE, digest, raw_hash, encode, decode, read_file
 
 HERE = Path(__file__).resolve().parent
 SCENARIOS = {
@@ -44,8 +44,11 @@ def validate_extension(m):
     # additionally require the exact current paths.
     for key in ("adapter", "bootstrap"):
         expected["bindings"][key]["path"] = ext["specification"]["bindings"][key]["path"]
+    legacy = decode(read_file(PACKAGE, "legacy-broker-specification.v1.json"))
+    for key in ("adapter", "bootstrap"):
+        legacy["bindings"][key]["path"] = ext["specification"]["bindings"][key]["path"]
     if (set(ext) != {"version", "specification", "configuration_sha256", "scenarios"}
-            or ext["version"] != VERSION or ext["specification"] != expected
+            or ext["version"] != VERSION or ext["specification"] not in (expected, legacy)
             or ext["configuration_sha256"] != digest(ext["specification"])
             or not isinstance(ext["scenarios"], dict)
             or any(k not in {p["id"] for p in m["positions"]} or v not in SCENARIOS
@@ -63,6 +66,8 @@ def envelope_for(m, p, sealed):
                custody_probe=str(adapter_root.parent / "transport_evidence/demonstration/campaign/campaign.sqlite3"),
                deadline_seconds=m["transport"]["specification"]["provider_deadline_seconds"],
                response_byte_limit=m["transport"]["specification"]["max_response_bytes"])
+    if "specialist_observation" in m and p["kind"] == "specialist":
+        env["requested_identity"].update(judge="SystemOne", version=m["specialist_observation"]["version"])
     env["idempotency_token"] = digest({"broker": VERSION, "attempt": env["attempt_id"],
                                        "request": env["request_sha256"]})
     return env

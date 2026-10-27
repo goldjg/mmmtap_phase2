@@ -1,0 +1,34 @@
+test_all_four_parser_failures_keep_raw_and_block_continuations (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.ExecutorChoice1Tests.test_all_four_parser_failures_keep_raw_and_block_continuations) ... ok
+test_crash_reservation_consumed_once_and_repeated_resume_is_readonly (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.ExecutorChoice1Tests.test_crash_reservation_consumed_once_and_repeated_resume_is_readonly) ... ok
+test_real_broker_native_carl_raw_custody_and_continuations (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.ExecutorChoice1Tests.test_real_broker_native_carl_raw_custody_and_continuations) ... ok
+test_unknown_contract_unmatched_source_and_reordered_claims_fail_closed (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.ExecutorChoice1Tests.test_unknown_contract_unmatched_source_and_reordered_claims_fail_closed) ... ok
+test_all_five_bodies_exact_values_model_usage_and_claim_associations (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.TypedContractTests.test_all_five_bodies_exact_values_model_usage_and_claim_associations) ... ok
+test_all_missing_extra_duplicate_wrong_types_rejected_for_all_five (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.TypedContractTests.test_all_missing_extra_duplicate_wrong_types_rejected_for_all_five) ... ok
+test_bool_string_null_out_of_range_nonfinite_and_invented_fields_rejected (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.TypedContractTests.test_bool_string_null_out_of_range_nonfinite_and_invented_fields_rejected) ... ok
+test_carl_trace_is_derived_and_original_quotes_are_generator_input (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.TypedContractTests.test_carl_trace_is_derived_and_original_quotes_are_generator_input) ... ok
+test_choice_is_preserved_only_as_historical_auxiliary_observation (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.TypedContractTests.test_choice_is_preserved_only_as_historical_auxiliary_observation) ... ok
+test_decimal_tokens_never_rounded_or_turned_into_degree_scores (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.TypedContractTests.test_decimal_tokens_never_rounded_or_turned_into_degree_scores) ... ok
+test_frozen_v2_validator_still_rejects_every_raw_systemone_body (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.TypedContractTests.test_frozen_v2_validator_still_rejects_every_raw_systemone_body) ... ok
+test_native_and_carl_question_semantics_and_shared_judge_remain_matched (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.TypedContractTests.test_native_and_carl_question_semantics_and_shared_judge_remain_matched) ... ok
+test_no_falsehood_release_authority_reference_judgments_or_historical_reclassification (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.TypedContractTests.test_no_falsehood_release_authority_reference_judgments_or_historical_reclassification) ... ok
+test_request_order_and_exact_wording_are_enforced_answer_object_order_is_irrelevant (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.TypedContractTests.test_request_order_and_exact_wording_are_enforced_answer_object_order_is_irrelevant) ... ERROR
+test_wrong_raw_source_assessment_request_digests_rejected (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.TypedContractTests.test_wrong_raw_source_assessment_request_digests_rejected) ... ok
+
+======================================================================
+ERROR: test_request_order_and_exact_wording_are_enforced_answer_object_order_is_irrelevant (engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.TypedContractTests.test_request_order_and_exact_wording_are_enforced_answer_object_order_is_irrelevant)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mmmtap-choice1/engineering_qualification_v1/q1_executor/systemone_typed_v1/test_choice1.py", line 112, in test_request_order_and_exact_wording_are_enforced_answer_object_order_is_irrelevant
+    bindings(encode(req), decode(decode(req["state"]))["untrusted_source"].encode(),
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mmmtap-choice1/engineering_qualification_v1/q1_executor/model.py", line 42, in decode
+    return json.loads(raw, object_pairs_hook=unique, parse_constant=reject)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/__init__.py", line 339, in loads
+    raise TypeError(f'the JSON object must be str, bytes or bytearray, '
+TypeError: the JSON object must be str, bytes or bytearray, not dict
+
+----------------------------------------------------------------------
+Ran 15 tests in 29.771s
+
+FAILED (errors=1)

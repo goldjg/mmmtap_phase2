@@ -1,0 +1,32 @@
+======================================================================
+ERROR: setUpClass (engineering_qualification_v1.q1_executor.test_full_matrix.FullMatrixTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mmmtap-choice1/engineering_qualification_v1/q1_executor/test_full_matrix.py", line 29, in setUpClass
+    cls.result = demo(cls.base / "demonstration")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mmmtap-choice1/engineering_qualification_v1/q1_executor/full_matrix.py", line 302, in demo
+    first = resume(campaign)
+            ^^^^^^^^^^^^^^^^
+  File "/tmp/mmmtap-choice1/engineering_qualification_v1/q1_executor/engine.py", line 341, in resume
+    if not reserve(db, root, m, p):
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mmmtap-choice1/engineering_qualification_v1/q1_executor/engine.py", line 220, in reserve
+    if verify_database(db, root)["manifest"] != m:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mmmtap-choice1/engineering_qualification_v1/q1_executor/engine.py", line 394, in verify_database
+    raise ValueError("manifest_or_software_binding_changed")
+ValueError: manifest_or_software_binding_changed
+
+======================================================================
+FAIL: test_two_process_workers_never_duplicate_an_attempt (engineering_qualification_v1.q1_executor.test_executor.ExecutorTests.test_two_process_workers_never_duplicate_an_attempt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mmmtap-choice1/engineering_qualification_v1/q1_executor/test_executor.py", line 107, in test_two_process_workers_never_duplicate_an_attempt
+    self.assertIn("finished", results)
+AssertionError: 'finished' not found in ['campaign_busy_no_recovery_or_duplicate_worker', 'manifest_or_software_binding_changed']
+
+----------------------------------------------------------------------
+Ran 128 tests in 167.193s
+
+FAILED (failures=1, errors=1)

@@ -56,6 +56,10 @@ def validate_manifest(root):
     check_bindings()
     raw = read_file(root, "manifest.json")
     m = decode(raw)
+    if "specialist_observation" in m:
+        from .broker_v1.contract import is_broker
+        if not is_broker(m) or "full_matrix" in m:
+            raise ValueError("typed_observations_require_explicit_offline_broker_route")
     if "transport" in m:
         from .transport import validate_manifest as validate_transport_manifest
         return validate_transport_manifest(root, m, raw)
@@ -66,7 +70,8 @@ def validate_manifest(root):
 
 
 def validate_slice_manifest(root, m, raw):
-    if set(m) != {"campaign_id", "manifest_sha256", "execution_contract", "instrument_version", "simulation_only",
+    typed = "specialist_observation" in m
+    if set(m) - ({"specialist_observation"} if typed else set()) != {"campaign_id", "manifest_sha256", "execution_contract", "instrument_version", "simulation_only",
                   "packets", "contracts", "positions", "attempt_ceiling", "simulated_budget_units"}:
         raise ValueError("manifest_shape")
     if (m["manifest_sha256"] != digest({k: v for k, v in m.items() if k != "manifest_sha256"})
@@ -76,7 +81,7 @@ def validate_slice_manifest(root, m, raw):
     instrument, continuation, pins = load()
     if m["instrument_version"] != instrument.VERSION or m["contracts"] != pins:
         raise ValueError("instrument_binding")
-    if set(m["packets"]) != {"source", "governing_policy", "challenge_policy"}:
+    if set(m["packets"]) != {"source", "governing_policy", "challenge_policy"} | ({"replay"} if typed else set()):
         raise ValueError("packet_coverage")
     packet_paths = []
     for kind, ref in m["packets"].items():
@@ -85,17 +90,20 @@ def validate_slice_manifest(root, m, raw):
         packet_paths.append(ref["path"])
         if Path(ref["path"]).name != ref["path"] or ref["path"] in ("manifest.json", "campaign.sqlite3", ".lock"):
             raise ValueError("unsafe_packet_filename")
-        if kind != "source":
+        if kind not in ("source", "replay"):
             packet = decode(read_file(root, ref["path"]))
             if (packet.get("simulation_only") is not True or not packet.get("id", "").startswith("synthetic-")
                     or kind == "governing_policy" and packet.get("release_authority") is not False
                     or kind == "challenge_policy" and packet.get("governing_authority") is not False):
                 raise ValueError("simulation_policy_authority_boundary")
-    if len(set(packet_paths)) != 3 or m["packets"]["governing_policy"] == m["packets"]["challenge_policy"]:
+    if len(set(packet_paths)) != (4 if typed else 3) or m["packets"]["governing_policy"] == m["packets"]["challenge_policy"]:
         raise ValueError("policy_separation")
     for key in ("attempt_ceiling", "simulated_budget_units"):
         if type(m[key]) is not int or m[key] < 1:
             raise ValueError("invalid_budget")
+    if typed:
+        from .systemone_typed_v1.replay import validate_extension, identity as typed_identity
+        replay_assessment = validate_extension(root, m)
     seen, by_id, jobs = set(), {}, []
     if not isinstance(m["positions"], list) or not m["positions"]:
         raise ValueError("empty_schedule")
@@ -108,9 +116,10 @@ def validate_slice_manifest(root, m, raw):
         if (not re.fullmatch(r"[a-z0-9-]+", ident) or ident in seen or not isinstance(deps, list)
                 or len(set(deps)) != len(deps) or any(d not in seen for d in deps)):
             raise ValueError("unknown_duplicate_or_nontopological_dependency")
-        if (p["kind"] not in IDENTITIES or p["identity"] != IDENTITIES[p["kind"]]
+        if (p["kind"] not in IDENTITIES or p["identity"] != (typed_identity(p) if typed else IDENTITIES[p["kind"]])
                 or p["packet_bindings"] != expected_bindings
-                or p["case_id"] != m["campaign_id"] or p["variant_id"] != "simulation"):
+                or p["case_id"] != (replay_assessment["case_id"] if typed else m["campaign_id"])
+                or p["variant_id"] != (replay_assessment["variant_id"] if typed else "simulation")):
             raise ValueError("position_identity_or_packet_binding")
         if (p["arm"] not in instrument.ARMS or p["path"] not in ("none", "native_simulation", "carl_simulation")
                 or p["role"] not in ("baseline", "control", "specialist", "challenge_continuation", "diagnostic_branch")
@@ -139,6 +148,9 @@ def validate_slice_manifest(root, m, raw):
 
 
 def request_for(m, p, receipts, root):
+    if "specialist_observation" in m:
+        from .systemone_typed_v1.replay import request_for as typed_request
+        return typed_request(m, p, receipts, root)
     if "full_matrix" in m:
         from .full_matrix import matrix_request
         return matrix_request(m, p, receipts, root)
@@ -177,6 +189,12 @@ def validate_response(p, req, raw, observed):
             diagnostic = asdict(instrument.inspect_assessment(text, p, req["source_text"], req["previous_assessment"]))
             return ("completed", None, diagnostic) if diagnostic["parsed"] is not None else (
                 "invalid", diagnostic["error"], diagnostic)
+        if "instrument_contract" in req:
+            from .systemone_typed_v1 import VERSION as TYPED_VERSION
+            from .systemone_typed_v1.replay import validate_response as typed_validate
+            if req["instrument_contract"] != TYPED_VERSION:
+                raise ValueError("unknown_specialist_instrument_contract")
+            return typed_validate(p, req, raw)
         judged = instrument.parse_judgments(text, req["instrument_request"])
         return "completed", None, {"parsed": decode(raw), "judgments": [asdict(j) for j in judged.judgments]}
     except (ValueError, UnicodeError, KeyError, TypeError) as exc:

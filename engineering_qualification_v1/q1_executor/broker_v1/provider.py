@@ -20,6 +20,13 @@ def encode(obj):
 
 
 def response(req):
+    if req.get("instrument_contract") == "systemone-typed-challenge-v1":
+        # Bytes injected by the sealed offline replay packet, not a provider call.
+        replay = req["offline_replay"]
+        raw = base64.b64decode(replay["raw_b64"], validate=True)
+        if hashlib.sha256(raw).hexdigest() != replay["raw_sha256"]:
+            raise ValueError("sealed_replay_bytes_changed")
+        return raw
     p = req["position"]
     if p["kind"] == "specialist":
         obj = {"schema": req["instrument_request"]["schema"].replace("judge-request", "judgments"),
