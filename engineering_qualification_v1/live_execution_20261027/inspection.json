@@ -1,0 +1,204 @@
+{
+  "PI_direction": "P1-P7 adopted provisionally for exploratory engineering only; final launch authorization explicitly withheld",
+  "accounting": {
+    "by_arm_role": {
+      "B0": {
+        "generator": 9
+      },
+      "C1": {
+        "generator": 9
+      },
+      "C2": {
+        "generator": 9
+      },
+      "C3": {
+        "generator": 18
+      },
+      "E1": {
+        "generator": 9,
+        "specialist": 9
+      },
+      "E2": {
+        "generator": 9,
+        "specialist": 9
+      },
+      "E3_CN": {
+        "generator": 18,
+        "specialist": 18
+      },
+      "E3_NC": {
+        "generator": 18,
+        "specialist": 18
+      }
+    },
+    "by_role": {
+      "generator": 99,
+      "specialist": 54
+    },
+    "carl_specialists": 27,
+    "dependency_edges": 198,
+    "generator_followups": 90,
+    "invalid_unavailable_are_missing_not_unchanged": true,
+    "native_specialists": 27,
+    "one_terminal_receipt_per_position": true,
+    "scheduled": 153,
+    "shared_baselines": 9
+  },
+  "assurance": "LOWER_ASSURANCE_ENGINEERING_QUALIFICATION",
+  "credential_values_inspected": false,
+  "financial_acceptance": {
+    "actual_live_cost": null,
+    "actual_live_usage": null,
+    "currency": null,
+    "launch_counts_are_money_ceiling": false,
+    "monitoring_arrangement": null,
+    "operator_accepted_amount": null,
+    "quota_evidence": null
+  },
+  "historical_or_simulated_results_used_as_live": false,
+  "implementation_configuration_sha256": "8058767a05aeb757e51c662126a8ea77db7907cb79a4b03a95c0ed4cf8c3a4cf",
+  "limitations": {
+    "credential_inspection": "CLI_environment_or_staged_auth_not_fully_isolated_from_other_same_UID_processes; not_the_SystemOne_broker_FD_guarantee",
+    "credentials": "only_selected_subscription_credential_in_CLI_context; CLI_can_access_its_own_credential",
+    "filesystem": "fresh_private_home_and_tmp; readonly_work_and_usr_runtime; host_home_repo_and_other_auth_hidden",
+    "identity": "client_report_or_requested_configuration_only; independently_attested_serving_identity_unavailable",
+    "network": "production_host_namespace_not_endpoint_filtered; fixtures/help_have_no_network",
+    "processes": "internal_children_allowed_inside_private_PID_namespace; one_top_level_CLI_launch_per_reservation",
+    "remote_attempts": "UNKNOWN; no_harness_retry_or_fallback",
+    "remote_context": "fresh_local_context_requested; complete_remote_isolation_unavailable",
+    "tools": "client_config_restrictions_and_streaming_watchdog; no_universal_pre_dispatch_tool_interlock"
+  },
+  "manifest_file_sha256": "85ffd6c11894aa11a46490b60365c7dda1a321803dc2342d64ae84a8e7f74ff9",
+  "manifest_sha256": "8d86dae1261e609a49971d6682c9ed57427dd9b012aeaa4030071f6253064471",
+  "missing_controls": [
+    "operator_accepted_financial_exposure_limit_and_monitoring",
+    "reviewed_production_IPv4_443_CA_and_namespace_nft_bindings",
+    "fixed_private_deployment_authority_and_canonical_custody_store",
+    "existing_Gaia_and_Copilot_credential_handoffs_in_execution_context",
+    "current_account_and_model_entitlement_confirmation",
+    "separate_explicit_exact_manifest_final_GO"
+  ],
+  "observed_serving_identities": null,
+  "observed_task_counts": {
+    "SystemOne_client_POSTs": 0,
+    "durable_live_reservations": 0,
+    "fallbacks": 0,
+    "generator_CLI_launches": 0,
+    "harness_retries": 0,
+    "new_synthetic_campaigns": 0,
+    "replacement_attempts": 0
+  },
+  "original_custody": {
+    "baseline_sha256": "edd040e78fc0d5ad152c1b33763f9871e39d2d02cc6fb74753c726eb40793a4f",
+    "changed_or_missing": [],
+    "ended_at_utc": "2026-10-27T19:03:13.670002+00:00",
+    "original_entries_verified": 40538,
+    "original_sources_and_evidence_unchanged": true,
+    "started_at_utc": "2026-10-27T19:01:47.722391+00:00",
+    "verification": "PASS"
+  },
+  "packets": {
+    "assurance": {
+      "path": "assurance.json",
+      "sha256": "13520e5bcbd875ca0c150cd58f23e2c86d24bf99c610406125431558370f4638"
+    },
+    "c01_source": {
+      "path": "c01-source.txt",
+      "sha256": "fda7a8f254ace4e83eb3214b78a2ae20ef6318803f25d337d6b67fa573a1c1df"
+    },
+    "c02_source": {
+      "path": "c02-source.txt",
+      "sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc"
+    },
+    "c03_source": {
+      "path": "c03-source.txt",
+      "sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492"
+    },
+    "carl_compiled_policy": {
+      "path": "carl-compiled-policy.json",
+      "sha256": "b54ad41b0c9bff40246621a03c7f27492c7270e6c5957de40cd55f5baa616f5e"
+    },
+    "challenge_policy": {
+      "path": "challenge-policy.json",
+      "sha256": "4291e804f6c81881ce188246c311590119a4e600d16f340e03e8b2e6910daea7"
+    },
+    "governing_policy": {
+      "path": "governing-policy.json",
+      "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e"
+    },
+    "research_decisions": {
+      "path": "research-decisions.json",
+      "sha256": "7e40b11e177b1ce2d50c7d03e833ff2370ff318088156681525ba153fb8f77c5"
+    },
+    "research_rule_proposals": {
+      "path": "research-rule-proposals.json",
+      "sha256": "53a1e600a64dbb78950864a1de8330e69e7b6e0639ff0db57927de7770ea5c68"
+    },
+    "source_bundle": {
+      "path": "source-bundle.json",
+      "sha256": "ff76e1c1cf41a45e6d77136f2584f1a8d4765bbf9eb7a95c1525d0673f7171ed"
+    }
+  },
+  "production_paths_observed_absent": [
+    "/var/lib/mmmtap/q1/deployment-authority",
+    "/var/lib/mmmtap/q1/lower-assurance-engineering-v1/campaign"
+  ],
+  "proposed_limits": {
+    "SystemOne_client_POSTs": 54,
+    "durable_reservations": 153,
+    "fallbacks": 0,
+    "generator_CLI_launches": 99,
+    "harness_retries": 0,
+    "replacement_attempts": 0
+  },
+  "record_version": "q1-live-launch-hold-20261027-v1",
+  "recorded_at_utc": "2026-10-27T19:03:35.397457+00:00",
+  "report_sha256": "f60dbc6102cc990ff356fdbb08a85483179d49d2c550d9b056366400cc15fe68",
+  "requested_routes": {
+    "carl": {
+      "model": "jev-1.13.0",
+      "provider": "SystemOne"
+    },
+    "gemini": {
+      "binary_sha256": "1253bb0cf8704e94d849639182a356e85f77577cafd1f566ab88d75ad19abb35",
+      "model": "gemini-3.8-flash",
+      "provider": "github_copilot_cli"
+    },
+    "haiku": {
+      "binary_sha256": "1253bb0cf8704e94d849639182a356e85f77577cafd1f566ab88d75ad19abb35",
+      "model": "claude-haiku-5.5",
+      "provider": "github_copilot_cli"
+    },
+    "native": {
+      "model": "jev-1.13.0",
+      "provider": "SystemOne"
+    },
+    "sol": {
+      "binary_sha256": "8813c8d8a4cea2eeba271b72ab22f49628b184b24ab18dbef06b4ce41e9a8d39",
+      "model": "gpt-6.1-sol",
+      "provider": "codex_cli"
+    }
+  },
+  "runtime_binding_sha256": {
+    "adapter": "b681fa0117c58b571c3217857c3a9d9d833740338060bcee2f3007a70894be8b",
+    "bootstrap": "84ce7f12362ebbef588fa8f515c5a0d45c9568dd993926dd8ec4d33aed557a5e",
+    "bwrap": "ff5add553bea12a45c18ebe6c67d3ed637052b869a1ca2fc5d74a6a2e8c5cce6",
+    "nft": "e39c5bf510d14d25dc8d685eb9f322f03481356fce341bc45870d9d331ba2a09",
+    "nsenter": "5b797cd23c6f1a86be4ecad819b4d3c612434cf5068c70ae3403524a82aa233d",
+    "python": "2ceb9199570aaf34a254b9ea88b1d77f38530833e2a12688d002a59c905b51b2",
+    "seccomp": "37ab5fe229e2edbd12350516158d4940337ceec093f0a498583636a0b4b54375"
+  },
+  "source_commit": "654f2b8147bca53f55a5ff0f659195a76f1b10f9",
+  "status": "Q1 LIVE EXECUTION NOT STARTED — SPECIFIC LAUNCH CONDITION REQUIRES PI DECISION",
+  "upstream_main_observed": "654f2b8147bca53f55a5ff0f659195a76f1b10f9",
+  "upstream_verification": "git ls-remote origin refs/heads/main; network-authorized read-only query",
+  "validation": {
+    "existing_candidate_validation": "PASS",
+    "generator_binary_and_runtime_bindings": {
+      "gemini": "PASS",
+      "haiku": "PASS",
+      "sol": "PASS"
+    },
+    "provider_requests_for_validation": 0
+  }
+}
