@@ -23,6 +23,14 @@ def output(obj):
 
 
 behavior = sealed_envelope["scenario"]
+if "credential_binding" in sealed_envelope:
+    # No change to the bootstrap, mount namespace, syscall allowlist or env.
+    # Observe actual inherited descriptors without reading any pipe contents.
+    extra = [p for p in Path("/proc/self/fd").iterdir()
+             if p.name.isdigit() and int(p.name) > 2 and p.exists()]
+    output({"type": "probe", "observation": {"credential_boundary": "q1-broker-jevkey-fd-v1",
+        "JEVKEY_environment_absent": "JEVKEY" not in os.environ,
+        "unexpected_inherited_descriptors": len(extra)}})
 attacks = {"network", "unix_socket", "spawn", "exec", "forbidden_file", "credentials", "history",
            "source_write", "policy_write"}
 if behavior in attacks:

@@ -6,18 +6,6 @@
   "final_status": "SYSTEMONE FIRST LIVE PROBE — NO-GO, SPECIFIC PREREQUISITES OUTSTANDING",
   "can_currently_authorise_one_real_request_responsibly": false,
   "implementation_remains_unlaunchable": true,
-  "scope_of_this_task": {
-    "provider_domain_requests": 0,
-    "provider_connectivity_tests": 0,
-    "provider_authentication": false,
-    "actual_credentials_read_hashed_copied_tested_or_passed": false,
-    "account_portals_or_model_listing": false,
-    "firewall_routing_namespace_or_host_security_changes": false,
-    "new_namespace_or_seccomp_installation_tests": false,
-    "campaign_execution_or_regeneration": false,
-    "test_suites_rerun": false,
-    "GitHub_access": "Only requested repository fetch/push/remote verification"
-  },
   "already_qualified_reusable": [
     "durable reservations and one client POST intent",
     "no client retry/retransmission after crash or timeout",
@@ -619,7 +607,7 @@
     },
     "production_egress_deployment": {
       "status": "BLOCKED",
-      "finding": "Host operator has CapEff=0 and cannot inspect host nftables rules. The code checks loopback-only interfaces and an exact local IP/port policy; production route admission is intentionally absent.",
+      "finding": "Routed private veth namespace exact-IP/port egress and worker containment are now exercised offline. Actual provider peer/trust/namespace admission remains intentionally disabled; ordinary Gaia operator lacks host CAP_NET_ADMIN. Provision/delegate only the controlled namespace policy inspection, then drop capabilities.",
       "evidence": [
         "engineering_qualification_v1/q1_executor/systemone_https_v1/egress.py:8",
         "engineering_qualification_v1/q1_executor/systemone_https_v1/contract.py:131"
@@ -635,24 +623,21 @@
       "operator_confirmation_required": "Review and approve explicit trust anchors/configuration for the exact hostname. Review locally supplied public material without contacting the provider."
     },
     "credential_provisioning": {
-      "status": "BLOCKED",
-      "finding": "Only BrokerSecret protocol plus hardwired FixtureSecret exists. No approved source, broker-specific service or principal/access policy was identified; generic systemd availability is not approval.",
+      "status": "VERIFIED",
+      "scope": "qualified_offline_with_dummy_JEVKEY",
+      "finding": "Existing JEVKEY source convention now feeds a single broker-only anonymous descriptor created after hardening and transferred with kernel-authenticated SCM_CREDENTIALS/SCM_RIGHTS. No new key/account/login/secret platform is required. Operator says variable is configured; the task service membership-only check is false, so later use the existing Gaia operator launch context.",
       "evidence": [
-        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:25",
-        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:75",
-        "engineering_qualification_v1/q1_executor/broker_v1/runtime.py:80"
-      ],
-      "operator_confirmation_required": "Identify an already approved available mechanism and its non-secret binding metadata: broker principal, scope, expiry/account attribution, access policy, dump/ptrace protections and delivery interface. Do not supply or inspect a key during readiness review."
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/credential.py",
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/jevkey_evidence/acceptance/credential_probe/result.json"
+      ]
     },
     "credential_non_disclosure": {
-      "status": "BLOCKED",
-      "finding": "Inherited environment stripping and closed descriptors are reusable; fixture canary-specific header scrubbing does not establish arbitrary real-secret handling. No unrelated-process access protection is qualified for a live broker.",
+      "status": "VERIFIED",
+      "scope": "tested dummy-only launcher/broker boundary; operator source environment and privileged inspectors excluded",
+      "finding": "Worker/env/FD isolation, generic raw/JSON-escaped reflection refusal, child inheritance denial, EACCES for capless unrelated environ/mem/FD opens, non-dumpability and hard core limits qualified. No real credential read.",
       "evidence": [
-        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:134",
-        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:142",
-        "engineering_qualification_v1/q1_executor/broker_v1/runtime.py:80"
-      ],
-      "operator_confirmation_required": "Before a real hookup, verify arbitrary dummy-secret non-disclosure and access denial under the chosen deployment. Include failure paths/reflected headers without altering historical evidence."
+        "engineering_qualification_v1/q1_executor/systemone_https_v1/JEVKEY.md"
+      ]
     },
     "PI_live_authority": {
       "status": "BLOCKED",
@@ -666,75 +651,28 @@
   "priority_ordered_actions": [
     {
       "priority": 1,
-      "id": "account_and_provider_assurances",
-      "types": [
-        "operator configuration",
-        "provider assurance",
-        "PI decision"
-      ],
-      "missing_control": "Current account/revision authority, enforceable financial exposure and acceptable serving/replay/correlation/timeout assurances.",
-      "evidence": [
-        "engineering_qualification_v1/q1_executor/systemone_https_v1/provider-contract.json",
-        "engineering_qualification_v1/q1_executor/systemone_https_v1/qualification-manifest/manifest.json"
-      ],
-      "smallest_action": "Obtain non-secret account-owner/provider evidence and a reconciliation procedure; decide which remaining uncertainties can be accepted within actual approved bounds before commissioning integration.",
-      "verification_without_provider_call": "Review dated account-owner attestations/provider statements and ledger/export specifications supplied out of band; no portal login or authenticated endpoint in this task."
+      "action": "Choose exact production peer(s), explicit public trust and controlled routed namespace with namespace-scoped rule-inspection privileges; use the existing JEVKEY-bearing Gaia operator launch context."
     },
     {
       "priority": 2,
-      "id": "approved_production_deployment",
-      "types": [
-        "operator configuration"
-      ],
-      "missing_control": "Qualified broker production namespace/destination/TLS/secret-principal configuration.",
-      "evidence": [
-        "engineering_qualification_v1/q1_executor/systemone_https_v1/egress.py:8",
-        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:105",
-        "readiness.json#/Gaia_host_metadata"
-      ],
-      "smallest_action": "Select and approve a controlled broker deployment, vetted numeric IP(s):443, exact default-drop policy, explicit public trust and an existing principal-bound secret mechanism; retain unchanged worker controls.",
-      "verification_without_provider_call": "Review redacted service/secret-binding metadata and rule/permission exports; locally check public trust material and use dummy-secret access checks in separately authorised deployment qualification."
+      "action": "Confirm current fixed-revision/account billing terms and decide proportionate identity/replay/timeout reconciliation limits; preserve established historical-access facts."
     },
     {
       "priority": 3,
-      "id": "minimal_existing_code_integration",
-      "types": [
-        "operator configuration",
-        "PI decision"
-      ],
-      "code_change_required": true,
-      "code_defect_in_qualified_offline_behavior": false,
-      "missing_control": "Production route/approval admission, actual broker-secret binding, arbitrary-secret-safe header/error paths and production-accurate provenance are absent by design.",
-      "evidence": [
-        "engineering_qualification_v1/q1_executor/systemone_https_v1/contract.py:131",
-        "engineering_qualification_v1/q1_executor/systemone_https_v1/contract.py:214",
-        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:75",
-        "engineering_qualification_v1/q1_executor/systemone_https_v1/https.py:142",
-        "engineering_qualification_v1/q1_executor/systemone_https_v1/contract.py:206"
-      ],
-      "smallest_action": "After deployment/account choices, separately authorise a bounded versioned integration in the existing broker/transport. Keep disabled pending the final PI grant; no replacement framework or speculative secret manager.",
-      "verification_without_provider_call": "Only focused offline checks of changed production admission, OS destination policy, trust, dummy-secret disclosure/access and evidence reconstruction; no repeat of unchanged historical campaign qualification."
-    },
-    {
-      "priority": 4,
-      "id": "final_PI_approval",
-      "types": [
-        "PI decision"
-      ],
-      "missing_control": "Explicit single-probe authorisation of a concrete reviewed implementation/deployment and final sealed scope.",
-      "evidence": [
-        "engineering_qualification_v1/q1_executor/systemone_https_v1/APPROVAL.md"
-      ],
-      "smallest_action": "Present final request/policy/transport/deployment/manifest digests, evidenced maximum cost/usage and accepted identity/ambiguous-completion limits for explicit PI approval.",
-      "verification_without_provider_call": "Review the signed or otherwise recorded approval and fail-closed admission without reading a real credential or making a provider request."
+      "action": "Review/seal the actual-production admission/provenance binding and seek explicit PI approval for exactly one synthetic POST, no retry/fallback/continuation."
     }
   ],
   "code_changes_genuinely_required_before_live_probe": {
     "required": true,
-    "performed_in_this_task": false,
-    "why": "Current production refusal/loopback-only binding and FixtureSecret are hardcoded. Operator configuration alone cannot turn this into a live implementation. Generic secret isolation/non-disclosure and truthful production provenance must accompany any future hookup.",
-    "new_transport_broker_sandbox_or_secret_manager_required": false,
-    "execution_engine_and_frozen_scientific_instruments_change_required": false
+    "implemented_in_latest_update": [
+      "existing JEVKEY anonymous-FD handoff",
+      "launcher and broker process/core protection",
+      "generic secret reflection guards",
+      "routed TEST-NET exact egress qualification",
+      "historical fingerprint compatibility"
+    ],
+    "remaining": "Only explicitly reviewed actual-production deployment/admission/provenance binding and final PI authorisation; the current contract intentionally admits only local qualification peers. No new provider onboarding or replacement transport/secret system.",
+    "frozen_scientific_or_worker_policy_changes_required": false
   },
   "maximum_eventual_PI_scope": {
     "position": "native-systemone-probe",
@@ -761,5 +699,36 @@
     "cost_requirement": "Must be established from account/provider evidence before approval; never inferred from one POST or response bytes.",
     "approval": false
   },
-  "report_sha256": "9c8f5136a7dd549812cdb65232557c9d0e67c7bdf900291c050e6c6575682617"
+  "report_sha256": "6c8d79f2a8bfbbf2737ab3c7d101f0357bf936759a1f6ca6807d6a311be9d20a",
+  "original_readiness_task_scope": {
+    "provider_domain_requests": 0,
+    "provider_connectivity_tests": 0,
+    "provider_authentication": false,
+    "actual_credentials_read_hashed_copied_tested_or_passed": false,
+    "account_portals_or_model_listing": false,
+    "firewall_routing_namespace_or_host_security_changes": false,
+    "new_namespace_or_seccomp_installation_tests": false,
+    "campaign_execution_or_regeneration": false,
+    "test_suites_rerun": false,
+    "GitHub_access": "Only requested repository fetch/push/remote verification"
+  },
+  "scope_of_latest_update": {
+    "baseline": "7387e5123e21f2e9e38d126f10fc9d69d69c2edb",
+    "dummy_only_offline_acceptance_cases": 19,
+    "focused_regressions": 40,
+    "provider_calls": 0,
+    "real_JEVKEY_value_inspected_or_used": false,
+    "existing_campaigns_regenerated": false,
+    "host_firewall_routing_security_changed": false
+  },
+  "historical_SystemOne_access": {
+    "status": "VERIFIED",
+    "finding": "Preserved successful native and cARL-mediated calls using the established JEVKEY convention, typed answers, jev-1.13.0 self-reports and usage fields. These are not current-entitlement or serving-attestation guarantees.",
+    "evidence": [
+      "engineering_qualification_v1/q1_executor/systemone_https_v1/jevkey_evidence/historical-access.json",
+      "engineering_qualification_v1/systemone_contract_resolution_v1/evidence/selection.json"
+    ]
+  },
+  "previous_report_sha256": "9c8f5136a7dd549812cdb65232557c9d0e67c7bdf900291c050e6c6575682617",
+  "qualified_offline_integration": "JEV HISTORICAL ACCESS REUSED — Q1 BROKER INTEGRATION QUALIFIED OFFLINE, LIVE PROBE PENDING APPROVAL"
 }

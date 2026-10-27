@@ -7,7 +7,7 @@ import socket
 
 def restrict_to_fixture(route):
     if (os.readlink("/proc/self/ns/net") != route["network_namespace"]
-            or socket.if_nameindex() != [(1, "lo")]):
+            or sorted(name for _, name in socket.if_nameindex()) != route.get("interfaces", ["lo"])):
         raise ValueError("BLOCKED_private_loopback_network_namespace_required")
     # Inspect the complete kernel ruleset, not a caller-supplied policy label.
     import subprocess
@@ -15,7 +15,7 @@ def restrict_to_fixture(route):
     actual = decode(subprocess.check_output(["/usr/sbin/nft", "-j", "-s", "list", "ruleset"], env={"LANG": "C.UTF-8"}))
     actual = [{k: {a: b for a, b in v.items() if a != "handle"}} for item in actual["nftables"]
               for k, v in item.items() if k != "metainfo"]
-    expected = expected_rules(route["port"])
+    expected = expected_rules(route["port"], route["address"])
     if actual != expected:
         raise ValueError("BLOCKED_exact_kernel_destination_rules_required")
     lib = ctypes.CDLL(None, use_errno=True)
@@ -30,9 +30,9 @@ def restrict_to_fixture(route):
         lib.prctl(24, cap, 0, 0, 0)
     if lib.capset(ctypes.byref(Header(0x20080522, 0)), ctypes.byref((Cap * 2)())):
         raise ValueError("BLOCKED_capability_drop")
-    return {"network_namespace": route["network_namespace"], "interfaces": ["lo"],
+    return {"network_namespace": route["network_namespace"], "interfaces": route.get("interfaces", ["lo"]),
             "kernel_policy": "nftables_default_drop_exact_IP_TCP_port", "rules_sha256": digest(expected),
-            "allowed_address": "127.0.0.1", "allowed_TCP_connect_port": route["port"], "capabilities_dropped": True}
+            "allowed_address": route["address"], "allowed_TCP_connect_port": route["port"], "capabilities_dropped": True}
 
 
 def close_network_creation(library):
@@ -76,9 +76,10 @@ def adversarial_probes(route):
     """Actual syscalls in a separate restricted process; no remote addresses."""
     evidence = restrict_to_fixture(route)
     checks = {}
-    for name, host, port in (("other_local_port", "127.0.0.1", route["port"] + 1 if route["port"] < 65535 else 1024),
-                             ("other_address_same_port", "127.0.0.2", route["port"]),
-                             ("provider_port_443", "127.0.0.1", 443)):
+    other = "127.0.0.2" if route["address"] == "127.0.0.1" else "127.0.0.1"
+    for name, host, port in (("other_local_port", route["address"], route["port"] + 1 if route["port"] < 65535 else 1024),
+                             ("other_address_same_port", other, route["port"]),
+                             ("provider_port_443", route["address"], 443)):
         with socket.socket() as sock:
             sock.settimeout(0.15)
             try:
@@ -94,25 +95,25 @@ def adversarial_probes(route):
     return evidence
 
 
-def expected_rules(port):
+def expected_rules(port, address="127.0.0.1"):
     rule = {"family": "inet", "table": "q1_https", "chain": "output"}
     return [
         {"table": {"family": "inet", "name": "q1_https"}},
         {"chain": {"family": "inet", "table": "q1_https", "name": "output", "type": "filter", "hook": "output", "prio": 0, "policy": "drop"}},
         {"rule": {**rule, "expr": [{"match": {"op": "in", "left": {"ct": {"key": "state"}}, "right": "established"}}, {"accept": None}]}},
         {"rule": {**rule, "expr": [
-            {"match": {"op": "==", "left": {"payload": {"protocol": "ip", "field": "daddr"}}, "right": "127.0.0.1"}},
+            {"match": {"op": "==", "left": {"payload": {"protocol": "ip", "field": "daddr"}}, "right": address}},
             {"match": {"op": "==", "left": {"payload": {"protocol": "tcp", "field": "dport"}}, "right": port}}, {"accept": None}]}},
         {"rule": {**rule, "expr": [{"counter": None}, {"drop": None}]}}]
 
 
-def install_fixture_policy(port):
+def install_fixture_policy(port, address="127.0.0.1"):
     import subprocess
     # The caller already created an otherwise empty namespace. Only its own
     # qualification table is ever replaced; never modify host firewall rules.
-    if socket.if_nameindex() != [(1, "lo")]:
+    if sorted(name for _, name in socket.if_nameindex()) not in (["lo"], ["lo", "q1-client"]):
         raise ValueError("private_loopback_namespace_required")
     subprocess.run(["/usr/sbin/nft", "delete", "table", "inet", "q1_https"], capture_output=True)
     rules = ("table inet q1_https { chain output { type filter hook output priority 0; policy drop; "
-             "ct state established accept; ip daddr 127.0.0.1 tcp dport " + str(port) + " accept; counter drop; }\n}\n")
+             "ct state established accept; ip daddr " + address + " tcp dport " + str(port) + " accept; counter drop; }\n}\n")
     subprocess.run(["/usr/sbin/nft", "-f", "-"], input=rules.encode(), check=True, capture_output=True)

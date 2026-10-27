@@ -63,7 +63,7 @@ class BoundedSocket:
         return HeaderBound(self.sock.makefile(*args, **kwargs), self.limit)
 
 
-def dispatch(db, ident, incoming, m, env, rec):
+def dispatch(db, ident, incoming, m, env, rec, *, credential_fd=None, credential_protection=None):
     from ..broker_v1.broker import append
     require_fixture(m)
     destination(env["destination"])
@@ -72,10 +72,13 @@ def dispatch(db, ident, incoming, m, env, rec):
     body = encode(sealed["instrument_request"])
     if body != native_request() or len(body) > spec["max_request_bytes"]:
         raise ValueError("https_sealed_native_body_or_request_limit")
-    secret_interface: BrokerSecret = FixtureSecret()
-    token = secret_interface.bearer()
-    if not token or any(c in token for c in "\r\n"):
-        raise ValueError("broker_secret_invalid")
+    jevkey = "credential_binding" in env
+    token, token_bytes, guard = None, None, None
+    if not jevkey:
+        secret_interface: BrokerSecret = FixtureSecret()
+        token = secret_interface.bearer()
+    elif credential_fd is None or credential_protection != {"dumpable": False, "core_soft": 0, "core_hard": 0}:
+        raise ValueError("credential_broker_protection_required")
     metadata = {"contract": VERSION, "destination": DESTINATION, "request_entity_sha256": raw_hash(body),
                 "requested_model": sealed["instrument_request"]["model"], "returned_model": None,
                 "identity_state": "unknown", "identity_assurance": "local_TLS_fixture_only_not_genuine_SystemOne",
@@ -84,12 +87,20 @@ def dispatch(db, ident, incoming, m, env, rec):
                 "egress": None, "client_POSTs": 0, "retries": 0, "request_delivery": "not_started",
                 "remote_execution_assurance": "UNKNOWN", "credential_source": "explicit_broker_fixture_interface",
                 "started_at": datetime.now(timezone.utc).isoformat()}
+    if jevkey:
+        from .credential import VERSION as CREDENTIAL_VERSION
+        metadata.update(credential_source="JEVKEY_via_single_use_broker_pipe",
+            credential={"contract": CREDENTIAL_VERSION, "broker_protection": credential_protection,
+                "broker_JEVKEY_environment_absent": "JEVKEY" not in os.environ,
+                "broker_environment_minimal": set(os.environ) <= {"LANG", "LC_CTYPE", "PYTHONDONTWRITEBYTECODE"},
+                "received_once": False, "descriptor_closed": False})
     rec = dict(rec, stage="dispatch_intent", uncertain_completion=True, https=metadata)
     append(db, ident, rec)  # FULL SQLite commit BEFORE socket creation or TLS.
     if env["scenario"] == "after_intent":
         os._exit(73)
     sock = response = None
     raw = bytearray()
+    entity_received = 0
     previous_alarm = signal.getsignal(signal.SIGALRM)
     def expired(signum, frame):
         raise TimeoutError("absolute_deadline")
@@ -97,6 +108,17 @@ def dispatch(db, ident, incoming, m, env, rec):
     signal.setitimer(signal.ITIMER_REAL, env["deadline_seconds"])
     reason = None
     try:
+        if env["scenario"] == "credential_child":
+            import subprocess
+            script = ("import os; from pathlib import Path; "
+                      "print('CLEAN' if 'JEVKEY' not in os.environ and "
+                      "not any(p.name.isdigit() and int(p.name)>2 and p.exists() "
+                      "for p in Path('/proc/self/fd').iterdir()) else 'EXPOSED')")
+            child = subprocess.check_output([spec["bindings"]["python"]["path"], "-I", "-S", "-B", "-c", script],
+                                            close_fds=True, env={"LANG": "C.UTF-8"})
+            if child.strip() != b"CLEAN":
+                raise ValueError("credential_child_inheritance_refused")
+            metadata["credential"]["child_environment_and_descriptors_clean"] = True
         nft = spec["bindings"]["nft"]
         if raw_hash(__import__("pathlib").Path(nft["path"]).read_bytes()) != nft["sha256"]:
             raise ValueError("BLOCKED_nft_executable_changed")
@@ -124,6 +146,13 @@ def dispatch(db, ident, incoming, m, env, rec):
                            "trust": "explicit_local_fixture_CA"}
         rec = dict(rec, stage="https_connected", https=metadata)
         append(db, ident, rec)
+        if jevkey:
+            from .credential import receive, EntityGuard
+            fd, credential_fd = credential_fd, None
+            token_bytes = receive(fd)
+            token = token_bytes.decode("ascii")
+            guard = EntityGuard(token_bytes)
+            metadata["credential"].update(received_once=True, descriptor_closed=True)
         head = (f"POST {DESTINATION['path']} HTTP/1.1\r\nHost: {DESTINATION['host']}\r\n"
                 f"Content-Type: application/json\r\nAccept: application/json\r\nAccept-Encoding: identity\r\n"
                 f"Connection: close\r\nContent-Length: {len(body)}\r\nAuthorization: Bearer {token}\r\n\r\n").encode()
@@ -131,7 +160,7 @@ def dispatch(db, ident, incoming, m, env, rec):
         rec = dict(rec, stage="request_write_intent", https=metadata)
         append(db, ident, rec)
         sock.sendall(head + body)  # one POST; no reconnect/retry for partial send.
-        del head, token
+        del head
         metadata["request_delivery"] = "client_write_completed_remote_execution_unknown"
         rec = dict(rec, stage="request_delivered", https=metadata)
         append(db, ident, rec)
@@ -140,7 +169,7 @@ def dispatch(db, ident, incoming, m, env, rec):
         response.fp.headers = False
         metadata["http_status"] = response.status
         metadata["safe_response_headers"] = [[k.lower(), v] for k, v in response.getheaders()
-            if k.lower() in SAFE_HEADERS and "PUBLIC-SYNTHETIC-NONCREDENTIAL-Q1-CANARY" not in v]
+            if k.lower() in SAFE_HEADERS and (token not in v if jevkey else "PUBLIC-SYNTHETIC-NONCREDENTIAL-Q1-CANARY" not in v)]
         metadata["provider_request_ids"] = [[k, v] for k, v in metadata["safe_response_headers"]
                                             if k in {"x-request-id", "request-id", "x-correlation-id"}]
         rec = dict(rec, stage="response_headers", https=metadata)
@@ -165,15 +194,24 @@ def dispatch(db, ident, incoming, m, env, rec):
             if not piece:
                 if incomplete or response.length not in (None, 0):
                     raise ValueError("partial_response_disconnect")
+                if guard:
+                    tail = guard.feed(b"", final=True)
+                    raw.extend(tail)
+                    metadata["response_entity_bytes"] = len(raw)
                 break
-            capacity = env["response_byte_limit"] - len(raw)
-            raw.extend(piece[:capacity])
+            capacity = env["response_byte_limit"] - entity_received
+            overflow = len(piece) > capacity
+            piece = piece[:capacity]
+            entity_received += len(piece)
+            if guard:
+                piece = guard.feed(piece)
+            raw.extend(piece)
             metadata["response_entity_bytes"] = len(raw)
             rec = dict(rec, stage="partial_response", raw_b64=b64(raw), https=metadata)
             append(db, ident, rec)  # incremental entity custody, no decode/re-encode.
             if env["scenario"] == "after_partial":
                 os._exit(74)
-            if len(piece) > capacity:
+            if overflow:
                 raise ValueError("response_byte_limit")
             if incomplete:
                 raise ValueError("partial_response_disconnect")
@@ -202,7 +240,10 @@ def dispatch(db, ident, incoming, m, env, rec):
     except (OSError, ValueError, http.client.HTTPException) as exc:
         # Exception strings can contain peer/secret material; never persist them.
         known = {"response_header_byte_limit", "response_byte_limit", "partial_response_disconnect", "redirect_refused",
-                 "http_error", "unsupported_response_content_encoding", "unsupported_transfer_encoding", "ambiguous_response_framing", "unbounded_response_framing"}
+                 "http_error", "unsupported_response_content_encoding", "unsupported_transfer_encoding", "ambiguous_response_framing", "unbounded_response_framing",
+                 "credential_reflection_capture_refused", "credential_child_inheritance_refused",
+                 "credential_channel_deadline", "credential_channel_incomplete", "credential_channel_size",
+                 "credential_channel_trailing_data", "JEVKEY_invalid_or_out_of_bounds"}
         blockers = {"BLOCKED_exact_kernel_destination_rules_required", "BLOCKED_private_loopback_network_namespace_required",
                     "BLOCKED_nft_executable_changed", "BLOCKED_no_new_privileges", "BLOCKED_capability_drop"}
         reason = str(exc) if type(exc) is ValueError and str(exc) in known | blockers else "transport_or_egress_failure"
@@ -213,6 +254,13 @@ def dispatch(db, ident, incoming, m, env, rec):
             response.close()
         if sock is not None:
             sock.close()
+        if credential_fd is not None:
+            os.close(credential_fd)
+        if guard:
+            guard.clear()
+        if token_bytes is not None:
+            token_bytes[:] = b"\x00" * len(token_bytes)
+        token = None
     if reason:
         rec = dict(rec, stage="terminal_failure", raw_b64=b64(raw), reason=reason,
                    uncertain_completion=not metadata["response_complete"], https=metadata)

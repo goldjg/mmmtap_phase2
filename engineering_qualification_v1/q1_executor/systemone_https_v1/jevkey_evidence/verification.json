@@ -1,0 +1,89 @@
+{
+  "baseline": "7387e5123e21f2e9e38d126f10fc9d69d69c2edb",
+  "commands": [
+    {
+      "command": "unshare --user --map-root-user --net sh -c \"ip link set lo up && python -B -m engineering_qualification_v1.q1_executor.systemone_https_v1.jevkey_qualification --output /tmp/mmmtap-jevkey-hardened-final\"",
+      "copied_to": "acceptance",
+      "environment": "Every executor child is constructed with dummy material; no operator environment copy.",
+      "exit_status": 0
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "-q",
+        "engineering_qualification_v1.q1_executor.systemone_https_v1.test_credential",
+        "engineering_qualification_v1.q1_executor.systemone_https_v1.test_https",
+        "engineering_qualification_v1.q1_executor.test_executor",
+        "engineering_qualification_v1.q1_executor.broker_v1.test_broker",
+        "engineering_qualification_v1.q1_executor.systemone_typed_v1.test_choice1.ExecutorChoice1Tests",
+        "engineering_qualification_v1.q1_executor.test_transport.TransportTests.test_subprocess_dependency_graph_and_valid_specialist_continuation",
+        "engineering_qualification_v1.q1_executor.test_transport.TransportTests.test_verifier_no_invocation_and_original_completed_campaigns_still_verify"
+      ],
+      "exit_status": 0,
+      "stderr_sha256": "1ac1f9c550f425d0751c9692d54414dc725994e2b85f0718e815e2f82986bf51",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests": 40
+    },
+    {
+      "command": "python -B -m operator_execution_v1 verify",
+      "cwd": "/home/prometheus/git/mmmtap_phase2",
+      "exit_status": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "3edbc2744e840148b5efda742fb9d8bf8cc339db6519993bda5dd6e76e33eb2e"
+    },
+    {
+      "command": "Read-only SHA-256 seal verification, resolving historical producer bytes through Git at baseline; reconstruct archived campaigns with engine.verify and compare before/after file hashes.",
+      "detail": "preservation.json",
+      "exit_status": 0
+    }
+  ],
+  "disabled_manifest": {
+    "native_request_sha256": "927ba81d6b3a2a7d753f6e2f3646c0e8b683c23727a7657b8f5998253894d7ea",
+    "path": "jevkey-manifest/manifest.json",
+    "refusal": "LIVE_DISPATCH_DISABLED_production_egress_credentials_approval_usage_unqualified",
+    "sha256": "63f4b88d0d2eedf63c105eefaa397d97073e5f2e9e856dac1e8f774d6c145c20"
+  },
+  "observed": {
+    "first_attempt_reservations": 19,
+    "focused_regressions": 40,
+    "historical_seals_verified": 9,
+    "local_TLS_POSTs": 8,
+    "offline_cases": 19,
+    "original_custody_entries": 40538,
+    "provider_calls": 0,
+    "read_only_campaigns": 87
+  },
+  "remaining_before_PI_request": [
+    "Use the operator established JEVKEY-bearing launch context; no new API key/account/login.",
+    "Supply the exact approved production peer, reviewed trust and controlled routed namespace with namespace-scoped policy-inspection authority; ordinary Gaia user has no host CAP_NET_ADMIN.",
+    "Seal/review the actual-production admission/provenance binding; no automatic enablement is added.",
+    "Confirm current fixed-revision/account cost terms and record proportionate identity/replay/timeout reconciliation limits, then seek explicit permission for one synthetic POST."
+  ],
+  "reuse": {
+    "credential_contract": "q1-broker-jevkey-fd-v1",
+    "credential_convention": "JEVKEY",
+    "historical_native_and_carl_access": "EVIDENCED",
+    "native_serialization_matches_historical_json_bytes": true,
+    "operator_confirmed_existing_Gaia_variable": true,
+    "operator_value_obtained": false,
+    "task_service_variable_name_present": false,
+    "transport_contract": "q1-systemone-https-v1"
+  },
+  "scope_limits": [
+    "Python startup/operator source environment and privileged inspectors are outside the post-hardening process claim.",
+    "No guaranteed zeroisation of every Python string copy.",
+    "Only local qualification peers are admitted; production dispatch stays disabled.",
+    "Superseded two-inherited-pipe draft evidence remains labelled unqualified development, not current acceptance."
+  ],
+  "startup_race_control": "Credential read pipe is created AFTER non-dumpability/core protection; write-FD transfer uses SCM_RIGHTS and kernel SCM_CREDENTIALS matching the exact Popen PID. Forged PID is refused before source consumption. No key on startup socket.",
+  "status": "JEV HISTORICAL ACCESS REUSED — Q1 BROKER INTEGRATION QUALIFIED OFFLINE, LIVE PROBE PENDING APPROVAL",
+  "unchanged": {
+    "Choice_1_questions_and_scopes": true,
+    "original_evidence_RD01_RD02_RD04_IE01_RD05": true,
+    "scientific_validators_and_153_position_topology": true,
+    "worker_bootstrap_mount_namespace_seccomp_policy": true
+  }
+}

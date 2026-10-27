@@ -1,7 +1,15 @@
-"""Durable synthetic demo. No live mode, adapters, credentials or release path."""
+"""Durable Q1 executor. Live dispatch disabled; JEVKEY is broker-only."""
+import os
+
+# Protect the source process as early as Python permits, before importing the
+# engine or reading any value. The existing operator parent environment is
+# outside this process boundary and is never copied/inspected by this guard.
+if "JEVKEY" in os.environ:
+    from .systemone_https_v1.credential import harden
+    harden()
+
 import argparse
 import json
-import os
 from pathlib import Path
 import sqlite3
 import subprocess
@@ -16,7 +24,7 @@ def demo(root):
     # A real child process exits immediately after its durable reservation.
     child = subprocess.run([sys.executable, "-m", "engineering_qualification_v1.q1_executor", "resume",
                             "--campaign", str(root.absolute()), "--interrupt-after-reservation", "interruption"],
-                           env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"}, capture_output=True)
+                           env={"LANG": "C.UTF-8", "PYTHONDONTWRITEBYTECODE": "1"}, capture_output=True)
     if child.returncode != 75:
         raise ValueError("expected_simulated_crash_exit_75:" + child.stderr.decode("utf-8", "replace"))
     interrupted = verify(root)["summary"]

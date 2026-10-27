@@ -108,11 +108,12 @@ def authorise(db, root, ident, manifest_hash, incoming):
     return m, env, rec
 
 
-def dispatch(db, ident, incoming, m, env, rec):
+def dispatch(db, ident, incoming, m, env, rec, *, credential_fd=None, credential_protection=None):
     from ..systemone_https_v1.contract import is_https
     if is_https(m):
         from ..systemone_https_v1.https import dispatch as https_dispatch
-        return https_dispatch(db, ident, incoming, m, env, rec)
+        return https_dispatch(db, ident, incoming, m, env, rec,
+                              credential_fd=credential_fd, credential_protection=credential_protection)
     scenario = env["scenario"]
     if scenario == "before_dispatch":
         os._exit(71)  # reservation consumed; no intent and no mock process.
@@ -289,7 +290,16 @@ def main():
     parser.add_argument("--campaign", type=Path, required=True)
     parser.add_argument("--position", required=True)
     parser.add_argument("--manifest", required=True)
+    parser.add_argument("--credential-control-fd", type=int)
     args = parser.parse_args()
+    protection, credential_fd = None, None
+    if args.credential_control_fd is not None:
+        from ..systemone_https_v1.credential import broker_ready
+        try:
+            credential_fd, protection = broker_ready(args.credential_control_fd)
+        except BaseException:
+            # No traceback, exception string, FD data or key on startup failure.
+            os._exit(76)
     db = engine.connect(args.campaign)
     try:
         count = 0
@@ -310,9 +320,20 @@ def main():
                 reason = str(exc) if str(exc) in REJECTIONS else "invalid_message"
                 reply = rejected(db, args.position, incoming, reason)
             else:
-                reply = dispatch(db, args.position, incoming, m, env, rec)
+                if ("credential_binding" in env) != (credential_fd is not None):
+                    reply = rejected(db, args.position, incoming, "grant_mismatch")
+                else:
+                    reply = dispatch(db, args.position, incoming, m, env, rec,
+                                     credential_fd=credential_fd, credential_protection=protection)
+                    if "credential_binding" in env:
+                        credential_fd = None  # one dispatch consumes the channel.
             sys.stdout.buffer.write(encode(reply) + b"\n"); sys.stdout.buffer.flush()
     finally:
+        if credential_fd is not None:
+            try:
+                os.close(credential_fd)
+            except OSError:
+                pass
         db.close()
 
 

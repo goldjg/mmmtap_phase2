@@ -9,6 +9,7 @@ from pathlib import Path
 import selectors
 import shutil
 import signal
+import socket
 import subprocess
 import time
 
@@ -57,6 +58,14 @@ class BrokerTransport:
         https = spec["contract"] == HTTPS_VERSION
         if https:
             rec["https"] = None
+        jevkey = "credential_binding" in envelope
+        credential_fds = []
+        if jevkey:
+            from ..systemone_https_v1.credential import configured, harden
+            rec["credential_handoff"] = {"contract": envelope["credential_binding"]["version"],
+                "source_configured": configured(), "launcher_protection": harden(),
+                "broker_ready_before_release": False, "broker_sender_PID_authenticated": False,
+                "delivery": "not_released", "broker_pid": None}
         persist(rec)
         worker = broker = None
         selector = selectors.DefaultSelector()
@@ -79,14 +88,31 @@ class BrokerTransport:
 
         def start_broker():
             nonlocal broker
-            broker = subprocess.Popen([
+            argv = [
                 spec["bindings"]["python"]["path"], "-B", "-m",
                 "engineering_qualification_v1.q1_executor.broker_v1.broker",
                 "--campaign", str(self.root), "--position", self.ident,
-                "--manifest", envelope["manifest_sha256"]],
+                "--manifest", envelope["manifest_sha256"]]
+            inherited = ()
+            if jevkey:
+                parent_channel, broker_channel = socket.socketpair(socket.AF_UNIX, socket.SOCK_SEQPACKET)
+                parent_channel.setsockopt(socket.SOL_SOCKET, socket.SO_PASSCRED, 1)
+                credential_fds.extend((parent_channel, broker_channel))
+                inherited = (broker_channel.fileno(),)
+                argv += ["--credential-control-fd", str(broker_channel.fileno())]
+            broker = subprocess.Popen(argv,
                 stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                close_fds=True, cwd=PACKAGE.parent.parent,
+                close_fds=True, pass_fds=inherited, cwd=PACKAGE.parent.parent,
                 env={"LANG": "C.UTF-8", "PYTHONDONTWRITEBYTECODE": "1"})
+            if jevkey:
+                from ..systemone_https_v1.credential import handoff_from_environment
+                broker_channel.close(); credential_fds.remove(broker_channel)
+                try:
+                    handoff = handoff_from_environment(parent_channel, broker.pid)
+                finally:
+                    credential_fds.remove(parent_channel)
+                rec["credential_handoff"] = {**handoff, "broker_pid": broker.pid}
+                persist(rec)
             for name in ("stdout", "stderr"):
                 stream = getattr(broker, name); os.set_blocking(stream.fileno(), False)
                 selector.register(stream, selectors.EVENT_READ, "broker_" + name)
@@ -169,7 +195,7 @@ class BrokerTransport:
                     rec["processes"] = (transport.process_tree(worker.pid) +
                                         (transport.process_tree(broker.pid) if broker else [])) or rec["processes"]
                     persist(rec)
-                if envelope["scenario"] == "executor_interrupt" and last and last["stage"] == "partial_response":
+                if envelope["scenario"] in ("executor_interrupt", "jev_interrupt") and last and last["stage"] == "partial_response":
                     os._exit(75)  # real outstanding provider request, committed raw prefix.
                 if broker is not None and broker.poll() is not None:
                     if envelope["scenario"] == "after_acceptance" and broker.returncode == 72:
@@ -191,8 +217,15 @@ class BrokerTransport:
             rec["returncode"] = worker.returncode
         except (OSError, ValueError, KeyError, TypeError) as exc:
             forced = "process_failure"
-            stderr.extend(("\nsupervisor:" + str(exc)).encode())
+            # Generic errors only in the credential path: never stringify an
+            # exception that might originate in a secret/channel operation.
+            stderr.extend(b"\nsupervisor:credential_boundary_failure" if jevkey else ("\nsupervisor:" + str(exc)).encode())
         finally:
+            for fd in credential_fds:
+                try:
+                    fd.close()
+                except OSError:
+                    pass
             for proc in (worker, broker):
                 if proc is not None:
                     if proc.poll() is None:

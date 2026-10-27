@@ -39,7 +39,8 @@ def historical_software_compatible(m, recorded):
     legacy = decode(read_file(PACKAGE, name))
     runtime = software()
     choice1 = decode(read_file(PACKAGE, "legacy-software.choice1.v1.json"))
-    return (recorded in (legacy, choice1)
+    https = decode(read_file(PACKAGE, "legacy-software.https.v1.json"))
+    return (recorded in (legacy, choice1, https)
             and all(recorded[k] == runtime[k] for k in
                     ("python_version", "sqlite_version", "python_executable_sha256")))
 

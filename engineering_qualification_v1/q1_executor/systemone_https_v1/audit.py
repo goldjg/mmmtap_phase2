@@ -20,7 +20,18 @@ def verify_transport(rec, envelope, spec, root, previous):
     def base(value):
         if "https" not in value or value["contract"] != VERSION:
             raise ValueError("https_transport_record_shape")
-        return {**{k: v for k, v in value.items() if k != "https"}, "contract": transport.VERSION}
+        has_binding = "credential_binding" in envelope
+        if has_binding:
+            handoff = value.get("credential_handoff")
+            if (not handoff or handoff["contract"] != envelope["credential_binding"]["version"]
+                    or handoff["launcher_protection"] != {"dumpable": False, "core_soft": 0, "core_hard": 0}
+                    or set(handoff) != {"contract", "source_configured", "launcher_protection", "broker_ready_before_release", "broker_sender_PID_authenticated", "delivery", "broker_pid"}
+                    or handoff["delivery"] not in {"not_released", "single_use_pipe_written_and_closed"}
+                    or handoff["delivery"] == "single_use_pipe_written_and_closed" and not (handoff["broker_ready_before_release"] and handoff["broker_sender_PID_authenticated"])):
+                raise ValueError("JEVKEY_transport_handoff_changed")
+        elif "credential_handoff" in value:
+            raise ValueError("JEVKEY_handoff_without_binding")
+        return {**{k: v for k, v in value.items() if k not in {"https", "credential_handoff"}}, "contract": transport.VERSION}
     transport.base_verify_record(base(rec), envelope, spec, root, base(previous) if previous else None)
     if rec["status"] == "completed" and (not rec["https"] or not rec["https"]["response_complete"]
                                         or rec["https"]["http_status"] != 200):
@@ -36,13 +47,24 @@ def metadata(meta, env, raw, stage):
               "identity_assurance", "http_status", "safe_response_headers", "provider_request_ids", "usage",
               "response_complete", "response_entity_bytes", "tls", "egress", "client_POSTs", "retries",
               "request_delivery", "remote_execution_assurance", "credential_source", "started_at"}
+    jevkey = "credential_binding" in env
+    if jevkey:
+        fields.add("credential")
+        credential = meta.get("credential", {})
+        expected = {"contract", "broker_protection", "broker_JEVKEY_environment_absent", "broker_environment_minimal", "received_once", "descriptor_closed"}
+        if (set(credential) not in (expected, expected | {"child_environment_and_descriptors_clean"})
+                or credential["contract"] != env["credential_binding"]["version"]
+                or credential["broker_protection"] != {"dumpable": False, "core_soft": 0, "core_hard": 0}
+                or not credential["broker_JEVKEY_environment_absent"] or not credential["broker_environment_minimal"]
+                or meta["client_POSTs"] and (not credential["received_once"] or not credential["descriptor_closed"])):
+            raise ValueError("JEVKEY_broker_protection_changed")
     if (set(meta) != fields or meta["contract"] != VERSION or meta["destination"] != DESTINATION
             or meta["request_entity_sha256"] != raw_hash(native_request()) or meta["requested_model"] != MODEL
             or meta["client_POSTs"] not in (0, 1) or meta["retries"] != 0
             or meta["response_entity_bytes"] != len(raw)
             or meta["identity_assurance"] != "local_TLS_fixture_only_not_genuine_SystemOne"
             or meta["remote_execution_assurance"] != "UNKNOWN"
-            or meta["credential_source"] != "explicit_broker_fixture_interface"):
+            or meta["credential_source"] != ("JEVKEY_via_single_use_broker_pipe" if jevkey else "explicit_broker_fixture_interface")):
         raise ValueError("https_metadata_or_request_binding")
     from .https import SAFE_HEADERS
     headers = meta["safe_response_headers"]

@@ -89,3 +89,20 @@ The existing [approval sheet](../q1_executor/systemone_https_v1/APPROVAL.md) app
 No permission is granted here. No provider-domain access, authentication,
 credential read/hash/copy/test or live execution occurred; GitHub access served
 only the requested repository delivery.
+
+
+Update — existing JEV access and the Q1 boundary
+
+The historical native/cARL SystemOne path was already working with JEVKEY.
+The new [JEVKEY integration qualification](../q1_executor/systemone_https_v1/JEVKEY.md)
+closes the broker handoff, arbitrary-secret disclosure, process-inspection and
+routed-private-network gaps identified above: 19 dummy-only cases and 40 focused
+regressions passed. The original findings above describe the earlier baseline;
+credential/broker integration is now **QUALIFIED OFFLINE**, not provider onboarding.
+The operator confirms the Gaia variable; the task service does not inherit its
+name, so later authorised launch must use the established operator context.
+No real value was inspected or used. Production admission remains disabled:
+choose the operator's exact peer/trust/controlled namespace binding, namespace-scoped
+policy-inspection authority and final one-request approval. Current fixed-version
+availability, billing terms, internal replay and independent serving identity
+remain unestablished; they do not justify redesigning the working integration.

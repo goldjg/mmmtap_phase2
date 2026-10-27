@@ -24,7 +24,8 @@ ASSESSMENT = {"case_id": "synthetic-q1-systemone-probe", "variant_id": "syntheti
 SCENARIOS = {"valid", "malformed", "http_400", "http_500", "partial_failure", "timeout",
              "after_intent", "after_partial", "identity_unknown", "identity_mismatch",
              "response_limit", "redirect", "destination", "duplicate", "network", "credentials",
-             "typed_malformed", "chunked_partial", "missing_kernel_policy"}
+             "typed_malformed", "chunked_partial", "missing_kernel_policy", "credential_probe",
+             "credential_echo", "credential_echo_escaped", "credential_bad", "jev_interrupt", "credential_child", "spawn", "exec", "source_write", "forbidden_file", "policy_digest", "alter_request"}
 
 
 def is_https(m):
@@ -61,8 +62,8 @@ def specification():
     return spec
 
 
-def authority():
-    return {"state": "DISABLED", "human_approval": "REQUIRED_NEW_EXPLICIT_PI_APPROVAL",
+def authority(jevkey=False):
+    result = {"state": "DISABLED", "human_approval": "REQUIRED_NEW_EXPLICIT_PI_APPROVAL",
             "credential_prerequisite": "broker-owned-secret-interface-not-configured",
             "remote_identity": "UNKNOWN_independent_attestation_not_documented",
             "remote_execution_assurance": "UNKNOWN_provider_internal_replay_and_timeout_accounting",
@@ -72,9 +73,12 @@ def authority():
             "one_client_POST": 1, "one_broker_dispatch": 1, "retries": 0, "fallbacks": 0,
             "generator_invocations": 0, "carl_executions": 0, "continuations": 0,
             "operational_release_authority": False}
+    if jevkey:
+        result["credential_prerequisite"] = "existing-JEVKEY-broker-fd-offline-binding-no-live-use-authorised"
+    return result
 
 
-def make_manifest(root, *, route=None, scenario="valid"):
+def make_manifest(root, *, route=None, scenario="valid", jevkey=False):
     from ..model import validate_manifest
     m, _ = validate_manifest(PACKAGE / "fixtures")
     root.mkdir()
@@ -96,12 +100,15 @@ def make_manifest(root, *, route=None, scenario="valid"):
     spec = specification()
     m.update(campaign_id=ASSESSMENT["case_id"], positions=[p], attempt_ceiling=1, simulated_budget_units=1,
              specialist_observation={"version": OBSERVATION, "qualification_only": True},
-             https_qualification={"version": VERSION, "authority": authority(), "fixture_route": route,
+             https_qualification={"version": VERSION, "authority": authority(jevkey), "fixture_route": route,
                  "native_request_sha256": raw_hash(native_request()),
                  "questions_sha256": digest(decode(native_request())["questions"]),
-                 "policy_sha256": digest(authority())},
+                 "policy_sha256": digest(authority(jevkey))},
              transport={"version": VERSION, "specification": spec, "configuration_sha256": digest(spec),
                         "scenarios": {POSITION: scenario}})
+    if jevkey:
+        from .credential import binding
+        m["https_qualification"]["credential_binding"] = binding()
     m["manifest_sha256"] = digest({k: v for k, v in m.items() if k != "manifest_sha256"})
     (root / "manifest.json").write_bytes(encode(m))
     validate_manifest(root)
@@ -123,15 +130,22 @@ def validate_manifest(root, m, raw):
             or m["specialist_observation"] != {"version": OBSERVATION, "qualification_only": True}):
         raise ValueError("https_qualification_manifest_boundary")
     q = m["https_qualification"]
-    if (set(q) != {"version", "authority", "fixture_route", "native_request_sha256", "questions_sha256", "policy_sha256"}
-            or q["version"] != VERSION or q["authority"] != authority()
-            or q["policy_sha256"] != digest(authority()) or q["native_request_sha256"] != raw_hash(native_request())
+    jevkey = "credential_binding" in q
+    if jevkey:
+        from .credential import binding
+        if q["credential_binding"] != binding():
+            raise ValueError("JEVKEY_broker_binding_changed")
+    if (set(q) != {"version", "authority", "fixture_route", "native_request_sha256", "questions_sha256", "policy_sha256"} | ({"credential_binding"} if jevkey else set())
+            or q["version"] != VERSION or q["authority"] != authority(jevkey)
+            or q["policy_sha256"] != digest(authority(jevkey)) or q["native_request_sha256"] != raw_hash(native_request())
             or q["questions_sha256"] != digest(decode(native_request())["questions"])):
         raise ValueError("https_disabled_authority_or_seal_changed")
     route = q["fixture_route"]
     if route is not None:
-        if (set(route) != {"address", "port", "ca_pem", "ca_sha256", "network_namespace"}
-                or route["address"] != "127.0.0.1" or type(route["port"]) is not int
+        routed = jevkey and "interfaces" in route
+        if (set(route) != {"address", "port", "ca_pem", "ca_sha256", "network_namespace"} | ({"interfaces"} if routed else set())
+                or route["address"] != ("192.0.2.2" if routed else "127.0.0.1")
+                or routed and route["interfaces"] != ["lo", "q1-client"] or type(route["port"]) is not int
                 or not 1024 <= route["port"] <= 65535 or not isinstance(route["network_namespace"], str)
                 or raw_hash(route["ca_pem"].encode()) != route["ca_sha256"]):
             raise ValueError("https_local_fixture_route")
@@ -165,11 +179,13 @@ def validate_manifest(root, m, raw):
 def validate_extension(m):
     ext = m["transport"]
     expected = specification()
+    legacy = decode(read_file(PACKAGE, "legacy-https-specification.v1.json"))
     # Only repository paths may move during read-only reconstruction.
     for key in ("adapter", "bootstrap"):
         expected["bindings"][key]["path"] = ext["specification"]["bindings"][key]["path"]
+        legacy["bindings"][key]["path"] = ext["specification"]["bindings"][key]["path"]
     if (set(ext) != {"version", "specification", "configuration_sha256", "scenarios"}
-            or ext["version"] != VERSION or ext["specification"] != expected
+            or ext["version"] != VERSION or ext["specification"] not in (expected, legacy)
             or ext["configuration_sha256"] != digest(ext["specification"])
             or set(ext["scenarios"]) != {POSITION} or ext["scenarios"][POSITION] not in SCENARIOS):
         raise ValueError("https_versioned_transport_binding")
@@ -180,6 +196,8 @@ def envelope_for(m, p, sealed):
     env = base_envelope_for(m, p, sealed)
     env.update(broker_contract=VERSION, destination=DESTINATION, requested_identity=identity(),
                https_policy_sha256=digest(m["https_qualification"]))
+    if "credential_binding" in m["https_qualification"]:
+        env["credential_binding"] = m["https_qualification"]["credential_binding"]
     env["idempotency_token"] = digest({"broker": VERSION, "attempt": env["attempt_id"], "request": env["request_sha256"]})
     return env
 
