@@ -1,0 +1,882 @@
+{
+  "CLI_failure_flags": {
+    "CLI_nonzero_exit": 2
+  },
+  "CLI_launches": 90,
+  "CLI_launches_by_generator": {
+    "gemini": 32,
+    "haiku": 33,
+    "sol": 25
+  },
+  "CLI_unknown_serving_identity": {
+    "gemini": 2,
+    "sol": 25
+  },
+  "POSTs_by_presentation": {
+    "carl": 21,
+    "native": 25
+  },
+  "SystemOne_client_POSTs": 46,
+  "SystemOne_returned_model_self_reports": {
+    "jev-1.13.0": 46
+  },
+  "actual_billing": null,
+  "approval_sha256": "c3775dbdbce42999fa704ec82c3f622d13f14f0ab54e35b2b681932dc7e2a941",
+  "assurance": "LOWER_ASSURANCE_ENGINEERING_QUALIFICATION",
+  "broker_failure_codes": {
+    "sealed_input_not_admissible": 6
+  },
+  "cARL_challenge_frequency": {
+    "challenge_entries_total": 4,
+    "dispositions": {
+      "challenge_required": 4,
+      "no_challenge": 17
+    },
+    "native_threshold_challenge_flag": "not_defined_native_delivers_direct_observations_without_threshold_mapping",
+    "valid_denominator": 21,
+    "with_challenge_entries": 4
+  },
+  "campaign_bytes_unchanged_by_reconstruction": true,
+  "campaign_database_sha256": "bc4ad349a9cf45e5ebb7ec9e3fae0ddc93b14d6166f8a0e993d8a6ab81e3e0ae",
+  "campaign_id": "q1-lower-assurance-engineering-153-v1",
+  "claim_edit_materiality": "not_adjudicated",
+  "code_commit": "654f2b8147bca53f55a5ff0f659195a76f1b10f9",
+  "continuation_after_no_challenge": {
+    "dependent_generator_states": {
+      "completed": 16,
+      "unavailable": 1
+    },
+    "specialist_no_challenge_positions": 17
+  },
+  "created_at_utc": "2026-10-27T19:41:56.117777+00:00",
+  "documented_Codex_ineffective_false_overrides": [
+    "unified_exec",
+    "realtime_conversation",
+    "worktrees"
+  ],
+  "endpoint_comparisons": {
+    "by_arm": {
+      "C1": {
+        "unchanged": 9
+      },
+      "C2": {
+        "unchanged": 9
+      },
+      "C3": {
+        "missing": 1,
+        "unchanged": 8
+      },
+      "E1": {
+        "unchanged": 9
+      },
+      "E2": {
+        "missing": 3,
+        "unchanged": 6
+      },
+      "E3_CN": {
+        "missing": 3,
+        "unchanged": 6
+      },
+      "E3_NC": {
+        "missing": 2,
+        "unchanged": 7
+      }
+    },
+    "changed": 0,
+    "known": 54,
+    "missing": 9
+  },
+  "evidence_seal_sha256": "ae684d6fde3b69c9d0f6d249bc84ae0e1f9e8a3774daf60cbad49c4a805bbf31",
+  "evidence_tip_sha256": "57981e63b7c3be6aee7d3643a7f324fc62cead4087ff55921f239b1db16a8b9c",
+  "exact_claim_field_changes": {
+    "claim": 11,
+    "confidence": 2,
+    "evidence_quotes": 1,
+    "limitations": 8
+  },
+  "fallbacks": 0,
+  "financial_acceptance": "PI_approved_variable_exposure_no_additional_campaign_specific_monetary_ceiling",
+  "first_CLI_process_started_at_utc": "2026-10-27T19:41:58.648719+00:00",
+  "generator_movement_by_arm": [
+    {
+      "arm": "B0",
+      "changed_preceding_pairs": 0,
+      "known_preceding_pairs": 0,
+      "preceding_pairs": {},
+      "scheduled": 9,
+      "states": {
+        "completed": 9
+      },
+      "valid_dispositions": {
+        "fail": 1,
+        "insufficient_evidence": 8
+      }
+    },
+    {
+      "arm": "C1",
+      "changed_preceding_pairs": 0,
+      "known_preceding_pairs": 9,
+      "preceding_pairs": {
+        "fail -> fail": 1,
+        "insufficient_evidence -> insufficient_evidence": 8
+      },
+      "scheduled": 9,
+      "states": {
+        "completed": 9
+      },
+      "valid_dispositions": {
+        "fail": 1,
+        "insufficient_evidence": 8
+      }
+    },
+    {
+      "arm": "C2",
+      "changed_preceding_pairs": 0,
+      "known_preceding_pairs": 9,
+      "preceding_pairs": {
+        "fail -> fail": 1,
+        "insufficient_evidence -> insufficient_evidence": 8
+      },
+      "scheduled": 9,
+      "states": {
+        "completed": 9
+      },
+      "valid_dispositions": {
+        "fail": 1,
+        "insufficient_evidence": 8
+      }
+    },
+    {
+      "arm": "C3",
+      "changed_preceding_pairs": 0,
+      "known_preceding_pairs": 16,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 16
+      },
+      "scheduled": 18,
+      "states": {
+        "blocked": 1,
+        "completed": 16,
+        "unavailable": 1
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 16
+      }
+    },
+    {
+      "arm": "E1",
+      "changed_preceding_pairs": 0,
+      "known_preceding_pairs": 9,
+      "preceding_pairs": {
+        "fail -> fail": 1,
+        "insufficient_evidence -> insufficient_evidence": 8
+      },
+      "scheduled": 9,
+      "states": {
+        "completed": 9
+      },
+      "valid_dispositions": {
+        "fail": 1,
+        "insufficient_evidence": 8
+      }
+    },
+    {
+      "arm": "E2",
+      "changed_preceding_pairs": 0,
+      "known_preceding_pairs": 6,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 6
+      },
+      "scheduled": 9,
+      "states": {
+        "blocked": 2,
+        "completed": 6,
+        "unavailable": 1
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 6
+      }
+    },
+    {
+      "arm": "E3_NC",
+      "changed_preceding_pairs": 0,
+      "known_preceding_pairs": 16,
+      "preceding_pairs": {
+        "fail -> fail": 2,
+        "insufficient_evidence -> insufficient_evidence": 14
+      },
+      "scheduled": 18,
+      "states": {
+        "blocked": 2,
+        "completed": 16
+      },
+      "valid_dispositions": {
+        "fail": 2,
+        "insufficient_evidence": 14
+      }
+    },
+    {
+      "arm": "E3_CN",
+      "changed_preceding_pairs": 0,
+      "known_preceding_pairs": 13,
+      "preceding_pairs": {
+        "fail -> fail": 2,
+        "insufficient_evidence -> insufficient_evidence": 11
+      },
+      "scheduled": 18,
+      "states": {
+        "blocked": 4,
+        "completed": 13,
+        "invalid": 1
+      },
+      "valid_dispositions": {
+        "fail": 2,
+        "insufficient_evidence": 11
+      }
+    }
+  ],
+  "generator_movement_by_arm_and_generator": [
+    {
+      "arm": "B0",
+      "changed_preceding_pairs": 0,
+      "generator": "gemini",
+      "known_preceding_pairs": 0,
+      "preceding_pairs": {},
+      "scheduled": 3,
+      "states": {
+        "completed": 3
+      },
+      "valid_dispositions": {
+        "fail": 1,
+        "insufficient_evidence": 2
+      }
+    },
+    {
+      "arm": "B0",
+      "changed_preceding_pairs": 0,
+      "generator": "haiku",
+      "known_preceding_pairs": 0,
+      "preceding_pairs": {},
+      "scheduled": 3,
+      "states": {
+        "completed": 3
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 3
+      }
+    },
+    {
+      "arm": "B0",
+      "changed_preceding_pairs": 0,
+      "generator": "sol",
+      "known_preceding_pairs": 0,
+      "preceding_pairs": {},
+      "scheduled": 3,
+      "states": {
+        "completed": 3
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 3
+      }
+    },
+    {
+      "arm": "C1",
+      "changed_preceding_pairs": 0,
+      "generator": "gemini",
+      "known_preceding_pairs": 3,
+      "preceding_pairs": {
+        "fail -> fail": 1,
+        "insufficient_evidence -> insufficient_evidence": 2
+      },
+      "scheduled": 3,
+      "states": {
+        "completed": 3
+      },
+      "valid_dispositions": {
+        "fail": 1,
+        "insufficient_evidence": 2
+      }
+    },
+    {
+      "arm": "C1",
+      "changed_preceding_pairs": 0,
+      "generator": "haiku",
+      "known_preceding_pairs": 3,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 3
+      },
+      "scheduled": 3,
+      "states": {
+        "completed": 3
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 3
+      }
+    },
+    {
+      "arm": "C1",
+      "changed_preceding_pairs": 0,
+      "generator": "sol",
+      "known_preceding_pairs": 3,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 3
+      },
+      "scheduled": 3,
+      "states": {
+        "completed": 3
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 3
+      }
+    },
+    {
+      "arm": "C2",
+      "changed_preceding_pairs": 0,
+      "generator": "gemini",
+      "known_preceding_pairs": 3,
+      "preceding_pairs": {
+        "fail -> fail": 1,
+        "insufficient_evidence -> insufficient_evidence": 2
+      },
+      "scheduled": 3,
+      "states": {
+        "completed": 3
+      },
+      "valid_dispositions": {
+        "fail": 1,
+        "insufficient_evidence": 2
+      }
+    },
+    {
+      "arm": "C2",
+      "changed_preceding_pairs": 0,
+      "generator": "haiku",
+      "known_preceding_pairs": 3,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 3
+      },
+      "scheduled": 3,
+      "states": {
+        "completed": 3
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 3
+      }
+    },
+    {
+      "arm": "C2",
+      "changed_preceding_pairs": 0,
+      "generator": "sol",
+      "known_preceding_pairs": 3,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 3
+      },
+      "scheduled": 3,
+      "states": {
+        "completed": 3
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 3
+      }
+    },
+    {
+      "arm": "C3",
+      "changed_preceding_pairs": 0,
+      "generator": "gemini",
+      "known_preceding_pairs": 4,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 4
+      },
+      "scheduled": 6,
+      "states": {
+        "blocked": 1,
+        "completed": 4,
+        "unavailable": 1
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 4
+      }
+    },
+    {
+      "arm": "C3",
+      "changed_preceding_pairs": 0,
+      "generator": "haiku",
+      "known_preceding_pairs": 6,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 6
+      },
+      "scheduled": 6,
+      "states": {
+        "completed": 6
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 6
+      }
+    },
+    {
+      "arm": "C3",
+      "changed_preceding_pairs": 0,
+      "generator": "sol",
+      "known_preceding_pairs": 6,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 6
+      },
+      "scheduled": 6,
+      "states": {
+        "completed": 6
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 6
+      }
+    },
+    {
+      "arm": "E1",
+      "changed_preceding_pairs": 0,
+      "generator": "gemini",
+      "known_preceding_pairs": 3,
+      "preceding_pairs": {
+        "fail -> fail": 1,
+        "insufficient_evidence -> insufficient_evidence": 2
+      },
+      "scheduled": 3,
+      "states": {
+        "completed": 3
+      },
+      "valid_dispositions": {
+        "fail": 1,
+        "insufficient_evidence": 2
+      }
+    },
+    {
+      "arm": "E1",
+      "changed_preceding_pairs": 0,
+      "generator": "haiku",
+      "known_preceding_pairs": 3,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 3
+      },
+      "scheduled": 3,
+      "states": {
+        "completed": 3
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 3
+      }
+    },
+    {
+      "arm": "E1",
+      "changed_preceding_pairs": 0,
+      "generator": "sol",
+      "known_preceding_pairs": 3,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 3
+      },
+      "scheduled": 3,
+      "states": {
+        "completed": 3
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 3
+      }
+    },
+    {
+      "arm": "E2",
+      "changed_preceding_pairs": 0,
+      "generator": "gemini",
+      "known_preceding_pairs": 2,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 2
+      },
+      "scheduled": 3,
+      "states": {
+        "completed": 2,
+        "unavailable": 1
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 2
+      }
+    },
+    {
+      "arm": "E2",
+      "changed_preceding_pairs": 0,
+      "generator": "haiku",
+      "known_preceding_pairs": 3,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 3
+      },
+      "scheduled": 3,
+      "states": {
+        "completed": 3
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 3
+      }
+    },
+    {
+      "arm": "E2",
+      "changed_preceding_pairs": 0,
+      "generator": "sol",
+      "known_preceding_pairs": 1,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 1
+      },
+      "scheduled": 3,
+      "states": {
+        "blocked": 2,
+        "completed": 1
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 1
+      }
+    },
+    {
+      "arm": "E3_NC",
+      "changed_preceding_pairs": 0,
+      "generator": "gemini",
+      "known_preceding_pairs": 6,
+      "preceding_pairs": {
+        "fail -> fail": 2,
+        "insufficient_evidence -> insufficient_evidence": 4
+      },
+      "scheduled": 6,
+      "states": {
+        "completed": 6
+      },
+      "valid_dispositions": {
+        "fail": 2,
+        "insufficient_evidence": 4
+      }
+    },
+    {
+      "arm": "E3_NC",
+      "changed_preceding_pairs": 0,
+      "generator": "haiku",
+      "known_preceding_pairs": 6,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 6
+      },
+      "scheduled": 6,
+      "states": {
+        "completed": 6
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 6
+      }
+    },
+    {
+      "arm": "E3_NC",
+      "changed_preceding_pairs": 0,
+      "generator": "sol",
+      "known_preceding_pairs": 4,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 4
+      },
+      "scheduled": 6,
+      "states": {
+        "blocked": 2,
+        "completed": 4
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 4
+      }
+    },
+    {
+      "arm": "E3_CN",
+      "changed_preceding_pairs": 0,
+      "generator": "gemini",
+      "known_preceding_pairs": 6,
+      "preceding_pairs": {
+        "fail -> fail": 2,
+        "insufficient_evidence -> insufficient_evidence": 4
+      },
+      "scheduled": 6,
+      "states": {
+        "completed": 6
+      },
+      "valid_dispositions": {
+        "fail": 2,
+        "insufficient_evidence": 4
+      }
+    },
+    {
+      "arm": "E3_CN",
+      "changed_preceding_pairs": 0,
+      "generator": "haiku",
+      "known_preceding_pairs": 5,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 5
+      },
+      "scheduled": 6,
+      "states": {
+        "completed": 5,
+        "invalid": 1
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 5
+      }
+    },
+    {
+      "arm": "E3_CN",
+      "changed_preceding_pairs": 0,
+      "generator": "sol",
+      "known_preceding_pairs": 2,
+      "preceding_pairs": {
+        "insufficient_evidence -> insufficient_evidence": 2
+      },
+      "scheduled": 6,
+      "states": {
+        "blocked": 4,
+        "completed": 2
+      },
+      "valid_dispositions": {
+        "insufficient_evidence": 2
+      }
+    }
+  ],
+  "harness_retries": 0,
+  "implementation_sha256": "8058767a05aeb757e51c662126a8ea77db7907cb79a4b03a95c0ed4cf8c3a4cf",
+  "interrupted_positions": 0,
+  "journal_events": 2546,
+  "justification_adjudication": "not_performed_RD03_not_approved",
+  "last_outcome_at_utc": "2026-10-27T21:00:34.715719+00:00",
+  "limitations": [
+    "one_exploratory_repetition_no_statistical_significance_calibrated_correctness_or_causal_validity",
+    "sources_descriptions_not_authenticated_deployed_state",
+    "provisional_fictional_governing_policy_evidence_mismatch",
+    "native_and_cARL_share_SystemOne",
+    "Noul_low_probability_does_not_establish_factually_correct_challenge",
+    "caution_not_security_correctness",
+    "unchanged_endpoint_may_hide_intermediate_movement",
+    "invalid_unavailable_not_unchanged",
+    "generated_reasons_not_internal_cognition",
+    "CLI_streams_not_provider_HTTP",
+    "serving_identity_remote_isolation_internal_attempt_counts_and_billing_unverified",
+    "RD03_not_approved_no_automatic_justification_adjudication"
+  ],
+  "manifest_file_sha256": "85ffd6c11894aa11a46490b60365c7dda1a321803dc2342d64ae84a8e7f74ff9",
+  "manifest_sha256": "8d86dae1261e609a49971d6682c9ed57427dd9b012aeaa4030071f6253064471",
+  "matched_native_cARL_baseline_comparison": {
+    "causal_effect_or_significance_claimed": false,
+    "eligible_units": 9,
+    "exact_request_comparable": 7,
+    "independent_judges": false,
+    "not_comparable": 2,
+    "units_with_probability_differences": 6
+  },
+  "model_declared_lifecycle_actions": {
+    "retained": 97,
+    "revised": 12
+  },
+  "observed_client_models": {
+    "claude-haiku-5.5": 33,
+    "gemini-3.8-flash": 30
+  },
+  "observed_live": true,
+  "original_custody_changed_or_missing": 0,
+  "original_custody_entries_verified": 40538,
+  "packets": {
+    "assurance": {
+      "path": "assurance.json",
+      "sha256": "13520e5bcbd875ca0c150cd58f23e2c86d24bf99c610406125431558370f4638"
+    },
+    "c01_source": {
+      "path": "c01-source.txt",
+      "sha256": "fda7a8f254ace4e83eb3214b78a2ae20ef6318803f25d337d6b67fa573a1c1df"
+    },
+    "c02_source": {
+      "path": "c02-source.txt",
+      "sha256": "40b4ddfc26031c5467d9a5ed4d858c6f0b978d5195eb2b934750fe915e27c3cc"
+    },
+    "c03_source": {
+      "path": "c03-source.txt",
+      "sha256": "ec922bd8d3f8d67e0c7a761a00f34f66284c4fc688cc3b1ec9d385af9fa7e492"
+    },
+    "carl_compiled_policy": {
+      "path": "carl-compiled-policy.json",
+      "sha256": "b54ad41b0c9bff40246621a03c7f27492c7270e6c5957de40cd55f5baa616f5e"
+    },
+    "challenge_policy": {
+      "path": "challenge-policy.json",
+      "sha256": "4291e804f6c81881ce188246c311590119a4e600d16f340e03e8b2e6910daea7"
+    },
+    "governing_policy": {
+      "path": "governing-policy.json",
+      "sha256": "adedb371a0661194cac7f666befa82a524080723cb8ffa4a7b50f9bb759b0f3e"
+    },
+    "research_decisions": {
+      "path": "research-decisions.json",
+      "sha256": "7e40b11e177b1ce2d50c7d03e833ff2370ff318088156681525ba153fb8f77c5"
+    },
+    "research_rule_proposals": {
+      "path": "research-rule-proposals.json",
+      "sha256": "53a1e600a64dbb78950864a1de8330e69e7b6e0639ff0db57927de7770ea5c68"
+    },
+    "source_bundle": {
+      "path": "source-bundle.json",
+      "sha256": "ff76e1c1cf41a45e6d77136f2584f1a8d4765bbf9eb7a95c1525d0673f7171ed"
+    }
+  },
+  "preserved_schema_anomalies": {
+    "interpretation": "Inherited candidate fields preserved unchanged. Actual live execution counted from approved launch custody, CLI fixture=false records, and broker HTTPS POST records, not these stale defaults.",
+    "receipt_live_execution_authorized_false": 153,
+    "verifier_summary_hardcoded_fields": [
+      "real_provider_calls=0",
+      "live_execution_authorized=false"
+    ]
+  },
+  "profile_limitations": {
+    "credential_inspection": "CLI_environment_or_staged_auth_not_fully_isolated_from_other_same_UID_processes; not_the_SystemOne_broker_FD_guarantee",
+    "credentials": "only_selected_subscription_credential_in_CLI_context; CLI_can_access_its_own_credential",
+    "filesystem": "fresh_private_home_and_tmp; readonly_work_and_usr_runtime; host_home_repo_and_other_auth_hidden",
+    "identity": "client_report_or_requested_configuration_only; independently_attested_serving_identity_unavailable",
+    "network": "production_host_namespace_not_endpoint_filtered; fixtures/help_have_no_network",
+    "processes": "internal_children_allowed_inside_private_PID_namespace; one_top_level_CLI_launch_per_reservation",
+    "remote_attempts": "UNKNOWN; no_harness_retry_or_fallback",
+    "remote_context": "fresh_local_context_requested; complete_remote_isolation_unavailable",
+    "tools": "client_config_restrictions_and_streaming_watchdog; no_universal_pre_dispatch_tool_interlock"
+  },
+  "raw_responses_and_private_provider_metadata_published": false,
+  "read_only_reconstruction": "PASS",
+  "remote_provider_attempts": null,
+  "replacement_attempts": 0,
+  "reported_usage": {
+    "carl": {
+      "actual_monetary_charge": null,
+      "available_usage_records": 21,
+      "basis": "client_or_provider_report_not_independent_billing",
+      "records_with_each_counter": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 0,
+        "input_tokens": 21,
+        "output_tokens": 21,
+        "total_tokens": 0
+      },
+      "reported_token_sums": {
+        "input_tokens": 15139,
+        "output_tokens": 1518
+      }
+    },
+    "gemini": {
+      "actual_monetary_charge": null,
+      "available_usage_records": 30,
+      "basis": "client_or_provider_report_not_independent_billing",
+      "records_with_each_counter": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 30,
+        "input_tokens": 30,
+        "output_tokens": 30,
+        "total_tokens": 0
+      },
+      "reported_token_sums": {
+        "cached_input_tokens": 0,
+        "input_tokens": 195565,
+        "output_tokens": 6751
+      }
+    },
+    "haiku": {
+      "actual_monetary_charge": null,
+      "available_usage_records": 33,
+      "basis": "client_or_provider_report_not_independent_billing",
+      "records_with_each_counter": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 33,
+        "input_tokens": 33,
+        "output_tokens": 33,
+        "total_tokens": 0
+      },
+      "reported_token_sums": {
+        "cached_input_tokens": 46784,
+        "input_tokens": 310242,
+        "output_tokens": 33611
+      }
+    },
+    "native": {
+      "actual_monetary_charge": null,
+      "available_usage_records": 25,
+      "basis": "client_or_provider_report_not_independent_billing",
+      "records_with_each_counter": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 0,
+        "input_tokens": 25,
+        "output_tokens": 25,
+        "total_tokens": 0
+      },
+      "reported_token_sums": {
+        "input_tokens": 18253,
+        "output_tokens": 1870
+      }
+    },
+    "sol": {
+      "actual_monetary_charge": null,
+      "available_usage_records": 25,
+      "basis": "client_or_provider_report_not_independent_billing",
+      "records_with_each_counter": {
+        "cache_write_tokens": 0,
+        "cached_input_tokens": 25,
+        "input_tokens": 25,
+        "output_tokens": 25,
+        "total_tokens": 0
+      },
+      "reported_token_sums": {
+        "cached_input_tokens": 188800,
+        "input_tokens": 309078,
+        "output_tokens": 10765
+      }
+    }
+  },
+  "reservation_and_duplicate_prevention": "PASS",
+  "reservations": 142,
+  "scheduled": 153,
+  "sealed_artifacts": 39,
+  "sealed_preparation_error_codes": {
+    "carl_quotation_not_exact_source": 6
+  },
+  "sequential_chains": {
+    "fully_observed": 21,
+    "incomplete": 6,
+    "return_to_baseline_after_intermediate_change": 0,
+    "sequences": {
+      "fail -> fail -> fail": 2,
+      "insufficient_evidence -> insufficient_evidence -> insufficient_evidence": 19
+    }
+  },
+  "specialists_by_presentation": {
+    "carl": {
+      "completed": 21,
+      "unavailable": 6
+    },
+    "native": {
+      "blocked": 2,
+      "completed": 25
+    }
+  },
+  "states": {
+    "blocked": 11,
+    "completed": 133,
+    "invalid": 1,
+    "unavailable": 8
+  },
+  "states_by_role": {
+    "generator": {
+      "blocked": 9,
+      "completed": 87,
+      "invalid": 1,
+      "unavailable": 2
+    },
+    "specialist": {
+      "blocked": 2,
+      "completed": 46,
+      "unavailable": 6
+    }
+  },
+  "status": "Q1 LOWER-ASSURANCE LIVE ENGINEERING QUALIFICATION COMPLETED \u2014 EVIDENCE SEALED",
+  "strict_scientific_pooling": false,
+  "terminal_reasons": {
+    "CLI_process_failure": 2,
+    "assessment_top_level_shape": 1,
+    "transport_process_failure": 6,
+    "unsuccessful_parent": 11
+  },
+  "terminal_receipts": 153,
+  "uncertain_completion_records": 2
+}
